@@ -10,7 +10,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.border.EmptyBorder;
 
 import interfaz.GUI;
-import mapa.map;
+import mapa.Map;
 
 public class Juego {
 	private static GUI frame;
@@ -54,7 +54,7 @@ public class Juego {
 	
 	public void crearGUI(){
 		frame=new GUI(this);
-		new map();
+		new Map();
 		frame.setVisible(true);
 	}	
 
