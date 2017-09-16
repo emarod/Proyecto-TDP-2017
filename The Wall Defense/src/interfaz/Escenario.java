@@ -1,12 +1,12 @@
 package interfaz;
 
+import java.lang.invoke.ConstantCallSite;
+
 import javax.swing.JPanel;
 
-public class Escenario extends JPanel {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Escenario extends JPanel {
+	private static final int width=20;
+	private static final int height=12;	
 
 }
