@@ -10,6 +10,7 @@ public class Celda {
 	   private Map Map;
 	   private int posX;
 	   private int posY;
+	   public Celda(){}
 	   public Celda(char tipo, Map Mapa,int posX, int posY,int sprite){
 		   this.posX=posX;
 		   this.posY=posY;
