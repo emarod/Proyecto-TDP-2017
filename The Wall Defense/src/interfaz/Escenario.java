@@ -17,8 +17,7 @@ public class Escenario extends JPanel {
 	
 	public Escenario(){
 		mapa= new Map(width,height);
-		this.setLayout(new GridLayout(width,height));
-		for
+		this.setLayout(new GridLayout(width,height));		
 	}
 
 }
