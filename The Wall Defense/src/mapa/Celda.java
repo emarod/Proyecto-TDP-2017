@@ -3,10 +3,10 @@ package mapa;
 //import enemigo.Enemigo;
 import interfaz.GUI;
 import main.GameObject;
-import Obstaculo.*;
+import obstaculo.*;
 
 public class Celda {
-	private GameObject[] listaObjetosLogicos;
+	   private GameObject[] listaObjetosLogicos;
 	   private Map Map;
 	   private int posX;
 	   private int posY;

@@ -1,4 +1,4 @@
-package Obstaculo;
+package obstaculo;
 import mapa.Celda;
 import main.Visitor;
 import javax.swing.*;
