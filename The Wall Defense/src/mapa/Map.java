@@ -3,15 +3,17 @@ package mapa;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Random;
-
+import java.io.InputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import main.GameObject;
 
 public class Map implements Runnable{
 	private Celda[][] celdas;
 	
 	public Map(int width,int height,int sprites) {		
-		incializarCeldas(sprites);
+		inicializarCeldas(sprites);
 	}
 	
 	private void inicializarCeldas(int t) {
@@ -28,8 +30,8 @@ public class Map implements Runnable{
 	    	
 	    	for (int x=0;x<sCurrentLine.length();x++){
 	    		char letra_actual=sCurrentLine.charAt(x);
-	    		celdas[x][j]=new celda(letra_actual,this,x,j,t);
-	    		gameObject[] objetos=celdas[x][j].getObjects();
+	    		celdas[x][j]=new Celda(letra_actual,this,x,j,t);
+	    		GameObject[] objetos=celdas[x][j].getObjects();
 	    		if(objetos[0]!=null){
 	    			JLabel graf=objetos[0].getGrafico();
 	    			graf.setBounds(32+16*x,128+16*j,16,16);
@@ -40,26 +42,11 @@ public class Map implements Runnable{
 	    				JLabel graf=objetos[2].getGrafico();
 	    				graf.setBounds(32+16*x,128+16*j,16,16);
 	    				gui.add(graf,new Integer(3));
-	    			}
-	    		  
-	    		    	    		
+	    			}	    		
 	    	}
 	    	 j++;
 	    }
-	   b.close();
-	   JLabel graf2=new JLabel();
-	   graf2.setIcon(new ImageIcon(this.getClass().getResource("/resources/Aguila_"+t+".gif")));
-	   graf2.setBounds(32+16*10, 128+16*24, 32, 32);
-	   gui.add(graf2,new Integer(2));
-	   gameObject[] objetos=celdas[10][24].getObjects();
-	   objetos[1]=new Aguila(celdas[10][24],1);
-	   objetos=celdas[11][24].getObjects();
-	   objetos[1]=new Aguila(celdas[10][24],1);
-	   objetos=celdas[10][25].getObjects();
-	   objetos[1]=new Aguila(celdas[11][24],1);
-	   objetos=celdas[11][25].getObjects();
-	   objetos[1]=new Aguila(celdas[10][25],1);
-	   
+	   b.close();	   
 	}
 	
 	
