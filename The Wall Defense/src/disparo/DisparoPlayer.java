@@ -16,7 +16,7 @@ public class DisparoPlayer extends Disparo{
  	   grafico=new JLabel();
   	   grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/disparo.png")));
   	   grafico.setBounds(32+16*celda.getPosX(), 128+16*celda.getPosY(), 16, 16);
-	   celda.getGui().add(grafico,new Integer(2));
+//	   celda.getGui().add(grafico,new Integer(2));
   	   graficos=new Icon[4];
 	   graficos[0]=new ImageIcon(this.getClass().getResource("/resources/disparo.png"));
 	   graficos[1]=new ImageIcon(this.getClass().getResource("/resources/disparo.png"));

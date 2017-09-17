@@ -2,7 +2,7 @@ package obstaculo;
 import javax.swing.*;
 import main.Visitor;
 import mapa.Celda;
-public class Rock extends obstaculo implements Runnable{
+public class Rock extends Obstaculo implements Runnable{
 	private int resistencia;
 	private Thread t;
 	private int sprite;

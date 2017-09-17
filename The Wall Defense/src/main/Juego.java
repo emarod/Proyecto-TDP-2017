@@ -2,15 +2,12 @@ package main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.border.EmptyBorder;
 
 import interfaz.GUI;
-import mapa.Map;
 
 public class Juego {
 	private static GUI frame;
@@ -53,8 +50,7 @@ public class Juego {
 	}
 	
 	public void crearGUI(){
-		frame=new GUI(this);
-		new Map();
+		frame=new GUI(this);		
 		frame.setVisible(true);
 	}	
 

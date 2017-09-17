@@ -2,7 +2,7 @@ package obstaculo;
 import mapa.Celda;
 import main.Visitor;
 import javax.swing.*;
-public class Water extends obstaculo {
+public class Water extends Obstaculo {
    public Water(Celda c,char tipo,int prof,int sprite){
 	   profundidad=prof;
 	   celda=c;

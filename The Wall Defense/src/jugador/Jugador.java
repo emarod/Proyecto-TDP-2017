@@ -33,20 +33,20 @@ public class Jugador extends Unidad{
      public int getAncho(){
     	 return ancho;
      }
-     public void sumarPuntaje(int i){
-    	 celda.aumentarPuntaje(i);
-     }
+//     public void sumarPuntaje(int i){
+//    	 celda.aumentarPuntaje(i);
+//     }
      public void setVisitor(Visitor v){
     	 V=v;
      }
 
-     public void setVidas(int v){
-    	 vidas=v;
-    	 celda.cambiarVidas(vidas);
-    	 if(vidas==0){
-            celda.gameOver();
-    	 }
-     }
+//     public void setVidas(int v){
+//    	 vidas=v;
+//    	 celda.cambiarVidas(vidas);
+//    	 if(vidas==0){
+//            celda.gameOver();
+//    	 }
+//     }
      public int getVidas(){
     	 return vidas;
      }
@@ -70,19 +70,19 @@ public class Jugador extends Unidad{
     		 dirActual=2;
     		 //setState(new Nivel1(this,nivel.getDisparosEnEjecucion()));
     		 setGraficos();
-    		 setVidas(vidas-1);
+//    		 setVidas(vidas-1);
     		 isRunning=true;
     	 }
      }
      public void setState(State s){
     	 nivel=s;
      }
-     public void detenerTiempo(){
-    	 celda.detenerTiempo();
-     }
-     public void eliminarEnemigos(){
-    	 celda.eliminarEnemigos();
-     }
+//     public void detenerTiempo(){
+//    	 celda.detenerTiempo();
+//     }
+//     public void eliminarEnemigos(){
+//    	 celda.eliminarEnemigos();
+//     }
      public void restarDisparosEnEjecucion(){
     	 nivel.restarDisparosEnEjecucion();
      }
