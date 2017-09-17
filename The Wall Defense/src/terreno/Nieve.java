@@ -10,9 +10,11 @@ public class Nieve extends Terreno {
 	
 	private int sprite;
 	
-    public Nieve(Celda c,int sprite){    	
-    	celda=c;
-    	this.sprite=sprite;    	
+	
+    public Nieve(Celda c){    	
+    	celda=c;  
+    	//Este es un random limitado entre 1 y 3, para establecer un rango nuevo Random[n,m]: (Math.random()*m)+n
+    	this.sprite = (int) (Math.random() * 3) + 1; 
     	grafico=new JLabel();
     	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/terrenos/nieve/nieve"+sprite+".png")));
     	

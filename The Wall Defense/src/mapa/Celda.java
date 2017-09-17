@@ -4,7 +4,7 @@ import interfaz.Escenario;
 //import enemigo.Enemigo;
 import main.GameObject;
 import obstaculo.*;
-import terreno.Nieve;
+import terreno.*;
 
 public class Celda {
 	   private GameObject[] listaObjetosLogicos;
@@ -36,8 +36,12 @@ public class Celda {
 	    		case 'k':
 	    		case 'l':
 	    		case 'm':
+	    			listaObjetosLogicos[0]=new Muro(this);
+	    			break;
 	    		case 'n':
-	    			listaObjetosLogicos[0]=new Nieve(this,sprite);	    			
+	    			//No necesita el 'sprite' por parametros porque crea un suelo ramdom.
+	    			listaObjetosLogicos[0]=new Nieve(this);
+	    			break;
 	    		case 'o':
 	    			//listaObjetosLogicos[0]=new Water(this,tipo,0,sprite);
 	    			break;
