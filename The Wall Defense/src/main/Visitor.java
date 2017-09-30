@@ -1,6 +1,5 @@
 package main;
 
-import disparo.DisparoEnemigo;
 import disparo.DisparoPlayer;
 import enemigo.Enemigo;
 import jugador.Jugador;
@@ -14,5 +13,4 @@ public abstract  class Visitor {
 	   public abstract boolean visitPlayer(Jugador j);
 	   public abstract boolean visitDisparoPlayer(DisparoPlayer d);
 	   public abstract boolean visitEnemigo(Enemigo e);
-	   public abstract boolean visitDisparoEnemigo(DisparoEnemigo d);
 }

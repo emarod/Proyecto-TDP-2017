@@ -1,5 +1,7 @@
 package enemigo;
 
+import javax.swing.JLabel;
+
 //import interfaz.GUI;
 import main.Unidad;
 import main.Visitor;
@@ -10,34 +12,33 @@ public abstract class Enemigo extends Unidad{
 	 private int alto;
 	 private int ancho;
 	 protected EnemigoRun e;
-	    public Enemigo(Celda c, int profundidad){
-	    	//GUI.playSound("EnemigoAparece.wav");
-	    	V=new VisitorEnemigo(this);
-	    	alto=26;
-	    	ancho=26;
-	    	celda=c;
-	    	isRunning=true;
-	    	this.profundidad=profundidad;
-	    	
-	    	
-	    		
-	    			
-	    }
-	
+	 
+	 public Enemigo(Celda c, int profundidad){
+    	//GUI.playSound("EnemigoAparece.wav");
+    	V=new VisitorEnemigo(this);
+    	alto=26;
+    	ancho=26;
+    	celda=c;
+    	isRunning=true;
+    	this.profundidad=profundidad;
+    	grafico=new JLabel();
+    	V=new VisitorEnemigo(this);
+	}
+
 	
 	public abstract int getPuntaje();
 	public boolean Accept(Visitor V){
 		return V.visitEnemigo((Enemigo)this);
-		}
-	 public int getAlto(){
-    	 return alto;
-     }
-     public int getAncho(){
-    	 return ancho;
-     }
-     public int getFrecuenciaDisparos(){
-    	 return frecuencia_disparos;
-     }
+	}
+	
+    public int getAlto(){
+    	return alto;
+    }
+    
+    public int getAncho(){
+    	return ancho;
+    }
+    
 	public boolean restarResistencia(){ 
 		if(resistencia==1){
 			destruir();
@@ -66,6 +67,5 @@ public abstract class Enemigo extends Unidad{
 
 	public void parar() {
 		e.parar();
-		
 	}
 }

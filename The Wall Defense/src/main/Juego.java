@@ -19,7 +19,6 @@ public class Juego {
 	
 	public Juego() {
 		pantallaPrincipal();
-
 	}
 	
 	public void pantallaPrincipal(){
@@ -27,7 +26,7 @@ public class Juego {
 		menu.setVisible(true);
 		menu.setResizable(true);
 		menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		menu.setBounds(100, 100, 598, 618);
+		menu.setBounds(100, 100, 525, 410);
 		menu.setLocationRelativeTo(null);
 		JLayeredPane contentPane=new JLayeredPane();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -37,7 +36,7 @@ public class Juego {
 		//Menu
 		//Boton Jugar accede al juego.
 		final JButton jugar=new JButton("Jugar");
-		jugar.setBounds(215,240,130,40);
+		jugar.setBounds(185,140,150,50);
 		jugar.setVisible(true);	  	   
 		jugar.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
@@ -50,7 +49,7 @@ public class Juego {
 	}
 	
 	public void crearGUI(){
-		frame=new GUI(this);		
+		frame=new GUI(this);
 		frame.setVisible(true);
 	}	
 

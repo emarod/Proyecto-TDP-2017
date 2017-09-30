@@ -1,5 +1,7 @@
 package mapa;
 
+import Controladores.ControladorAtaque;
+import Controladores.ControladorMovimiento;
 import interfaz.Escenario;
 //import enemigo.Enemigo;
 import main.GameObject;
@@ -11,7 +13,7 @@ public class Celda {
 	   private Map Map;
 	   private int posX;
 	   private int posY;
-	   public Celda(){}
+//	   public Celda(){}
 	   public Celda(char tipo, Map Mapa,int posX, int posY,int sprite){
 		   this.posX=posX;
 		   this.posY=posY;
@@ -91,4 +93,12 @@ public class Celda {
 	public Escenario getEscenario(){
 		return Map.getEscenario();
 	}
+	
+    public ControladorMovimiento getCM() {
+    	return Map.getCM();
+    }
+    
+    public ControladorAtaque getCA() {
+    	return Map.getCA();
+    }
 }

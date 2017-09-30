@@ -2,12 +2,10 @@ package disparo;
 
 public class DisparoRun implements Runnable{
      private Disparo d;
-     private int dirActual;
      private Thread t;
      private boolean moviendo=false;
-     public DisparoRun(Disparo d, int dir){
-    	 this.d=d;
-    	 dirActual=dir;
+     public DisparoRun(Disparo d){
+    	 this.d=d;    	 
     	 t=new Thread(this);
     	 t.start();
      }
@@ -19,18 +17,18 @@ public class DisparoRun implements Runnable{
     		 
           isRunnable=d.getIsRunning();
           
-           if(isRunnable)
-        	   if (!moviendo){
-        		  
-  		            d.mover(dirActual);
-  		          try{
-  		        	Thread.sleep(20);  
-  		          }
-  		          catch (Exception e){;}
-  		            }
-              else
-            	   t.interrupt();
-  	   }
+          if(isRunnable)
+	          if (!moviendo){
+	        	  
+	        	  d.mover();
+	        	  try{
+	        		  Thread.sleep(20);  
+		          }
+	  		      catch (Exception e){;}
+	          }
+	          else
+	        	  t.interrupt();
+    	 }
     	 
      }
 }

@@ -7,18 +7,29 @@ import java.util.Random;
 import java.io.InputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import Controladores.ControladorAtaque;
+import Controladores.ControladorMovimiento;
+import disparo.DisparoPlayer;
+
 import java.io.IOException;
 
 import main.GameObject;
 import interfaz.Escenario;
+import jugador.Arquero;
 
 public class Map implements Runnable{
 	private Celda[][] celdas;
 	private Escenario escenario;
+	private ControladorMovimiento cMovimiento;
+	private ControladorAtaque cAtacar;
 	
 	public Map(Escenario stage,int width,int height,int sprites) {
 		celdas= new Celda[width][height];
 		escenario = stage;
+//		Inicialización de controladores de acciones
+		cAtacar=new ControladorAtaque();
+		cMovimiento= new ControladorMovimiento();
 		try {
 			inicializarCeldas(sprites);
 		}
@@ -48,20 +59,39 @@ public class Map implements Runnable{
 	    		GameObject[] objetos=celdas[x][y].getObjects();
 	    		if(objetos[0]!=null){
 	    			JLabel terreno=objetos[0].getGrafico();
-	    			terreno.setBounds(32+16*x,128+16*y,16,16);
-	    		    escenario.add(terreno,new Integer(1));
+	    			
+	    			terreno.setBounds(32*x,32*y,32,32);
+	    		    escenario.agregar(terreno,new Integer(1));
 	    			
 	    		}else
 	    			if(objetos[2]!=null){
 	    				JLabel terreno= objetos[2].getGrafico();
-	    				terreno.setBounds(32+16*x,128+16*y,16,16);
-	    				escenario.add(terreno,new Integer(3));
+	    				terreno.setBounds(32*x,32*y,32,32);
+	    				escenario.agregar(terreno,new Integer(3));
 	    			}	    		
 	    	}
 	    	y++;
-	    }
-	   bufferMapa.close();	   
+	   }
+	   bufferMapa.close();   
+
+	   
+	   //Codigo a prueba de personaje sprint 2
+	   Arquero ygritte= new Arquero(celdas[2][2], 2);	   
+	   celdas[2][2].getObjects()[1]= ygritte;
+       ygritte.setCelda(celdas[2][2]);         
+  	   JLabel graf2=ygritte.getGrafico();
+  	   graf2.setBounds(32*2,32*2,32,32);
+  	   escenario.agregar(graf2,new Integer(2));
+  	   
+	   Arquero ygritte2= new Arquero(celdas[2][2], 2);
+	   celdas[6][6].getObjects()[1]= ygritte2;
+       ygritte2.setCelda(celdas[6][6]);              
+  	   JLabel graf3=ygritte2.getGrafico();
+  	   graf3.setBounds(32*6,32*6,32,32);
+  	   escenario.agregar(graf3,new Integer(2));
+	   
 	}
+	
 	
     public Celda getCelda(int x, int y){
     	return celdas[x][y];
@@ -69,6 +99,14 @@ public class Map implements Runnable{
     
     public Escenario getEscenario() {
     	return escenario;
+    }
+    
+    public ControladorMovimiento getCM() {
+    	return cMovimiento;
+    }
+    
+    public ControladorAtaque getCA() {
+    	return cAtacar;
     }
     
 	public void run() {	
