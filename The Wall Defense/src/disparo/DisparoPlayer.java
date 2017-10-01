@@ -46,6 +46,7 @@ public class DisparoPlayer extends Disparo{
 
 	@Override
 	public void mover() {
+		System.out.println("timer"+timer);
 		Celda siguiente;
 		int x=celda.getPosX();
 		int y=celda.getPosY();
@@ -56,9 +57,9 @@ public class DisparoPlayer extends Disparo{
 		intercambiar_celdas(siguiente);
 		if (timer==0) {
 			run();
-			timer=10000;
+			timer=100;
 		}
-		timer--;		
+		timer--;	
 	}
 	
 	@Override
