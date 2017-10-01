@@ -45,5 +45,15 @@ public class EnemigoPoder extends Enemigo{
     	  else
     		  new DisparoEnemigo(celda,this,3,7,5);
       }
+	@Override
+	public void atacar() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mover() {
+		// TODO Auto-generated method stub
+		
+	}
       
 }

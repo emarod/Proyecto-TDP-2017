@@ -14,10 +14,16 @@ public class ControladorMovimiento extends Controlador{
 
 	@Override
 	public void run() {
-		while(!esperar) {
-			for (Unidad unidad : repositorio) {
-				unidad.mover();
-			}
+		while(true) {
+			while(esperar) {
+				System.out.println("ESPERAR");
+				pausado=true;
+				if(!esperar)
+					pausado=false;
+			};
+			unidadActual= repositorio.getFirst();			
+			System.out.println("mover");
+			unidadActual.mover();		
 		}
 	}
 
@@ -29,22 +35,10 @@ public class ControladorMovimiento extends Controlador{
 	}
 
 	@Override
-	public synchronized boolean activar(Unidad unidad) {
-		System.out.println("Activar");
+	public void activar(Unidad unidad) {
+		super.activar(unidad);
 		unidad.setMovimiento(true);
-		liberarRepo();
-		try {
-			System.out.println("Esperando que muera el hilo");
-			hilo.join();
-			System.out.println("Murio el hilo");
-			repositorio.addFirst(unidad);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		devolverRepo();
-		hilo.start();
-		return true;
+		unidad.mover();
 	}
 	
 	public void congelar(Unidad unidad,boolean b) {

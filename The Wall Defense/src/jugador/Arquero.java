@@ -22,6 +22,7 @@ public class Arquero extends Jugador{
 		disparos_en_ejecucion=0;
 		velocidad_disparo=10;
 		c.getCA().activar(this);
+		System.out.println("Arquero");
 	}
 	
 	public void atacar(){

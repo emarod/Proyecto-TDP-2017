@@ -44,4 +44,14 @@ public class EnemigoRapido extends Enemigo{
     	  else
     		  new DisparoEnemigo(celda,this,3,10,5);
       }
+	@Override
+	public void atacar() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mover() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -83,11 +83,11 @@ public class Map implements Runnable{
   	   graf2.setBounds(32*2,32*2,32,32);
   	   escenario.agregar(graf2,new Integer(2));
   	   
-	   Arquero ygritte2= new Arquero(celdas[2][2], 2);
-	   celdas[6][6].getObjects()[1]= ygritte2;
-       ygritte2.setCelda(celdas[6][6]);              
+	   Arquero ygritte2= new Arquero(celdas[0][0], 2);
+	   celdas[0][0].getObjects()[1]= ygritte2;
+       ygritte2.setCelda(celdas[0][0]);              
   	   JLabel graf3=ygritte2.getGrafico();
-  	   graf3.setBounds(32*6,32*6,32,32);
+  	   graf3.setBounds(32*0,32*0,32,32);
   	   escenario.agregar(graf3,new Integer(2));
 	   
 	}

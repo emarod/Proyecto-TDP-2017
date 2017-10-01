@@ -15,6 +15,7 @@ public class DisparoPlayer extends Disparo{
 	protected int timer;
     public DisparoPlayer(Celda C, Unidad j, int prof,int speed){
        super(C,j,prof,speed);
+       System.out.println("Disparo");
        cronometro = new Timer();
        V=new VisitorDisparoPlayer(this);
  	   grafico=new JLabel();

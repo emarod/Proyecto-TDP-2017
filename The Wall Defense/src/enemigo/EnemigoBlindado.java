@@ -39,4 +39,14 @@ public class EnemigoBlindado extends Enemigo{
       public void disparar(){
     	  new DisparoEnemigo(celda,this,3,10,4);
       }
+	@Override
+	public void atacar() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mover() {
+		// TODO Auto-generated method stub
+		
+	}
 }

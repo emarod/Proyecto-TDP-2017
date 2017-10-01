@@ -40,4 +40,14 @@ public class EnemigoBasico extends Enemigo{
     	  
     	  new DisparoEnemigo(celda,this,3,15,1);
       }
+	@Override
+	public void atacar() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mover() {
+		// TODO Auto-generated method stub
+		
+	}
 }

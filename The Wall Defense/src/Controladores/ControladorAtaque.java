@@ -3,22 +3,35 @@ package Controladores;
 import java.util.LinkedList;
 
 import main.Unidad;
+import main.Visitor;
 
 public class ControladorAtaque extends Controlador{
 	
 	public ControladorAtaque(){
 		hilo = new Thread(this);
-		repositorio = new LinkedList<Unidad>();
+		repositorio = new LinkedList<Unidad>();		
 		hilo.start();
 	}
 
 	@Override
 	public void run() {
-		while(!esperar) {
-			for (Unidad unidad : repositorio) {
-				unidad.atacar();
+		while(true) {
+			while(esperar) {
+				System.out.println("ESPERAR");
+				pausado=true;
+				if(!esperar)
+					pausado=false;
+			};
+			if(repositorio.size()== 0) {
+				unidadActual=repositorio.getFirst();			
+				System.out.println("atacar");
+				unidadActual.atacar();
+				
 			}
+					
 		}
+			
+		
 	}
 
 	@Override
@@ -29,17 +42,9 @@ public class ControladorAtaque extends Controlador{
 	}
 
 	@Override
-	public boolean activar(Unidad unidad) {
+	public void activar(Unidad unidad) {
+		super.activar(unidad);		
 		unidad.setAtacar(true);
-		liberarRepo();		
-		try {
-			hilo.join();
-			repositorio.addLast(unidad);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		devolverRepo();
-		return true;
+		unidad.atacar();
 	}
 }
