@@ -1,6 +1,6 @@
 package Controladores;
 
-import java.util.LinkedList;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 import main.Unidad;
 
@@ -8,23 +8,25 @@ public class ControladorAtaque extends Controlador{
 	
 	public ControladorAtaque(){
 		hilo = new Thread(this);
-		repositorio = new LinkedList<Unidad>();
+		repositorio = new ConcurrentLinkedDeque<Unidad>();
+		hilo.start();
 	}
 
 	@Override
 	public void run() {
 		while(true) {
-			unidadActual= repositorio.removeFirst();
-			repositorio.addLast(unidadActual);
-			unidadActual.atacar();			
+			unidadActual= repositorio.pollFirst();
+			if (unidadActual!=null){
+				repositorio.addLast(unidadActual);	
+				unidadActual.atacar();
+			}
 		}
 	}
 
 	@Override
-	public boolean desactivar(Unidad unidad) {		
+	public void desactivar(Unidad unidad) {
+		super.desactivar(unidad);
 		unidad.setAtacar(false);
-		repositorio.remove(unidad);
-		return true;
 	}
 
 	@Override

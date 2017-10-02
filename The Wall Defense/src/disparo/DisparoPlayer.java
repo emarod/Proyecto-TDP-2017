@@ -1,4 +1,5 @@
 package disparo;
+import java.sql.Time;
 import java.util.Timer;
 
 import javax.swing.Icon;
@@ -12,23 +13,24 @@ import main.Visitor;
 import mapa.Celda;
 
 public class DisparoPlayer extends Disparo{	
-	protected int timer;
+	protected int puntosCelda = 32;
+	protected int puntosVelocidad = velocidad;
     public DisparoPlayer(Celda C, Unidad j, int prof,int speed){
        super(C,j,prof,speed);
-       System.out.println("Disparo");
+       System.out.println("Disparo");       
        cronometro = new Timer();
        V=new VisitorDisparoPlayer(this);
  	   grafico=new JLabel();
   	   grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
   	   grafico.setBounds(32*celda.getPosX(), 32*celda.getPosY(), 32, 32);
-	   celda.getEscenario().agregar(grafico,new Integer(2));
-	   timer=1000;
+	   celda.getEscenario().agregar(grafico,new Integer(2));	   
 	   celda.getCM().activar(this);
     }
     
     public void run() {
     	if (grafico.getX()>640) {
-    		grafico.setBounds(j.getCelda().getPosX()*32, grafico.getY(), getAncho(), getAlto());
+//    		grafico.setBounds(j.getCelda().getPosX()*32, grafico.getY(), getAncho(), getAlto());
+
     	}
     	else
     		grafico.setBounds(grafico.getX()+1, grafico.getY(), getAncho(), getAlto());
@@ -37,7 +39,8 @@ public class DisparoPlayer extends Disparo{
     public void destruir(){
     	super.destruir();
     	Arquero archer=(Arquero)j;
-		archer.restarDisparosEnEjecucion();		
+		archer.restarDisparosEnEjecucion();
+		celda.getCM().desactivar(this);
 	   
 	}
     public boolean Accept(Visitor V){
@@ -46,20 +49,34 @@ public class DisparoPlayer extends Disparo{
 
 	@Override
 	public void mover() {
-		System.out.println("timer"+timer);
 		Celda siguiente;
-		int x=celda.getPosX();
-		int y=celda.getPosY();
-		if(x==19) {
-			x=j.getCelda().getPosX();
+		int xCelda=(celda.getPosX()==19) ? celda.getPosX():j.getCelda().getPosX();
+		int yCelda=celda.getPosY();
+		int xGrafico= grafico.getX();
+		int yGrafico= grafico.getY();
+		puntosVelocidad--;
+		if(xGrafico>=640) {
+			System.out.println("Destruccion xgraf"+xGrafico+" xcelda"+xCelda);
+			destruir();			
 		}
-		siguiente=celda.getCelda(x+1,y);
-		intercambiar_celdas(siguiente);
-		if (timer==0) {
-			run();
-			timer=100;
+		else {
+			if(puntosVelocidad==0) {
+				puntosCelda--;
+				grafico.setBounds(xGrafico+1, yGrafico, getAncho(), getAlto());
+				puntosVelocidad=velocidad;
+			}
+		}	
+		if(puntosCelda==0) {
+			siguiente=celda.getCelda(xCelda+1,yCelda);
+			intercambiar_celdas(siguiente);
+			puntosCelda=32;
 		}
-		timer--;	
+		
+	}
+	
+	public void adelantar() {
+		int x = grafico.getX();
+		
 	}
 	
 	@Override

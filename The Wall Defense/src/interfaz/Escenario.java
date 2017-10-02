@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.util.Random;
 
 import javax.swing.BorderFactory;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
@@ -18,6 +17,7 @@ public class Escenario extends JPanel {
 	private static final int width=20;
 	private static final int height=12;
 	private JLayeredPane layeredPane;
+	private Map mapa;
 	public Escenario(){
 		Random rnd=new Random();
 		int r=rnd.nextInt(2);		
@@ -27,7 +27,7 @@ public class Escenario extends JPanel {
 				"The winter is coming wacho..."
 		));
 		this.add(layeredPane);
-		new Map(this,width,height,r);
+		mapa= new Map(this,width,height,r);
 //		this.setBackground(new Color(255, 0, 255, 255));
 	}
 	
@@ -36,5 +36,8 @@ public class Escenario extends JPanel {
 		layeredPane.add(objeto,entero);
 	}
 	
+	public Map getMapa() {
+		return mapa;
+	}
 
 }

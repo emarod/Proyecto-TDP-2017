@@ -1,5 +1,6 @@
 package mapa;
 
+import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
@@ -111,6 +112,16 @@ public class Map implements Runnable{
     
 	public void run() {	
 		
+	}
+
+	public void agregarPersonajeEnMapa(int x,int y, MouseEvent event){
+		Arquero arquero= new Arquero(null, 2);
+		celdas[2][2].getObjects()[1]= arquero;
+		arquero.setCelda(celdas[2][2]);              
+		JLabel graf2=arquero.getGrafico();
+		graf2.setBounds(32*2,32*2,32,32);
+		escenario.agregar(graf2,new Integer(2));
+		  	   //event.notify();
 	}
 	
 }

@@ -29,10 +29,13 @@ public class GUI extends JFrame implements Runnable {
 		horda= new ProximaHorda();
 		
 		
+		//Escenario. Donde va el mapa
+		mapa= new Escenario();	
+		getContentPane().add(mapa, BorderLayout.CENTER);
+		
 		//MenuCompra
-		tienda= new MenuCompra();
-		
-		
+		tienda= new MenuCompra(mapa);
+
 		//Panel Inferior
 		panelInferior= new JPanel();
 		panelInferior.setLayout(new BorderLayout());
@@ -40,9 +43,6 @@ public class GUI extends JFrame implements Runnable {
 		panelInferior.add(horda, BorderLayout.EAST);
 		panelInferior.add(tienda,BorderLayout.WEST);
 		
-		//Escenario. Donde va el mapa
-		mapa= new Escenario();	
-		getContentPane().add(mapa, BorderLayout.CENTER);
 		hilo=new Thread(this);
 		hilo.start();
 		GUI.juego=j;
