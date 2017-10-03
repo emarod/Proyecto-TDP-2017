@@ -1,26 +1,22 @@
 package interfaz;
 
-import javax.swing.JLayeredPane;
-
 import java.awt.BorderLayout;
 
 import javax.swing.*;
 import main.Juego;
 
 
-public class GUI extends JFrame implements Runnable {
+public class GUI extends JFrame{
 	private static final long serialVersionUID = 1L;
-	private Thread hilo;	
-	private static Juego juego;
 	private Escenario mapa;
 	private MenuCompra tienda;
 	private ProximaHorda horda;
 	private JPanel panelInferior;
 
-	public GUI(final Juego j) {	
+	public GUI() {	
 		super("The Wall Defense");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(0, 0, 800, 600);
+		this.setBounds(0, 0, 640, 528);
 		this.setResizable(false);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
@@ -34,7 +30,7 @@ public class GUI extends JFrame implements Runnable {
 		getContentPane().add(mapa, BorderLayout.CENTER);
 		
 		//MenuCompra
-		tienda= new MenuCompra(mapa);
+		tienda= new MenuCompra();		
 
 		//Panel Inferior
 		panelInferior= new JPanel();
@@ -43,16 +39,6 @@ public class GUI extends JFrame implements Runnable {
 		panelInferior.add(horda, BorderLayout.EAST);
 		panelInferior.add(tienda,BorderLayout.WEST);
 		
-		hilo=new Thread(this);
-		hilo.start();
-		GUI.juego=j;
-		
-		
-	}
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
 		
 	}
 }

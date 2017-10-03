@@ -49,7 +49,7 @@ public class Juego {
 	}
 	
 	public void crearGUI(){
-		frame=new GUI(this);
+		frame=new GUI();
 		frame.setVisible(true);
 	}	
 

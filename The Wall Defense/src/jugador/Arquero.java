@@ -20,7 +20,7 @@ public class Arquero extends Jugador{
 		setGrafico(imagen);
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
-		velocidad_disparo=10;
+		velocidad_disparo=10000;
 		c.getCA().activar(this);
 		System.out.println("Arquero");
 	}

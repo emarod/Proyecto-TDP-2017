@@ -17,7 +17,7 @@ public class DisparoPlayer extends Disparo{
 	protected int puntosVelocidad = velocidad;
     public DisparoPlayer(Celda C, Unidad j, int prof,int speed){
        super(C,j,prof,speed);
-       System.out.println("Disparo");       
+//       System.out.println("Disparo");       
        cronometro = new Timer();
        V=new VisitorDisparoPlayer(this);
  	   grafico=new JLabel();
@@ -56,7 +56,7 @@ public class DisparoPlayer extends Disparo{
 		int yGrafico= grafico.getY();
 		puntosVelocidad--;
 		if(xGrafico>=640) {
-			System.out.println("Destruccion xgraf"+xGrafico+" xcelda"+xCelda);
+//			System.out.println("Destruccion xgraf"+xGrafico+" xcelda"+xCelda);
 			destruir();			
 		}
 		else {

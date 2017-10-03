@@ -16,7 +16,7 @@ public abstract class Disparo extends Unidad  {
 		celda=c;		
 		celda.getObjects()[profundidad]=this;
 		this.velocidad=speed;
-		System.out.println("Disparo");
+//		System.out.println("Disparo");
 	}
 	
 	   

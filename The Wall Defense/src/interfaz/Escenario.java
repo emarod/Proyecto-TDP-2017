@@ -22,10 +22,7 @@ public class Escenario extends JPanel {
 		Random rnd=new Random();
 		int r=rnd.nextInt(2);		
 		layeredPane= new JLayeredPane();
-		layeredPane.setPreferredSize(new Dimension(640, 384));		
-		layeredPane.setBorder(BorderFactory.createTitledBorder(
-				"The winter is coming wacho..."
-		));
+		layeredPane.setPreferredSize(new Dimension(640, 384));
 		this.add(layeredPane);
 		mapa= new Map(this,width,height,r);
 //		this.setBackground(new Color(255, 0, 255, 255));
