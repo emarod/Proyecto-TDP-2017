@@ -10,7 +10,7 @@ import mapa.Celda;
 
 public class Nieve extends Terreno {
 	
-	private int sprite;
+	protected int sprite;
 	
 	
     public Nieve(Celda c){    	

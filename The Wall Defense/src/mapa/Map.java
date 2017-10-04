@@ -6,24 +6,24 @@ import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.Random;
 import java.io.InputStream;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Controladores.ControladorAtaque;
 import Controladores.ControladorMovimiento;
-import disparo.DisparoPlayer;
-
 import java.io.IOException;
 
 import main.GameObject;
 import interfaz.Escenario;
 import jugador.Arquero;
+import jugador.Caballero;
+import jugador.Jugador;
 
 public class Map implements Runnable{
 	private Celda[][] celdas;
 	private Escenario escenario;
 	private ControladorMovimiento cMovimiento;
 	private ControladorAtaque cAtacar;
+	private MouseEvent oyente;
 	
 	public Map(Escenario stage,int width,int height,int sprites) {
 		celdas= new Celda[width][height];
@@ -73,24 +73,29 @@ public class Map implements Runnable{
 	    	}
 	    	y++;
 	   }
-	   bufferMapa.close();   
-
+	   bufferMapa.close();
 	   
-	   //Codigo a prueba de personaje sprint 2
-	   Arquero ygritte= new Arquero(celdas[2][2], 2);	   
-	   celdas[2][2].getObjects()[1]= ygritte;
-       ygritte.setCelda(celdas[2][2]);         
-  	   JLabel graf2=ygritte.getGrafico();
-  	   graf2.setBounds(32*2,32*2,32,32);
-  	   escenario.agregar(graf2,new Integer(2));
-  	   
-	   Arquero ygritte2= new Arquero(celdas[0][0], 2);
-	   celdas[0][0].getObjects()[1]= ygritte2;
-       ygritte2.setCelda(celdas[0][0]);              
-  	   JLabel graf3=ygritte2.getGrafico();
-  	   graf3.setBounds(32*0,32*0,32,32);
-  	   escenario.agregar(graf3,new Integer(2));
-	   
+	   agregarPersonajeEnMapa();
+	}
+	
+	public void agregarPersonajeEnMapa(){
+		Arquero arquero = new Arquero();
+		Jugador jugador1 = new Jugador(celdas[2][2],2,arquero);
+		arquero.setJugador(jugador1);
+		celdas[2][2].getObjects()[1]= jugador1;
+		jugador1.setCelda(celdas[2][2]);
+		JLabel graf1 = jugador1.getGrafico();
+		graf1.setBounds(32*2,32*2,32,32);
+		escenario.agregar(graf1,new Integer(2));
+		  	   
+		Caballero caballero = new Caballero();
+		Jugador jugador2 = new Jugador(celdas[4][4],2,caballero);
+		caballero.setJugador(jugador2);
+		celdas[4][4].getObjects()[1]= jugador2;
+		jugador2.setCelda(celdas[4][4]);
+		JLabel graf2 = jugador2.getGrafico();
+		graf2.setBounds(32*4,32*4,32,32);
+		escenario.agregar(graf2,new Integer(2));
 	}
 	
 	
@@ -112,16 +117,6 @@ public class Map implements Runnable{
     
 	public void run() {	
 		
-	}
-
-	public void agregarPersonajeEnMapa(int x,int y, MouseEvent event){
-		Arquero arquero= new Arquero(null, 2);
-		celdas[2][2].getObjects()[1]= arquero;
-		arquero.setCelda(celdas[2][2]);              
-		JLabel graf2=arquero.getGrafico();
-		graf2.setBounds(32*2,32*2,32,32);
-		escenario.agregar(graf2,new Integer(2));
-		  	   //event.notify();
 	}
 	
 }

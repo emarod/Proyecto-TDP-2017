@@ -1,12 +1,8 @@
 package disparo;
-import java.sql.Time;
-import java.util.Timer;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import jugador.Arquero;
 import jugador.Jugador;
 import main.Unidad;
 import main.Visitor;
@@ -18,7 +14,6 @@ public class DisparoPlayer extends Disparo{
     public DisparoPlayer(Celda C, Unidad j, int prof,int speed){
        super(C,j,prof,speed);
 //       System.out.println("Disparo");       
-       cronometro = new Timer();
        V=new VisitorDisparoPlayer(this);
  	   grafico=new JLabel();
   	   grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
@@ -38,8 +33,8 @@ public class DisparoPlayer extends Disparo{
 
     public void destruir(){
     	super.destruir();
-    	Arquero archer=(Arquero)j;
-		archer.restarDisparosEnEjecucion();
+    	Jugador archer=(Jugador)j;
+		archer.getState().restarDisparosEnEjecucion();
 		celda.getCM().desactivar(this);
 	   
 	}
@@ -71,11 +66,6 @@ public class DisparoPlayer extends Disparo{
 			intercambiar_celdas(siguiente);
 			puntosCelda=32;
 		}
-		
-	}
-	
-	public void adelantar() {
-		int x = grafico.getX();
 		
 	}
 	

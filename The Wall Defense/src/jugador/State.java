@@ -22,8 +22,8 @@ public abstract class State {
     public void disparar(){
     	if(disparos_en_ejecucion<disparos_simultaneos){
     		 //GUI.playSound("disparo.wav");
-    	new DisparoPlayer(jugador.getCelda(),jugador,3,velocidad_disparo);
-    	disparos_en_ejecucion++;
+	    	new DisparoPlayer(jugador.getCelda(),jugador,3,velocidad_disparo);
+	    	disparos_en_ejecucion++;
     	}
     }
     
@@ -31,12 +31,17 @@ public abstract class State {
     	return velocidad_jugador;
     }
     public abstract State lvlUp();
+    public abstract void atacar();
+    public abstract void mover();
+    
     public void restarDisparosEnEjecucion(){
     	disparos_en_ejecucion--;
     }
     public abstract void setGraficos(Icon[] graficos, JLabel grafico);
-    //public abstract void dañarAcero(Acero a);
+
     public int getDisparosEnEjecucion(){
     	return disparos_en_ejecucion;
     }
+	public abstract void setGrafico(JLabel grafico);
+
 }

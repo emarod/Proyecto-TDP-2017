@@ -8,16 +8,21 @@ import main.Unidad;
 import main.Visitor;
 public class Jugador extends Unidad{
 	
-     private int alto;
-     private int ancho;
+	protected JLabel imagen;
+	protected int vidas;
+	private int alto;
+    private int ancho;
+    private State tipo;
      
-     public Jugador(Celda c,int prof){	 
+    public Jugador(Celda c,int prof, State t){	 
     	 alto=30;
     	 ancho=30;
     	 profundidad=prof;
     	 V=new VisitorJugador(this);
     	 celda=c;    	 
-    	 grafico=new JLabel(); 
+    	 grafico=new JLabel();
+    	 tipo = t;
+    	 setGrafico();
     }
      
     public boolean Accept(Visitor V){
@@ -33,17 +38,26 @@ public class Jugador extends Unidad{
     	V=v;
     }
 
-//    public int getVidas(){
-//    	return vidas;
-//    }
+    public State getState(){
+    	return tipo;
+    }
+
     public void setV(){
     	setVisitor(new VisitorJugador(this));
  		 
     }
+    
+    public void setGrafico(){
+    	tipo.setGrafico(grafico);
+    }
+    
+    public JLabel getGrafico() {
+    	return grafico;
+    }
 
 	@Override
 	public void atacar() {
-		// TODO Auto-generated method stub
+		tipo.atacar();
 		
 	}
 

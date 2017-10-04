@@ -7,7 +7,6 @@ public abstract class GameObject {
     protected Celda celda;
     protected int profundidad;
     protected boolean isRunning=true;
-    protected java.util.Timer cronometro;
     
     public JLabel getGrafico(){
     	return grafico;
