@@ -6,27 +6,27 @@ import javax.swing.JLabel;
 import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
-public abstract class Enemigo extends Unidad{
+public class Enemigo extends Unidad{
 	 protected int resistencia;
 	 protected int frecuencia_disparos;
 	 private int alto;
 	 private int ancho;
-	 protected EnemigoRun e;
+	 private State tipo;
 	 
-	 public Enemigo(Celda c, int profundidad){
+	 public Enemigo(Celda c, int profundidad, State t){
     	//GUI.playSound("EnemigoAparece.wav");
     	V=new VisitorEnemigo(this);
-    	alto=26;
-    	ancho=26;
+    	tipo=t;
+    	alto=30;
+    	ancho=30;
     	celda=c;
     	isRunning=true;
     	this.profundidad=profundidad;
     	grafico=new JLabel();
     	V=new VisitorEnemigo(this);
+    	setGrafico();
 	}
 
-	
-	public abstract int getPuntaje();
 	public boolean Accept(Visitor V){
 		return V.visitEnemigo((Enemigo)this);
 	}
@@ -50,22 +50,32 @@ public abstract class Enemigo extends Unidad{
 		}
 	}
 	
+    public void setGrafico(){
+    	tipo.setGrafico(grafico);
+    }
+    
+    public JLabel getGrafico() {
+    	return grafico;
+    }
+    
+    public State getState(){
+    	return tipo;
+    }
+	
 	public void destruir(){
 		//GUI.playSound("EnemigoMuere.wav");
 		super.destruir();
 		//celda.destruirEnemigo(this);
 	}
-	
-	public void detener(int i){
-		e.parar();
-	}
-	public void detener(){
-		e.parar(1);
-	}
-	public abstract void disparar();
 
+	@Override
+	public void atacar() {
+		tipo.atacar();
+	}
 
-	public void parar() {
-		e.parar();
+	@Override
+	public void mover() {
+		tipo.mover();
+		
 	}
 }

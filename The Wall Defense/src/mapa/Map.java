@@ -10,6 +10,9 @@ import javax.swing.JLabel;
 
 import Controladores.ControladorAtaque;
 import Controladores.ControladorMovimiento;
+import enemigo.Enemigo;
+import enemigo.WhiteWalker;
+
 import java.io.IOException;
 
 import main.GameObject;
@@ -96,6 +99,15 @@ public class Map implements Runnable{
 		JLabel graf2 = jugador2.getGrafico();
 		graf2.setBounds(32*4,32*4,32,32);
 		escenario.agregar(graf2,new Integer(2));
+		
+		WhiteWalker white_walker = new WhiteWalker();
+		Enemigo enemigo1 = new Enemigo(celdas[18][8],2,white_walker);
+		white_walker.setEnemigo(enemigo1);
+		celdas[18][8].getObjects()[1]= enemigo1;
+		enemigo1.setCelda(celdas[18][8]);
+		JLabel graf3 = enemigo1.getGrafico();
+		graf3.setBounds(32*18,32*8,32,32);
+		escenario.agregar(graf3,new Integer(2));
 	}
 	
 	

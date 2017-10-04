@@ -21,15 +21,6 @@ public class DisparoPlayer extends Disparo{
 	   celda.getEscenario().agregar(grafico,new Integer(2));	   
 	   celda.getCM().activar(this);
     }
-    
-    public void run() {
-    	if (grafico.getX()>640) {
-//    		grafico.setBounds(j.getCelda().getPosX()*32, grafico.getY(), getAncho(), getAlto());
-
-    	}
-    	else
-    		grafico.setBounds(grafico.getX()+1, grafico.getY(), getAncho(), getAlto());
-    }
 
     public void destruir(){
     	super.destruir();
