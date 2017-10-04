@@ -1,98 +1,78 @@
 package interfaz;
  
  import javax.swing.JPanel;
-import javax.swing.UIManager;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-import javax.swing.event.MouseInputAdapter;
 import javax.swing.event.MouseInputListener;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-
 import mapa.Map;
 
 public class MenuCompra extends JPanel{
 	JLabel personaje;
 	Map mapa;
-	private JLayeredPane layeredPane;
- 
+	private Escenario escenario;
  	/**
  	 * 
  	 */
  	private static final long serialVersionUID = 1L;
  	
-	public MenuCompra() {
-//		this.setLayout(null);
-		layeredPane= new JLayeredPane();
-		layeredPane.setPreferredSize(new Dimension(384, 96));
-		this.add(layeredPane);
-		this.setBorder(new LineBorder(new Color(0, 0, 0)));
-		this.setBackground(UIManager.getColor("Button.background"));
+	public MenuCompra(Escenario escenario) {
+		this.escenario= escenario;
+		this.setLayout(new GridLayout(2,2));
+		this.setBounds(76, 0, 650, 394);
+		this.setBackground(Color.RED);
+		this.setBorder(new LineBorder(new Color(0, 0, 0)));		
 		this.setPreferredSize(new Dimension(384, 96));
-		personaje=new JLabel(new ImageIcon(this.getClass().getResource("/resources/dinamic/Ygritte.gif")));
-		personaje.setBounds(0, 0, 32, 32);
-		personaje.setSize(32, 32);
-		layeredPane.add(personaje);
-		añadirOyentes();
-		System.out.println("personaje =>("+personaje.getX()+","+personaje.getY()+")");
+		armarBotonera();
 	}
 	
-	public void armarMenu() {
+	public void armarBotonera() {
+		JButton ygritte = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/Ygritte.gif")));
+		ygritte.setSize(32, 32);
+		ygritte.addMouseListener(
+				new MouseAdapter() {
+					public void mouseClicked(MouseEvent e) {
+						escenario.crearPersonaje("arquero");
+					}
+				}
+		);
+		this.add(ygritte);
+		
+		
+		JButton lannister = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/lannister_atacando_8fps.gif")));
+		lannister.setSize(32, 32);
+		lannister.addMouseListener(
+				new MouseAdapter() {
+					public void mouseClicked(MouseEvent e) {
+						escenario.crearPersonaje("caballero");
+					}
+				}
+		);
+		this.add(lannister);
+		
+		JButton caminante = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/white_walker.gif")));
+		caminante.setSize(32, 32);
+		caminante.addMouseListener(
+				new MouseAdapter() {
+					public void mouseClicked(MouseEvent e) {
+						escenario.crearPersonaje("caminante");
+					}
+				}
+		);
+		this.add(caminante);
+		
 	}
-	
-	public void añadirOyentes() {		
-		personaje.addMouseListener(new MouseInputListener() {
-			int xi,yi,xf,yf;
-			
-			
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				System.out.println("holas");
-			}
-			
-			@Override
-			public void mouseDragged(MouseEvent e) {
-				personaje.setLocation((e.getX()/32)*32, (e.getY()/32)*32);
-				
-			}
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				personaje.setLocation((e.getX()/32)*32, (e.getY()/32)*32);
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				xi = personaje.getX();
-				yf = personaje.getY();				
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-//				personaje.setVisible(false);
-				System.out.println("posición =>("+e.getX()+","+e.getY()+")");
-			}
-		});
-	}
+		
+
 	
 }

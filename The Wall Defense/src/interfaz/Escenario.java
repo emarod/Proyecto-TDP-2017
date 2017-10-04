@@ -3,7 +3,6 @@ package interfaz;
 import java.awt.Dimension;
 import java.util.Random;
 
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
@@ -31,6 +30,10 @@ public class Escenario extends JPanel {
 	public void  agregar(JLabel objeto,Integer entero){
 		objeto.setSize(32,32);
 		layeredPane.add(objeto,entero);
+	}
+	
+	public void crearPersonaje(String personaje) {
+		mapa.crearPersonaje(personaje);
 	}
 	
 	public Map getMapa() {

@@ -3,12 +3,11 @@ package interfaz;
 import java.awt.BorderLayout;
 
 import javax.swing.*;
-import main.Juego;
 
 
 public class GUI extends JFrame{
 	private static final long serialVersionUID = 1L;
-	private Escenario mapa;
+	private Escenario escenario;
 	private MenuCompra tienda;
 	private ProximaHorda horda;
 	private JPanel panelInferior;
@@ -26,11 +25,11 @@ public class GUI extends JFrame{
 		
 		
 		//Escenario. Donde va el mapa
-		mapa= new Escenario();	
-		getContentPane().add(mapa, BorderLayout.CENTER);
+		escenario= new Escenario();	
+		getContentPane().add(escenario, BorderLayout.CENTER);
 		
 		//MenuCompra
-		tienda= new MenuCompra();		
+		tienda= new MenuCompra(escenario);		
 
 		//Panel Inferior
 		panelInferior= new JPanel();

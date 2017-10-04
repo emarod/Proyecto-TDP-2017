@@ -82,33 +82,6 @@ public class Map implements Runnable{
 	}
 	
 	public void agregarPersonajeEnMapa(){
-		Arquero arquero = new Arquero();
-		Jugador jugador1 = new Jugador(celdas[2][2],2,arquero);
-		arquero.setJugador(jugador1);
-		celdas[2][2].getObjects()[1]= jugador1;
-		jugador1.setCelda(celdas[2][2]);
-		JLabel graf1 = jugador1.getGrafico();
-		graf1.setBounds(32*2,32*2,32,32);
-		escenario.agregar(graf1,new Integer(2));
-		  	   
-		Caballero caballero = new Caballero();
-		Jugador jugador2 = new Jugador(celdas[4][4],2,caballero);
-		caballero.setJugador(jugador2);
-		celdas[4][4].getObjects()[1]= jugador2;
-		jugador2.setCelda(celdas[4][4]);
-		JLabel graf2 = jugador2.getGrafico();
-		graf2.setBounds(32*4,32*4,32,32);
-		escenario.agregar(graf2,new Integer(2));
-		
-		WhiteWalker white_walker = new WhiteWalker();
-		Enemigo enemigo1 = new Enemigo(celdas[18][8],2,white_walker);
-		white_walker.setEnemigo(enemigo1);
-		celdas[18][8].getObjects()[1]= enemigo1;
-		enemigo1.setCelda(celdas[18][8]);
-		JLabel graf3 = enemigo1.getGrafico();
-		graf3.setBounds(32*18,32*8,32,32);
-		escenario.agregar(graf3,new Integer(2));
-		
 		WhiteWalker white_walker2 = new WhiteWalker();
 		Enemigo enemigo2 = new Enemigo(celdas[18][2],2,white_walker2);
 		white_walker2.setEnemigo(enemigo2);
@@ -138,6 +111,60 @@ public class Map implements Runnable{
     
 	public void run() {	
 		
+	}
+
+	public void crearPersonaje(String personaje) {
+		switch (personaje) {
+		case "arquero":
+			añadirArquero();
+			break;
+			
+		case "caballero":
+			añadirCaballero();
+			break;
+			
+		case "caminante":
+			añadirCaminante();
+			break;
+			
+		default:
+			System.out.println("No existe la unidad --> "+personaje);
+			break;
+		}
+		
+	}
+	
+	public void añadirArquero() {
+		Arquero arquero = new Arquero();
+		Jugador jugador1 = new Jugador(celdas[2][2],2,arquero);
+		arquero.setJugador(jugador1);
+		celdas[2][2].getObjects()[1]= jugador1;
+		jugador1.setCelda(celdas[2][2]);
+		JLabel graf1 = jugador1.getGrafico();
+		graf1.setBounds(32*2,32*2,32,32);
+		escenario.agregar(graf1,new Integer(2));
+	}
+	
+	public void añadirCaballero() {
+		Caballero caballero = new Caballero();
+		Jugador jugador2 = new Jugador(celdas[4][4],2,caballero);
+		caballero.setJugador(jugador2);
+		celdas[4][4].getObjects()[1]= jugador2;
+		jugador2.setCelda(celdas[4][4]);
+		JLabel graf2 = jugador2.getGrafico();
+		graf2.setBounds(32*4,32*4,32,32);
+		escenario.agregar(graf2,new Integer(2));
+	}
+	
+	public void añadirCaminante() {
+		WhiteWalker white_walker = new WhiteWalker();
+		Enemigo enemigo1 = new Enemigo(celdas[18][8],2,white_walker);
+		white_walker.setEnemigo(enemigo1);
+		celdas[18][8].getObjects()[1]= enemigo1;
+		enemigo1.setCelda(celdas[18][8]);
+		JLabel graf3 = enemigo1.getGrafico();
+		graf3.setBounds(32*18,32*8,32,32);
+		escenario.agregar(graf3,new Integer(2));
 	}
 	
 }

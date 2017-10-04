@@ -29,7 +29,6 @@ public class WhiteWalker extends State{
 
 	public void mover() {
 		Celda siguiente;
-		System.out.println(""+puntosVelocidad);
 		int xCelda=this.enemigo.getCelda().getPosX();
 		int yCelda=this.enemigo.getCelda().getPosY();
 		int xGrafico= enemigo.getGrafico().getX();
@@ -37,8 +36,7 @@ public class WhiteWalker extends State{
 		if(xCelda!=0) {
 			puntosVelocidad--;
 			if(puntosVelocidad==0) {
-				puntosCelda--;
-				System.out.println(""+enemigo.getGrafico());
+				puntosCelda--;				
 				enemigo.getGrafico().setBounds(xGrafico-1, yGrafico, 32, 32);
 				puntosVelocidad=velocidad_enemigo;
 			}		
