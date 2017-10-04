@@ -7,8 +7,6 @@ import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
 public class Enemigo extends Unidad{
-	 protected int resistencia;
-	 protected int frecuencia_disparos;
 	 private int alto;
 	 private int ancho;
 	 private State tipo;
@@ -40,14 +38,13 @@ public class Enemigo extends Unidad{
     }
     
 	public boolean restarResistencia(){ 
-		if(resistencia==1){
+		boolean destruir= tipo.impact();
+		if (destruir) {
 			destruir();
-			return true;
+			tipo.destruir();
 		}
-		else{
-		resistencia--;
-		return false;
-		}
+		return destruir;
+		
 	}
 	
     public void setGrafico(){

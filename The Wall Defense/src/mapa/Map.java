@@ -108,6 +108,15 @@ public class Map implements Runnable{
 		JLabel graf3 = enemigo1.getGrafico();
 		graf3.setBounds(32*18,32*8,32,32);
 		escenario.agregar(graf3,new Integer(2));
+		
+		WhiteWalker white_walker2 = new WhiteWalker();
+		Enemigo enemigo2 = new Enemigo(celdas[18][2],2,white_walker2);
+		white_walker2.setEnemigo(enemigo2);
+		celdas[18][2].getObjects()[1]= enemigo2;
+		enemigo2.setCelda(celdas[18][2]);
+		JLabel graf4 = enemigo2.getGrafico();
+		graf4.setBounds(32*18,32*2,32,32);
+		escenario.agregar(graf4,new Integer(2));
 	}
 	
 	

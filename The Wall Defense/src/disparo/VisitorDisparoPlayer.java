@@ -32,13 +32,13 @@ public class VisitorDisparoPlayer extends Visitor {
 
 	@Override
 	public boolean visitDisparoPlayer(DisparoPlayer d) {
-		// TODO Auto-generated method stub
+			System.out.println("Visitor Enemigo");
 		return false;
 	}
 
-	@Override
-	public boolean visitEnemigo(Enemigo e) {
-		// TODO Auto-generated method stub
+	public boolean visitEnemigo(Enemigo e){
+		e.restarResistencia();
+		objeto.destruir();
 		return false;
 	}
 

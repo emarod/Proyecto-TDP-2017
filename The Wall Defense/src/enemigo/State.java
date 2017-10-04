@@ -1,8 +1,7 @@
 package enemigo;
+
 import javax.swing.*;
-//import obstaculos.Acero;
-import disparo.DisparoPlayer;
-//import interfaz.GUI;
+
 public abstract class State {
 	protected int velocidad_enemigo;
 	protected int resistencia;
@@ -28,9 +27,6 @@ public abstract class State {
 
 	public abstract void setGrafico(JLabel grafico);
 
-	public void destruir() {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void destruir();
 
 }
