@@ -39,5 +39,8 @@ public class Escenario extends JPanel {
 	public Map getMapa() {
 		return mapa;
 	}
+	public void quitarEnemigo() {
+		mapa.quitarEnemigo();
+	}
 
 }

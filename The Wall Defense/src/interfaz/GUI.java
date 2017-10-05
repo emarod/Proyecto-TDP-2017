@@ -21,7 +21,7 @@ public class GUI extends JFrame{
 		getContentPane().setLayout(new BorderLayout());
 		
 		//Menu de proxima horda
-		horda= new ProximaHorda();
+		horda= new ProximaHorda(escenario);
 		
 		
 		//Escenario. Donde va el mapa

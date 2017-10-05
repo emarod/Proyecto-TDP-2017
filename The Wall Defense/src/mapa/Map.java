@@ -36,7 +36,7 @@ public class Map implements Runnable{
 	public Map(Escenario stage,int width,int height,int sprites) {
 		celdas= new Celda[width][height];
 		escenario = stage;
-//		Inicialización de controladores de acciones
+//		InicializaciÃ³n de controladores de acciones
 		cAtacar=new ControladorAtaque();
 		cMovimiento= new ControladorMovimiento();
 		try {
@@ -160,25 +160,30 @@ public class Map implements Runnable{
 		switch (personaje) {
 		case "arquero":
 			if(celdaLabel!=null) {
-				a�adirArquero(x_cel,y_cel);
+				añadirArquero(x_cel,y_cel);
 			}
 			break;
 			
 		case "caballero":
 			if(celdaLabel!=null) {
-				a�adirCaballero(x_cel,y_cel);
+				añadirCaballero(x_cel,y_cel);
 			}			
 			break;
 			
 		case "caminante":
 			if(celdaLabel!=null) {
-				a�adirCaminante(x_cel,y_cel);
+				añadirCaminante(x_cel,y_cel);
 			}
 			break;
 			
 		case "espadachin":
 			if(celdaLabel!=null) {
-				a�adirEspadachin(x_cel, y_cel);
+				añadirEspadachin(x_cel, y_cel);
+			}
+			
+		case "whitewalker":
+			if(celdaLabel!=null) {
+				añadirCaminanteEstatico();
 			}
 			
 		default:
@@ -188,7 +193,7 @@ public class Map implements Runnable{
 		
 	}
 	
-	public void a�adirArquero(int x,int y) {
+	public void añadirArquero(int x,int y) {
 		Arquero arquero = new Arquero();
 		Jugador jugador1 = new Jugador(celdas[x][y],2,arquero);
 		arquero.setJugador(jugador1);
@@ -199,7 +204,7 @@ public class Map implements Runnable{
 		escenario.agregar(graf1,new Integer(2));
 	}
 	
-	public void a�adirCaballero(int x,int y) {
+	public void añadirCaballero(int x,int y) {
 		Caballero caballero = new Caballero();
 		Jugador jugador2 = new Jugador(celdas[x][y],2,caballero);
 		caballero.setJugador(jugador2);
@@ -210,7 +215,7 @@ public class Map implements Runnable{
 		escenario.agregar(graf2,new Integer(2));
 	}
 	
-	public void a�adirCaminante(int x, int y) {
+	public void añadirCaminante(int x, int y) {
 		WhiteWalker white_walker = new WhiteWalker();
 		Enemigo enemigo1 = new Enemigo(celdas[x][y],2,white_walker);
 		white_walker.setEnemigo(enemigo1);
@@ -221,7 +226,7 @@ public class Map implements Runnable{
 		escenario.agregar(graf3,new Integer(2));
 	}
 	
-	public void a�adirEspadachin(int x,int y) {
+	public void añadirEspadachin(int x,int y) {
 		Espadachin espadachin=new Espadachin();
 		Jugador jugador3=new Jugador(celdas[x][y],2,espadachin);
 		espadachin.setJugador(jugador3);
@@ -229,6 +234,21 @@ public class Map implements Runnable{
 		JLabel graf3=jugador3.getGrafico();
 		graf3.setBounds(32*x, 32*y, 32, 32);
 		escenario.agregar(graf3, new Integer(2));
+	}
+	
+	public void añadirCaminanteEstatico() {
+		WhiteWalker white_walker = new WhiteWalker();
+		Enemigo enemigo2 = new Enemigo(celdas[2][11],2,null);
+		white_walker.setEnemigo(enemigo2);
+		celdas[2][11].getObjects()[1]= enemigo2;
+		enemigo2.setCelda(celdas[2][11]);
+		JLabel graf3 = enemigo2.getGrafico();
+		graf3.setBounds(32*2,32*11,32,32);
+		escenario.agregar(graf3,new Integer(2));
+	}
+	
+	public void quitarEnemigo() {
+		
 	}
 	
 }
