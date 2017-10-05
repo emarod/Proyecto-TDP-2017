@@ -8,9 +8,7 @@ public abstract class Unidad extends GameObject{
     
 	protected Visitor V;
 
-    
-    public int profundidad;
-    protected JLabel grafico;
+	protected JLabel grafico;
     
     //Parametros de conducta
     protected boolean esperar;
@@ -32,6 +30,12 @@ public abstract class Unidad extends GameObject{
 		celda.getObjects()[profundidad]=null;
 		celda=C;
 	}
+	
+    public void destruir(){
+    	System.out.println("IN unidad profundidad "+profundidad);
+    	super.destruir();
+    	
+    }
 	
 	public boolean getMoviendo(){
 		return moviendo;

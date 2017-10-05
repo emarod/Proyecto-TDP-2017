@@ -12,14 +12,14 @@ public class Enemigo extends Unidad{
 	 private State tipo;
 	 
 	 public Enemigo(Celda c, int profundidad, State t){
-    	//GUI.playSound("EnemigoAparece.wav");
-    	V=new VisitorEnemigo(this);
+		V=new VisitorEnemigo(this);
     	tipo=t;
     	alto=30;
     	ancho=30;
     	celda=c;
     	isRunning=true;
     	this.profundidad=profundidad;
+    	System.out.println("Creando enemigo"+this.profundidad);
     	grafico=new JLabel();
     	setGrafico();
 	}
@@ -47,6 +47,7 @@ public class Enemigo extends Unidad{
 		boolean destruir= tipo.impact();
 		if (destruir) {
 			System.out.println("Destruyendo");
+			System.out.println("Antes de restar profundidad "+profundidad);
 			this.destruir();
 			tipo.destruir();
 		}
@@ -66,6 +67,7 @@ public class Enemigo extends Unidad{
     }
 	
 	public void destruir(){
+		System.out.println("In enemigo profundidad "+profundidad);
 		super.destruir();
 		System.out.println("Destruir enemigo");
 		celda.destruirEnemigo(this);
