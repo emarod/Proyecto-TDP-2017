@@ -10,6 +10,7 @@ public abstract class State {
 	protected int disparos_simultaneos;
 	protected int disparos_en_ejecucion;
 	protected Jugador jugador;
+	protected boolean atacar;
 	
     public boolean impact(){
     	if(resistencia==1)

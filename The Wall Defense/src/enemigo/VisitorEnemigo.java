@@ -12,21 +12,21 @@ public class VisitorEnemigo extends Visitor{
     }
     
    public  boolean VisitRock(Rock r){
-	return false;
+	return true;
    }
    public  boolean VisitWater(Water w){
-	   return false;
+	   return true;
    }
    public  boolean visitPlayer(Jugador j){
 	   return false;
    }
    public boolean visitDisparoPlayer(DisparoPlayer d){
-	   System.out.println("Visitor Enemigo");
 	   d.destruir();
 	   Enemigo e=(Enemigo)objeto;
 	   e.restarResistencia();
 	   return false;
-   }
+   }   
+   
    public boolean visitEnemigo(Enemigo e){
 	   return false;
    }

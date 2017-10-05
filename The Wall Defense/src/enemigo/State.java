@@ -6,6 +6,10 @@ public abstract class State {
 	protected int velocidad_enemigo;
 	protected int resistencia;
 	protected Enemigo enemigo;
+	protected int puntaje;
+	protected boolean atacar;
+	protected boolean mover;
+	
 	
     public boolean impact(){
     	if(resistencia==1)

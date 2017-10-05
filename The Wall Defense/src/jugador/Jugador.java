@@ -66,4 +66,8 @@ public class Jugador extends Unidad{
 		// TODO Auto-generated method stub
 		
 	}
+
+	public Visitor getVisitor() {
+		return V;
+	}
 }

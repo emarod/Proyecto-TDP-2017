@@ -15,30 +15,30 @@ public class VisitorDisparoPlayer extends Visitor {
 	@Override
 	public boolean VisitRock(Rock r) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean VisitWater(Water w) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean visitPlayer(Jugador j) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
-	public boolean visitDisparoPlayer(DisparoPlayer d) {
-			System.out.println("Visitor Enemigo");
-		return false;
+	public boolean visitDisparoPlayer(DisparoPlayer d) {		
+		return true;
 	}
 
 	public boolean visitEnemigo(Enemigo e){
 		e.restarResistencia();
-		objeto.destruir();
+		DisparoPlayer disparo = (DisparoPlayer)objeto;
+		disparo.destruir();
 		return false;
 	}
 
