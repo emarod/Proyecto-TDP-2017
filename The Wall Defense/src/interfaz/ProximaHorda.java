@@ -18,10 +18,8 @@ public class ProximaHorda extends JPanel{
 	private static final long serialVersionUID = 1L;
 	protected JLabel puntaje;
 	protected Escenario escenario;
-	protected boolean personajeEnMapa=false;
 	
 	public ProximaHorda(Escenario esc) {
-		
 		this.setBorder(new LineBorder(new Color(0, 0, 0)));
 		this.escenario=esc;
 		agregarLabel();
@@ -39,11 +37,7 @@ public class ProximaHorda extends JPanel{
 		wwalker.addMouseListener(
 				new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
-						if(!personajeEnMapa) {
 						escenario.crearPersonaje("whitewalker");
-						}
-						else
-							escenario.quitarEnemigo();
 					}
 				}
 		);

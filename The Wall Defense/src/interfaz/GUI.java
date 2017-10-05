@@ -20,16 +20,15 @@ public class GUI extends JFrame{
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		
-		//Menu de proxima horda
-		horda= new ProximaHorda(escenario);
-		
-		
 		//Escenario. Donde va el mapa
 		escenario= new Escenario();	
 		getContentPane().add(escenario, BorderLayout.CENTER);
 		
 		//MenuCompra
-		tienda= new MenuCompra(escenario);		
+		tienda= new MenuCompra(escenario);
+		
+		//Menu de proxima horda
+		horda= new ProximaHorda(escenario);
 
 		//Panel Inferior
 		panelInferior= new JPanel();

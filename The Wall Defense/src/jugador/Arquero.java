@@ -18,7 +18,7 @@ public class Arquero extends State{
 	public Arquero() {
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
-		velocidad_disparo=500;
+		velocidad_disparo=1000;
 		atacar=true;
 	}
 	
@@ -42,6 +42,8 @@ public class Arquero extends State{
 //				atacar=false;
 //			}
 //		}
+		for (int i = 0; i < 10000000; i++) {
+		}
 		if(atacar && disparos_en_ejecucion<disparos_simultaneos){
 			new DisparoPlayer(this.jugador.getCelda(),this.jugador,3,velocidad_disparo);
     		disparos_en_ejecucion++;
