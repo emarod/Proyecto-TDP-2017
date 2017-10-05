@@ -21,7 +21,6 @@ public class Enemigo extends Unidad{
     	isRunning=true;
     	this.profundidad=profundidad;
     	grafico=new JLabel();
-    	V=new VisitorEnemigo(this);
     	setGrafico();
 	}
 
@@ -36,6 +35,11 @@ public class Enemigo extends Unidad{
     public int getAncho(){
     	return ancho;
     }
+    
+    public Visitor getVisitor() {
+    	return V;
+    }
+    	
     
 	public boolean restarResistencia(){ 
 		boolean destruir= tipo.impact();

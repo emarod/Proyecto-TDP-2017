@@ -26,8 +26,7 @@ public class Nieve extends Terreno {
 
 	@Override
 	public boolean Accept(Visitor V) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }

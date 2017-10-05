@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import jugador.Jugador;
+import main.GameObject;
 import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
@@ -40,10 +41,20 @@ public class DisparoPlayer extends Disparo{
 		int yCelda=celda.getPosY();
 		int xGrafico= grafico.getX();
 		int yGrafico= grafico.getY();
+		siguiente=celda.getCelda(xCelda+1,yCelda);
+		for(int i=0;i<3 && isRunning;i++) {
+			GameObject objeto =siguiente.getObjects()[i];					
+			if (objeto!=null && !objeto.Accept(V)){
+				celda.getCM().desactivar(this);
+				isRunning=false;
+			}
+		}
+		
 		puntosVelocidad--;
-		if(xGrafico>=640) {
+		if(isRunning && xGrafico>=640) {
 //			System.out.println("Destruccion xgraf"+xGrafico+" xcelda"+xCelda);
-			destruir();			
+			destruir();
+			celda.getCM().desactivar(this);
 		}
 		else {
 			if(puntosVelocidad==0) {
@@ -51,12 +62,14 @@ public class DisparoPlayer extends Disparo{
 				grafico.setBounds(xGrafico+1, yGrafico, getAncho(), getAlto());
 				puntosVelocidad=velocidad;
 			}
+			
+			if(puntosCelda==0) {
+				
+				intercambiar_celdas(siguiente);
+				puntosCelda=32;
+			}
 		}	
-		if(puntosCelda==0) {
-			siguiente=celda.getCelda(xCelda+1,yCelda);
-			intercambiar_celdas(siguiente);
-			puntosCelda=32;
-		}
+
 		
 	}
 	

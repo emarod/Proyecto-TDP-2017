@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import disparo.DisparoPlayer;
+import main.GameObject;
 
 public class Arquero extends State{
 	
@@ -18,7 +19,7 @@ public class Arquero extends State{
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
 		velocidad_disparo=500;
-		System.out.println("Arquero");
+		atacar=true;
 	}
 	
 	public void setJugador(Jugador jugador){
@@ -32,10 +33,20 @@ public class Arquero extends State{
 	}
 	
 	public void atacar(){
-		if(disparos_en_ejecucion<disparos_simultaneos){
+//		int xCelda=jugador.getCelda().getPosX();
+//		int yCelda=jugador.getCelda().getPosY();
+//		for(int x =0;jugador.getCelda().getPosX()<19 && atacar;x++) {
+//			Celda siguiente = jugador.getCelda().getCelda(xCelda+1,yCelda);
+//			GameObject objeto =siguiente.getObjects()[2];					
+//			if (objeto!=null && !objeto.Accept(jugador.getVisitor())){
+//				atacar=false;
+//			}
+//		}
+		if(atacar && disparos_en_ejecucion<disparos_simultaneos){
 			new DisparoPlayer(this.jugador.getCelda(),this.jugador,3,velocidad_disparo);
     		disparos_en_ejecucion++;
     	}
+		atacar=true;
     }
     
     public void restarDisparosEnEjecucion(){
