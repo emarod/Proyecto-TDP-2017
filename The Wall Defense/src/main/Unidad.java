@@ -8,9 +8,7 @@ public abstract class Unidad extends GameObject{
     
 	protected Visitor V;
 
-	protected JLabel grafico;
-    
-    //Parametros de conducta
+	//Parametros de conducta
     protected boolean esperar;
 	protected boolean movimiento;
 	protected boolean atacar;

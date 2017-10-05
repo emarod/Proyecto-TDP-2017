@@ -28,7 +28,7 @@ public class DisparoPlayer extends Disparo{
     	super.destruir();
     	Jugador archer=(Jugador)j;
 		archer.getState().restarDisparosEnEjecucion();
-		celda.getEscenario().remove(grafico);
+//		celda.getEscenario().remove(grafico);
 		celda.getCM().desactivar(this);
 	   
 	}

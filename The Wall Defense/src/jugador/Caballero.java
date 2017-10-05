@@ -8,6 +8,7 @@ import disparo.DisparoPlayer;
 
 public class Caballero extends State{
 	public Caballero() {
+		resistencia=10;
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
 		velocidad_disparo=10;

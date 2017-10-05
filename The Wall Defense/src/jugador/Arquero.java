@@ -16,6 +16,7 @@ public class Arquero extends State{
 	protected int velocidad_disparo;
 	
 	public Arquero() {
+		resistencia=5;
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
 		velocidad_disparo=1000;

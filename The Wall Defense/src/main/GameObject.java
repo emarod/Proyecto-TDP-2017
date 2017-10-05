@@ -16,9 +16,8 @@ public abstract class GameObject {
     }
     public void destruir(){
     	isRunning=false;
-    	GameObject objeto = celda.getObjects()[profundidad];    	
-    	System.out.println("grafico "+grafico);
-    	objeto.getGrafico().setIcon(null);    	
+//    	GameObject objeto = celda.getObjects()[profundidad];
+    	grafico.setIcon(null);    	
     	celda.getObjects()[profundidad]=null;
     }
      
