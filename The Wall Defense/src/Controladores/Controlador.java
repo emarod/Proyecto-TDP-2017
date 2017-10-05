@@ -20,9 +20,7 @@ public abstract class Controlador implements Runnable{
 	}
 
 
-	public void run() {
-		
-	}
+	public abstract void run();
 	
 	public void desactivar(Unidad unidad) {
 		repositorio.remove(unidad);

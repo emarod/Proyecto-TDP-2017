@@ -61,12 +61,6 @@ public class Arquero extends State{
     }
 
 	@Override
-	public State lvlUp() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void setGraficos(Icon[] graficos, JLabel grafico) {
 		// TODO Auto-generated method stub
 		

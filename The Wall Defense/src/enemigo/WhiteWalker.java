@@ -20,10 +20,6 @@ public class WhiteWalker extends State{
 		puntosVelocidad=velocidad_enemigo;
 		resistencia=3;
 	}
-	public State lvlUp() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void atacar() {

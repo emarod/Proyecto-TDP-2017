@@ -31,7 +31,6 @@ public abstract class State {
     public int getVelocidad(){
     	return velocidad_jugador;
     }
-    public abstract State lvlUp();
     public abstract void atacar();
     public abstract void mover();
     
