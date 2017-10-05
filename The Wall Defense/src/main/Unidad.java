@@ -60,4 +60,8 @@ public abstract class Unidad extends GameObject{
 	public void setVelocidad(int i) {
 		velocidad=i;		
 	}
+	
+	public void hacerDaño() {
+		
+	}
 }

@@ -36,7 +36,7 @@ public class Map implements Runnable{
 	public Map(Escenario stage,int width,int height,int sprites) {
 		celdas= new Celda[width][height];
 		escenario = stage;
-//		InicializaciÃ³n de controladores de acciones
+//		Inicialización de controladores de acciones
 		cAtacar=new ControladorAtaque();
 		cMovimiento= new ControladorMovimiento();
 		try {
@@ -199,7 +199,7 @@ public class Map implements Runnable{
 		Arquero arquero = new Arquero();
 		Jugador jugador1 = new Jugador(celdas[x][y],2,arquero);
 		arquero.setJugador(jugador1);
-		celdas[x][y].getObjects()[1]= jugador1;
+		celdas[x][y].getObjects()[2]= jugador1;
 		jugador1.setCelda(celdas[x][y]);
 		JLabel graf1 = jugador1.getGrafico();
 		graf1.setBounds(32*x,32*y,32,32);
@@ -210,7 +210,7 @@ public class Map implements Runnable{
 		Caballero caballero = new Caballero();
 		Jugador jugador2 = new Jugador(celdas[x][y],2,caballero);
 		caballero.setJugador(jugador2);
-		celdas[x][y].getObjects()[1]= jugador2;
+		celdas[x][y].getObjects()[2]= jugador2;
 		jugador2.setCelda(celdas[x][y]);
 		JLabel graf2 = jugador2.getGrafico();
 		graf2.setBounds(32*x,32*y,32,32);
@@ -219,7 +219,7 @@ public class Map implements Runnable{
 	
 	public void añadirCaminante(int x, int y) {
 		WhiteWalker white_walker = new WhiteWalker();
-		Enemigo enemigo1 = new Enemigo(celdas[x][y],2,white_walker);
+		Enemigo enemigo1 = new Enemigo(celdas[x][y],1,white_walker);
 		white_walker.setEnemigo(enemigo1);
 		celdas[x][y].getObjects()[1]= enemigo1;
 		enemigo1.setCelda(celdas[x][y]);
@@ -240,7 +240,7 @@ public class Map implements Runnable{
 	
 	public void añadirCaminanteEstatico(int x, int y) {
 		WhiteWalker white_walker = new WhiteWalker();
-		Enemigo enemigo1 = new Enemigo(celdas[x][y],2,white_walker);
+		Enemigo enemigo1 = new Enemigo(celdas[x][y],1,white_walker);
 		white_walker.setEnemigo(enemigo1);
 		enemigo1.getCelda().getCM().desactivar(enemigo1);
 		celdas[x][y].getObjects()[1]= enemigo1;
@@ -249,5 +249,17 @@ public class Map implements Runnable{
 		graf3.setBounds(32*x,32*y,32,32);
 		escenario.agregar(graf3,new Integer(2));
 	}
+
+
+	public void hacerDaño() {
+		int x_cel= Math.round(celdaLabel.getX()/32);
+		int y_cel= Math.round(celdaLabel.getY()/32);
+		Celda celda= getCelda(x_cel, y_cel);
+		GameObject personaje = celda.getObjects()[1];
+		if(personaje!=null) {
+			Enemigo e = (Enemigo) personaje;
+			e.restarResistencia();
+		}
+	}	
 	
 }

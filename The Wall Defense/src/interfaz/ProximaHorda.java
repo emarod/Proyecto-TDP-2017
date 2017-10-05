@@ -41,6 +41,17 @@ public class ProximaHorda extends JPanel{
 					}
 				}
 		);
-		this.add(wwalker);	
+		this.add(wwalker);
+		
+		JButton dañar=new JButton(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
+		dañar.setSize(32,32);
+		dañar.addMouseListener(
+				new MouseAdapter() {
+					public void mouseClicked(MouseEvent e) {
+						escenario.hacerDaño();
+					}
+				}
+		);
+		this.add(dañar);
 	}
 }

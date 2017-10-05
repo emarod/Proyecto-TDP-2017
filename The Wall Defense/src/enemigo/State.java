@@ -12,8 +12,10 @@ public abstract class State {
 	
 	
     public boolean impact(){
-    	if(resistencia==1)
+    	if(resistencia==1) {
+    		System.out.println("Enemigo abatido en "+resistencia);
     		return true;
+    	}
     	else{
     		resistencia--;
     		return false;

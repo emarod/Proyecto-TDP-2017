@@ -44,5 +44,9 @@ public abstract class State {
     	return disparos_en_ejecucion;
     }
 	public abstract void setGrafico(JLabel grafico);
+	public void destruir() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

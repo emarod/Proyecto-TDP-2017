@@ -24,6 +24,15 @@ public class Jugador extends Unidad{
     	 tipo = t;
     	 setGrafico();
     }
+    
+	public boolean restarResistencia(){ 
+		boolean destruir= tipo.impact();
+		if (destruir) {
+			destruir();
+			tipo.destruir();
+		}
+		return destruir;		
+	}
      
     public boolean Accept(Visitor V){
     	return V.visitPlayer(this);

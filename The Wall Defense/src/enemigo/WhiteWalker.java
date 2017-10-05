@@ -18,7 +18,7 @@ public class WhiteWalker extends State{
 		puntaje=100;
 		velocidad_enemigo=700;
 		puntosVelocidad=velocidad_enemigo;
-		resistencia=1;
+		resistencia=3;
 	}
 	public State lvlUp() {
 		// TODO Auto-generated method stub

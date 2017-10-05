@@ -44,11 +44,11 @@ public class Enemigo extends Unidad{
 	public boolean restarResistencia(){ 
 		boolean destruir= tipo.impact();
 		if (destruir) {
+			System.out.println("Destruyendo");
 			destruir();
 			tipo.destruir();
 		}
-		return destruir;
-		
+		return destruir;		
 	}
 	
     public void setGrafico(){
