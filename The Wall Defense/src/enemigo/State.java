@@ -34,5 +34,7 @@ public abstract class State {
 	public abstract void setGrafico(JLabel grafico);
 
 	public abstract void destruir();
+	
+	public abstract int getPuntaje();
 
 }

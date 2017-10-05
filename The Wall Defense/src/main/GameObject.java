@@ -16,11 +16,16 @@ public abstract class GameObject {
     }
     public void destruir(){
     	isRunning=false;
-    	GameObject objeto = celda.getObjects()[profundidad];
-    	System.out.println("objeto "+objeto);
+//    	GameObject objeto = celda.getObjects()[profundidad];
+    	GameObject objeto = celda.getObjects()[1];
+    	System.out.println("profundidad "+profundidad);
+    	for (GameObject obj : celda.getObjects()) {
+    		System.out.println("objeto "+obj);
+		}
+    	objeto.getGrafico().setIcon(null);
     	System.out.println("grafico "+grafico);
-    	grafico.setIcon(null);
-    	celda.getObjects()[profundidad]=null;    	
+//    	celda.getObjects()[profundidad]=null;
+    	celda.getObjects()[1]=null;
     }
      
     public abstract boolean Accept(Visitor V);

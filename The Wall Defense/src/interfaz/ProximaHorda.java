@@ -31,6 +31,10 @@ public class ProximaHorda extends JPanel{
 		this.add(puntaje);
 	}
 	
+	public void setPuntaje(String str) {
+		puntaje.setText(str);
+	}
+	
 	private void agregarBoton() {
 		JButton wwalker=new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/white_walker.gif")));
 		wwalker.setSize(32,32);

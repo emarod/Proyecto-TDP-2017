@@ -63,6 +63,7 @@ public class WhiteWalker extends State{
 	}
 	
     public void destruir(){
+    	System.out.println("Destruir WhiteWalker");
     	this.enemigo.getCelda().getCM().desactivar(this.enemigo);
 	   
 	}
@@ -82,6 +83,10 @@ public class WhiteWalker extends State{
 	public void setGraficos(Icon[] graficos, JLabel grafico) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public int getPuntaje() {
+		return puntaje;
 	}
 
 }

@@ -28,6 +28,8 @@ public class Enemigo extends Unidad{
 		return V.visitEnemigo((Enemigo)this);
 	}
 	
+
+	
     public int getAlto(){
     	return alto;
     }
@@ -45,7 +47,7 @@ public class Enemigo extends Unidad{
 		boolean destruir= tipo.impact();
 		if (destruir) {
 			System.out.println("Destruyendo");
-			destruir();
+			this.destruir();
 			tipo.destruir();
 		}
 		return destruir;		
@@ -64,9 +66,10 @@ public class Enemigo extends Unidad{
     }
 	
 	public void destruir(){
-		//GUI.playSound("EnemigoMuere.wav");
 		super.destruir();
-		//celda.destruirEnemigo(this);
+		System.out.println("Destruir enemigo");
+		celda.destruirEnemigo(this);
+
 	}
 
 	@Override
@@ -78,5 +81,9 @@ public class Enemigo extends Unidad{
 	public void mover() {
 		tipo.mover();
 		
+	}
+	
+	public int getPuntaje() {
+		return tipo.getPuntaje();
 	}
 }

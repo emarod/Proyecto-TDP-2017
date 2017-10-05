@@ -29,6 +29,7 @@ public class GUI extends JFrame{
 		
 		//Menu de proxima horda
 		horda= new ProximaHorda(escenario);
+		escenario.setHorda(horda);
 
 		//Panel Inferior
 		panelInferior= new JPanel();

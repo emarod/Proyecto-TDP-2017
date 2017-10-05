@@ -32,6 +32,7 @@ public class Map implements Runnable{
 	private ControladorMovimiento cMovimiento;
 	private ControladorAtaque cAtacar;
 	private JLabel celdaLabel;
+	private int puntaje;
 	
 	public Map(Escenario stage,int width,int height,int sprites) {
 		celdas= new Celda[width][height];
@@ -260,6 +261,21 @@ public class Map implements Runnable{
 			Enemigo e = (Enemigo) personaje;
 			e.restarResistencia();
 		}
-	}	
+	}
+
+
+    public void destruirEnemigo(Enemigo e){
+    	System.out.println(puntaje);
+   	 	puntaje =puntaje+e.getPuntaje();
+   	 	System.out.println(puntaje);
+   	 	actualizarPuntaje();
+   	 	escenario.repaint();
+   		 
+    }
+
+
+	private void actualizarPuntaje() {		
+		escenario.setPuntaje("Puntaje: "+puntaje);
+	}
 	
 }

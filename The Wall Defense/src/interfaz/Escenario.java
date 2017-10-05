@@ -17,6 +17,8 @@ public class Escenario extends JPanel {
 	private static final int height=12;
 	private JLayeredPane layeredPane;
 	private Map mapa;
+	private ProximaHorda horda;
+	
 	public Escenario(){
 		Random rnd=new Random();
 		int r=rnd.nextInt(2);		
@@ -42,6 +44,15 @@ public class Escenario extends JPanel {
 	
 	public void hacerDaño(){
 		mapa.hacerDaño();
+	}
+	
+	public void setHorda(ProximaHorda p) {
+		horda=p;
+	}
+
+	public void setPuntaje(String p) {
+		horda.setPuntaje(p);
+		
 	}
 	
 

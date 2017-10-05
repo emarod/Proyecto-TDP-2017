@@ -2,6 +2,7 @@ package mapa;
 
 import Controladores.ControladorAtaque;
 import Controladores.ControladorMovimiento;
+import enemigo.Enemigo;
 import interfaz.Escenario;
 //import enemigo.Enemigo;
 import main.GameObject;
@@ -100,5 +101,9 @@ public class Celda {
     
     public ControladorAtaque getCA() {
     	return Map.getCA();
+    }
+    
+    public void destruirEnemigo(Enemigo e){
+ 	   Map.destruirEnemigo(e);
     }
 }
