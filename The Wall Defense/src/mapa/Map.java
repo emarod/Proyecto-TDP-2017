@@ -23,6 +23,7 @@ import main.GameObject;
 import interfaz.Escenario;
 import jugador.Arquero;
 import jugador.Caballero;
+import jugador.Espadachin;
 import jugador.Jugador;
 
 public class Map implements Runnable{
@@ -159,21 +160,26 @@ public class Map implements Runnable{
 		switch (personaje) {
 		case "arquero":
 			if(celdaLabel!=null) {
-				aÃ±adirArquero(x_cel,y_cel);
+				añadirArquero(x_cel,y_cel);
 			}
 			break;
 			
 		case "caballero":
 			if(celdaLabel!=null) {
-				aÃ±adirCaballero(x_cel,y_cel);
+				añadirCaballero(x_cel,y_cel);
 			}			
 			break;
 			
 		case "caminante":
 			if(celdaLabel!=null) {
-				aÃ±adirCaminante(x_cel,y_cel);
+				añadirCaminante(x_cel,y_cel);
 			}
 			break;
+			
+		case "espadachin":
+			if(celdaLabel!=null) {
+				añadirEspadachin(x_cel, y_cel);
+			}
 			
 		default:
 			System.out.println("No existe la unidad --> "+personaje);
@@ -182,7 +188,7 @@ public class Map implements Runnable{
 		
 	}
 	
-	public void aÃ±adirArquero(int x,int y) {
+	public void añadirArquero(int x,int y) {
 		Arquero arquero = new Arquero();
 		Jugador jugador1 = new Jugador(celdas[x][y],2,arquero);
 		arquero.setJugador(jugador1);
@@ -193,7 +199,7 @@ public class Map implements Runnable{
 		escenario.agregar(graf1,new Integer(2));
 	}
 	
-	public void aÃ±adirCaballero(int x,int y) {
+	public void añadirCaballero(int x,int y) {
 		Caballero caballero = new Caballero();
 		Jugador jugador2 = new Jugador(celdas[x][y],2,caballero);
 		caballero.setJugador(jugador2);
@@ -204,7 +210,7 @@ public class Map implements Runnable{
 		escenario.agregar(graf2,new Integer(2));
 	}
 	
-	public void aÃ±adirCaminante(int x, int y) {
+	public void añadirCaminante(int x, int y) {
 		WhiteWalker white_walker = new WhiteWalker();
 		Enemigo enemigo1 = new Enemigo(celdas[x][y],2,white_walker);
 		white_walker.setEnemigo(enemigo1);
@@ -213,6 +219,16 @@ public class Map implements Runnable{
 		JLabel graf3 = enemigo1.getGrafico();
 		graf3.setBounds(32*x,32*y,32,32);
 		escenario.agregar(graf3,new Integer(2));
+	}
+	
+	public void añadirEspadachin(int x,int y) {
+		Espadachin espadachin=new Espadachin();
+		Jugador jugador3=new Jugador(celdas[x][y],2,espadachin);
+		espadachin.setJugador(jugador3);
+		celdas[x][y].getObjects()[2]=jugador3;
+		JLabel graf3=jugador3.getGrafico();
+		graf3.setBounds(32*x, 32*y, 32, 32);
+		escenario.agregar(graf3, new Integer(2));
 	}
 	
 }

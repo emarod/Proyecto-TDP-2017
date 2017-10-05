@@ -36,7 +36,7 @@ public class MenuCompra extends JPanel{
 		armarBotonera();
 	}
 	
-	public void armarBotonera() {
+	private void armarBotonera() {
 		JButton ygritte = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/Ygritte.gif")));
 		ygritte.setSize(32, 32);
 		ygritte.addMouseListener(
@@ -70,6 +70,17 @@ public class MenuCompra extends JPanel{
 				}
 		);
 		this.add(caminante);
+		
+		JButton JonSnow = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/JonSnow.gif")));
+		JonSnow.setSize(32, 32);
+		JonSnow.addMouseListener(
+				new MouseAdapter() {
+					public void mouseClicked(MouseEvent e) {
+						escenario.crearPersonaje("espadachin");
+					}
+				}
+		);
+		this.add(JonSnow);
 		
 	}
 		
