@@ -3,13 +3,15 @@ package disparo;
 
 import enemigo.Enemigo;
 import jugador.Jugador;
-import main.GameObject;
 import main.Visitor;
 import obstaculo.Rock;
 import obstaculo.Water;
 public class VisitorDisparoPlayer extends Visitor {
-	public VisitorDisparoPlayer(GameObject o){
-		objeto=o;
+	
+	DisparoPlayer disparo;
+	
+	public VisitorDisparoPlayer(DisparoPlayer dp){
+		disparo = dp;
 	}
 
 	@Override
@@ -38,7 +40,6 @@ public class VisitorDisparoPlayer extends Visitor {
 	public boolean visitEnemigo(Enemigo e){
 		System.out.println("Enemigo x="+e.getCelda().getPosX());
 		e.restarResistencia();
-		DisparoPlayer disparo = (DisparoPlayer)objeto;
 		System.out.println("Disparo x="+disparo.getCelda().getPosX());
 		disparo.destruir();
 		return false;

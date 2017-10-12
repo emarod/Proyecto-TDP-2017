@@ -1,5 +1,5 @@
 package enemigo;
-import main.GameObject;
+
 import obstaculo.Rock;
 import obstaculo.Water;
 import disparo.DisparoPlayer;
@@ -7,8 +7,11 @@ import jugador.Jugador;
 import main.Visitor;
 
 public class VisitorEnemigo extends Visitor{
-	public VisitorEnemigo(GameObject o){
-    	objeto=o;
+	
+	Enemigo enemigo;
+	
+	public VisitorEnemigo(Enemigo e){
+    	enemigo = e;
     }
     
    public  boolean VisitRock(Rock r){

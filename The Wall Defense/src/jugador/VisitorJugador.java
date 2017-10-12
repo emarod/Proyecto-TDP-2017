@@ -1,14 +1,16 @@
 package jugador;
+
 import disparo.DisparoPlayer;
 import enemigo.Enemigo;
 import main.Visitor;
 import obstaculo.Rock;
 import obstaculo.Water;
-import main.GameObject;
 public class VisitorJugador extends Visitor{
+		
+		Jugador jugador;
 	
-	   public VisitorJugador(GameObject o){
-		   objeto=o;
+	   public VisitorJugador(Jugador j){
+		   jugador = j;
 	   }
 	    
 	   public  boolean VisitRock(Rock r){
