@@ -20,6 +20,12 @@ public class ControladorAtaque extends Controlador{
 				repositorio.addLast(unidadActual);	
 				unidadActual.atacar();
 			}
+			try {
+				hilo.sleep(5);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

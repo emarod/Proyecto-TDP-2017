@@ -22,6 +22,7 @@ public class DisparoPlayer extends Disparo{
 	   celda.getEscenario().agregar(grafico,new Integer(2));	   
 	   celda.getCM().activar(this);
 	   isRunning=true;
+	   moviendo=false;
     }
 
     public void destruir(){
@@ -38,6 +39,7 @@ public class DisparoPlayer extends Disparo{
 
 	@Override
 	public void mover() {
+		moviendo=true;
 		Celda siguiente;
 //		int xCelda=(celda.getPosX()==19) ? celda.getPosX():j.getCelda().getPosX();
 		int xCelda=celda.getPosX();
@@ -81,6 +83,7 @@ public class DisparoPlayer extends Disparo{
 			}
 
 		}
+		moviendo=false;
 	}
 	
 	@Override

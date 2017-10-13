@@ -18,9 +18,17 @@ public class ControladorMovimiento extends Controlador{
 //			System.out.println("unidad.mover()");
 			unidadActual= repositorio.pollFirst();
 			if (unidadActual!=null){
-				repositorio.addLast(unidadActual);			
-				unidadActual.mover();
+				repositorio.addLast(unidadActual);
+				if(!unidadActual.getMoviendo()) {
+					unidadActual.mover();
+				}
 			}
+//			try {
+//				hilo.sleep(5);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 		}
 	}
 

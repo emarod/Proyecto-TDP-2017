@@ -38,6 +38,10 @@ public abstract class Unidad extends GameObject{
 		return moviendo;
 	}
 	
+	public void setMoviendo(Boolean b){
+		moviendo=b;
+	}
+	
 	public void setMovimiento(boolean b) {
 		movimiento=b;
 	}

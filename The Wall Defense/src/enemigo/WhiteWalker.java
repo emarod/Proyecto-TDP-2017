@@ -4,6 +4,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import jugador.Jugador;
 import main.GameObject;
 import mapa.Celda;
 
@@ -28,6 +29,7 @@ public class WhiteWalker extends State{
 	}
 
 	public void mover() {
+		enemigo.setMoviendo(true);
 		Celda siguiente;
 		int xCelda=this.enemigo.getCelda().getPosX();
 		int yCelda=this.enemigo.getCelda().getPosY();
@@ -51,10 +53,9 @@ public class WhiteWalker extends State{
 			if(puntosCelda==0) {
 				enemigo.intercambiar_celdas(siguiente);
 				puntosCelda=32;				
-			}
+			}			
 		}
-//		System.out.println("celda--> ("+xCelda+","+yCelda+")");
-//		System.out.println("graf--> ("+xGrafico+","+yGrafico+")");
+		enemigo.setMoviendo(false);
 		
 	}
 	
