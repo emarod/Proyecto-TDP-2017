@@ -30,7 +30,6 @@ public abstract class Unidad extends GameObject{
 	}
 	
     public void destruir(){
-    	System.out.println("IN unidad profundidad "+profundidad);
     	super.destruir();
     	
     }

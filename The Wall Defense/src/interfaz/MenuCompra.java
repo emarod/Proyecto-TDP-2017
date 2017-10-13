@@ -5,6 +5,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.event.MouseInputListener;
 
+import interfaz.botones.BtnArquero;
+import interfaz.botones.BtnCaballero;
+import interfaz.botones.BtnEspadachin;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -37,27 +41,11 @@ public class MenuCompra extends JPanel{
 	}
 	
 	private void armarBotonera() {
-		JButton ygritte = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/Ygritte.gif")));
-		ygritte.setSize(32, 32);
-		ygritte.addMouseListener(
-				new MouseAdapter() {
-					public void mouseClicked(MouseEvent e) {
-						escenario.crearPersonaje("arquero");
-					}
-				}
-		);
+		BtnArquero ygritte= new BtnArquero(this.escenario);
 		this.add(ygritte);
 		
 		
-		JButton lannister = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/lannister_atacando_8fps.gif")));
-		lannister.setSize(32, 32);
-		lannister.addMouseListener(
-				new MouseAdapter() {
-					public void mouseClicked(MouseEvent e) {
-						escenario.crearPersonaje("caballero");
-					}
-				}
-		);
+		BtnCaballero lannister = new BtnCaballero(this.escenario);
 		this.add(lannister);
 		
 		JButton caminante = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/white_walker.gif")));
@@ -71,15 +59,7 @@ public class MenuCompra extends JPanel{
 		);
 		this.add(caminante);
 		
-		JButton JonSnow = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/JonSnow.gif")));
-		JonSnow.setSize(32, 32);
-		JonSnow.addMouseListener(
-				new MouseAdapter() {
-					public void mouseClicked(MouseEvent e) {
-						escenario.crearPersonaje("espadachin");
-					}
-				}
-		);
+		BtnEspadachin JonSnow = new BtnEspadachin(this.escenario);
 		this.add(JonSnow);
 		
 	}

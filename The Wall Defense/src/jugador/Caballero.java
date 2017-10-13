@@ -46,4 +46,9 @@ public class Caballero extends State{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public State clone() {
+		return new Caballero();
+	}
 }

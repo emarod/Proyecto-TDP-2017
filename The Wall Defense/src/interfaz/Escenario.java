@@ -55,5 +55,12 @@ public class Escenario extends JPanel {
 		
 	}
 	
+	public int getPosX() {
+		return this.getX();
+	}
+	
+	public int getPosY() {
+		return this.getY();
+	}
 
 }

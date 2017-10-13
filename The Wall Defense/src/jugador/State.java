@@ -33,6 +33,7 @@ public abstract class State {
     }
     public abstract void atacar();
     public abstract void mover();
+    public abstract void setJugador(Jugador jugador);
     
     public void restarDisparosEnEjecucion(){
     	disparos_en_ejecucion--;
@@ -47,5 +48,7 @@ public abstract class State {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public abstract State clone();
 
 }

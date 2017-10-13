@@ -15,7 +15,7 @@ public class GUI extends JFrame{
 	public GUI() {	
 		super("The Wall Defense");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(0, 0, 640, 528);
+		this.setBounds(0, 0, 650, 528);
 		this.setResizable(false);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());

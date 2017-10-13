@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
@@ -33,6 +34,8 @@ public class Map implements Runnable{
 	private ControladorAtaque cAtacar;
 	private JLabel celdaLabel;
 	private int puntaje;
+	private int x_mouse;
+	private int y_mouse;
 	
 	public Map(Escenario stage,int width,int height,int sprites) {
 		celdas= new Celda[width][height];
@@ -71,47 +74,51 @@ public class Map implements Runnable{
 	    		if(objetos[0]!=null){
 	    			JLabel terreno=objetos[0].getGrafico();
 	    			terreno.addMouseListener(
-		    				new MouseAdapter() {		    					
+	    				new MouseAdapter() {		    					
+	    					
+	    					public void mouseClicked(MouseEvent e){
+	    						System.out.println("click ("+(terreno.getX()+e.getX())+","+(terreno.getY()+e.getY())+")");
+
+	    						if(celdaLabel==null) {
+	    							terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    							celdaLabel=terreno;
+	    							System.out.println("("+terreno.getX()/32+","+terreno.getY()/32+")");
+	    						}
+	    						else{
+	    							celdaLabel.setBorder(null);
+	    							terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    							celdaLabel=terreno;
+	    							System.out.println("("+terreno.getX()/32+","+terreno.getY()/32+")");
+	    							
+	    						}
+	    					}
+	    					
+	    					public void mouseEntered(MouseEvent e) {
+		    					x_mouse=terreno.getX();
+	    						y_mouse=terreno.getY();
+	    						if(terreno!=celdaLabel) {
+	    							terreno.setBorder(new LineBorder(new Color(0, 255, 0)));
+	    						}
+	    					}
+	    					
+	    					public void mouseExited(MouseEvent e) {
+		    					if(terreno!=celdaLabel) {
+	    							terreno.setBorder(null);
+	    						}
+	    					}
+						}
 		    					
-		    					public void mouseClicked(MouseEvent e){
-		    						if(celdaLabel==null) {
-		    							terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
-		    							celdaLabel=terreno;
-		    							System.out.println("("+terreno.getX()/32+","+terreno.getY()/32+")");
-		    						}
-		    						else{
-		    							celdaLabel.setBorder(null);
-		    							terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
-		    							celdaLabel=terreno;
-		    							System.out.println("("+terreno.getX()/32+","+terreno.getY()/32+")");
-		    							
-		    						}
-		    					}
-		    					
-		    					public void mouseEntered(MouseEvent e) {
-		    						if(terreno!=celdaLabel) {
-		    							terreno.setBorder(new LineBorder(new Color(0, 255, 0)));
-		    						}
-		    					}
-		    					
-		    					public void mouseExited(MouseEvent e) {
-		    						if(terreno!=celdaLabel) {
-		    							terreno.setBorder(null);
-		    						}
-		    					}
-							}
-		    					
-						);
-	    			
+					);
 	    			terreno.setBounds(32*x,32*y,32,32);
 	    		    escenario.agregar(terreno,new Integer(1));
 	    			
-	    		}else
+	    		}else {
 	    			if(objetos[2]!=null){
 	    				JLabel terreno= objetos[2].getGrafico();
 	    				terreno.setBounds(32*x,32*y,32,32);
 	    				escenario.agregar(terreno,new Integer(3));
-	    			}	    		
+	    			}
+	    		}	    		
 	    	}
 	    	y++;
 	   }	  
@@ -159,27 +166,9 @@ public class Map implements Runnable{
 		int y_cel= Math.round(celdaLabel.getY()/32);
 		
 		switch (personaje) {
-		case "arquero":
-			if(celdaLabel!=null) {
-				añadirArquero(x_cel,y_cel);
-			}
-			break;
-			
-		case "caballero":
-			if(celdaLabel!=null) {
-				añadirCaballero(x_cel,y_cel);
-			}			
-			break;
-			
 		case "caminante":
 			if(celdaLabel!=null) {
 				añadirCaminante(x_cel,y_cel);
-			}
-			break;
-			
-		case "espadachin":
-			if(celdaLabel!=null) {
-				añadirEspadachin(x_cel, y_cel);
 			}
 			break;
 			
@@ -196,26 +185,36 @@ public class Map implements Runnable{
 		
 	}
 	
-	public void añadirArquero(int x,int y) {
-		Arquero arquero = new Arquero();
-		Jugador jugador1 = new Jugador(celdas[x][y],2,arquero);
-		arquero.setJugador(jugador1);
-		celdas[x][y].getObjects()[2]= jugador1;
-		jugador1.setCelda(celdas[x][y]);
-		JLabel graf1 = jugador1.getGrafico();
-		graf1.setBounds(32*x,32*y,32,32);
-		escenario.agregar(graf1,new Integer(2));
-	}
-	
-	public void añadirCaballero(int x,int y) {
-		Caballero caballero = new Caballero();
-		Jugador jugador2 = new Jugador(celdas[x][y],2,caballero);
-		caballero.setJugador(jugador2);
-		celdas[x][y].getObjects()[2]= jugador2;
-		jugador2.setCelda(celdas[x][y]);
-		JLabel graf2 = jugador2.getGrafico();
-		graf2.setBounds(32*x,32*y,32,32);
-		escenario.agregar(graf2,new Integer(2));
+	public void crearJugador(Jugador j) {		
+		int x_cel= Math.round(celdaLabel.getX()/32);
+		int y_cel= Math.round(celdaLabel.getY()/32);
+		Jugador player = j.clone(celdas[x_cel][y_cel]);		
+		celdas[x_cel][y_cel].getObjects()[2]= player;
+		JLabel icono = player.getGrafico();
+		icono.setBounds(x_cel*32,y_cel*32,32,32);
+		icono.addMouseListener(
+			new MouseAdapter() {
+				public void mouseReleased(MouseEvent e) {
+					int x_cel = Math.round(x_mouse/32); 
+					int y_cel = Math.round(y_mouse/32);
+					GameObject[] objetosCelda =celdas[x_cel][y_cel].getObjects();
+					objetosCelda[2]= player;
+					player.getCelda().getObjects()[2]=null;
+					player.setCelda(celdas[x_cel][y_cel]);
+					int x_terreno = objetosCelda[0].getGrafico().getX();
+					int y_terreno = objetosCelda[0].getGrafico().getY();
+					player.getGrafico().setBounds(x_terreno, y_terreno, 32, 32);
+				}
+			}
+		);
+		icono.addMouseMotionListener(
+			new MouseMotionAdapter() {
+				public void mouseDragged(MouseEvent e) {
+					player.getGrafico().setBounds(x_mouse,y_mouse,32,32);
+				}
+			}
+		);
+		escenario.agregar(icono,new Integer(2));
 	}
 	
 	public void añadirCaminante(int x, int y) {
@@ -227,16 +226,6 @@ public class Map implements Runnable{
 		JLabel graf3 = enemigo1.getGrafico();
 		graf3.setBounds(32*x,32*y,32,32);
 		escenario.agregar(graf3,new Integer(2));
-	}
-	
-	public void añadirEspadachin(int x,int y) {
-		Espadachin espadachin=new Espadachin();
-		Jugador jugador3=new Jugador(celdas[x][y],2,espadachin);
-		espadachin.setJugador(jugador3);
-		celdas[x][y].getObjects()[2]=jugador3;
-		JLabel graf3=jugador3.getGrafico();
-		graf3.setBounds(32*x, 32*y, 32, 32);
-		escenario.agregar(graf3, new Integer(2));
 	}
 	
 	public void añadirCaminanteEstatico(int x, int y) {
@@ -262,7 +251,6 @@ public class Map implements Runnable{
 			e.restarResistencia();
 		}
 	}
-
 
     public void destruirEnemigo(Enemigo e){
     	System.out.println(puntaje);

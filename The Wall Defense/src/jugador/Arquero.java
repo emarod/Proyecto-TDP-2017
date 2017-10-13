@@ -71,5 +71,10 @@ public class Arquero extends State{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public State clone() {
+		return new Arquero();
+	}
     
 }
