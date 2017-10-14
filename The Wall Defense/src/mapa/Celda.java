@@ -56,11 +56,29 @@ public class Celda {
 	    		case 's':
 	    		case 't':
 	    		case 'u':
+	    			//Lateral derecho.
+	    			listaObjetosLogicos[0]=new Water(this,'u',0,1);
+	    			break;
 	    		case 'v':
+	    			//Lateral izquierda.
+	    			listaObjetosLogicos[0]=new Water(this,'v',0,1);
+	    			break;
 	    		case 'w':
+	    			//Esquina superior izquierda.
+	    			listaObjetosLogicos[0]=new Water(this,'w',0,1);
+	    			break;
 	    		case 'x':
+	    			//Esquina inferior izquierda.
+	    			listaObjetosLogicos[0]=new Water(this,'x',0,1);
+	    			break;
 	    		case 'y':
+	    			//Esquina superior derecha.
+	    			listaObjetosLogicos[0]=new Water(this,'y',0,1);
+	    			break;
 	    		case 'z':
+	    			//Esquina inferior derecha.
+	    			listaObjetosLogicos[0]=new Water(this,'z',0,1);
+	    			break;
 	    		case '1':
 	    		case '2':
 	    		case '3':

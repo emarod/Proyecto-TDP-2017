@@ -59,7 +59,7 @@ public class Map implements Runnable{
 	    String sCurrentLine="";
 	    Random rnd=new Random();
 	    int r=rnd.nextInt(1);
-	    InputStream fileMap = getClass().getResourceAsStream("/resources/mapa_"+r+".txt");
+	    InputStream fileMap = getClass().getResourceAsStream("/resources/mapa_"+1+".txt");
         InputStreamReader entradaMapa = new InputStreamReader(fileMap);
 
 	    BufferedReader bufferMapa = new BufferedReader(entradaMapa);
