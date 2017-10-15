@@ -35,12 +35,12 @@ public class Rock extends Obstaculo implements Runnable{
     	return sprite;
     }
     public void destruir(){
-    	isRunning=false;
+    	mover=false;
     	t=new Thread(this);
     	t.start();
     }
     public void run(){
-    	if(!isRunning){
+    	if(!mover){
     	celda.getObjects()[getProfundidad()]=null;
     	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/piedra1_"+sprite+".png")));
     	

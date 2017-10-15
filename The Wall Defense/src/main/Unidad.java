@@ -10,12 +10,10 @@ public abstract class Unidad extends GameObject{
 
 	//Parametros de conducta
     protected boolean esperar;
-	protected boolean movimiento;
 	protected boolean atacar;
 	protected int velocidad;
 	protected int retrasar;
-	protected boolean congelar;
-    protected volatile boolean moviendo=false;
+	protected boolean congelar;    
 
     public abstract int getAncho();
 	public abstract int getAlto(); 
@@ -23,7 +21,7 @@ public abstract class Unidad extends GameObject{
 	public abstract void mover();
 	
 	public void intercambiar_celdas(Celda C){
-		moviendo=true;
+		mover=true;
 	    C.getObjects()[profundidad]=this;	    
 		celda.getObjects()[profundidad]=null;
 		celda=C;
@@ -35,19 +33,19 @@ public abstract class Unidad extends GameObject{
     }
 	
 	public boolean getMoviendo(){
-		return moviendo;
+		return mover;
 	}
 	
-	public void setMoviendo(Boolean b){
-		moviendo=b;
-	}
-	
-	public void setMovimiento(boolean b) {
-		movimiento=b;
+	public void setMoviendo(boolean b){
+		mover=b;
 	}
 	
 	public void setAtacar(boolean b) {
 		atacar=b;
+	}
+	
+	public boolean getAtacar() {
+		return atacar;
 	}
 	
 	public void setCongelar(boolean b) {

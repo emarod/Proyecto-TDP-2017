@@ -23,7 +23,7 @@ public class Jugador extends Unidad{
     	 grafico=new JLabel();
     	 tipo = t;
     	 setGrafico();
-    	 System.out.println("Creando jugador"+this.profundidad);
+    	 System.out.println("Creando jugador"+this.profundidad);    	 
     }
     
 	public boolean restarResistencia(){ 

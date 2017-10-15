@@ -13,9 +13,8 @@ public class ControladorMovimiento extends Controlador{
 	}
 
 	@Override
-	public void run() {		
+	public void run() {
 		while(true) {
-//			System.out.println("unidad.mover()");
 			unidadActual= repositorio.pollFirst();
 			if (unidadActual!=null){
 				repositorio.addLast(unidadActual);
@@ -23,25 +22,18 @@ public class ControladorMovimiento extends Controlador{
 					unidadActual.mover();
 				}
 			}
-//			try {
-//				hilo.sleep(5);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
 		}
 	}
 
 	@Override
 	public void desactivar(Unidad unidad) {
-		super.desactivar(unidad);
-		unidad.setMovimiento(false);
+		super.desactivar(unidad);		
 	}
 
 	@Override
 	public void activar(Unidad unidad) {
-		super.activar(unidad);
-		unidad.setMovimiento(true);
+		super.activar(unidad);		
+		
 	}
 	
 	public void congelar(Unidad unidad,boolean b) {

@@ -18,10 +18,12 @@ public class ControladorAtaque extends Controlador{
 			unidadActual= repositorio.pollFirst();
 			if (unidadActual!=null){
 				repositorio.addLast(unidadActual);	
-				unidadActual.atacar();
+				if(!unidadActual.getAtacar()){
+					unidadActual.atacar();
+				}
 			}
 			try {
-				hilo.sleep(5);
+				hilo.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -31,14 +33,12 @@ public class ControladorAtaque extends Controlador{
 
 	@Override
 	public void desactivar(Unidad unidad) {
-		super.desactivar(unidad);
-		unidad.setAtacar(false);
+		super.desactivar(unidad);		
 	}
 
 	@Override
 	public void activar(Unidad unidad) {
-		super.activar(unidad);		
-		unidad.setAtacar(true);
-		unidad.atacar();
+		super.activar(unidad);	
+		
 	}
 }

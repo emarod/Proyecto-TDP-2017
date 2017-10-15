@@ -9,8 +9,7 @@ public abstract class State {
 	protected int velocidad_disparo;
 	protected int disparos_simultaneos;
 	protected int disparos_en_ejecucion;
-	protected Jugador jugador;
-	protected boolean atacar;
+	protected Jugador jugador;	
 	
     public boolean impact(){
     	if(resistencia==1)

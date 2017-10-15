@@ -6,7 +6,7 @@ public abstract class GameObject {
 	protected JLabel grafico;
     protected Celda celda;
     protected int profundidad;
-    protected boolean isRunning=true;
+    protected volatile boolean mover=false;
     
     public JLabel getGrafico(){
     	return grafico;
@@ -15,8 +15,8 @@ public abstract class GameObject {
     	grafico=graf;
     }
     public void destruir(){
-    	isRunning=false;
-//    	GameObject objeto = celda.getObjects()[profundidad];
+    	GameObject objeto = celda.getObjects()[profundidad];
+    	celda.getEscenario().remove(objeto.getGrafico());
     	grafico.setIcon(null);    	
     	celda.getObjects()[profundidad]=null;
     }
@@ -25,15 +25,11 @@ public abstract class GameObject {
     public int getProfundidad(){
     	return profundidad;
     }
+    
     public Celda getCelda(){
     	return celda;
-    }
-    public boolean getIsRunning(){
-    	return isRunning;
-    }
-    public void setIsRunning(boolean is){
-    	isRunning=is;
-    }
+    }    
+    
     public void setCelda(Celda c){
     	celda=c;
     }	 
