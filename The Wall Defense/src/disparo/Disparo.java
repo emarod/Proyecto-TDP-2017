@@ -9,23 +9,17 @@ public abstract class Disparo extends Unidad  {
 
 	protected Disparo(Celda c,Unidad j, int prof,int speed){
 		profundidad=prof;
-		isRunning=true;	
 		this.j=j;
 		ancho=32;
 		alto=32;    	   
 		celda=c;		
 		celda.getObjects()[profundidad]=this;
 		this.velocidad=speed;
-//		System.out.println("Disparo");
 	}
 	
 	   
 	public abstract boolean Accept(Visitor V);
-	
-	public boolean getIsRunning(){
-		   
-		return isRunning ;
-	}
+
 	public int getAlto(){
 		return alto;
 	}

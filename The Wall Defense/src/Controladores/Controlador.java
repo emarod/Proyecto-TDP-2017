@@ -16,7 +16,7 @@ public abstract class Controlador implements Runnable{
 	public void activar(Unidad unidad) {		
 		repositorio.addLast(unidad);
 		unidadActual=unidad;
-		unidades++;	
+		unidades++;		
 	}
 
 

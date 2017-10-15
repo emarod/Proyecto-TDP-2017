@@ -16,8 +16,7 @@ public class Enemigo extends Unidad{
     	tipo=t;
     	alto=30;
     	ancho=30;
-    	celda=c;
-    	isRunning=true;
+    	celda=c;    	
     	this.profundidad=profundidad;
     	System.out.println("Creando enemigo"+this.profundidad);
     	grafico=new JLabel();
