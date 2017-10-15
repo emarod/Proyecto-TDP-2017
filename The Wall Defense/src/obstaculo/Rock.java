@@ -12,7 +12,7 @@ public class Rock extends Obstaculo implements Runnable{
     	this.sprite=sprite;
     	resistencia=3;
     	grafico=new JLabel();
-    	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/b_"+sprite+".png")));
+    	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/roca_"+sprite+".png")));
     	
     	
     }

@@ -51,7 +51,8 @@ public class Celda {
 	    		case 'p':
 	    		case 'q':
 	    		case 'r':
-	    			//listaObjetosLogicos[0]=new Bridge(this,tipo,0);
+	    			//Piedra.
+	    			listaObjetosLogicos[0]=new Rock(this,1,1);
 	    			break;
 	    		case 's':
 	    		case 't':
