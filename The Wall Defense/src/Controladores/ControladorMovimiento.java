@@ -6,36 +6,14 @@ import main.Unidad;
 
 public class ControladorMovimiento extends Controlador{
 	
-	public ControladorMovimiento(){
-		repositorio= new ConcurrentLinkedDeque<Unidad>();		
+	public ControladorMovimiento(Director d){
+		super(d);		
 	}
-
-	@Override
-	public void run() {
-		activo=true;
-		while(activo){
-			unidadActual= repositorio.pollFirst();
-			if (unidadActual!=null){
-				repositorio.addLast(unidadActual);
-				if(!unidadActual.getMoviendo()) {
-					unidadActual.mover();
-				}
-			}
-			try {
-				Thread.sleep(50);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
-
-	@Override
+	
 	public void desactivar(Unidad unidad) {
 		super.desactivar(unidad);		
 	}
 
-	@Override
 	public void activar(Unidad unidad) {
 		super.activar(unidad);		
 		

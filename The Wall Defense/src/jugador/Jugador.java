@@ -22,8 +22,7 @@ public class Jugador extends Unidad{
     	 celda=c;    	 
     	 grafico=new JLabel();
     	 tipo = t;
-    	 setGrafico();
-    	 System.out.println("Creando jugador"+this.profundidad);    	 
+    	 setGrafico();    	 
     }
     
 	public boolean restarResistencia(){ 
@@ -67,8 +66,7 @@ public class Jugador extends Unidad{
 
 	@Override
 	public void atacar() {
-		tipo.atacar();
-		
+		tipo.atacar();		
 	}
 
 	@Override
@@ -87,5 +85,11 @@ public class Jugador extends Unidad{
 		Jugador clon = new Jugador(c, 2, tipo);
 		tipo.setJugador(clon);
 		return clon;
+	}
+
+	@Override
+	public void run() {
+		atacar();
+		
 	}
 }

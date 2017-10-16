@@ -32,6 +32,7 @@ public class Escenario extends JPanel {
 	public void  agregar(JLabel objeto,Integer entero){
 		objeto.setSize(32,32);
 		layeredPane.add(objeto,entero);
+		repaint();
 	}
 	
 	public void crearPersonaje(String personaje) {

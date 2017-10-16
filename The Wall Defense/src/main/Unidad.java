@@ -1,8 +1,11 @@
 package main;
 
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+
 import mapa.Celda;
 
-public abstract class Unidad extends GameObject{
+public abstract class Unidad extends GameObject implements Runnable{
     
 	protected Visitor V;
 
@@ -11,7 +14,8 @@ public abstract class Unidad extends GameObject{
 	protected boolean atacar;
 	protected int velocidad;
 	protected int retrasar;
-	protected boolean congelar;    
+	protected boolean congelar;
+	protected ScheduledFuture<?> activeTask;
 
     public abstract int getAncho();
 	public abstract int getAlto(); 
@@ -36,6 +40,14 @@ public abstract class Unidad extends GameObject{
 	
 	public void setMoviendo(boolean b){
 		mover=b;
+	}
+	
+	public ScheduledFuture<?> getTask(){
+		return activeTask;
+	}
+	
+	public int getVelociad() {
+		return velocidad;
 	}
 	
 	public void setAtacar(boolean b) {

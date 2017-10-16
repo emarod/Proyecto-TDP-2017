@@ -1,29 +1,25 @@
 package Controladores;
 
 import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.ScheduledFuture;
 
 import main.Unidad;
 
-public abstract class Controlador implements Runnable{
+public abstract class Controlador{
 	
-	protected ConcurrentLinkedDeque<Unidad> repositorio;	
-	protected Unidad unidadActual;
-	protected int unidades=0;
 	protected volatile boolean activo=false;
+	protected Director director;
 	
-	
-	public synchronized void activar(Unidad unidad) {		
-		repositorio.addLast(unidad);
-		unidadActual=unidad;
-		unidades++;
+	public Controlador(Director d) {
+		director=d;
 	}
-
-
-	public abstract void run();
 	
-	public synchronized void desactivar(Unidad unidad) {
-		repositorio.remove(unidad);
-		unidades--;
+	public void activar(Unidad unidad) {
+		director.ejecutar(unidad, 1);
+	}
+	
+	public void desactivar(Unidad unidad) {
+		unidad.getTask().cancel(true);
 	}
 	
 	public abstract void iniciar();

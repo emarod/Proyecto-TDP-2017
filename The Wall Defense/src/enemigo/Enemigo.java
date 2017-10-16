@@ -87,4 +87,10 @@ public class Enemigo extends Unidad{
 	public int getPuntaje() {
 		return tipo.getPuntaje();
 	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
 }

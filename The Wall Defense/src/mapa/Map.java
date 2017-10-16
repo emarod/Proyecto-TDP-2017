@@ -45,7 +45,7 @@ public class Map implements Runnable{
 //		Inicialización de controladores de acciones
 //		cAtacar=new ControladorAtaque();
 //		cMovimiento= new ControladorMovimiento();
-		director = new Director();
+		director = new Director();		
 		try {
 			inicializarCeldas(sprites);
 		}
@@ -141,6 +141,7 @@ public class Map implements Runnable{
 		JLabel graf4 = enemigo2.getGrafico();
 		graf4.setBounds(32*18,32*2,32,32);
 		escenario.agregar(graf4,new Integer(2));
+		escenario.repaint();
 	}
 	
 	
@@ -161,7 +162,7 @@ public class Map implements Runnable{
     }
     
 	public void run() {	
-		
+		escenario.repaint();
 	}
 
 	public void crearPersonaje(String personaje) {

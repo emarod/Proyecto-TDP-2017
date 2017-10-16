@@ -1,37 +1,13 @@
 package Controladores;
 
-import java.util.concurrent.ConcurrentLinkedDeque;
-
 import main.Unidad;
 
 public class ControladorAtaque extends Controlador{
 	
-	public ControladorAtaque(){
-		repositorio = new ConcurrentLinkedDeque<Unidad>();
-	}
-
-	@Override
-	public void run() {
-		activo=true;
-		while(activo){
-			unidadActual= repositorio.pollFirst();
-			if (unidadActual!=null){
-				repositorio.addLast(unidadActual);
-				if(!unidadActual.getMoviendo()) {
-					unidadActual.atacar();
-				}
-			}
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+	public ControladorAtaque(Director d){
+		super(d);		
 	}
 	
-	
-
 	@Override
 	public void desactivar(Unidad unidad) {
 		super.desactivar(unidad);		
@@ -45,12 +21,11 @@ public class ControladorAtaque extends Controlador{
 
 	@Override
 	public void iniciar() {
-				
+		activo=true;		
 	}
 
 	@Override
 	public void terminar() {
-		// TODO Auto-generated method stub
-		
+		activo=false;		
 	}
 }
