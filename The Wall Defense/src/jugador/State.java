@@ -1,8 +1,5 @@
 package jugador;
 import javax.swing.*;
-//import obstaculos.Acero;
-import disparo.DisparoPlayer;
-//import interfaz.GUI;
 public abstract class State {
 	protected int velocidad_jugador;
 	protected int resistencia;
@@ -17,13 +14,6 @@ public abstract class State {
     	else{
     		resistencia--;
     		return false;
-    	}
-    }
-    public void disparar(){
-    	if(disparos_en_ejecucion<disparos_simultaneos){
-    		 //GUI.playSound("disparo.wav");
-	    	new DisparoPlayer(jugador.getCelda(),jugador,3,velocidad_disparo);
-	    	disparos_en_ejecucion++;
     	}
     }
     
@@ -49,5 +39,9 @@ public abstract class State {
 	}
 	
 	public abstract State clone();
+	public Jugador getJugador() {
+		// TODO Auto-generated method stub
+		return jugador;
+	}
 
 }

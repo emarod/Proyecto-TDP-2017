@@ -39,7 +39,7 @@ public class WhiteWalker extends State{
 		for(int i=0;i<5 && mover;i++) {
 			GameObject objeto =siguiente.getObjects()[i];					
 			if (objeto!=null && !objeto.Accept(enemigo.getVisitor())){
-				this.enemigo.getCelda().getCM().desactivar(this.enemigo);
+				this.enemigo.getCelda().getDirector().desactivarMovimiento(this.enemigo);
 				mover=false;
 			}
 		}
@@ -61,13 +61,13 @@ public class WhiteWalker extends State{
 	
     public void destruir(){
     	System.out.println("Destruir WhiteWalker");
-    	this.enemigo.getCelda().getCM().desactivar(this.enemigo);
+    	this.enemigo.getCelda().getDirector().desactivarMovimiento(this.enemigo);
 	   
 	}
 	
 	public void setEnemigo(Enemigo enemigo){
 		this.enemigo = enemigo;
-		this.enemigo.getCelda().getCM().activar(this.enemigo);
+		this.enemigo.getCelda().getDirector().activarMovimiento(this.enemigo);
 		mover=true;
 	}
 	

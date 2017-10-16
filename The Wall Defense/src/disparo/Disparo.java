@@ -1,20 +1,21 @@
 package disparo;
+import jugador.State;
 import main.Unidad;
 import main.Visitor;
-import mapa.Celda;
 public abstract class Disparo extends Unidad  {
-	protected Unidad j;
 	protected int ancho;
 	protected int alto;
+	protected State tipo;
 
-	protected Disparo(Celda c,Unidad j, int prof,int speed){
+	protected Disparo(State t, int prof,int speed){
 		profundidad=prof;
-		this.j=j;
 		ancho=32;
-		alto=32;    	   
-		celda=c;		
+		alto=32;
+		tipo = t;
+		celda=tipo.getJugador().getCelda();
 		celda.getObjects()[profundidad]=this;
 		this.velocidad=speed;
+		mover=false;
 	}
 	
 	   
@@ -32,5 +33,5 @@ public abstract class Disparo extends Unidad  {
 		super.destruir();
 	}
 	
-	public void restarDisparosEnEjecucion(){}
+	public abstract void restarDisparosEnEjecucion();
 }

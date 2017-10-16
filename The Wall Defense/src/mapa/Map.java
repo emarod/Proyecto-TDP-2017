@@ -15,6 +15,7 @@ import javax.swing.border.LineBorder;
 
 import Controladores.ControladorAtaque;
 import Controladores.ControladorMovimiento;
+import Controladores.Director;
 import enemigo.Enemigo;
 import enemigo.WhiteWalker;
 
@@ -36,13 +37,15 @@ public class Map implements Runnable{
 	private int puntaje;
 	private int x_mouse;
 	private int y_mouse;
+	private Director director;
 	
 	public Map(Escenario stage,int width,int height,int sprites) {
 		celdas= new Celda[width][height];
 		escenario = stage;
 //		Inicialización de controladores de acciones
-		cAtacar=new ControladorAtaque();
-		cMovimiento= new ControladorMovimiento();
+//		cAtacar=new ControladorAtaque();
+//		cMovimiento= new ControladorMovimiento();
+		director = new Director();
 		try {
 			inicializarCeldas(sprites);
 		}
@@ -232,7 +235,7 @@ public class Map implements Runnable{
 		WhiteWalker white_walker = new WhiteWalker();
 		Enemigo enemigo1 = new Enemigo(celdas[x][y],1,white_walker);
 		white_walker.setEnemigo(enemigo1);
-		enemigo1.getCelda().getCM().desactivar(enemigo1);
+		enemigo1.getCelda().getDirector().desactivarMovimiento(enemigo1);
 		celdas[x][y].getObjects()[1]= enemigo1;
 		enemigo1.setCelda(celdas[x][y]);
 		JLabel graf3 = enemigo1.getGrafico();
@@ -266,4 +269,7 @@ public class Map implements Runnable{
 		escenario.setPuntaje("Puntaje: "+puntaje);
 	}
 	
+	public Director getDirector() {
+		return director;
+	}
 }

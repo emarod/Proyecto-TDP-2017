@@ -27,9 +27,8 @@ public class VisitorEnemigo extends Visitor{
 	   return false;
    }
    public boolean visitDisparoPlayer(DisparoPlayer d){
-//	   d.destruir();
-//	   Enemigo e=(Enemigo)objeto;
-//	   e.restarResistencia();
+	   d.destruir();
+	   enemigo.restarResistencia();
 	   return true;
    }   
    

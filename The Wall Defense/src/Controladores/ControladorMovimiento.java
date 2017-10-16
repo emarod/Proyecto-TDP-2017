@@ -7,20 +7,25 @@ import main.Unidad;
 public class ControladorMovimiento extends Controlador{
 	
 	public ControladorMovimiento(){
-		hilo = new Thread(this);
-		repositorio= new ConcurrentLinkedDeque<Unidad>();
-		hilo.start();
+		repositorio= new ConcurrentLinkedDeque<Unidad>();		
 	}
 
 	@Override
 	public void run() {
-		while(true) {
+		activo=true;
+		while(activo){
 			unidadActual= repositorio.pollFirst();
 			if (unidadActual!=null){
 				repositorio.addLast(unidadActual);
 				if(!unidadActual.getMoviendo()) {
 					unidadActual.mover();
 				}
+			}
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}
@@ -42,5 +47,17 @@ public class ControladorMovimiento extends Controlador{
 	
 	public void retrasar(Unidad unidad, int i) {
 		unidad.setRetraso(i);
+	}
+
+	@Override
+	public void iniciar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void terminar() {
+		// TODO Auto-generated method stub
+		
 	}
 }

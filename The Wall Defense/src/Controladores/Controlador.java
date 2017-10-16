@@ -1,30 +1,36 @@
 package Controladores;
 
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 import main.Unidad;
 
 public abstract class Controlador implements Runnable{
 	
-	protected Thread hilo;
 	protected ConcurrentLinkedDeque<Unidad> repositorio;	
 	protected Unidad unidadActual;
 	protected int unidades=0;
+	protected volatile boolean activo=false;
 	
-	public void activar(Unidad unidad) {		
+	
+	public synchronized void activar(Unidad unidad) {		
 		repositorio.addLast(unidad);
 		unidadActual=unidad;
-		unidades++;		
+		unidades++;
 	}
 
 
 	public abstract void run();
 	
-	public void desactivar(Unidad unidad) {
+	public synchronized void desactivar(Unidad unidad) {
 		repositorio.remove(unidad);
 		unidades--;
 	}
 	
+	public abstract void iniciar();
+	
+	public abstract void terminar();
+	
+	public boolean getActivo() {
+		return activo;
+	}
 }

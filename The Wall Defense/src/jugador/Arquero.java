@@ -1,31 +1,24 @@
 package jugador;
 
-import mapa.Celda;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import disparo.DisparoPlayer;
-import main.GameObject;
 
 public class Arquero extends State{
-	
-	protected int disparos_simultaneos;
-	protected int disparos_en_ejecucion;
-	protected int velocidad_disparo;
 	
 	public Arquero() {
 		resistencia=5;
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
-		velocidad_disparo=1000;
+		velocidad_disparo=10;
 		
 	}
 	
 	public void setJugador(Jugador jugador){
 		this.jugador = jugador;
-		this.jugador.getCelda().getCA().activar(this.jugador);
+		this.jugador.getCelda().getDirector().activarAtaque(this.jugador);
 	}
 	
 	public void setGrafico(JLabel grafico) {
@@ -44,8 +37,9 @@ public class Arquero extends State{
 //			}
 //		}
 		jugador.setAtacar(true);
-		if(disparos_en_ejecucion<2){
-			new DisparoPlayer(this.jugador.getCelda(),this.jugador,3,velocidad_disparo);
+		if(disparos_en_ejecucion<disparos_simultaneos){
+			new DisparoPlayer(this,3,velocidad_disparo);
+			
     		disparos_en_ejecucion++;
     	}
 		jugador.setAtacar(false);

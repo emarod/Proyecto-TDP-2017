@@ -1,7 +1,5 @@
 package main;
 
-import javax.swing.JLabel;
-
 import mapa.Celda;
 
 public abstract class Unidad extends GameObject{
