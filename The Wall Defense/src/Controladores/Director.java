@@ -1,6 +1,5 @@
 package Controladores;
 
-import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -16,7 +15,8 @@ public class Director{
 	protected volatile boolean activo;	
 	
 	public Director(){
-		taskPool = Executors.newScheduledThreadPool(4);
+//		taskPool = Executors.newScheduledThreadPool(2);
+		taskPool = Executors.newSingleThreadScheduledExecutor();
 		cntrAtaque = new ControladorAtaque(this);
 		cntrMovimiento = new ControladorMovimiento(this);		
 		

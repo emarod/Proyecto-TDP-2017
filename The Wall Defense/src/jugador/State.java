@@ -1,4 +1,6 @@
 package jugador;
+import java.util.concurrent.Future;
+
 import javax.swing.*;
 public abstract class State {
 	protected int velocidad_jugador;
@@ -20,7 +22,7 @@ public abstract class State {
     public int getVelocidad(){
     	return velocidad_jugador;
     }
-    public abstract void atacar();
+    public abstract Future<?> atacar();
     public abstract void mover();
     public abstract void setJugador(Jugador jugador);
     

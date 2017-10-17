@@ -1,5 +1,7 @@
 package jugador;
 
+import java.util.concurrent.Future;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -8,11 +10,13 @@ import disparo.DisparoPlayer;
 
 public class Arquero extends State{
 	
+	protected Future<?> shot;
 	public Arquero() {
 		resistencia=5;
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
 		velocidad_disparo=10;
+		
 		
 	}
 	
@@ -26,7 +30,7 @@ public class Arquero extends State{
 		grafico.setIcon(imagen);
 	}
 	
-	public void atacar(){
+	public Future<?> atacar(){
 //		int xCelda=jugador.getCelda().getPosX();
 //		int yCelda=jugador.getCelda().getPosY();
 //		for(int x =0;jugador.getCelda().getPosX()<19 && atacar;x++) {
@@ -38,11 +42,11 @@ public class Arquero extends State{
 //		}
 		jugador.setAtacar(true);
 		if(disparos_en_ejecucion<disparos_simultaneos){
-			new DisparoPlayer(this,3,velocidad_disparo);
-			
-    		disparos_en_ejecucion++;
+			shot =new DisparoPlayer(this,3,velocidad_disparo).getTask();
+			disparos_en_ejecucion++;		
     	}
 		jugador.setAtacar(false);
+		return shot;
     }
     
     public void restarDisparosEnEjecucion(){

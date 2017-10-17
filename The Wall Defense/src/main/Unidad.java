@@ -77,4 +77,8 @@ public abstract class Unidad extends GameObject implements Runnable{
 	public void hacerDaño() {
 		
 	}
+	public void setTask(ScheduledFuture<?> ejecutar) {
+		activeTask = ejecutar;
+		
+	}
 }

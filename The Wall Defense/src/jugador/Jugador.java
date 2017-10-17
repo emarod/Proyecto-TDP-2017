@@ -1,5 +1,8 @@
 package jugador;
 import mapa.Celda;
+
+import java.util.concurrent.Future;
+
 //import obstaculos.Acero;
 import javax.swing.*;
 
@@ -13,6 +16,7 @@ public class Jugador extends Unidad{
 	private int alto;
     private int ancho;
     private State tipo;
+    protected Future<?> activeAttack;
      
     public Jugador(Celda c,int prof, State t){	 
     	 alto=30;
@@ -66,7 +70,7 @@ public class Jugador extends Unidad{
 
 	@Override
 	public void atacar() {
-		tipo.atacar();		
+		activeAttack=tipo.atacar();		
 	}
 
 	@Override
@@ -89,7 +93,9 @@ public class Jugador extends Unidad{
 
 	@Override
 	public void run() {
-		atacar();
+		if(activeAttack==null || activeAttack.isCancelled() || activeAttack.isDone()) {
+			atacar();
+		}
 		
 	}
 }

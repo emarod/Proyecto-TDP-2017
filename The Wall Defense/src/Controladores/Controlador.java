@@ -15,7 +15,7 @@ public abstract class Controlador{
 	}
 	
 	public void activar(Unidad unidad) {
-		director.ejecutar(unidad, 1);
+		unidad.setTask(director.ejecutar(unidad, 100));
 	}
 	
 	public void desactivar(Unidad unidad) {
