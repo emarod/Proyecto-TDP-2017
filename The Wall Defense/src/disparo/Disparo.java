@@ -5,13 +5,13 @@ import main.Visitor;
 public abstract class Disparo extends Unidad  {
 	protected Arquero arquero;
 
-	protected Disparo(Arquero archer, int prof,int speed){
+	public Disparo(Arquero archer, int prof){
 		profundidad=prof;
 		ancho=32;
 		alto=32;
 		arquero= archer;
 		celda=arquero.getJugador().getCelda();
-		celda.getObjects()[profundidad]=this;
+		celda.addDisparo(this);
 	}
 	
 	   

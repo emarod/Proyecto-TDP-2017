@@ -11,8 +11,8 @@ import mapa.Celda;
 
 public class DisparoPlayer extends Disparo{	
 	
-    public DisparoPlayer(Arquero archer, int prof,int speed){
-       super(archer,prof,speed);      
+    public DisparoPlayer(Arquero archer, int prof){
+       super(archer,prof);      
        V=new VisitorDisparoPlayer(this);
  	   grafico=new JLabel();
   	   grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
@@ -71,7 +71,7 @@ public class DisparoPlayer extends Disparo{
 	}
 
 	@Override
-	public void run() {		
+	public void run() {
 		mover();
 		
 	}

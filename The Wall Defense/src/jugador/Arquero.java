@@ -42,9 +42,9 @@ public class Arquero extends State{
 //			if (objeto!=null && !objeto.Accept(jugador.getVisitor())){
 //				atacar=false;
 //			}
-//		}
+//		}		
 		if(disparos_en_ejecucion<disparos_simultaneos){
-			shot =new DisparoPlayer(this,3,1).getTask();
+			shot =new DisparoPlayer(this,6).getTask();			
 			disparos_en_ejecucion++;		
     	}		
 		return shot;
@@ -66,8 +66,7 @@ public class Arquero extends State{
 
 	@Override
 	public void mover() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override
