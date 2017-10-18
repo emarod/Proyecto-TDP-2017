@@ -6,9 +6,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import disparo.DisparoPlayer;
-
-public class Caballero extends State{
+public class Caballero extends StateJugador{
 	public Caballero() {
 		resistencia=10;
 		disparos_simultaneos=1;
@@ -51,7 +49,7 @@ public class Caballero extends State{
 	}
 
 	@Override
-	public State clone() {
+	public StateJugador clone() {
 		return new Caballero();
 	}
 }

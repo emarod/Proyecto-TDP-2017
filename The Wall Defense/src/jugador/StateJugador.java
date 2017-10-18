@@ -2,7 +2,7 @@ package jugador;
 import java.util.concurrent.Future;
 
 import javax.swing.*;
-public abstract class State {
+public abstract class StateJugador {
 	protected int velocidad_jugador;
 	protected int resistencia;
 	protected int velocidad_disparo;
@@ -40,7 +40,7 @@ public abstract class State {
 		
 	}
 	
-	public abstract State clone();
+	public abstract StateJugador clone();
 	public Jugador getJugador() {
 		// TODO Auto-generated method stub
 		return jugador;

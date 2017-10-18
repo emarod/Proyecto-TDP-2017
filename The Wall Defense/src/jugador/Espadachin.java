@@ -5,9 +5,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import disparo.DisparoPlayer;
 
-public class Espadachin extends State{
+public class Espadachin extends StateJugador{
 	
 	public Espadachin() {
 		resistencia=8;
@@ -51,7 +50,7 @@ public class Espadachin extends State{
 	}
 
 	@Override
-	public State clone() {
+	public StateJugador clone() {
 		return new Espadachin();
 	}
 }

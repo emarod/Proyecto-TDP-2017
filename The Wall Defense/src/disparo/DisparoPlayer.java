@@ -3,14 +3,14 @@ package disparo;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import jugador.State;
+import jugador.StateJugador;
 import main.GameObject;
 import main.Visitor;
 import mapa.Celda;
 
 public class DisparoPlayer extends Disparo{	
 	
-    public DisparoPlayer(State t, int prof,int speed){
+    public DisparoPlayer(StateJugador t, int prof,int speed){
        super(t,prof,speed);      
        V=new VisitorDisparoPlayer(this);
  	   grafico=new JLabel();

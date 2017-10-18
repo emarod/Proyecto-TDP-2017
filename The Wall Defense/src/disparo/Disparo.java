@@ -1,11 +1,11 @@
 package disparo;
-import jugador.State;
+import jugador.StateJugador;
 import main.Unidad;
-import main.Visitor;
-public abstract class Disparo extends Unidad  {
-	protected State tipo;
 
-	protected Disparo(State t, int prof,int speed){
+public abstract class Disparo extends Unidad  {
+	protected StateJugador tipo;
+
+	protected Disparo(StateJugador t, int prof,int speed){
 		profundidad=prof;
 		ancho=32;
 		alto=32;
@@ -14,9 +14,6 @@ public abstract class Disparo extends Unidad  {
 		celda.getObjects()[profundidad]=this;
 		this.velocidad=speed;
 	}
-	
-	   
-	public abstract boolean Accept(Visitor V);
 
 	public int getAlto(){
 		return alto;
