@@ -6,7 +6,6 @@ public abstract class GameObject {
 	protected JLabel grafico;
     protected Celda celda;
     protected int profundidad;
-    protected volatile boolean mover=false;
     
     public JLabel getGrafico(){
     	return grafico;

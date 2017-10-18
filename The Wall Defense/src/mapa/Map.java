@@ -219,18 +219,19 @@ public class Map implements Runnable{
 		JLabel graf3 = enemigo1.getGrafico();
 		graf3.setBounds(32*x,32*y,32,32);
 		escenario.agregar(graf3,new Integer(2));
+		enemigo1.activar();
 	}
 	
 	public void añadirCaminanteEstatico(int x, int y) {
 		WhiteWalker white_walker = new WhiteWalker();
 		Enemigo enemigo1 = new Enemigo(celdas[x][y],1,white_walker);
-		white_walker.setEnemigo(enemigo1);
-		enemigo1.getCelda().getDirector().desactivar(enemigo1);
+		white_walker.setEnemigo(enemigo1);		
 		celdas[x][y].getObjects()[1]= enemigo1;
 		enemigo1.setCelda(celdas[x][y]);
 		JLabel graf3 = enemigo1.getGrafico();
 		graf3.setBounds(32*x,32*y,32,32);
 		escenario.agregar(graf3,new Integer(2));
+		enemigo1.activar();
 	}
 
 

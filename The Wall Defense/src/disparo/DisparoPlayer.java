@@ -35,7 +35,6 @@ public class DisparoPlayer extends Disparo{
     }
 	
 	public void mover() {
-		mover=true;
 		Celda siguiente;
 		int xCelda=celda.getPosX();
 		int yCelda=celda.getPosY();
@@ -50,17 +49,15 @@ public class DisparoPlayer extends Disparo{
 		GameObject objeto =siguiente.getObjects()[1];					
 		if (objeto!=null && !objeto.Accept(V)){
 			celda.getDirector().desactivar(this);
-			mover=false;
 		}		
 
-		if(!mover || xCelda==19 || xGrafico>=640) {
+		if(xCelda==19 || xGrafico>=640) {
 			destruir();	
 		}
 		else {
 			grafico.setBounds(xGrafico+32, yGrafico, getAncho(), getAlto());
 			intercambiar_celdas(siguiente);
 		}
-		mover=false;
 		
 	}
 	

@@ -18,16 +18,17 @@ public class Enemigo extends Unidad{
     	ancho=30;
     	celda=c;    	
     	this.profundidad=profundidad;
-    	System.out.println("Creando enemigo"+this.profundidad);
     	grafico=new JLabel();
-    	setGrafico();
+    	setGrafico();    	
+	}
+	 
+	public void activar() {
+		activeTask=getCelda().getDirector().ejecutar(this,tipo.getVelocidad());
 	}
 
 	public boolean Accept(Visitor V){
 		return V.visitEnemigo((Enemigo)this);
 	}
-	
-
 	
     public int getAlto(){
     	return alto;
@@ -40,7 +41,6 @@ public class Enemigo extends Unidad{
     public Visitor getVisitor() {
     	return V;
     }
-    	
     
 	public boolean restarResistencia(){ 
 		boolean destruir= tipo.impact();
@@ -66,31 +66,24 @@ public class Enemigo extends Unidad{
     }
 	
 	public void destruir(){
-		System.out.println("In enemigo profundidad "+profundidad);
 		super.destruir();
-		System.out.println("Destruir enemigo");
 		celda.destruirEnemigo(this);
 
 	}
 
-	@Override
 	public void atacar() {
 		tipo.atacar();
 	}
 
-	@Override
 	public void mover() {
 		tipo.mover();
-		
 	}
 	
 	public int getPuntaje() {
 		return tipo.getPuntaje();
 	}
 
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
+	public void run() {		
+		mover();		
 	}
 }

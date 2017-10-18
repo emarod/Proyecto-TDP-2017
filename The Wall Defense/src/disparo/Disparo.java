@@ -15,7 +15,6 @@ public abstract class Disparo extends Unidad  {
 		celda=tipo.getJugador().getCelda();
 		celda.getObjects()[profundidad]=this;
 		this.velocidad=speed;
-		mover=false;
 	}
 	
 	   
