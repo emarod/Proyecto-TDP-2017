@@ -25,7 +25,7 @@ public class Enemigo extends Unidad{
 	}
 
 	public boolean Accept(Visitor V){
-		return V.visitEnemigo((Enemigo)this);
+		return V.visitEnemigo(this);
 	}
 	
 
@@ -76,5 +76,17 @@ public class Enemigo extends Unidad{
 
 	public void run() {		
 		mover();		
+	}
+
+	@Override
+	public int getVelocidad() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setVelocidad(int speed) {
+		// TODO Auto-generated method stub
+		
 	}
 }

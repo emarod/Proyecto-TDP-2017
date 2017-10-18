@@ -9,15 +9,15 @@ public abstract class Unidad extends GameObject implements Runnable{
 	protected Visitor V;
 
 	//Parametros de conducta
-    protected boolean atacar;
-	protected int velocidad;
-	protected int alto;
+    protected int alto;
 	protected int ancho;
 	protected ScheduledFuture<?> activeTask;
 
 
 	public abstract void atacar();
 	public abstract void mover();
+	public abstract int getVelocidad();
+	public abstract void setVelocidad(int speed);
 	
 	public void intercambiar_celdas(Celda C){
 		C.getObjects()[profundidad]=this;	    
@@ -31,22 +31,6 @@ public abstract class Unidad extends GameObject implements Runnable{
 		
 	public ScheduledFuture<?> getTask(){
 		return activeTask;
-	}
-	
-	public int getVelociad() {
-		return velocidad;
-	}
-	
-	public void setAtacar(boolean b) {
-		atacar=b;
-	}
-	
-	public boolean getAtacar() {
-		return atacar;
-	}
-	
-	public void setVelocidad(int i) {
-		velocidad=i;		
 	}
 	
 	public void hacerDaño() {		

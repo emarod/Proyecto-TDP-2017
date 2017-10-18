@@ -91,4 +91,14 @@ public class Jugador extends Unidad{
 		}
 		
 	}
+
+	@Override
+	public int getVelocidad() {
+		return tipo.getVelocidad();		
+	}
+
+	@Override
+	public void setVelocidad(int speed) {
+		tipo.setVelocidad(speed);		
+	}
 }

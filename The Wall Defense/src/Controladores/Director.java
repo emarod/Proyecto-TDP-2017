@@ -5,6 +5,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import disparo.Disparo;
 import main.Unidad;
 
 public class Director{
@@ -27,5 +28,9 @@ public class Director{
 		
 	public ScheduledFuture<?> ejecutar(Unidad d,int delay) {
 		return taskPool.scheduleWithFixedDelay(d,0,100*delay,TimeUnit.MILLISECONDS);
+	}
+	
+	public ScheduledFuture<?> ejecutar(Disparo d,int delay) {
+		return taskPool.scheduleWithFixedDelay(d,0,1000*delay,TimeUnit.MICROSECONDS);
 	}
 }

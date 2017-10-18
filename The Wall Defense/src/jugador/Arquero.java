@@ -11,17 +11,21 @@ import disparo.DisparoPlayer;
 public class Arquero extends State{
 	
 	protected Future<?> shot;
+	protected int velocidad_disparo;
+	protected int disparos_simultaneos;
+	protected int disparos_en_ejecucion;
+	
 	public Arquero() {
+		velocidad_jugador=15;
 		resistencia=5;
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
-		velocidad_disparo=100;		
-		
+		velocidad_disparo=75;
 	}
 	
 	public void setJugador(Jugador jugador){
 		this.jugador = jugador;
-		this.jugador.getCelda().getDirector().ejecutar(this.jugador,velocidad_disparo);
+		this.jugador.getCelda().getDirector().ejecutar(this.jugador,velocidad_jugador);
 	}
 	
 	public void setGrafico(JLabel grafico) {
@@ -69,6 +73,10 @@ public class Arquero extends State{
 	@Override
 	public State clone() {
 		return new Arquero();
+	}
+
+	public int getVelocidadDisparo() {
+		return velocidad_disparo;
 	}
     
 }
