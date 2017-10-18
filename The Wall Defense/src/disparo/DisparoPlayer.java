@@ -9,8 +9,7 @@ import main.Visitor;
 import mapa.Celda;
 
 public class DisparoPlayer extends Disparo{	
-	protected int puntosCelda = 32;
-	protected int puntosVelocidad = 1;
+	
     public DisparoPlayer(State t, int prof,int speed){
        super(t,prof,speed);      
        V=new VisitorDisparoPlayer(this);
@@ -18,7 +17,7 @@ public class DisparoPlayer extends Disparo{
   	   grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
   	   grafico.setBounds(32*celda.getPosX(), 32*celda.getPosY(), 32, 32);
 	   celda.getEscenario().agregar(grafico,new Integer(2));	   
-	   celda.getDirector().activarMovimiento(this);
+	   celda.getDirector().ejecutar(this,velocidad);
 	   
     }
 
@@ -26,7 +25,7 @@ public class DisparoPlayer extends Disparo{
     	super.destruir();
     	restarDisparosEnEjecucion();
 		celda.getEscenario().remove(grafico);
-		celda.getDirector().desactivarMovimiento(this);
+		celda.getDirector().desactivar(this);
 	   
 	}
     
@@ -50,7 +49,7 @@ public class DisparoPlayer extends Disparo{
 			
 		GameObject objeto =siguiente.getObjects()[1];					
 		if (objeto!=null && !objeto.Accept(V)){
-			celda.getDirector().desactivarMovimiento(this);
+			celda.getDirector().desactivar(this);
 			mover=false;
 		}		
 
@@ -59,7 +58,6 @@ public class DisparoPlayer extends Disparo{
 		}
 		else {
 			grafico.setBounds(xGrafico+32, yGrafico, getAncho(), getAlto());
-			puntosVelocidad=velocidad;
 			intercambiar_celdas(siguiente);
 		}
 		mover=false;

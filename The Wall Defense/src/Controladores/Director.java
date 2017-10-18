@@ -9,42 +9,23 @@ import main.Unidad;
 
 public class Director{
 
-	protected ControladorAtaque cntrAtaque;
-	protected ControladorMovimiento cntrMovimiento;
-	ScheduledExecutorService taskPool;
-	protected volatile boolean activo;	
+	ScheduledExecutorService taskPool;		
 	
-	public Director(){
+//	Crea un pool de hilos. Mantiene un flujo de ejecución de tareas, actualmente 
+//	haciendo uso de un solo hilo.
+	
+	public Director(){		
 //		taskPool = Executors.newScheduledThreadPool(2);
-		taskPool = Executors.newSingleThreadScheduledExecutor();
-		cntrAtaque = new ControladorAtaque(this);
-		cntrMovimiento = new ControladorMovimiento(this);		
-		
-	}	
-	
-	public void activarAtaque(Unidad unidad) {
-		cntrAtaque.activar(unidad);
-	}
-	
-	public void activarMovimiento(Unidad unidad) {
-		cntrMovimiento.activar(unidad);
-	}
-	
-	public void terminar(Unidad unidad) {
+		taskPool = Executors.newSingleThreadScheduledExecutor();		
 		
 	}
 
-	public void desactivarMovimiento(Unidad unidad) {
-		cntrMovimiento.desactivar(unidad);
+	public boolean desactivar(Unidad unidad) {
+		return unidad.getTask().cancel(true);
 		
 	}
-	
-	public void desactivarAtaque(Unidad unidad) {
-		cntrAtaque.desactivar(unidad);
 		
-	}
-	
 	public ScheduledFuture<?> ejecutar(Unidad d,int delay) {
-		return taskPool.scheduleWithFixedDelay(d,0,32,TimeUnit.MILLISECONDS);
+		return taskPool.scheduleWithFixedDelay(d,0,100*delay,TimeUnit.MILLISECONDS);
 	}
 }

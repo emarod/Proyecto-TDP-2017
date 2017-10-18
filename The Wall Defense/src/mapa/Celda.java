@@ -1,7 +1,5 @@
 package mapa;
 
-import Controladores.ControladorAtaque;
-import Controladores.ControladorMovimiento;
 import Controladores.Director;
 import enemigo.Enemigo;
 import interfaz.Escenario;

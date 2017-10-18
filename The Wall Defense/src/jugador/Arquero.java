@@ -15,14 +15,13 @@ public class Arquero extends State{
 		resistencia=5;
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
-		velocidad_disparo=10;
-		
+		velocidad_disparo=100;		
 		
 	}
 	
 	public void setJugador(Jugador jugador){
 		this.jugador = jugador;
-		this.jugador.getCelda().getDirector().activarAtaque(this.jugador);
+		this.jugador.getCelda().getDirector().ejecutar(this.jugador,velocidad_disparo);
 	}
 	
 	public void setGrafico(JLabel grafico) {
@@ -40,12 +39,10 @@ public class Arquero extends State{
 //				atacar=false;
 //			}
 //		}
-		jugador.setAtacar(true);
 		if(disparos_en_ejecucion<disparos_simultaneos){
-			shot =new DisparoPlayer(this,3,velocidad_disparo).getTask();
+			shot =new DisparoPlayer(this,3,1).getTask();
 			disparos_en_ejecucion++;		
-    	}
-		jugador.setAtacar(false);
+    	}		
 		return shot;
     }
     

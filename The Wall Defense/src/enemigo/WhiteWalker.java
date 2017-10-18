@@ -18,7 +18,6 @@ public class WhiteWalker extends State{
 		atacar=false;
 		puntaje=100;
 		velocidad_enemigo=700;
-		puntosVelocidad=velocidad_enemigo;
 		resistencia=3;
 	}
 
@@ -39,21 +38,14 @@ public class WhiteWalker extends State{
 		for(int i=0;i<5 && mover;i++) {
 			GameObject objeto =siguiente.getObjects()[i];					
 			if (objeto!=null && !objeto.Accept(enemigo.getVisitor())){
-				this.enemigo.getCelda().getDirector().desactivarMovimiento(this.enemigo);
+				this.enemigo.getCelda().getDirector().desactivar(this.enemigo);
 				mover=false;
 			}
 		}
 		if(xCelda!=0 && mover) {
-			puntosVelocidad--;
-			if(puntosVelocidad==0) {
-				puntosCelda--;				
-				enemigo.getGrafico().setBounds(xGrafico-1, yGrafico, 32, 32);
-				puntosVelocidad=velocidad_enemigo;
-			}		
-			if(puntosCelda==0) {
-				enemigo.intercambiar_celdas(siguiente);
-				puntosCelda=32;				
-			}			
+			enemigo.getGrafico().setBounds(xGrafico-32, yGrafico, 32, 32);
+			puntosVelocidad=velocidad_enemigo;
+			enemigo.intercambiar_celdas(siguiente);						
 		}
 		enemigo.setMoviendo(false);
 		
@@ -61,13 +53,13 @@ public class WhiteWalker extends State{
 	
     public void destruir(){
     	System.out.println("Destruir WhiteWalker");
-    	this.enemigo.getCelda().getDirector().desactivarMovimiento(this.enemigo);
+    	this.enemigo.getCelda().getDirector().desactivar(this.enemigo);
 	   
 	}
 	
 	public void setEnemigo(Enemigo enemigo){
 		this.enemigo = enemigo;
-		this.enemigo.getCelda().getDirector().activarMovimiento(this.enemigo);
+		this.enemigo.getCelda().getDirector().ejecutar(this.enemigo,velocidad_enemigo);
 		mover=true;
 	}
 	
