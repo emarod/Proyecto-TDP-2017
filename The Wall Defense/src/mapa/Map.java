@@ -177,34 +177,36 @@ public class Map implements Runnable{
 	
 	public void crearJugador(Jugador j) {		
 		int x_cel= Math.round(celdaLabel.getX()/32);
-		int y_cel= Math.round(celdaLabel.getY()/32);
-		Jugador player = j.clone(celdas[x_cel][y_cel]);		
-		celdas[x_cel][y_cel].getObjects()[2]= player;
-		JLabel icono = player.getGrafico();
-		icono.setBounds(x_cel*32,y_cel*32,32,32);
-		icono.addMouseListener(
-			new MouseAdapter() {
-				public void mouseReleased(MouseEvent e) {
-					int x_cel = Math.round(x_mouse/32); 
-					int y_cel = Math.round(y_mouse/32);
-					GameObject[] objetosCelda =celdas[x_cel][y_cel].getObjects();
-					objetosCelda[2]= player;
-					player.getCelda().getObjects()[2]=null;
-					player.setCelda(celdas[x_cel][y_cel]);
-					int x_terreno = objetosCelda[0].getGrafico().getX();
-					int y_terreno = objetosCelda[0].getGrafico().getY();
-					player.getGrafico().setBounds(x_terreno, y_terreno, 32, 32);
+		int y_cel= Math.round(celdaLabel.getY()/32);				
+		if(	celdas[x_cel][y_cel].getObjects()[2]==null) {
+			Jugador player = j.clone(celdas[x_cel][y_cel]);
+			celdas[x_cel][y_cel].getObjects()[2]= player;
+			JLabel icono = player.getGrafico();
+			icono.setBounds(x_cel*32,y_cel*32,32,32);
+			icono.addMouseListener(
+				new MouseAdapter() {
+					public void mouseReleased(MouseEvent e) {
+						int x_cel = Math.round(x_mouse/32); 
+						int y_cel = Math.round(y_mouse/32);
+						GameObject[] objetosCelda =celdas[x_cel][y_cel].getObjects();
+						objetosCelda[2]= player;
+						player.getCelda().getObjects()[2]=null;
+						player.setCelda(celdas[x_cel][y_cel]);
+						int x_terreno = objetosCelda[0].getGrafico().getX();
+						int y_terreno = objetosCelda[0].getGrafico().getY();
+						player.getGrafico().setBounds(x_terreno, y_terreno, 32, 32);
+					}
 				}
-			}
-		);
-		icono.addMouseMotionListener(
-			new MouseMotionAdapter() {
-				public void mouseDragged(MouseEvent e) {
-					player.getGrafico().setBounds(x_mouse,y_mouse,32,32);
+			);
+			icono.addMouseMotionListener(
+				new MouseMotionAdapter() {
+					public void mouseDragged(MouseEvent e) {
+						player.getGrafico().setBounds(x_mouse,y_mouse,32,32);
+					}
 				}
-			}
-		);
-		escenario.agregar(icono,new Integer(2));
+			);
+			escenario.agregar(icono,new Integer(2));
+		}
 	}
 	
 	public void añadirCaminante(int x, int y) {
