@@ -24,14 +24,15 @@ public class Escenario extends JPanel {
 		int r=rnd.nextInt(2);		
 		layeredPane= new JLayeredPane();
 		layeredPane.setPreferredSize(new Dimension(640, 384));
+		
 		this.add(layeredPane);
 		mapa= new Map(this,width,height,r);
 //		this.setBackground(new Color(255, 0, 255, 255));
 	}
 	
-	public void  agregar(JLabel objeto,Integer entero){
+	public void  agregar(JLabel objeto,int entero){
 		objeto.setSize(32,32);
-		layeredPane.add(objeto,entero);
+		layeredPane.add(objeto,new Integer(entero));
 		repaint();
 	}
 	

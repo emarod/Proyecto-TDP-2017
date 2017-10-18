@@ -3,6 +3,8 @@ package mapa;
 import java.awt.List;
 import java.util.LinkedList;
 
+import javax.swing.JLabel;
+
 import Controladores.Director;
 import enemigo.Enemigo;
 import interfaz.Escenario;
@@ -59,7 +61,11 @@ public class Celda {
 	    		case 'q':
 	    		case 'r':
 	    			//Piedra.
-	    			listaObjetosLogicos[0]=new Rock(this,1,1);
+	    			listaObjetosLogicos[0]=new Nieve(this);
+	    			listaObjetosLogicos[3]=new Rock(this,3,1);
+	    			JLabel roca = listaObjetosLogicos[3].getGrafico();
+	    			roca.setBounds(posX*32, posY*32, 32, 32);
+	    			getEscenario().agregar(roca,new Integer(3));	    			
 	    			break;
 	    		case 's':
 	    		case 't':
