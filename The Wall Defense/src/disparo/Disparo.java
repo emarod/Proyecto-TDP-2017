@@ -3,8 +3,6 @@ import jugador.State;
 import main.Unidad;
 import main.Visitor;
 public abstract class Disparo extends Unidad  {
-	protected int ancho;
-	protected int alto;
 	protected State tipo;
 
 	protected Disparo(State t, int prof,int speed){

@@ -7,8 +7,6 @@ import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
 public class Enemigo extends Unidad{
-	 private int alto;
-	 private int ancho;
 	 private State tipo;
 	 
 	 public Enemigo(Celda c, int profundidad, State t){
@@ -30,13 +28,7 @@ public class Enemigo extends Unidad{
 		return V.visitEnemigo((Enemigo)this);
 	}
 	
-    public int getAlto(){
-    	return alto;
-    }
-    
-    public int getAncho(){
-    	return ancho;
-    }
+
     
     public Visitor getVisitor() {
     	return V;
@@ -68,7 +60,6 @@ public class Enemigo extends Unidad{
 	public void destruir(){
 		super.destruir();
 		celda.destruirEnemigo(this);
-
 	}
 
 	public void atacar() {

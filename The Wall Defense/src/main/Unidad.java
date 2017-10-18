@@ -11,10 +11,11 @@ public abstract class Unidad extends GameObject implements Runnable{
 	//Parametros de conducta
     protected boolean atacar;
 	protected int velocidad;
+	protected int alto;
+	protected int ancho;
 	protected ScheduledFuture<?> activeTask;
 
-    public abstract int getAncho();
-	public abstract int getAlto(); 
+
 	public abstract void atacar();
 	public abstract void mover();
 	

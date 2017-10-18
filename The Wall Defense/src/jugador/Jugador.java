@@ -13,8 +13,6 @@ public class Jugador extends Unidad{
 	
 	protected JLabel imagen;
 	protected int vidas;
-	private int alto;
-    private int ancho;
     private State tipo;
     protected Future<?> activeAttack;
      
@@ -41,12 +39,7 @@ public class Jugador extends Unidad{
     public boolean Accept(Visitor V){
     	return V.visitPlayer(this);
     }
-    public int getAlto(){
-    	return alto;
-    }
-    public int getAncho(){
-    	return ancho;
-    }
+
     public void setVisitor(Visitor v){
     	V=v;
     }
