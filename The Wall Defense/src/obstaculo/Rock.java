@@ -17,6 +17,7 @@ public class Rock extends Obstaculo implements Runnable{
     	return resistencia;
     }
     public void restarResistencia(){
+    	System.out.println("restar resitencia");
     	if(resistencia==1){
     		destruir();
     	}else{
@@ -30,6 +31,7 @@ public class Rock extends Obstaculo implements Runnable{
     	return sprite;
     }
     public void destruir(){
+    	super.destruir();
     }
     public void run(){}
 

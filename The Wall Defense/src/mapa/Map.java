@@ -1,7 +1,6 @@
 package mapa;
 
 import java.awt.Color;
-import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -21,9 +20,6 @@ import java.io.IOException;
 
 import main.GameObject;
 import interfaz.Escenario;
-import jugador.Arquero;
-import jugador.Caballero;
-import jugador.Espadachin;
 import jugador.Jugador;
 
 public class Map implements Runnable{
@@ -109,10 +105,11 @@ public class Map implements Runnable{
 		    					
 					);
 	    			terreno.setBounds(32*x,32*y,32,32);
-	    		    escenario.agregar(terreno,new Integer(1));
+	    		    escenario.agregar(terreno,new Integer(0));
 	    			
 	    		}else {
 	    			if(objetos[2]!=null){
+	    				System.out.println("ghost code");
 	    				JLabel terreno= objetos[2].getGrafico();
 	    				terreno.setBounds(32*x,32*y,32,32);
 	    				escenario.agregar(terreno,new Integer(3));

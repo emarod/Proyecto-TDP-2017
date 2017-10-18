@@ -15,9 +15,8 @@ public class VisitorEnemigo extends Visitor{
     }
     
    public  boolean VisitRock(Rock r){
-	   System.out.println("visito una roca.");
-	   enemigo.setVelocidad(0);
-	   return true;
+	   r.restarResistencia();
+	   return false;
    }
    public  boolean VisitWater(Water w){
 	   System.out.println("visito zona de agua.");
