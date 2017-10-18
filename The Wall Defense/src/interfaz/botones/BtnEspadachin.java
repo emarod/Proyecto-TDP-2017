@@ -11,7 +11,7 @@ public class BtnEspadachin extends BtnJugador {
 	public BtnEspadachin(Escenario e) {
 		super(e);
 		player=new Jugador(null, 2, new Espadachin());
-		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/JonSnow.gif")));
+		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/jon_snow.gif")));
 	};
 
 	public void create() {

@@ -5,7 +5,9 @@ import javax.swing.*;
 public abstract class State {
 	protected int velocidad_jugador;
 	protected int resistencia;
-	protected Jugador jugador;	
+	protected Jugador jugador;
+	protected Icon[] graficos;
+	protected int graph;
 	
     public boolean impact(){
     	if(resistencia==1)
@@ -18,13 +20,13 @@ public abstract class State {
     
     public abstract Future<?> atacar();
     public abstract void mover();
-    public abstract void setJugador(Jugador jugador);
-    public abstract void setGraficos(Icon[] graficos, JLabel grafico);
+    public abstract void setJugador(Jugador jugador);    
 	public abstract void setGrafico(JLabel grafico);
 	public void destruir() {
 		// TODO Auto-generated method stub
 		
-	}	
+	}
+	
 	public abstract State clone();
 	
 	public Jugador getJugador() {

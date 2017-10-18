@@ -28,12 +28,6 @@ public class Caballero extends State{
     }
 
 	@Override
-	public void setGraficos(Icon[] graficos, JLabel grafico) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void mover() {
 		// TODO Auto-generated method stub
 		

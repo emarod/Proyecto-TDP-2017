@@ -4,7 +4,6 @@ import main.Visitor;
 import mapa.Celda;
 public class Rock extends Obstaculo implements Runnable{
 	private int resistencia;
-	private Thread t;
 	private int sprite;
     public Rock(Celda c,int prof,int sprite){
     	profundidad=prof;

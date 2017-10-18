@@ -11,7 +11,7 @@ public class BtnArquero extends BtnJugador {
 	public BtnArquero(Escenario e) {
 		super(e);
 		player=new Jugador(null, 2, new Arquero());
-		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/Ygritte.gif")));
+		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/ygritte.gif")));
 	};
 
 	public void create() {

@@ -23,15 +23,9 @@ public class Espadachin extends State{
     }
     
     public void setGrafico(JLabel grafico){
-    	ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/JonSnow.gif"));
+    	ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/jon_snow.gif"));
 		grafico.setIcon(imagen);
     }
-
-	@Override
-	public void setGraficos(Icon[] graficos, JLabel grafico) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void mover() {
