@@ -5,11 +5,7 @@ import java.util.concurrent.Future;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-<<<<<<< HEAD
-public class Caballero extends StateJugador{
-=======
 public class Caballero extends State{
->>>>>>> refs/remotes/origin/hilos
 	public Caballero() {
 		resistencia=10;
 	}
@@ -35,7 +31,7 @@ public class Caballero extends State{
 	}
 
 	@Override
-	public StateJugador clone() {
+	public State clone() {
 		return new Caballero();
 	}
 }

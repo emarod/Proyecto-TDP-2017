@@ -12,12 +12,12 @@ public class Escenario extends JPanel {
 	/**
 	 * 
 	 */
-	protected static final long serialVersionUID = 1L;
-	protected static final int width=20;
-	protected static final int height=12;
-	protected JLayeredPane layeredPane;
-	protected Map mapa;
-	protected ProximaHorda horda;
+	private static final long serialVersionUID = 1L;
+	private static final int width=20;
+	private static final int height=12;
+	private JLayeredPane layeredPane;
+	private Map mapa;
+	private ProximaHorda horda;
 	
 	public Escenario(){
 		Random rnd=new Random();

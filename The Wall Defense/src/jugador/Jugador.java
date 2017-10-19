@@ -13,10 +13,10 @@ public class Jugador extends Unidad{
 	
 	protected JLabel imagen;
 	protected int vidas;
-    protected StateJugador tipo;
+    private State tipo;
     protected Future<?> activeAttack;
      
-    public Jugador(Celda c,int prof, StateJugador t){	 
+    public Jugador(Celda c,int prof, State t){	 
     	 alto=30;
     	 ancho=30;
     	 profundidad=prof;
@@ -44,7 +44,7 @@ public class Jugador extends Unidad{
     	V=v;
     }
 
-    public StateJugador getState(){
+    public State getState(){
     	return tipo;
     }
 
@@ -78,7 +78,7 @@ public class Jugador extends Unidad{
 	
 	public Jugador clone(Celda c) {
 //		Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
-		StateJugador tipo = this.getState().clone();
+		State tipo = this.getState().clone();
 		Jugador clon = new Jugador(c, 2, tipo);
 		tipo.setJugador(clon);
 		return clon;

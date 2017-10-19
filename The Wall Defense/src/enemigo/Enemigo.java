@@ -9,9 +9,9 @@ import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
 public class Enemigo extends Unidad{
-	 protected StateEnemigo tipo;
+	 private State tipo;
 	 
-	 public Enemigo(Celda c, int profundidad, StateEnemigo t){
+	 public Enemigo(Celda c, int profundidad, State t){
 		V=new VisitorEnemigo(this);
     	tipo=t;
     	alto=30;
@@ -59,7 +59,7 @@ public class Enemigo extends Unidad{
     	return grafico;
     }
     
-    public StateEnemigo getState(){
+    public State getState(){
     	return tipo;
     }
 	

@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import main.GameObject;
 import mapa.Celda;
 
-public class WhiteWalker extends StateEnemigo{
+public class WhiteWalker extends State{
 	
 	public WhiteWalker() {
 		puntaje=100;

@@ -3,12 +3,8 @@ import java.util.concurrent.Future;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/remotes/origin/hilos
-
-public class Espadachin extends StateJugador{
+public class Espadachin extends State{
 	
 	public Espadachin() {
 		resistencia=8;
@@ -35,7 +31,7 @@ public class Espadachin extends StateJugador{
 	}
 
 	@Override
-	public StateJugador clone() {
+	public State clone() {
 		return new Espadachin();
 	}
 }

@@ -3,24 +3,15 @@ package disparo;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-<<<<<<< HEAD
-import jugador.StateJugador;
-=======
 import jugador.Arquero;
->>>>>>> refs/remotes/origin/hilos
 import main.GameObject;
 import main.Visitor;
 import mapa.Celda;
 
 public class DisparoPlayer extends Disparo{	
 	
-<<<<<<< HEAD
-    public DisparoPlayer(StateJugador t, int prof,int speed){
-       super(t,prof,speed);      
-=======
     public DisparoPlayer(Arquero archer, int prof){
        super(archer,prof);      
->>>>>>> refs/remotes/origin/hilos
        V=new VisitorDisparoPlayer(this);
  	   grafico=new JLabel();
   	   grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
@@ -74,15 +65,10 @@ public class DisparoPlayer extends Disparo{
 
 	@Override
 	public void restarDisparosEnEjecucion() {
-		tipo.restarDisparosEnEjecucion();
+		arquero.restarDisparosEnEjecucion();
 	}
 
 	@Override
-<<<<<<< HEAD
-	public void run() {		
-		mover();
-		
-=======
 	public void run() {
 		mover();		
 	}
@@ -95,7 +81,6 @@ public class DisparoPlayer extends Disparo{
 	@Override
 	public void setVelocidad(int speed) {
 		arquero.setVelocidad(speed);		
->>>>>>> refs/remotes/origin/hilos
 	}
     
 }

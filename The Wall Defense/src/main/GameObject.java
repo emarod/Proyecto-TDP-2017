@@ -20,7 +20,6 @@ public abstract class GameObject {
     }
      
     public abstract boolean Accept(Visitor V);
-    
     public int getProfundidad(){
     	return profundidad;
     }

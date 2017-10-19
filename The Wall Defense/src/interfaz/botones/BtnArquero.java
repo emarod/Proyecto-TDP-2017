@@ -8,14 +8,10 @@ import jugador.Jugador;
 
 public class BtnArquero extends BtnJugador {
 	
-<<<<<<< HEAD
-	protected static final long serialVersionUID = 1L;
-=======
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
->>>>>>> refs/remotes/origin/hilos
 
 	public BtnArquero(Escenario e) {
 		super(e);

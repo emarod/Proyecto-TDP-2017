@@ -10,7 +10,7 @@ import main.Unidad;
 
 public class Director{
 
-	protected ScheduledExecutorService taskPool;		
+	ScheduledExecutorService taskPool;		
 	
 //	Crea un pool de hilos. Mantiene un flujo de ejecución de tareas, actualmente 
 //	haciendo uso de un solo hilo.

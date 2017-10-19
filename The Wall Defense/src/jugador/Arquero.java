@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 
 import disparo.DisparoPlayer;
 
-public class Arquero extends StateJugador{
+public class Arquero extends State{
 	
 	protected Future<?> shot;
 	protected int velocidad_disparo;
@@ -90,7 +90,7 @@ public class Arquero extends StateJugador{
 	}
 
 	@Override
-	public StateJugador clone() {
+	public State clone() {
 		return new Arquero();
 	}
 
