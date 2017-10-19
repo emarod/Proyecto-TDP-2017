@@ -7,7 +7,7 @@ import obstaculo.Rock;
 import obstaculo.Water;
 public class VisitorJugador extends Visitor{
 		
-		Jugador jugador;
+   	   protected Jugador jugador;
 	
 	   public VisitorJugador(Jugador j){
 		   jugador = j;

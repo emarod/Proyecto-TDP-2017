@@ -3,8 +3,8 @@ import javax.swing.*;
 import main.Visitor;
 import mapa.Celda;
 public class Rock extends Obstaculo implements Runnable{
-	private int resistencia;
-	private int sprite;
+	protected int resistencia;
+	protected int sprite;
     public Rock(Celda c,int prof,int sprite){
     	profundidad=prof;
     	celda=c;

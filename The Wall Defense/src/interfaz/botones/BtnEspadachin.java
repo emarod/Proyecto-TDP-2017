@@ -8,7 +8,7 @@ import jugador.Jugador;
 
 public class BtnEspadachin extends BtnJugador {
 	
-	private static final long serialVersionUID = 1L;
+	protected static final long serialVersionUID = 1L;
 	
 	public BtnEspadachin(Escenario e) {
 		super(e);

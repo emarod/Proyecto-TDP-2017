@@ -8,7 +8,7 @@ import obstaculo.Rock;
 import obstaculo.Water;
 public class VisitorDisparoPlayer extends Visitor {
 	
-	DisparoPlayer disparo;
+	protected DisparoPlayer disparo;
 	
 	public VisitorDisparoPlayer(DisparoPlayer dp){
 		disparo = dp;

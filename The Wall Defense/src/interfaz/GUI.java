@@ -6,6 +6,7 @@ import javax.swing.*;
 
 
 public class GUI extends JFrame{
+	
 	protected static final long serialVersionUID = 1L;
 	protected Escenario escenario;
 	protected MenuCompra tienda;

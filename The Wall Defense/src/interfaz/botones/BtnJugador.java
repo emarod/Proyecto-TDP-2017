@@ -9,6 +9,7 @@ import interfaz.Escenario;
 import jugador.Jugador;
 
 public abstract class BtnJugador extends JButton{
+	
 	protected static final long serialVersionUID = 1L;
 	protected Escenario stage;
 	protected Jugador player;

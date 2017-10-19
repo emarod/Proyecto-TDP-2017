@@ -8,7 +8,7 @@ import mapa.Celda;
 
 public class Muro extends Terreno {
 	
-	private int sprite;
+	protected int sprite;
 	
 	
     public Muro(Celda c){    	

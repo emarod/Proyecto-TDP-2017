@@ -13,10 +13,10 @@ import obstaculo.*;
 import terreno.*;
 
 public class Celda {
-	   private GameObject[] listaObjetosLogicos;
-	   private Map Map;
-	   private int posX;
-	   private int posY;
+	   protected GameObject[] listaObjetosLogicos;
+	   protected Map Map;
+	   protected int posX;
+	   protected int posY;
 	   protected boolean hayDisparo;
 	   protected boolean estaOcupada;
 	   protected LinkedList<GameObject> disparos;

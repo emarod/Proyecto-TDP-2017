@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 import interfaz.GUI;
 
 public class Juego {
-	private static GUI frame;
+	protected static GUI frame;
 
 	public static void main(String[] args) {
 		new Juego();

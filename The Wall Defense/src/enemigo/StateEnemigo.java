@@ -2,7 +2,7 @@ package enemigo;
 
 import javax.swing.*;
 
-public abstract class State {
+public abstract class StateEnemigo {
 	protected int velocidad_enemigo;
 	protected int resistencia;
 	protected Enemigo enemigo;

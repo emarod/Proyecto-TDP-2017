@@ -23,13 +23,13 @@ import interfaz.Escenario;
 import jugador.Jugador;
 
 public class Map implements Runnable{
-	private Celda[][] celdas;
-	private Escenario escenario;
-	private JLabel celdaLabel;
-	private int puntaje;
-	private int x_mouse;
-	private int y_mouse;
-	private Director director;
+	protected Celda[][] celdas;
+	protected Escenario escenario;
+	protected JLabel celdaLabel;
+	protected int puntaje;
+	protected int x_mouse;
+	protected int y_mouse;
+	protected Director director;
 	
 	public Map(Escenario stage,int width,int height,int sprites) {
 		celdas= new Celda[width][height];

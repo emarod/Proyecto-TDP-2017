@@ -8,7 +8,6 @@ import jugador.Jugador;
 
 public class BtnCaballero extends BtnJugador{
 	
-	
 	protected static final long serialVersionUID = 1L;
 
 	public BtnCaballero(Escenario e) {

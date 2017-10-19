@@ -19,13 +19,10 @@ import javax.swing.JLabel;
 import mapa.Map;
 
 public class MenuCompra extends JPanel{
-	JLabel personaje;
-	Map mapa;
-	private Escenario escenario;
- 	/**
- 	 * 
- 	 */
- 	private static final long serialVersionUID = 1L;
+	protected JLabel personaje;
+	protected Map mapa;
+	protected Escenario escenario;
+	protected static final long serialVersionUID = 1L;
  	
 	public MenuCompra(Escenario escenario) {
 		this.escenario= escenario;

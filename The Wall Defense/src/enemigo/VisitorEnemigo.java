@@ -8,7 +8,7 @@ import main.Visitor;
 
 public class VisitorEnemigo extends Visitor{
 	
-	Enemigo enemigo;
+	protected Enemigo enemigo;
 	
 	public VisitorEnemigo(Enemigo e){
     	enemigo = e;
