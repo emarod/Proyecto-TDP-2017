@@ -8,26 +8,50 @@ import javax.swing.JLabel;
 
 import disparo.DisparoPlayer;
 
-public class Arquero extends State{
+public class Arquero extends StateJugador{
 	
 	protected Future<?> shot;
+	protected int velocidad_disparo;
+	protected int disparos_simultaneos;
+	protected int disparos_en_ejecucion;
+	
 	public Arquero() {
+		velocidad_jugador=15;
 		resistencia=5;
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
-		velocidad_disparo=10;
-		
-		
+		velocidad_disparo=75;
+		graficos= new Icon[5];
+		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_0.png"));
+		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_1.png"));
+		graficos[2]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_2.png"));
+		graficos[3]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_3.png"));
+		graficos[4]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_4.png"));
 	}
 	
 	public void setJugador(Jugador jugador){
 		this.jugador = jugador;
-		this.jugador.getCelda().getDirector().activarAtaque(this.jugador);
+		this.jugador.getCelda().getDirector().ejecutar(this.jugador,velocidad_jugador);
 	}
 	
 	public void setGrafico(JLabel grafico) {
-		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/Ygritte.gif"));
-		grafico.setIcon(imagen);
+		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_0.png"));
+		graph=0;
+		grafico.setIcon(imagen);		
+	}
+	
+	public void animarDisparo() {
+		if(graph<4) {
+			graph++;
+		}
+		setGrafico(graph);
+//		try {
+//			Thread.sleep(100);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+				
 	}
 	
 	public Future<?> atacar(){
@@ -39,13 +63,12 @@ public class Arquero extends State{
 //			if (objeto!=null && !objeto.Accept(jugador.getVisitor())){
 //				atacar=false;
 //			}
-//		}
-		jugador.setAtacar(true);
-		if(disparos_en_ejecucion<disparos_simultaneos){
-			shot =new DisparoPlayer(this,3,velocidad_disparo).getTask();
-			disparos_en_ejecucion++;		
+//		}		
+		if(disparos_en_ejecucion<disparos_simultaneos){			
+			shot =new DisparoPlayer(this,6).getTask();			
+			disparos_en_ejecucion++;
     	}
-		jugador.setAtacar(false);
+		graph=0;
 		return shot;
     }
     
@@ -56,22 +79,23 @@ public class Arquero extends State{
     public int getDisparosEnEjecucion(){
     	return disparos_en_ejecucion;
     }
-
-	@Override
-	public void setGraficos(Icon[] graficos, JLabel grafico) {
-		// TODO Auto-generated method stub
-		
+    
+    public void setGrafico(int i) {
+		jugador.getGrafico().setIcon(graficos[i]);
 	}
 
 	@Override
 	public void mover() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override
-	public State clone() {
+	public StateJugador clone() {
 		return new Arquero();
+	}
+
+	public int getVelocidadDisparo() {
+		return velocidad_disparo;
 	}
     
 }

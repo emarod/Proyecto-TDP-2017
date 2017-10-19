@@ -1,9 +1,7 @@
 package interfaz;
  
  import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-import javax.swing.event.MouseInputListener;
 
 import interfaz.botones.BtnArquero;
 import interfaz.botones.BtnCaballero;
@@ -14,7 +12,6 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,13 +19,10 @@ import javax.swing.JLabel;
 import mapa.Map;
 
 public class MenuCompra extends JPanel{
-	JLabel personaje;
-	Map mapa;
-	private Escenario escenario;
- 	/**
- 	 * 
- 	 */
- 	private static final long serialVersionUID = 1L;
+	protected JLabel personaje;
+	protected Map mapa;
+	protected Escenario escenario;
+	protected static final long serialVersionUID = 1L;
  	
 	public MenuCompra(Escenario escenario) {
 		this.escenario= escenario;

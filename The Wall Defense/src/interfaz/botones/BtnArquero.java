@@ -1,10 +1,6 @@
 package interfaz.botones;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 
 import interfaz.Escenario;
 import jugador.Arquero;
@@ -12,10 +8,12 @@ import jugador.Jugador;
 
 public class BtnArquero extends BtnJugador {
 	
+	protected static final long serialVersionUID = 1L;
+
 	public BtnArquero(Escenario e) {
 		super(e);
 		player=new Jugador(null, 2, new Arquero());
-		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/Ygritte.gif")));
+		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/ygritte.gif")));
 	};
 
 	public void create() {

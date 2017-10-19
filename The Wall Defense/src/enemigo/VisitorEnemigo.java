@@ -8,19 +8,19 @@ import main.Visitor;
 
 public class VisitorEnemigo extends Visitor{
 	
-	Enemigo enemigo;
+	protected Enemigo enemigo;
 	
 	public VisitorEnemigo(Enemigo e){
     	enemigo = e;
     }
     
    public  boolean VisitRock(Rock r){
-	   System.out.println("visito una roca.");
-	   enemigo.setVelocidad(0);
-	   return true;
+	   r.restarResistencia();
+	   return false;
    }
    public  boolean VisitWater(Water w){
 	   System.out.println("visito zona de agua.");
+	   enemigo.relentizar(w.getPenalizacion());
 	   return true;
    }
    public  boolean visitPlayer(Jugador j){

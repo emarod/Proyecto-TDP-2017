@@ -12,10 +12,7 @@ import javax.swing.border.LineBorder;
 
 public class ProximaHorda extends JPanel{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	protected static final long serialVersionUID = 1L;
 	protected JLabel puntaje;
 	protected Escenario escenario;
 	

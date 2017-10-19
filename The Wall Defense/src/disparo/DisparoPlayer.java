@@ -3,41 +3,37 @@ package disparo;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import jugador.State;
+import jugador.Arquero;
 import main.GameObject;
 import main.Visitor;
 import mapa.Celda;
 
 public class DisparoPlayer extends Disparo{	
-	protected int puntosCelda = 32;
-	protected int puntosVelocidad = 1;
-    public DisparoPlayer(State t, int prof,int speed){
-       super(t,prof,speed);      
+	
+    public DisparoPlayer(Arquero archer, int prof){
+       super(archer,prof);      
        V=new VisitorDisparoPlayer(this);
  	   grafico=new JLabel();
   	   grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
   	   grafico.setBounds(32*celda.getPosX(), 32*celda.getPosY(), 32, 32);
-	   celda.getEscenario().agregar(grafico,new Integer(2));	   
-	   celda.getDirector().activarMovimiento(this);
-	   
+	   celda.getEscenario().agregar(grafico,new Integer(2));
+	   celda.getDirector().ejecutar(this,arquero.getVelocidadDisparo());	     
     }
 
     public void destruir(){
     	super.destruir();
     	restarDisparosEnEjecucion();
 		celda.getEscenario().remove(grafico);
-		celda.getDirector().desactivarMovimiento(this);
-	   
-	}
-    
+		celda.getDirector().desactivar(this);		
+	}    
     
     public boolean Accept(Visitor V){
     	return V.visitDisparoPlayer(this);
     }
 	
 	public void mover() {
-		mover=true;
 		Celda siguiente;
+		arquero.animarDisparo();
 		int xCelda=celda.getPosX();
 		int yCelda=celda.getPosY();
 		int xGrafico= grafico.getX();
@@ -50,36 +46,41 @@ public class DisparoPlayer extends Disparo{
 			
 		GameObject objeto =siguiente.getObjects()[1];					
 		if (objeto!=null && !objeto.Accept(V)){
-			celda.getDirector().desactivarMovimiento(this);
-			mover=false;
+			celda.getDirector().desactivar(this);
 		}		
 
-		if(!mover || xCelda==19 || xGrafico>=640) {
+		if(xCelda==19 || xGrafico>=640) {
 			destruir();	
 		}
 		else {
 			grafico.setBounds(xGrafico+32, yGrafico, getAncho(), getAlto());
-			puntosVelocidad=velocidad;
 			intercambiar_celdas(siguiente);
 		}
-		mover=false;
 		
 	}
 	
 	@Override
-	public void atacar() {
-		// TODO Auto-generated method stub
+	public void atacar() {		
 	}
 
 	@Override
 	public void restarDisparosEnEjecucion() {
-		tipo.restarDisparosEnEjecucion();
+		arquero.restarDisparosEnEjecucion();
 	}
 
 	@Override
 	public void run() {
-		mover();
-		
+		mover();		
+	}
+
+	@Override
+	public int getVelocidad() {
+		return arquero.getVelocidadDisparo();
+	}
+
+	@Override
+	public void setVelocidad(int speed) {
+		arquero.setVelocidad(speed);		
 	}
     
 }

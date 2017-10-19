@@ -1,5 +1,7 @@
 package enemigo;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.swing.JLabel;
 
 //import interfaz.GUI;
@@ -7,40 +9,36 @@ import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
 public class Enemigo extends Unidad{
-	 private int alto;
-	 private int ancho;
-	 private State tipo;
+	 protected StateEnemigo tipo;
 	 
-	 public Enemigo(Celda c, int profundidad, State t){
+	 public Enemigo(Celda c, int profundidad, StateEnemigo t){
 		V=new VisitorEnemigo(this);
     	tipo=t;
     	alto=30;
     	ancho=30;
     	celda=c;    	
     	this.profundidad=profundidad;
-    	System.out.println("Creando enemigo"+this.profundidad);
     	grafico=new JLabel();
-    	setGrafico();
+    	setGrafico();    	
+	}
+	 
+	public void activar() {
+		activeTask=getCelda().getDirector().ejecutar(this,tipo.getVelocidad());
+	}
+	
+	public void activar(long l) {
+		activeTask=getCelda().getDirector().ejecutar(this,l,tipo.getVelocidad());
 	}
 
 	public boolean Accept(Visitor V){
-		return V.visitEnemigo((Enemigo)this);
+		return V.visitEnemigo(this);
 	}
 	
 
-	
-    public int getAlto(){
-    	return alto;
-    }
-    
-    public int getAncho(){
-    	return ancho;
-    }
     
     public Visitor getVisitor() {
     	return V;
     }
-    	
     
 	public boolean restarResistencia(){ 
 		boolean destruir= tipo.impact();
@@ -61,36 +59,55 @@ public class Enemigo extends Unidad{
     	return grafico;
     }
     
-    public State getState(){
+    public StateEnemigo getState(){
     	return tipo;
     }
 	
 	public void destruir(){
-		System.out.println("In enemigo profundidad "+profundidad);
 		super.destruir();
-		System.out.println("Destruir enemigo");
 		celda.destruirEnemigo(this);
-
 	}
 
-	@Override
 	public void atacar() {
 		tipo.atacar();
 	}
 
-	@Override
 	public void mover() {
 		tipo.mover();
-		
 	}
 	
 	public int getPuntaje() {
 		return tipo.getPuntaje();
 	}
 
+	public void run() {		
+		mover();		
+	}
+
 	@Override
-	public void run() {
+	public int getVelocidad() {
 		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setVelocidad(int speed) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void relentizar(int penalizacion) {
+//		try {
+//			Thread.sleep(penalizacion);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}		
+		activeTask.cancel(true);
+		activeTask= celda.getDirector().ejecutarUna(this,penalizacion);
+		activar(activeTask.getDelay(TimeUnit.MILLISECONDS));
+		
+		
 		
 	}
 }

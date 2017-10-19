@@ -9,29 +9,28 @@ import javax.swing.JPanel;
 import mapa.Map;
 
 public class Escenario extends JPanel {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private static final int width=20;
-	private static final int height=12;
-	private JLayeredPane layeredPane;
-	private Map mapa;
-	private ProximaHorda horda;
+	
+	protected static final long serialVersionUID = 1L;
+	protected static final int width=20;
+	protected static final int height=12;
+	protected JLayeredPane layeredPane;
+	protected Map mapa;
+	protected ProximaHorda horda;
 	
 	public Escenario(){
 		Random rnd=new Random();
 		int r=rnd.nextInt(2);		
 		layeredPane= new JLayeredPane();
 		layeredPane.setPreferredSize(new Dimension(640, 384));
+		
 		this.add(layeredPane);
 		mapa= new Map(this,width,height,r);
 //		this.setBackground(new Color(255, 0, 255, 255));
 	}
 	
-	public void  agregar(JLabel objeto,Integer entero){
+	public void  agregar(JLabel objeto,int entero){
 		objeto.setSize(32,32);
-		layeredPane.add(objeto,entero);
+		layeredPane.add(objeto,new Integer(entero));
 		repaint();
 	}
 	

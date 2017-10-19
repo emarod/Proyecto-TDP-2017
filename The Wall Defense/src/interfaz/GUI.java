@@ -6,11 +6,12 @@ import javax.swing.*;
 
 
 public class GUI extends JFrame{
-	private static final long serialVersionUID = 1L;
-	private Escenario escenario;
-	private MenuCompra tienda;
-	private ProximaHorda horda;
-	private JPanel panelInferior;
+	
+	protected static final long serialVersionUID = 1L;
+	protected Escenario escenario;
+	protected MenuCompra tienda;
+	protected ProximaHorda horda;
+	protected JPanel panelInferior;
 
 	public GUI() {	
 		super("The Wall Defense");

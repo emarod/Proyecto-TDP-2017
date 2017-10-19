@@ -3,29 +3,25 @@ import javax.swing.*;
 import main.Visitor;
 import mapa.Celda;
 public class Rock extends Obstaculo implements Runnable{
-	private int resistencia;
-	private Thread t;
-	private int sprite;
+	protected int resistencia;
+	protected int sprite;
     public Rock(Celda c,int prof,int sprite){
     	profundidad=prof;
     	celda=c;
     	this.sprite=sprite;
     	resistencia=3;
     	grafico=new JLabel();
-    	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/roca_"+sprite+".png")));
-    	
-    	
+    	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/roca_"+sprite+".png")));  	
     }
     public int getResistencia(){
     	return resistencia;
     }
     public void restarResistencia(){
+    	System.out.println("restar resitencia");
     	if(resistencia==1){
     		destruir();
     	}else{
     		resistencia--;
-    		t=new Thread(this);
-    		t.start();
     	}
     }
     public boolean Accept(Visitor V){
@@ -35,61 +31,8 @@ public class Rock extends Obstaculo implements Runnable{
     	return sprite;
     }
     public void destruir(){
-    	mover=false;
-    	t=new Thread(this);
-    	t.start();
+    	super.destruir();
     }
-    public void run(){
-    	if(!mover){
-    	celda.getObjects()[getProfundidad()]=null;
-    	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/piedra1_"+sprite+".png")));
-    	
-    	try{
-    		Thread.sleep(80);
-    	}catch(Exception e){}
-grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/piedra2_"+sprite+".png")));
-    	
-    	try{
-    		Thread.sleep(80);
-    	}catch(Exception e){}
-grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/piedra3_"+sprite+".png")));
-    	
-    	try{
-    		Thread.sleep(80);
-    	}catch(Exception e){}
-grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/piedra4_"+sprite+".png")));
-    	
-    	try{
-    		Thread.sleep(80);
-    	}catch(Exception e){}
-grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/piedra5_"+sprite+".png")));
-    	
-    	try{
-    		Thread.sleep(80);
-    	}catch(Exception e){}
-    	grafico.setIcon(null);
-    	
-    	}
-    	else{
-    		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/piedra1_"+sprite+".png")));
-        	
-        	try{
-        		Thread.sleep(60);
-        	}catch(Exception e){}
-    grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/piedra2_"+sprite+".png")));
-        	
-        	try{
-        		Thread.sleep(60);
-        	}catch(Exception e){}
-    grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/piedra3_"+sprite+".png")));
-        	try {
-			    Thread.sleep(60);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-        	    grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/piedra1_"+sprite+".png"))); 
-    	}
-    	
-    }
+    public void run(){}
 
 }

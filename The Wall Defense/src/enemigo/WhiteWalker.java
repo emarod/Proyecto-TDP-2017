@@ -4,71 +4,51 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import jugador.Jugador;
 import main.GameObject;
 import mapa.Celda;
 
-public class WhiteWalker extends State{
+public class WhiteWalker extends StateEnemigo{
 	
-	protected int puntosCelda = 32;
-	protected int puntosVelocidad;	
-	
-	public WhiteWalker() {		
-		mover=false;
-		atacar=false;
+	public WhiteWalker() {
 		puntaje=100;
-		velocidad_enemigo=700;
-		puntosVelocidad=velocidad_enemigo;
+		velocidad_enemigo=10;
 		resistencia=3;
 	}
 
 	@Override
 	public void atacar() {
-		// TODO Auto-generated method stub
 		
 	}
 
-	public void mover() {
-		enemigo.setMoviendo(true);
+	public void mover() {		
 		Celda siguiente;
+		boolean detener=false;
 		int xCelda=this.enemigo.getCelda().getPosX();
 		int yCelda=this.enemigo.getCelda().getPosY();
 		int xGrafico= enemigo.getGrafico().getX();
 		int yGrafico= enemigo.getGrafico().getY();
 		siguiente=this.enemigo.getCelda().getCelda(xCelda-1,yCelda);
-		for(int i=0;i<5 && mover;i++) {
-			GameObject objeto =siguiente.getObjects()[i];					
+		for(int i=0;i<7;i++) {
+			GameObject objeto =siguiente.getObjects()[i];
 			if (objeto!=null && !objeto.Accept(enemigo.getVisitor())){
-				this.enemigo.getCelda().getDirector().desactivarMovimiento(this.enemigo);
-				mover=false;
+//				this.enemigo.getCelda().getDirector().desactivar(this.enemigo);
+				detener=true;
 			}
 		}
-		if(xCelda!=0 && mover) {
-			puntosVelocidad--;
-			if(puntosVelocidad==0) {
-				puntosCelda--;				
-				enemigo.getGrafico().setBounds(xGrafico-1, yGrafico, 32, 32);
-				puntosVelocidad=velocidad_enemigo;
-			}		
-			if(puntosCelda==0) {
-				enemigo.intercambiar_celdas(siguiente);
-				puntosCelda=32;				
-			}			
-		}
-		enemigo.setMoviendo(false);
-		
+		if(!detener && xCelda!=0) {
+			enemigo.getGrafico().setBounds(xGrafico-32, yGrafico, 32, 32);
+			enemigo.intercambiar_celdas(siguiente);					
+		}		
 	}
 	
     public void destruir(){
     	System.out.println("Destruir WhiteWalker");
-    	this.enemigo.getCelda().getDirector().desactivarMovimiento(this.enemigo);
+    	this.enemigo.getCelda().getDirector().desactivar(this.enemigo);
 	   
 	}
 	
 	public void setEnemigo(Enemigo enemigo){
-		this.enemigo = enemigo;
-		this.enemigo.getCelda().getDirector().activarMovimiento(this.enemigo);
-		mover=true;
+		this.enemigo = enemigo;				
 	}
 	
 	public void setGrafico(JLabel grafico) {
@@ -76,7 +56,6 @@ public class WhiteWalker extends State{
 		grafico.setIcon(imagen);
 	}
 	
-	@Override
 	public void setGraficos(Icon[] graficos, JLabel grafico) {
 		// TODO Auto-generated method stub
 		

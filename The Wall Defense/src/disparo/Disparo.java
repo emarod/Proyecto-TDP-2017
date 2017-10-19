@@ -1,21 +1,17 @@
 package disparo;
-import jugador.State;
+import jugador.Arquero;
 import main.Unidad;
 import main.Visitor;
 public abstract class Disparo extends Unidad  {
-	protected int ancho;
-	protected int alto;
-	protected State tipo;
+	protected Arquero arquero;
 
-	protected Disparo(State t, int prof,int speed){
+	public Disparo(Arquero archer, int prof){
 		profundidad=prof;
 		ancho=32;
 		alto=32;
-		tipo = t;
-		celda=tipo.getJugador().getCelda();
-		celda.getObjects()[profundidad]=this;
-		this.velocidad=speed;
-		mover=false;
+		arquero= archer;
+		celda=arquero.getJugador().getCelda();
+		celda.addDisparo(this);
 	}
 	
 	   
@@ -32,6 +28,8 @@ public abstract class Disparo extends Unidad  {
 	public void destruir(){
 		super.destruir();
 	}
+	
+	
 	
 	public abstract void restarDisparosEnEjecucion();
 }

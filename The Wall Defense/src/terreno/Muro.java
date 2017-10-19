@@ -8,9 +8,6 @@ import mapa.Celda;
 
 public class Muro extends Terreno {
 	
-	private int sprite;
-	
-	
     public Muro(Celda c){    	
     	celda=c;  
     	//Este es un random limitado entre 1 y 2, para establecer un rango nuevo Random[n,m]: (Math.random()*m)+n
