@@ -8,9 +8,6 @@ import mapa.Celda;
 
 public class Nieve extends Terreno {
 	
-	protected int sprite;
-	
-	
     public Nieve(Celda c){    	
     	celda=c;  
     	//Este es un random limitado entre 1 y 3, para establecer un rango nuevo Random[n,m]: (Math.random()*m)+n
