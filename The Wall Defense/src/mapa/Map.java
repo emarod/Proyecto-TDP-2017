@@ -54,7 +54,9 @@ public class Map implements Runnable{
 	    String sCurrentLine="";
 	    Random rnd=new Random();
 	    int r=rnd.nextInt(1);
-	    InputStream fileMap = getClass().getResourceAsStream("/resources/mapa_"+1+".txt");
+	    //Este es un random limitado entre 1 y 3, para establecer un rango nuevo Random[n,m]: (Math.random()*m)+n
+    	r = (int) (Math.random()*2)+1 ;
+	    InputStream fileMap = getClass().getResourceAsStream("/resources/mapa_"+r+".txt");
         InputStreamReader entradaMapa = new InputStreamReader(fileMap);
 
 	    BufferedReader bufferMapa = new BufferedReader(entradaMapa);
