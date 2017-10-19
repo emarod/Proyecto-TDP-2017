@@ -1,10 +1,12 @@
 package jugador;
 import java.util.concurrent.Future;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/hilos
 
 public class Espadachin extends StateJugador{
 	
@@ -22,15 +24,9 @@ public class Espadachin extends StateJugador{
     }
     
     public void setGrafico(JLabel grafico){
-    	ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/JonSnow.gif"));
+    	ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/jon_snow.gif"));
 		grafico.setIcon(imagen);
     }
-
-	@Override
-	public void setGraficos(Icon[] graficos, JLabel grafico) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void mover() {

@@ -30,6 +30,14 @@ public class Director{
 		return taskPool.scheduleWithFixedDelay(d,0,100*delay,TimeUnit.MILLISECONDS);
 	}
 	
+	public ScheduledFuture<?> ejecutarUna(Unidad d,int delay) {
+		return taskPool.schedule(d,100*delay,TimeUnit.MILLISECONDS);
+	}
+	
+	public ScheduledFuture<?> ejecutar(Unidad d,long l,int delay) {
+		return taskPool.scheduleWithFixedDelay(d,l+500,100*delay,TimeUnit.MILLISECONDS);
+	}
+	
 	public ScheduledFuture<?> ejecutar(Disparo d,int delay) {
 		return taskPool.scheduleWithFixedDelay(d,0,1000*delay,TimeUnit.MICROSECONDS);
 	}

@@ -1,17 +1,18 @@
 package obstaculo;
 import mapa.Celda;
-import terreno.Muro;
-import terreno.Nieve;
 import main.Visitor;
 
 import java.awt.FlowLayout;
 
 import javax.swing.*;
 public class Water extends Obstaculo {
-   public Water(Celda c,char tipo,int prof,int sprite){
+	protected int penalizacion;
+	public Water(Celda c,char tipo,int prof,int sprite){
 	   profundidad=prof;
 	   celda=c;
 	   grafico=new JLabel();
+	   penalizacion = 50;
+	   
 	   switch(tipo){
 		case 'u':
 			//Lateral derecho.
@@ -43,5 +44,9 @@ public class Water extends Obstaculo {
    
    public boolean Accept(Visitor V){
 	   return V.VisitWater(this);
+   }
+   
+   public int getPenalizacion() {
+	   return penalizacion;
    }
 }

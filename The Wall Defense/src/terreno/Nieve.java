@@ -1,7 +1,5 @@
 package terreno;
 
-import java.awt.FlowLayout;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -19,7 +17,7 @@ public class Nieve extends Terreno {
     	this.sprite = (int) (Math.random() * 3) + 1; 
     	grafico=new JLabel();    	
     	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/terrenos/nieve/nieve"+sprite+".png")));
-    	grafico.setLayout(new FlowLayout(0, 0, 0));
+    	//grafico.setLayout(new FlowLayout(0, 0, 0));
     	
     	
     }

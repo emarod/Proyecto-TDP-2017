@@ -4,7 +4,6 @@ import main.Visitor;
 import mapa.Celda;
 public class Rock extends Obstaculo implements Runnable{
 	private int resistencia;
-	private Thread t;
 	private int sprite;
     public Rock(Celda c,int prof,int sprite){
     	profundidad=prof;
@@ -18,6 +17,7 @@ public class Rock extends Obstaculo implements Runnable{
     	return resistencia;
     }
     public void restarResistencia(){
+    	System.out.println("restar resitencia");
     	if(resistencia==1){
     		destruir();
     	}else{
@@ -31,6 +31,7 @@ public class Rock extends Obstaculo implements Runnable{
     	return sprite;
     }
     public void destruir(){
+    	super.destruir();
     }
     public void run(){}
 
