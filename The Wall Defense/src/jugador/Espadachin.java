@@ -10,9 +10,6 @@ public class Espadachin extends StateJugador{
 	
 	public Espadachin() {
 		resistencia=8;
-		disparos_simultaneos=1;
-		disparos_en_ejecucion=0;
-		velocidad_disparo=10;
 	}
 	
 	public void setJugador(Jugador jugador){
@@ -27,14 +24,6 @@ public class Espadachin extends StateJugador{
     public void setGrafico(JLabel grafico){
     	ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/JonSnow.gif"));
 		grafico.setIcon(imagen);
-    }
-    
-    public void restarDisparosEnEjecucion(){
-    	disparos_en_ejecucion--;
-    }
-    
-    public int getDisparosEnEjecucion(){
-    	return disparos_en_ejecucion;
     }
 
 	@Override

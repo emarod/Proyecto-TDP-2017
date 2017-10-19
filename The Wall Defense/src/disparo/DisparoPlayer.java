@@ -16,17 +16,15 @@ public class DisparoPlayer extends Disparo{
  	   grafico=new JLabel();
   	   grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
   	   grafico.setBounds(32*celda.getPosX(), 32*celda.getPosY(), 32, 32);
-	   celda.getEscenario().agregar(grafico,new Integer(2));	   
-	   celda.getDirector().ejecutar(this,velocidad);
-	   
+	   celda.getEscenario().agregar(grafico,new Integer(2));
+	   celda.getDirector().ejecutar(this,arquero.getVelocidadDisparo());	   
     }
 
     public void destruir(){
     	super.destruir();
     	restarDisparosEnEjecucion();
 		celda.getEscenario().remove(grafico);
-		celda.getDirector().desactivar(this);
-	   
+		celda.getDirector().desactivar(this);	   
 	}
     
     
@@ -72,7 +70,7 @@ public class DisparoPlayer extends Disparo{
 	}
 
 	@Override
-	public void run() {
+	public void run() {		
 		mover();
 		
 	}
