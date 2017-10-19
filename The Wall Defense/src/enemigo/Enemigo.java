@@ -1,5 +1,7 @@
 package enemigo;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.swing.JLabel;
 
 //import interfaz.GUI;
@@ -22,6 +24,10 @@ public class Enemigo extends Unidad{
 	 
 	public void activar() {
 		activeTask=getCelda().getDirector().ejecutar(this,tipo.getVelocidad());
+	}
+	
+	public void activar(long l) {
+		activeTask=getCelda().getDirector().ejecutar(this,l,tipo.getVelocidad());
 	}
 
 	public boolean Accept(Visitor V){
@@ -87,6 +93,21 @@ public class Enemigo extends Unidad{
 	@Override
 	public void setVelocidad(int speed) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	public void relentizar(int penalizacion) {
+//		try {
+//			Thread.sleep(penalizacion);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}		
+		activeTask.cancel(true);
+		activeTask= celda.getDirector().ejecutarUna(this,penalizacion);
+		activar(activeTask.getDelay(TimeUnit.MILLISECONDS));
+		
+		
 		
 	}
 }

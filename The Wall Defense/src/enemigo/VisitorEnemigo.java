@@ -20,6 +20,7 @@ public class VisitorEnemigo extends Visitor{
    }
    public  boolean VisitWater(Water w){
 	   System.out.println("visito zona de agua.");
+	   enemigo.relentizar(w.getPenalizacion());
 	   return true;
    }
    public  boolean visitPlayer(Jugador j){
