@@ -2,11 +2,8 @@ package jugador;
 
 import java.util.concurrent.Future;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
-import disparo.DisparoPlayer;
 
 public class Caballero extends State{
 	public Caballero() {

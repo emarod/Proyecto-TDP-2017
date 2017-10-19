@@ -1,7 +1,5 @@
 package terreno;
 
-import java.awt.FlowLayout;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 

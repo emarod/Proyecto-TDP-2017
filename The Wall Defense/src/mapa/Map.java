@@ -34,9 +34,6 @@ public class Map implements Runnable{
 	public Map(Escenario stage,int width,int height,int sprites) {
 		celdas= new Celda[width][height];
 		escenario = stage;
-//		Inicialización de controladores de acciones
-//		cAtacar=new ControladorAtaque();
-//		cMovimiento= new ControladorMovimiento();
 		director = new Director();		
 		try {
 			inicializarCeldas(sprites);

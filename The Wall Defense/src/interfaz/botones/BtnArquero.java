@@ -8,6 +8,11 @@ import jugador.Jugador;
 
 public class BtnArquero extends BtnJugador {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public BtnArquero(Escenario e) {
 		super(e);
 		player=new Jugador(null, 2, new Arquero());

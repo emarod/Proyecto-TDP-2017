@@ -1,6 +1,5 @@
 package mapa;
 
-import java.awt.List;
 import java.util.LinkedList;
 
 import javax.swing.JLabel;

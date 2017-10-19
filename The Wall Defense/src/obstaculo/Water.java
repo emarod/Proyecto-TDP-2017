@@ -1,7 +1,5 @@
 package obstaculo;
 import mapa.Celda;
-import terreno.Muro;
-import terreno.Nieve;
 import main.Visitor;
 
 import java.awt.FlowLayout;

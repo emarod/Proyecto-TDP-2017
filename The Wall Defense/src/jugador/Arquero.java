@@ -45,12 +45,12 @@ public class Arquero extends State{
 			graph++;
 		}
 		setGrafico(graph);
-		try {
-			Thread.sleep(100);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(100);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 				
 	}
 	
@@ -64,10 +64,7 @@ public class Arquero extends State{
 //				atacar=false;
 //			}
 //		}		
-		if(disparos_en_ejecucion<disparos_simultaneos){
-			for (int i = 0; i < graficos.length; i++) {
-				animarDisparo();
-			}
+		if(disparos_en_ejecucion<disparos_simultaneos){			
 			shot =new DisparoPlayer(this,6).getTask();			
 			disparos_en_ejecucion++;
     	}

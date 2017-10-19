@@ -1,9 +1,7 @@
 package interfaz;
  
  import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-import javax.swing.event.MouseInputListener;
 
 import interfaz.botones.BtnArquero;
 import interfaz.botones.BtnCaballero;
@@ -14,7 +12,6 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;

@@ -4,7 +4,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import jugador.Arquero;
-import jugador.State;
 import main.GameObject;
 import main.Visitor;
 import mapa.Celda;
@@ -34,6 +33,7 @@ public class DisparoPlayer extends Disparo{
 	
 	public void mover() {
 		Celda siguiente;
+		arquero.animarDisparo();
 		int xCelda=celda.getPosX();
 		int yCelda=celda.getPosY();
 		int xGrafico= grafico.getX();
