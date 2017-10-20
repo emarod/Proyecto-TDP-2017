@@ -64,7 +64,8 @@ public class Arquero extends StateJugador{
 //				atacar=false;
 //			}
 //		}		
-		if(disparos_en_ejecucion<disparos_simultaneos){			
+		if(disparos_en_ejecucion<disparos_simultaneos){
+			jugador.playSound();
 			shot =new DisparoPlayer(this,6).getTask();			
 			disparos_en_ejecucion++;
     	}

@@ -6,6 +6,7 @@ import java.util.concurrent.Future;
 //import obstaculos.Acero;
 import javax.swing.*;
 
+import Controladores.BancoRecursos;
 //import interfaz.GUI;
 import main.Unidad;
 import main.Visitor;
@@ -15,6 +16,7 @@ public class Jugador extends Unidad{
 	protected int vidas;
 	protected StateJugador tipo;
     protected Future<?> activeAttack;
+	private BancoRecursos bancoRecursos;
      
     public Jugador(Celda c,int prof, StateJugador t){	 
     	 alto=30;
@@ -99,6 +101,14 @@ public class Jugador extends Unidad{
 
 	@Override
 	public void setVelocidad(int speed) {
-		tipo.setVelocidad(speed);		
+		tipo.setVelocidad(speed);	
+	}	
+	public void setBancoRecursos(BancoRecursos banco) {
+		bancoRecursos=banco;
+		
+	}
+	
+	public void playSound() {
+		bancoRecursos.playShot();
 	}
 }

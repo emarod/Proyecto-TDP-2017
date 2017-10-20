@@ -12,6 +12,7 @@ import java.io.InputStream;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 
+import Controladores.BancoRecursos;
 import Controladores.Director;
 import enemigo.Enemigo;
 import enemigo.WhiteWalker;
@@ -30,11 +31,13 @@ public class Map implements Runnable{
 	protected int x_mouse;
 	protected int y_mouse;
 	protected Director director;
+	protected BancoRecursos banco;
 	
 	public Map(Escenario stage,int width,int height,int sprites) {
 		celdas= new Celda[width][height];
 		escenario = stage;
-		director = new Director();		
+		director = new Director();
+		banco = new BancoRecursos();
 		try {
 			inicializarCeldas(sprites);
 		}
@@ -51,7 +54,9 @@ public class Map implements Runnable{
 	    String sCurrentLine="";
 	    Random rnd=new Random();
 	    int r=rnd.nextInt(1);
-	    InputStream fileMap = getClass().getResourceAsStream("/resources/mapa_"+1+".txt");
+	    //Este es un random limitado entre 1 y 3, para establecer un rango nuevo Random[n,m]: (Math.random()*m)+n
+    	r = (int) (Math.random()*2)+1 ;
+	    InputStream fileMap = getClass().getResourceAsStream("/resources/mapa_"+r+".txt");
         InputStreamReader entradaMapa = new InputStreamReader(fileMap);
 
 	    BufferedReader bufferMapa = new BufferedReader(entradaMapa);
@@ -174,11 +179,12 @@ public class Map implements Runnable{
 	
 	public void crearJugador(Jugador j) {		
 		int x_cel= Math.round(celdaLabel.getX()/32);
-		int y_cel= Math.round(celdaLabel.getY()/32);				
+		int y_cel= Math.round(celdaLabel.getY()/32);			
 		if(	celdas[x_cel][y_cel].getObjects()[2]==null) {
 			Jugador player = j.clone(celdas[x_cel][y_cel]);
 			celdas[x_cel][y_cel].getObjects()[2]= player;
 			JLabel icono = player.getGrafico();
+			player.setBancoRecursos(banco);
 			icono.setBounds(x_cel*32,y_cel*32,32,32);
 			icono.addMouseListener(
 				new MouseAdapter() {

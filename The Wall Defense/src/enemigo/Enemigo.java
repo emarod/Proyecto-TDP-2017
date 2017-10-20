@@ -97,12 +97,6 @@ public class Enemigo extends Unidad{
 	}
 
 	public void relentizar(int penalizacion) {
-//		try {
-//			Thread.sleep(penalizacion);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}		
 		activeTask.cancel(true);
 		activeTask= celda.getDirector().ejecutarUna(this,penalizacion);
 		activar(activeTask.getDelay(TimeUnit.MILLISECONDS));
