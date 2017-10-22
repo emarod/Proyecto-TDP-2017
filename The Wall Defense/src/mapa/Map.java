@@ -94,7 +94,7 @@ public class Map implements Runnable{
 		    					x_mouse=terreno.getX();
 	    						y_mouse=terreno.getY();
 	    						if(terreno!=celdaLabel) {
-	    							terreno.setBorder(new LineBorder(new Color(0, 255, 0)));
+	    							terreno.setBorder(new LineBorder(new Color(255, 0, 0)));
 	    						}
 	    					}
 	    					
