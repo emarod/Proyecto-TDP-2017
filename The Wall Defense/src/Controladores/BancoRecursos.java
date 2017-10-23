@@ -15,7 +15,7 @@ public class BancoRecursos {
 		TinySound.init();
 		//load a sound and music
 		//note: you can also load with Files, URLs and InputStreams
-		Music song = TinySound.loadMusic("/resources/sound/theme_song.wav");
+		Music song = TinySound.loadMusic("/resources/sound/intro.wav");
 		flecha = TinySound.loadSound("/resources/sound/laser4.wav");
 		//start playing the music on loop
 		song.play(true);
