@@ -36,7 +36,7 @@ public class GUI extends JFrame{
 		panelInferior= new JPanel();
 		panelInferior.setLayout(new BorderLayout());
 		getContentPane().add(panelInferior, BorderLayout.SOUTH);
-		panelInferior.add(horda, BorderLayout.EAST);
+		panelInferior.add(horda, BorderLayout.CENTER);
 		panelInferior.add(tienda,BorderLayout.WEST);
 		
 		

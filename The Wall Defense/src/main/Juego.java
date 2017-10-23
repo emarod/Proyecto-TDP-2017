@@ -1,14 +1,22 @@
 package main;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
 import javax.swing.JLayeredPane;
 import javax.swing.border.EmptyBorder;
 
 import interfaz.GUI;
-
 public class Juego {
 	protected static GUI frame;
 
@@ -31,13 +39,18 @@ public class Juego {
 		JLayeredPane contentPane=new JLayeredPane();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		menu.setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
+		Icon imagenboton=new ImageIcon(this.getClass().getResource("/resources/static/background/start.png"));
+		Icon background=new ImageIcon(this.getClass().getResource("/resources/static/background/background.png"));
+
+
 		//Menu
 		//Boton Jugar accede al juego.
 		final JButton jugar=new JButton("Jugar");
-		jugar.setBounds(185,140,150,50);
-		jugar.setVisible(true);	  	   
+		jugar.setBounds(200,190,150,50);
+		jugar.setSize(300,100);
+		jugar.setVisible(true);	  
+		jugar.setIcon(imagenboton);
+		//jugar.setBounds(170, y, width, height);
 		jugar.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
 				menu.dispose();
@@ -45,7 +58,11 @@ public class Juego {
 			} 
 		}
 		);
+		
+		menu.setContentPane(new JLabel(background));
+		menu.pack();
 		menu.add(jugar,new Integer(2));
+
 	}
 	
 	public void crearGUI(){
