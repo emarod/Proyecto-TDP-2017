@@ -26,11 +26,10 @@ public class MenuCompra extends JPanel{
  	
 	public MenuCompra(Escenario escenario) {
 		this.escenario= escenario;
-		this.setLayout(new GridLayout(2,2));
+		this.setLayout(new GridLayout(1,4));
 		this.setBounds(76, 0, 650, 394);
 		this.setBackground(Color.RED);
 		this.setBorder(new LineBorder(new Color(0, 0, 0)));		
-		this.setPreferredSize(new Dimension(384, 96));
 		armarBotonera();
 	}
 	

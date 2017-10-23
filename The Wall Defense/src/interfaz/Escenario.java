@@ -21,7 +21,7 @@ public class Escenario extends JPanel {
 		Random rnd=new Random();
 		int r=rnd.nextInt(2);		
 		layeredPane= new JLayeredPane();
-		layeredPane.setPreferredSize(new Dimension(640, 384));
+		layeredPane.setPreferredSize(new Dimension(650, 384));
 		
 		this.add(layeredPane);
 		mapa= new Map(this,width,height,r);

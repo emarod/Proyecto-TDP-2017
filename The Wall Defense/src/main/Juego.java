@@ -32,13 +32,14 @@ public class Juego {
 	public void pantallaPrincipal(){
 		final JFrame menu=new JFrame("The Wall Defense");
 		menu.setVisible(true);
-		menu.setResizable(true);
+		menu.setResizable(false);
 		menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		menu.setBounds(100, 100, 525, 410);
 		menu.setLocationRelativeTo(null);
 		JLayeredPane contentPane=new JLayeredPane();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		menu.setContentPane(contentPane);
+		//imagen para boton y fondo
 		Icon imagenboton=new ImageIcon(this.getClass().getResource("/resources/static/background/start.png"));
 		Icon background=new ImageIcon(this.getClass().getResource("/resources/static/background/background.png"));
 
