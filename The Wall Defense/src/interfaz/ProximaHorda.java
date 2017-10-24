@@ -1,6 +1,9 @@
 package interfaz;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -17,15 +20,23 @@ public class ProximaHorda extends JPanel{
 	protected Escenario escenario;
 	
 	public ProximaHorda(Escenario esc) {
+		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(new Color(0, 0, 0)));
 		this.escenario=esc;
 		agregarLabel();
-		agregarBoton();
+		//agregarBoton();
+		this.setBackground(Color.BLACK);
 	}
 	
 	private void agregarLabel() {
-		puntaje=new JLabel("Puntaje: 0000");
-		this.add(puntaje);
+		puntaje=new JLabel("0000");
+		puntaje.setSize(puntaje.getWidth(), this.getHeight());
+		//Recojo la fuente que se esta utilizando actualmente.
+		Font auxFont=new Font("Game of Thrones Regular", Font.CENTER_BASELINE,50); 
+		//Aplico la fuente actual, y al final le doy el tamaño del texto...
+		puntaje.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 50));
+		//puntaje.setSize(new Dimension(10,50));
+		this.add(puntaje,BorderLayout.CENTER);
 	}
 	
 	public void setPuntaje(String str) {

@@ -259,7 +259,7 @@ public class Map implements Runnable{
 
 
 	private void actualizarPuntaje() {		
-		escenario.setPuntaje("Puntaje: "+puntaje);
+		escenario.setPuntaje(""+puntaje);
 	}
 	
 	public Director getDirector() {

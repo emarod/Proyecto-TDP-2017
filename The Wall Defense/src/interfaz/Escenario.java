@@ -1,5 +1,6 @@
 package interfaz;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Random;
 
@@ -21,7 +22,8 @@ public class Escenario extends JPanel {
 		Random rnd=new Random();
 		int r=rnd.nextInt(2);		
 		layeredPane= new JLayeredPane();
-		layeredPane.setPreferredSize(new Dimension(650, 384));
+		layeredPane.setPreferredSize(new Dimension(640, 384));
+		this.setBackground(Color.BLACK);
 		
 		this.add(layeredPane);
 		mapa= new Map(this,width,height,r);
