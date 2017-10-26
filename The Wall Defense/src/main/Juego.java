@@ -2,19 +2,18 @@ package main;
 
 import javax.swing.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import javax.swing.JLayeredPane;
 import javax.swing.border.EmptyBorder;
 
 import interfaz.GUI;
+import interfaz.MenuInicio;
 
 public class Juego {
 	protected static GUI frame;
+	protected final JFrame menu=new JFrame("The Wall Defense");
+
 
 	public static void main(String[] args) {
 		new Juego();
@@ -26,7 +25,6 @@ public class Juego {
 	}
 	
 	public void pantallaPrincipal(){
-		final JFrame menu=new JFrame("The Wall Defense");
 		menu.setVisible(true);
 		menu.setResizable(false);
 		menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,34 +33,20 @@ public class Juego {
 		JLayeredPane contentPane=new JLayeredPane();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		menu.setContentPane(contentPane);
-		//imagen para boton y fondo
-		Icon imagenboton=new ImageIcon(this.getClass().getResource("/resources/static/background/start.png"));
 		Icon background=new ImageIcon(this.getClass().getResource("/resources/static/background/background.png"));
-
-
-		//Menu
-		//Boton Jugar accede al juego.
-		final JButton jugar=new JButton("Jugar");
-		jugar.setBounds(200,190,150,50);
-		jugar.setSize(300,100);
-		jugar.setVisible(true);	  
-		jugar.setIcon(imagenboton);
-		//jugar.setBounds(170, y, width, height);
-		jugar.addActionListener(new ActionListener() { 
-			public void actionPerformed(ActionEvent e) {
-				menu.dispose();
-				crearGUI();			   
-			} 
-		}
-		);
+		
+		//Creo menu de inicio
+		MenuInicio opciones=new MenuInicio(this);
+		
 		
 		menu.setContentPane(new JLabel(background));
 		menu.pack();
-		menu.add(jugar,new Integer(2));
+		menu.add(opciones,new Integer(2));
 
 	}
 	
 	public void crearGUI(){
+		menu.dispose();
 		frame=new GUI();
 		frame.setVisible(true);
 	}	

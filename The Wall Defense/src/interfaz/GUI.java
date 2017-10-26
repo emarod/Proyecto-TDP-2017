@@ -57,22 +57,22 @@ public class GUI extends JFrame{
 		//Panel izquierdo
 		panelIzquierdo= new JPanel();
 		panelIzquierdo.setLayout(new BorderLayout());
-		//Icon bannerLeft=new ImageIcon(this.getClass().getResource("/resources/static/banner/bannerleft.jpg"));
-		panelIzquierdo.setBounds(0, 0, 100, 300);
-		panelIzquierdo.setPreferredSize(new Dimension(100, 100));
+		Icon bannerLeft=new ImageIcon(this.getClass().getResource("/resources/static/banner/Banner_4.jpg"));
+		panelIzquierdo.setBounds(0, 0, 400, 310);
+		panelIzquierdo.setPreferredSize(new Dimension(100, 200));
 		panelIzquierdo.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelIzquierdo.setBackground(Color.BLACK);
-		//panelIzquierdo.add(new JLabel(bannerLeft), BorderLayout.WEST);
+		panelIzquierdo.add(new JLabel(bannerLeft), BorderLayout.CENTER);
 		getContentPane().add(panelIzquierdo,BorderLayout.WEST);
 		
 		//Panel Derecho
 		panelDerecho= new JPanel();
 		panelDerecho.setLayout(new BorderLayout());
-		//Icon bannerRight=new ImageIcon(this.getClass().getResource("/resources/static/banner/bannerright.jpg"));
+		Icon bannerRight=new ImageIcon(this.getClass().getResource("/resources/static/banner/Banner_2.jpg"));
 		panelDerecho.setPreferredSize(new Dimension(100, 100));
 		panelDerecho.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelDerecho.setBackground(Color.BLACK);
-		//panelDerecho.add(new JLabel(bannerRight), BorderLayout.EAST);
+		panelDerecho.add(new JLabel(bannerRight), BorderLayout.EAST);
 		getContentPane().add(panelDerecho, BorderLayout.EAST);
 		
 		//Panel Superior

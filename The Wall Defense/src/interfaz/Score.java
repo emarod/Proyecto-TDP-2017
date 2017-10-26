@@ -20,8 +20,8 @@ public class Score extends JPanel {
 	}
 	
 	public void armarPanel() {
-		Icon bannerUp=new ImageIcon(this.getClass().getResource("/resources/static/banner/score2.png"));
-		this.add(new JLabel(bannerUp),BorderLayout.CENTER);
+		//Icon bannerUp=new ImageIcon(this.getClass().getResource("/resources/static/banner/score2.png"));
+		//this.add(new JLabel(bannerUp),BorderLayout.CENTER);
 		this.setBackground(Color.BLACK);
 		this.add(horda, BorderLayout.EAST);
 	}
