@@ -79,13 +79,13 @@ public class Map implements Runnable{
 	    						if(celdaLabel==null) {
 	    							terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    							celdaLabel=terreno;
-	    							System.out.println("("+terreno.getX()/32+","+terreno.getY()/32+")");
+	    							System.out.println("("+terreno.getX()/64+","+terreno.getY()/64+")");
 	    						}
 	    						else{
 	    							celdaLabel.setBorder(null);
 	    							terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    							celdaLabel=terreno;
-	    							System.out.println("("+terreno.getX()/32+","+terreno.getY()/32+")");
+	    							System.out.println("("+terreno.getX()/64+","+terreno.getY()/64+")");
 	    							
 	    						}
 	    					}
@@ -106,14 +106,14 @@ public class Map implements Runnable{
 						}
 		    					
 					);
-	    			terreno.setBounds(32*x,32*y,32,32);
+	    			terreno.setBounds(64*x,64*y,64,64);
 	    		    escenario.agregar(terreno,new Integer(0));
 	    			
 	    		}else {
 	    			if(objetos[2]!=null){
 	    				System.out.println("ghost code");
 	    				JLabel terreno= objetos[2].getGrafico();
-	    				terreno.setBounds(32*x,32*y,32,32);
+	    				terreno.setBounds(64*x,64*y,64,64);
 	    				escenario.agregar(terreno,new Integer(3));
 	    			}
 	    		}	    		
@@ -134,7 +134,7 @@ public class Map implements Runnable{
 		celdas[18][2].getObjects()[1]= enemigo2;
 		enemigo2.setCelda(celdas[18][2]);
 		JLabel graf4 = enemigo2.getGrafico();
-		graf4.setBounds(32*18,32*2,32,32);
+		graf4.setBounds(64*18,64*2,64,64);
 		escenario.agregar(graf4,new Integer(2));
 		escenario.repaint();
 	}
@@ -154,8 +154,8 @@ public class Map implements Runnable{
 	}
 
 	public void crearPersonaje(String personaje) {
-		int x_cel= Math.round(celdaLabel.getX()/32);
-		int y_cel= Math.round(celdaLabel.getY()/32);
+		int x_cel= Math.round(celdaLabel.getX()/64);
+		int y_cel= Math.round(celdaLabel.getY()/64);
 		
 		switch (personaje) {
 		case "caminante":
@@ -178,33 +178,33 @@ public class Map implements Runnable{
 	}
 	
 	public void crearJugador(Jugador j) {		
-		int x_cel= Math.round(celdaLabel.getX()/32);
-		int y_cel= Math.round(celdaLabel.getY()/32);			
+		int x_cel= Math.round(celdaLabel.getX()/64);
+		int y_cel= Math.round(celdaLabel.getY()/64);			
 		if(	celdas[x_cel][y_cel].getObjects()[2]==null) {
 			Jugador player = j.clone(celdas[x_cel][y_cel]);
 			celdas[x_cel][y_cel].getObjects()[2]= player;
 			JLabel icono = player.getGrafico();
 			player.setBancoRecursos(banco);
-			icono.setBounds(x_cel*32,y_cel*32,32,32);
+			icono.setBounds(x_cel*64,y_cel*64,64,64);
 			icono.addMouseListener(
 				new MouseAdapter() {
 					public void mouseReleased(MouseEvent e) {
-						int x_cel = Math.round(x_mouse/32); 
-						int y_cel = Math.round(y_mouse/32);
+						int x_cel = Math.round(x_mouse/64); 
+						int y_cel = Math.round(y_mouse/64);
 						GameObject[] objetosCelda =celdas[x_cel][y_cel].getObjects();
 						objetosCelda[2]= player;
 						player.getCelda().getObjects()[2]=null;
 						player.setCelda(celdas[x_cel][y_cel]);
 						int x_terreno = objetosCelda[0].getGrafico().getX();
 						int y_terreno = objetosCelda[0].getGrafico().getY();
-						player.getGrafico().setBounds(x_terreno, y_terreno, 32, 32);
+						player.getGrafico().setBounds(x_terreno, y_terreno, 64, 64);
 					}
 				}
 			);
 			icono.addMouseMotionListener(
 				new MouseMotionAdapter() {
 					public void mouseDragged(MouseEvent e) {
-						player.getGrafico().setBounds(x_mouse,y_mouse,32,32);
+						player.getGrafico().setBounds(x_mouse,y_mouse,64,64);
 					}
 				}
 			);
@@ -219,7 +219,7 @@ public class Map implements Runnable{
 		celdas[x][y].getObjects()[1]= enemigo1;
 		enemigo1.setCelda(celdas[x][y]);
 		JLabel graf3 = enemigo1.getGrafico();
-		graf3.setBounds(32*x,32*y,32,32);
+		graf3.setBounds(64*x,64*y,64,64);
 		escenario.agregar(graf3,new Integer(2));
 		enemigo1.activar();
 	}
@@ -231,15 +231,15 @@ public class Map implements Runnable{
 		celdas[x][y].getObjects()[1]= enemigo1;
 		enemigo1.setCelda(celdas[x][y]);
 		JLabel graf3 = enemigo1.getGrafico();
-		graf3.setBounds(32*x,32*y,32,32);
+		graf3.setBounds(64*x,64*y,64,64);
 		escenario.agregar(graf3,new Integer(2));
 		enemigo1.activar();
 	}
 
 
 	public void hacerDaño() {
-		int x_cel= Math.round(celdaLabel.getX()/32);
-		int y_cel= Math.round(celdaLabel.getY()/32);
+		int x_cel= Math.round(celdaLabel.getX()/64);
+		int y_cel= Math.round(celdaLabel.getY()/64);
 		Celda celda= getCelda(x_cel, y_cel);
 		GameObject personaje = celda.getObjects()[1];
 		if(personaje!=null) {
@@ -259,7 +259,7 @@ public class Map implements Runnable{
 
 
 	private void actualizarPuntaje() {		
-		escenario.setPuntaje(""+puntaje);
+		escenario.setPuntaje("Puntaje: "+puntaje);
 	}
 	
 	public Director getDirector() {

@@ -46,11 +46,11 @@ public class MenuCompra extends JPanel{
 		
 		BtnCaballero lannister = new BtnCaballero(this.escenario);
 		lannister.setBounds(0, 35, 32, 32);
-		botonera.add(lannister);
+		//botonera.add(lannister);
 		
 		BtnEspadachin JonSnow = new BtnEspadachin(this.escenario);
 		JonSnow.setBounds(0, 50, 32, 32);
-		this.add(JonSnow);
+		//this.add(JonSnow);
 		
 		/*JButton caminante = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/white_walker.gif")));
 		caminante.setSize(32, 32);

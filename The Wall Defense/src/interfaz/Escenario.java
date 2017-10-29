@@ -1,6 +1,5 @@
 package interfaz;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Random;
 
@@ -13,7 +12,7 @@ public class Escenario extends JPanel {
 	
 	protected static final long serialVersionUID = 1L;
 	protected static final int width=20;
-	protected static final int height=12;
+	protected static final int height=6;
 	protected JLayeredPane layeredPane;
 	protected Map mapa;
 	protected ProximaHorda horda;
@@ -22,8 +21,7 @@ public class Escenario extends JPanel {
 		Random rnd=new Random();
 		int r=rnd.nextInt(2);		
 		layeredPane= new JLayeredPane();
-		layeredPane.setPreferredSize(new Dimension(640, 384));
-		this.setBackground(Color.BLACK);
+		layeredPane.setPreferredSize(new Dimension(1026, 500));
 		
 		this.add(layeredPane);
 		mapa= new Map(this,width,height,r);
@@ -31,7 +29,7 @@ public class Escenario extends JPanel {
 	}
 	
 	public void  agregar(JLabel objeto,int entero){
-		objeto.setSize(32,32);
+		objeto.setSize(64,64);
 		layeredPane.add(objeto,new Integer(entero));
 		repaint();
 	}

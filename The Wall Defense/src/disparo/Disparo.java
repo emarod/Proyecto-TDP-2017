@@ -7,8 +7,8 @@ public abstract class Disparo extends Unidad  {
 
 	public Disparo(Arquero archer, int prof){
 		profundidad=prof;
-		ancho=32;
-		alto=32;
+		ancho=64;
+		alto=64;
 		arquero= archer;
 		celda=arquero.getJugador().getCelda();
 		celda.addDisparo(this);

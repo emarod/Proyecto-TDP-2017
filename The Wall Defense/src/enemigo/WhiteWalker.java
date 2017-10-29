@@ -36,7 +36,7 @@ public class WhiteWalker extends StateEnemigo{
 			}
 		}
 		if(!detener && xCelda!=0) {
-			enemigo.getGrafico().setBounds(xGrafico-32, yGrafico, 32, 32);
+			enemigo.getGrafico().setBounds(xGrafico-64, yGrafico, 64, 64);
 			enemigo.intercambiar_celdas(siguiente);					
 		}		
 	}

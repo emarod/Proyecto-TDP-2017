@@ -37,6 +37,9 @@ public class Celda {
 	    			
 	    			break;
 	    		case 'c':
+	    			//Centro lago.
+	    			listaObjetosLogicos[0]=new Water(this,'c',0,1);
+	    			break;
 	    		case 'd':
 	    		case 'e':
 	    		case 'f':
@@ -63,17 +66,23 @@ public class Celda {
 	    			listaObjetosLogicos[0]=new Nieve(this);
 	    			listaObjetosLogicos[3]=new Rock(this,3,1);
 	    			JLabel roca = listaObjetosLogicos[3].getGrafico();
-	    			roca.setBounds(posX*32, posY*32, 32, 32);
+	    			roca.setBounds(posX*32, posY*32, 64, 64);
 	    			getEscenario().agregar(roca,new Integer(3));	    			
 	    			break;
 	    		case 's':
+	    			//Lateral vertical sup.
+	    			listaObjetosLogicos[0]=new Water(this,'s',0,1);
+	    			break;
 	    		case 't':
+	    			//Lateral vertical inf.
+	    			listaObjetosLogicos[0]=new Water(this,'t',0,1);
+	    			break;
 	    		case 'u':
-	    			//Lateral derecho.
+	    			//Lateral horizontal derecho.
 	    			listaObjetosLogicos[0]=new Water(this,'u',0,1);
 	    			break;
 	    		case 'v':
-	    			//Lateral izquierda.
+	    			//Lateral horizontal izquierdo.
 	    			listaObjetosLogicos[0]=new Water(this,'v',0,1);
 	    			break;
 	    		case 'w':
