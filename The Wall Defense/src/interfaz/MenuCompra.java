@@ -1,20 +1,19 @@
 package interfaz;
  
- import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
+ import javax.swing.border.LineBorder;
 
 import interfaz.botones.BtnArquero;
 import interfaz.botones.BtnCaballero;
 import interfaz.botones.BtnEspadachin;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
+import javax.swing.*;
+
 import mapa.Map;
 
 public class MenuCompra extends JPanel{
@@ -22,25 +21,38 @@ public class MenuCompra extends JPanel{
 	protected Map mapa;
 	protected Escenario escenario;
 	protected static final long serialVersionUID = 1L;
+	protected JPanel botonera;
+	protected Icon background;
  	
 	public MenuCompra(Escenario escenario) {
 		this.escenario= escenario;
-		this.setLayout(new GridLayout(1,4));
-		this.setBounds(76, 0, 650, 394);
+		this.setLayout(null);
+		this.setBounds(76, 0, 100, 100);
 		this.setBackground(Color.RED);
-		this.setBorder(new LineBorder(new Color(0, 0, 0)));		
+		this.setBorder(new LineBorder(new Color(0, 0, 0)));	
+		armarPanel();
 		armarBotonera();
 	}
 	
 	private void armarBotonera() {
+		
+	
+		
+		
 		BtnArquero ygritte= new BtnArquero(this.escenario);
-		this.add(ygritte);
+		ygritte.setBounds(0, 15, 15, 15);
+		botonera.add(ygritte);
 		
 		
 		BtnCaballero lannister = new BtnCaballero(this.escenario);
-		this.add(lannister);
+		lannister.setBounds(0, 35, 32, 32);
+		botonera.add(lannister);
 		
-		JButton caminante = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/white_walker.gif")));
+		BtnEspadachin JonSnow = new BtnEspadachin(this.escenario);
+		JonSnow.setBounds(0, 50, 32, 32);
+		this.add(JonSnow);
+		
+		/*JButton caminante = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/white_walker.gif")));
 		caminante.setSize(32, 32);
 		caminante.addMouseListener(
 				new MouseAdapter() {
@@ -49,10 +61,23 @@ public class MenuCompra extends JPanel{
 					}
 				}
 		);
-		this.add(caminante);
+		this.add(caminante);*/
 		
-		BtnEspadachin JonSnow = new BtnEspadachin(this.escenario);
-		this.add(JonSnow);
+		
+		
+		
+		
+	}
+	
+	public void armarPanel() {
+		
+		botonera=new JPanel();
+		botonera.setLayout(new BorderLayout());
+		botonera.setBounds(0,0,400,100);
+		botonera.setBackground(Color.BLUE);
+		background=new ImageIcon(this.getClass().getResource("/resources/static/tienda/fondo.png"));
+		//botonera.add(new JLabel(background));
+		this.add(botonera,BorderLayout.WEST);
 		
 	}
 		

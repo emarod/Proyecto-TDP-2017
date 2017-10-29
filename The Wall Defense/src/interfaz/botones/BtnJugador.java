@@ -16,7 +16,12 @@ public abstract class BtnJugador extends JButton{
 	
 	public BtnJugador(Escenario e) {
 		stage=e;
+		//this.setBorder(new RoundedBorder(5));
 		this.setSize(32,32);
+		this.setBorderPainted(false);
+		this.setContentAreaFilled(false);
+		this.setOpaque(true);
+		
 		this.addMouseListener(
 				new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
