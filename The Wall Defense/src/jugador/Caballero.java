@@ -20,7 +20,7 @@ public class Caballero extends StateJugador{
     }
     
     public void setGrafico(JLabel grafico){
-    	ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/lannister_atacando_8fps.gif"));
+    	ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/lannister_atacando.gif"));
 		grafico.setIcon(imagen);
     }
 

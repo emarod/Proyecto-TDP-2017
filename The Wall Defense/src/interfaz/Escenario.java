@@ -11,7 +11,7 @@ import mapa.Map;
 public class Escenario extends JPanel {
 	
 	protected static final long serialVersionUID = 1L;
-	protected static final int width=20;
+	protected static final int width=16;
 	protected static final int height=6;
 	protected JLayeredPane layeredPane;
 	protected Map mapa;
@@ -21,7 +21,7 @@ public class Escenario extends JPanel {
 		Random rnd=new Random();
 		int r=rnd.nextInt(2);		
 		layeredPane= new JLayeredPane();
-		layeredPane.setPreferredSize(new Dimension(1026, 500));
+		layeredPane.setPreferredSize(new Dimension(1026, 384));
 		
 		this.add(layeredPane);
 		mapa= new Map(this,width,height,r);

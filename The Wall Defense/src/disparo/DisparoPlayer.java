@@ -38,7 +38,7 @@ public class DisparoPlayer extends Disparo{
 		int yCelda=celda.getPosY();
 		int xGrafico= grafico.getX();
 		int yGrafico= grafico.getY();
-		if(xCelda!=16) {
+		if(xCelda!=15) {
 			siguiente=celda.getCelda(xCelda+1,yCelda);
 		}
 		else
@@ -48,8 +48,8 @@ public class DisparoPlayer extends Disparo{
 		if (objeto!=null && !objeto.Accept(V)){
 			celda.getDirector().desactivar(this);
 		}		
-
-		if(xCelda==16 || xGrafico>=640) {
+		
+		if(xCelda==16 || xGrafico>=1026) {
 			destruir();	
 		}
 		else {

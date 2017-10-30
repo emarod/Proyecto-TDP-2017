@@ -13,7 +13,7 @@ public class BtnArquero extends BtnJugador {
 	public BtnArquero(Escenario e) {
 		super(e);
 		player=new Jugador(null, 2, new Arquero());
-		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_0.png")));
+		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_atacando_10fps.gif")));
 
 	}
 

@@ -13,7 +13,7 @@ public class BtnCaballero extends BtnJugador{
 	public BtnCaballero(Escenario e) {
 		super(e);
 		player=new Jugador(null, 2, new Caballero());
-		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/lannister_atacando_8fps.gif")));
+		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/lannister_atacando.gif")));
 	};
 
 	public void create() {

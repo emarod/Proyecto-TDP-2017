@@ -22,11 +22,11 @@ public class Arquero extends StateJugador{
 		disparos_en_ejecucion=0;
 		velocidad_disparo=75;
 		graficos= new Icon[5];
-		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_0.png"));
-		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_1.png"));
-		graficos[2]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_2.png"));
-		graficos[3]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_3.png"));
-		graficos[4]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_4.png"));
+		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_0.gif"));
+		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_1.gif"));
+		graficos[2]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_2.gif"));
+		graficos[3]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_3.gif"));
+		graficos[4]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_4.gif"));
 	}
 	
 	public void setJugador(Jugador jugador){
@@ -35,7 +35,7 @@ public class Arquero extends StateJugador{
 	}
 	
 	public void setGrafico(JLabel grafico) {
-		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_0.png"));
+		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_0.gif"));
 		graph=0;
 		grafico.setIcon(imagen);		
 	}

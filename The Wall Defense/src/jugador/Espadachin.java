@@ -20,7 +20,7 @@ public class Espadachin extends StateJugador{
     }
     
     public void setGrafico(JLabel grafico){
-    	ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/jon_snow.gif"));
+    	ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/jon_snow.gif"));
 		grafico.setIcon(imagen);
     }
 
