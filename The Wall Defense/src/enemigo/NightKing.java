@@ -9,11 +9,18 @@ import mapa.Celda;
 
 public class NightKing extends StateEnemigo {
 	
+	protected ImageIcon imagen;
+	protected JLabel graf;
+	
 
 	public NightKing() {
 		puntaje=200;
 		velocidad_enemigo=5;
 		resistencia=6;
+		imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_nightking_atacando.gif"));
+		graf=new JLabel();
+		graf.setIcon(imagen);
+		
 	}
 
 	@Override
@@ -53,7 +60,7 @@ public class NightKing extends StateEnemigo {
 	}
 	
 	public void setGrafico(JLabel grafico) {
-		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_nightking_atacando.gif"));
+		imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_nightking_atacando.gif"));
 		grafico.setIcon(imagen);
 	}
 	
@@ -64,6 +71,10 @@ public class NightKing extends StateEnemigo {
 	
 	public int getPuntaje() {
 		return puntaje;
+	}
+	
+	public JLabel getGrafico() {
+		return graf;
 	}
 
 }

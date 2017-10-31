@@ -13,11 +13,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import enemigo.Horda;
+
 public class ProximaHorda extends JPanel{
 	
 	protected static final long serialVersionUID = 1L;
 	protected JLabel puntaje;
 	protected Escenario escenario;
+	protected Horda horda;
 	
 	public ProximaHorda(Escenario esc) {
 		this.setLayout(new BorderLayout());
@@ -26,6 +29,8 @@ public class ProximaHorda extends JPanel{
 		agregarLabel();
 		//agregarBoton();
 		this.setBackground(Color.BLACK);
+		horda=new Horda(escenario);
+		
 	}
 	
 	private void agregarLabel() {
@@ -49,7 +54,7 @@ public class ProximaHorda extends JPanel{
 		wwalker.addMouseListener(
 				new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
-						escenario.crearPersonaje("whitewalker");
+						//escenario.crearPersonaje("whitewalker");
 					}
 				}
 		);

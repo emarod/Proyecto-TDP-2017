@@ -37,5 +37,7 @@ public abstract class StateEnemigo {
 	public abstract int getPuntaje();
 	
 	public abstract void setEnemigo(Enemigo e);
+	
+	public abstract JLabel getGrafico();
 
 }

@@ -6,6 +6,9 @@ import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+
+import enemigo.Enemigo;
+import enemigo.StateEnemigo;
 import mapa.Map;
 
 public class Escenario extends JPanel {
@@ -34,8 +37,8 @@ public class Escenario extends JPanel {
 		repaint();
 	}
 	
-	public void crearPersonaje(String personaje) {
-		mapa.crearPersonaje(personaje);
+	public void crearPersonaje(StateEnemigo e,Enemigo enemy) {
+		mapa.añadirCaminante(e,enemy);
 	}
 	
 	public Map getMapa() {

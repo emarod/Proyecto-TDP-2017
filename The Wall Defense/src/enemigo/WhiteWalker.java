@@ -9,10 +9,17 @@ import mapa.Celda;
 
 public class WhiteWalker extends StateEnemigo{
 	
+	protected ImageIcon imagen;
+	protected JLabel graf;
+	protected int tipo;
+	
 	public WhiteWalker() {
 		puntaje=100;
 		velocidad_enemigo=10;
 		resistencia=3;
+		imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif"));
+		graf=new JLabel();
+		graf.setIcon(imagen);
 	}
 
 	@Override
@@ -52,7 +59,7 @@ public class WhiteWalker extends StateEnemigo{
 	}
 	
 	public void setGrafico(JLabel grafico) {
-		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif"));
+		imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif"));
 		grafico.setIcon(imagen);
 	}
 	
@@ -63,6 +70,16 @@ public class WhiteWalker extends StateEnemigo{
 	
 	public int getPuntaje() {
 		return puntaje;
+	}
+
+	@Override
+	public JLabel getGrafico() {
+		// TODO Auto-generated method stub
+		return graf;
+	}
+	
+	public int getTipo(){
+		return tipo;
 	}
 
 }

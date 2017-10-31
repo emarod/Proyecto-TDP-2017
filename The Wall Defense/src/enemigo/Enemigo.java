@@ -19,7 +19,10 @@ public class Enemigo extends Unidad{
     	celda=c;    	
     	this.profundidad=profundidad;
     	grafico=new JLabel();
-    	setGrafico();    	
+    	setGrafico();
+    	celda.getEscenario().crearPersonaje(t,this);
+    	celda.getDirector().ejecutar(this, tipo.getVelocidad());
+    	
 	}
 	 
 	public void activar() {
@@ -66,6 +69,7 @@ public class Enemigo extends Unidad{
 	public void destruir(){
 		super.destruir();
 		celda.destruirEnemigo(this);
+		celda.getDirector().desactivar(this);
 	}
 
 	public void atacar() {
