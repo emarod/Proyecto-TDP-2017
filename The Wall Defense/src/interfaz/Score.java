@@ -8,7 +8,7 @@ public class Score extends JPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	protected static final long serialVersionUID = 1L;
 	protected ProximaHorda horda;
 	
 	public Score(Escenario stage) {
