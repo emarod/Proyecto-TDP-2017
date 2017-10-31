@@ -3,6 +3,7 @@ package powerUp;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import jugador.Jugador;
 import mapa.Celda;
 
 public class VelAtkAumentado extends PowerUp {
@@ -16,5 +17,9 @@ public class VelAtkAumentado extends PowerUp {
 		
 		public JLabel getGraficoToken(){
 			return graficoToken;
+		}
+		
+		public void aplicar(Jugador j){
+			//Duplicar la vel de ataque.
 		}
 	}

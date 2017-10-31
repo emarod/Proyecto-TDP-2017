@@ -2,6 +2,8 @@ package powerUp;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import jugador.Jugador;
 import mapa.Celda;
 
 public class DañoAtkAumentado extends PowerUp {
@@ -16,6 +18,11 @@ public class DañoAtkAumentado extends PowerUp {
 	
 	public JLabel getGraficoToken(){
 		return graficoToken;
+	}
+	
+	public void aplicar(Jugador j){
+		int ataque_actual = j.getAtaque();
+		j.setAtaque(ataque_actual*2);
 	}
 	
 }

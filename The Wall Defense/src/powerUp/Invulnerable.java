@@ -2,7 +2,7 @@ package powerUp;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
+import jugador.Jugador;
 import mapa.Celda;
 
 public class Invulnerable extends PowerUp {
@@ -17,5 +17,9 @@ public class Invulnerable extends PowerUp {
 	
 	public JLabel getGraficoToken(){
 		return graficoToken;
+	}
+	
+	public void aplicar(Jugador j){
+		j.setInvulnerable();
 	}
 }

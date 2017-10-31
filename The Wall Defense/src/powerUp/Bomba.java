@@ -2,7 +2,7 @@ package powerUp;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
+import main.GameObject;
 import mapa.Celda;
 
 public class Bomba extends PowerUp {
@@ -17,5 +17,12 @@ public class Bomba extends PowerUp {
 	
 	public JLabel getGraficoToken(){
 		return graficoToken;
+	}
+	
+	public void aplicar(Celda c){
+		GameObject objetos []= c.getObjects();
+		for(int i=1 ;i<objetos.length; i++){
+			objetos[i]=null;
+		}
 	}
 }

@@ -4,16 +4,17 @@ import java.util.concurrent.Future;
 import javax.swing.*;
 public abstract class StateJugador {
 	protected int velocidad_jugador;
+	protected int ataque;
 	protected int resistencia;
 	protected Jugador jugador;
 	protected Icon[] graficos;
 	protected int graph;
 	
     public boolean impact(){
-    	if(resistencia==1)
+    	if(resistencia<=ataque)
     		return true;
     	else{
-    		resistencia--;
+    		resistencia = resistencia - ataque;
     		return false;
     	}
     }
@@ -39,6 +40,14 @@ public abstract class StateJugador {
 	
 	public int getVelocidad() {
 		return velocidad_jugador;
+	}
+	
+	public void setAtaque(int a) {
+		ataque=a;
+	}
+	
+	public int getAtaque() {
+		return ataque;
 	}
 
 }

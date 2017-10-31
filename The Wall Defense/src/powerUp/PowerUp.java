@@ -1,7 +1,6 @@
 package powerUp;
 
 import javax.swing.JLabel;
-
 import main.GameObject;
 import main.Visitor;
 import mapa.Celda;

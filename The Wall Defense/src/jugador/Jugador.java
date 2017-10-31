@@ -16,7 +16,8 @@ public class Jugador extends Unidad{
 	protected int vidas;
 	protected StateJugador tipo;
     protected Future<?> activeAttack;
-	private BancoRecursos bancoRecursos;
+	protected BancoRecursos bancoRecursos;
+	protected boolean invulnerable;
      
     public Jugador(Celda c,int prof, StateJugador t){	 
     	 alto=30;
@@ -30,7 +31,7 @@ public class Jugador extends Unidad{
     }
     
 	public boolean restarResistencia(){ 
-		boolean destruir= tipo.impact();
+		boolean destruir= (!invulnerable && tipo.impact());
 		if (destruir) {
 			destruir();
 			tipo.destruir();
@@ -102,7 +103,16 @@ public class Jugador extends Unidad{
 	@Override
 	public void setVelocidad(int speed) {
 		tipo.setVelocidad(speed);	
-	}	
+	}
+	
+	public int getAtaque() {
+		return tipo.getAtaque();		
+	}
+
+	public void setAtaque(int a) {
+		tipo.setAtaque(a);	
+	}
+	
 	public void setBancoRecursos(BancoRecursos banco) {
 		bancoRecursos=banco;
 		
@@ -110,5 +120,9 @@ public class Jugador extends Unidad{
 	
 	public void playSound() {
 		bancoRecursos.playShot();
+	}
+	
+	public void setInvulnerable(){
+		invulnerable = true;
 	}
 }
