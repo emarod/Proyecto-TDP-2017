@@ -11,7 +11,7 @@ public class VelAtkAumentado extends PowerUp {
 		public VelAtkAumentado(Celda c, int prof) {
 			super(c, prof);
 			grafico=new JLabel();
-			grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/token_vel_atk_aumentado.gif")));
+			graficoToken.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/token_vel_atk_aumentado.gif")));
 			//graficoToken.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/daño_atk_aumentado.gif")));
 		}
 		

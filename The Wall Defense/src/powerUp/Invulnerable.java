@@ -11,8 +11,8 @@ public class Invulnerable extends PowerUp {
 		super(c, prof);
 		grafico=new JLabel();
 		graficoToken = new JLabel();
-		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/token_campo_fuerza.gif")));
-		graficoToken.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/campo_fuerza.gif")));
+		graficoToken.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/token_campo_fuerza.gif")));
+		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/campo_fuerza.gif")));
 	}
 	
 	public JLabel getGraficoToken(){

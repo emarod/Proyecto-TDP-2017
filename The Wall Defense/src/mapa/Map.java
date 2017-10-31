@@ -272,26 +272,22 @@ public class Map implements Runnable{
 	}
 	
 	private void agregarPowerUp(){
-   	 Random r=new Random();
- 		int x=r.nextInt(16)+1;
- 		int y=r.nextInt(6)+1;
+ 		Random r=new Random();
+ 		int x=r.nextInt(16);
+ 		int y=r.nextInt(6);
  			
- 		if(celdas[x][y].getObjects()[4]==null && celdas[x][y].getObjects()[0]==null){
+ 		if(celdas[x][y].getObjects()[4]==null){
  		   GameObject[] objetos2=celdas[x][y].getObjects();
  		   int c=r.nextInt(3)+0;
  		   PowerUp p;
- 		  JLabel grafico2;
+ 		   JLabel grafico2;
  		   switch(c){
  		   case 0:
  			   p=new DañoAtkAumentado(celdas[x][y],4);
- 			  grafico2=p.getGraficoToken();
-			   objetos2[4]= p;
-			   grafico2.setBounds(x,y,64, 64);
-			   escenario.agregar(grafico2,new Integer(2));
  		  	   break;
  		  case 1:
  			   p=new VelAtkAumentado(celdas[x][y],4);
- 			 grafico2=p.getGraficoToken();
+ 			   grafico2=p.getGraficoToken();
 			   objetos2[4]= p;
 			   grafico2.setBounds(x,y,64, 64);
 			   escenario.agregar(grafico2,new Integer(2));
@@ -314,8 +310,8 @@ public class Map implements Runnable{
  		  }
  		else
  		{
- 			x=r.nextInt(16)+1;
- 			y=r.nextInt(6)+1;
+ 			x=r.nextInt(16);
+ 			y=r.nextInt(6);
  			
  		}
  	}

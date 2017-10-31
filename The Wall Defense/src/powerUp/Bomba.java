@@ -11,8 +11,8 @@ public class Bomba extends PowerUp {
 		super(c, prof);
 		grafico=new JLabel();
 		graficoToken = new JLabel();
-		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/token_bomba.gif")));
-		graficoToken.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/explosion.gif")));
+		graficoToken.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/token_bomba.gif")));
+		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/explosion.gif")));
 	}
 	
 	public JLabel getGraficoToken(){

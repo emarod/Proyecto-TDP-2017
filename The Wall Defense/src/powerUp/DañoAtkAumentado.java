@@ -12,8 +12,8 @@ public class DañoAtkAumentado extends PowerUp {
 		super(c, prof);
 		grafico=new JLabel();
 		graficoToken = new JLabel();
-		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/token_daño_atk_aumentado.gif")));
-		graficoToken.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/daño_atk_aumentado.gif")));
+		graficoToken.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/token_daño_atk_aumentado.gif")));
+		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/daño_atk_aumentado.gif")));
 	}
 	
 	public JLabel getGraficoToken(){
