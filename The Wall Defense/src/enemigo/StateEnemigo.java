@@ -35,5 +35,7 @@ public abstract class StateEnemigo {
 	public abstract void destruir();
 	
 	public abstract int getPuntaje();
+	
+	public abstract void setEnemigo(Enemigo e);
 
 }

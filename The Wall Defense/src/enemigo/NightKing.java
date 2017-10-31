@@ -7,12 +7,13 @@ import javax.swing.JLabel;
 import main.GameObject;
 import mapa.Celda;
 
-public class WhiteWalker extends StateEnemigo{
+public class NightKing extends StateEnemigo {
 	
-	public WhiteWalker() {
-		puntaje=100;
-		velocidad_enemigo=10;
-		resistencia=3;
+
+	public NightKing() {
+		puntaje=200;
+		velocidad_enemigo=5;
+		resistencia=6;
 	}
 
 	@Override
@@ -52,7 +53,7 @@ public class WhiteWalker extends StateEnemigo{
 	}
 	
 	public void setGrafico(JLabel grafico) {
-		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif"));
+		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_nightking_atacando.gif"));
 		grafico.setIcon(imagen);
 	}
 	
