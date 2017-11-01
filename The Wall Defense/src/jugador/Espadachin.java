@@ -34,4 +34,7 @@ public class Espadachin extends StateJugador{
 	public StateJugador clone() {
 		return new Espadachin();
 	}
+	
+	public void playSound() {
+	}
 }

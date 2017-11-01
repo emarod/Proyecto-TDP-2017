@@ -1,17 +1,11 @@
 package disparo;
-import jugador.Arquero;
 import main.Unidad;
 import main.Visitor;
 public abstract class Disparo extends Unidad  {
-	protected Arquero arquero;
-
-	public Disparo(Arquero archer, int prof){
+	public Disparo(int prof){
 		profundidad=prof;
 		ancho=64;
 		alto=64;
-		arquero= archer;
-		celda=arquero.getJugador().getCelda();
-		celda.addDisparo(this);
 	}
 	
 	   

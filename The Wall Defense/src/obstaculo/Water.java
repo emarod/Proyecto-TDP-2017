@@ -9,14 +9,14 @@ public class Water extends Obstaculo {
 	protected int penalizacion;
 	public Water(Celda c,char tipo,int prof,int sprite){
 	   profundidad=prof;
-	   celda=c;
+	   celda[0]=c;
 	   grafico=new JLabel();
 	   penalizacion = 50;
 	   
 	   switch(tipo){
 		case 'c':
 			//Centro.
-			grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/lago_centro.png")));
+			grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/terrenos/lago_centro.png")));
 			break;
 			
 		case 's':

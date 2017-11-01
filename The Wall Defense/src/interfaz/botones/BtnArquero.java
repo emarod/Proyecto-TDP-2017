@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import interfaz.Escenario;
 import jugador.Arquero;
 import jugador.Jugador;
+import mapa.Celda;
 
 public class BtnArquero extends BtnJugador {
 	
@@ -12,9 +13,9 @@ public class BtnArquero extends BtnJugador {
 
 	public BtnArquero(Escenario e) {
 		super(e);
-		player=new Jugador(null, 2, new Arquero());
-		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/ygritte/ygritte_atacando_10fps.gif")));
-
+		Celda [] c = new Celda[4];
+		player=new Jugador(c, 2, new Arquero());
+		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/ygritte.gif")));
 	}
 
 	public void create() {

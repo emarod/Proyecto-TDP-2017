@@ -8,9 +8,9 @@ import obstaculo.Rock;
 import obstaculo.Water;
 public class VisitorDisparoPlayer extends Visitor {
 	
-	protected DisparoPlayer disparo;
+	protected Disparo disparo;
 	
-	public VisitorDisparoPlayer(DisparoPlayer dp){
+	public VisitorDisparoPlayer(Disparo dp){
 		disparo = dp;
 	}
 
@@ -33,7 +33,7 @@ public class VisitorDisparoPlayer extends Visitor {
 	}
 
 	@Override
-	public boolean visitDisparoPlayer(DisparoPlayer d) {		
+	public boolean visitDisparoPlayer(Disparo d) {		
 		return true;
 	}
 

@@ -19,7 +19,7 @@ public class MenuInicio extends JPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	protected static final long serialVersionUID = 1L;
 	protected Icon menuback;
 	protected JLabel menupanel;
 	protected Icon newGame[];
@@ -83,7 +83,7 @@ public class MenuInicio extends JPanel {
 		}
 	}
 		
-		public void oyentes() {
+	public void oyentes() {
 			
 			//Oyente boton new game crea GUI
 			buttons[0].addActionListener(

@@ -7,11 +7,11 @@ public class Rock extends Obstaculo implements Runnable{
 	protected int sprite;
     public Rock(Celda c,int prof,int sprite){
     	profundidad=prof;
-    	celda=c;
+    	celda[0]=c;
     	this.sprite=sprite;
     	resistencia=3;
     	grafico=new JLabel();
-    	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/roca_"+sprite+".png")));  	
+    	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca_"+sprite+".png")));  	
     }
     public int getResistencia(){
     	return resistencia;

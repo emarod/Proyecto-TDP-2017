@@ -8,7 +8,7 @@ import javax.swing.border.Border;
 
 public class RoundedBorder implements Border {
 
-    private int radius;
+    protected int radius;
 
 
     RoundedBorder(int radius) {

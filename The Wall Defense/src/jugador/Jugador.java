@@ -16,9 +16,10 @@ public class Jugador extends Unidad{
 	protected int vidas;
 	protected StateJugador tipo;
     protected Future<?> activeAttack;
-	private BancoRecursos bancoRecursos;
+	protected BancoRecursos bancoRecursos;
+	protected boolean invulnerable;
      
-    public Jugador(Celda c,int prof, StateJugador t){	 
+    public Jugador(Celda[] c,int prof, StateJugador t){	 
     	 alto=30;
     	 ancho=30;
     	 profundidad=prof;
@@ -30,7 +31,7 @@ public class Jugador extends Unidad{
     }
     
 	public boolean restarResistencia(){ 
-		boolean destruir= tipo.impact();
+		boolean destruir= (!invulnerable && tipo.impact());
 		if (destruir) {
 			destruir();
 			tipo.destruir();
@@ -78,7 +79,7 @@ public class Jugador extends Unidad{
 		return V;
 	}
 	
-	public Jugador clone(Celda c) {
+	public Jugador clone(Celda[] c) {
 //		Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
 		StateJugador tipo = this.getState().clone();
 		Jugador clon = new Jugador(c, 2, tipo);
@@ -102,13 +103,29 @@ public class Jugador extends Unidad{
 	@Override
 	public void setVelocidad(int speed) {
 		tipo.setVelocidad(speed);	
-	}	
-	public void setBancoRecursos(BancoRecursos banco) {
-		bancoRecursos=banco;
-		
 	}
 	
-	public void playSound() {
-		bancoRecursos.playShot();
+	public int getAtaque() {
+		return tipo.getAtaque();		
+	}
+
+	public void setAtaque(int a) {
+		tipo.setAtaque(a);	
+	}
+	
+	public void setBancoRecursos(BancoRecursos banco) {
+		bancoRecursos=banco;
+	}
+	
+	public BancoRecursos getBancoRecursos() {
+		return bancoRecursos;
+	}
+	
+	public void playSound(){
+		tipo.playSound();
+	}
+	
+	public void setInvulnerable(){
+		invulnerable = true;
 	}
 }

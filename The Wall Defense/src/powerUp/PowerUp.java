@@ -1,7 +1,6 @@
 package powerUp;
 
 import javax.swing.JLabel;
-
 import main.GameObject;
 import main.Visitor;
 import mapa.Celda;
@@ -11,7 +10,7 @@ public abstract class PowerUp extends GameObject {
 	protected JLabel graficoToken;
 
 	protected PowerUp(Celda c,int prof){
-		celda = c;
+		celda[0] = c;
 		profundidad = prof;
 	}
 	

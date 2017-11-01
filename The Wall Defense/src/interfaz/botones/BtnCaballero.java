@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import interfaz.Escenario;
 import jugador.Caballero;
 import jugador.Jugador;
+import mapa.Celda;
 
 public class BtnCaballero extends BtnJugador{
 	
@@ -12,7 +13,8 @@ public class BtnCaballero extends BtnJugador{
 
 	public BtnCaballero(Escenario e) {
 		super(e);
-		player=new Jugador(null, 2, new Caballero());
+		Celda [] c = new Celda[4];
+		player=new Jugador(c, 2, new Caballero());
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/lannister_atacando.gif")));
 	};
 

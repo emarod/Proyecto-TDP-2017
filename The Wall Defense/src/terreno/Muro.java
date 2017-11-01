@@ -9,7 +9,7 @@ import mapa.Celda;
 public class Muro extends Terreno {
 	
     public Muro(Celda c){    	
-    	celda=c;  
+    	celda[0]=c;  
     	//Este es un random limitado entre 1 y 2, para establecer un rango nuevo Random[n,m]: (Math.random()*m)+n
     	this.sprite = (int) (Math.random() * 2) +1; 
     	grafico=new JLabel();
