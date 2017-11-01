@@ -115,11 +115,14 @@ public class Jugador extends Unidad{
 	
 	public void setBancoRecursos(BancoRecursos banco) {
 		bancoRecursos=banco;
-		
 	}
 	
-	public void playSound() {
-		bancoRecursos.playShot();
+	public BancoRecursos getBancoRecursos() {
+		return bancoRecursos;
+	}
+	
+	public void playSound(){
+		tipo.playSound();
 	}
 	
 	public void setInvulnerable(){

@@ -94,5 +94,9 @@ public class Arquero extends StateJugador{
 	public int getVelocidadDisparo() {
 		return velocidad_disparo;
 	}
+	
+	public void playSound() {
+		jugador.getBancoRecursos().playFlecha();
+	}
     
 }

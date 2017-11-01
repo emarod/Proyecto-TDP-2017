@@ -34,4 +34,7 @@ public class Caballero extends StateJugador{
 	public StateJugador clone() {
 		return new Caballero();
 	}
+	
+	public void playSound() {
+	}
 }

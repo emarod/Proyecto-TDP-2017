@@ -87,5 +87,8 @@ public class Dragon extends StateJugador {
 	public void mover() {
 		// TODO Auto-generated method stub		
 	}
-
+	
+	public void playSound() {
+		jugador.getBancoRecursos().playBolaFuego();
+	}
 }
