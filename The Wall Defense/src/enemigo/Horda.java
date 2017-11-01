@@ -49,14 +49,19 @@ public class Horda {
         
 	    BufferedReader bufferHorda = new BufferedReader(entradaHorda);
 	    
-	    int y;
+	    int y,x;
 	    while ((sCurrentLine = bufferHorda.readLine()) != null) {
-	    	for (int x=0;x<sCurrentLine.length();x++){
-	    		y= (int) (Math.random()*5);
-	    		char tipo =sCurrentLine.charAt(x);
-	    		Celda c = mapa.getCelda(15, y);
+	    	for (int i=0;i<sCurrentLine.length();i++){
+	    		y= (int) (Math.random()*6);
+	    		x = 15;
+	    		while(mapa.getCelda(x,y).getObjects()[2]!=null){
+	    			y= (int) (Math.random()*6);
+	    		}
+	    		char tipo =sCurrentLine.charAt(i);
+	    		Celda c = mapa.getCelda(x,y);
 	    		GameObject[] objetos= c.getObjects();
 	    		Celda[] celdas = new Celda[4];
+	    		celdas [0]= c;
 	    		Enemigo e;
 	    		switch(tipo){
 		  	   		case 'a':
@@ -64,10 +69,11 @@ public class Horda {
 		    		case 'c':
 		    		case 'd':
 		    		case 'e':
-		    			celdas[0] = c;
 		    			e = new Enemigo(celdas,2, new WhiteWalker());
 		    			objetos[2] = e;
+		    			System.out.println("x:"+x+" y:"+y);
 		    			mapa.crearEnemigo(e, x, y);
+		    			stage.agregar(e.getGrafico(), 2);
 		    			enemigos++;
 		    			break;
 		    		case 'f':
@@ -79,10 +85,11 @@ public class Horda {
 		    		case 'l':
 		    		case 'm':
 		    		case 'n':
-		    			celdas[0] = c;
 		    			e = new Enemigo(celdas,2, new NightKing());
 		    			objetos[2] = e;
+		    			System.out.println("x:"+x+" y:"+y);
 		    			mapa.crearEnemigo(e, x, y);
+		    			stage.agregar(e.getGrafico(), 2);
 		    			enemigos++;
 		    			break;
 		    		case 'o':
