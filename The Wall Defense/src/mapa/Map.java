@@ -231,7 +231,7 @@ public class Map implements Runnable{
 	}
 
 	
-	public void crearEnemigo(Enemigo e,int x, int y) {		
+	public void crearEnemigo(Enemigo e,int x, int y) {
 		if(	celdas[x][y].getObjects()[2]==null) {
 			Celda[] c = new Celda[1];
 			c[0] = celdas[x][y];
