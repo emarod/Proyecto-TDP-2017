@@ -22,14 +22,14 @@ public class Dragon extends StateJugador {
 		disparos_en_ejecucion=0;
 		velocidad_disparo=75;
 		graficos= new Icon[8];
-		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_0.png"));
-		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_1.png"));
-		graficos[2]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_2.png"));
-		graficos[3]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_3.png"));
-		graficos[4]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_4.png"));
-		graficos[5]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_5.png"));
-		graficos[6]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_6.png"));
-		graficos[7]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_7.png"));
+		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_0.png"));
+		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_1.png"));
+		graficos[2]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_2.png"));
+		graficos[3]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_3.png"));
+		graficos[4]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_4.png"));
+		graficos[5]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_5.png"));
+		graficos[6]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_6.png"));
+		graficos[7]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_7.png"));
 	}
 	
 	public void setJugador(Jugador jugador){
@@ -50,8 +50,7 @@ public class Dragon extends StateJugador {
 		setGrafico(graph);
 		if(graph == 4){
 			setGrafico(0);
-		}
-				
+		}		
 	}
 	
 	public void setGrafico(int i) {

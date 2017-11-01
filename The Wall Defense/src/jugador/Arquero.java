@@ -45,13 +45,9 @@ public class Arquero extends StateJugador{
 			graph++;
 		}
 		setGrafico(graph);
-//		try {
-//			Thread.sleep(100);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-				
+		if(graph == 4){
+			setGrafico(0);
+		}
 	}
 	
 	public Future<?> atacar(){

@@ -16,7 +16,7 @@ public class Water extends Obstaculo {
 	   switch(tipo){
 		case 'c':
 			//Centro.
-			grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/lago_centro.png")));
+			grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/terrenos/lago_centro.png")));
 			break;
 			
 		case 's':
