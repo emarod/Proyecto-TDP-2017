@@ -18,6 +18,9 @@ public class BancoRecursos {
 		//Music song = TinySound.loadMusic("/resources/sound/intro.wav");
 		//flecha = TinySound.loadSound("/resources/sound/laser4.wav");
 		//bola_fuego = TinySound.loadSound("/resources/sound/bola_fuego.wav");
+		Music song = TinySound.loadMusic("/resources/sound/theme_song.ogg");
+		flecha = TinySound.loadSound("/resources/sound/laser4.wav");
+		bola_fuego = TinySound.loadSound("/resources/sound/bola_fuego.wav");
 		//start playing the music on loop
 		//song.play(true);
 		//play the sound a few times in a loop
