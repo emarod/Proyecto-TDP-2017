@@ -2,7 +2,7 @@ package enemigo;
 
 import obstaculo.Rock;
 import obstaculo.Water;
-import disparo.DisparoPlayer;
+import disparo.Disparo;
 import jugador.Jugador;
 import main.Visitor;
 
@@ -26,7 +26,7 @@ public class VisitorEnemigo extends Visitor{
    public  boolean visitPlayer(Jugador j){
 	   return false;
    }
-   public boolean visitDisparoPlayer(DisparoPlayer d){
+   public boolean visitDisparoPlayer(Disparo d){
 	   d.destruir();
 	   enemigo.restarResistencia();
 	   return true;

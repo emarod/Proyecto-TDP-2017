@@ -6,7 +6,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import disparo.DisparoPlayer;
+import disparo.DisparoArquero;
 
 public class Arquero extends StateJugador{
 	
@@ -66,7 +66,7 @@ public class Arquero extends StateJugador{
 //		}		
 		if(disparos_en_ejecucion<disparos_simultaneos){
 			jugador.playSound();
-			shot =new DisparoPlayer(this,6).getTask();			
+			shot =new DisparoArquero(this,6).getTask();			
 			disparos_en_ejecucion++;
     	}
 		graph=0;

@@ -1,6 +1,6 @@
 package jugador;
 
-import disparo.DisparoPlayer;
+import disparo.Disparo;
 import enemigo.Enemigo;
 import main.Visitor;
 import obstaculo.Rock;
@@ -22,7 +22,7 @@ public class VisitorJugador extends Visitor{
 	   public  boolean visitPlayer(Jugador j){
 		   return false;
 	   }
-	   public boolean visitDisparoPlayer(DisparoPlayer d){
+	   public boolean visitDisparoPlayer(Disparo d){
 		   return true;
 	   }
 	   public boolean visitEnemigo(Enemigo e){

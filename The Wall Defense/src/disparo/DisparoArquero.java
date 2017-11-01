@@ -8,10 +8,15 @@ import main.GameObject;
 import main.Visitor;
 import mapa.Celda;
 
-public class DisparoPlayer extends Disparo{	
+public class DisparoArquero extends Disparo{	
 	
-    public DisparoPlayer(Arquero archer, int prof){
-       super(archer,prof);      
+	protected Arquero arquero;
+	
+    public DisparoArquero(Arquero archer, int prof){
+       super(prof);
+       arquero = archer;
+		celda=arquero.getJugador().getCelda();
+		celda.addDisparo(this);
        V=new VisitorDisparoPlayer(this);
  	   grafico=new JLabel();
   	   grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
