@@ -81,7 +81,7 @@ public class Jugador extends Unidad{
 	
 	public Jugador clone(Celda[] c) {
 //		Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
-		StateJugador tipo = this.getState().clone();
+		StateJugador tipo = this.tipo.clone();
 		Jugador clon = new Jugador(c, 2, tipo);
 		tipo.setJugador(clon);
 		return clon;

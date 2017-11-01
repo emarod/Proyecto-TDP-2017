@@ -4,6 +4,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import jugador.Arquero;
+import jugador.StateJugador;
 import main.GameObject;
 import mapa.Celda;
 
@@ -76,5 +78,8 @@ public class NightKing extends StateEnemigo {
 	public JLabel getGrafico() {
 		return graf;
 	}
-
+	
+	public StateEnemigo clone() {
+		return new NightKing();
+	}
 }

@@ -30,5 +30,5 @@ public abstract class GameObject {
     
     public void setCelda(Celda c,int pos){
     	celda[pos]=c;
-    }	 
+    }
 }

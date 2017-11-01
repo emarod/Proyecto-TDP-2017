@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/flopy/Desktop/lib/jl1.0.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/flopy/Desktop/lib/tinysound-1.1.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/flopy/Desktop/lib/vorbis-support-1.1.0.jar"/>
+	<classpathentry kind="src" path=""/>
 	<classpathentry kind="lib" path="src/lib/jl1.0.1.jar"/>
 	<classpathentry kind="lib" path="src/lib/tinysound-1.1.1.jar"/>
 	<classpathentry kind="lib" path="src/lib/vorbis-support-1.1.0.jar"/>

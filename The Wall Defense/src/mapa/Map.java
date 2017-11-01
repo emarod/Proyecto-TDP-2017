@@ -62,7 +62,7 @@ public class Map implements Runnable{
 	    Random rnd=new Random();
 	    int r=rnd.nextInt(1);
 	    //Este es un random limitado entre 1 y 3, para establecer un rango nuevo Random[n,m]: (Math.random()*m)+n
-    	r = (int) (Math.random()*2)+1 ;
+    	r = (int) (Math.random()*2) ;
 	    InputStream fileMap = getClass().getResourceAsStream("/resources/mapa_"+r+".txt");
         InputStreamReader entradaMapa = new InputStreamReader(fileMap);
 
@@ -133,20 +133,6 @@ public class Map implements Runnable{
 	}
 	
 	
-	
-	public void agregarPersonajeEnMapa(){
-		WhiteWalker white_walker2 = new WhiteWalker();
-		Enemigo enemigo2 = new Enemigo(celdas[18][2],2,white_walker2);
-		white_walker2.setEnemigo(enemigo2);
-		celdas[18][2].getObjects()[1]= enemigo2;
-		enemigo2.setCelda(celdas[18][2],0);
-		JLabel graf4 = enemigo2.getGrafico();
-		graf4.setBounds(64*18,64*2,64,64);
-		escenario.agregar(graf4,new Integer(2));
-		escenario.repaint();
-	}
-	
-	
     public Celda getCelda(int x, int y){
     	return celdas[x][y];
     }
@@ -158,30 +144,6 @@ public class Map implements Runnable{
     
 	public void run() {	
 		escenario.repaint();
-	}
-
-	public void crearPersonaje(String personaje) {
-		int x_cel= Math.round(celdaLabel.getX()/64);
-		int y_cel= Math.round(celdaLabel.getY()/64);
-		
-		switch (personaje) {
-		case "caminante":
-			if(celdaLabel!=null) {
-				//añadirCaminante(x_cel,y_cel);
-			}
-			break;
-			
-		case "whitewalker":
-			if(celdaLabel!=null) {
-				añadirCaminanteEstatico(x_cel,y_cel);
-			}
-			break;
-			
-		default:
-			System.out.println("No existe la unidad --> "+personaje);
-			break;
-		}
-		
 	}
 	
 	public void crearJugador(Jugador j) {		
@@ -218,35 +180,7 @@ public class Map implements Runnable{
 				}
 			);
 			escenario.agregar(icono,new Integer(2));
-			//añadirCaminante();
 		}
-	}
-	
-
-	public void añadirCaminante() {		
-		int enemy=(int) (Math.random() * 2) +1;
-		
-		switch(enemy) {
-		
-		case 1:
-			WhiteWalker white_walker = new WhiteWalker();
-			añadirCaminante(white_walker);
-			break;
-		case 2:
-			NightKing night_King=new NightKing();
-			añadirCaminante(night_King);
-			break;
-		}
-		
-		
-		
-	}
-	
-	public void añadirCaminante(StateEnemigo s) {		
-		//s.setEnemigo(enemy);
-		//celdas[15][enemy.getCelda().getPosY()].getObjects()[1]= enemy;
-		JLabel graf3 = s.getGrafico();
-		//graf3.setBounds(64*15,64*enemy.getCelda().getPosY(),64,64);
 	}
 
 	public void crearJugadorLargo(Jugador j) {		
@@ -269,14 +203,16 @@ public class Map implements Runnable{
 					public void mouseReleased(MouseEvent e) {
 						int x_celd = Math.round(x_mouse/64); 
 						int y_celd = Math.round(y_mouse/64);
-						GameObject[] objetosCelda =celdas[x_celd][y_celd].getObjects();
-						objetosCelda[2]= player;
+						GameObject[] objetosCelda1 =celdas[x_celd][y_celd].getObjects();
+						GameObject[] objetosCelda2 =celdas[x_celd+1][y_celd].getObjects();
+						objetosCelda1[2]= player;
+						objetosCelda2[2]= player;
 						player.getCeldas()[0].getObjects()[2]=null;
-						player.setCelda(celdas[x_cel][y_cel],0);
 						player.getCeldas()[1].getObjects()[2]=null;
-						player.setCelda(celdas[x_cel][y_cel],1);
-						int x_terreno = objetosCelda[0].getGrafico().getX();
-						int y_terreno = objetosCelda[0].getGrafico().getY();
+						player.setCelda(celdas[x_celd][y_celd],0);
+						player.setCelda(celdas[x_celd+1][y_celd],1);
+						int x_terreno = objetosCelda1[0].getGrafico().getX();
+						int y_terreno = objetosCelda1[0].getGrafico().getY();
 						player.getGrafico().setBounds(x_terreno, y_terreno,128, 64);
 					}
 				}
@@ -293,33 +229,21 @@ public class Map implements Runnable{
 			escenario.agregarLargo(icono,new Integer(2));
 		}
 	}
-	
-	public void añadirCaminante(int x, int y) {
-		WhiteWalker white_walker = new WhiteWalker();
-		Enemigo enemigo1 = new Enemigo(celdas[x][y],1,white_walker);
-		white_walker.setEnemigo(enemigo1);
-		celdas[x][y].getObjects()[1]= enemigo1;
-		enemigo1.setCelda(celdas[x][y],0);
-		JLabel graf3 = enemigo1.getGrafico();
-		graf3.setBounds(64*x,64*y,64,64);
 
-		escenario.agregar(graf3,new Integer(2));
-		//enemy.activar();
+	
+	public void crearEnemigo(Enemigo e,int x, int y) {		
+		if(	celdas[x][y].getObjects()[2]==null) {
+			Celda[] c = new Celda[1];
+			c[0] = celdas[x][y];
+			Enemigo enemy = e.clone(c);
+			celdas[x][y].getObjects()[2]= enemy;
+			JLabel icono = enemy.getGrafico();
+			enemy.setBancoRecursos(banco);
+			icono.setBounds(x*64,y*64,64,64);
+			escenario.agregar(icono,new Integer(2));
+		}
 	}
 	
-	public void añadirCaminanteEstatico(int x, int y) {
-		WhiteWalker white_walker = new WhiteWalker();
-		Enemigo enemigo1 = new Enemigo(celdas[x][y],1,white_walker);
-		white_walker.setEnemigo(enemigo1);		
-		celdas[x][y].getObjects()[1]= enemigo1;
-		enemigo1.setCelda(celdas[x][y],0);
-		JLabel graf3 = enemigo1.getGrafico();
-		graf3.setBounds(64*x,64*y,64,64);
-		escenario.agregar(graf3,new Integer(2));
-		enemigo1.activar();
-	}
-
-
 	public void hacerDaño() {
 		int x_cel= Math.round(celdaLabel.getX()/64);
 		int y_cel= Math.round(celdaLabel.getY()/64);

@@ -39,5 +39,7 @@ public abstract class StateEnemigo {
 	public abstract void setEnemigo(Enemigo e);
 	
 	public abstract JLabel getGrafico();
+	
+	public abstract StateEnemigo clone();
 
 }

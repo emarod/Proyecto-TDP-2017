@@ -5,19 +5,21 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.JLabel;
 
-//import interfaz.GUI;
+import Controladores.BancoRecursos;
 import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
+
 public class Enemigo extends Unidad{
 	 protected StateEnemigo tipo;
+	 protected BancoRecursos bancoRecursos;
 	 
-	 public Enemigo(Celda c, int profundidad, StateEnemigo t){
+	 public Enemigo(Celda [] c, int profundidad, StateEnemigo t){
 		V=new VisitorEnemigo(this);
     	tipo=t;
     	alto=30;
     	ancho=30;
-    	celda[0]=c;    	
+    	celda=c;    	
     	this.profundidad=profundidad;
     	grafico=new JLabel();
     	setGrafico();    	
@@ -96,13 +98,26 @@ public class Enemigo extends Unidad{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void setBancoRecursos(BancoRecursos banco) {
+		bancoRecursos=banco;
+	}
+	
+	public BancoRecursos getBancoRecursos() {
+		return bancoRecursos;
+	}
 
 	public void relentizar(int penalizacion) {
 		activeTask.cancel(true);
 		activeTask= celda[0].getDirector().ejecutarUna(this,penalizacion);
 		activar(activeTask.getDelay(TimeUnit.MILLISECONDS));
-		
-		
-		
+	}
+	
+	public Enemigo clone(Celda[] c) {
+//		Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
+		StateEnemigo tipo = this.tipo.clone();
+		Enemigo clon = new Enemigo(c, 2, tipo);
+		tipo.setEnemigo(clon);
+		return clon;
 	}
 }
