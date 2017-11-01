@@ -269,14 +269,16 @@ public class Map implements Runnable{
 					public void mouseReleased(MouseEvent e) {
 						int x_celd = Math.round(x_mouse/64); 
 						int y_celd = Math.round(y_mouse/64);
-						GameObject[] objetosCelda =celdas[x_celd][y_celd].getObjects();
-						objetosCelda[2]= player;
+						GameObject[] objetosCelda1 =celdas[x_celd][y_celd].getObjects();
+						GameObject[] objetosCelda2 =celdas[x_celd+1][y_celd].getObjects();
+						objetosCelda1[2]= player;
+						objetosCelda2[2]= player;
 						player.getCeldas()[0].getObjects()[2]=null;
-						player.setCelda(celdas[x_cel][y_cel],0);
 						player.getCeldas()[1].getObjects()[2]=null;
-						player.setCelda(celdas[x_cel][y_cel],1);
-						int x_terreno = objetosCelda[0].getGrafico().getX();
-						int y_terreno = objetosCelda[0].getGrafico().getY();
+						player.setCelda(celdas[x_celd][y_celd],0);
+						player.setCelda(celdas[x_celd+1][y_celd],1);
+						int x_terreno = objetosCelda1[0].getGrafico().getX();
+						int y_terreno = objetosCelda1[0].getGrafico().getY();
 						player.getGrafico().setBounds(x_terreno, y_terreno,128, 64);
 					}
 				}
