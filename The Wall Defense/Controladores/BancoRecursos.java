@@ -1,4 +1,4 @@
-package src.Controladores;
+package Controladores;
 
 import kuusisto.tinysound.Music;
 import kuusisto.tinysound.Sound;
