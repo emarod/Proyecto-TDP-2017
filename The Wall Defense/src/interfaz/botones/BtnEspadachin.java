@@ -15,12 +15,11 @@ public class BtnEspadachin extends BtnJugador {
 		super(e);
 		Celda [] c = new Celda[4];
 		player=new Jugador(c, 2, new Espadachin());
-		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/jon_snow.gif")));
+		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/jonsnow.png")));
 	};
 
 	public void create() {
-		stage.getMapa().crearJugador(player);		
-		
+		stage.getMapa().crearJugador(player);
 	}
 
 }

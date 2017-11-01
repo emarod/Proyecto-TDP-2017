@@ -27,10 +27,10 @@ public class MenuCompra extends JPanel{
  	
 	public MenuCompra(Escenario escenario) {
 		this.escenario= escenario;
-		this.setLayout(null);
-		this.setBounds(76, 0, 100, 100);
+		this.setLayout(new BorderLayout());
+		this.setBounds(76, 0, 200, 300);
 		this.setBackground(Color.RED);
-		this.setBorder(new LineBorder(new Color(0, 0, 0)));	
+		this.setBorder(new LineBorder(new Color(0, 0, 0)));
 		armarPanel();
 		armarBotonera();
 	}
@@ -38,22 +38,18 @@ public class MenuCompra extends JPanel{
 	private void armarBotonera() {
 		
 		BtnDragon dragon= new BtnDragon(this.escenario);
-		dragon.setBounds(0, 15, 15, 15);
-		botonera.add(dragon);
+		dragon.setBounds(100, 200, dragon.getIcon().getIconWidth(), dragon.getIcon().getIconHeight());
 		
-		/*
+		
 		BtnArquero ygritte= new BtnArquero(this.escenario);
-		ygritte.setBounds(0, 15, 15, 15);
-		botonera.add(ygritte);
-		*/
+		ygritte.setBounds(50, 200, ygritte.getIcon().getIconWidth(), ygritte.getIcon().getIconHeight());
+		
 		
 		BtnCaballero lannister = new BtnCaballero(this.escenario);
-		lannister.setBounds(0, 35, 32, 32);
-		//botonera.add(lannister);
+		lannister.setBounds(0, 15, lannister.getIcon().getIconWidth(), lannister.getIcon().getIconHeight());		
 		
 		BtnEspadachin JonSnow = new BtnEspadachin(this.escenario);
-		JonSnow.setBounds(0, 50, 32, 32);
-		//this.add(JonSnow);
+		JonSnow.setBounds(0, 50, JonSnow.getIcon().getIconWidth(), JonSnow.getIcon().getIconHeight());
 		
 		/*JButton caminante = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/white_walker.gif")));
 		caminante.setSize(32, 32);
@@ -66,21 +62,29 @@ public class MenuCompra extends JPanel{
 		);
 		this.add(caminante);*/
 		
+		agregarBoton(ygritte);
+		agregarBoton(dragon);
+		agregarBoton(lannister);
+		agregarBoton(JonSnow);
+
 		
 		
+	}
+	
+	public void agregarBoton(JButton boton) {
 		
-		
+		botonera.add(boton);
 	}
 	
 	public void armarPanel() {
 		
 		botonera=new JPanel();
-		botonera.setLayout(new BorderLayout());
-		botonera.setBounds(0,0,400,100);
+		botonera.setLayout(new GridLayout());
+		botonera.setBounds(76, 0, 300, 100);
 		botonera.setBackground(Color.BLUE);
 		background=new ImageIcon(this.getClass().getResource("/resources/static/tienda/fondo.png"));
 		//botonera.add(new JLabel(background));
-		this.add(botonera,BorderLayout.WEST);
+		this.add(botonera, BorderLayout.WEST);
 		
 	}
 		

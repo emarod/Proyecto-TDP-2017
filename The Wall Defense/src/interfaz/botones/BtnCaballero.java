@@ -15,7 +15,7 @@ public class BtnCaballero extends BtnJugador{
 		super(e);
 		Celda [] c = new Celda[4];
 		player=new Jugador(c, 2, new Caballero());
-		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/lannister_atacando.gif")));
+		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/lannister.png")));
 	};
 
 	public void create() {

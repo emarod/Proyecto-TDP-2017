@@ -15,7 +15,7 @@ public class BtnDragon extends BtnJugador {
 		super(e);
 		Celda [] c = new Celda[4];
 		player=new Jugador(c, 2, new Dragon());
-		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/dragon_estatico.gif")));
+		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/dragon.png")));
 	}
 
 	public void create() {

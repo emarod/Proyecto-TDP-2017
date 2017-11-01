@@ -15,7 +15,7 @@ public class BtnArquero extends BtnJugador {
 		super(e);
 		Celda [] c = new Celda[4];
 		player=new Jugador(c, 2, new Arquero());
-		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/ygritte.gif")));
+		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/ygritte2.png")));
 	}
 
 	public void create() {
