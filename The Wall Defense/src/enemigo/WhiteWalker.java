@@ -81,5 +81,9 @@ public class WhiteWalker extends StateEnemigo{
 	public int getTipo(){
 		return tipo;
 	}
-
+	
+	public StateEnemigo clone() {
+		return new WhiteWalker();
+	}
+	
 }
