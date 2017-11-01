@@ -137,7 +137,7 @@ public class Map implements Runnable{
 		Enemigo enemigo2 = new Enemigo(celdas[18][2],2,white_walker2);
 		white_walker2.setEnemigo(enemigo2);
 		celdas[18][2].getObjects()[1]= enemigo2;
-		enemigo2.setCelda(celdas[18][2]);
+		enemigo2.setCelda(celdas[18][2],0);
 		JLabel graf4 = enemigo2.getGrafico();
 		graf4.setBounds(64*18,64*2,64,64);
 		escenario.agregar(graf4,new Integer(2));
@@ -186,7 +186,9 @@ public class Map implements Runnable{
 		int x_cel= Math.round(celdaLabel.getX()/64);
 		int y_cel= Math.round(celdaLabel.getY()/64);			
 		if(	celdas[x_cel][y_cel].getObjects()[2]==null) {
-			Jugador player = j.clone(celdas[x_cel][y_cel]);
+			Celda[] c = new Celda[1];
+			c[0] = celdas[x_cel][y_cel];
+			Jugador player = j.clone(c);
 			celdas[x_cel][y_cel].getObjects()[2]= player;
 			JLabel icono = player.getGrafico();
 			player.setBancoRecursos(banco);
@@ -198,8 +200,8 @@ public class Map implements Runnable{
 						int y_cel = Math.round(y_mouse/64);
 						GameObject[] objetosCelda =celdas[x_cel][y_cel].getObjects();
 						objetosCelda[2]= player;
-						player.getCelda().getObjects()[2]=null;
-						player.setCelda(celdas[x_cel][y_cel]);
+						player.getCeldas()[0].getObjects()[2]=null;
+						player.setCelda(celdas[x_cel][y_cel],0);
 						int x_terreno = objetosCelda[0].getGrafico().getX();
 						int y_terreno = objetosCelda[0].getGrafico().getY();
 						player.getGrafico().setBounds(x_terreno, y_terreno, 64, 64);
@@ -217,12 +219,57 @@ public class Map implements Runnable{
 		}
 	}
 	
+	public void crearJugadorLargo(Jugador j) {		
+		int x_cel= Math.round(celdaLabel.getX()/64);
+		int y_cel= Math.round(celdaLabel.getY()/64);			
+		if(	celdas[x_cel][y_cel].getObjects()[2]==null && celdas[x_cel+1][y_cel].getObjects()[2]==null) {
+			Celda[] c = new Celda[2];
+			c[0] = celdas[x_cel][y_cel];
+			c[1] = celdas[x_cel+1][y_cel];
+			Jugador player = j.clone(c);
+			celdas[x_cel][y_cel].getObjects()[2]= player;
+			celdas[x_cel+1][y_cel].getObjects()[2]= player;
+			JLabel icono = player.getGrafico();
+			player.setBancoRecursos(banco);
+			icono.setBounds(x_cel*64,y_cel*64,128,64);
+			
+			//Codigo de soltado de mouse.
+			icono.addMouseListener(
+				new MouseAdapter() {
+					public void mouseReleased(MouseEvent e) {
+						int x_celd = Math.round(x_mouse/64); 
+						int y_celd = Math.round(y_mouse/64);
+						GameObject[] objetosCelda =celdas[x_celd][y_celd].getObjects();
+						objetosCelda[2]= player;
+						player.getCeldas()[0].getObjects()[2]=null;
+						player.setCelda(celdas[x_cel][y_cel],0);
+						player.getCeldas()[1].getObjects()[2]=null;
+						player.setCelda(celdas[x_cel][y_cel],1);
+						int x_terreno = objetosCelda[0].getGrafico().getX();
+						int y_terreno = objetosCelda[0].getGrafico().getY();
+						player.getGrafico().setBounds(x_terreno, y_terreno,128, 64);
+					}
+				}
+			);
+			
+			//Codigo del arrastrado en mapa.
+			icono.addMouseMotionListener(
+				new MouseMotionAdapter() {
+					public void mouseDragged(MouseEvent e) {
+						player.getGrafico().setBounds(x_mouse,y_mouse,128,64);
+					}
+				}
+			);
+			escenario.agregarLargo(icono,new Integer(2));
+		}
+	}
+	
 	public void añadirCaminante(int x, int y) {
 		WhiteWalker white_walker = new WhiteWalker();
 		Enemigo enemigo1 = new Enemigo(celdas[x][y],1,white_walker);
 		white_walker.setEnemigo(enemigo1);
 		celdas[x][y].getObjects()[1]= enemigo1;
-		enemigo1.setCelda(celdas[x][y]);
+		enemigo1.setCelda(celdas[x][y],0);
 		JLabel graf3 = enemigo1.getGrafico();
 		graf3.setBounds(64*x,64*y,64,64);
 		escenario.agregar(graf3,new Integer(2));
@@ -234,7 +281,7 @@ public class Map implements Runnable{
 		Enemigo enemigo1 = new Enemigo(celdas[x][y],1,white_walker);
 		white_walker.setEnemigo(enemigo1);		
 		celdas[x][y].getObjects()[1]= enemigo1;
-		enemigo1.setCelda(celdas[x][y]);
+		enemigo1.setCelda(celdas[x][y],0);
 		JLabel graf3 = enemigo1.getGrafico();
 		graf3.setBounds(64*x,64*y,64,64);
 		escenario.agregar(graf3,new Integer(2));

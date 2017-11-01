@@ -4,7 +4,7 @@ import javax.swing.*;
 import mapa.Celda;
 public abstract class GameObject {
 	protected JLabel grafico;
-    protected Celda celda;
+    protected Celda [] celda = new Celda[4];
     protected int profundidad;
     
     public JLabel getGrafico(){
@@ -16,7 +16,7 @@ public abstract class GameObject {
     public void destruir(){
     	//GameObject objeto = celda.getObjects()[profundidad];
     	grafico.setIcon(null);
-    	celda.getObjects()[profundidad]=null;
+    	celda[0].getObjects()[profundidad]=null;
     }
      
     public abstract boolean Accept(Visitor V);
@@ -24,11 +24,11 @@ public abstract class GameObject {
     	return profundidad;
     }
     
-    public Celda getCelda(){
+    public Celda[] getCeldas(){
     	return celda;
     }    
     
-    public void setCelda(Celda c){
-    	celda=c;
+    public void setCelda(Celda c,int pos){
+    	celda[pos]=c;
     }	 
 }

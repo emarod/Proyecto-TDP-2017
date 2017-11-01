@@ -34,6 +34,12 @@ public class Escenario extends JPanel {
 		repaint();
 	}
 	
+	public void  agregarLargo(JLabel objeto,int entero){
+		objeto.setSize(128,64);
+		layeredPane.add(objeto,new Integer(entero));
+		repaint();
+	}
+	
 	public void crearPersonaje(String personaje) {
 		mapa.crearPersonaje(personaje);
 	}

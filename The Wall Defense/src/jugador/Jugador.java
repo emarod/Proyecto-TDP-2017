@@ -19,7 +19,7 @@ public class Jugador extends Unidad{
 	protected BancoRecursos bancoRecursos;
 	protected boolean invulnerable;
      
-    public Jugador(Celda c,int prof, StateJugador t){	 
+    public Jugador(Celda[] c,int prof, StateJugador t){	 
     	 alto=30;
     	 ancho=30;
     	 profundidad=prof;
@@ -79,7 +79,7 @@ public class Jugador extends Unidad{
 		return V;
 	}
 	
-	public Jugador clone(Celda c) {
+	public Jugador clone(Celda[] c) {
 //		Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
 		StateJugador tipo = this.getState().clone();
 		Jugador clon = new Jugador(c, 2, tipo);

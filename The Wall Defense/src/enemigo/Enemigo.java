@@ -16,18 +16,18 @@ public class Enemigo extends Unidad{
     	tipo=t;
     	alto=30;
     	ancho=30;
-    	celda=c;    	
+    	celda[0]=c;    	
     	this.profundidad=profundidad;
     	grafico=new JLabel();
     	setGrafico();    	
 	}
 	 
 	public void activar() {
-		activeTask=getCelda().getDirector().ejecutar(this,tipo.getVelocidad());
+		activeTask=getCeldas()[0].getDirector().ejecutar(this,tipo.getVelocidad());
 	}
 	
 	public void activar(long l) {
-		activeTask=getCelda().getDirector().ejecutar(this,l,tipo.getVelocidad());
+		activeTask=getCeldas()[0].getDirector().ejecutar(this,l,tipo.getVelocidad());
 	}
 
 	public boolean Accept(Visitor V){
@@ -65,7 +65,7 @@ public class Enemigo extends Unidad{
 	
 	public void destruir(){
 		super.destruir();
-		celda.destruirEnemigo(this);
+		celda[0].destruirEnemigo(this);
 	}
 
 	public void atacar() {
@@ -98,7 +98,7 @@ public class Enemigo extends Unidad{
 
 	public void relentizar(int penalizacion) {
 		activeTask.cancel(true);
-		activeTask= celda.getDirector().ejecutarUna(this,penalizacion);
+		activeTask= celda[0].getDirector().ejecutarUna(this,penalizacion);
 		activar(activeTask.getDelay(TimeUnit.MILLISECONDS));
 		
 		

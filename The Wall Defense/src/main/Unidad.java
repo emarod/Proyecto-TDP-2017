@@ -21,8 +21,8 @@ public abstract class Unidad extends GameObject implements Runnable{
 	
 	public void intercambiar_celdas(Celda C){
 		C.getObjects()[profundidad]=this;	    
-		celda.getObjects()[profundidad]=null;
-		celda=C;
+		celda[0].getObjects()[profundidad]=null;
+		celda[0]=C;
 	}
 	
     public void destruir(){

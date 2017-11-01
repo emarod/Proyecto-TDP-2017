@@ -3,6 +3,7 @@ package interfaz;
  import javax.swing.border.LineBorder;
 
 import interfaz.botones.BtnArquero;
+import interfaz.botones.BtnDragon;
 import interfaz.botones.BtnCaballero;
 import interfaz.botones.BtnEspadachin;
 
@@ -36,13 +37,15 @@ public class MenuCompra extends JPanel{
 	
 	private void armarBotonera() {
 		
-	
+		BtnDragon dragon= new BtnDragon(this.escenario);
+		dragon.setBounds(0, 15, 15, 15);
+		botonera.add(dragon);
 		
-		
+		/*
 		BtnArquero ygritte= new BtnArquero(this.escenario);
 		ygritte.setBounds(0, 15, 15, 15);
 		botonera.add(ygritte);
-		
+		*/
 		
 		BtnCaballero lannister = new BtnCaballero(this.escenario);
 		lannister.setBounds(0, 35, 32, 32);

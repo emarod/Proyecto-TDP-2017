@@ -9,7 +9,7 @@ public class Water extends Obstaculo {
 	protected int penalizacion;
 	public Water(Celda c,char tipo,int prof,int sprite){
 	   profundidad=prof;
-	   celda=c;
+	   celda[0]=c;
 	   grafico=new JLabel();
 	   penalizacion = 50;
 	   

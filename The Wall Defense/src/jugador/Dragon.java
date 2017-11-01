@@ -34,7 +34,7 @@ public class Dragon extends StateJugador {
 	
 	public void setJugador(Jugador jugador){
 		this.jugador = jugador;
-		this.jugador.getCelda().getDirector().ejecutar(this.jugador,velocidad_jugador);
+		this.jugador.getCeldas()[0].getDirector().ejecutar(this.jugador,velocidad_jugador);
 	}
 	
 	public void setGrafico(JLabel grafico) {
