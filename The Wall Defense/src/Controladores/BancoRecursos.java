@@ -8,6 +8,7 @@ public class BancoRecursos {
 	
     protected Sound flecha;
     protected Sound bola_fuego;
+    protected Sound click;
 	
 	public BancoRecursos() {
 		
@@ -15,8 +16,9 @@ public class BancoRecursos {
 		Music song = TinySound.loadMusic("/resources/sound/theme_song.ogg");
 		flecha = TinySound.loadSound("/resources/sound/laser4.wav");
 		bola_fuego = TinySound.loadSound("/resources/sound/bola_fuego.wav");
+		click=TinySound.loadSound("/resources/sound/mouseclick.wav");
 		//start playing the music on loop
-		song.play(true);
+		//song.play(true);
 		
 	};
 	
@@ -26,6 +28,10 @@ public class BancoRecursos {
 	
 	public void playBolaFuego() {
 		bola_fuego.play();
+	}
+	
+	public void playClick() {
+		click.play();
 	}
 	
      

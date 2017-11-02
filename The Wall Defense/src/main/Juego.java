@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.border.EmptyBorder;
 
+import Controladores.BancoRecursos;
 import interfaz.GUI;
 import interfaz.MenuInicio;
 

@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Controladores.BancoRecursos;
 import main.Juego;
 
 public class MenuInicio extends JPanel {
@@ -27,12 +28,13 @@ public class MenuInicio extends JPanel {
 	protected Icon options[];
 	protected JButton buttons[];
 	protected Juego game;
-
+	protected BancoRecursos bancoRecursos;
 
 	
 	public MenuInicio(Juego game) {
 		
 		this.game=game;
+		bancoRecursos=new BancoRecursos();
 		
 		armarIconos();
 		armarBotonera();
@@ -106,6 +108,8 @@ public class MenuInicio extends JPanel {
 						
 						public void mousePressed(MouseEvent e) {
 							buttons[0].setIcon(newGame[1]);
+							bancoRecursos.playClick();
+
 						}
 						
 						public  void mouseEntered(MouseEvent evento) {
@@ -132,6 +136,8 @@ public class MenuInicio extends JPanel {
 						
 						public void mousePressed(MouseEvent e) {
 							buttons[2].setIcon(help[1]);
+							bancoRecursos.playClick();
+
 						}
 						
 						public  void mouseEntered(MouseEvent e) {
@@ -158,6 +164,8 @@ public class MenuInicio extends JPanel {
 						
 						public void mousePressed(MouseEvent e) {
 							buttons[1].setIcon(options[1]);
+							bancoRecursos.playClick();
+
 						}
 						
 						public  void mouseEntered(MouseEvent evento) {
