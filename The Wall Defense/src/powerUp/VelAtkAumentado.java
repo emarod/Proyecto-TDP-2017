@@ -23,5 +23,10 @@ public class VelAtkAumentado extends PowerUp {
 		public void aplicar(Jugador j){
 			//Duplicar la vel de ataque.
 		}
+
+		@Override
+		public void run() {
+			super.run();		
+		}
 		
 	}

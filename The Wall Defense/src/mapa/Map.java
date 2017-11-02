@@ -163,40 +163,42 @@ public class Map implements Runnable{
 		agregarPowerUp();
 	}
 	
-	public void crearJugador(Jugador j) {		
-		int x_cel= Math.round(celdaLabel.getX()/64);
-		int y_cel= Math.round(celdaLabel.getY()/64);			
-		if(	celdas[x_cel][y_cel].getObjects()[2]==null) {
-			Celda[] c = new Celda[1];
-			c[0] = celdas[x_cel][y_cel];
-			Jugador player = j.clone(c);
-			celdas[x_cel][y_cel].getObjects()[2]= player;
-			JLabel icono = player.getGrafico();
-			player.setBancoRecursos(banco);
-			icono.setBounds(x_cel*64,y_cel*64,64,64);
-			icono.addMouseListener(
-				new MouseAdapter() {
-					public void mouseReleased(MouseEvent e) {
-						int x_cel = Math.round(x_mouse/64); 
-						int y_cel = Math.round(y_mouse/64);
-						GameObject[] objetosCelda =celdas[x_cel][y_cel].getObjects();
-						objetosCelda[2]= player;
-						player.getCeldas()[0].getObjects()[2]=null;
-						player.setCelda(celdas[x_cel][y_cel],0);
-						int x_terreno = objetosCelda[0].getGrafico().getX();
-						int y_terreno = objetosCelda[0].getGrafico().getY();
-						player.getGrafico().setBounds(x_terreno, y_terreno, 64, 64);
+	public void crearJugador(Jugador j) {
+		if(celdaLabel!=null) {
+			int x_cel= Math.round(celdaLabel.getX()/64);
+			int y_cel= Math.round(celdaLabel.getY()/64);			
+			if(	celdas[x_cel][y_cel].getObjects()[2]==null) {
+				Celda[] c = new Celda[1];
+				c[0] = celdas[x_cel][y_cel];
+				Jugador player = j.clone(c);
+				celdas[x_cel][y_cel].getObjects()[2]= player;
+				JLabel icono = player.getGrafico();
+				player.setBancoRecursos(banco);
+				icono.setBounds(x_cel*64,y_cel*64,64,64);
+				icono.addMouseListener(
+					new MouseAdapter() {
+						public void mouseReleased(MouseEvent e) {
+							int x_cel = Math.round(x_mouse/64); 
+							int y_cel = Math.round(y_mouse/64);
+							GameObject[] objetosCelda =celdas[x_cel][y_cel].getObjects();
+							objetosCelda[2]= player;
+							player.getCeldas()[0].getObjects()[2]=null;
+							player.setCelda(celdas[x_cel][y_cel],0);
+							int x_terreno = objetosCelda[0].getGrafico().getX();
+							int y_terreno = objetosCelda[0].getGrafico().getY();
+							player.getGrafico().setBounds(x_terreno, y_terreno, 64, 64);
+						}
 					}
-				}
-			);
-			icono.addMouseMotionListener(
-				new MouseMotionAdapter() {
-					public void mouseDragged(MouseEvent e) {
-						player.getGrafico().setBounds(x_mouse,y_mouse,64,64);
+				);
+				icono.addMouseMotionListener(
+					new MouseMotionAdapter() {
+						public void mouseDragged(MouseEvent e) {
+							player.getGrafico().setBounds(x_mouse,y_mouse,64,64);
+						}
 					}
-				}
-			);
-			escenario.agregar(icono,new Integer(2));
+				);
+				escenario.agregar(icono,new Integer(2));
+			}
 		}
 	}
 

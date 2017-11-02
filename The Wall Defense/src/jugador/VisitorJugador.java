@@ -27,6 +27,6 @@ public class VisitorJugador extends Visitor{
 	   }
 	   public boolean visitEnemigo(Enemigo e){
 		   e.restarResistencia();
-		   return true;
+		   return false;
 	   }
 }

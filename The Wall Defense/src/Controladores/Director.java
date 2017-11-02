@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import disparo.Disparo;
 import main.Unidad;
 import mapa.Map;
+import powerUp.PowerUp;
 
 public class Director{
 
@@ -45,5 +46,10 @@ public class Director{
 
 	public void ejecutar(Map map) {
 		taskPool.scheduleWithFixedDelay(map, 1, 1, TimeUnit.SECONDS);
+	}
+
+	public void ejecutarUna(PowerUp powerUp, int delay) {
+		taskPool.schedule(powerUp,delay,TimeUnit.SECONDS);
+		
 	}
 }

@@ -25,5 +25,10 @@ public class DañoAtkAumentado extends PowerUp {
 		int ataque_actual = j.getAtaque();
 		j.setAtaque(ataque_actual*2);
 	}
+
+	@Override
+	public void run() {
+		super.run();		
+	}
 	
 }
