@@ -1,5 +1,7 @@
 package interfaz.botones;
 
+import java.awt.Color;
+
 import javax.swing.ImageIcon;
 
 import interfaz.Escenario;

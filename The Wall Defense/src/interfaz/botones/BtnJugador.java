@@ -1,5 +1,6 @@
 package interfaz.botones;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -17,10 +18,11 @@ public abstract class BtnJugador extends JButton{
 	public BtnJugador(Escenario e) {
 		stage=e;
 		this.setSize(32,32);
-		this.setBorderPainted(false);
+		this.setBorderPainted(true);
 		this.setContentAreaFilled(false);
 		this.setOpaque(true);
-		
+		this.setBackground(Color.BLACK);
+
 		this.addMouseListener(
 				new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {

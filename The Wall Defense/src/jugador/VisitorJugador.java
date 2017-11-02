@@ -20,12 +20,14 @@ public class VisitorJugador extends Visitor{
 		   return false;
 	   }
 	   public  boolean visitPlayer(Jugador j){
+		   
 		   return false;
 	   }
 	   public boolean visitDisparoPlayer(Disparo d){
-		   return true;
+		   return false;
 	   }
 	   public boolean visitEnemigo(Enemigo e){
-		   return false;
+		   e.restarResistencia();
+		   return true;
 	   }
 }

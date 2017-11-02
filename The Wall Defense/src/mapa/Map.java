@@ -259,6 +259,7 @@ public class Map implements Runnable{
 			enemy.setBancoRecursos(banco);
 			icono.setBounds(x*64,y*64,64,64);
 			escenario.agregar(icono,new Integer(2));
+			enemy.mover();
 		}
 	}
 	

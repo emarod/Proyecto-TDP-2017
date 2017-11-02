@@ -51,7 +51,7 @@ public class GUI extends JFrame{
 		panelInferior.setLayout(new BorderLayout());
 		panelInferior.setPreferredSize(new Dimension(10, 79));
 		getContentPane().add(panelInferior, BorderLayout.SOUTH);
-		//panelInferior.add(horda, BorderLayout.CENTER);
+		//panelInferior.add(horda, BorderLayout.EAST);
 		panelInferior.add(tienda,BorderLayout.CENTER);
 		
 		//Panel izquierdo
