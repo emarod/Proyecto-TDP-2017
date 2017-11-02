@@ -123,7 +123,7 @@ public class Map implements Runnable{
 	    		}	    		
 	    	}
 	    	y++;
-	   }	  
+	    }
 	   
 	   bufferMapa.close();
 	   //Codido a prueba de token invulnerable
@@ -144,6 +144,7 @@ public class Map implements Runnable{
 		   }
 	   );
 	   //Fin de codigo prueba
+	   director.ejecutar(this);
 	   
 	}
 	
@@ -309,6 +310,16 @@ public class Map implements Runnable{
  			   grafico2=p.getGraficoToken();
 			   objetos2[4]= p;
 			   grafico2.setBounds(x*64,y*64,64, 64);
+	 		   grafico2.addMouseListener(
+	 				   new MouseAdapter() {
+	 					   public void mouseClicked(MouseEvent e) {
+	 						   if(celdaLabel!=null) {
+	 							   setPowerUp(p);				
+	 						   }
+	 						   
+	 					   }
+	 				   }
+	 			);
 			   escenario.agregar(grafico2,new Integer(4));
  		  	   break;
  		   case 2:
@@ -316,6 +327,16 @@ public class Map implements Runnable{
  			  grafico2=p.getGraficoToken();
 			   objetos2[4]= p;
 			   grafico2.setBounds(x*64,y*64,64, 64);
+	 		   grafico2.addMouseListener(
+	 				   new MouseAdapter() {
+	 					   public void mouseClicked(MouseEvent e) {
+	 						   if(celdaLabel!=null) {
+	 							   setPowerUp(p);				
+	 						   }
+	 						   
+	 					   }
+	 				   }
+	 			);
 			   escenario.agregar(grafico2,new Integer(4));
  		  	   break;
  		   case 3:
@@ -323,9 +344,20 @@ public class Map implements Runnable{
  			   grafico2=p.getGraficoToken();
  			   objetos2[4]= p;
  			   grafico2.setBounds(x*64,y*64,64, 64);
+ 	 		   grafico2.addMouseListener(
+ 	 				   new MouseAdapter() {
+ 	 					   public void mouseClicked(MouseEvent e) {
+ 	 						   if(celdaLabel!=null) {
+ 	 							   setPowerUp(p);				
+ 	 						   }
+ 	 						   
+ 	 					   }
+ 	 				   }
+ 	 			);
  			   escenario.agregar(grafico2,new Integer(4));
  		   		break;
  			}
+
  		  }
  		else
  		{
