@@ -116,9 +116,9 @@ public class Enemigo extends Unidad{
 	}
 	
 	public Enemigo clone(Celda[] c) {
-//		Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
+//		Profundidad 1 predeterminada. Retorna una unidad de mismo tipo.
 		StateEnemigo tipo = this.tipo.clone();
-		Enemigo clon = new Enemigo(c, 2, tipo);
+		Enemigo clon = new Enemigo(c, 1, tipo);
 		tipo.setEnemigo(clon);
 		return clon;
 	}

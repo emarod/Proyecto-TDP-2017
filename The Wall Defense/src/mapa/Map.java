@@ -254,7 +254,7 @@ public class Map implements Runnable{
 			Celda[] c = new Celda[4];
 			c[0] = celdas[x][y];
 			Enemigo enemy = e.clone(c);
-			celdas[x][y].getObjects()[2]= enemy;
+			celdas[x][y].getObjects()[1]= enemy;
 			JLabel icono = enemy.getGrafico();
 			enemy.setBancoRecursos(banco);
 			icono.setBounds(x*64,y*64,64,64);

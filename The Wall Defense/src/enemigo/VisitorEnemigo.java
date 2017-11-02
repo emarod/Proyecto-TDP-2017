@@ -19,18 +19,17 @@ public class VisitorEnemigo extends Visitor{
 	   return false;
    }
    public  boolean VisitWater(Water w){
-	   System.out.println("visito zona de agua.");
 	   enemigo.relentizar(w.getPenalizacion());
 	   return true;
    }
    public  boolean visitPlayer(Jugador j){
 	   j.restarResistencia();
-	   return true;
+	   return false;
    }
    public boolean visitDisparoPlayer(Disparo d){
 	   d.destruir();
 	   enemigo.restarResistencia();
-	   return true;
+	   return false;
    }   
    
    public boolean visitEnemigo(Enemigo e){

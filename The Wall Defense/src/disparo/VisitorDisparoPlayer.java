@@ -39,6 +39,7 @@ public class VisitorDisparoPlayer extends Visitor {
 	}
 
 	public boolean visitEnemigo(Enemigo e){
+		System.out.println("Disparo visito enemigo");
 		e.restarResistencia();
 		disparo.destruir();
 		return false;
