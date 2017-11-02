@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 public class Espadachin extends StateJugador{
 	
 	public Espadachin() {
-		resistencia=8;
+		resistencia=2;
 	}
 	
 	public void setJugador(Jugador jugador){

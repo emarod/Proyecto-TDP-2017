@@ -33,6 +33,7 @@ public class Jugador extends Unidad{
 	public boolean restarResistencia(){ 
 		boolean destruir= (!invulnerable && tipo.impact());
 		if (destruir) {
+			System.out.println("antes de restar rssistencia de jugador");
 			destruir();
 			tipo.destruir();
 		}
