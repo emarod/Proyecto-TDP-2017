@@ -50,7 +50,8 @@ public class Juego {
 	public void crearGUI(){
 		opciones.removeAll();
 		opciones=null;
-		menu.dispose();		
+		menu.removeAll();
+		menu.dispose();
 		frame=new GUI();		
 		frame.setVisible(true);
 	}	
