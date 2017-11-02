@@ -1,6 +1,8 @@
 package powerUp;
 
 import javax.swing.JLabel;
+
+import jugador.Jugador;
 import main.GameObject;
 import main.Visitor;
 import mapa.Celda;
@@ -19,5 +21,7 @@ public abstract class PowerUp extends GameObject {
 	public boolean Accept(Visitor V){
 		return false;
 	}
+	
+	public abstract void aplicar(Jugador j);
 
 }

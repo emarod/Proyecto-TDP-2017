@@ -2,6 +2,8 @@ package powerUp;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import jugador.Jugador;
 import main.GameObject;
 import mapa.Celda;
 
@@ -24,5 +26,11 @@ public class Bomba extends PowerUp {
 		for(int i=1 ;i<objetos.length; i++){
 			objetos[i]=null;
 		}
+	}
+
+	@Override
+	public void aplicar(Jugador j) {
+		// TODO Auto-generated method stub
+		
 	}
 }

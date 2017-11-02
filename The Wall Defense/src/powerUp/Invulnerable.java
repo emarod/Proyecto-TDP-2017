@@ -3,6 +3,7 @@ package powerUp;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import jugador.Jugador;
+import main.GameObject;
 import mapa.Celda;
 
 public class Invulnerable extends PowerUp {
@@ -20,6 +21,6 @@ public class Invulnerable extends PowerUp {
 	}
 	
 	public void aplicar(Jugador j){
-		j.setInvulnerable();
+		j.setInvulnerable();		
 	}
 }
