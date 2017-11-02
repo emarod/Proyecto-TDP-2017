@@ -1,5 +1,7 @@
 package enemigo;
 
+import java.util.concurrent.Future;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -9,22 +11,34 @@ import mapa.Celda;
 
 public class WhiteWalker extends StateEnemigo{
 	
-	protected ImageIcon imagen;
-	protected JLabel graf;
-	protected int tipo;
+	protected Enemigo enemigo;
+	protected Future<?> shot;
+	protected int velocidad_disparo;
+	protected int disparos_simultaneos;
+	protected int disparos_en_ejecucion;
 	
 	public WhiteWalker() {
 		puntaje=100;
 		velocidad_enemigo=50;
 		resistencia=3;
-		imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif"));
-		graf=new JLabel();
-		graf.setIcon(imagen);
+		
+		graficos= new Icon[11];
+		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando00.png"));
+		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando01.png"));
+		graficos[2]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando02.png"));
+		graficos[3]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando03.png"));
+		graficos[4]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando04.png"));
+		graficos[5]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando05.png"));
+		graficos[6]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando06.png"));
+		graficos[7]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando07.png"));
+		graficos[8]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando08.png"));
+		graficos[9]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando09.png"));
+		graficos[10]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando10.png"));
 	}
 
 	@Override
-	public void atacar() {
-		
+	public Future<?> atacar() {
+		return shot;
 	}
 
 	public void mover() {		
@@ -59,7 +73,8 @@ public class WhiteWalker extends StateEnemigo{
 	}
 	
 	public void setGrafico(JLabel grafico) {
-		imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif"));
+		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/ww_nightking_atacando/ww_nightking_atacando00.png"));
+		graph=0;
 		grafico.setIcon(imagen);
 	}
 	
@@ -71,19 +86,13 @@ public class WhiteWalker extends StateEnemigo{
 	public int getPuntaje() {
 		return puntaje;
 	}
-
-	@Override
-	public JLabel getGrafico() {
-		// TODO Auto-generated method stub
-		return graf;
-	}
-	
-	public int getTipo(){
-		return tipo;
-	}
 	
 	public StateEnemigo clone() {
 		return new WhiteWalker();
+	}
+	
+	public void playSound(){
+		
 	}
 	
 }

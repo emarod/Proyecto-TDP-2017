@@ -11,8 +11,10 @@ public abstract class StateJugador {
 	protected int graph;
 	
     public boolean impact(){
-    	if(resistencia<=ataque)
+    	if(resistencia==1) {
+    		System.out.println("Enemigo abatido en "+resistencia);
     		return true;
+    	}
     	else{
     		resistencia = resistencia - ataque;
     		return false;

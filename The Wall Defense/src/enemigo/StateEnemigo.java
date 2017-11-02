@@ -1,5 +1,6 @@
 package enemigo;
 
+import java.util.concurrent.Future;
 import javax.swing.*;
 
 public abstract class StateEnemigo {
@@ -10,6 +11,8 @@ public abstract class StateEnemigo {
 	protected int puntaje;
 	protected boolean atacar;
 	protected boolean mover;
+	protected Icon[] graficos;
+	protected int graph;
 	
 	
     public boolean impact(){
@@ -26,7 +29,11 @@ public abstract class StateEnemigo {
     public int getVelocidad(){
     	return velocidad_enemigo;
     }
-    public abstract void atacar();
+    public void setVelocidad(int speed) {
+		velocidad_enemigo=speed;
+	}
+    
+    public abstract Future<?> atacar();
     public abstract void mover();    
 
     public abstract void setGraficos(Icon[] graficos, JLabel grafico);
@@ -39,8 +46,7 @@ public abstract class StateEnemigo {
 	
 	public abstract void setEnemigo(Enemigo e);
 	
-	public abstract JLabel getGrafico();
-	
 	public abstract StateEnemigo clone();
-
+	
+	public abstract void playSound();
 }

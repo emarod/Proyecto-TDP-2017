@@ -122,4 +122,8 @@ public class Enemigo extends Unidad{
 		tipo.setEnemigo(clon);
 		return clon;
 	}
+	
+	public void playSound(){
+		tipo.playSound();
+	}
 }
