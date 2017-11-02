@@ -23,13 +23,14 @@ public class VisitorEnemigo extends Visitor{
 	   return true;
    }
    public  boolean visitPlayer(Jugador j){
+	   System.out.println("el juagador visita a enemigo");
 	   j.restarResistencia();
 	   return false;
    }
    public boolean visitDisparoPlayer(Disparo d){
 	   d.destruir();
 	   enemigo.restarResistencia();
-	   return false;
+	   return true;
    }   
    
    public boolean visitEnemigo(Enemigo e){
