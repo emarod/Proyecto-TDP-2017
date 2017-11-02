@@ -15,7 +15,7 @@ public class WhiteWalker extends StateEnemigo{
 	
 	public WhiteWalker() {
 		puntaje=100;
-		velocidad_enemigo=10;
+		velocidad_enemigo=50;
 		resistencia=3;
 		imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif"));
 		graf=new JLabel();

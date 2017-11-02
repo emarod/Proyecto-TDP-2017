@@ -25,12 +25,6 @@ public class Caballero extends StateJugador{
     }
 
 	@Override
-	public void mover() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public StateJugador clone() {
 		return new Caballero();
 	}

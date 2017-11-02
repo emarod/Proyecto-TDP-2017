@@ -20,7 +20,6 @@ public abstract class StateJugador {
     }
     
     public abstract Future<?> atacar();
-    public abstract void mover();
     public abstract void setJugador(Jugador jugador);    
 	public abstract void setGrafico(JLabel grafico);
 	public abstract void playSound();

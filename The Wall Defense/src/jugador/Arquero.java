@@ -82,11 +82,6 @@ public class Arquero extends StateJugador{
 	}
 
 	@Override
-	public void mover() {
-		// TODO Auto-generated method stub		
-	}
-
-	@Override
 	public StateJugador clone() {
 		return new Arquero();
 	}

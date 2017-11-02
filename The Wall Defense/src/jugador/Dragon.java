@@ -82,11 +82,6 @@ public class Dragon extends StateJugador {
     public int getDisparosEnEjecucion(){
     	return disparos_en_ejecucion;
     }
-
-	@Override
-	public void mover() {
-		// TODO Auto-generated method stub		
-	}
 	
 	public void playSound() {
 		jugador.getBancoRecursos().playBolaFuego();

@@ -15,7 +15,7 @@ public class NightKing extends StateEnemigo {
 
 	public NightKing() {
 		puntaje=200;
-		velocidad_enemigo=10;
+		velocidad_enemigo=50;
 		resistencia=6;
 		imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_nightking_atacando.gif"));
 		graf=new JLabel();

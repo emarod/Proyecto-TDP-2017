@@ -11,7 +11,7 @@ public class Water extends Obstaculo {
 	   profundidad=prof;
 	   celda[0]=c;
 	   grafico=new JLabel();
-	   penalizacion = 50;
+	   penalizacion = 100;
 	   
 	   switch(tipo){
 		case 'c':
