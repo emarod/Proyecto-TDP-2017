@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import disparo.Disparo;
 import main.Unidad;
+import mapa.Map;
 
 public class Director{
 
@@ -40,5 +41,9 @@ public class Director{
 	
 	public ScheduledFuture<?> ejecutar(Disparo d,int delay) {
 		return taskPool.scheduleWithFixedDelay(d,0,1000*delay,TimeUnit.MICROSECONDS);
+	}
+
+	public void ejecutar(Map map) {
+		taskPool.scheduleWithFixedDelay(map, 1, 1, TimeUnit.SECONDS);
 	}
 }

@@ -14,6 +14,7 @@ import interfaz.MenuInicio;
 public class Juego {
 	protected static GUI frame;
 	protected final JFrame menu=new JFrame("The Wall Defense");
+	protected MenuInicio opciones;
 
 
 	public static void main(String[] args) {
@@ -37,7 +38,7 @@ public class Juego {
 		Icon background=new ImageIcon(this.getClass().getResource("/resources/static/background/background.png"));
 		
 		//Creo menu de inicio
-		MenuInicio opciones=new MenuInicio(this);
+		opciones=new MenuInicio(this);
 		
 		
 		menu.setContentPane(new JLabel(background));
@@ -47,8 +48,10 @@ public class Juego {
 	}
 	
 	public void crearGUI(){
-		menu.dispose();
-		frame=new GUI();
+		opciones.removeAll();
+		opciones=null;
+		menu.dispose();		
+		frame=new GUI();		
 		frame.setVisible(true);
 	}	
 
