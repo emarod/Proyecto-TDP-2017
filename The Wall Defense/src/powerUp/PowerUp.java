@@ -19,7 +19,7 @@ public abstract class PowerUp extends GameObject {
 	public abstract JLabel getGraficoToken();
 	
 	public boolean Accept(Visitor V){
-		return false;
+		return true;
 	}
 	
 	public abstract void aplicar(Jugador j);
