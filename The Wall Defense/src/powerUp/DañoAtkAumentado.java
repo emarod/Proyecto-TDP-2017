@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import jugador.Jugador;
+import main.GameObject;
 import mapa.Celda;
 
 public class DañoAtkAumentado extends PowerUp {

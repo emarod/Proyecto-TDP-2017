@@ -126,6 +126,24 @@ public class Map implements Runnable{
 	   }	  
 	   
 	   bufferMapa.close();
+	   //Codido a prueba de token invulnerable
+	   GameObject[] objetos22=celdas[8][4].getObjects();
+	   PowerUp p = new Invulnerable(celdas[8][4],4);
+	   JLabel grafico22=p.getGraficoToken();
+	   objetos22[4]= p;
+	   grafico22.setBounds(8*64,4*64,64, 64);
+	   escenario.agregar(grafico22,new Integer(2));
+	   grafico22.addMouseListener(
+		   new MouseAdapter() {
+			   public void mouseClicked(MouseEvent e) {
+				   if(celdaLabel!=null) {
+					   setPowerUp(p);				
+				   }
+				   
+			   }
+		   }
+	   );
+	   //Fin de codigo prueba
 	   
 	}
 	
@@ -141,6 +159,7 @@ public class Map implements Runnable{
     
 	public void run() {	
 		escenario.repaint();
+		agregarPowerUp();
 	}
 	
 	public void crearJugador(Jugador j) {		
@@ -289,22 +308,22 @@ public class Map implements Runnable{
  			   p=new VelAtkAumentado(celdas[x][y],4);
  			   grafico2=p.getGraficoToken();
 			   objetos2[4]= p;
-			   grafico2.setBounds(x,y,64, 64);
-			   escenario.agregar(grafico2,new Integer(2));
+			   grafico2.setBounds(x*64,y*64,64, 64);
+			   escenario.agregar(grafico2,new Integer(4));
  		  	   break;
  		   case 2:
  			   p = new Bomba(celdas[x][y],4);
  			  grafico2=p.getGraficoToken();
 			   objetos2[4]= p;
-			   grafico2.setBounds(x,y,64, 64);
-			   escenario.agregar(grafico2,new Integer(2));
+			   grafico2.setBounds(x*64,y*64,64, 64);
+			   escenario.agregar(grafico2,new Integer(4));
  		  	   break;
  		   case 3:
  			   p = new Invulnerable(celdas[x][y],4);
  			   grafico2=p.getGraficoToken();
  			   objetos2[4]= p;
- 			   grafico2.setBounds(x,y,64, 64);
- 			   escenario.agregar(grafico2,new Integer(2));
+ 			   grafico2.setBounds(x*64,y*64,64, 64);
+ 			   escenario.agregar(grafico2,new Integer(4));
  		   		break;
  			}
  		  }
@@ -315,4 +334,18 @@ public class Map implements Runnable{
  			
  		}
  	}
+	
+	public void setPowerUp(PowerUp p){
+		int x_cel= Math.round(celdaLabel.getX()/64);
+		int y_cel= Math.round(celdaLabel.getY()/64);
+		Jugador player = (Jugador) celdas[x_cel][y_cel].getObjects()[2];
+		if(	celdas[x_cel][y_cel].getObjects()[2]!=null) {
+			p.aplicar(player);
+			escenario.remove(p.getGraficoToken());
+			p.getGraficoToken().setIcon(null);
+			celdas[x_cel][y_cel].getObjects()[4]=p.getCeldas()[0].getObjects()[4];
+			p.getGrafico().setBounds(x_cel*64, y_cel*64, 64, 64);
+			escenario.agregar(p.getGrafico(), new Integer(4));
+		}
+	}
 }
