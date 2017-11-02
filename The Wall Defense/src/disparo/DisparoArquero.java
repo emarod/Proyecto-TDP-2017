@@ -32,7 +32,7 @@ public class DisparoArquero extends Disparo{
 		celda[0].getDirector().desactivar(this);		
 	}    
     
-    public boolean Accept(Visitor V){
+    public boolean accept(Visitor V){
     	return V.visitDisparoPlayer(this);
     }
 	
@@ -50,7 +50,7 @@ public class DisparoArquero extends Disparo{
 			siguiente=celda[0].getCelda(xCelda,yCelda);
 			
 		GameObject objeto =siguiente.getObjects()[1];					
-		if (objeto!=null && !objeto.Accept(V)){
+		if (objeto!=null && !objeto.accept(V)){
 			celda[0].getDirector().desactivar(this);
 		}		
 		

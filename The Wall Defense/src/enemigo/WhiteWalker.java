@@ -37,7 +37,7 @@ public class WhiteWalker extends StateEnemigo{
 		siguiente=enemigo.getCeldas()[0].getCelda(xCelda-1,yCelda);
 		for(int i=0;i<7;i++) {
 			GameObject objeto =siguiente.getObjects()[i];
-			if (objeto!=null && !objeto.Accept(enemigo.getVisitor())){
+			if (objeto!=null && !objeto.accept(enemigo.getVisitor())){
 				//this.enemigo.getCeldas()[0].getDirector().desactivar(this.enemigo);
 				detener=true;
 			}

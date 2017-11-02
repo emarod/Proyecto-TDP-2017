@@ -20,7 +20,7 @@ public class Nieve extends Terreno {
     }
 
 	@Override
-	public boolean Accept(Visitor V) {
+	public boolean accept(Visitor V) {
 		return true;
 	}
 

@@ -19,7 +19,7 @@ public abstract class GameObject {
     	celda[0].getObjects()[profundidad]=null;
     }
      
-    public abstract boolean Accept(Visitor V);
+    public abstract boolean accept(Visitor V);
     public int getProfundidad(){
     	return profundidad;
     }

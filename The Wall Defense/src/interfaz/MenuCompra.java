@@ -57,7 +57,8 @@ public class MenuCompra extends JPanel{
 		caminante.addMouseListener(
 				new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
-						//escenario.getMapa().crearEnemigo(e, x, y);
+						
+						//escenario.getMapa().crearEnemigo(e, 4, 0);
 					}
 				}
 		);

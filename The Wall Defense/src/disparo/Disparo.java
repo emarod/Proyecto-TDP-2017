@@ -9,7 +9,7 @@ public abstract class Disparo extends Unidad  {
 	}
 	
 	   
-	public abstract boolean Accept(Visitor V);
+	public abstract boolean accept(Visitor V);
 
 	public int getAlto(){
 		return alto;

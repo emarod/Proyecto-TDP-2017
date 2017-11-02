@@ -39,7 +39,7 @@ public class Jugador extends Unidad{
 		return destruir;		
 	}
      
-    public boolean Accept(Visitor V){
+    public boolean accept(Visitor V){
     	return V.visitPlayer(this);
     }
 

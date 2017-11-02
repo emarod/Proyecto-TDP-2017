@@ -19,7 +19,7 @@ public class Muro extends Terreno {
     }
 
 	@Override
-	public boolean Accept(Visitor V) {
+	public boolean accept(Visitor V) {
 		// TODO Auto-generated method stub
 		return false;
 	}

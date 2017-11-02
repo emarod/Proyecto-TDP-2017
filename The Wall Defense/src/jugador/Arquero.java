@@ -17,7 +17,7 @@ public class Arquero extends StateJugador{
 	
 	public Arquero() {
 		velocidad_jugador=15;
-		resistencia=5;
+		resistencia=2;
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
 		velocidad_disparo=75;

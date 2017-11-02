@@ -24,7 +24,7 @@ public class Rock extends Obstaculo implements Runnable{
     		resistencia--;
     	}
     }
-    public boolean Accept(Visitor V){
+    public boolean accept(Visitor V){
     	return V.VisitRock(this);
     }
     public int getSprite(){

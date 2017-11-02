@@ -35,7 +35,7 @@ public class Enemigo extends Unidad{
 		activeTask=getCeldas()[0].getDirector().ejecutar(this,l,tipo.getVelocidad());
 	}
 
-	public boolean Accept(Visitor V){
+	public boolean accept(Visitor V){
 		return V.visitEnemigo(this);
 	}
 	

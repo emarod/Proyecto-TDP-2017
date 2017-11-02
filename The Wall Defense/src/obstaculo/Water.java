@@ -55,7 +55,7 @@ public class Water extends Obstaculo {
 	   grafico.setLayout(new FlowLayout(0, 0, 0));
    }
    
-   public boolean Accept(Visitor V){
+   public boolean accept(Visitor V){
 	   return V.VisitWater(this);
    }
    
