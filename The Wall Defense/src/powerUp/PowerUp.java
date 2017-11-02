@@ -21,6 +21,9 @@ public abstract class PowerUp extends GameObject {
 	public boolean accept(Visitor V){
 		return false;
 	}
+	public boolean Accept(Visitor V){
+		return true;
+	}
 	
 	public abstract void aplicar(Jugador j);
 
