@@ -10,6 +10,7 @@ import interfaz.botones.BtnEspadachin;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -61,6 +62,17 @@ public class MenuCompra extends JPanel{
 				}
 		);
 		this.add(caminante);*/
+		Icon imagen=new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif"));
+			JButton wwalker=new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif")));
+			wwalker.setSize(32,32);
+			wwalker.addMouseListener(
+					new MouseAdapter() {
+						public void mouseClicked(MouseEvent e) {
+							escenario.agregar(new JLabel(imagen),new Integer(1));
+						}
+					}
+			);
+			this.add(wwalker);
 		
 		agregarBoton(ygritte);
 		agregarBoton(dragon);

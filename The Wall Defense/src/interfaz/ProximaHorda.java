@@ -25,7 +25,7 @@ public class ProximaHorda extends JPanel{
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(new Color(0, 0, 0)));
 		this.escenario=esc;
-		agregarLabel();
+		//agregarLabel();
 		//agregarBoton();
 		this.setBackground(Color.BLACK);
 		horda=new Horda(escenario);
@@ -48,12 +48,12 @@ public class ProximaHorda extends JPanel{
 	}
 	
 	private void agregarBoton() {
-		JButton wwalker=new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/white_walker.gif")));
+		JButton wwalker=new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif")));
 		wwalker.setSize(32,32);
 		wwalker.addMouseListener(
 				new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
-						//escenario.crearPersonaje("whitewalker");
+						//escenario.agregar();
 					}
 				}
 		);

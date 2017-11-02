@@ -29,6 +29,7 @@ public class VisitorDisparoPlayer extends Visitor {
 	@Override
 	public boolean visitPlayer(Jugador j) {
 		// TODO Auto-generated method stub
+		j.restarResistencia();
 		return true;
 	}
 
