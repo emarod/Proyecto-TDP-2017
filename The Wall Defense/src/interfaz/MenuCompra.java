@@ -52,27 +52,17 @@ public class MenuCompra extends JPanel{
 		BtnEspadachin JonSnow = new BtnEspadachin(this.escenario);
 		JonSnow.setBounds(0, 50, JonSnow.getIcon().getIconWidth(), JonSnow.getIcon().getIconHeight());
 		
-		/*JButton caminante = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/white_walker.gif")));
+		JButton caminante = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif")));
 		caminante.setSize(32, 32);
 		caminante.addMouseListener(
 				new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
-						escenario.crearPersonaje("caminante");
+						//escenario.getMapa().crearEnemigo(e, x, y);
 					}
 				}
 		);
-		this.add(caminante);*/
-		Icon imagen=new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif"));
-			JButton wwalker=new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif")));
-			wwalker.setSize(32,32);
-			wwalker.addMouseListener(
-					new MouseAdapter() {
-						public void mouseClicked(MouseEvent e) {
-							escenario.agregar(new JLabel(imagen),new Integer(1));
-						}
-					}
-			);
-			this.add(wwalker);
+		this.add(caminante,BorderLayout.EAST);
+		
 		
 		agregarBoton(ygritte);
 		agregarBoton(dragon);
