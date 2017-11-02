@@ -20,7 +20,6 @@ public class NightKing extends StateEnemigo {
 		imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_nightking_atacando.gif"));
 		graf=new JLabel();
 		graf.setIcon(imagen);
-		
 	}
 
 	@Override

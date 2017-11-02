@@ -22,7 +22,9 @@ public class Enemigo extends Unidad{
     	celda=c;    	
     	this.profundidad=profundidad;
     	grafico=new JLabel();
-    	setGrafico();    	
+    	setGrafico();
+		getCeldas()[0].getDirector().ejecutar(this, 10);
+
 	}
 	 
 	public void activar() {

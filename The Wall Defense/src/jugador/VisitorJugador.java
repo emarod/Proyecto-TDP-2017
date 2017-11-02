@@ -19,8 +19,7 @@ public class VisitorJugador extends Visitor{
 	   public  boolean VisitWater(Water w){
 		   return false;
 	   }
-	   public  boolean visitPlayer(Jugador j){
-		   
+	   public  boolean visitPlayer(Jugador j){		   
 		   return false;
 	   }
 	   public boolean visitDisparoPlayer(Disparo d){

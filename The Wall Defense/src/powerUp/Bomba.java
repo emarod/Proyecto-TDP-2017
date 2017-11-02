@@ -14,6 +14,7 @@ public class Bomba extends PowerUp {
 		grafico=new JLabel();
 		graficoToken = new JLabel();
 		graficoToken.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/token_bomba.gif")));
+		c.getEscenario().repaint();
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/explosion.gif")));
 	}
 	
@@ -33,4 +34,5 @@ public class Bomba extends PowerUp {
 		// TODO Auto-generated method stub
 		
 	}
+	
 }
