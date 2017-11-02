@@ -15,9 +15,6 @@ import javax.swing.border.LineBorder;
 import Controladores.BancoRecursos;
 import Controladores.Director;
 import enemigo.Enemigo;
-import enemigo.NightKing;
-import enemigo.StateEnemigo;
-import enemigo.WhiteWalker;
 
 import java.io.IOException;
 
@@ -183,9 +180,9 @@ public class Map implements Runnable{
 		}
 	}
 
-	public void crearJugadorLargo(Jugador j) {		
+	public void crearJugadorLargo(Jugador j) {
 		int x_cel= Math.round(celdaLabel.getX()/64);
-		int y_cel= Math.round(celdaLabel.getY()/64);			
+		int y_cel= Math.round(celdaLabel.getY()/64);
 		if(	celdas[x_cel][y_cel].getObjects()[2]==null && celdas[x_cel+1][y_cel].getObjects()[2]==null) {
 			Celda[] c = new Celda[2];
 			c[0] = celdas[x_cel][y_cel];
@@ -232,8 +229,9 @@ public class Map implements Runnable{
 
 	
 	public void crearEnemigo(Enemigo e,int x, int y) {
-		if(	celdas[x][y].getObjects()[2]==null) {
-			Celda[] c = new Celda[1];
+		System.out.println("Enemigo creado - x:"+x+" y:"+y);
+		if(celdas[x][y].getObjects()[2]==null) {
+			Celda[] c = new Celda[4];
 			c[0] = celdas[x][y];
 			Enemigo enemy = e.clone(c);
 			celdas[x][y].getObjects()[2]= enemy;
