@@ -59,7 +59,6 @@ public class Horda {
 	    		}
 	    		char tipo =sCurrentLine.charAt(i);
 	    		Celda c = mapa.getCelda(x,y);
-	    		GameObject[] objetos= c.getObjects();
 	    		Celda[] celdas = new Celda[4];
 	    		celdas [0]= c;
 	    		Enemigo e;
@@ -70,10 +69,8 @@ public class Horda {
 		    		case 'd':
 		    		case 'e':
 		    			e = new Enemigo(celdas,2, new WhiteWalker());
-		    			objetos[2] = e;
 		    			System.out.println("x:"+x+" y:"+y);
 		    			mapa.crearEnemigo(e, x, y);
-		    			stage.agregar(e.getGrafico(), 2);
 		    			enemigos++;
 		    			break;
 		    		case 'f':
@@ -86,10 +83,8 @@ public class Horda {
 		    		case 'm':
 		    		case 'n':
 		    			e = new Enemigo(celdas,2, new NightKing());
-		    			objetos[2] = e;
 		    			System.out.println("x:"+x+" y:"+y);
 		    			mapa.crearEnemigo(e, x, y);
-		    			stage.agregar(e.getGrafico(), 2);
 		    			enemigos++;
 		    			break;
 		    		case 'o':
