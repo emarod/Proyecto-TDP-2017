@@ -15,7 +15,7 @@ public class NightKing extends StateEnemigo {
 
 	public NightKing() {
 		puntaje=200;
-		velocidad_enemigo=10;
+		velocidad_enemigo=5;
 		resistencia=6;
 		imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_nightking_atacando.gif"));
 		graf=new JLabel();
@@ -45,7 +45,6 @@ public class NightKing extends StateEnemigo {
 		if(!detener && xCelda!=0) {
 			enemigo.getGrafico().setBounds(xGrafico-64, yGrafico, 64, 64);
 			enemigo.intercambiar_celdas(siguiente);
-			mover();
 		}
 	}
 	
