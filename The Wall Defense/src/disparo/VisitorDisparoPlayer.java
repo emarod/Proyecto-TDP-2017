@@ -3,8 +3,7 @@ package disparo;
 import enemigo.Enemigo;
 import jugador.Jugador;
 import main.Visitor;
-import obstaculo.Rock;
-import obstaculo.Water;
+import obstaculo.*;
 
 /*
  * Clase VisitorDisparoPlayer.
@@ -26,7 +25,11 @@ public class VisitorDisparoPlayer extends Visitor {
 	public boolean VisitRock(Rock r) {
 		return true;
 	}
-
+	
+	public boolean VisitBarricada(Barricada b) {
+		return true;
+	}
+	
 	public boolean VisitWater(Water w) {
 		return true;
 	}

@@ -3,8 +3,7 @@ package jugador;
 import disparo.Disparo;
 import enemigo.Enemigo;
 import main.Visitor;
-import obstaculo.Rock;
-import obstaculo.Water;
+import obstaculo.*;
 
 /*
  * Clase VisitorJugador.
@@ -24,6 +23,10 @@ public class VisitorJugador extends Visitor{
 	    
 	   //Metodos locales.
 	   public  boolean VisitRock(Rock r){
+		   return false;
+	   }
+	   
+	   public  boolean VisitBarricada(Barricada b){
 		   return false;
 	   }
 	   

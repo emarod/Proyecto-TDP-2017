@@ -38,8 +38,12 @@ public class Celda {
 	    			listaObjetosLogicos[0]=null;
 	    			break;
 	    		case 'b':
-	    			//listaObjetosLogicos[0]=new Rock(this,0,sprite);
-	    			
+	    			//Barricada.
+	    			listaObjetosLogicos[0]=new Nieve(this);
+	    			listaObjetosLogicos[3]=new Barricada(this,3);
+	    			JLabel bar = listaObjetosLogicos[3].getGrafico();
+	    			bar.setBounds(posX*64, posY*64, 64, 64);
+	    			getEscenario().agregar(bar,new Integer(3));	    			
 	    			break;
 	    		case 'c':
 	    			//Centro lago.

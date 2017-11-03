@@ -1,7 +1,6 @@
 package enemigo;
 
-import obstaculo.Rock;
-import obstaculo.Water;
+import obstaculo.*;
 import disparo.Disparo;
 import jugador.Jugador;
 import main.Visitor;
@@ -27,15 +26,23 @@ public class VisitorEnemigo extends Visitor{
 	   r.restarResistencia();
 	   return false;
    }
+   
+   public  boolean VisitBarricada(Barricada b){
+	   b.restarResistencia();
+	   return false;
+   }
+   
    public  boolean VisitWater(Water w){
 	   enemigo.relentizar(w.getPenalizacion());
 	   return true;
    }
+   
    public  boolean visitPlayer(Jugador j){
 	   System.out.println("el juagador visita a enemigo");
 	   j.restarResistencia();
 	   return false;
    }
+   
    public boolean visitDisparoPlayer(Disparo d){
 	   d.destruir();
 	   enemigo.restarResistencia();

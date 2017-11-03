@@ -14,6 +14,7 @@ import obstaculo.*;
 public abstract  class Visitor {
 	   
 	//Metodos abstractos.
+   public abstract boolean VisitBarricada(Barricada b);
    public abstract boolean VisitRock(Rock r);
    public abstract boolean VisitWater(Water w);
    public abstract boolean visitPlayer(Jugador j);
