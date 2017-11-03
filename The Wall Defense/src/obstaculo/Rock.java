@@ -13,16 +13,14 @@ public class Rock extends Obstaculo implements Runnable{
 	
 	//Atributos locales.
 	protected int resistencia;
-	protected int sprite;
 	
 	//Constructor.
-    public Rock(Celda c,int prof,int sprite){
+    public Rock(Celda c,int prof){
     	profundidad=prof;
     	celda[0]=c;
-    	this.sprite=sprite;
     	resistencia=3;
     	grafico=new JLabel();
-    	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca_"+sprite+".png")));  	
+    	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca_"+resistencia+".png")));  	
     }
     
     //Metodos locales.
@@ -36,11 +34,8 @@ public class Rock extends Obstaculo implements Runnable{
     		destruir();
     	}else{
     		resistencia--;
+    		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca_"+resistencia+".png")));
     	}
-    }
-    
-    public int getSprite(){
-    	return sprite;
     }
     
     public void destruir(){

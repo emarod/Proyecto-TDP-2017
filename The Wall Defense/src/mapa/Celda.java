@@ -69,7 +69,7 @@ public class Celda {
 	    		case 'r':
 	    			//Piedra.
 	    			listaObjetosLogicos[0]=new Nieve(this);
-	    			listaObjetosLogicos[3]=new Rock(this,3,1);
+	    			listaObjetosLogicos[3]=new Rock(this,3);
 	    			JLabel roca = listaObjetosLogicos[3].getGrafico();
 	    			roca.setBounds(posX*64, posY*64, 64, 64);
 	    			getEscenario().agregar(roca,new Integer(3));	    			
