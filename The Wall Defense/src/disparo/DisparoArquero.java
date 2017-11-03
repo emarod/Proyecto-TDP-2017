@@ -2,16 +2,22 @@ package disparo;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import jugador.Arquero;
 import main.GameObject;
 import main.Visitor;
 import mapa.Celda;
 
+/*
+ * Clase DisparoArquero
+ * Clase que especifica el comportamiento de los proyectiles generados por el arquero.
+ */
+
 public class DisparoArquero extends Disparo{	
 	
+	//Atributos locales.
 	protected Arquero arquero;
 	
+	//Constructor.
     public DisparoArquero(Arquero archer, int prof){
        super(prof);
        arquero = archer;
@@ -24,15 +30,17 @@ public class DisparoArquero extends Disparo{
 	   celda[0].getEscenario().agregar(grafico,new Integer(2));
 	   celda[0].getDirector().ejecutar(this,arquero.getVelocidadDisparo());	     
     }
-
+    
+    //Metodos Locales.
     public void destruir(){
     	super.destruir();
     	restarDisparosEnEjecucion();
 		celda[0].getEscenario().remove(grafico);
 		celda[0].getDirector().desactivar(this);		
-	}    
+	}
     
-    public boolean accept(Visitor V){
+	//Metodos heredados.
+	public boolean accept(Visitor V){
     	return V.visitDisparoPlayer(this);
     }
 	
@@ -64,28 +72,23 @@ public class DisparoArquero extends Disparo{
 		
 	}
 	
-	@Override
-	public void atacar() {		
+	public void atacar(){
+		
 	}
-
-	@Override
-	public void restarDisparosEnEjecucion() {
-		arquero.restarDisparosEnEjecucion();
-	}
-
-	@Override
-	public void run() {
-		mover();		
-	}
-
-	@Override
-	public int getVelocidad() {
+	
+	public int getVelocidad(){
 		return arquero.getVelocidadDisparo();
 	}
-
-	@Override
+	
 	public void setVelocidad(int speed) {
 		arquero.setVelocidad(speed);		
 	}
-    
+	
+	public void restarDisparosEnEjecucion() {
+		arquero.restarDisparosEnEjecucion();
+	}
+	
+	public void run() {
+		mover();		
+	}
 }

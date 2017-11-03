@@ -4,25 +4,27 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
-
 import disparo.Disparo;
 import main.Unidad;
 import mapa.Map;
 import powerUp.PowerUp;
 
-public class Director{
+/*
+ * Clase Director.
+ * Crea un pool de hilos. Mantiene un flujo de ejecución de tareas, actualmente haciendo uso de un solo hilo.
+ */
 
+public class Director{
+	//Atributos locales.
 	protected ScheduledExecutorService taskPool;		
 	
-//	Crea un pool de hilos. Mantiene un flujo de ejecución de tareas, actualmente 
-//	haciendo uso de un solo hilo.
-	
+	//Constructor.
 	public Director(){		
-//		taskPool = Executors.newScheduledThreadPool(2);
 		taskPool = Executors.newSingleThreadScheduledExecutor();		
 		
 	}
-
+	
+	//Metodos locales.
 	public boolean desactivar(Unidad unidad) {
 		return unidad.getTask().cancel(true);
 		

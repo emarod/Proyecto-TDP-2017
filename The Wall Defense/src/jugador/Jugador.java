@@ -1,25 +1,29 @@
 package jugador;
+
 import mapa.Celda;
-
 import java.util.concurrent.Future;
-
-//import obstaculos.Acero;
 import javax.swing.*;
-
 import Controladores.BancoRecursos;
-//import interfaz.GUI;
 import main.Unidad;
 import main.Visitor;
+
+/*
+ * Clase Jugador.
+ * Clase que generaliza la idea de un jugador y su comportamiento.
+ */
+
 public class Jugador extends Unidad{
 	
+	//Atributos locales.
 	protected JLabel imagen;
 	protected int vidas;
-	protected StateJugador tipo;
+	protected PerfilJugador tipo;
     protected Future<?> activeAttack;
 	protected BancoRecursos bancoRecursos;
 	protected boolean invulnerable;
-     
-    public Jugador(Celda[] c,int prof, StateJugador t){	 
+    
+	//Constructor.
+    public Jugador(Celda[] c,int prof, PerfilJugador t){	 
     	 alto=30;
     	 ancho=30;
     	 profundidad=prof;
@@ -30,6 +34,7 @@ public class Jugador extends Unidad{
     	 setGrafico();    	 
     }
     
+    //Metodos locales.
 	public boolean restarResistencia(){ 
 		boolean destruir= (!invulnerable && tipo.impact());
 		if (destruir) {
@@ -39,16 +44,12 @@ public class Jugador extends Unidad{
 		}
 		return destruir;		
 	}
-     
-    public boolean accept(Visitor V){
-    	return V.visitPlayer(this);
-    }
 
     public void setVisitor(Visitor v){
     	V=v;
     }
 
-    public StateJugador getState(){
+    public PerfilJugador getState(){
     	return tipo;
     }
 
@@ -65,45 +66,16 @@ public class Jugador extends Unidad{
     	return grafico;
     }
 
-	@Override
-	public void atacar() {
-		activeAttack=tipo.atacar();		
-	}
-
-	@Override
-	public void mover() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public Visitor getVisitor() {
 		return V;
 	}
 	
 	public Jugador clone(Celda[] c) {
-//		Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
-		StateJugador tipo = this.tipo.clone();
+		//Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
+		PerfilJugador tipo = this.tipo.clone();
 		Jugador clon = new Jugador(c, 2, tipo);
 		tipo.setJugador(clon);
 		return clon;
-	}
-
-	@Override
-	public void run() {
-		if(activeAttack==null || activeAttack.isCancelled() || activeAttack.isDone()) {
-			atacar();
-		}
-		
-	}
-
-	@Override
-	public int getVelocidad() {
-		return tipo.getVelocidad();		
-	}
-
-	@Override
-	public void setVelocidad(int speed) {
-		tipo.setVelocidad(speed);	
 	}
 	
 	public int getAtaque() {
@@ -129,4 +101,31 @@ public class Jugador extends Unidad{
 	public void setInvulnerable(){
 		invulnerable = true;
 	}
+	
+	//Metodos heredados.
+	public void run() {
+		if(activeAttack==null || activeAttack.isCancelled() || activeAttack.isDone()) {
+			atacar();
+		}
+	}
+	
+	public int getVelocidad() {
+		return tipo.getVelocidad();		
+	}
+
+	public void setVelocidad(int speed) {
+		tipo.setVelocidad(speed);	
+	}
+	
+	public void atacar() {
+		activeAttack=tipo.atacar();		
+	}
+
+	public void mover() {
+		
+	}
+
+    public boolean accept(Visitor V){
+    	return V.visitPlayer(this);
+    }
 }

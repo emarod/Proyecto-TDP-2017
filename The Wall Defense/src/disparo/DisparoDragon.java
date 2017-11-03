@@ -2,16 +2,22 @@ package disparo;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import jugador.Dragon;
 import main.GameObject;
 import main.Visitor;
 import mapa.Celda;
 
-public class DisparoDragon extends Disparo {
+/*
+ * Clase DisparoDragon
+ * Clase que especifica el comportamiento de los proyectiles generados por el dragon.
+ */
 
+public class DisparoDragon extends Disparo {
+	
+	//Atributos locales.
 	protected Dragon dragon;
 	
+	//Constructor.
 	public DisparoDragon(Dragon drake, int prof){
 	       super(prof);
 	       dragon = drake;
@@ -25,13 +31,15 @@ public class DisparoDragon extends Disparo {
 		   celda[0].getDirector().ejecutar(this,dragon.getVelocidadDisparo());	     
 	    }
 	
+	//Metodos locales.
 	public void destruir(){
     	super.destruir();
     	restarDisparosEnEjecucion();
 		celda[0].getEscenario().remove(grafico);
 		celda[0].getDirector().desactivar(this);		
-	}    
-    
+	}  
+	
+    //Metodos heredados.
     public boolean accept(Visitor V){
     	return V.visitDisparoPlayer(this);
     }
@@ -64,26 +72,21 @@ public class DisparoDragon extends Disparo {
 		
 	}
     
-    @Override
 	public void atacar() {		
 	}
 
-	@Override
 	public void restarDisparosEnEjecucion() {
 		dragon.restarDisparosEnEjecucion();
 	}
 
-	@Override
 	public void run() {
 		mover();		
 	}
 
-	@Override
 	public int getVelocidad() {
 		return dragon.getVelocidadDisparo();
 	}
 
-	@Override
 	public void setVelocidad(int speed) {
 		dragon.setVelocidad(speed);		
 	}

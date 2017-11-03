@@ -2,16 +2,22 @@ package disparo;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import enemigo.NightKing;
 import main.GameObject;
 import main.Visitor;
 import mapa.Celda;
 
-public class DisparoEnemigo extends Disparo {
+/*
+ * Clase DisparoEnemigo
+ * Clase que especifica el comportamiento de los proyectiles generados por el nightking.
+ */
 
-protected NightKing nightking;
+public class DisparoEnemigo extends Disparo {
 	
+	//Atributos locales.
+	protected NightKing nightking;
+	
+	//Constructor.
     public DisparoEnemigo(NightKing nk, int prof){
        super(prof);
        nightking = nk;
@@ -24,7 +30,8 @@ protected NightKing nightking;
 	   celda[0].getEscenario().agregar(grafico,new Integer(2));
 	   celda[0].getDirector().ejecutar(this,nightking.getVelocidadDisparo());	     
     }
-
+    
+    //Metodos locales.
     public void destruir(){
     	super.destruir();
     	restarDisparosEnEjecucion();
@@ -32,6 +39,7 @@ protected NightKing nightking;
 		celda[0].getDirector().desactivar(this);		
 	}    
     
+    //Metodos heredados.
     public boolean accept(Visitor V){
     	return V.visitDisparoPlayer(this);
     }
@@ -64,26 +72,21 @@ protected NightKing nightking;
 		
 	}
 	
-	@Override
 	public void atacar() {		
 	}
 
-	@Override
 	public void restarDisparosEnEjecucion() {
 		nightking.restarDisparosEnEjecucion();
 	}
 
-	@Override
 	public void run() {
 		mover();		
 	}
 
-	@Override
 	public int getVelocidad() {
 		return nightking.getVelocidadDisparo();
 	}
 
-	@Override
 	public void setVelocidad(int speed) {
 		nightking.setVelocidad(speed);		
 	}

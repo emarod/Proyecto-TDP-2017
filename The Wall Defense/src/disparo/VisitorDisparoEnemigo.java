@@ -6,38 +6,38 @@ import main.Visitor;
 import obstaculo.Rock;
 import obstaculo.Water;
 
+/*
+ * Clase VisitorDisparoEnemigo.
+ * Clase encargada de implementar correctamente las colisiones de los proyectiles de los enemigos.
+ * Especifica sus comportamientos mediante un patron de diseño visitor.
+ */
+
 public class VisitorDisparoEnemigo extends Visitor {
 	
+	//Atributos locales.
 	protected Disparo disparo;
 	
-	@Override
+	//Metodos heredados.
 	public boolean VisitRock(Rock r) {
 		r.restarResistencia();
 		return false;
 	}
 
-	@Override
 	public boolean VisitWater(Water w) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public boolean visitPlayer(Jugador j) {
 		j.restarResistencia();
 		disparo.destruir();
 		return false;
 	}
 
-	@Override
 	public boolean visitDisparoPlayer(Disparo d) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public boolean visitEnemigo(Enemigo e) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

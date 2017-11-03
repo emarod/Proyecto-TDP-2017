@@ -6,14 +6,23 @@ import disparo.Disparo;
 import jugador.Jugador;
 import main.Visitor;
 
+/*
+ * Clase VisitorEnemigo.
+ * Clase encargada de implementar correctamente las colisiones de los enemigos.
+ * Especifica sus comportamientos mediante un patron de diseño visitor.
+ */
+
 public class VisitorEnemigo extends Visitor{
 	
+	//Atributos locales.
 	protected Enemigo enemigo;
 	
+	//Constructor.
 	public VisitorEnemigo(Enemigo e){
     	enemigo = e;
     }
     
+	//Metodos heredados.
    public  boolean VisitRock(Rock r){
 	   r.restarResistencia();
 	   return false;

@@ -11,13 +11,10 @@ import java.util.Random;
 import java.io.InputStream;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
-
 import Controladores.BancoRecursos;
 import Controladores.Director;
 import enemigo.Enemigo;
-
 import java.io.IOException;
-
 import main.GameObject;
 import powerUp.Bomba;
 import powerUp.DañoAtkAumentado;
@@ -27,7 +24,14 @@ import powerUp.PowerUp;
 import interfaz.Escenario;
 import jugador.Jugador;
 
+/*
+ * Clase Map.
+ * Clase encargada de la construccion de toda la logica del campo de batalla.
+ */
+
 public class Map implements Runnable{
+	
+	//Atributos locales.
 	protected Celda[][] celdas;
 	protected Escenario escenario;
 	protected JLabel celdaLabel;
@@ -37,6 +41,7 @@ public class Map implements Runnable{
 	protected Director director;
 	protected BancoRecursos banco;
 	
+	//Constructor.
 	public Map(Escenario stage,int width,int height,int sprites) {
 		celdas= new Celda[width][height];
 		escenario = stage;
@@ -53,7 +58,7 @@ public class Map implements Runnable{
 		}
 	}
 	
-	
+	//Metodos locales.
 	private void inicializarCeldas(int t) throws FileNotFoundException, IOException {
 	    String sCurrentLine="";
 	    Random rnd=new Random();
@@ -156,12 +161,6 @@ public class Map implements Runnable{
     public Escenario getEscenario() {
     	return escenario;
     }
-    
-    
-	public void run() {	
-		escenario.repaint();
-		agregarPowerUp();
-	}
 	
 	public void crearJugador(Jugador j) {
 		if(celdaLabel!=null) {
@@ -382,5 +381,11 @@ public class Map implements Runnable{
 			p.getGrafico().setBounds(x_cel*64, y_cel*64, 64, 64);
 			escenario.agregar(p.getGrafico(), new Integer(4));
 		}
+	}
+	
+	//Metodos heredados.
+	public void run() {	
+		escenario.repaint();
+		agregarPowerUp();
 	}
 }

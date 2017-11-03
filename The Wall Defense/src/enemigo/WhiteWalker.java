@@ -1,27 +1,31 @@
 package enemigo;
 
 import java.util.concurrent.Future;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import main.GameObject;
 import mapa.Celda;
 
-public class WhiteWalker extends StateEnemigo{
+/*
+ * Clase WhiteWalker.
+ * Clase que especifica las caracteristicas y comportamiento del enemigo whitewalker.
+ */
+
+public class WhiteWalker extends PerfilEnemigo{
 	
+	//Atributos locales.
 	protected Enemigo enemigo;
 	protected Future<?> shot;
 	protected int velocidad_disparo;
 	protected int disparos_simultaneos;
 	protected int disparos_en_ejecucion;
 	
+	//Constructor.
 	public WhiteWalker() {
 		puntaje=100;
 		velocidad_enemigo=50;
 		resistencia=3;
-		
 		graficos= new Icon[11];
 		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando00.png"));
 		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando01.png"));
@@ -35,8 +39,8 @@ public class WhiteWalker extends StateEnemigo{
 		graficos[9]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando09.png"));
 		graficos[10]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando10.png"));
 	}
-
-	@Override
+	
+	//Metodos heredados.
 	public Future<?> atacar() {
 		return shot;
 	}
@@ -62,12 +66,6 @@ public class WhiteWalker extends StateEnemigo{
 		}
 	}
 	
-    public void destruir(){
-    	System.out.println("Destruir WhiteWalker");
-    	this.enemigo.getCeldas()[0].getDirector().desactivar(this.enemigo);
-	   
-	}
-	
 	public void setEnemigo(Enemigo enemigo){
 		this.enemigo = enemigo;				
 	}
@@ -79,7 +77,6 @@ public class WhiteWalker extends StateEnemigo{
 	}
 	
 	public void setGraficos(Icon[] graficos, JLabel grafico) {
-		// TODO Auto-generated method stub
 		
 	}
 	
@@ -87,7 +84,7 @@ public class WhiteWalker extends StateEnemigo{
 		return puntaje;
 	}
 	
-	public StateEnemigo clone() {
+	public PerfilEnemigo clone() {
 		return new WhiteWalker();
 	}
 	
@@ -95,4 +92,9 @@ public class WhiteWalker extends StateEnemigo{
 		
 	}
 	
+    public void destruir(){
+    	System.out.println("Destruir WhiteWalker");
+    	this.enemigo.getCeldas()[0].getDirector().desactivar(this.enemigo);
+	   
+	}
 }

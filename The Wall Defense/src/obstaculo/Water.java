@@ -1,12 +1,21 @@
 package obstaculo;
+
 import mapa.Celda;
 import main.Visitor;
-
 import java.awt.FlowLayout;
-
 import javax.swing.*;
+
+/*
+ * Clase Water
+ * Clase que determina como esta compuesta y como se comporta el agua.
+ */
+
 public class Water extends Obstaculo {
+	
+	//Atributos locales.
 	protected int penalizacion;
+	
+	//Constructor.
 	public Water(Celda c,char tipo,int prof,int sprite){
 	   profundidad=prof;
 	   celda[0]=c;
@@ -55,11 +64,13 @@ public class Water extends Obstaculo {
 	   grafico.setLayout(new FlowLayout(0, 0, 0));
    }
    
-   public boolean accept(Visitor V){
-	   return V.VisitWater(this);
-   }
-   
+	//Metodos locales.
    public int getPenalizacion() {
 	   return penalizacion;
+   }
+   
+   //Metodos heredados.
+   public boolean accept(Visitor V){
+	   return V.VisitWater(this);
    }
 }

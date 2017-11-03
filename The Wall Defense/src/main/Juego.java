@@ -1,31 +1,37 @@
 package main;
 
 import javax.swing.*;
-
 import javax.swing.JFrame;
-
 import javax.swing.JLayeredPane;
 import javax.swing.border.EmptyBorder;
-
-import Controladores.BancoRecursos;
 import interfaz.GUI;
 import interfaz.MenuInicio;
 
+/*
+ * Clase Juego.
+ * Esta clase posee el main.
+ * Clase encargada de controlar el menu de inicio.
+ */
+
 public class Juego {
+	
+	//Atributos locales.
 	protected static GUI frame;
 	protected final JFrame menu=new JFrame("The Wall Defense");
 	protected MenuInicio opciones;
-
-
+	
+	//main
 	public static void main(String[] args) {
 		new Juego();
 
 	}
 	
+	//Constructor.
 	public Juego() {
 		pantallaPrincipal();
 	}
 	
+	//Metodos locales.
 	public void pantallaPrincipal(){
 		menu.setVisible(true);
 		menu.setResizable(false);

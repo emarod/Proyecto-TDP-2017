@@ -2,17 +2,19 @@ package interfaz;
 
 import java.awt.Dimension;
 import java.util.Random;
-
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-
-import enemigo.Enemigo;
-import enemigo.StateEnemigo;
 import mapa.Map;
+
+/*
+ * Clase Escenario.
+ * Clase encargada de la grafica que muestra el campo de juego.
+ */
 
 public class Escenario extends JPanel {
 	
+	//Atributos locales.
 	protected static final long serialVersionUID = 1L;
 	protected static final int width=16;
 	protected static final int height=6;
@@ -20,6 +22,7 @@ public class Escenario extends JPanel {
 	protected Map mapa;
 	protected ProximaHorda horda;
 	
+	//Constructor.
 	public Escenario(){
 		Random rnd=new Random();
 		int r=rnd.nextInt(2);		
@@ -28,9 +31,9 @@ public class Escenario extends JPanel {
 		
 		this.add(layeredPane);
 		mapa= new Map(this,width,height,r);
-//		this.setBackground(new Color(255, 0, 255, 255));
 	}
 	
+	//Metodos locales.
 	public void  agregar(JLabel objeto,int entero){
 		objeto.setSize(64,64);
 		layeredPane.add(objeto,new Integer(entero));

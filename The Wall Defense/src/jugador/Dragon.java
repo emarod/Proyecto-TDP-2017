@@ -1,20 +1,25 @@
 package jugador;
 
 import java.util.concurrent.Future;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import disparo.DisparoDragon;
 
-public class Dragon extends StateJugador {
+/*
+ * Clase Dragon.
+ * Clase que especifica las caracteristicas y comportamiento del jugador dragon.
+ */
 
+public class Dragon extends PerfilJugador {
+	
+	//Atributos locales.
 	protected Future<?> shot;
 	protected int velocidad_disparo;
 	protected int disparos_simultaneos;
 	protected int disparos_en_ejecucion;
 	
+	//Constructor.
 	public Dragon() {
 		velocidad_jugador=20;
 		resistencia=5;
@@ -32,17 +37,6 @@ public class Dragon extends StateJugador {
 		graficos[7]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_7.png"));
 	}
 	
-	public void setJugador(Jugador jugador){
-		this.jugador = jugador;
-		this.jugador.getCeldas()[0].getDirector().ejecutar(this.jugador,velocidad_jugador);
-	}
-	
-	public void setGrafico(JLabel grafico) {
-		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/dragon_atacando.gif"));
-		graph=0;
-		grafico.setIcon(imagen);		
-	}
-	
 	public void animarDisparo() {
 		if(graph<4) {
 			graph++;
@@ -56,13 +50,41 @@ public class Dragon extends StateJugador {
 	public void setGrafico(int i) {
 		jugador.getGrafico().setIcon(graficos[i]);
 	}
-	
-	public StateJugador clone() {
-		return new Dragon();
-	}
 
 	public int getVelocidadDisparo() {
 		return velocidad_disparo;
+	}
+	
+	public void restarDisparosEnEjecucion(){
+    	disparos_en_ejecucion--;
+    }
+    
+    public int getDisparosEnEjecucion(){
+    	return disparos_en_ejecucion;
+    }
+	
+	//Metodos heredados.
+	public void setJugador(Jugador jugador){
+		this.jugador = jugador;
+		this.jugador.getCeldas()[0].getDirector().ejecutar(this.jugador,velocidad_jugador);
+	}
+	
+	public void setGrafico(JLabel grafico) {
+		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/dragon_atacando.gif"));
+		graph=0;
+		grafico.setIcon(imagen);		
+	}
+	
+	public PerfilJugador clone() {
+		return new Dragon();
+	}
+	
+	public void destruir(){
+		
+	}
+	
+	public void playSound() {
+		jugador.getBancoRecursos().playBolaFuego();
 	}
 	
 	public Future<?> atacar(){		
@@ -74,16 +96,4 @@ public class Dragon extends StateJugador {
 		graph=0;
 		return shot;
     }
-	
-	public void restarDisparosEnEjecucion(){
-    	disparos_en_ejecucion--;
-    }
-    
-    public int getDisparosEnEjecucion(){
-    	return disparos_en_ejecucion;
-    }
-	
-	public void playSound() {
-		jugador.getBancoRecursos().playBolaFuego();
-	}
 }

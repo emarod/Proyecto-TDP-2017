@@ -6,19 +6,22 @@ import interfaz.botones.BtnArquero;
 import interfaz.botones.BtnDragon;
 import interfaz.botones.BtnCaballero;
 import interfaz.botones.BtnEspadachin;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.*;
-
 import mapa.Map;
 
+/*
+ * Clase MenuCompra.
+ * Clase encargada de desplegar el menu de compra.
+ */
+
 public class MenuCompra extends JPanel{
+	
+	//Atributos locales.
 	protected JLabel personaje;
 	protected Map mapa;
 	protected Escenario escenario;
@@ -26,6 +29,7 @@ public class MenuCompra extends JPanel{
 	protected JPanel botonera;
 	protected Icon background;
  	
+	//Constructor.
 	public MenuCompra(Escenario escenario) {
 		this.escenario= escenario;
 		this.setLayout(new BorderLayout());
@@ -36,6 +40,7 @@ public class MenuCompra extends JPanel{
 		armarBotonera();
 	}
 	
+	//Metodos locales.
 	private void armarBotonera() {
 		
 		BtnDragon dragon= new BtnDragon(this.escenario);
@@ -57,40 +62,28 @@ public class MenuCompra extends JPanel{
 		caminante.addMouseListener(
 				new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
-						
 						//escenario.getMapa().crearEnemigo(e, 4, 0);
 					}
 				}
 		);
 		this.add(caminante,BorderLayout.EAST);
-		
-		
 		agregarBoton(ygritte);
 		agregarBoton(dragon);
 		agregarBoton(lannister);
 		agregarBoton(JonSnow);
 
-		
-		
 	}
 	
 	public void agregarBoton(JButton boton) {
-		
 		botonera.add(boton);
 	}
 	
 	public void armarPanel() {
-		
 		botonera=new JPanel();
 		botonera.setLayout(new GridLayout());
 		botonera.setBounds(76, 0, 300, 100);
 		botonera.setBackground(Color.BLUE);
 		background=new ImageIcon(this.getClass().getResource("/resources/static/tienda/fondo.png"));
-		//botonera.add(new JLabel(background));
 		this.add(botonera, BorderLayout.WEST);
-		
 	}
-		
-
-	
 }

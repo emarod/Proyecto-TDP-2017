@@ -3,15 +3,18 @@ package interfaz;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+/*
+ * Clase GUI.
+ * Clase  encargada de la interfaz grafica general.
+ */
 
 public class GUI extends JFrame{
 	
+	//Atributos locales.
 	protected static final long serialVersionUID = 1L;
-	
 	protected Escenario escenario;
 	protected MenuCompra tienda;
 	protected ProximaHorda horda;
@@ -21,7 +24,8 @@ public class GUI extends JFrame{
 	protected JPanel panelDerecho;
 	protected JPanel panelSuperior;
 	protected JPanel grafica;
-
+	
+	//Constructor.
 	public GUI() {	
 		super("The Wall Defense");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,10 +33,8 @@ public class GUI extends JFrame{
 		this.setResizable(true);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
-		//((JComponent) getContentPane()).setBorder(new LineBorder(new Color(0, 0, 0)));
-		//getContentPane().setBounds(, y, width, height);
 		
-		//Escenario. Donde va el mapa
+		//Escenario. Donde va el mapa.
 		escenario= new Escenario();	
 		getContentPane().add(escenario, BorderLayout.CENTER);
 		

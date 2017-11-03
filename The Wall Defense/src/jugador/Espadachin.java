@@ -1,15 +1,22 @@
 package jugador;
-import java.util.concurrent.Future;
 
+import java.util.concurrent.Future;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class Espadachin extends StateJugador{
+/*
+ * Clase Espadachin.
+ * Clase que especifica las caracteristicas y comportamiento del jugador espadachin.
+ */
+
+public class Espadachin extends PerfilJugador{
 	
+	//Constructor.
 	public Espadachin() {
 		resistencia=2;
 	}
 	
+	//Metodos heredados.
 	public void setJugador(Jugador jugador){
 		this.jugador = jugador;
 	}
@@ -24,11 +31,15 @@ public class Espadachin extends StateJugador{
 		grafico.setIcon(imagen);
     }
 
-	@Override
-	public StateJugador clone() {
+	public PerfilJugador clone() {
 		return new Espadachin();
 	}
 	
 	public void playSound() {
+		
+	}
+	
+	public void destruir(){
+		
 	}
 }

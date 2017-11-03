@@ -2,13 +2,18 @@ package powerUp;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import jugador.Jugador;
 import main.GameObject;
 import mapa.Celda;
 
+/*
+ * Clase Bomba.
+ * Clase que especifica el comportamiento del poder bomba.
+ */
+
 public class Bomba extends PowerUp {
 	
+	//Constructor.
 	public Bomba(Celda c, int prof) {
 		super(c, prof);
 		grafico=new JLabel();
@@ -18,10 +23,6 @@ public class Bomba extends PowerUp {
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/explosion.gif")));
 	}
 	
-	public JLabel getGraficoToken(){
-		return graficoToken;
-	}
-	
 	public void aplicar(Celda c){
 		GameObject objetos []= c.getObjects();
 		for(int i=1 ;i<objetos.length; i++){
@@ -29,10 +30,13 @@ public class Bomba extends PowerUp {
 		}
 	}
 
-	@Override
+	//Metodos heredados.
 	public void aplicar(Jugador j) {
-		// TODO Auto-generated method stub
 		
+	}
+	
+	public JLabel getGraficoToken(){
+		return graficoToken;
 	}
 	
 }

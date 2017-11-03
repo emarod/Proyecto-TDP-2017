@@ -1,20 +1,25 @@
-
 package enemigo;
 
 import java.util.concurrent.TimeUnit;
-
 import javax.swing.JLabel;
-
 import Controladores.BancoRecursos;
 import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
 
+/*
+ * Clase Enemigo.
+ * Clase que generaliza la idea de un enemigo y su comportamiento.
+ */
+
 public class Enemigo extends Unidad{
-	 protected StateEnemigo tipo;
+	
+	//Atributos locales.
+	 protected PerfilEnemigo tipo;
 	 protected BancoRecursos bancoRecursos;
 	 
-	 public Enemigo(Celda [] c, int profundidad, StateEnemigo t){
+	 //Constructor.
+	 public Enemigo(Celda [] c, int profundidad, PerfilEnemigo t){
 		V=new VisitorEnemigo(this);
     	tipo=t;
     	alto=30;
@@ -26,7 +31,8 @@ public class Enemigo extends Unidad{
 		getCeldas()[0].getDirector().ejecutar(this, 10);
 
 	}
-	 
+	
+	//Metodos locales.
 	public void activar() {
 		activeTask=getCeldas()[0].getDirector().ejecutar(this,tipo.getVelocidad());
 	}
@@ -34,12 +40,6 @@ public class Enemigo extends Unidad{
 	public void activar(long l) {
 		activeTask=getCeldas()[0].getDirector().ejecutar(this,l,tipo.getVelocidad());
 	}
-
-	public boolean accept(Visitor V){
-		return V.visitEnemigo(this);
-	}
-	
-
     
     public Visitor getVisitor() {
     	return V;
@@ -64,7 +64,7 @@ public class Enemigo extends Unidad{
     	return grafico;
     }
     
-    public StateEnemigo getState(){
+    public PerfilEnemigo getState(){
     	return tipo;
     }
 	
@@ -72,33 +72,9 @@ public class Enemigo extends Unidad{
 		super.destruir();
 		celda[0].destruirEnemigo(this);
 	}
-
-	public void atacar() {
-		tipo.atacar();
-	}
-
-	public void mover() {
-		tipo.mover();
-	}
 	
 	public int getPuntaje() {
 		return tipo.getPuntaje();
-	}
-
-	public void run() {		
-		mover();		
-	}
-
-	@Override
-	public int getVelocidad() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setVelocidad(int speed) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	public void setBancoRecursos(BancoRecursos banco) {
@@ -116,8 +92,8 @@ public class Enemigo extends Unidad{
 	}
 	
 	public Enemigo clone(Celda[] c) {
-//		Profundidad 1 predeterminada. Retorna una unidad de mismo tipo.
-		StateEnemigo tipo = this.tipo.clone();
+		//Profundidad 1 predeterminada. Retorna una unidad de mismo tipo.
+		PerfilEnemigo tipo = this.tipo.clone();
 		Enemigo clon = new Enemigo(c, 1, tipo);
 		tipo.setEnemigo(clon);
 		return clon;
@@ -125,5 +101,30 @@ public class Enemigo extends Unidad{
 	
 	public void playSound(){
 		tipo.playSound();
+	}
+	
+	//Metodos heredados.
+	public void run() {		
+		mover();		
+	}
+
+	public int getVelocidad() {
+		return tipo.getVelocidad();
+	}
+
+	public void setVelocidad(int speed) {
+		tipo.setVelocidad(speed);
+	}
+	
+	public void atacar() {
+		tipo.atacar();
+	}
+
+	public void mover() {
+		tipo.mover();
+	}
+	
+	public boolean accept(Visitor V){
+		return V.visitEnemigo(this);
 	}
 }

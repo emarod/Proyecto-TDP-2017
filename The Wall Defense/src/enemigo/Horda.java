@@ -6,17 +6,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Random;
-
 import javax.swing.JLabel;
-
 import interfaz.Escenario;
-import main.GameObject;
 import mapa.Celda;
 import mapa.Map;
 import enemigo.Enemigo;
 
+/*
+ * Clase Horda.
+ * Clase encargada de crear las hordas de forma random.
+ */
+
 public class Horda {
 	
+	//Atributos locales.
 	protected Enemigo horda[];
 	protected Celda celda;
 	protected Map mapa;
@@ -24,6 +27,7 @@ public class Horda {
 	protected JLabel graf;
 	protected int enemigos=0;
 	
+	//Constructor.
 	public Horda(Escenario s){	
 		stage=s;
 		mapa=stage.getMapa();
@@ -38,6 +42,7 @@ public class Horda {
 		}
 	}
 	
+	//Metodos locales.
 	private void inicializarHorda(int t) throws FileNotFoundException, IOException {
 	    String sCurrentLine="";
 	    Random rnd=new Random();

@@ -1,15 +1,22 @@
 package jugador;
 
 import java.util.concurrent.Future;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class Caballero extends StateJugador{
+/*
+ * Clase Caballero.
+ * Clase que especifica las caracteristicas y comportamiento del jugador caballero.
+ */
+
+public class Caballero extends PerfilJugador{
+	
+	//Constructor.
 	public Caballero() {
 		resistencia=10;
 	}
 	
+	//Metodos heredados.
 	public void setJugador(Jugador jugador){
 		this.jugador = jugador;
 	}
@@ -25,10 +32,15 @@ public class Caballero extends StateJugador{
     }
 
 	@Override
-	public StateJugador clone() {
+	public PerfilJugador clone() {
 		return new Caballero();
 	}
 	
 	public void playSound() {
+		
+	}
+	
+	public void destruir(){
+		
 	}
 }

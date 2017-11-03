@@ -5,21 +5,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import Controladores.BancoRecursos;
 import main.Juego;
 
+/*
+ * Clase MenuInicio.
+ * Clase encargada de desplegar el menu de inicio.
+ */
+
 public class MenuInicio extends JPanel {
 	
-	/**
-	 * 
-	 */
+	//Atributos locales.
 	protected static final long serialVersionUID = 1L;
 	protected Icon menuback;
 	protected JLabel menupanel;
@@ -30,7 +31,7 @@ public class MenuInicio extends JPanel {
 	protected Juego game;
 	protected BancoRecursos bancoRecursos;
 
-	
+	//Constructor.
 	public MenuInicio(Juego game) {
 		
 		this.game=game;
@@ -50,6 +51,7 @@ public class MenuInicio extends JPanel {
 		
 	}
 	
+	//Metodos locales.
 	public void armarIconos() {
 		newGame=new Icon[3];
 		help=new Icon[3];

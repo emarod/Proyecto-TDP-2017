@@ -1,18 +1,22 @@
 package mapa;
 
 import java.util.LinkedList;
-
 import javax.swing.JLabel;
-
 import Controladores.Director;
 import enemigo.Enemigo;
 import interfaz.Escenario;
-
 import main.GameObject;
 import obstaculo.*;
 import terreno.*;
 
+/*
+ * Clase Celda.
+ * Clase encargada de la construccion logica de una posicion en el campo de batalla.
+ */
+
 public class Celda {
+		
+		//Atributos locales.
 	   protected GameObject[] listaObjetosLogicos;
 	   protected Map Map;
 	   protected int posX;
@@ -20,7 +24,8 @@ public class Celda {
 	   protected boolean hayDisparo;
 	   protected boolean estaOcupada;
 	   protected LinkedList<GameObject> disparos;
-
+	   
+	   //Constructor.
 	   public Celda(char tipo, Map Mapa,int posX, int posY,int sprite){
 		   hayDisparo=false;
 		   this.posX=posX;
@@ -119,6 +124,7 @@ public class Celda {
 	   
 	}
 	
+	//Metodos locales.
 	public GameObject[] getObjects(){
 		refresh();
 		return listaObjetosLogicos;
@@ -175,7 +181,7 @@ public class Celda {
  	   Map.destruirEnemigo(e);
     }
     
-//  Si la celda contiene un enemigo, aliado, o obstaculo lo retorna cc null
+    //Si la celda contiene un enemigo, aliado, o obstaculo lo retorna cc null
     public GameObject estaOcupada() {
     	int i=1;
     	while (!estaOcupada && i<3) {
