@@ -20,7 +20,7 @@ public class Barricada extends Obstaculo implements Runnable{
     	celda[0]=c;
     	resistencia=3;
     	grafico=new JLabel();
-    	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/terrenos/barricada_momentanea.png")));  	
+    	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/terrenos/barricada/barricada_"+resistencia+".png")));  	
     }
     
     //Metodos locales.
@@ -34,6 +34,7 @@ public class Barricada extends Obstaculo implements Runnable{
     		destruir();
     	}else{
     		resistencia--;
+    		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/terrenos/barricada/barricada_"+resistencia+".png")));  
     	}
     }
     
