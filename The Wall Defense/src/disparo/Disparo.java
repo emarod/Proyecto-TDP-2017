@@ -30,4 +30,5 @@ public abstract class Disparo extends Unidad  {
 	
 	//Metodos abstractos.
 	public abstract void restarDisparosEnEjecucion();
+	public abstract int getDaño();
 }

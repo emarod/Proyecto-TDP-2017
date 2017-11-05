@@ -91,4 +91,8 @@ public class DisparoArquero extends Disparo{
 	public void run() {
 		mover();		
 	}
+	
+	public int getDaño(){
+		return arquero.getDaño();
+	}
 }

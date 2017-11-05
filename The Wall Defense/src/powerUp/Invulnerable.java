@@ -27,7 +27,7 @@ public class Invulnerable extends PowerUp {
 	}
 	
 	public void aplicar(Jugador j){
-		j.setInvulnerable();		
+		
 	}
 
 	public void run() {

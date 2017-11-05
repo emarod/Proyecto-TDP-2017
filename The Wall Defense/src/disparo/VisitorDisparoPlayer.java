@@ -22,6 +22,11 @@ public class VisitorDisparoPlayer extends Visitor {
 	}
 	
 	//Metodos heredados.
+	public boolean visitObstaculo(Obstaculo o) {
+		return true;
+	}
+	
+	/*
 	public boolean VisitRock(Rock r) {
 		return true;
 	}
@@ -29,6 +34,7 @@ public class VisitorDisparoPlayer extends Visitor {
 	public boolean VisitBarricada(Barricada b) {
 		return true;
 	}
+	*/
 	
 	public boolean VisitWater(Water w) {
 		return true;

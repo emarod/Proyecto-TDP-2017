@@ -43,4 +43,8 @@ public class Caballero extends PerfilJugador{
 	public void destruir(){
 		
 	}
+	
+	public int getDaño(){
+		return daño;
+	}
 }

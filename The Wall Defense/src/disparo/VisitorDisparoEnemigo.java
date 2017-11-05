@@ -17,6 +17,12 @@ public class VisitorDisparoEnemigo extends Visitor {
 	protected Disparo disparo;
 	
 	//Metodos heredados.
+	public boolean visitObstaculo(Obstaculo o) {
+		o.dañar(disparo.getDaño());
+		return false;
+	}
+	
+	/*
 	public boolean VisitRock(Rock r) {
 		r.restarResistencia();
 		return false;
@@ -26,6 +32,7 @@ public class VisitorDisparoEnemigo extends Visitor {
 		b.restarResistencia();
 		return false;
 	}
+	*/
 	
 	public boolean VisitWater(Water w) {
 		return false;

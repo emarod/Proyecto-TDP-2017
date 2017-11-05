@@ -20,7 +20,6 @@ public class Jugador extends Unidad{
 	protected PerfilJugador tipo;
     protected Future<?> activeAttack;
 	protected BancoRecursos bancoRecursos;
-	protected boolean invulnerable;
     
 	//Constructor.
     public Jugador(Celda[] c,int prof, PerfilJugador t){	 
@@ -36,9 +35,9 @@ public class Jugador extends Unidad{
     
     //Metodos locales.
 	public boolean restarResistencia(){ 
-		boolean destruir= (!invulnerable && tipo.impact());
+		boolean destruir= (tipo.impact());
 		if (destruir) {
-			System.out.println("antes de restar rssistencia de jugador");
+			System.out.println("antes de restar resistencia de jugador");
 			destruir();
 			tipo.destruir();
 		}
@@ -78,8 +77,8 @@ public class Jugador extends Unidad{
 		return clon;
 	}
 	
-	public int getAtaque() {
-		return tipo.getAtaque();		
+	public int getDaño() {
+		return tipo.getDaño	();		
 	}
 
 	public void setAtaque(int a) {
@@ -96,10 +95,6 @@ public class Jugador extends Unidad{
 	
 	public void playSound(){
 		tipo.playSound();
-	}
-	
-	public void setInvulnerable(){
-		invulnerable = true;
 	}
 	
 	//Metodos heredados.

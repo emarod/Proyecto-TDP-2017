@@ -90,5 +90,8 @@ public class DisparoDragon extends Disparo {
 	public void setVelocidad(int speed) {
 		dragon.setVelocidad(speed);		
 	}
-
+	
+	public int getDaño(){
+		return dragon.getDaño();
+	}
 }

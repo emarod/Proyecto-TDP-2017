@@ -12,7 +12,7 @@ public abstract class PerfilJugador {
 	
 	//Atributos locales.
 	protected int velocidad_jugador;
-	protected int ataque;
+	protected int daño;
 	protected int resistencia;
 	protected Jugador jugador;
 	protected Icon[] graficos;
@@ -20,12 +20,12 @@ public abstract class PerfilJugador {
 	
 	//Metodos locales.
     public boolean impact(){
-    	if(resistencia==1) {
+    	if(resistencia<=daño) {
     		System.out.println("Enemigo abatido en "+resistencia);
     		return true;
     	}
     	else{
-    		resistencia = resistencia - ataque;
+    		resistencia = resistencia - daño;
     		return false;
     	}
     }
@@ -43,11 +43,7 @@ public abstract class PerfilJugador {
 	}
 	
 	public void setAtaque(int a) {
-		ataque=a;
-	}
-	
-	public int getAtaque() {
-		return ataque;
+		daño=a;
 	}
     
 	//Metodos abstractos.
@@ -57,5 +53,5 @@ public abstract class PerfilJugador {
 	public abstract void playSound();
 	public abstract void destruir();
 	public abstract PerfilJugador clone();
-
+	public abstract int getDaño();
 }

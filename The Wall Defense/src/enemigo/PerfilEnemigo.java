@@ -13,6 +13,7 @@ public abstract class PerfilEnemigo {
 	//Atributos locales.
 	protected int velocidad_enemigo;
 	protected int resistencia;
+	protected int daño;
 	protected Enemigo enemigo;
 	protected int puntaje;
 	protected boolean atacar;
@@ -50,4 +51,5 @@ public abstract class PerfilEnemigo {
 	public abstract void setEnemigo(Enemigo e);
 	public abstract PerfilEnemigo clone();
 	public abstract void playSound();
+	public abstract int getDaño();
 }

@@ -2,25 +2,21 @@ package obstaculo;
 
 import javax.swing.*;
 import main.Visitor;
-import mapa.Celda;
 
 /*
  * Clase Rock
  * Clase que determina como esta compuesta y como se comporta una roca.
  */
 
-public class Rock extends Obstaculo implements Runnable{
-	
-	//Atributos locales.
-	protected int resistencia;
+public class Rock extends PerfilObstaculo{
 	
 	//Constructor.
-    public Rock(Celda c,int prof){
-    	profundidad=prof;
-    	celda[0]=c;
+    public Rock(){
     	resistencia=3;
-    	grafico=new JLabel();
-    	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca_"+resistencia+".png")));  	
+    	graficos= new Icon[3];
+    	graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca/roca_1.png"));
+		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca/roca_2.png"));
+		graficos[2]=new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca/roca_3.png"));	  	
     }
     
     //Metodos locales.
@@ -28,18 +24,8 @@ public class Rock extends Obstaculo implements Runnable{
     	return resistencia;
     }
     
-    public void restarResistencia(){
-    	System.out.println("restar resitencia");
-    	if(resistencia==1){
-    		destruir();
-    	}else{
-    		resistencia--;
-    		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca_"+resistencia+".png")));
-    	}
-    }
-    
     public void destruir(){
-    	super.destruir();
+    	
     }
     
     //Metodos heredados.
@@ -48,7 +34,37 @@ public class Rock extends Obstaculo implements Runnable{
     }
     
     public boolean accept(Visitor V){
-    	return V.VisitRock(this);
+    	return V.visitObstaculo(this.obstaculo);
     }
-
+    
+    public void setGrafico(int i) {
+		obstaculo.getGrafico().setIcon(graficos[i]);
+	}
+    
+    public void restarResistencia(int ataque){
+    	resistencia = resistencia - ataque;
+    	setGrafico(resistencia);
+    }
+    
+    public PerfilObstaculo clone() {
+		return new Rock();
+	}
+    
+    public void setObstaculo(Obstaculo obstaculo){
+		this.obstaculo = obstaculo;
+	}
+    
+    public void setGrafico(JLabel grafico) {
+		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca/roca_3.png"));
+		graph=0;
+		grafico.setIcon(imagen);		
+	}
+    
+    public void dañar(int daño){
+    	restarResistencia(daño);
+    }
+    
+    public void playSound() {
+		obstaculo.getBancoRecursos().playBarricada();
+	}
 }

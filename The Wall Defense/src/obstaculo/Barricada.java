@@ -2,25 +2,21 @@ package obstaculo;
 
 import javax.swing.*;
 import main.Visitor;
-import mapa.Celda;
 
 /*
  * Clase Rock
  * Clase que determina como esta compuesta y como se comporta una roca.
  */
 
-public class Barricada extends Obstaculo implements Runnable{
-	
-	//Atributos locales.
-	protected int resistencia;
+public class Barricada extends PerfilObstaculo{
 	
 	//Constructor.
-    public Barricada(Celda c,int prof){
-    	profundidad=prof;
-    	celda[0]=c;
+    public Barricada(){
     	resistencia=3;
-    	grafico=new JLabel();
-    	grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/terrenos/barricada/barricada_"+resistencia+".png")));  	
+    	graficos= new Icon[3];
+    	graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/terrenos/barricada/barricada_1.png"));
+		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/terrenos/barricada/barricada_2.png"));
+		graficos[2]=new ImageIcon(this.getClass().getResource("/resources/static/terrenos/barricada/barricada_3.png"));
     }
     
     //Metodos locales.
@@ -28,19 +24,9 @@ public class Barricada extends Obstaculo implements Runnable{
     	return resistencia;
     }
     
-    public void restarResistencia(){
-    	System.out.println("restar resitencia");
-    	if(resistencia==1){
-    		destruir();
-    	}else{
-    		resistencia--;
-    		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/terrenos/barricada/barricada_"+resistencia+".png")));  
-    	}
-    }
-    
     public void destruir(){
-    	super.destruir();
-    }
+	   
+	}
     
     //Metodos heredados.
     public void run(){
@@ -48,7 +34,37 @@ public class Barricada extends Obstaculo implements Runnable{
     }
     
     public boolean accept(Visitor V){
-    	return V.VisitBarricada(this);
+    	return V.visitObstaculo(this.obstaculo);
     }
-
+    
+    public void restarResistencia(int ataque){
+    	resistencia = resistencia - ataque;
+    	setGrafico(resistencia);
+    }
+    
+    public void setGrafico(int i) {
+		obstaculo.getGrafico().setIcon(graficos[i]);
+	}
+    
+    public void setObstaculo(Obstaculo obstaculo){
+		this.obstaculo = obstaculo;
+	}
+    
+    public void setGrafico(JLabel grafico) {
+		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/terrenos/barricada/barricada_3.png"));
+		graph=0;
+		grafico.setIcon(imagen);		
+	}
+    
+    public PerfilObstaculo clone() {
+		return new Barricada();
+	}
+    
+    public void dañar(int daño){
+    	restarResistencia(daño);
+    }
+    
+    public void playSound() {
+		obstaculo.getBancoRecursos().playBarricada();
+	}
 }

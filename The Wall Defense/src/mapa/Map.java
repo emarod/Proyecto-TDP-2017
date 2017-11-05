@@ -23,6 +23,7 @@ import powerUp.Invulnerable;
 import powerUp.PowerUp;
 import interfaz.Escenario;
 import jugador.Jugador;
+import obstaculo.Obstaculo;
 
 /*
  * Clase Map.
@@ -249,6 +250,44 @@ public class Map implements Runnable{
 		}
 	}
 
+	public void crearObstaculo(Obstaculo o) {
+		if(celdaLabel!=null) {
+			int x_cel= Math.round(celdaLabel.getX()/64);
+			int y_cel= Math.round(celdaLabel.getY()/64);			
+			if(	celdas[x_cel][y_cel].getObjects()[3]==null) {
+				Celda[] c = new Celda[1];
+				c[0] = celdas[x_cel][y_cel];
+				Obstaculo obstaculo = o.clone(c);
+				celdas[x_cel][y_cel].getObjects()[3]= obstaculo;
+				JLabel icono = obstaculo.getGrafico();
+				obstaculo.setBancoRecursos(banco);
+				icono.setBounds(x_cel*64,y_cel*64,64,64);
+				icono.addMouseListener(
+					new MouseAdapter() {
+						public void mouseReleased(MouseEvent e) {
+							int x_cel = Math.round(x_mouse/64); 
+							int y_cel = Math.round(y_mouse/64);
+							GameObject[] objetosCelda =celdas[x_cel][y_cel].getObjects();
+							objetosCelda[3]= obstaculo;
+							obstaculo.getCeldas()[0].getObjects()[2]=null;
+							obstaculo.setCelda(celdas[x_cel][y_cel],0);
+							int x_terreno = objetosCelda[0].getGrafico().getX();
+							int y_terreno = objetosCelda[0].getGrafico().getY();
+							obstaculo.getGrafico().setBounds(x_terreno, y_terreno, 64, 64);
+						}
+					}
+				);
+				icono.addMouseMotionListener(
+					new MouseMotionAdapter() {
+						public void mouseDragged(MouseEvent e) {
+							obstaculo.getGrafico().setBounds(x_mouse,y_mouse,64,64);
+						}
+					}
+				);
+				escenario.agregar(icono,new Integer(3));
+			}
+		}
+	}
 	
 	public void crearEnemigo(Enemigo e,int x, int y) {
 		System.out.println("Enemigo creado - x:"+x+" y:"+y);

@@ -96,4 +96,8 @@ public class Dragon extends PerfilJugador {
 		graph=0;
 		return shot;
     }
+	
+	public int getDaño(){
+		return daño;
+	}
 }

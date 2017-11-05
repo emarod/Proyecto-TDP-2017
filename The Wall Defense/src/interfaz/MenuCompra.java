@@ -6,6 +6,7 @@ import interfaz.botones.BtnArquero;
 import interfaz.botones.BtnDragon;
 import interfaz.botones.BtnCaballero;
 import interfaz.botones.BtnEspadachin;
+import interfaz.botones.BtnBarricada;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -57,6 +58,9 @@ public class MenuCompra extends JPanel{
 		BtnEspadachin JonSnow = new BtnEspadachin(this.escenario);
 		JonSnow.setBounds(0, 50, JonSnow.getIcon().getIconWidth(), JonSnow.getIcon().getIconHeight());
 		
+		BtnBarricada barricada = new BtnBarricada(this.escenario);
+		barricada.setBounds(0, 50, barricada.getIcon().getIconWidth(), barricada.getIcon().getIconHeight());
+		
 		JButton caminante = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif")));
 		caminante.setSize(32, 32);
 		caminante.addMouseListener(
@@ -71,7 +75,8 @@ public class MenuCompra extends JPanel{
 		agregarBoton(dragon);
 		agregarBoton(lannister);
 		agregarBoton(JonSnow);
-
+		agregarBoton(barricada);
+		
 	}
 	
 	public void agregarBoton(JButton boton) {

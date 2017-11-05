@@ -26,6 +26,7 @@ public class WhiteWalker extends PerfilEnemigo{
 		puntaje=100;
 		velocidad_enemigo=50;
 		resistencia=3;
+		daño = 1;
 		graficos= new Icon[11];
 		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando00.png"));
 		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando01.png"));
@@ -97,4 +98,8 @@ public class WhiteWalker extends PerfilEnemigo{
     	this.enemigo.getCeldas()[0].getDirector().desactivar(this.enemigo);
 	   
 	}
+    
+    public int getDaño(){
+    	return daño;
+    }
 }

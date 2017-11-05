@@ -127,4 +127,8 @@ public class Enemigo extends Unidad{
 	public boolean accept(Visitor V){
 		return V.visitEnemigo(this);
 	}
+	
+	public int getDaño() {
+		return tipo.getDaño	();		
+	}
 }

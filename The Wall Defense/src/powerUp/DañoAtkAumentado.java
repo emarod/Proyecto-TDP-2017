@@ -27,7 +27,7 @@ public class DañoAtkAumentado extends PowerUp {
 	}
 	
 	public void aplicar(Jugador j){
-		int ataque_actual = j.getAtaque();
+		int ataque_actual = j.getDaño();
 		j.setAtaque(ataque_actual*2);
 	}
 

@@ -42,4 +42,8 @@ public class Espadachin extends PerfilJugador{
 	public void destruir(){
 		
 	}
+	
+	public int getDaño(){
+		return daño;
+	}
 }

@@ -1,5 +1,6 @@
 package obstaculo;
 
+import main.GameObject;
 import mapa.Celda;
 import main.Visitor;
 import java.awt.FlowLayout;
@@ -10,7 +11,7 @@ import javax.swing.*;
  * Clase que determina como esta compuesta y como se comporta el agua.
  */
 
-public class Water extends Obstaculo {
+public class Water extends GameObject{
 	
 	//Atributos locales.
 	protected int penalizacion;

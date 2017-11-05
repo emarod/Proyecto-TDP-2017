@@ -22,6 +22,12 @@ public class VisitorEnemigo extends Visitor{
     }
     
 	//Metodos heredados.
+	public boolean visitObstaculo(Obstaculo o) {
+		o.dañar(enemigo.getDaño());
+		return false;
+	}
+	
+	/*
    public  boolean VisitRock(Rock r){
 	   r.restarResistencia();
 	   return false;
@@ -31,7 +37,8 @@ public class VisitorEnemigo extends Visitor{
 	   b.restarResistencia();
 	   return false;
    }
-   
+   */
+	
    public  boolean VisitWater(Water w){
 	   enemigo.relentizar(w.getPenalizacion());
 	   return true;

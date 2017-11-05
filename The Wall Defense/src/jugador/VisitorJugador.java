@@ -22,6 +22,11 @@ public class VisitorJugador extends Visitor{
 	   }
 	    
 	   //Metodos locales.
+	   public boolean visitObstaculo(Obstaculo o) {
+			return false;
+		}
+	   
+	   /*
 	   public  boolean VisitRock(Rock r){
 		   return false;
 	   }
@@ -29,6 +34,7 @@ public class VisitorJugador extends Visitor{
 	   public  boolean VisitBarricada(Barricada b){
 		   return false;
 	   }
+	   */
 	   
 	   public  boolean VisitWater(Water w){
 		   return false;

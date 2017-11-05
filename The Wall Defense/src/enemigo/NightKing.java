@@ -26,6 +26,7 @@ public class NightKing extends PerfilEnemigo {
 	public NightKing() {
 		puntaje=200;
 		velocidad_enemigo=50;
+		daño = 1;
 		resistencia=6;
 		graficos= new Icon[14];
 		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/ww_nightking_atacando/ww_nightking_atacando00.png"));
@@ -132,5 +133,9 @@ public class NightKing extends PerfilEnemigo {
 	
 	public void playSound() {
 		enemigo.getBancoRecursos().playFlecha();
+	}
+	
+	public int getDaño(){
+		return daño;
 	}
 }

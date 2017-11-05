@@ -90,4 +90,8 @@ public class DisparoEnemigo extends Disparo {
 	public void setVelocidad(int speed) {
 		nightking.setVelocidad(speed);		
 	}
+	
+	public int getDaño(){
+		return nightking.getDaño();
+	}
 }

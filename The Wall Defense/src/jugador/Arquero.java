@@ -23,6 +23,7 @@ public class Arquero extends PerfilJugador{
 	public Arquero() {
 		velocidad_jugador=15;
 		resistencia=2;
+		daño = 1;
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
 		velocidad_disparo=75;
@@ -105,4 +106,7 @@ public class Arquero extends PerfilJugador{
 		grafico.setIcon(imagen);		
 	}
     
+	public int getDaño(){
+		return daño;
+	}
 }
