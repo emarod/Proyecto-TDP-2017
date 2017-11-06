@@ -13,7 +13,6 @@ public abstract class PerfilObstaculo {
 		protected int resistencia;
 		protected Obstaculo obstaculo;
 		protected Icon[] graficos;
-		protected int graph;
 		
 		//Metodos locales.
 		public boolean impact(int ataque){

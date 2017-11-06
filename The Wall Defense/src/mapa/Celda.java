@@ -64,11 +64,7 @@ public class Celda {
 	    		case 'q':
 	    		case 'r':
 	    			//Piedra.
-	    			listaObjetosLogicos[0]=new Nieve(this);
-	    			Celda [] c = new Celda[4];
-	    			c[0] = this;
-	    			Obstaculo obstaculo = new Obstaculo(c,3,new Rock());
-	    			listaObjetosLogicos[3]= obstaculo;    			
+	    			listaObjetosLogicos[0]=new Rock(this,Map.banco);		
 	    			break;
 	    		case 's':
 	    			//Lateral vertical sup.

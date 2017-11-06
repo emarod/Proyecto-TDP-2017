@@ -4,6 +4,7 @@ import disparo.Disparo;
 import enemigo.Enemigo;
 import jugador.Jugador;
 import obstaculo.*;
+import terreno.Rock;
 
 /*
  * Clase Visitor.
@@ -16,7 +17,7 @@ public abstract  class Visitor {
 	//Metodos abstractos.
 	public abstract boolean visitObstaculo(Obstaculo o);
    //public abstract boolean VisitBarricada(Barricada b);
-   //public abstract boolean VisitRock(Rock r);
+   public abstract boolean VisitRock(Rock r);
    public abstract boolean VisitWater(Water w);
    public abstract boolean visitPlayer(Jugador j);
    public abstract boolean visitDisparoPlayer(Disparo d);

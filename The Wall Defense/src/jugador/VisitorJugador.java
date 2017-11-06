@@ -4,6 +4,7 @@ import disparo.Disparo;
 import enemigo.Enemigo;
 import main.Visitor;
 import obstaculo.*;
+import terreno.Rock;
 
 /*
  * Clase VisitorJugador.
@@ -25,12 +26,12 @@ public class VisitorJugador extends Visitor{
 	   public boolean visitObstaculo(Obstaculo o) {
 			return false;
 		}
-	   
-	   /*
+	    
 	   public  boolean VisitRock(Rock r){
 		   return false;
 	   }
 	   
+	   /*
 	   public  boolean VisitBarricada(Barricada b){
 		   return false;
 	   }

@@ -31,6 +31,7 @@ public class Barricada extends PerfilObstaculo{
     }
     
     public void restarResistencia(int ataque){
+    	playSound();
     	if(resistencia<=ataque){
     		obstaculo.destruir();
     	}
@@ -50,7 +51,6 @@ public class Barricada extends PerfilObstaculo{
     
     public void setGrafico(JLabel grafico) {
 		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/terrenos/barricada/barricada_3.png"));
-		graph=0;
 		grafico.setIcon(imagen);		
 	}
     
