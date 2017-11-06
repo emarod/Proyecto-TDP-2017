@@ -46,13 +46,13 @@ public class VisitorEnemigo extends Visitor{
    
    public  boolean visitPlayer(Jugador j){
 	   System.out.println("el juagador visita a enemigo");
-	   j.restarResistencia();
+	   j.recibirDaño(enemigo.getDaño());
 	   return false;
    }
    
    public boolean visitDisparoPlayer(Disparo d){
-	   d.destruir();
-	   enemigo.restarResistencia();
+	   enemigo.recibirDaño(d.getDaño());
+	   d.destruir();	   
 	   return true;
    }   
    

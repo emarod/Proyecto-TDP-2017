@@ -5,6 +5,8 @@ import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+
+import Controladores.Director;
 import mapa.Map;
 
 /*
@@ -23,14 +25,14 @@ public class Escenario extends JPanel {
 	protected ProximaHorda horda;
 	
 	//Constructor.
-	public Escenario(){
+	public Escenario(Director director){
 		Random rnd=new Random();
 		int r=rnd.nextInt(2);		
 		layeredPane= new JLayeredPane();
 		layeredPane.setPreferredSize(new Dimension(1026, 384));
 		
 		this.add(layeredPane);
-		mapa= new Map(this,width,height,r);
+		mapa= new Map(this,director,width,height,r);
 	}
 	
 	//Metodos locales.
@@ -48,11 +50,7 @@ public class Escenario extends JPanel {
 	
 	public Map getMapa() {
 		return mapa;
-	}
-	
-	public void hacerDaño(){
-		mapa.hacerDaño();
-	}
+	}	
 	
 	public void setHorda(ProximaHorda p) {
 		horda=p;

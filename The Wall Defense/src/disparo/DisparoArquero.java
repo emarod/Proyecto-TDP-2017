@@ -21,22 +21,21 @@ public class DisparoArquero extends Disparo{
     public DisparoArquero(Arquero archer, int prof){
        super(prof);
        arquero = archer;
-		celda[0]=arquero.getJugador().getCeldas()[0];
-		celda[0].addDisparo(this);
+       celda[0]=arquero.getCeldas()[0];
+       celda[0].addDisparo(this);
        V=new VisitorDisparoPlayer(this);
  	   grafico=new JLabel();
   	   grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
   	   grafico.setBounds(64*celda[0].getPosX(), 64*celda[0].getPosY(), 64, 64);
-	   celda[0].getEscenario().agregar(grafico,new Integer(2));
-	   celda[0].getDirector().ejecutar(this,arquero.getVelocidadDisparo());	     
+	   celda[0].getEscenario().agregar(grafico,new Integer(prof));
+	   activeTask=celda[0].getDirector().ejecutar(this,arquero.getVelocidadDisparo());	     
     }
     
     //Metodos Locales.
     public void destruir(){
-    	super.destruir();
+    	super.destruir();    	
     	restarDisparosEnEjecucion();
-		celda[0].getEscenario().remove(grafico);
-		celda[0].getDirector().desactivar(this);		
+    	arquero=null;
 	}
     
 	//Metodos heredados.

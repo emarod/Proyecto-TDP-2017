@@ -21,22 +21,21 @@ public class DisparoEnemigo extends Disparo {
     public DisparoEnemigo(NightKing nk, int prof){
        super(prof);
        nightking = nk;
-		celda[0]=nightking.getEnemigo().getCeldas()[0];
-		celda[0].addDisparo(this);
+       celda[0]=nightking.getCeldas()[0];
+       celda[0].addDisparo(this);
        V=new VisitorDisparoPlayer(this);
  	   grafico=new JLabel();
   	   grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
   	   grafico.setBounds(64*celda[0].getPosX(), 64*celda[0].getPosY(), 64, 64);
 	   celda[0].getEscenario().agregar(grafico,new Integer(2));
-	   celda[0].getDirector().ejecutar(this,nightking.getVelocidadDisparo());	     
+	   activeTask=celda[0].getDirector().ejecutar(this,nightking.getVelocidadDisparo());	     
     }
     
     //Metodos locales.
     public void destruir(){
     	super.destruir();
     	restarDisparosEnEjecucion();
-		celda[0].getEscenario().remove(grafico);
-		celda[0].getDirector().desactivar(this);		
+    	nightking=null;
 	}    
     
     //Metodos heredados.

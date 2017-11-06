@@ -1,28 +1,26 @@
 package jugador;
 
-import java.util.concurrent.Future;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import mapa.Celda;
 
 /*
  * Clase Caballero.
  * Clase que especifica las caracteristicas y comportamiento del jugador caballero.
  */
 
-public class Caballero extends PerfilJugador{
+public class Caballero extends Jugador{
 	
 	//Constructor.
-	public Caballero() {
-		resistencia=10;
+	public Caballero(Celda[] c, int prof) {
+		super(c,prof);
+		vida=10;
 	}
 	
 	//Metodos heredados.
-	public void setJugador(Jugador jugador){
-		this.jugador = jugador;
-	}
 	
-    public Future<?> atacar(){
-		return null;
+    public void atacar(){
     	
     }
     
@@ -32,8 +30,11 @@ public class Caballero extends PerfilJugador{
     }
 
 	@Override
-	public PerfilJugador clone() {
-		return new Caballero();
+	public Jugador clone(Celda[] c) {
+		//Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
+		Jugador clon = new Caballero(c, 2);
+		return clon;
+		
 	}
 	
 	public void playSound() {
@@ -41,10 +42,14 @@ public class Caballero extends PerfilJugador{
 	}
 	
 	public void destruir(){
-		
+		super.destruir();		
 	}
 	
 	public int getDaño(){
 		return daño;
+	}
+
+	@Override
+	public void mover() {
 	}
 }

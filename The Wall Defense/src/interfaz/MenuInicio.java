@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Controladores.BancoRecursos;
+import Controladores.Director;
 import main.Juego;
 
 /*
@@ -32,10 +33,10 @@ public class MenuInicio extends JPanel {
 	protected BancoRecursos bancoRecursos;
 
 	//Constructor.
-	public MenuInicio(Juego game) {
+	public MenuInicio(Juego game, Director director) {
 		
 		this.game=game;
-		bancoRecursos=new BancoRecursos();
+		bancoRecursos=director.getBancoRecursos();
 		
 		armarIconos();
 		armarBotonera();

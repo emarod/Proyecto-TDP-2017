@@ -73,7 +73,7 @@ public class Horda {
 		    		case 'c':
 		    		case 'd':
 		    		case 'e':
-		    			e = new Enemigo(celdas,1, new WhiteWalker());
+		    			e = new WhiteWalker(celdas,1);
 		    			System.out.println("x:"+x+" y:"+y);
 		    			mapa.crearEnemigo(e, x, y);
 		    			enemigos++;
@@ -87,7 +87,7 @@ public class Horda {
 		    		case 'l':
 		    		case 'm':
 		    		case 'n':
-		    			e = new Enemigo(celdas,1, new NightKing());
+		    			e = new NightKing(celdas,1);
 		    			System.out.println("x:"+x+" y:"+y);
 		    			mapa.crearEnemigo(e, x, y);
 		    			enemigos++;

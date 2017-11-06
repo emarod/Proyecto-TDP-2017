@@ -16,11 +16,13 @@ import powerUp.PowerUp;
 
 public class Director{
 	//Atributos locales.
-	protected ScheduledExecutorService taskPool;		
+	protected ScheduledExecutorService taskPool;
+	private BancoRecursos banco;		
 	
 	//Constructor.
 	public Director(){		
-		taskPool = Executors.newSingleThreadScheduledExecutor();		
+		taskPool = Executors.newSingleThreadScheduledExecutor();
+		banco=new BancoRecursos();
 		
 	}
 	
@@ -53,5 +55,9 @@ public class Director{
 	public void ejecutarUna(PowerUp powerUp, int delay) {
 		taskPool.schedule(powerUp,delay,TimeUnit.SECONDS);
 		
+	}
+	
+	public BancoRecursos getBancoRecursos() {
+		return banco;
 	}
 }

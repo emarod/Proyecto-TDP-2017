@@ -70,7 +70,7 @@ public class ProximaHorda extends JPanel{
 		dañar.addMouseListener(
 				new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
-						escenario.hacerDaño();
+						//escenario.hacerDaño();
 					}
 				}
 		);

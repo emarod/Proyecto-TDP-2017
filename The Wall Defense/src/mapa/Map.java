@@ -43,11 +43,11 @@ public class Map implements Runnable{
 	protected BancoRecursos banco;
 	
 	//Constructor.
-	public Map(Escenario stage,int width,int height,int sprites) {
+	public Map(Escenario stage,Director director, int width,int height,int sprites) {
 		celdas= new Celda[width][height];
 		escenario = stage;
-		director = new Director();
-		banco = new BancoRecursos();
+		this.director = director;
+		banco=director.getBancoRecursos();
 		try {
 			inicializarCeldas(sprites);
 		}
@@ -174,7 +174,6 @@ public class Map implements Runnable{
 				Jugador player = j.clone(c);
 				celdas[x_cel][y_cel].getObjects()[2]= player;
 				JLabel icono = player.getGrafico();
-				player.setBancoRecursos(banco);
 				icono.setBounds(x_cel*64,y_cel*64,64,64);
 				icono.addMouseListener(
 					new MouseAdapter() {
@@ -199,7 +198,8 @@ public class Map implements Runnable{
 					}
 				);
 				escenario.agregar(icono,new Integer(2));
-			}
+				player.activar();
+			}			
 		}
 	}
 
@@ -214,7 +214,6 @@ public class Map implements Runnable{
 			celdas[x_cel][y_cel].getObjects()[2]= player;
 			celdas[x_cel+1][y_cel].getObjects()[2]= player;
 			JLabel icono = player.getGrafico();
-			player.setBancoRecursos(banco);
 			icono.setBounds(x_cel*64,y_cel*64,128,64);
 			
 			//Codigo de soltado de mouse.
@@ -247,6 +246,7 @@ public class Map implements Runnable{
 				}
 			);
 			escenario.agregarLargo(icono,new Integer(2));
+			player.activar();
 		}
 	}
 
@@ -291,29 +291,17 @@ public class Map implements Runnable{
 	
 	public void crearEnemigo(Enemigo e,int x, int y) {
 		System.out.println("Enemigo creado - x:"+x+" y:"+y);
-		if(celdas[x][y].getObjects()[2]==null) {
+		if(celdas[x][y].getObjects()[1]==null) {
 			Celda[] c = new Celda[4];
 			c[0] = celdas[x][y];
 			Enemigo enemy = e.clone(c);
 			celdas[x][y].getObjects()[1]= enemy;
 			JLabel icono = enemy.getGrafico();
-			enemy.setBancoRecursos(banco);
 			icono.setBounds(x*64,y*64,64,64);
-			escenario.agregar(icono,new Integer(2));
+			escenario.agregar(icono,new Integer(1));
 			enemy.activar();
 		}
-	}
-	
-	public void hacerDaño() {
-		int x_cel= Math.round(celdaLabel.getX()/64);
-		int y_cel= Math.round(celdaLabel.getY()/64);
-		Celda celda= getCelda(x_cel, y_cel);
-		GameObject personaje = celda.getObjects()[1];
-		if(personaje!=null) {
-			Enemigo e = (Enemigo) personaje;
-			e.restarResistencia();
-		}
-	}
+	}	
 
     public void destruirEnemigo(Enemigo e){
     	System.out.println(puntaje);

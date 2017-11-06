@@ -50,7 +50,7 @@ public class VisitorJugador extends Visitor{
 	   
 	   public boolean visitEnemigo(Enemigo e){
 		   System.out.println("el enemigo visita a jugador");
-		   e.restarResistencia();
+		   e.recibirDaño(jugador.getDaño());
 		   return false;
 	   }
 }

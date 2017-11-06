@@ -1,6 +1,5 @@
 package enemigo;
 
-import java.util.concurrent.Future;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -13,21 +12,18 @@ import mapa.Celda;
  * Clase que especifica las caracteristicas y comportamiento del enemigo nightking.
  */
 
-public class NightKing extends PerfilEnemigo {
+public class NightKing extends ShooterEnemigo {
 	
 	//Atributos locales.
-	protected Enemigo enemigo;
-	protected Future<?> shot;
-	protected int velocidad_disparo;
-	protected int disparos_simultaneos;
-	protected int disparos_en_ejecucion;
+	
 	
 	//Constructor.
-	public NightKing() {
+	public NightKing(Celda[] c,int prof) {
+		super(c,prof);
 		puntaje=200;
-		velocidad_enemigo=50;
+		velocidad=50;
 		daño = 1;
-		resistencia=6;
+		vida=6;
 		graficos= new Icon[14];
 		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/ww_nightking_atacando/ww_nightking_atacando00.png"));
 		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/ww_nightking_atacando/ww_nightking_atacando01.png"));
@@ -45,10 +41,7 @@ public class NightKing extends PerfilEnemigo {
 		graficos[13]=new ImageIcon(this.getClass().getResource("/resources/static/ww_nightking_atacando/ww_nightking_atacando13.png"));	
 	}
 	
-	//Metodos locales.
-	public Enemigo getEnemigo(){
-		return enemigo;				
-	}
+	//Metodos locales.	
 	
 	public int getVelocidadDisparo() {
 		return velocidad_disparo;
@@ -65,7 +58,7 @@ public class NightKing extends PerfilEnemigo {
 	}
 	
 	public void setGrafico(int i) {
-		enemigo.getGrafico().setIcon(graficos[i]);
+		getGrafico().setIcon(graficos[i]);
 	}
 	
 	public void restarDisparosEnEjecucion(){
@@ -73,33 +66,32 @@ public class NightKing extends PerfilEnemigo {
     }
 	
 	//Metodos heredados.
-	public Future<?> atacar(){	
+	public void atacar(){	
 		if(disparos_en_ejecucion<disparos_simultaneos){
-			enemigo.playSound();
+			playSound();
 			shot =new DisparoEnemigo(this,6).getTask();			
 			disparos_en_ejecucion++;
     	}
 		graph=0;
-		return shot;
     }
 
-	public void mover() {		
+	public void mover() {
 		Celda siguiente;
 		boolean detener=false;
-		int xCelda= enemigo.getCeldas()[0].getPosX();
-		int yCelda= enemigo.getCeldas()[0].getPosY();
-		int xGrafico= enemigo.getGrafico().getX();
-		int yGrafico= enemigo.getGrafico().getY();
-		siguiente=enemigo.getCeldas()[0].getCelda(xCelda-1,yCelda);
+		int xCelda= getCeldas()[0].getPosX();
+		int yCelda= getCeldas()[0].getPosY();
+		int xGrafico= getGrafico().getX();
+		int yGrafico= getGrafico().getY();
+		siguiente=getCeldas()[0].getCelda(xCelda-1,yCelda);
 		for(int i=0;i<7;i++) {
 			GameObject objeto =siguiente.getObjects()[i];
-			if (objeto!=null && !objeto.accept(enemigo.getVisitor())){
+			if (objeto!=null && !objeto.accept(getVisitor())){
 				detener=true;
 			}
 		}
 		if(!detener && xCelda!=0) {
-			enemigo.getGrafico().setBounds(xGrafico-64, yGrafico, 64, 64);
-			enemigo.intercambiar_celdas(siguiente);
+			getGrafico().setBounds(xGrafico-64, yGrafico, 64, 64);
+			intercambiar_celdas(siguiente);
 		}
 	}
 	
@@ -114,25 +106,22 @@ public class NightKing extends PerfilEnemigo {
 	}
 
     public void destruir(){
+    	super.destruir();
     	System.out.println("Destruir WhiteWalker");
-    	this.enemigo.getCeldas()[0].getDirector().desactivar(this.enemigo);
-	   
 	}
 	
 	public int getPuntaje() {
 		return puntaje;
-	}
+	}	
 	
-	public void setEnemigo(Enemigo enemigo){
-		this.enemigo = enemigo;				
-	}
-	
-	public PerfilEnemigo clone() {
-		return new NightKing();
-	}
+	public Enemigo clone(Celda[] c) {
+		//Profundidad 1 predeterminada. Retorna una unidad de mismo tipo.
+		Enemigo clon = new NightKing(c, 1);
+		return clon;
+	}	
 	
 	public void playSound() {
-		enemigo.getBancoRecursos().playFlecha();
+		getCeldas()[0].getDirector().getBancoRecursos().playFlecha();
 	}
 	
 	public int getDaño(){

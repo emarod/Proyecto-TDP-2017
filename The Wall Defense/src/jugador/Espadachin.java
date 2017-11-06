@@ -4,26 +4,24 @@ import java.util.concurrent.Future;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import mapa.Celda;
+
 /*
  * Clase Espadachin.
  * Clase que especifica las caracteristicas y comportamiento del jugador espadachin.
  */
 
-public class Espadachin extends PerfilJugador{
+public class Espadachin extends Jugador{
 	
 	//Constructor.
-	public Espadachin() {
-		resistencia=2;
+	public Espadachin(Celda[] c, int prof) {
+		super(c,prof);
+		vida=2;
 	}
 	
 	//Metodos heredados.
-	public void setJugador(Jugador jugador){
-		this.jugador = jugador;
-	}
 	
-    public Future<?> atacar(){
-		return null;
-    	
+    public void atacar(){    	
     }
     
     public void setGrafico(JLabel grafico){
@@ -31,19 +29,25 @@ public class Espadachin extends PerfilJugador{
 		grafico.setIcon(imagen);
     }
 
-	public PerfilJugador clone() {
-		return new Espadachin();
-	}
+	public Jugador clone(Celda[] c) {
+		//Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
+		Jugador clon = new Espadachin(c, 2);
+		return clon;
+		}
 	
 	public void playSound() {
 		
 	}
 	
 	public void destruir(){
-		
+		super.destruir();		
 	}
 	
 	public int getDaño(){
 		return daño;
+	}
+
+	@Override
+	public void mover() {
 	}
 }

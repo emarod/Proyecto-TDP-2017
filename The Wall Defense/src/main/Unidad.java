@@ -15,6 +15,7 @@ public abstract class Unidad extends GameObject implements Runnable{
 	//Parametros de conducta
     protected int alto;
 	protected int ancho;
+	protected int velocidad;
 	protected ScheduledFuture<?> activeTask;
 	
 	//Metodos locales.
@@ -25,7 +26,8 @@ public abstract class Unidad extends GameObject implements Runnable{
 	}
 	
     public void destruir(){
-    	super.destruir();    	
+    	super.destruir();
+    	activeTask.cancel(true);
     }
 		
 	public ScheduledFuture<?> getTask(){
@@ -39,6 +41,26 @@ public abstract class Unidad extends GameObject implements Runnable{
 	public void setTask(ScheduledFuture<?> ejecutar) {
 		activeTask = ejecutar;
 		
+	}
+	
+	public void activar() {
+		if(activeTask==null) {
+			activeTask=getCeldas()[0].getDirector().ejecutar(this,velocidad);
+		}
+		else {
+			System.out.println("ya está activado");
+		}
+
+	}
+	
+	public void activar(long l) {
+		if(activeTask==null || activeTask.isCancelled() || activeTask.isDone()) {
+			activeTask=getCeldas()[0].getDirector().ejecutar(this,l,velocidad);
+		}
+		else {
+			System.out.println("ya está activado");
+		}
+
 	}
 	
 	//Metodos abstractos.

@@ -1,8 +1,9 @@
 package enemigo;
 
 import java.util.concurrent.TimeUnit;
+
+import javax.swing.Icon;
 import javax.swing.JLabel;
-import Controladores.BancoRecursos;
 import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
@@ -12,77 +13,67 @@ import mapa.Celda;
  * Clase que generaliza la idea de un enemigo y su comportamiento.
  */
 
-public class Enemigo extends Unidad{
+public abstract class Enemigo extends Unidad{
+	
 	
 	//Atributos locales.
-	 protected PerfilEnemigo tipo;
-	 protected BancoRecursos bancoRecursos;
-	 
-	 //Constructor.
-	 public Enemigo(Celda [] c, int profundidad, PerfilEnemigo t){
+	protected int vida;
+	protected int daño;	
+	protected int puntaje;
+	protected boolean atacar;
+	protected boolean mover;
+	protected Icon[] graficos;
+	protected int graph;
+	
+	//Constructor.
+	public Enemigo(Celda [] c, int profundidad){
 		V=new VisitorEnemigo(this);
-    	tipo=t;
     	alto=30;
     	ancho=30;
     	celda=c;    	
     	this.profundidad=profundidad;
     	grafico=new JLabel();
     	setGrafico();
-		getCeldas()[0].getDirector().ejecutar(this, 10);
-
 	}
 	
 	//Metodos locales.
-	public void activar() {
-		activeTask=getCeldas()[0].getDirector().ejecutar(this,tipo.getVelocidad());
-	}
-	
-	public void activar(long l) {
-		activeTask=getCeldas()[0].getDirector().ejecutar(this,l,tipo.getVelocidad());
-	}
     
     public Visitor getVisitor() {
     	return V;
     }
     
-	public boolean restarResistencia(){ 
-		boolean destruir= tipo.impact();
+    public boolean recibirDaño(int golpe){ 
+		boolean destruir= false;
+    	if(vida<=daño) {
+    		System.out.println("Enemigo abatido en "+vida);
+    		destruir=true;
+    	}
+    	else{
+    		vida = vida - golpe;
+    	}
 		if (destruir) {
-			System.out.println("Destruyendo");
-			System.out.println("Antes de restar profundidad "+profundidad);
-			this.destruir();
-			tipo.destruir();
+			System.out.println("antes de restar resistencia de jugador");
+			destruir();
 		}
 		return destruir;		
 	}
 	
     public void setGrafico(){
-    	tipo.setGrafico(grafico);
+    	setGrafico(grafico);
     }
     
     public JLabel getGrafico() {
     	return grafico;
     }
-    
-    public PerfilEnemigo getState(){
-    	return tipo;
-    }
 	
 	public void destruir(){
 		super.destruir();
 		celda[0].destruirEnemigo(this);
+		
 	}
 	
 	public int getPuntaje() {
-		return tipo.getPuntaje();
-	}
-	
-	public void setBancoRecursos(BancoRecursos banco) {
-		bancoRecursos=banco;
-	}
-	
-	public BancoRecursos getBancoRecursos() {
-		return bancoRecursos;
+		return getPuntaje();
 	}
 
 	public void relentizar(int penalizacion) {
@@ -91,44 +82,29 @@ public class Enemigo extends Unidad{
 		activar(activeTask.getDelay(TimeUnit.MILLISECONDS));
 	}
 	
-	public Enemigo clone(Celda[] c) {
-		//Profundidad 1 predeterminada. Retorna una unidad de mismo tipo.
-		PerfilEnemigo tipo = this.tipo.clone();
-		Enemigo clon = new Enemigo(c, 1, tipo);
-		tipo.setEnemigo(clon);
-		return clon;
-	}
-	
-	public void playSound(){
-		tipo.playSound();
-	}
-	
 	//Metodos heredados.
-	public void run() {		
-		mover();		
+	public void run() {
+		mover();
 	}
 
 	public int getVelocidad() {
-		return tipo.getVelocidad();
+		return velocidad;
 	}
 
 	public void setVelocidad(int speed) {
-		tipo.setVelocidad(speed);
+		velocidad=speed;
 	}
-	
-	public void atacar() {
-		tipo.atacar();
-	}
-
-	public void mover() {
-		tipo.mover();
-	}
-	
+		
 	public boolean accept(Visitor V){
 		return V.visitEnemigo(this);
 	}
 	
 	public int getDaño() {
-		return tipo.getDaño	();		
+		return daño;		
 	}
+	
+	public abstract Enemigo clone(Celda[] c);
+	public abstract void mover();
+	public abstract void atacar();
+	public abstract void playSound();	
 }

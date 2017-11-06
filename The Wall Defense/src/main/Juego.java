@@ -4,6 +4,9 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.border.EmptyBorder;
+
+import Controladores.BancoRecursos;
+import Controladores.Director;
 import interfaz.GUI;
 import interfaz.MenuInicio;
 
@@ -19,6 +22,7 @@ public class Juego {
 	protected static GUI frame;
 	protected final JFrame menu=new JFrame("The Wall Defense");
 	protected MenuInicio opciones;
+	protected Director director;
 	
 	//main
 	public static void main(String[] args) {
@@ -43,8 +47,11 @@ public class Juego {
 		menu.setContentPane(contentPane);
 		Icon background=new ImageIcon(this.getClass().getResource("/resources/static/background/background.png"));
 		
+		//Carga de juego
+		director= new Director();
+		
 		//Creo menu de inicio
-		opciones=new MenuInicio(this);
+		opciones=new MenuInicio(this,director);
 		
 		
 		menu.setContentPane(new JLabel(background));
@@ -58,7 +65,7 @@ public class Juego {
 		opciones=null;
 		menu.removeAll();
 		menu.dispose();
-		frame=new GUI();		
+		frame=new GUI(director);		
 		frame.setVisible(true);
 	}	
 

@@ -1,6 +1,5 @@
 package enemigo;
 
-import java.util.concurrent.Future;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -12,20 +11,17 @@ import mapa.Celda;
  * Clase que especifica las caracteristicas y comportamiento del enemigo whitewalker.
  */
 
-public class WhiteWalker extends PerfilEnemigo{
+public class WhiteWalker extends Enemigo{
 	
 	//Atributos locales.
 	protected Enemigo enemigo;
-	protected Future<?> shot;
-	protected int velocidad_disparo;
-	protected int disparos_simultaneos;
-	protected int disparos_en_ejecucion;
 	
 	//Constructor.
-	public WhiteWalker() {
+	public WhiteWalker(Celda[] c,int prof) {
+		super(c,prof);
 		puntaje=100;
-		velocidad_enemigo=50;
-		resistencia=3;
+		velocidad=50;
+		vida=3;
 		daño = 1;
 		graficos= new Icon[11];
 		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando00.png"));
@@ -42,8 +38,7 @@ public class WhiteWalker extends PerfilEnemigo{
 	}
 	
 	//Metodos heredados.
-	public Future<?> atacar() {
-		return shot;
+	public void atacar() {
 	}
 
 	public void mover() {		
@@ -57,7 +52,6 @@ public class WhiteWalker extends PerfilEnemigo{
 		for(int i=0;i<7;i++) {
 			GameObject objeto =siguiente.getObjects()[i];
 			if (objeto!=null && !objeto.accept(enemigo.getVisitor())){
-				//this.enemigo.getCeldas()[0].getDirector().desactivar(this.enemigo);
 				detener=true;
 			}
 		}
@@ -85,8 +79,10 @@ public class WhiteWalker extends PerfilEnemigo{
 		return puntaje;
 	}
 	
-	public PerfilEnemigo clone() {
-		return new WhiteWalker();
+	public Enemigo clone(Celda[] c) {
+		//Profundidad 1 predeterminada. Retorna una unidad de mismo tipo.
+		Enemigo clon = new WhiteWalker(c, 1);
+		return clon;
 	}
 	
 	public void playSound(){
@@ -94,9 +90,8 @@ public class WhiteWalker extends PerfilEnemigo{
 	}
 	
     public void destruir(){
+    	super.destruir();
     	System.out.println("Destruir WhiteWalker");
-    	this.enemigo.getCeldas()[0].getDirector().desactivar(this.enemigo);
-	   
 	}
     
     public int getDaño(){

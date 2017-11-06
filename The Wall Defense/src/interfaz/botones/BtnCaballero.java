@@ -20,7 +20,7 @@ public class BtnCaballero extends BtnJugador{
 	public BtnCaballero(Escenario e) {
 		super(e);
 		Celda [] c = new Celda[4];
-		player=new Jugador(c, 2, new Caballero());
+		player=new Caballero(c, 2);
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/lannister.png")));
 	};
 	

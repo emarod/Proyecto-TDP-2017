@@ -5,13 +5,14 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import disparo.DisparoDragon;
+import mapa.Celda;
 
 /*
  * Clase Dragon.
  * Clase que especifica las caracteristicas y comportamiento del jugador dragon.
  */
 
-public class Dragon extends PerfilJugador {
+public class Dragon extends Shooter {
 	
 	//Atributos locales.
 	protected Future<?> shot;
@@ -20,9 +21,10 @@ public class Dragon extends PerfilJugador {
 	protected int disparos_en_ejecucion;
 	
 	//Constructor.
-	public Dragon() {
-		velocidad_jugador=20;
-		resistencia=5;
+	public Dragon(Celda[] c,int prof) {
+		super(c, prof);
+		velocidad=20;
+		vida=5;
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
 		velocidad_disparo=75;
@@ -34,7 +36,7 @@ public class Dragon extends PerfilJugador {
 		graficos[4]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_4.png"));
 		graficos[5]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_5.png"));
 		graficos[6]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_6.png"));
-		graficos[7]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_7.png"));
+		graficos[7]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_7.png"));		
 	}
 	
 	public void animarDisparo() {
@@ -48,7 +50,7 @@ public class Dragon extends PerfilJugador {
 	}
 	
 	public void setGrafico(int i) {
-		jugador.getGrafico().setIcon(graficos[i]);
+		getGrafico().setIcon(graficos[i]);
 	}
 
 	public int getVelocidadDisparo() {
@@ -64,10 +66,6 @@ public class Dragon extends PerfilJugador {
     }
 	
 	//Metodos heredados.
-	public void setJugador(Jugador jugador){
-		this.jugador = jugador;
-		this.jugador.getCeldas()[0].getDirector().ejecutar(this.jugador,velocidad_jugador);
-	}
 	
 	public void setGrafico(JLabel grafico) {
 		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/dragon_atacando.gif"));
@@ -75,29 +73,36 @@ public class Dragon extends PerfilJugador {
 		grafico.setIcon(imagen);		
 	}
 	
-	public PerfilJugador clone() {
-		return new Dragon();
+	public Jugador clone(Celda[] c) {
+		//Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
+		Jugador clon = new Dragon(c, 2);
+		return clon;
 	}
 	
 	public void destruir(){
-		
+		super.destruir();
+		celda[1]=null;
 	}
 	
 	public void playSound() {
-		jugador.getBancoRecursos().playBolaFuego();
+		getCeldas()[0].getDirector().getBancoRecursos().playBolaFuego();
 	}
 	
-	public Future<?> atacar(){		
-		if(disparos_en_ejecucion<disparos_simultaneos){
-			jugador.playSound();
+	public void atacar(){		
+		//if(disparos_en_ejecucion<disparos_simultaneos){
+		if(shot==null || shot.isCancelled() || shot.isDone()){
+			playSound();
 			shot = new DisparoDragon(this,6).getTask();			
 			disparos_en_ejecucion++;
     	}
 		graph=0;
-		return shot;
     }
 	
 	public int getDaño(){
 		return daño;
+	}
+
+	@Override
+	public void mover() {
 	}
 }

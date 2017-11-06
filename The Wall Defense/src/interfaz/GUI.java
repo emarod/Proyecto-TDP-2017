@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+import Controladores.Director;
+
 /*
  * Clase GUI.
  * Clase  encargada de la interfaz grafica general.
@@ -26,7 +28,7 @@ public class GUI extends JFrame{
 	protected JPanel grafica;
 	
 	//Constructor.
-	public GUI() {	
+	public GUI(Director director) {	
 		super("The Wall Defense");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(0, 0, 1240, 550);
@@ -35,7 +37,7 @@ public class GUI extends JFrame{
 		getContentPane().setLayout(new BorderLayout());
 		
 		//Escenario. Donde va el mapa.
-		escenario= new Escenario();	
+		escenario= new Escenario(director);	
 		getContentPane().add(escenario, BorderLayout.CENTER);
 		
 		//MenuCompra

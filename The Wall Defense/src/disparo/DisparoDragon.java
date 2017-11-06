@@ -21,22 +21,21 @@ public class DisparoDragon extends Disparo {
 	public DisparoDragon(Dragon drake, int prof){
 	       super(prof);
 	       dragon = drake;
-			celda[0]=dragon.getJugador().getCeldas()[1];
-			celda[0].addDisparo(this);
+	       celda[0]=dragon.getCeldas()[1];
+	       celda[0].addDisparo(this);
 	       V=new VisitorDisparoPlayer(this);
 	 	   grafico=new JLabel();
 	  	   grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/bola_fuego.png")));
 	  	   grafico.setBounds(64*celda[0].getPosX(), 64*celda[0].getPosY(), 64, 64);
 		   celda[0].getEscenario().agregar(grafico,new Integer(2));
-		   celda[0].getDirector().ejecutar(this,dragon.getVelocidadDisparo());	     
+		   activeTask=celda[0].getDirector().ejecutar(this,dragon.getVelocidadDisparo());	     
 	    }
 	
 	//Metodos locales.
 	public void destruir(){
     	super.destruir();
     	restarDisparosEnEjecucion();
-		celda[0].getEscenario().remove(grafico);
-		celda[0].getDirector().desactivar(this);		
+    	dragon=null;
 	}  
 	
     //Metodos heredados.

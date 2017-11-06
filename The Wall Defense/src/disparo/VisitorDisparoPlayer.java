@@ -49,7 +49,7 @@ public class VisitorDisparoPlayer extends Visitor {
 	}
 
 	public boolean visitEnemigo(Enemigo e){
-		e.restarResistencia();
+		e.recibirDaño(disparo.getDaño());
 		disparo.destruir();
 		return true;
 	}

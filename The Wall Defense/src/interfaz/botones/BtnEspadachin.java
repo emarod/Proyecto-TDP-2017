@@ -20,7 +20,7 @@ public class BtnEspadachin extends BtnJugador {
 	public BtnEspadachin(Escenario e) {
 		super(e);
 		Celda [] c = new Celda[4];
-		player=new Jugador(c, 2, new Espadachin());
+		player=new Espadachin(c, 2);
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/jonsnow.png")));
 	};
 	

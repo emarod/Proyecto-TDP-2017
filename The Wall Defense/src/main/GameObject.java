@@ -26,6 +26,7 @@ public abstract class GameObject {
     
     public void destruir(){
     	grafico.setIcon(null);
+    	celda[0].getEscenario().remove(grafico);
     	celda[0].getObjects()[profundidad]=null;
     }
     

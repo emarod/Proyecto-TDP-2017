@@ -1,28 +1,23 @@
 package jugador;
 
-import java.util.concurrent.Future;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import disparo.DisparoArquero;
+import mapa.Celda;
 
 /*
  * Clase Arquero.
  * Clase que especifica las caracteristicas y comportamiento del jugador arquero.
  */
 
-public class Arquero extends PerfilJugador{
-	
-	//Atributos locales.
-	protected Future<?> shot;
-	protected int velocidad_disparo;
-	protected int disparos_simultaneos;
-	protected int disparos_en_ejecucion;
+public class Arquero extends Shooter{
 	
 	//Constructor.
-	public Arquero() {
-		velocidad_jugador=15;
-		resistencia=2;
+	public Arquero(Celda[] c,int prof) {
+		super(c, prof);
+		velocidad=15;
+		vida=2;
 		daño = 1;
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
@@ -33,7 +28,7 @@ public class Arquero extends PerfilJugador{
 		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte_atacando/ygritte_atacando_1.png"));
 		graficos[2]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte_atacando/ygritte_atacando_2.png"));
 		graficos[3]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte_atacando/ygritte_atacando_3.png"));
-		graficos[4]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte_atacando/ygritte_atacando_4.png"));
+		graficos[4]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte_atacando/ygritte_atacando_4.png"));		
 	}
 	
 	//Metodos locales.
@@ -56,7 +51,7 @@ public class Arquero extends PerfilJugador{
     }
     
     public void setGrafico(int i) {
-		jugador.getGrafico().setIcon(graficos[i]);
+		getGrafico().setIcon(graficos[i]);
 	}
 
 	public int getVelocidadDisparo() {
@@ -64,41 +59,28 @@ public class Arquero extends PerfilJugador{
 	}
 
 	//Metodos heredados.
-	public PerfilJugador clone() {
-		return new Arquero();
+	public Jugador clone(Celda[] c) {
+		//Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
+		Jugador clon = new Arquero(c, 2);
+		return clon;
 	}
 	
 	public void playSound() {
-		jugador.getBancoRecursos().playFlecha();
+		getCeldas()[0].getDirector().getBancoRecursos().playFlecha();
 	}
 	
 	public void destruir(){
-		
+		super.destruir();	
 	}
 	
-	public Future<?> atacar(){
-//		int xCelda=jugador.getCelda().getPosX();
-//		int yCelda=jugador.getCelda().getPosY();
-//		for(int x =0;jugador.getCelda().getPosX()<19 && atacar;x++) {
-//			Celda siguiente = jugador.getCelda().getCelda(xCelda+1,yCelda);
-//			GameObject objeto =siguiente.getObjects()[2];					
-//			if (objeto!=null && !objeto.Accept(jugador.getVisitor())){
-//				atacar=false;
-//			}
-//		}		
-		if(disparos_en_ejecucion<disparos_simultaneos){
-			jugador.playSound();
+	public void atacar(){		
+		//if(disparos_en_ejecucion<disparos_simultaneos){
+		if(shot==null || shot.isCancelled() || shot.isDone()){
 			shot =new DisparoArquero(this,6).getTask();			
 			disparos_en_ejecucion++;
     	}
 		graph=0;
-		return shot;
     }
-	
-	public void setJugador(Jugador jugador){
-		this.jugador = jugador;
-		this.jugador.getCeldas()[0].getDirector().ejecutar(this.jugador,velocidad_jugador);
-	}
 	
 	public void setGrafico(JLabel grafico) {
 		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/ygritte_atacando/ygritte_atacando_0.png"));
@@ -108,5 +90,9 @@ public class Arquero extends PerfilJugador{
     
 	public int getDaño(){
 		return daño;
+	}
+
+	@Override
+	public void mover() {
 	}
 }
