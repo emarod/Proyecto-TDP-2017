@@ -1,7 +1,6 @@
 package mapa;
 
 import java.util.LinkedList;
-import javax.swing.JLabel;
 import Controladores.Director;
 import enemigo.Enemigo;
 import interfaz.Escenario;
@@ -68,10 +67,8 @@ public class Celda {
 	    			listaObjetosLogicos[0]=new Nieve(this);
 	    			Celda [] c = new Celda[4];
 	    			c[0] = this;
-	    			listaObjetosLogicos[3]= new Obstaculo(c,3,new Rock());
-	    			JLabel roca = listaObjetosLogicos[3].getGrafico();
-	    			roca.setBounds(posX*64, posY*64, 64, 64);
-	    			getEscenario().agregar(roca,new Integer(3));	    			
+	    			Obstaculo obstaculo = new Obstaculo(c,3,new Rock());
+	    			listaObjetosLogicos[3]= obstaculo;    			
 	    			break;
 	    		case 's':
 	    			//Lateral vertical sup.

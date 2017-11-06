@@ -14,7 +14,6 @@ import mapa.Celda;
 public class Obstaculo extends GameObject {
 	
 	//Atributos locales.
-	protected JLabel imagen;
 	protected int vidas;
 	protected PerfilObstaculo tipo;
 	protected BancoRecursos bancoRecursos;
@@ -61,9 +60,5 @@ public class Obstaculo extends GameObject {
 	
 	public void setBancoRecursos(BancoRecursos banco){
 		bancoRecursos = banco;
-	}
-	
-	public void dañar(int daño){
-		tipo.dañar(daño);
 	}
 }

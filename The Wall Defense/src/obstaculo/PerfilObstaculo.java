@@ -17,14 +17,11 @@ public abstract class PerfilObstaculo {
 		
 		//Metodos locales.
 		public boolean impact(int ataque){
+			boolean impacta = resistencia<=ataque;
 	    	if(resistencia<=ataque) {
 	    		System.out.println("Barrica destruida en resistencia "+resistencia);
-	    		return true;
 	    	}
-	    	else{
-	    		resistencia = resistencia - ataque;
-	    		return false;
-	    	}
+	    	return impacta;
 	    }
 		
 	    public Obstaculo getObstaculo() {
@@ -35,8 +32,6 @@ public abstract class PerfilObstaculo {
 	    public abstract void setObstaculo(Obstaculo obstaculo);    
 		public abstract void setGrafico(JLabel grafico);
 		public abstract void playSound();
-		public abstract void destruir();
 		public abstract PerfilObstaculo clone();
 		public abstract void restarResistencia(int ataque);
-		public abstract void dañar(int daño);
 }

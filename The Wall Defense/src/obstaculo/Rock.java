@@ -12,11 +12,11 @@ public class Rock extends PerfilObstaculo{
 	
 	//Constructor.
     public Rock(){
-    	resistencia=3;
+    	resistencia=4;
     	graficos= new Icon[3];
     	graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca/roca_1.png"));
 		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca/roca_2.png"));
-		graficos[2]=new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca/roca_3.png"));	  	
+		graficos[2]=new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca/roca_3.png"));
     }
     
     //Metodos locales.
@@ -24,15 +24,7 @@ public class Rock extends PerfilObstaculo{
     	return resistencia;
     }
     
-    public void destruir(){
-    	
-    }
-    
     //Metodos heredados.
-    public void run(){
-    	
-    }
-    
     public boolean accept(Visitor V){
     	return V.visitObstaculo(this.obstaculo);
     }
@@ -42,8 +34,13 @@ public class Rock extends PerfilObstaculo{
 	}
     
     public void restarResistencia(int ataque){
-    	resistencia = resistencia - ataque;
-    	setGrafico(resistencia);
+    	if(resistencia<=ataque){
+    		obstaculo.destruir();
+    	}
+    	else{
+    		resistencia = resistencia - ataque;
+    		setGrafico(resistencia-1);
+    	}
     }
     
     public PerfilObstaculo clone() {
@@ -59,10 +56,6 @@ public class Rock extends PerfilObstaculo{
 		graph=0;
 		grafico.setIcon(imagen);		
 	}
-    
-    public void dañar(int daño){
-    	restarResistencia(daño);
-    }
     
     public void playSound() {
 		obstaculo.getBancoRecursos().playBarricada();

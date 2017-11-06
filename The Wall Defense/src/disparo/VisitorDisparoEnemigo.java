@@ -18,7 +18,7 @@ public class VisitorDisparoEnemigo extends Visitor {
 	
 	//Metodos heredados.
 	public boolean visitObstaculo(Obstaculo o) {
-		o.dañar(disparo.getDaño());
+		o.restarResistencia(disparo.getDaño());
 		return false;
 	}
 	

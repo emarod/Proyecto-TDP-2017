@@ -12,7 +12,7 @@ public class Barricada extends PerfilObstaculo{
 	
 	//Constructor.
     public Barricada(){
-    	resistencia=3;
+    	resistencia=4;
     	graficos= new Icon[3];
     	graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/terrenos/barricada/barricada_1.png"));
 		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/terrenos/barricada/barricada_2.png"));
@@ -24,22 +24,20 @@ public class Barricada extends PerfilObstaculo{
     	return resistencia;
     }
     
-    public void destruir(){
-	   
-	}
-    
     //Metodos heredados.
-    public void run(){
-    	
-    }
     
     public boolean accept(Visitor V){
     	return V.visitObstaculo(this.obstaculo);
     }
     
     public void restarResistencia(int ataque){
-    	resistencia = resistencia - ataque;
-    	setGrafico(resistencia);
+    	if(resistencia<=ataque){
+    		obstaculo.destruir();
+    	}
+    	else{
+    		resistencia = resistencia - ataque;
+    		setGrafico(resistencia-1);
+    	}
     }
     
     public void setGrafico(int i) {
@@ -59,10 +57,6 @@ public class Barricada extends PerfilObstaculo{
     public PerfilObstaculo clone() {
 		return new Barricada();
 	}
-    
-    public void dañar(int daño){
-    	restarResistencia(daño);
-    }
     
     public void playSound() {
 		obstaculo.getBancoRecursos().playBarricada();
