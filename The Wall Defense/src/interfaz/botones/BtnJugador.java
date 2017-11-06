@@ -22,7 +22,7 @@ public abstract class BtnJugador extends JButton{
 	//Constructor.
 	public BtnJugador(Escenario e) {
 		stage=e;
-		this.setSize(32,32);
+		this.setSize(80,79);
 		this.setBorderPainted(true);
 		this.setContentAreaFilled(false);
 		this.setOpaque(true);
