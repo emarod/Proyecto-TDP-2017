@@ -34,8 +34,8 @@ public class Jugador extends Unidad{
     }
     
     //Metodos locales.
-	public boolean restarResistencia(){ 
-		boolean destruir= (tipo.impact());
+	public boolean restarResistencia(int d){ 
+		boolean destruir= (tipo.impact(d));
 		if (destruir) {
 			System.out.println("antes de restar resistencia de jugador");
 			destruir();

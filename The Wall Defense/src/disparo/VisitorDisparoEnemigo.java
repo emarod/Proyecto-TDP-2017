@@ -40,7 +40,7 @@ public class VisitorDisparoEnemigo extends Visitor {
 	}
 
 	public boolean visitPlayer(Jugador j) {
-		j.restarResistencia();
+		j.restarResistencia(disparo.getDaño());
 		disparo.destruir();
 		return false;
 	}

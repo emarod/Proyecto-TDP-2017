@@ -19,13 +19,13 @@ public abstract class PerfilJugador {
 	protected int graph;
 	
 	//Metodos locales.
-    public boolean impact(){
-    	if(resistencia<=daño) {
-    		System.out.println("Enemigo abatido en "+resistencia);
+    public boolean impact(int d){
+    	if(resistencia<=d) {
+    		System.out.println("Aliado abatido en "+resistencia);
     		return true;
     	}
     	else{
-    		resistencia = resistencia - daño;
+    		resistencia = resistencia - d;
     		return false;
     	}
     }

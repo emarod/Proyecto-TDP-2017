@@ -72,7 +72,7 @@ public class WhiteWalker extends PerfilEnemigo{
 	}
 	
 	public void setGrafico(JLabel grafico) {
-		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/ww_nightking_atacando/ww_nightking_atacando00.png"));
+		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/ww_nightking_atacando/ww_atacando00.png"));
 		graph=0;
 		grafico.setIcon(imagen);
 	}

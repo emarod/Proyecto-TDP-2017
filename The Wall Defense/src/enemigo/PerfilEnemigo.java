@@ -22,13 +22,13 @@ public abstract class PerfilEnemigo {
 	protected int graph;
 	
 	//Metodos locales.
-    public boolean impact(){
-    	if(resistencia==1) {
+    public boolean impact(int d){
+    	if(resistencia<=d) {
     		System.out.println("Enemigo abatido en "+resistencia);
     		return true;
     	}
     	else{
-    		resistencia--;
+    		resistencia = resistencia -d;
     		return false;
     	}
     }

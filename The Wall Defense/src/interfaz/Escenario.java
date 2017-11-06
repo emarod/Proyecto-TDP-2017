@@ -50,10 +50,6 @@ public class Escenario extends JPanel {
 		return mapa;
 	}
 	
-	public void hacerDaño(){
-		mapa.hacerDaño();
-	}
-	
 	public void setHorda(ProximaHorda p) {
 		horda=p;
 	}

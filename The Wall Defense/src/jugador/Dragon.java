@@ -23,6 +23,7 @@ public class Dragon extends PerfilJugador {
 	public Dragon() {
 		velocidad_jugador=20;
 		resistencia=5;
+		daño=1;
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
 		velocidad_disparo=75;

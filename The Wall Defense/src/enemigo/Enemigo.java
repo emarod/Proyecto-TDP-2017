@@ -45,8 +45,8 @@ public class Enemigo extends Unidad{
     	return V;
     }
     
-	public boolean restarResistencia(){ 
-		boolean destruir= tipo.impact();
+	public boolean restarResistencia(int d){ 
+		boolean destruir= tipo.impact(d);
 		if (destruir) {
 			System.out.println("Destruyendo");
 			System.out.println("Antes de restar profundidad "+profundidad);

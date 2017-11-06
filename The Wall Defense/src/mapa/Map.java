@@ -303,17 +303,6 @@ public class Map implements Runnable{
 			enemy.activar();
 		}
 	}
-	
-	public void hacerDaño() {
-		int x_cel= Math.round(celdaLabel.getX()/64);
-		int y_cel= Math.round(celdaLabel.getY()/64);
-		Celda celda= getCelda(x_cel, y_cel);
-		GameObject personaje = celda.getObjects()[1];
-		if(personaje!=null) {
-			Enemigo e = (Enemigo) personaje;
-			e.restarResistencia();
-		}
-	}
 
     public void destruirEnemigo(Enemigo e){
     	System.out.println(puntaje);
