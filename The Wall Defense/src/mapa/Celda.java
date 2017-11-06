@@ -6,6 +6,8 @@ import Controladores.Director;
 import enemigo.Enemigo;
 import interfaz.Escenario;
 import main.GameObject;
+import objetos.Rock;
+import objetos.Water;
 import obstaculo.*;
 import terreno.*;
 

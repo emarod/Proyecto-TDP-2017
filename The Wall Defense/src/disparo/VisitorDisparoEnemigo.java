@@ -3,7 +3,10 @@ package disparo;
 import enemigo.Enemigo;
 import jugador.Jugador;
 import main.Visitor;
-import obstaculo.*;
+import objetos.ObjetoPrecioso;
+import objetos.ObstaculoTemporal;
+import objetos.ObstaculoVida;
+import objetos.Water;
 
 /*
  * Clase VisitorDisparoEnemigo.
@@ -12,43 +15,55 @@ import obstaculo.*;
  */
 
 public class VisitorDisparoEnemigo extends Visitor {
-	
-	//Atributos locales.
+
+	// Atributos locales.
 	protected Disparo disparo;
-	
-	//Metodos heredados.
-	public boolean visitObstaculo(Obstaculo o) {
-		o.dañar(disparo.getDaño());
-		return false;
-	}
-	
-	/*
-	public boolean VisitRock(Rock r) {
-		r.restarResistencia();
+
+	// Metodos heredados.
+	@Override
+	public boolean visitObstaculo(ObstaculoVida o) {
+		o.recibirDaño(disparo.getDaño());
 		return false;
 	}
 
-	public boolean VisitBarricada(Barricada b) {
-		b.restarResistencia();
-		return false;
-	}
-	*/
-	
+	/*
+	 * public boolean VisitRock(Rock r) { r.restarResistencia(); return false; }
+	 *
+	 * public boolean VisitBarricada(Barricada b) { b.restarResistencia(); return
+	 * false; }
+	 */
+
+	@Override
 	public boolean VisitWater(Water w) {
 		return false;
 	}
 
+	@Override
 	public boolean visitPlayer(Jugador j) {
 		j.recibirDaño(disparo.getDaño());
 		disparo.destruir();
 		return false;
 	}
 
+	@Override
 	public boolean visitDisparoPlayer(Disparo d) {
 		return false;
 	}
 
+	@Override
 	public boolean visitEnemigo(Enemigo e) {
+		return false;
+	}
+
+	@Override
+	public boolean visitObstaculo(ObstaculoTemporal o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean visitObjetoPrecioso(ObjetoPrecioso op) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 

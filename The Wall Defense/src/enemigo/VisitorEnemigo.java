@@ -1,9 +1,12 @@
 package enemigo;
 
-import obstaculo.*;
 import disparo.Disparo;
 import jugador.Jugador;
 import main.Visitor;
+import objetos.ObjetoPrecioso;
+import objetos.ObstaculoTemporal;
+import objetos.ObstaculoVida;
+import objetos.Water;
 
 /*
  * Clase VisitorEnemigo.
@@ -11,52 +14,64 @@ import main.Visitor;
  * Especifica sus comportamientos mediante un patron de diseño visitor.
  */
 
-public class VisitorEnemigo extends Visitor{
-	
-	//Atributos locales.
+public class VisitorEnemigo extends Visitor {
+
+	// Atributos locales.
 	protected Enemigo enemigo;
-	
-	//Constructor.
-	public VisitorEnemigo(Enemigo e){
-    	enemigo = e;
-    }
-    
-	//Metodos heredados.
-	public boolean visitObstaculo(Obstaculo o) {
-		o.dañar(enemigo.getDaño());
+
+	// Constructor.
+	public VisitorEnemigo(Enemigo e) {
+		enemigo = e;
+	}
+
+	// Metodos heredados.
+	@Override
+	public boolean visitObstaculo(ObstaculoVida o) {
+		o.recibirDaño(enemigo.getDaño());
 		return false;
 	}
-	
+
 	/*
-   public  boolean VisitRock(Rock r){
-	   r.restarResistencia();
-	   return false;
-   }
-   
-   public  boolean VisitBarricada(Barricada b){
-	   b.restarResistencia();
-	   return false;
-   }
-   */
-	
-   public  boolean VisitWater(Water w){
-	   enemigo.relentizar(w.getPenalizacion());
-	   return true;
-   }
-   
-   public  boolean visitPlayer(Jugador j){
-	   System.out.println("el juagador visita a enemigo");
-	   j.recibirDaño(enemigo.getDaño());
-	   return false;
-   }
-   
-   public boolean visitDisparoPlayer(Disparo d){
-	   enemigo.recibirDaño(d.getDaño());
-	   d.destruir();	   
-	   return true;
-   }   
-   
-   public boolean visitEnemigo(Enemigo e){
-	   return false;
-   }
+	 * public boolean VisitRock(Rock r){ r.restarResistencia(); return false; }
+	 *
+	 * public boolean VisitBarricada(Barricada b){ b.restarResistencia(); return
+	 * false; }
+	 */
+
+	@Override
+	public boolean VisitWater(Water w) {
+		enemigo.relentizar(w.getPenalizacion());
+		return true;
+	}
+
+	@Override
+	public boolean visitPlayer(Jugador j) {
+		System.out.println("el juagador visita a enemigo");
+		j.recibirDaño(enemigo.getDaño());
+		return false;
+	}
+
+	@Override
+	public boolean visitDisparoPlayer(Disparo d) {
+		enemigo.recibirDaño(d.getDaño());
+		d.destruir();
+		return true;
+	}
+
+	@Override
+	public boolean visitEnemigo(Enemigo e) {
+		return false;
+	}
+
+	@Override
+	public boolean visitObstaculo(ObstaculoTemporal o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean visitObjetoPrecioso(ObjetoPrecioso op) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
