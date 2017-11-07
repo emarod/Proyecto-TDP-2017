@@ -30,7 +30,7 @@ public class Jugador extends Unidad{
     	 celda=c;    	 
     	 grafico=new JLabel();
     	 tipo = t;
-    	 setGrafico();    	 
+    	 setGrafico(); 
     }
     
     //Metodos locales.

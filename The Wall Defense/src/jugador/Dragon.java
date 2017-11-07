@@ -81,7 +81,10 @@ public class Dragon extends PerfilJugador {
 	}
 	
 	public void destruir(){
-		
+		jugador.getCeldas()[0].getEscenario().remove(jugador.getGrafico());
+		jugador.getCeldas()[0].getDirector().desactivar(this.getJugador());
+		jugador.getCeldas()[1].getEscenario().remove(jugador.getGrafico());
+		jugador.getCeldas()[1].getDirector().desactivar(this.getJugador());
 	}
 	
 	public void playSound() {

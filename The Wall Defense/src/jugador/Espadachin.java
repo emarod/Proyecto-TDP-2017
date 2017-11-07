@@ -40,7 +40,8 @@ public class Espadachin extends PerfilJugador{
 	}
 	
 	public void destruir(){
-		
+		jugador.getCeldas()[0].getEscenario().remove(jugador.getGrafico());
+		jugador.getCeldas()[0].getDirector().desactivar(this.getJugador());
 	}
 	
 	public int getDaño(){
