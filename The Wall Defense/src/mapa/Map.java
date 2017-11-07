@@ -400,9 +400,8 @@ public class Map implements Runnable {
 			Obstaculo obs;
 			JLabel grafico;
 			Celda[] celda;
-			c = 1;
 			switch (c) {
-				case 0:
+				case 0: {
 					System.out.println("creando roca");
 					celda = new Celda[1];
 					celda[0] = celdas[x][y];
@@ -412,13 +411,14 @@ public class Map implements Runnable {
 					grafico.setBounds(x * 64, y * 64, 64, 64);
 					escenario.agregar(grafico, new Integer(3));
 					break;
-				case 1:
-					System.out.println("creando lago");
-					if (x < 14 && x > 1 && y < 14 && y > 1) {
+				}
+				case 1: {
+					System.out.println("Hay lugar para lago?");
+					if (x < 15 && x > 0 && y < 5 && y >= 0) {
 						if (celdas[x + 1][y + 1].getObjects()[3] == null) {
 							if (celdas[x][y + 1].getObjects()[3] == null) {
 								if (celdas[x + 1][y].getObjects()[3] == null) {
-									System.out.println("habemus lagus");
+									System.out.println("Si hay lugar");
 									celda = new Celda[4];
 									// Esquina izquierda superior
 									celda[0] = celdas[x][y];
@@ -433,11 +433,14 @@ public class Map implements Runnable {
 									celda[1].getObjects()[3] = obs;
 									celda[2].getObjects()[3] = obs;
 									celda[3].getObjects()[3] = obs;
+									System.out.println("e finito");
+
 								}
 							}
 						}
 					}
 					break;
+				}
 			}
 
 		}
@@ -461,7 +464,6 @@ public class Map implements Runnable {
 	@Override
 	public void run() {
 		System.out.println("Run mapin");
-		agregarObstaculos();
 		escenario.repaint();
 		agregarPowerUp();
 		agregarObstaculos();

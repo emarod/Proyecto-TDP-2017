@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import disparo.Disparo;
 import main.Unidad;
 import mapa.Map;
+import objetos.Water;
 import powerUp.PowerUp;
 
 /*
@@ -50,7 +51,7 @@ public class Director {
 	}
 
 	public void ejecutar(Map map) {
-		taskPool.scheduleWithFixedDelay(map, 0, 200, TimeUnit.MILLISECONDS);
+		taskPool.scheduleWithFixedDelay(map, 1, 200, TimeUnit.MILLISECONDS);
 	}
 
 	public void ejecutarUna(PowerUp powerUp, int delay) {
@@ -60,5 +61,10 @@ public class Director {
 
 	public BancoRecursos getBancoRecursos() {
 		return banco;
+	}
+
+	public ScheduledFuture<?> ejecutarUna(Water water, int delay) {
+		return taskPool.schedule(water, delay, TimeUnit.SECONDS);
+
 	}
 }
