@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 
 import interfaz.Escenario;
 import mapa.Celda;
-import mapa.Map;
+import mapa.Mapa;
 
 /*
  * Clase Horda.
@@ -23,7 +23,7 @@ public class Horda {
 	// Atributos locales.
 	protected Enemigo horda[];
 	protected Celda celda;
-	protected Map mapa;
+	protected Mapa mapa;
 	protected Escenario stage;
 	protected JLabel graf;
 	protected int enemigos = 0;

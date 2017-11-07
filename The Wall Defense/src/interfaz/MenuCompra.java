@@ -13,7 +13,7 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
-import mapa.Map;
+import mapa.Mapa;
 
 /*
  * Clase MenuCompra.
@@ -24,7 +24,7 @@ public class MenuCompra extends JPanel{
 	
 	//Atributos locales.
 	protected JLabel personaje;
-	protected Map mapa;
+	protected Mapa mapa;
 	protected Escenario escenario;
 	protected static final long serialVersionUID = 1L;
 	protected JPanel botonera;

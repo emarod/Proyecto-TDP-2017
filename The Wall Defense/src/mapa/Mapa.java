@@ -35,7 +35,7 @@ import powerUp.VelAtkAumentado;
  * Clase encargada de la construccion de toda la logica del campo de batalla.
  */
 
-public class Map implements Runnable {
+public class Mapa implements Runnable {
 
 	// Atributos locales.
 	protected Celda[][] celdas;
@@ -48,7 +48,7 @@ public class Map implements Runnable {
 	protected BancoRecursos banco;
 
 	// Constructor.
-	public Map(Escenario stage, Director director, int width, int height, int sprites) {
+	public Mapa(Escenario stage, Director director, int width, int height, int sprites) {
 		celdas = new Celda[width][height];
 		escenario = stage;
 		this.director = director;

@@ -21,7 +21,7 @@ public class Celda {
 
 	// Atributos locales.
 	protected GameObject[] listaObjetosLogicos;
-	protected Map Map;
+	protected Mapa mapa;
 	protected int posX;
 	protected int posY;
 	protected boolean hayDisparo;
@@ -29,11 +29,11 @@ public class Celda {
 	protected LinkedList<GameObject> disparos;
 
 	// Constructor.
-	public Celda(char tipo, Map Mapa, int posX, int posY, int sprite) {
+	public Celda(char tipo, Mapa mapa, int posX, int posY, int sprite) {
 		hayDisparo = false;
 		this.posX = posX;
 		this.posY = posY;
-		Map = Mapa;
+		this.mapa = mapa;
 		listaObjetosLogicos = new GameObject[7];
 		disparos = new LinkedList<GameObject>();
 		switch (tipo) {
@@ -166,19 +166,19 @@ public class Celda {
 	}
 
 	public Celda getCelda(int x, int y) {
-		return Map.getCelda(x, y);
+		return mapa.getCelda(x, y);
 	}
 
 	public Escenario getEscenario() {
-		return Map.getEscenario();
+		return mapa.getEscenario();
 	}
 
 	public Director getDirector() {
-		return Map.getDirector();
+		return mapa.getDirector();
 	}
 
 	public void destruirEnemigo(Enemigo e) {
-		Map.destruirEnemigo(e);
+		mapa.destruirEnemigo(e);
 	}
 
 	// Si la celda contiene un enemigo, aliado, o obstaculo lo retorna cc null

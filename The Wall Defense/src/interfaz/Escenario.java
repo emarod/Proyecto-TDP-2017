@@ -7,7 +7,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import Controladores.Director;
-import mapa.Map;
+import mapa.Mapa;
 
 /*
  * Clase Escenario.
@@ -21,7 +21,7 @@ public class Escenario extends JPanel {
 	protected static final int width=16;
 	protected static final int height=6;
 	protected JLayeredPane layeredPane;
-	protected Map mapa;
+	protected Mapa mapa;
 	protected ProximaHorda horda;
 	
 	//Constructor.
@@ -32,7 +32,7 @@ public class Escenario extends JPanel {
 		layeredPane.setPreferredSize(new Dimension(1026, 384));
 		
 		this.add(layeredPane);
-		mapa= new Map(this,director,width,height,r);
+		mapa= new Mapa(this,director,width,height,r);
 	}
 	
 	//Metodos locales.
@@ -48,7 +48,7 @@ public class Escenario extends JPanel {
 		repaint();
 	}
 	
-	public Map getMapa() {
+	public Mapa getMapa() {
 		return mapa;
 	}	
 	
