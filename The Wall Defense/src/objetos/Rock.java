@@ -22,6 +22,7 @@ public class Rock extends ObstaculoVida {
 		graficos[0] = new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca/roca_1.png"));
 		graficos[1] = new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca/roca_2.png"));
 		graficos[2] = new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca/roca_3.png"));
+		setGrafico(0);
 	}
 
 	// Metodos locales.

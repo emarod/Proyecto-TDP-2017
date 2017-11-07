@@ -1,6 +1,7 @@
 package objetos;
 
 import javax.swing.Icon;
+import javax.swing.JLabel;
 
 import main.GameObject;
 import mapa.Celda;
@@ -8,13 +9,13 @@ import mapa.Celda;
 public abstract class ObjetoPrecioso extends GameObject {
 	// Atributos locales.
 	protected int vida;
-	protected Obstaculo obstaculo;
 	protected Icon[] graficos;
 	protected int graph;
 
 	public ObjetoPrecioso(Celda[] c, int prof) {
 		celda = c;
 		profundidad = prof;
+		grafico = new JLabel();
 	}
 
 	public boolean recibirDaño(int golpe) {
@@ -30,5 +31,7 @@ public abstract class ObjetoPrecioso extends GameObject {
 		}
 		return destruir;
 	}
+
+	public abstract ObjetoPrecioso clone(Celda[] c);
 
 }

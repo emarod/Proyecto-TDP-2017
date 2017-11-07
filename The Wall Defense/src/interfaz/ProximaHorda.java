@@ -5,11 +5,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+
 import enemigo.Horda;
 
 /*
@@ -17,63 +19,62 @@ import enemigo.Horda;
  * Clase encargada de desplegar el panel con la descripcion de la proxima horda.
  */
 
-public class ProximaHorda extends JPanel{
-	
-	//Atributos locales.
+public class ProximaHorda extends JPanel {
+
+	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
 	protected JLabel puntaje;
 	protected Escenario escenario;
 	protected Horda horda;
-	
-	//Constructor.
+
+	// Constructor.
 	public ProximaHorda(Escenario esc) {
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(new Color(0, 0, 0)));
-		this.escenario=esc;
+		this.escenario = esc;
 		agregarLabel();
-		//agregarBoton();
+		// agregarBoton();
 		this.setBackground(Color.BLACK);
-		horda=new Horda(escenario);
-		
+		horda = new Horda(escenario);
+
 	}
-	
-	//Metodos locales.
+
+	// Metodos locales.
 	private void agregarLabel() {
-		puntaje=new JLabel("0000");
+		puntaje = new JLabel("0000");
 		puntaje.setSize(puntaje.getWidth(), this.getHeight());
-		//Recojo la fuente que se esta utilizando actualmente.
-		Font auxFont=new Font("Game of Thrones Regular", Font.CENTER_BASELINE,50); 
-		//Aplico la fuente actual, y al final le doy el tamaño del texto...
+		// Recojo la fuente que se esta utilizando actualmente.
+		Font auxFont = new Font("Game of Thrones Regular", Font.CENTER_BASELINE, 50);
+		// Aplico la fuente actual, y al final le doy el tamaño del texto...
 		puntaje.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 50));
-		//puntaje.setSize(new Dimension(10,50));
-		this.add(puntaje,BorderLayout.CENTER);
+		// puntaje.setSize(new Dimension(10,50));
+		this.add(puntaje, BorderLayout.CENTER);
 	}
-	
+
 	public void setPuntaje(String str) {
 		puntaje.setText(str);
 	}
-	
+
 	private void agregarBoton() {
-		JButton wwalker=new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif")));
-		wwalker.setSize(32,32);
-		wwalker.addMouseListener(
-				new MouseAdapter() {
-					public void mouseClicked(MouseEvent e) {
-						//escenario.agregar();
-					}
-				}
-		);
+		JButton wwalker = new JButton(new ImageIcon(
+				this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif")));
+		wwalker.setSize(32, 32);
+		wwalker.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// escenario.agregar();
+			}
+		});
 		this.add(wwalker);
-		
-		JButton dañar=new JButton(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
-		dañar.setSize(32,32);
-		dañar.addMouseListener(
-				new MouseAdapter() {
-					public void mouseClicked(MouseEvent e) {
-						//escenario.hacerDaño();
-					}
-				}
-		);
+
+		JButton dañar = new JButton(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
+		dañar.setSize(32, 32);
+		dañar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// escenario.hacerDaño();
+			}
+		});
 		this.add(dañar);
 	}
 }

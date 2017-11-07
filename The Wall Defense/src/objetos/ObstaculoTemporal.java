@@ -1,5 +1,6 @@
 package objetos;
 
+import enemigo.Enemigo;
 import mapa.Celda;
 
 public abstract class ObstaculoTemporal extends Obstaculo {
@@ -8,4 +9,6 @@ public abstract class ObstaculoTemporal extends Obstaculo {
 		super(c, prof);
 		// TODO Auto-generated constructor stub
 	}
+
+	public abstract void aplicarEfecto(Enemigo e);
 }

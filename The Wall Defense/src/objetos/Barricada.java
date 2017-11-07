@@ -25,6 +25,7 @@ public class Barricada extends ObjetoPrecioso {
 				this.getClass().getResource("/resources/static/terrenos/barricada/barricada_2.png"));
 		graficos[2] = new ImageIcon(
 				this.getClass().getResource("/resources/static/terrenos/barricada/barricada_3.png"));
+		setGrafico(0);
 	}
 
 	// Metodos locales.
@@ -43,7 +44,7 @@ public class Barricada extends ObjetoPrecioso {
 	}
 
 	public void setGrafico(int i) {
-		obstaculo.getGrafico().setIcon(graficos[i]);
+		grafico.setIcon(graficos[i]);
 	}
 
 	@Override
@@ -61,5 +62,11 @@ public class Barricada extends ObjetoPrecioso {
 	@Override
 	public boolean accept(Visitor V) {
 		return V.visitObjetoPrecioso(this);
+	}
+
+	@Override
+	public ObjetoPrecioso clone(Celda[] c) {
+		ObjetoPrecioso clon = new Barricada(c, 3);
+		return clon;
 	}
 }

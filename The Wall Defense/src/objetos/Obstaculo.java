@@ -18,7 +18,6 @@ public abstract class Obstaculo extends GameObject {
 		profundidad = prof;
 		celda = c;
 		grafico = new JLabel();
-		setGrafico();
 	}
 
 	// Metodos locales
