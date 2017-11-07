@@ -24,7 +24,7 @@ public class Horda {
 	protected Celda celda;
 	protected Map mapa;
 	protected Escenario stage;
-	protected JLabel graf;
+	protected JLabel graf; 
 	protected int enemigos=0;
 	
 	//Constructor.

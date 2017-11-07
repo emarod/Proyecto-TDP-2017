@@ -306,7 +306,7 @@ public class Map implements Runnable{
 
     public void destruirEnemigo(Enemigo e){
     	System.out.println(puntaje);
-   	 	puntaje =puntaje+e.getPuntaje();
+   	 	puntaje =e.getPuntaje();
    	 	System.out.println(puntaje);
    	 	actualizarPuntaje();
    	 	escenario.repaint();
@@ -315,7 +315,7 @@ public class Map implements Runnable{
 
 
 	private void actualizarPuntaje() {		
-		escenario.setPuntaje("Puntaje: "+puntaje);
+		escenario.setPuntaje(""+puntaje);
 	}
 	
 	public Director getDirector() {

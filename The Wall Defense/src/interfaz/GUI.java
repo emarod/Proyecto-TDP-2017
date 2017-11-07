@@ -16,14 +16,18 @@ public class GUI extends JFrame{
 	//Atributos locales.
 	protected static final long serialVersionUID = 1L;
 	protected Escenario escenario;
-	protected MenuCompra tienda;
-	protected ProximaHorda horda;
+	protected MenuCompra tienda;	
 	protected Score puntaje;
 	protected JPanel panelInferior;
 	protected JPanel panelIzquierdo;
 	protected JPanel panelDerecho;
 	protected JPanel panelSuperior;
 	protected JPanel grafica;
+	//Etiquetas en la interfaz
+	protected ProximaHorda horda;
+	protected Nivel level;
+	protected Dinero dinero;
+
 	
 	//Constructor.
 	public GUI() {	
@@ -47,6 +51,12 @@ public class GUI extends JFrame{
 		
 		//Puntaje
 		puntaje=new Score(escenario);
+		
+		//Dinero
+		dinero=new Dinero(escenario);
+		
+		//Nivel
+		level=new Nivel(escenario);
 
 		//Panel Inferior
 		panelInferior= new JPanel();
@@ -81,6 +91,8 @@ public class GUI extends JFrame{
 		panelSuperior.setPreferredSize(new Dimension(10, 50));
 		panelSuperior.setBorder(new LineBorder(new Color(0, 0, 0)));		
 		panelSuperior.add(puntaje, BorderLayout.EAST);
+		panelSuperior.add(dinero, BorderLayout.WEST);
+		panelSuperior.add(level, BorderLayout.CENTER);
 		getContentPane().add(panelSuperior, BorderLayout.NORTH);
 	}
 }
