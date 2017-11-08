@@ -6,7 +6,6 @@ import main.Visitor;
 import objetos.ObjetoPrecioso;
 import objetos.ObstaculoTemporal;
 import objetos.ObstaculoVida;
-import objetos.Water;
 
 /*
  * Clase VisitorDisparoEnemigo.
@@ -32,11 +31,6 @@ public class VisitorDisparoEnemigo extends Visitor {
 	 * public boolean VisitBarricada(Barricada b) { b.restarResistencia(); return
 	 * false; }
 	 */
-
-	@Override
-	public boolean VisitWater(Water w) {
-		return false;
-	}
 
 	@Override
 	public boolean visitPlayer(Jugador j) {

@@ -419,7 +419,6 @@ public class Mapa implements Runnable {
 			Celda[] celda;
 			switch (c) {
 				case 0: {
-					System.out.println("creando roca");
 					celda = new Celda[1];
 					celda[0] = celdas[x][y];
 					obs = new Rock(celda, 3);
@@ -430,12 +429,10 @@ public class Mapa implements Runnable {
 					break;
 				}
 				case 1: {
-					System.out.println("Hay lugar para lago?");
 					if (x < 15 && x > 0 && y < 5 && y >= 0) {
 						if (celdas[x + 1][y + 1].getObjects()[3] == null) {
 							if (celdas[x][y + 1].getObjects()[3] == null) {
 								if (celdas[x + 1][y].getObjects()[3] == null) {
-									System.out.println("Si hay lugar");
 									celda = new Celda[4];
 									// Esquina izquierda superior
 									celda[0] = celdas[x][y];
@@ -450,7 +447,6 @@ public class Mapa implements Runnable {
 									celda[1].getObjects()[3] = obs;
 									celda[2].getObjects()[3] = obs;
 									celda[3].getObjects()[3] = obs;
-									System.out.println("e finito");
 
 								}
 							}
@@ -480,13 +476,9 @@ public class Mapa implements Runnable {
 	// Metodos heredados.
 	@Override
 	public void run() {
-		System.out.println("Repaint");
 		escenario.repaint();
-		System.out.println("Power upss");
 		agregarPowerUp();
-		System.out.println("Obstaculin");
 		agregarObstaculos();
-		System.out.println("Fin run mapin");
 	}
 
 	public void crearPrecioso(ObjetoPrecioso precioso) {

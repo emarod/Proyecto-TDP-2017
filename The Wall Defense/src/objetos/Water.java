@@ -1,5 +1,8 @@
 package objetos;
 
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -22,16 +25,11 @@ public class Water extends ObstaculoTemporal implements Runnable {
 	// Constructor.
 	public Water(Celda[] c, int prof) {
 		super(c, prof);
-		System.out.println("Constructor water " + c[0].getPosX() + "," + c[0].getPosY());
-		System.out.println("Constructor water " + c[1].getPosX() + "," + c[1].getPosY());
-		System.out.println("Constructor water " + c[2].getPosX() + "," + c[2].getPosY());
-		System.out.println("Constructor water " + c[3].getPosX() + "," + c[3].getPosY());
 		profundidad = prof;
 		celda = c;
 		penalizacion = 100;
 		labels = new JLabel[4];
 		graficos = new Icon[4];
-		System.out.println("Creando iconos");
 		// Esquina superior izquierda.
 		graficos[0] = new ImageIcon(this.getClass().getResource("/resources/dinamic/lago/lago_esquina_sup_izq_1.gif"));
 		// Esquina superior derecha.
@@ -50,7 +48,6 @@ public class Water extends ObstaculoTemporal implements Runnable {
 			i++;
 		}
 		celda[0].getDirector().ejecutarUna(this, 7);
-		System.out.println("lago creado");
 	}
 
 	// Metodos locales.
@@ -72,7 +69,11 @@ public class Water extends ObstaculoTemporal implements Runnable {
 
 	@Override
 	public void aplicarEfecto(Enemigo e) {
-		// TODO Auto-generated method stub
+		ScheduledFuture<?> taskEnemigo = e.getTask();
+		taskEnemigo.cancel(true);
+		ScheduledFuture<?> newTask = celda[0].getDirector().ejecutarUna(this, penalizacion);
+		e.setTask(newTask);
+		e.activar(newTask.getDelay(TimeUnit.MILLISECONDS));
 
 	}
 

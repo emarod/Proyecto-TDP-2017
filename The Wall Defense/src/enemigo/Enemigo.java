@@ -1,7 +1,5 @@
 package enemigo;
 
-import java.util.concurrent.TimeUnit;
-
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
@@ -76,12 +74,6 @@ public abstract class Enemigo extends Unidad {
 
 	public int getPuntaje() {
 		return getPuntaje();
-	}
-
-	public void relentizar(int penalizacion) {
-		activeTask.cancel(true);
-		activeTask = celda[0].getDirector().ejecutarUna(this, penalizacion);
-		activar(activeTask.getDelay(TimeUnit.MILLISECONDS));
 	}
 
 	// Metodos heredados.

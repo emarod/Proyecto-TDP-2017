@@ -6,7 +6,6 @@ import jugador.Jugador;
 import objetos.ObjetoPrecioso;
 import objetos.ObstaculoTemporal;
 import objetos.ObstaculoVida;
-import objetos.Water;
 
 /*
  * Clase Visitor.
@@ -23,7 +22,6 @@ public abstract class Visitor {
 
 	// public abstract boolean VisitBarricada(Barricada b);
 	// public abstract boolean VisitRock(Rock r);
-	public abstract boolean VisitWater(Water w);
 
 	public abstract boolean visitPlayer(Jugador j);
 

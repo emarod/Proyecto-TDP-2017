@@ -60,7 +60,7 @@ public class Director {
 	}
 
 	public void ejecutar(Mapa mapa) {
-		taskPool.scheduleWithFixedDelay(mapa, 1, 200, TimeUnit.MILLISECONDS);
+		taskPool.scheduleWithFixedDelay(mapa, 1, 3, TimeUnit.SECONDS);
 	}
 
 	public void ejecutarUna(PowerUp powerUp, int delay) {

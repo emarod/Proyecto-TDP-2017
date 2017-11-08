@@ -6,7 +6,6 @@ import main.Visitor;
 import objetos.ObjetoPrecioso;
 import objetos.ObstaculoTemporal;
 import objetos.ObstaculoVida;
-import objetos.Water;
 
 /*
  * Clase VisitorEnemigo.
@@ -39,12 +38,6 @@ public class VisitorEnemigo extends Visitor {
 	 */
 
 	@Override
-	public boolean VisitWater(Water w) {
-		enemigo.relentizar(w.getPenalizacion());
-		return true;
-	}
-
-	@Override
 	public boolean visitPlayer(Jugador j) {
 		System.out.println("el juagador visita a enemigo");
 		j.recibirDaño(enemigo.getDaño());
@@ -65,8 +58,8 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public boolean visitObstaculo(ObstaculoTemporal o) {
-		// TODO Auto-generated method stub
-		return false;
+		o.aplicarEfecto(enemigo);
+		return true;
 	}
 
 	@Override

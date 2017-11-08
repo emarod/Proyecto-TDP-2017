@@ -7,7 +7,6 @@ import objetos.ObjetoPrecioso;
 import objetos.Obstaculo;
 import objetos.ObstaculoTemporal;
 import objetos.ObstaculoVida;
-import objetos.Water;
 
 /*
  * Clase VisitorDisparoPlayer.
@@ -32,14 +31,9 @@ public class VisitorDisparoPlayer extends Visitor {
 
 	/*
 	 * public boolean VisitRock(Rock r) { return true; }
-	 * 
+	 *
 	 * public boolean VisitBarricada(Barricada b) { return true; }
 	 */
-
-	@Override
-	public boolean VisitWater(Water w) {
-		return true;
-	}
 
 	@Override
 	public boolean visitPlayer(Jugador j) {

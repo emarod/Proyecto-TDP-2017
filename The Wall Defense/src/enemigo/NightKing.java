@@ -101,7 +101,6 @@ public class NightKing extends ShooterEnemigo {
 		siguiente = getCeldas()[0].getCelda(xCelda - 1, yCelda);
 		for (int i = 0; i < 7; i++) {
 			GameObject objeto = siguiente.getObjects()[i];
-			System.out.println("Enemigo encontro " + objeto.getClass());
 			if (objeto != null && !objeto.accept(getVisitor())) {
 				detener = true;
 			}
