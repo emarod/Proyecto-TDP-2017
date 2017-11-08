@@ -25,7 +25,7 @@ public class Barricada extends ObjetoPrecioso {
 				this.getClass().getResource("/resources/static/terrenos/barricada/barricada_2.png"));
 		graficos[2] = new ImageIcon(
 				this.getClass().getResource("/resources/static/terrenos/barricada/barricada_3.png"));
-		setGrafico(0);
+		setGrafico(2);
 	}
 
 	// Metodos locales.
