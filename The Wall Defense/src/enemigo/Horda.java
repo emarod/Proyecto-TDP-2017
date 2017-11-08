@@ -32,9 +32,8 @@ public class Horda {
 		stage=s;
 		mapa=stage.getMapa();
 		horda=new Enemigo[1];
-		int t= (int) (Math.random()*1);
 		try {
-			inicializarHorda(t);
+			inicializarHorda();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -43,7 +42,7 @@ public class Horda {
 	}
 	
 	//Metodos locales.
-	private void inicializarHorda(int t) throws FileNotFoundException, IOException {
+	private void inicializarHorda() throws FileNotFoundException, IOException {
 	    String sCurrentLine="";
 	    Random rnd=new Random();
 	    int r=rnd.nextInt(1);
@@ -114,8 +113,30 @@ public class Horda {
 	    		}
     		}
 	    }
-	    	
+	    
+	    System.out.println("Numero de enemigos en la horda: "+enemigos);
+	    
 	    bufferHorda.close();
     }
+	
+	public boolean terminoHorda(){
+		return enemigos==0;
+	}
+	
+	public void reiniciarHorda(){
+		try{
+			inicializarHorda();
+		}
+		catch(Exception e){
+			System.out.println("Error al reiniciar la horda.");
+		}
+	}
+	
+	public void actualizarEnemigos(){
+		if(enemigos>0){
+			enemigos--;
+			System.out.println("Numero de enemigos en la horda: "+enemigos);
+		}
+	}
 	
 }

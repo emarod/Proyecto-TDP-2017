@@ -59,6 +59,18 @@ public class Escenario extends JPanel {
 		
 	}
 	
+	public boolean terminoHorda(){
+		return horda.terminoHorda();
+	}
+	
+	public void reiniciarHorda(){
+		horda.reiniciarHorda();
+	}
+	
+	public void actualizarEnemigos(){
+		horda.actualizarEnemigos();
+	}
+	
 	public int getPosX() {
 		return this.getX();
 	}
@@ -66,5 +78,4 @@ public class Escenario extends JPanel {
 	public int getPosY() {
 		return this.getY();
 	}
-
 }

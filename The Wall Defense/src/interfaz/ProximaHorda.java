@@ -50,4 +50,15 @@ public class ProximaHorda extends JPanel{
 		puntaje.setText(str);
 	}
 	
+	public boolean terminoHorda(){
+		return horda.terminoHorda();
+	}
+	
+	public void reiniciarHorda(){
+		horda.reiniciarHorda();
+	}
+	
+	public void actualizarEnemigos(){
+		horda.actualizarEnemigos();
+	}
 }

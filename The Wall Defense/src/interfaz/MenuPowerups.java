@@ -3,7 +3,6 @@ package interfaz;
 import interfaz.botones.BtnBarricada;
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import javax.swing.*;
 import mapa.Map;
 

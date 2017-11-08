@@ -309,13 +309,20 @@ public class Map implements Runnable{
    	 	puntaje =e.getPuntaje();
    	 	System.out.println(puntaje);
    	 	actualizarPuntaje();
+   	 	actualizarEnemigos();
    	 	escenario.repaint();
-   		 
+   		if(escenario.terminoHorda()){
+   			escenario.reiniciarHorda();
+   		}
     }
 
 
 	private void actualizarPuntaje() {		
 		escenario.setPuntaje(""+puntaje);
+	}
+	
+	private void actualizarEnemigos() {		
+		escenario.actualizarEnemigos();
 	}
 	
 	public Director getDirector() {
