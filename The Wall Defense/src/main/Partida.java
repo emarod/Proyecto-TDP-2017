@@ -14,7 +14,7 @@ public class Partida {
 	protected int dinero;
 	protected ConcurrentHashMap<ObjetoPrecioso, Integer> objetos;
 
-	public Partida(int obj) {
+	public Partida() {
 		puntaje = 0;
 		dinero = 0;
 		objetos = new ConcurrentHashMap<ObjetoPrecioso, Integer>();

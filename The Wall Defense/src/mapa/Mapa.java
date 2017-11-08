@@ -333,10 +333,24 @@ public class Mapa implements Runnable {
 			PowerUp p;
 			JLabel grafico2;
 			switch (c) {
-				case 0:
+				case 0: {
 					p = new DañoAtkAumentado(celdas[x][y], 4);
+					grafico2 = p.getGraficoToken();
+					objetos2[4] = p;
+					grafico2.setBounds(x * 64, y * 64, 64, 64);
+					grafico2.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							if (celdaLabel != null) {
+								setPowerUp(p);
+							}
+
+						}
+					});
+					escenario.agregar(grafico2, new Integer(4));
 					break;
-				case 1:
+				}
+				case 1: {
 					p = new VelAtkAumentado(celdas[x][y], 4);
 					grafico2 = p.getGraficoToken();
 					objetos2[4] = p;
@@ -352,7 +366,8 @@ public class Mapa implements Runnable {
 					});
 					escenario.agregar(grafico2, new Integer(4));
 					break;
-				case 2:
+				}
+				case 2: {
 					p = new Bomba(celdas[x][y], 4);
 					grafico2 = p.getGraficoToken();
 					objetos2[4] = p;
@@ -368,7 +383,8 @@ public class Mapa implements Runnable {
 					});
 					escenario.agregar(grafico2, new Integer(4));
 					break;
-				case 3:
+				}
+				case 3: {
 					p = new Invulnerable(celdas[x][y], 4);
 					grafico2 = p.getGraficoToken();
 					objetos2[4] = p;
@@ -382,8 +398,9 @@ public class Mapa implements Runnable {
 
 						}
 					});
-					escenario.agregar(grafico2, new Integer(4));
 					break;
+				}
+
 			}
 
 		}
@@ -463,9 +480,11 @@ public class Mapa implements Runnable {
 	// Metodos heredados.
 	@Override
 	public void run() {
-		System.out.println("Run mapin");
+		System.out.println("Repaint");
 		escenario.repaint();
+		System.out.println("Power upss");
 		agregarPowerUp();
+		System.out.println("Obstaculin");
 		agregarObstaculos();
 		System.out.println("Fin run mapin");
 	}
