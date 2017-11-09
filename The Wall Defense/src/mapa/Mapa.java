@@ -4,11 +4,6 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Random;
 
 import javax.swing.JLabel;
@@ -29,6 +24,8 @@ import powerUp.DañoAtkAumentado;
 import powerUp.Invulnerable;
 import powerUp.PowerUp;
 import powerUp.VelAtkAumentado;
+import terreno.Muro;
+import terreno.Nieve;
 
 /*
  * Clase Map.
@@ -46,6 +43,8 @@ public class Mapa implements Runnable {
 	protected int y_mouse;
 	protected Director director;
 	protected BancoRecursos banco;
+	public static final int CANT_CELDAS_Y = 6;
+	public static final int CANT_CELDAS_X = 16;
 
 	// Constructor.
 	public Mapa(Escenario stage, Director director, int width, int height, int sprites) {
@@ -53,97 +52,66 @@ public class Mapa implements Runnable {
 		escenario = stage;
 		this.director = director;
 		banco = director.getBancoRecursos();
-		try {
-			inicializarCeldas(sprites);
-		}
-		catch (FileNotFoundException e) {
-			System.out.println("ERROR, ARCHIVO DE MAPA NO ENCONTRADO.");
-		}
-		catch (IOException e) {
-			System.out.println("ERROR INESPERADO LEYENDO EL ARCHIVO.");
-		}
+		inicializarCeldas(sprites);
 	}
 
 	// Metodos locales.
-	private void inicializarCeldas(int t) throws FileNotFoundException, IOException {
-		String sCurrentLine = "";
-		Random rnd = new Random();
-		int r = rnd.nextInt(1);
-		// Este es un random limitado entre 1 y 3, para establecer un rango nuevo
-		// Random[n,m]: (Math.random()*m)+n
-		r = (int) (Math.random() * 2);
-		System.out.println(r);
-		// r=3 para testear nueva creacion de mapa
-		InputStream fileMap = getClass().getResourceAsStream("/resources/mapa_" + 3 + ".txt");
-		InputStreamReader entradaMapa = new InputStreamReader(fileMap);
-
-		BufferedReader bufferMapa = new BufferedReader(entradaMapa);
-
+	private void inicializarCeldas(int t) {
 		int y = 0;
-		while ((sCurrentLine = bufferMapa.readLine()) != null) {
-
-			for (int x = 0; x < sCurrentLine.length(); x++) {
-				char letra_actual = sCurrentLine.charAt(x);
-				celdas[x][y] = new Celda(letra_actual, this, x, y, t);
+		while (y < CANT_CELDAS_Y) {
+			for (int x = 0; x < CANT_CELDAS_X; x++) {
+				System.out.println(x + "," + y);
+				celdas[x][y] = new Celda(this, x, y);
 				GameObject[] objetos = celdas[x][y].getObjects();
-				if (objetos[0] != null) {
-					JLabel terreno = objetos[0].getGrafico();
-					terreno.addMouseListener(new MouseAdapter() {
-
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							System.out.println(
-									"click (" + (terreno.getX() + e.getX()) + "," + (terreno.getY() + e.getY()) + ")");
-
-							if (celdaLabel == null) {
-								terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
-								celdaLabel = terreno;
-								System.out.println("(" + terreno.getX() / 64 + "," + terreno.getY() / 64 + ")");
-							}
-							else {
-								celdaLabel.setBorder(null);
-								terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
-								celdaLabel = terreno;
-								System.out.println("(" + terreno.getX() / 64 + "," + terreno.getY() / 64 + ")");
-
-							}
-						}
-
-						@Override
-						public void mouseEntered(MouseEvent e) {
-							x_mouse = terreno.getX();
-							y_mouse = terreno.getY();
-							if (terreno != celdaLabel) {
-								terreno.setBorder(new LineBorder(new Color(255, 0, 0)));
-							}
-						}
-
-						@Override
-						public void mouseExited(MouseEvent e) {
-							if (terreno != celdaLabel) {
-								terreno.setBorder(null);
-							}
-						}
-					}
-
-					);
-					terreno.setBounds(64 * x, 64 * y, 64, 64);
-					escenario.agregar(terreno, new Integer(0));
-
+				if (x == 0) {
+					objetos[0] = new Muro(celdas[x][y]);
 				}
 				else {
-					if (objetos[2] != null) {
-						System.out.println("ghost code");
-						JLabel terreno = objetos[2].getGrafico();
-						terreno.setBounds(64 * x, 64 * y, 64, 64);
-						escenario.agregar(terreno, new Integer(3));
+					objetos[0] = new Nieve(celdas[x][y]);
+				}
+				JLabel terreno = objetos[0].getGrafico();
+				terreno.addMouseListener(new MouseAdapter() {
+
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						if (celdaLabel == null) {
+							terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
+							celdaLabel = terreno;
+							System.out.println("(" + terreno.getX() / 64 + "," + terreno.getY() / 64 + ")");
+						}
+						else {
+							celdaLabel.setBorder(null);
+							terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
+							celdaLabel = terreno;
+							System.out.println("(" + terreno.getX() / 64 + "," + terreno.getY() / 64 + ")");
+
+						}
+					}
+
+					@Override
+					public void mouseEntered(MouseEvent e) {
+						x_mouse = terreno.getX();
+						y_mouse = terreno.getY();
+						if (terreno != celdaLabel) {
+							terreno.setBorder(new LineBorder(new Color(255, 0, 0)));
+						}
+					}
+
+					@Override
+					public void mouseExited(MouseEvent e) {
+						if (terreno != celdaLabel) {
+							terreno.setBorder(null);
+						}
 					}
 				}
+
+				);
+				terreno.setBounds(64 * x, 64 * y, 64, 64);
+				escenario.agregar(terreno, new Integer(0));
 			}
 			y++;
 		}
 
-		bufferMapa.close();
 		// Codido a prueba de token invulnerable
 		GameObject[] objetos22 = celdas[8][4].getObjects();
 		PowerUp p = new Invulnerable(celdas[8][4], 4);
