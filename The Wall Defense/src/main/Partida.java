@@ -13,8 +13,10 @@ public class Partida {
 	protected int puntaje;
 	protected int dinero;
 	protected ConcurrentHashMap<ObjetoPrecioso, Integer> objetos;
+	protected int nivel;
 
 	public Partida() {
+		nivel = 1;
 		puntaje = 0;
 		dinero = 0;
 		objetos = new ConcurrentHashMap<ObjetoPrecioso, Integer>();
@@ -57,6 +59,14 @@ public class Partida {
 			myprecious = precioso.clone(c);
 		}
 		return myprecious;
+	}
+
+	public int getNivel() {
+		return nivel;
+	}
+
+	public void aumentarNivel() {
+		nivel++;
 	}
 
 }
