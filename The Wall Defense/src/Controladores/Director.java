@@ -6,6 +6,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import disparo.Disparo;
+import main.Partida;
 import main.Unidad;
 import mapa.Mapa;
 import objetos.Water;
@@ -20,12 +21,14 @@ public class Director {
 	// Atributos locales.
 	private static final Director director = new Director();
 	protected ScheduledExecutorService taskPool;
-	private BancoRecursos banco;
+	protected BancoRecursos banco;
+	protected Partida partida;
 
 	// Constructor.
 	private Director() {
 		taskPool = Executors.newSingleThreadScheduledExecutor();
 		banco = new BancoRecursos();
+		partida = new Partida();
 
 	}
 
