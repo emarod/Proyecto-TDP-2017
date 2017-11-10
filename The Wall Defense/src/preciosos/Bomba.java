@@ -1,9 +1,10 @@
-package powerUp;
+package preciosos;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+
 import jugador.Jugador;
 import main.GameObject;
+import main.Visitor;
 import mapa.Celda;
 
 /*
@@ -11,32 +12,46 @@ import mapa.Celda;
  * Clase que especifica el comportamiento del poder bomba.
  */
 
-public class Bomba extends PowerUp {
-	
-	//Constructor.
-	public Bomba(Celda c, int prof) {
+public class Bomba extends ObjetoPrecioso {
+
+	// Constructor.
+	public Bomba(int prof) {
+		super(prof);
+		construir();
+	}
+
+	public Bomba(Celda[] c, int prof) {
 		super(c, prof);
-		grafico=new JLabel();
-		graficoToken = new JLabel();
-		graficoToken.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/token_bomba.gif")));
-		c.getEscenario().repaint();
+		construir();
+	}
+
+	private void construir() {
+		celda[0].getEscenario().repaint();
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/explosion.gif")));
 	}
-	
-	public void aplicar(Celda c){
-		GameObject objetos []= c.getObjects();
-		for(int i=1 ;i<objetos.length; i++){
-			objetos[i]=null;
+
+	public void aplicar(Celda c) {
+		GameObject objetos[] = c.getObjects();
+		for (int i = 1; i < objetos.length; i++) {
+			objetos[i] = null;
 		}
 	}
 
-	//Metodos heredados.
+	// Metodos heredados.
 	public void aplicar(Jugador j) {
-		
+
 	}
-	
-	public JLabel getGraficoToken(){
-		return graficoToken;
+
+	@Override
+	public ObjetoPrecioso clone(Celda[] c) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
+
+	@Override
+	public boolean accept(Visitor V) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

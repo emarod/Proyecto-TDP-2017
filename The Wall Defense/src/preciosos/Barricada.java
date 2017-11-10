@@ -1,9 +1,10 @@
-package objetos;
+package preciosos;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Controladores.Director;
 import main.Visitor;
 import mapa.Celda;
 
@@ -56,7 +57,7 @@ public class Barricada extends ObjetoPrecioso {
 	}
 
 	public void playSound() {
-		celda[0].getDirector().getBancoRecursos().playBarricada();
+		Director.getBancoRecursos().playBarricada();
 	}
 
 	@Override
