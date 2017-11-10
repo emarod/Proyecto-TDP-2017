@@ -6,6 +6,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import disparo.Disparo;
+import enemigo.Horda;
 import main.Partida;
 import main.Unidad;
 import mapa.Mapa;
@@ -98,5 +99,9 @@ public class Director {
 	public static void ejecutarUna(Token token, int duracion) {
 		taskPool.schedule(token, duracion, TimeUnit.SECONDS);
 
+	}
+
+	public static ScheduledFuture<?> ejecutar(Horda horda, int delay) {
+		return taskPool.scheduleWithFixedDelay(horda, 1, delay, TimeUnit.SECONDS);
 	}
 }

@@ -12,6 +12,7 @@ import javax.swing.border.LineBorder;
 import Controladores.BancoRecursos;
 import Controladores.Director;
 import enemigo.Enemigo;
+import enemigo.Horda;
 import interfaz.Escenario;
 import jugador.Jugador;
 import main.GameObject;
@@ -41,6 +42,7 @@ public class Mapa implements Runnable {
 	protected int x_mouse;
 	protected int y_mouse;
 	protected BancoRecursos banco;
+	protected Horda horda;
 	public static final int CANT_CELDAS_Y = 6;
 	public static final int CANT_CELDAS_X = 16;
 
@@ -72,12 +74,14 @@ public class Mapa implements Runnable {
 							terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
 							celdaLabel = terreno;
 							System.out.println("(" + terreno.getX() / 64 + "," + terreno.getY() / 64 + ")");
+							ver();
 						}
 						else {
 							celdaLabel.setBorder(null);
 							terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
 							celdaLabel = terreno;
 							System.out.println("(" + terreno.getX() / 64 + "," + terreno.getY() / 64 + ")");
+							ver();
 
 						}
 					}
@@ -106,6 +110,25 @@ public class Mapa implements Runnable {
 			y++;
 		}
 		Director.ejecutar(this);
+		horda = new Horda(escenario);
+	}
+
+	protected void ver() {
+		if (celdaLabel != null) {
+			int x_cel = Math.round(celdaLabel.getX() / 64);
+			int y_cel = Math.round(celdaLabel.getY() / 64);
+			GameObject[] objetos = celdas[x_cel][y_cel].getObjects();
+			for (int i = 0; i < 7; i++) {
+				if (objetos[i] != null) {
+					System.out.println(i + "." + objetos[i].getClass());
+				}
+				else {
+					System.out.println(i + "." + null);
+				}
+
+			}
+			System.out.println("end ver()");
+		}
 
 	}
 
@@ -237,16 +260,12 @@ public class Mapa implements Runnable {
 
 	public void crearEnemigo(Enemigo e, int x, int y) {
 		System.out.println("Enemigo creado - x:" + x + " y:" + y);
-		if (celdas[x][y].getObjects()[1] == null) {
-			Celda[] c = new Celda[4];
-			c[0] = celdas[x][y];
-			Enemigo enemy = e.clone(c);
-			celdas[x][y].getObjects()[1] = enemy;
-			JLabel icono = enemy.getGrafico();
-			icono.setBounds(x * 64, y * 64, 64, 64);
-			escenario.agregar(icono, new Integer(1));
-			enemy.activar();
-		}
+		celdas[x][y].getObjects()[1] = e;
+		JLabel icono = e.getGrafico();
+		icono.setBounds(x * 64, y * 64, 64, 64);
+		escenario.agregar(icono, new Integer(1));
+		e.activar();
+
 	}
 
 	public void destruirEnemigo(Enemigo e) {

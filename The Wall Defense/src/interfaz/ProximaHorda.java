@@ -35,7 +35,6 @@ public class ProximaHorda extends JPanel {
 		agregarLabel();
 		// agregarBoton();
 		this.setBackground(Color.BLACK);
-		horda = new Horda(escenario);
 
 	}
 

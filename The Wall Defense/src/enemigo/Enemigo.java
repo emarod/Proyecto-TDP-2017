@@ -50,7 +50,6 @@ public abstract class Enemigo extends Unidad {
 			vida = vida - golpe;
 		}
 		if (destruir) {
-			System.out.println("antes de restar resistencia de jugador");
 			destruir();
 		}
 		return destruir;
