@@ -4,6 +4,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Controladores.Director;
 import disparo.DisparoDragon;
 import mapa.Celda;
 
@@ -94,7 +95,7 @@ public class Dragon extends Shooter {
 
 	@Override
 	public void playSound() {
-		getCeldas()[0].getDirector().getBancoRecursos().playBolaFuego();
+		Director.getBancoRecursos().playBolaFuego();
 	}
 
 	@Override

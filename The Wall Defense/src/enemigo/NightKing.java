@@ -4,6 +4,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Controladores.Director;
 import disparo.DisparoEnemigo;
 import main.GameObject;
 import mapa.Celda;
@@ -143,7 +144,7 @@ public class NightKing extends ShooterEnemigo {
 
 	@Override
 	public void playSound() {
-		getCeldas()[0].getDirector().getBancoRecursos().playFlecha();
+		Director.getBancoRecursos().playFlecha();
 	}
 
 	@Override

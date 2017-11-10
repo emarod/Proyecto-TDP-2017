@@ -2,6 +2,7 @@ package main;
 
 import java.util.concurrent.ScheduledFuture;
 
+import Controladores.Director;
 import mapa.Celda;
 
 /*
@@ -48,7 +49,7 @@ public abstract class Unidad extends GameObject implements Runnable {
 	public void activar() {
 		if (activeTask == null) {
 			System.out.println("enemy activado");
-			activeTask = getCeldas()[0].getDirector().ejecutar(this, velocidad);
+			activeTask = Director.ejecutar(this, velocidad);
 		}
 		else {
 			System.out.println("ya está activado");
@@ -58,7 +59,7 @@ public abstract class Unidad extends GameObject implements Runnable {
 
 	public void activar(long l) {
 		if (activeTask == null || activeTask.isCancelled() || activeTask.isDone()) {
-			activeTask = getCeldas()[0].getDirector().ejecutar(this, l, velocidad);
+			activeTask = Director.ejecutar(this, l, velocidad);
 		}
 		else {
 			System.out.println("ya está activado");

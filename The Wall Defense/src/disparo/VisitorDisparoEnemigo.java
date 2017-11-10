@@ -3,9 +3,9 @@ package disparo;
 import enemigo.Enemigo;
 import jugador.Jugador;
 import main.Visitor;
-import objetos.ObjetoPrecioso;
-import objetos.ObstaculoTemporal;
-import objetos.ObstaculoVida;
+import obstaculos.ObstaculoTemporal;
+import obstaculos.ObstaculoVida;
+import preciosos.ObjetoPrecioso;
 
 /*
  * Clase VisitorDisparoEnemigo.

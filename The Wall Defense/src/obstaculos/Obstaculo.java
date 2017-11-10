@@ -1,4 +1,4 @@
-package objetos;
+package obstaculos;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;

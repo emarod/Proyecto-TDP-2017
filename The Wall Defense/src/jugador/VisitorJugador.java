@@ -3,10 +3,10 @@ package jugador;
 import disparo.Disparo;
 import enemigo.Enemigo;
 import main.Visitor;
-import objetos.ObjetoPrecioso;
-import objetos.Obstaculo;
-import objetos.ObstaculoTemporal;
-import objetos.ObstaculoVida;
+import obstaculos.Obstaculo;
+import obstaculos.ObstaculoTemporal;
+import obstaculos.ObstaculoVida;
+import preciosos.ObjetoPrecioso;
 
 /*
  * Clase VisitorJugador.

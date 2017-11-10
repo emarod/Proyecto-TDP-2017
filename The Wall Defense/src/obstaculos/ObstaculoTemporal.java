@@ -1,4 +1,4 @@
-package objetos;
+package obstaculos;
 
 import enemigo.Enemigo;
 import mapa.Celda;

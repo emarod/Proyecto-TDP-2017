@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 import interfaz.Escenario;
 import mapa.Celda;
-import objetos.Barricada;
+import preciosos.Barricada;
 
 /*
  * Clase BtnBarricada.

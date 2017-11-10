@@ -4,6 +4,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Controladores.Director;
 import disparo.DisparoArquero;
 import mapa.Celda;
 
@@ -75,7 +76,7 @@ public class Arquero extends Shooter {
 
 	@Override
 	public void playSound() {
-		getCeldas()[0].getDirector().getBancoRecursos().playFlecha();
+		Director.getBancoRecursos().playFlecha();
 	}
 
 	@Override

@@ -2,7 +2,6 @@ package mapa;
 
 import java.util.LinkedList;
 
-import Controladores.Director;
 import enemigo.Enemigo;
 import interfaz.Escenario;
 import main.GameObject;
@@ -82,10 +81,6 @@ public class Celda {
 
 	public Escenario getEscenario() {
 		return mapa.getEscenario();
-	}
-
-	public Director getDirector() {
-		return mapa.getDirector();
 	}
 
 	public void destruirEnemigo(Enemigo e) {

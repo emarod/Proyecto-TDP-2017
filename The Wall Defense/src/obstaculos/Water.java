@@ -1,4 +1,4 @@
-package objetos;
+package obstaculos;
 
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
@@ -7,6 +7,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Controladores.Director;
 import enemigo.Enemigo;
 import main.Visitor;
 import mapa.Celda;
@@ -47,7 +48,7 @@ public class Water extends ObstaculoTemporal implements Runnable {
 			celda[0].getEscenario().agregar(labels[i], 3);
 			i++;
 		}
-		celda[0].getDirector().ejecutarUna(this, 7);
+		Director.ejecutarUna(this, 7);
 	}
 
 	// Metodos locales.
@@ -71,7 +72,7 @@ public class Water extends ObstaculoTemporal implements Runnable {
 	public void aplicarEfecto(Enemigo e) {
 		ScheduledFuture<?> taskEnemigo = e.getTask();
 		taskEnemigo.cancel(true);
-		ScheduledFuture<?> newTask = celda[0].getDirector().ejecutarUna(this, penalizacion);
+		ScheduledFuture<?> newTask = Director.ejecutarUna(this, penalizacion);
 		e.setTask(newTask);
 		e.activar(newTask.getDelay(TimeUnit.MILLISECONDS));
 
