@@ -15,15 +15,14 @@ import enemigo.Enemigo;
 import interfaz.Escenario;
 import jugador.Jugador;
 import main.GameObject;
-import objetos.ObjetoPrecioso;
-import objetos.Obstaculo;
-import objetos.Rock;
-import objetos.Water;
-import powerUp.Bomba;
+import obstaculos.Obstaculo;
+import obstaculos.Rock;
+import obstaculos.Water;
 import powerUp.DañoAtkAumentado;
 import powerUp.Invulnerable;
 import powerUp.PowerUp;
 import powerUp.VelAtkAumentado;
+import preciosos.ObjetoPrecioso;
 import terreno.Muro;
 import terreno.Nieve;
 
@@ -41,26 +40,21 @@ public class Mapa implements Runnable {
 	protected int puntaje;
 	protected int x_mouse;
 	protected int y_mouse;
-	protected Director director;
 	protected BancoRecursos banco;
 	public static final int CANT_CELDAS_Y = 6;
 	public static final int CANT_CELDAS_X = 16;
 
 	// Constructor.
-	public Mapa(Escenario stage, Director director, int width, int height, int sprites) {
+	public Mapa(int width, int height) {
 		celdas = new Celda[width][height];
-		escenario = stage;
-		this.director = director;
-		banco = director.getBancoRecursos();
-		inicializarCeldas(sprites);
+		banco = Director.getBancoRecursos();
 	}
 
 	// Metodos locales.
-	private void inicializarCeldas(int t) {
+	public void inicializarCeldas() {
 		int y = 0;
 		while (y < CANT_CELDAS_Y) {
 			for (int x = 0; x < CANT_CELDAS_X; x++) {
-				System.out.println(x + "," + y);
 				celdas[x][y] = new Celda(this, x, y);
 				GameObject[] objetos = celdas[x][y].getObjects();
 				if (x == 0) {
@@ -111,25 +105,7 @@ public class Mapa implements Runnable {
 			}
 			y++;
 		}
-
-		// Codido a prueba de token invulnerable
-		GameObject[] objetos22 = celdas[8][4].getObjects();
-		PowerUp p = new Invulnerable(celdas[8][4], 4);
-		JLabel grafico22 = p.getGraficoToken();
-		objetos22[4] = p;
-		grafico22.setBounds(8 * 64, 4 * 64, 64, 64);
-		escenario.agregar(grafico22, new Integer(2));
-		grafico22.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (celdaLabel != null) {
-					setPowerUp(p);
-				}
-
-			}
-		});
-		// Fin de codigo prueba
-		director.ejecutar(this);
+		Director.ejecutar(this);
 
 	}
 
@@ -286,10 +262,6 @@ public class Mapa implements Runnable {
 		escenario.setPuntaje("Puntaje: " + puntaje);
 	}
 
-	public Director getDirector() {
-		return director;
-	}
-
 	private void agregarPowerUp() {
 		Random r = new Random();
 		int x = r.nextInt(16);
@@ -324,6 +296,7 @@ public class Mapa implements Runnable {
 					objetos2[4] = p;
 					grafico2.setBounds(x * 64, y * 64, 64, 64);
 					grafico2.addMouseListener(new MouseAdapter() {
+
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							if (celdaLabel != null) {
@@ -336,23 +309,25 @@ public class Mapa implements Runnable {
 					break;
 				}
 				case 2: {
-					p = new Bomba(celdas[x][y], 4);
-					grafico2 = p.getGraficoToken();
-					objetos2[4] = p;
-					grafico2.setBounds(x * 64, y * 64, 64, 64);
-					grafico2.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							if (celdaLabel != null) {
-								setPowerUp(p);
-							}
-
-						}
-					});
-					escenario.agregar(grafico2, new Integer(4));
-					break;
+					// p = new Bomba(celdas[x][y], 4);
+					// grafico2 = p.getGraficoToken();
+					// objetos2[4] = p;
+					// grafico2.setBounds(x * 64, y * 64, 64, 64);
+					// grafico2.addMouseListener(new MouseAdapter() {
+					// @Override
+					// public void mouseClicked(MouseEvent e) {
+					// if (celdaLabel != null) {
+					// setPowerUp(p);
+					// }
+					//
+					// }
+					// });
+					// escenario.agregar(grafico2, new Integer(4));
+					// break;
 				}
-				case 3: {
+				case 3:
+
+				{
 					p = new Invulnerable(celdas[x][y], 4);
 					grafico2 = p.getGraficoToken();
 					objetos2[4] = p;
@@ -372,6 +347,13 @@ public class Mapa implements Runnable {
 			}
 
 		}
+	}
+
+	public void agregar(GameObject g) {
+		JLabel objeto = g.getGrafico();
+		objeto.setBounds(g.xy().x * 64, g.xy().y * 64, 64, 64);
+		escenario.agregar(objeto, new Integer(g.getProfundidad()));
+
 	}
 
 	public void agregarObstaculos() {
@@ -483,5 +465,9 @@ public class Mapa implements Runnable {
 				escenario.agregar(icono, new Integer(3));
 			}
 		}
+	}
+
+	public void setEscenario(Escenario e) {
+		escenario = e;
 	}
 }
