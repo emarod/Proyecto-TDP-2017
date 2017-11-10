@@ -14,6 +14,7 @@ public class Caballero extends PerfilJugador{
 	//Constructor.
 	public Caballero() {
 		resistencia=10;
+		costo=25;
 	}
 	
 	//Metodos heredados.

@@ -17,6 +17,7 @@ public abstract class PerfilJugador {
 	protected Jugador jugador;
 	protected Icon[] graficos;
 	protected int graph;
+	protected int costo;
 	
 	//Metodos locales.
     public boolean impact(int d){

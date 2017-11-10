@@ -27,6 +27,7 @@ public class Arquero extends PerfilJugador{
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
 		velocidad_disparo=75;
+		costo=50;
 		graficos= new Icon[5];
 		//Areglo que divide el sprite en capas para poder simular el movimiento.
 		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte_atacando/ygritte_atacando_0.png"));

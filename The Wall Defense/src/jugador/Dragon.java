@@ -27,6 +27,7 @@ public class Dragon extends PerfilJugador {
 		disparos_simultaneos=1;
 		disparos_en_ejecucion=0;
 		velocidad_disparo=75;
+		costo=75;
 		graficos= new Icon[8];
 		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_0.png"));
 		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_1.png"));

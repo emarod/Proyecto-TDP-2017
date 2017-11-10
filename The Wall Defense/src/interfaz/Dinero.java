@@ -33,7 +33,7 @@ public class Dinero extends JPanel{
 	
 	//Metodos locales.
 	private void agregarLabel() {
-		monto=new JLabel("0000");
+		monto=new JLabel("1000");
 		monto.setSize(monto.getWidth(), this.getHeight());
 		//Recojo la fuente que se esta utilizando actualmente.
 		Font auxFont=new Font("Rubber Biscuit Bold", Font.CENTER_BASELINE,45); 

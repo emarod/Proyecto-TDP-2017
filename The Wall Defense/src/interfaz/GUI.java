@@ -19,7 +19,7 @@ public class GUI extends JFrame{
 	protected static final long serialVersionUID = 1L;
 	protected Escenario escenario;
 	protected MenuCompra tienda;	
-	protected Score puntaje;
+	//protected Score puntaje;
 	protected JPanel panelInferior;
 	protected JPanel panelIzquierdo;
 	protected JPanel panelDerecho;
@@ -27,10 +27,9 @@ public class GUI extends JFrame{
 	protected JPanel grafica;
 	protected JTabbedPane tabbedPane;
 	//Etiquetas en la interfaz
-	protected ProximaHorda horda;
-	protected Nivel level;
 	protected Dinero dinero;
-
+	protected Score puntaje;
+	protected Nivel level;
 	
 	//Constructor.
 	public GUI() {	
@@ -52,14 +51,15 @@ public class GUI extends JFrame{
 		MenuPowerups powerups=new MenuPowerups(escenario);
 		
 		
-		//Puntaje
+		//Puntaje		
 		puntaje=new Score(escenario);
-		
-		//Dinero
+		//Dinero		
 		dinero=new Dinero(escenario);
-		
+
 		//Nivel
 		level=new Nivel(escenario);
+
+		
 		
 		//Pestañas
 				tabbedPane = new JTabbedPane();
