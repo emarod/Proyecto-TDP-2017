@@ -6,6 +6,7 @@ package interfaz;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -17,12 +18,11 @@ public class Nivel extends JPanel{
 	
 	//Atributos locales.
 	protected static final long serialVersionUID = 1L;
-	protected Icon level;
+	protected JLabel level;
 	protected Escenario escenario;
 	
 	//Constructor.
 	public Nivel(Escenario esc) {
-		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(new Color(0, 0, 0)));
 		this.escenario=esc;
 		agregarLabel();
@@ -31,8 +31,14 @@ public class Nivel extends JPanel{
 	
 	//Metodos locales.
 	private void agregarLabel() {
-		level=new ImageIcon(this.getClass().getResource("/resources/static/etiquetas/level1.png"));
-		this.add(new JLabel(level), BorderLayout.CENTER);	
+		level=new JLabel("Level 1");
+		//level.setSize(level.getWidth(), this.getHeight());
+		//Recojo la fuente que se esta utilizando actualmente.
+		Font auxFont=new Font("ArcadeClassic", Font.CENTER_BASELINE,50); 
+		//Aplico la fuente actual, y al final le doy el tamaño del texto...
+		level.setForeground(Color.WHITE);
+		level.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 50));	
+		this.add(level, BorderLayout.CENTER);
 	}
 	
 	
@@ -41,12 +47,11 @@ public class Nivel extends JPanel{
 		switch(i) {
 		
 		case 1: {
-			level=new ImageIcon(this.getClass().getResource("/resources/static/etiquetas/level1.png"));
-			this.add(new JLabel(level), BorderLayout.CENTER);	
-		}
+			level.setText("Level 1");
+			}
 		case 2: {
-			level=new ImageIcon(this.getClass().getResource("/resources/static/etiquetas/level2.png"));
-			this.add(new JLabel(level), BorderLayout.CENTER);	
+			level.setText("Level 2");
+
 		}
 			
 		}

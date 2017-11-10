@@ -21,6 +21,7 @@ public class Dinero extends JPanel{
 	protected JLabel monto;
 	protected Escenario escenario;
 	protected Icon coin;
+	protected int dinero;
 	
 	//Constructor.
 	public Dinero(Escenario esc) {
@@ -36,10 +37,10 @@ public class Dinero extends JPanel{
 		monto=new JLabel("1000");
 		monto.setSize(monto.getWidth(), this.getHeight());
 		//Recojo la fuente que se esta utilizando actualmente.
-		Font auxFont=new Font("Rubber Biscuit Bold", Font.CENTER_BASELINE,45); 
+		Font auxFont=new Font("ArcadeClassic", Font.CENTER_BASELINE,50); 
 		//Aplico la fuente actual, y al final le doy el tamaño del texto...
 		monto.setForeground(Color.WHITE);
-		monto.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 45));
+		monto.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 50));
 		this.add(monto,BorderLayout.EAST);
 		
 		coin=new ImageIcon(this.getClass().getResource("/resources/static/etiquetas/coin.png"));
@@ -47,8 +48,14 @@ public class Dinero extends JPanel{
 	}
 	
 	
-	public void setMonto(String str) {
-		monto.setText(str);
+	public void setMontoCompra(int m) {
+		dinero-=m;
+		monto.setText(""+(dinero));
+	}
+	
+	public void setMontoGanancia(int m) {
+		dinero+=m;
+		monto.setText(""+(dinero+m));
 	}
 	
 }

@@ -30,15 +30,16 @@ public class Score extends JPanel {
 		puntaje=new JLabel("Score 0000");
 		//puntaje.setSize(puntaje.getWidth(), this.getHeight());
 		//Recojo la fuente que se esta utilizando actualmente.
-		Font auxFont=new Font("Rubber Biscuit Bold", Font.CENTER_BASELINE,45); 
+		Font auxFont=new Font("ArcadeClassic", Font.CENTER_BASELINE,50); 
 		//Aplico la fuente actual, y al final le doy el tamaño del texto...
 		puntaje.setForeground(Color.WHITE);
-		puntaje.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 45));
+		puntaje.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 50));
 		//puntaje.setSize(new Dimension(10,50));
 		this.add(puntaje,BorderLayout.CENTER);
 	}
 	
 	public void setPuntaje(int p) {
-		puntaje.setText("Score "+(score+p));
+		score+=p;
+		puntaje.setText("Score "+(score));
 	}
 }

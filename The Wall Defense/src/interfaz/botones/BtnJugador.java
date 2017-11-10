@@ -3,6 +3,8 @@ package interfaz.botones;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.Icon;
 import javax.swing.JButton;
 import interfaz.Escenario;
 import jugador.Jugador;
@@ -18,6 +20,8 @@ public abstract class BtnJugador extends JButton{
 	protected static final long serialVersionUID = 1L;
 	protected Escenario stage;
 	protected Jugador player;
+	protected Icon imagen;
+	protected Icon info;
 	
 	//Constructor.
 	public BtnJugador(Escenario e) {
@@ -27,6 +31,7 @@ public abstract class BtnJugador extends JButton{
 		this.setContentAreaFilled(false);
 		this.setOpaque(true);
 		this.setBackground(Color.BLACK);
+		oyente();
 
 		this.addMouseListener(
 				new MouseAdapter() {
@@ -39,5 +44,6 @@ public abstract class BtnJugador extends JButton{
 	
 	//Metodos abstractos.
 	public abstract void create();
+	public abstract void oyente();
 
 }

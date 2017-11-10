@@ -1,5 +1,8 @@
 package interfaz.botones;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import interfaz.Escenario;
@@ -22,7 +25,8 @@ public class BtnArquero extends BtnJugador {
 		super(e);
 		Celda [] c = new Celda[4];
 		player=new Jugador(c, 2, new Arquero());
-		Icon imagen=new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/ygritte2.png"));
+		imagen=new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/ygritte2.png"));
+		info=new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/ygrittedescripcion.png"));
 		this.setIcon(imagen);
 	}
 	
@@ -30,6 +34,32 @@ public class BtnArquero extends BtnJugador {
 	public void create() {
 		stage.getMapa().crearJugador(player);		
 		
+	}
+	
+	public void oyente() {
+	
+		this.addMouseListener(
+				new MouseAdapter() {
+					public void mouseReleased(MouseEvent e) {
+						setIcon(imagen);
+					}
+					
+					public void mousePressed(MouseEvent e) {
+						setIcon(imagen);
+					}
+					
+					public  void mouseEntered(MouseEvent evento) {
+						setIcon(info);
+
+					}
+					
+					public  void mouseExited(MouseEvent evento) {
+						setIcon(imagen);
+
+					}
+					
+				}
+			);
 	}
 	
 }
