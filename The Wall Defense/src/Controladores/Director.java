@@ -9,8 +9,9 @@ import disparo.Disparo;
 import main.Partida;
 import main.Unidad;
 import mapa.Mapa;
-import objetos.Water;
+import obstaculos.Water;
 import powerUp.PowerUp;
+import tokens.Token;
 
 /*
  * Clase Director.
@@ -19,60 +20,83 @@ import powerUp.PowerUp;
 
 public class Director {
 	// Atributos locales.
-	private static final Director director = new Director();
-	protected ScheduledExecutorService taskPool;
-	protected BancoRecursos banco;
-	protected Partida partida;
+	private static Director director = null;
+	protected static ScheduledExecutorService taskPool;
+	protected static BancoRecursos banco;
+	protected static Partida partida;
+	protected static Mapa mapa;
+
+	// Constantes
+	protected static final int width = 16;
+	protected static final int height = 6;
 
 	// Constructor.
 	private Director() {
 		taskPool = Executors.newSingleThreadScheduledExecutor();
 		banco = new BancoRecursos();
 		partida = new Partida();
-
+		mapa = new Mapa(width, height);
 	}
 
 	public static Director newDirector() {
+		if (director == null) {
+			director = new Director();
+		}
 		return director;
 	}
 
-	public BancoRecursos getBancoRecursos() {
+	public static BancoRecursos getBancoRecursos() {
 		return banco;
 	}
 
-	// Metodos locales.
-	public boolean desactivar(Unidad unidad) {
+	public static Mapa getMapa() {
+		return mapa;
+	}
+
+	public static Partida getPartida() {
+		return partida;
+	}
+
+	// Metodos locales para utilizar el pool piscina loca.
+	public static boolean desactivar(Unidad unidad) {
 		return unidad.getTask().cancel(true);
 
 	}
 
-	public ScheduledFuture<?> ejecutar(Unidad d, int delay) {
+	public static ScheduledFuture<?> ejecutar(Unidad d, int delay) {
 		return taskPool.scheduleWithFixedDelay(d, 0, 100 * delay, TimeUnit.MILLISECONDS);
 	}
 
-	public ScheduledFuture<?> ejecutarUna(Unidad d, int delay) {
+	public static ScheduledFuture<?> ejecutarUna(Unidad d, int delay) {
 		return taskPool.schedule(d, 100 * delay, TimeUnit.MILLISECONDS);
 	}
 
-	public ScheduledFuture<?> ejecutar(Unidad d, long l, int delay) {
+	public static ScheduledFuture<?> ejecutar(Unidad d, long l, int delay) {
 		return taskPool.scheduleWithFixedDelay(d, l + 500, 100 * delay, TimeUnit.MILLISECONDS);
 	}
 
-	public ScheduledFuture<?> ejecutar(Disparo d, int delay) {
+	public static ScheduledFuture<?> ejecutar(Disparo d, int delay) {
 		return taskPool.scheduleWithFixedDelay(d, 0, 1000 * delay, TimeUnit.MICROSECONDS);
 	}
 
-	public void ejecutar(Mapa mapa) {
+	public static void ejecutar(Mapa mapa) {
 		taskPool.scheduleWithFixedDelay(mapa, 1, 3, TimeUnit.SECONDS);
 	}
 
-	public void ejecutarUna(PowerUp powerUp, int delay) {
+	public static void ejecutarUna(PowerUp powerUp, int delay) {
 		taskPool.schedule(powerUp, delay, TimeUnit.SECONDS);
 
 	}
 
-	public ScheduledFuture<?> ejecutarUna(Water water, int delay) {
+	public static ScheduledFuture<?>
+
+			ejecutarUna(Water water, int delay) {
 		return taskPool.schedule(water, delay, TimeUnit.SECONDS);
+
+	}
+
+	public static void ejecutarUna(Token token, int duracion) {
+		taskPool.schedule(token, duracion, TimeUnit.SECONDS);
 
 	}
 }
