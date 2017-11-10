@@ -3,7 +3,8 @@ package main;
 import java.util.concurrent.ConcurrentHashMap;
 
 import mapa.Celda;
-import objetos.ObjetoPrecioso;
+import preciosos.ObjetoPrecioso;
+import tokens.Moneda;
 
 /*
  * Clase Partida.
@@ -67,6 +68,10 @@ public class Partida {
 
 	public void aumentarNivel() {
 		nivel++;
+	}
+
+	public void cargarDinero(Moneda moneda) {
+		dinero += moneda.getValor();
 	}
 
 }
