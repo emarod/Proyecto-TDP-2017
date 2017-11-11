@@ -21,7 +21,6 @@ public class Arquero extends Shooter {
 		velocidad = 15;
 		vida = 2;
 		daño = 1;
-<<<<<<< HEAD
 		disparos_simultaneos = 1;
 		disparos_en_ejecucion = 0;
 		velocidad_disparo = 75;
@@ -38,19 +37,6 @@ public class Arquero extends Shooter {
 		graficos[4] = new ImageIcon(
 				this.getClass().getResource("/resources/static/ygritte_atacando/ygritte_atacando_4.png"));
 		setGrafico(0);
-=======
-		disparos_simultaneos=1;
-		disparos_en_ejecucion=0;
-		velocidad_disparo=75;
-		costo=50;
-		graficos= new Icon[5];
-		//Areglo que divide el sprite en capas para poder simular el movimiento.
-		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte_atacando/ygritte_atacando_0.png"));
-		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte_atacando/ygritte_atacando_1.png"));
-		graficos[2]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte_atacando/ygritte_atacando_2.png"));
-		graficos[3]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte_atacando/ygritte_atacando_3.png"));
-		graficos[4]=new ImageIcon(this.getClass().getResource("/resources/static/ygritte_atacando/ygritte_atacando_4.png"));
->>>>>>> master
 	}
 
 	// Metodos locales.
@@ -92,17 +78,10 @@ public class Arquero extends Shooter {
 	public void playSound() {
 		Director.getBancoRecursos().playFlecha();
 	}
-<<<<<<< HEAD
 
 	@Override
 	public void destruir() {
 		super.destruir();
-=======
-	
-	public void destruir(){
-		jugador.getCeldas()[0].getEscenario().remove(jugador.getGrafico());
-		jugador.getCeldas()[0].getDirector().desactivar(this.getJugador());
->>>>>>> master
 	}
 
 	@Override
@@ -127,14 +106,8 @@ public class Arquero extends Shooter {
 	public int getDaño() {
 		return daño;
 	}
-<<<<<<< HEAD
 
 	@Override
 	public void mover() {
-=======
-	
-	public int getCosto() {
-		return costo;
->>>>>>> master
 	}
 }

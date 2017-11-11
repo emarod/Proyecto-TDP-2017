@@ -1,17 +1,9 @@
 package jugador;
 
-<<<<<<< HEAD
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
 import main.CONFIG;
-=======
-import mapa.Celda;
-import java.util.concurrent.Future;
-import javax.swing.*;
-import Controladores.BancoRecursos;
-import interfaz.Dinero;
->>>>>>> master
 import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
@@ -25,7 +17,6 @@ public abstract class Jugador extends Unidad {
 
 	// Atributos locales.
 	protected JLabel imagen;
-<<<<<<< HEAD
 	protected int daño;
 	protected int vida;
 	protected Icon[] graficos;
@@ -51,30 +42,6 @@ public abstract class Jugador extends Unidad {
 		else {
 			vida = vida - golpe;
 		}
-=======
-	protected int vidas;
-	protected PerfilJugador tipo;
-    protected Future<?> activeAttack;
-	protected BancoRecursos bancoRecursos;
-	protected Dinero dinero;
-
-    
-	//Constructor.
-    public Jugador(Celda[] c,int prof, PerfilJugador t){	 
-    	 alto=30;
-    	 ancho=30;
-    	 profundidad=prof;
-    	 V=new VisitorJugador(this);
-    	 celda=c;    	 
-    	 grafico=new JLabel();
-    	 tipo = t;
-    	 setGrafico();
-    }
-    
-    //Metodos locales.
-	public boolean restarResistencia(int d){ 
-		boolean destruir= (tipo.impact(d));
->>>>>>> master
 		if (destruir) {
 			System.out.println("antes de restar resistencia de jugador");
 			destruir();

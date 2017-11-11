@@ -1,7 +1,6 @@
 package disparo;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import Controladores.Director;
 import jugador.Arquero;
@@ -23,15 +22,17 @@ public class DisparoArquero extends Disparo {
 	// Constructor.
 	public DisparoArquero(Arquero archer) {
 		super();
+
 		arquero = archer;
 		celda[0] = arquero.getCeldas()[0];
+		System.out.println("Inicio constructor arquero");
 		celda[0].addDisparo(this);
 		V = new VisitorDisparoPlayer(this);
-		grafico = new JLabel();
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
 		grafico.setBounds(64 * celda[0].getPosX(), 64 * celda[0].getPosY(), 64, 64);
 		celda[0].getEscenario().agregar(grafico, new Integer(CONFIG.PROFUNDIDAD_DISPARO));
 		activeTask = Director.ejecutar(this, arquero.getVelocidadDisparo());
+		System.out.println("Fin constructor arquero");
 	}
 
 	// Metodos Locales.
@@ -50,6 +51,7 @@ public class DisparoArquero extends Disparo {
 
 	@Override
 	public void mover() {
+		System.out.println("Disparo Arquero");
 		Celda siguiente;
 		arquero.animarDisparo();
 		int xCelda = celda[0].getPosX();

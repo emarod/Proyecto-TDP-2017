@@ -13,7 +13,6 @@ import mapa.Celda;
  * Clase que especifica las caracteristicas y comportamiento del jugador dragon.
  */
 
-<<<<<<< HEAD
 public class Dragon extends Shooter {
 
 	// Atributos locales.
@@ -45,34 +44,6 @@ public class Dragon extends Shooter {
 		graficos[7] = new ImageIcon(
 				this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_7.png"));
 		setGrafico(0);
-=======
-public class Dragon extends PerfilJugador {
-	
-	//Atributos locales.
-	protected Future<?> shot;
-	protected int velocidad_disparo;
-	protected int disparos_simultaneos;
-	protected int disparos_en_ejecucion;
-	
-	//Constructor.
-	public Dragon() {
-		velocidad_jugador=20;
-		resistencia=5;
-		daño=1;
-		disparos_simultaneos=1;
-		disparos_en_ejecucion=0;
-		velocidad_disparo=75;
-		costo=75;
-		graficos= new Icon[8];
-		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_0.png"));
-		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_1.png"));
-		graficos[2]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_2.png"));
-		graficos[3]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_3.png"));
-		graficos[4]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_4.png"));
-		graficos[5]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_5.png"));
-		graficos[6]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_6.png"));
-		graficos[7]=new ImageIcon(this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_7.png"));
->>>>>>> master
 	}
 
 	public void animarDisparo() {
@@ -116,20 +87,11 @@ public class Dragon extends PerfilJugador {
 		Jugador clon = new Dragon(c);
 		return clon;
 	}
-<<<<<<< HEAD
 
 	@Override
 	public void destruir() {
 		super.destruir();
 		celda[1] = null;
-=======
-	
-	public void destruir(){
-		jugador.getCeldas()[0].getEscenario().remove(jugador.getGrafico());
-		jugador.getCeldas()[0].getDirector().desactivar(this.getJugador());
-		jugador.getCeldas()[1].getEscenario().remove(jugador.getGrafico());
-		jugador.getCeldas()[1].getDirector().desactivar(this.getJugador());
->>>>>>> master
 	}
 
 	@Override

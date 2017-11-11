@@ -1,16 +1,17 @@
 package interfaz;
  
+ import javax.swing.border.LineBorder;
 
 import interfaz.botones.BtnArquero;
 import interfaz.botones.BtnDragon;
 import interfaz.botones.BtnCaballero;
 import interfaz.botones.BtnEspadachin;
 import interfaz.botones.BtnBarricada;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.*;
 import mapa.Mapa;
 
@@ -28,124 +29,66 @@ public class MenuCompra extends JPanel{
 	protected static final long serialVersionUID = 1L;
 	protected JPanel botonera;
 	protected Icon background;
-	protected BtnDragon dragon;
-	protected BtnArquero ygritte;
-	protected BtnCaballero lannister;
-	protected BtnEspadachin JonSnow;
  	
 	//Constructor.
 	public MenuCompra(Escenario escenario) {
 		this.escenario= escenario;
-		this.setLayout(new GridLayout(5,1));
-		//this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		this.setBounds(76, 0, 381, 811);
+		this.setLayout(new BorderLayout());
+		this.setBounds(76, 0, 200, 300);
 		this.setBackground(Color.RED);
-		background=new ImageIcon(this.getClass().getResource("/resources/static/tienda/fondo.png"));
-		//this.add(new JLabel(background));
-		//armarPanel();
+		this.setBorder(new LineBorder(new Color(0, 0, 0)));
+		armarPanel();
 		armarBotonera();
 	}
 	
 	//Metodos locales.
 	private void armarBotonera() {
 		
-		dragon= new BtnDragon(this.escenario);
-		
-			dragon.addMouseListener(
-					new MouseAdapter() {
-
-
-						public  void mouseReleased(MouseEvent evento) {
-							escenario.getDinero().setMontoCompra(dragon.getJugador().getState().getCosto());
-							if (escenario.getDinero().getTotal()<dragon.getJugador().getState().getCosto()) {
-								dragon.setEnabled(false);
-							}
-							chequear();
-						}
-
-					});
+		BtnDragon dragon= new BtnDragon(this.escenario);
+		dragon.setBounds(100, 200, dragon.getIcon().getIconWidth(), dragon.getIcon().getIconHeight());
 		
 		
-		ygritte= new BtnArquero(this.escenario);
-		ygritte.addMouseListener(
-				new MouseAdapter() {
-
-
-					public  void mouseReleased(MouseEvent evento) {
-						escenario.getDinero().setMontoCompra(ygritte.getJugador().getState().getCosto());
-						if (escenario.getDinero().getTotal()<ygritte.getJugador().getState().getCosto()) {
-							ygritte.setEnabled(false);
-						}
-						chequear();
-
-					}
-
-				});
+		BtnArquero ygritte= new BtnArquero(this.escenario);
+		ygritte.setBounds(50, 200, ygritte.getIcon().getIconWidth(), ygritte.getIcon().getIconHeight());
 		
 		
-		lannister = new BtnCaballero(this.escenario);
-		lannister.addMouseListener(
-				new MouseAdapter() {
-
-
-					public  void mouseReleased(MouseEvent evento) {
-						escenario.getDinero().setMontoCompra(lannister.getJugador().getState().getCosto());
-						if (escenario.getDinero().getTotal()<lannister.getJugador().getState().getCosto()) {
-							lannister.setEnabled(false);
-						}
-						chequear();
-					}
-
-				});
+		BtnCaballero lannister = new BtnCaballero(this.escenario);
+		lannister.setBounds(0, 15, lannister.getIcon().getIconWidth(), lannister.getIcon().getIconHeight());		
 		
-		JonSnow = new BtnEspadachin(this.escenario);
-		JonSnow.addMouseListener(
-				new MouseAdapter() {
-
-
-					public  void mouseReleased(MouseEvent evento) {
-						escenario.getDinero().setMontoCompra(JonSnow.getJugador().getState().getCosto());
-						if (escenario.getDinero().getTotal()<JonSnow.getJugador().getState().getCosto()) {
-							JonSnow.setEnabled(false);
-						}
-						chequear();
-					}
-
-				});
-		
+		BtnEspadachin JonSnow = new BtnEspadachin(this.escenario);
+		JonSnow.setBounds(0, 50, JonSnow.getIcon().getIconWidth(), JonSnow.getIcon().getIconHeight());
 		
 		BtnBarricada barricada = new BtnBarricada(this.escenario);
 		barricada.setBounds(0, 50, barricada.getIcon().getIconWidth(), barricada.getIcon().getIconHeight());
 		
+		JButton caminante = new JButton(new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif")));
+		caminante.setSize(32, 32);
+		caminante.addMouseListener(
+				new MouseAdapter() {
+					public void mouseClicked(MouseEvent e) {
+						//escenario.getMapa().crearEnemigo(e, 4, 0);
+					}
+				}
+		);
+		this.add(caminante,BorderLayout.EAST);
 		agregarBoton(ygritte);
 		agregarBoton(dragon);
 		agregarBoton(lannister);
 		agregarBoton(JonSnow);
-
+		agregarBoton(barricada);
 		
 	}
 	
-	private void agregarBoton(JButton boton) {
-		this.add(boton);
+	public void agregarBoton(JButton boton) {
+		botonera.add(boton);
 	}
 	
-	private void chequear() {
-		if(escenario.getDinero().getTotal()<75) {
-			dragon.setEnabled(false);
-		}
-		
-		if(escenario.getDinero().getTotal()<50) {
-			ygritte.setEnabled(false);
-		}
-		
-		if(escenario.getDinero().getTotal()<30) {
-			JonSnow.setEnabled(false);
-		}
-		
-		if(escenario.getDinero().getTotal()<25) {
-			lannister.setEnabled(false);
-		}
-		
+	public void armarPanel() {
+		botonera=new JPanel();
+		botonera.setLayout(new GridLayout());
+		botonera.setBounds(76, 0, 300, 100);
+		botonera.setBackground(Color.BLUE);
+		background=new ImageIcon(this.getClass().getResource("/resources/static/tienda/fondo.png"));
+		this.add(botonera, BorderLayout.WEST);
 	}
-
 }

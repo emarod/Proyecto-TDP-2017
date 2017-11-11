@@ -1,5 +1,7 @@
 package disparo;
 
+import javax.swing.JLabel;
+
 import main.CONFIG;
 import main.Unidad;
 
@@ -15,6 +17,7 @@ public abstract class Disparo extends Unidad {
 		profundidad = CONFIG.PROFUNDIDAD_DISPARO;
 		ancho = 64;
 		alto = 64;
+		grafico = new JLabel();
 	}
 
 	// Metodos locales.

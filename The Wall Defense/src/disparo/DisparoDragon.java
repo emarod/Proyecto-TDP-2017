@@ -1,7 +1,6 @@
 package disparo;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import Controladores.Director;
 import jugador.Dragon;
@@ -27,7 +26,6 @@ public class DisparoDragon extends Disparo {
 		celda[0] = dragon.getCeldas()[1];
 		celda[0].addDisparo(this);
 		V = new VisitorDisparoPlayer(this);
-		grafico = new JLabel();
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/bola_fuego.png")));
 		grafico.setBounds(64 * celda[0].getPosX(), 64 * celda[0].getPosY(), 64, 64);
 		celda[0].getEscenario().agregar(grafico, new Integer(CONFIG.PROFUNDIDAD_DISPARO));
@@ -50,6 +48,7 @@ public class DisparoDragon extends Disparo {
 
 	@Override
 	public void mover() {
+		System.out.println("disparo dragon");
 		Celda siguiente;
 		dragon.animarDisparo();
 		int xCelda = celda[0].getPosX();

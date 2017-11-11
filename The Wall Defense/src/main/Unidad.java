@@ -48,7 +48,7 @@ public abstract class Unidad extends GameObject implements Runnable {
 
 	public void activar() {
 		if (activeTask == null) {
-			System.out.println("enemy activado");
+			System.out.println("unidad activada " + this.getClass());
 			activeTask = Director.ejecutar(this, velocidad);
 		}
 		else {

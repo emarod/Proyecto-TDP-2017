@@ -1,8 +1,5 @@
 package interfaz.botones;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 import javax.swing.ImageIcon;
 
 import interfaz.Escenario;
@@ -22,17 +19,9 @@ public class BtnEspadachin extends BtnJugador {
 	// Constructor
 	public BtnEspadachin(Escenario e) {
 		super(e);
-<<<<<<< HEAD
 		Celda[] c = new Celda[4];
 		player = new Espadachin(c);
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/jonsnow.png")));
-=======
-		Celda [] c = new Celda[4];
-		player=new Jugador(c, 2, new Espadachin());
-		imagen=new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/jonsnow.png"));
-		info=new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/espadachindescripcion.png"));
-		this.setIcon(imagen);
->>>>>>> master
 	};
 
 	// Metodos heredados.
@@ -40,26 +29,5 @@ public class BtnEspadachin extends BtnJugador {
 	public void create() {
 		stage.getMapa().crearJugador(player);
 	}
-	
-	public void oyente() {
-		
-		this.addMouseListener(
-				new MouseAdapter() {
-
-
-					public  void mouseEntered(MouseEvent evento) {
-						setIcon(info);
-
-					}
-					
-					public  void mouseExited(MouseEvent evento) {
-						setIcon(imagen);
-
-					}
-					
-				}
-			);
-	}
-
 
 }

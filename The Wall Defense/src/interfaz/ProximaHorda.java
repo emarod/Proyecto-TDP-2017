@@ -3,14 +3,11 @@ package interfaz;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-<<<<<<< HEAD
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-=======
->>>>>>> master
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -45,28 +42,17 @@ public class ProximaHorda extends JPanel {
 	private void agregarLabel() {
 		puntaje = new JLabel("0000");
 		puntaje.setSize(puntaje.getWidth(), this.getHeight());
-<<<<<<< HEAD
 		// Recojo la fuente que se esta utilizando actualmente.
 		Font auxFont = new Font("Game of Thrones Regular", Font.CENTER_BASELINE, 50);
 		// Aplico la fuente actual, y al final le doy el tamaño del texto...
 		puntaje.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 50));
 		// puntaje.setSize(new Dimension(10,50));
 		this.add(puntaje, BorderLayout.CENTER);
-=======
-		//Recojo la fuente que se esta utilizando actualmente.
-		Font auxFont=new Font("Rubber Biscuit Bold", Font.CENTER_BASELINE,45); 
-		//Aplico la fuente actual, y al final le doy el tamaño del texto...
-		puntaje.setForeground(Color.WHITE);
-		puntaje.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 45));
-		//puntaje.setSize(new Dimension(10,50));
-		this.add(puntaje,BorderLayout.CENTER);
->>>>>>> master
 	}
 
 	public void setPuntaje(String str) {
 		puntaje.setText(str);
 	}
-<<<<<<< HEAD
 
 	private void agregarBoton() {
 		JButton wwalker = new JButton(new ImageIcon(
@@ -89,18 +75,5 @@ public class ProximaHorda extends JPanel {
 			}
 		});
 		this.add(dañar);
-=======
-	
-	public boolean terminoHorda(){
-		return horda.terminoHorda();
-	}
-	
-	public void reiniciarHorda(){
-		horda.reiniciarHorda();
-	}
-	
-	public void actualizarEnemigos(){
-		horda.actualizarEnemigos();
->>>>>>> master
 	}
 }

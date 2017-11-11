@@ -3,13 +3,9 @@ package enemigo;
 import disparo.Disparo;
 import jugador.Jugador;
 import main.Visitor;
-<<<<<<< HEAD
 import obstaculos.ObstaculoTemporal;
 import obstaculos.ObstaculoVida;
 import preciosos.ObjetoPrecioso;
-=======
-import terreno.Rock;
->>>>>>> master
 
 /*
  * Clase VisitorEnemigo.
@@ -21,7 +17,6 @@ public class VisitorEnemigo extends Visitor {
 
 	// Atributos locales.
 	protected Enemigo enemigo;
-<<<<<<< HEAD
 
 	// Constructor.
 	public VisitorEnemigo(Enemigo e) {
@@ -64,50 +59,4 @@ public class VisitorEnemigo extends Visitor {
 		op.recibirDaño(enemigo.getDaño());
 		return false;
 	}
-=======
-	
-	//Constructor.
-	public VisitorEnemigo(Enemigo e){
-    	enemigo = e;
-    }
-    
-	//Metodos heredados.
-	public boolean visitObstaculo(Obstaculo o) {
-		o.restarResistencia(enemigo.getDaño());
-		return false;
-	}
-	
-   public  boolean VisitRock(Rock r){
-	   r.restarResistencia(enemigo.getDaño());
-	   return false;
-   }
-   
-   /*
-   public  boolean VisitBarricada(Barricada b){
-	   b.restarResistencia();
-	   return false;
-   }
-   */
-	
-   public  boolean VisitWater(Water w){
-	   enemigo.relentizar(w.getPenalizacion());
-	   return true;
-   }
-   
-   public  boolean visitPlayer(Jugador j){
-	   System.out.println("el juagador visita a enemigo");
-	   j.restarResistencia(enemigo.getDaño());
-	   return false;
-   }
-   
-   public boolean visitDisparoPlayer(Disparo d){
-	   d.destruir();
-	   enemigo.restarResistencia(d.getDaño());
-	   return true;
-   }   
-   
-   public boolean visitEnemigo(Enemigo e){
-	   return false;
-   }
->>>>>>> master
 }

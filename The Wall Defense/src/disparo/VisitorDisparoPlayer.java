@@ -3,15 +3,10 @@ package disparo;
 import enemigo.Enemigo;
 import jugador.Jugador;
 import main.Visitor;
-<<<<<<< HEAD
 import obstaculos.Obstaculo;
 import obstaculos.ObstaculoTemporal;
 import obstaculos.ObstaculoVida;
 import preciosos.ObjetoPrecioso;
-=======
-import obstaculo.*;
-import terreno.Rock;
->>>>>>> master
 
 /*
  * Clase VisitorDisparoPlayer.
@@ -33,7 +28,6 @@ public class VisitorDisparoPlayer extends Visitor {
 	public boolean visitObstaculo(Obstaculo o) {
 		return true;
 	}
-<<<<<<< HEAD
 
 	@Override
 	public boolean visitPlayer(Jugador j) {
@@ -42,15 +36,6 @@ public class VisitorDisparoPlayer extends Visitor {
 
 	@Override
 	public boolean visitDisparoPlayer(Disparo d) {
-=======
-	
-	public boolean VisitRock(Rock r) {
-		return true;
-	}
-	
-	/*
-	public boolean VisitBarricada(Barricada b) {
->>>>>>> master
 		return true;
 	}
 
@@ -71,14 +56,8 @@ public class VisitorDisparoPlayer extends Visitor {
 		return true;
 	}
 
-<<<<<<< HEAD
 	@Override
 	public boolean visitObjetoPrecioso(ObjetoPrecioso op) {
-=======
-	public boolean visitEnemigo(Enemigo e){
-		e.restarResistencia(disparo.getDaño());
-		disparo.destruir();
->>>>>>> master
 		return true;
 	}
 

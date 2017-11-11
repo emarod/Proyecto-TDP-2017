@@ -41,7 +41,6 @@ public abstract class Enemigo extends Unidad {
 	public Visitor getVisitor() {
 		return V;
 	}
-<<<<<<< HEAD
 
 	public boolean recibirDaño(int golpe) {
 		boolean destruir = false;
@@ -52,15 +51,6 @@ public abstract class Enemigo extends Unidad {
 		else {
 			vida = vida - golpe;
 		}
-=======
-    
-    public Visitor getVisitor() {
-    	return V;
-    }
-    
-	public boolean restarResistencia(int d){ 
-		boolean destruir= tipo.impact(d);
->>>>>>> master
 		if (destruir) {
 			destruir();
 		}
