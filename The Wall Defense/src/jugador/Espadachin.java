@@ -14,7 +14,7 @@ public class Espadachin extends PerfilJugador{
 	//Constructor.
 	public Espadachin() {
 		resistencia=8;
-		costo=30;
+		costo=25;
 	}
 	
 	//Metodos heredados.
