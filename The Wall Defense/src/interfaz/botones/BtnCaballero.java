@@ -1,5 +1,8 @@
 package interfaz.botones;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.ImageIcon;
 
 import interfaz.Escenario;
@@ -19,6 +22,7 @@ public class BtnCaballero extends BtnJugador {
 	// Constructor.
 	public BtnCaballero(Escenario e) {
 		super(e);
+<<<<<<< HEAD
 		Celda[] c = new Celda[4];
 		player = new Caballero(c);
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/lannister.png")));
@@ -26,9 +30,39 @@ public class BtnCaballero extends BtnJugador {
 
 	// Metodos heredados.
 	@Override
+=======
+		Celda [] c = new Celda[4];
+		player=new Jugador(c, 2, new Caballero());
+		imagen=new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/lannister.png"));
+		info=new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/caballerodescripcion.png"));
+		this.setIcon(imagen);
+				
+	}
+	
+	//Metodos heredados.
+>>>>>>> master
 	public void create() {
 		stage.getMapa().crearJugador(player);
 
+	}
+	
+	public void oyente() {
+		
+		this.addMouseListener(
+				new MouseAdapter() {
+					
+					public  void mouseEntered(MouseEvent evento) {
+						setIcon(info);
+
+					}
+					
+					public  void mouseExited(MouseEvent evento) {
+						setIcon(imagen);
+
+					}
+					
+				}
+			);
 	}
 
 }

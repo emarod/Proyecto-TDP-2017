@@ -27,7 +27,7 @@ public class BancoRecursos {
 		roca =TinySound.loadSound("/resources/sound/golpe_roca.wav");
 		barricada =TinySound.loadSound("/resources/sound/golpe_roca.wav");
 		//Inicializa el loop
-		song.play(true);
+		//song.play(true);
 		
 	};
 	

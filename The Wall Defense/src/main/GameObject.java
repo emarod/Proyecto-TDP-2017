@@ -1,7 +1,10 @@
 package main;
 
+<<<<<<< HEAD
 import java.awt.Point;
 
+=======
+>>>>>>> master
 import javax.swing.JLabel;
 
 import mapa.Celda;
@@ -29,8 +32,11 @@ public abstract class GameObject {
 
 	public void destruir() {
 		grafico.setIcon(null);
+<<<<<<< HEAD
 		celda[0].getEscenario().remove(grafico);
 		celda[0].getObjects()[profundidad] = null;
+=======
+>>>>>>> master
 	}
 
 	public int getProfundidad() {
@@ -41,10 +47,13 @@ public abstract class GameObject {
 		return celda;
 	}
 
+<<<<<<< HEAD
 	public Point xy() {
 		return new Point(celda[0].getPosX(), celda[0].getPosY());
 	}
 
+=======
+>>>>>>> master
 	public void setCelda(Celda c, int pos) {
 		celda[pos] = c;
 	}

@@ -3,12 +3,18 @@ package interfaz;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+<<<<<<< HEAD
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+=======
+import java.awt.event.KeyEvent;
+
+import javax.swing.*;
+>>>>>>> master
 import javax.swing.border.LineBorder;
 
 import Controladores.Director;
@@ -23,21 +29,24 @@ public class GUI extends JFrame {
 	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
 	protected Escenario escenario;
-	protected MenuCompra tienda;
-	protected ProximaHorda horda;
-	protected Score puntaje;
+	//protected Score puntaje;
 	protected JPanel panelInferior;
 	protected JPanel panelIzquierdo;
 	protected JPanel panelDerecho;
 	protected JPanel panelSuperior;
 	protected JPanel grafica;
 
+<<<<<<< HEAD
 	// Constructor.
 	public GUI(Director director) {
+=======
+	//Constructor.
+	public GUI() {	
+>>>>>>> master
 		super("The Wall Defense");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(0, 0, 1240, 550);
-		this.setResizable(true);
+		this.setBounds(0, 0, 1245, 570);
+		this.setResizable(false);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 
@@ -45,6 +54,7 @@ public class GUI extends JFrame {
 		escenario = new Escenario(director);
 		getContentPane().add(escenario, BorderLayout.CENTER);
 
+<<<<<<< HEAD
 		// MenuCompra
 		tienda = new MenuCompra(escenario);
 
@@ -57,9 +67,15 @@ public class GUI extends JFrame {
 
 		// Panel Inferior
 		panelInferior = new JPanel();
+=======
+		//Panel Inferior
+		panelInferior= new JPanel();
+>>>>>>> master
 		panelInferior.setLayout(new BorderLayout());
-		panelInferior.setPreferredSize(new Dimension(10, 79));
+		panelInferior.setPreferredSize(new Dimension(10, 100));
+		panelInferior.setBackground(Color.BLACK);
 		getContentPane().add(panelInferior, BorderLayout.SOUTH);
+<<<<<<< HEAD
 		// panelInferior.add(horda, BorderLayout.EAST);
 		panelInferior.add(tienda, BorderLayout.CENTER);
 
@@ -67,10 +83,20 @@ public class GUI extends JFrame {
 		panelIzquierdo = new JPanel();
 		panelIzquierdo.setLayout(new BorderLayout());
 		Icon bannerLeft = new ImageIcon(this.getClass().getResource("/resources/static/banner/Banner_4.jpg"));
+=======
+		
+		
+		
+		//Panel izquierdo
+		panelIzquierdo= new JPanel();
+		panelIzquierdo.setLayout(new BorderLayout());
+		//Icon bannerLeft=new ImageIcon(this.getClass().getResource("/resources/static/banner/Banner_4.jpg"));
+>>>>>>> master
 		panelIzquierdo.setBounds(0, 0, 400, 310);
 		panelIzquierdo.setPreferredSize(new Dimension(100, 200));
 		panelIzquierdo.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelIzquierdo.setBackground(Color.BLACK);
+<<<<<<< HEAD
 		panelIzquierdo.add(new JLabel(bannerLeft), BorderLayout.CENTER);
 		getContentPane().add(panelIzquierdo, BorderLayout.WEST);
 
@@ -78,10 +104,17 @@ public class GUI extends JFrame {
 		panelDerecho = new JPanel();
 		panelDerecho.setLayout(new BorderLayout());
 		Icon bannerRight = new ImageIcon(this.getClass().getResource("/resources/static/banner/Banner_2.jpg"));
+=======
+		panelIzquierdo.add(escenario.getMenu());
+		getContentPane().add(panelIzquierdo,BorderLayout.WEST);
+		
+		//Panel Derecho
+		panelDerecho= new JPanel();
+		panelDerecho.setLayout(new BorderLayout());
+>>>>>>> master
 		panelDerecho.setPreferredSize(new Dimension(100, 100));
 		panelDerecho.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelDerecho.setBackground(Color.BLACK);
-		panelDerecho.add(new JLabel(bannerRight), BorderLayout.EAST);
 		getContentPane().add(panelDerecho, BorderLayout.EAST);
 
 		// Panel Superior
@@ -89,8 +122,15 @@ public class GUI extends JFrame {
 		panelSuperior.setBackground(Color.BLACK);
 		panelSuperior.setLayout(new BorderLayout());
 		panelSuperior.setPreferredSize(new Dimension(10, 50));
+<<<<<<< HEAD
 		panelSuperior.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelSuperior.add(puntaje, BorderLayout.EAST);
+=======
+		panelSuperior.setBorder(new LineBorder(new Color(0, 0, 0)));		
+		panelSuperior.add(escenario.getScore(), BorderLayout.EAST);
+		panelSuperior.add(escenario.getDinero(), BorderLayout.WEST);
+		panelSuperior.add(escenario.getLevel(), BorderLayout.CENTER);
+>>>>>>> master
 		getContentPane().add(panelSuperior, BorderLayout.NORTH);
 	}
 

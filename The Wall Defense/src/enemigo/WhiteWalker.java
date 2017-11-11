@@ -43,9 +43,14 @@ public class WhiteWalker extends Enemigo {
 
 	@Override
 	public void setGrafico(JLabel grafico) {
+<<<<<<< HEAD
 		ImageIcon imagen = new ImageIcon(
 				this.getClass().getResource("/resources/static/ww_atacando/ww_atacando00.png"));
 		graph = 0;
+=======
+		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando00.png"));
+		graph=0;
+>>>>>>> master
 		grafico.setIcon(imagen);
 	}
 

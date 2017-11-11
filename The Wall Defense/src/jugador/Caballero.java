@@ -10,6 +10,7 @@ import mapa.Celda;
  * Clase que especifica las caracteristicas y comportamiento del jugador caballero.
  */
 
+<<<<<<< HEAD
 public class Caballero extends Jugador {
 
 	// Constructor.
@@ -31,6 +32,28 @@ public class Caballero extends Jugador {
 	public void setGrafico(JLabel grafico) {
 		ImageIcon imagen = new ImageIcon(
 				this.getClass().getResource("/resources/dinamic/personajes/lannister_atacando.gif"));
+=======
+public class Caballero extends PerfilJugador{
+	
+	//Constructor.
+	public Caballero() {
+		resistencia=10;
+		costo=30;
+	}
+	
+	//Metodos heredados.
+	public void setJugador(Jugador jugador){
+		this.jugador = jugador;
+	}
+	
+    public Future<?> atacar(){
+		return null;
+    	
+    }
+    
+    public void setGrafico(JLabel grafico){
+    	ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/lannister_atacando.gif"));
+>>>>>>> master
 		grafico.setIcon(imagen);
 	}
 
@@ -46,10 +69,17 @@ public class Caballero extends Jugador {
 	public void playSound() {
 
 	}
+<<<<<<< HEAD
 
 	@Override
 	public void destruir() {
 		super.destruir();
+=======
+	
+	public void destruir(){
+		jugador.getCeldas()[0].getEscenario().remove(jugador.getGrafico());
+		jugador.getCeldas()[0].getDirector().desactivar(this.getJugador());
+>>>>>>> master
 	}
 
 	@Override
