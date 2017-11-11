@@ -21,6 +21,11 @@ public class Escenario extends JPanel {
 	protected JLayeredPane layeredPane;
 	protected Map mapa;
 	protected ProximaHorda horda;
+	protected MenuCompra menucompra;
+	protected Dinero dinero;
+	protected Score score;
+	protected MenuPowerups powerups;
+	protected Nivel level;
 	
 	//Constructor.
 	public Escenario(){
@@ -31,6 +36,11 @@ public class Escenario extends JPanel {
 		
 		this.add(layeredPane);
 		mapa= new Map(this,width,height,r);
+		menucompra=new MenuCompra(this);
+		dinero=new Dinero(this);
+		score=new Score(this);
+		powerups=new MenuPowerups(this);
+		level=new Nivel(this);
 	}
 	
 	//Metodos locales.
@@ -48,6 +58,22 @@ public class Escenario extends JPanel {
 	
 	public Map getMapa() {
 		return mapa;
+	}
+	
+	public MenuCompra getMenu() {
+		return menucompra;
+	}
+	
+	public Dinero getDinero() {
+		return dinero;
+	}
+	
+	public Score getScore() {
+		return score;
+	}
+	
+	public Nivel getLevel() {
+		return level;
 	}
 	
 	public void setHorda(ProximaHorda p) {

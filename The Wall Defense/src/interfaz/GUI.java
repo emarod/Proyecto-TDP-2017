@@ -18,7 +18,6 @@ public class GUI extends JFrame{
 	//Atributos locales.
 	protected static final long serialVersionUID = 1L;
 	protected Escenario escenario;
-	protected MenuCompra tienda;	
 	//protected Score puntaje;
 	protected JPanel panelInferior;
 	protected JPanel panelIzquierdo;
@@ -26,11 +25,7 @@ public class GUI extends JFrame{
 	protected JPanel panelSuperior;
 	protected JPanel grafica;
 	protected JTabbedPane tabbedPane;
-	//Etiquetas en la interfaz
-	protected Dinero dinero;
-	protected Score puntaje;
-	protected Nivel level;
-	
+
 	//Constructor.
 	public GUI() {	
 		super("The Wall Defense");
@@ -44,20 +39,8 @@ public class GUI extends JFrame{
 		escenario= new Escenario();	
 		getContentPane().add(escenario, BorderLayout.CENTER);
 		
-		//MenuCompra
-		tienda= new MenuCompra(escenario);
-		
 		//Menu de power ups.
 		MenuPowerups powerups=new MenuPowerups(escenario);
-		
-		
-		//Puntaje		
-		puntaje=new Score(escenario);
-		//Dinero		
-		dinero=new Dinero(escenario);
-
-		//Nivel
-		level=new Nivel(escenario);
 
 		
 		
@@ -108,7 +91,7 @@ public class GUI extends JFrame{
 		panelIzquierdo.setPreferredSize(new Dimension(100, 200));
 		panelIzquierdo.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelIzquierdo.setBackground(Color.BLACK);
-		panelIzquierdo.add(tienda);
+		panelIzquierdo.add(escenario.getMenu());
 		getContentPane().add(panelIzquierdo,BorderLayout.WEST);
 		
 		//Panel Derecho
@@ -126,9 +109,9 @@ public class GUI extends JFrame{
 		panelSuperior.setLayout(new BorderLayout());
 		panelSuperior.setPreferredSize(new Dimension(10, 50));
 		panelSuperior.setBorder(new LineBorder(new Color(0, 0, 0)));		
-		panelSuperior.add(puntaje, BorderLayout.EAST);
-		panelSuperior.add(dinero, BorderLayout.WEST);
-		panelSuperior.add(level, BorderLayout.CENTER);
+		panelSuperior.add(escenario.getScore(), BorderLayout.EAST);
+		panelSuperior.add(escenario.getDinero(), BorderLayout.WEST);
+		panelSuperior.add(escenario.getLevel(), BorderLayout.CENTER);
 		getContentPane().add(panelSuperior, BorderLayout.NORTH);
 	}
 }

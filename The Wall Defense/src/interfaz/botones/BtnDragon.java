@@ -39,14 +39,7 @@ public class BtnDragon extends BtnJugador {
 		
 		this.addMouseListener(
 				new MouseAdapter() {
-					public void mouseReleased(MouseEvent e) {
-						setIcon(imagen);
-					}
-					
-					public void mousePressed(MouseEvent e) {
-						setIcon(imagen);
-					}
-					
+
 					public  void mouseEntered(MouseEvent evento) {
 						setIcon(info);
 

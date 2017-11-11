@@ -6,7 +6,10 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
+
+import interfaz.Dinero;
 import interfaz.Escenario;
+import interfaz.MenuCompra;
 import jugador.Jugador;
 
 /*
@@ -22,6 +25,7 @@ public abstract class BtnJugador extends JButton{
 	protected Jugador player;
 	protected Icon imagen;
 	protected Icon info;
+	protected Dinero dinero;
 	
 	//Constructor.
 	public BtnJugador(Escenario e) {
