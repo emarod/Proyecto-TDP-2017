@@ -4,6 +4,7 @@ import mapa.Celda;
 import java.util.concurrent.Future;
 import javax.swing.*;
 import Controladores.BancoRecursos;
+import interfaz.Dinero;
 import main.Unidad;
 import main.Visitor;
 
@@ -20,6 +21,8 @@ public class Jugador extends Unidad{
 	protected PerfilJugador tipo;
     protected Future<?> activeAttack;
 	protected BancoRecursos bancoRecursos;
+	protected Dinero dinero;
+
     
 	//Constructor.
     public Jugador(Celda[] c,int prof, PerfilJugador t){	 
@@ -30,7 +33,7 @@ public class Jugador extends Unidad{
     	 celda=c;    	 
     	 grafico=new JLabel();
     	 tipo = t;
-    	 setGrafico(); 
+    	 setGrafico();
     }
     
     //Metodos locales.

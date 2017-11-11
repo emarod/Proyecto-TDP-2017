@@ -25,7 +25,6 @@ public abstract class BtnJugador extends JButton{
 	protected Jugador player;
 	protected Icon imagen;
 	protected Icon info;
-	protected Dinero dinero;
 	
 	//Constructor.
 	public BtnJugador(Escenario e) {
@@ -44,6 +43,11 @@ public abstract class BtnJugador extends JButton{
 					}
 				}
 		);
+	}
+	
+	//Metodo Implementado
+	public Jugador getJugador() {
+		return player;
 	}
 	
 	//Metodos abstractos.

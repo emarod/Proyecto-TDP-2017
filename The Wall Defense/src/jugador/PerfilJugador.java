@@ -46,6 +46,10 @@ public abstract class PerfilJugador {
 	public void setAtaque(int a) {
 		daño=a;
 	}
+	
+	public int getCosto() {
+		return costo;
+	}
     
 	//Metodos abstractos.
     public abstract Future<?> atacar();

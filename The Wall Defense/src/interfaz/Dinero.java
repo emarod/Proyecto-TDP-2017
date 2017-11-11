@@ -29,12 +29,13 @@ public class Dinero extends JPanel{
 		this.setBorder(new LineBorder(new Color(0, 0, 0)));
 		this.escenario=esc;
 		agregarLabel();
-		this.setBackground(Color.BLACK);		
+		this.setBackground(Color.BLACK);	
+		dinero=200;
 	}
 	
 	//Metodos locales.
 	private void agregarLabel() {
-		monto=new JLabel("1000");
+		monto=new JLabel(""+dinero);
 		monto.setSize(monto.getWidth(), this.getHeight());
 		//Recojo la fuente que se esta utilizando actualmente.
 		Font auxFont=new Font("ArcadeClassic", Font.CENTER_BASELINE,50); 
@@ -49,13 +50,17 @@ public class Dinero extends JPanel{
 	
 	
 	public void setMontoCompra(int m) {
-		dinero-=m;
+		dinero=dinero-m;
 		monto.setText(""+(dinero));
 	}
 	
 	public void setMontoGanancia(int m) {
 		dinero+=m;
-		monto.setText(""+(dinero+m));
+		monto.setText(""+(dinero));
+	}
+	
+	public int getTotal() {
+		return dinero;
 	}
 	
 }

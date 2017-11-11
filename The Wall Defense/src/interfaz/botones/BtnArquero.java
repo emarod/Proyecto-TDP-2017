@@ -41,11 +41,6 @@ public class BtnArquero extends BtnJugador {
 		this.addMouseListener(
 				new MouseAdapter() {
 					
-					public  void mouseReleased(MouseEvent evento) {
-						
-
-					}
-					
 					public  void mouseEntered(MouseEvent evento) {
 						setIcon(info);
 
@@ -59,5 +54,6 @@ public class BtnArquero extends BtnJugador {
 				}
 			);
 	}
+
 	
 }

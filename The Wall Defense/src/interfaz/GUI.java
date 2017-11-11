@@ -40,7 +40,6 @@ public class GUI extends JFrame{
 		getContentPane().add(escenario, BorderLayout.CENTER);
 		
 		//Menu de power ups.
-		MenuPowerups powerups=new MenuPowerups(escenario);
 
 		
 		
@@ -100,7 +99,6 @@ public class GUI extends JFrame{
 		panelDerecho.setPreferredSize(new Dimension(100, 100));
 		panelDerecho.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelDerecho.setBackground(Color.BLACK);
-		panelDerecho.add(powerups);
 		getContentPane().add(panelDerecho, BorderLayout.EAST);
 		
 		//Panel Superior

@@ -111,4 +111,8 @@ public class Arquero extends PerfilJugador{
 	public int getDaño(){
 		return daño;
 	}
+	
+	public int getCosto() {
+		return costo;
+	}
 }

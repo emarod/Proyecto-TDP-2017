@@ -39,6 +39,7 @@ public class BtnEspadachin extends BtnJugador {
 		this.addMouseListener(
 				new MouseAdapter() {
 
+
 					public  void mouseEntered(MouseEvent evento) {
 						setIcon(info);
 
@@ -52,5 +53,6 @@ public class BtnEspadachin extends BtnJugador {
 				}
 			);
 	}
+
 
 }
