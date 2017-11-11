@@ -21,13 +21,26 @@ public class Escenario extends JPanel {
 	protected JLayeredPane layeredPane;
 	protected Mapa mapa;
 	protected ProximaHorda horda;
+	protected MenuCompra menucompra;
+	protected Dinero dinero;
+	protected Score score;
+	protected MenuPowerups powerups;
+	protected Nivel level;
 
 	// Constructor.
-	public Escenario(Director director) {
+	public Escenario() {
+
 		layeredPane = new JLayeredPane();
 		layeredPane.setPreferredSize(new Dimension(1026, 384));
 
 		this.add(layeredPane);
+
+		menucompra = new MenuCompra(this);
+		dinero = new Dinero(this);
+		score = new Score(this);
+		powerups = new MenuPowerups(this);
+		level = new Nivel(this);
+
 		mapa = Director.getMapa();
 		mapa.setEscenario(this);
 		mapa.inicializarCeldas();
@@ -65,6 +78,22 @@ public class Escenario extends JPanel {
 
 	public int getPosY() {
 		return this.getY();
+	}
+
+	public MenuCompra getMenu() {
+		return menucompra;
+	}
+
+	public Dinero getDinero() {
+		return dinero;
+	}
+
+	public Score getScore() {
+		return score;
+	}
+
+	public Nivel getLevel() {
+		return level;
 	}
 
 }

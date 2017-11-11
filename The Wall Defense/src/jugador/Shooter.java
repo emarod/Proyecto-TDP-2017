@@ -9,12 +9,9 @@ public abstract class Shooter extends Jugador {
 	// Atributos locales.
 	protected Future<?> shot;
 	protected int velocidad_disparo;
-	protected int disparos_simultaneos;
-	protected int disparos_en_ejecucion;
 
 	public Shooter(Celda[] c) {
 		super(c);
-		// TODO Auto-generated constructor stub
 	}
 
 }

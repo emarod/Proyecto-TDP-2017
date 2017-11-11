@@ -42,10 +42,8 @@ public class Celda {
 	public void addDisparo(GameObject d) {
 		System.out.println("addDisparo(d)");
 		if (hayDisparo) {
-			System.out.println("Hay disparo");
 			disparos.addFirst(d);
 			refresh();
-			System.out.println("refrescado");
 		}
 		else {
 			listaObjetosLogicos[CONFIG.PROFUNDIDAD_DISPARO] = d;

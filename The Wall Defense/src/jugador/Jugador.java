@@ -21,6 +21,7 @@ public abstract class Jugador extends Unidad {
 	protected int vida;
 	protected Icon[] graficos;
 	protected int graph;
+	protected int costo;
 
 	// Constructor.
 	public Jugador(Celda[] c) {
@@ -94,6 +95,10 @@ public abstract class Jugador extends Unidad {
 	@Override
 	public void setVelocidad(int speed) {
 		velocidad = speed;
+	}
+
+	public int getCosto() {
+		return costo;
 	}
 
 	@Override

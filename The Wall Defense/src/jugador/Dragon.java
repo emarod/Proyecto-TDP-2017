@@ -23,8 +23,7 @@ public class Dragon extends Shooter {
 		velocidad = 20;
 		vida = 5;
 		daño = 3;
-		disparos_simultaneos = 1;
-		disparos_en_ejecucion = 0;
+		costo = 75;
 		velocidad_disparo = 75;
 		graficos = new Icon[8];
 		graficos[0] = new ImageIcon(
@@ -63,15 +62,6 @@ public class Dragon extends Shooter {
 	public int getVelocidadDisparo() {
 		return velocidad_disparo;
 	}
-
-	public void restarDisparosEnEjecucion() {
-		disparos_en_ejecucion--;
-	}
-
-	public int getDisparosEnEjecucion() {
-		return disparos_en_ejecucion;
-	}
-
 	// Metodos heredados.
 
 	@Override
@@ -101,11 +91,9 @@ public class Dragon extends Shooter {
 
 	@Override
 	public void atacar() {
-		// if(disparos_en_ejecucion<disparos_simultaneos){
 		if (shot == null || shot.isCancelled() || shot.isDone()) {
 			playSound();
 			shot = new DisparoDragon(this).getTask();
-			disparos_en_ejecucion++;
 		}
 		graph = 0;
 	}

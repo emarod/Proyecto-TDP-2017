@@ -38,7 +38,6 @@ public class DisparoEnemigo extends Disparo {
 	@Override
 	public void destruir() {
 		super.destruir();
-		restarDisparosEnEjecucion();
 		nightking = null;
 	}
 
@@ -80,11 +79,6 @@ public class DisparoEnemigo extends Disparo {
 
 	@Override
 	public void atacar() {
-	}
-
-	@Override
-	public void restarDisparosEnEjecucion() {
-		nightking.restarDisparosEnEjecucion();
 	}
 
 	@Override

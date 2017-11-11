@@ -30,7 +30,7 @@ public class Director {
 	// Constructor.
 	private Director() {
 		taskPool = Executors.newSingleThreadScheduledExecutor();
-		banco = new BancoRecursos();
+		banco = BancoRecursos.newBancoRecursos();
 		partida = new Partida();
 		mapa = new Mapa();
 	}

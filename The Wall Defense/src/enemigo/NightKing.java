@@ -21,7 +21,7 @@ public class NightKing extends ShooterEnemigo {
 	public NightKing(Celda[] c, int prof) {
 		super(c, prof);
 		puntaje = 200;
-		velocidad = 50;
+		velocidad = 100;
 		daño = 3;
 		vida = 6;
 		graficos = new Icon[14];

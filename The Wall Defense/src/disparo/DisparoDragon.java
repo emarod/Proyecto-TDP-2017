@@ -36,7 +36,6 @@ public class DisparoDragon extends Disparo {
 	@Override
 	public void destruir() {
 		super.destruir();
-		restarDisparosEnEjecucion();
 		dragon = null;
 	}
 
@@ -48,7 +47,6 @@ public class DisparoDragon extends Disparo {
 
 	@Override
 	public void mover() {
-		System.out.println("disparo dragon");
 		Celda siguiente;
 		dragon.animarDisparo();
 		int xCelda = celda[0].getPosX();
@@ -79,11 +77,6 @@ public class DisparoDragon extends Disparo {
 
 	@Override
 	public void atacar() {
-	}
-
-	@Override
-	public void restarDisparosEnEjecucion() {
-		dragon.restarDisparosEnEjecucion();
 	}
 
 	@Override

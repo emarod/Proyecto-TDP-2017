@@ -21,8 +21,7 @@ public class Arquero extends Shooter {
 		velocidad = 15;
 		vida = 2;
 		daño = 1;
-		disparos_simultaneos = 1;
-		disparos_en_ejecucion = 0;
+		costo = 50;
 		velocidad_disparo = 75;
 		graficos = new Icon[5];
 		// Areglo que divide el sprite en capas para poder simular el movimiento.
@@ -48,14 +47,6 @@ public class Arquero extends Shooter {
 		if (graph == 4) {
 			setGrafico(0);
 		}
-	}
-
-	public void restarDisparosEnEjecucion() {
-		disparos_en_ejecucion--;
-	}
-
-	public int getDisparosEnEjecucion() {
-		return disparos_en_ejecucion;
 	}
 
 	public void setGrafico(int i) {
@@ -86,10 +77,8 @@ public class Arquero extends Shooter {
 
 	@Override
 	public void atacar() {
-		// if(disparos_en_ejecucion<disparos_simultaneos){
 		if (shot == null || shot.isCancelled() || shot.isDone()) {
 			shot = new DisparoArquero(this).getTask();
-			disparos_en_ejecucion++;
 		}
 		graph = 0;
 	}

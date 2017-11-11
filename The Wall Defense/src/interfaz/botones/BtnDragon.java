@@ -1,5 +1,8 @@
 package interfaz.botones;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.ImageIcon;
 
 import interfaz.Escenario;
@@ -21,7 +24,9 @@ public class BtnDragon extends BtnJugador {
 		super(e);
 		Celda[] c = new Celda[4];
 		player = new Dragon(c);
-		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/dragon.png")));
+		imagen = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/dragon.png"));
+		info = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/dragondescripcion.png"));
+		this.setIcon(imagen);
 	}
 
 	// Metodos heredados.
@@ -29,6 +34,26 @@ public class BtnDragon extends BtnJugador {
 	public void create() {
 		stage.getMapa().crearJugadorLargo(player);
 
+	}
+
+	@Override
+	public void oyente() {
+
+		this.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseEntered(MouseEvent evento) {
+				setIcon(info);
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent evento) {
+				setIcon(imagen);
+
+			}
+
+		});
 	}
 
 }

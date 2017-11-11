@@ -52,7 +52,7 @@ public class Juego {
 		director = Director.newDirector();
 
 		// Creo menu de inicio
-		opciones = new MenuInicio(this, director);
+		opciones = new MenuInicio(this);
 
 		menu.setContentPane(new JLabel(background));
 		menu.pack();
@@ -65,7 +65,7 @@ public class Juego {
 		opciones = null;
 		menu.removeAll();
 		menu.dispose();
-		frame = new GUI(director);
+		frame = new GUI();
 		frame.setVisible(true);
 	}
 

@@ -22,24 +22,20 @@ public class DisparoArquero extends Disparo {
 	// Constructor.
 	public DisparoArquero(Arquero archer) {
 		super();
-
 		arquero = archer;
 		celda[0] = arquero.getCeldas()[0];
-		System.out.println("Inicio constructor arquero");
 		celda[0].addDisparo(this);
 		V = new VisitorDisparoPlayer(this);
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
 		grafico.setBounds(64 * celda[0].getPosX(), 64 * celda[0].getPosY(), 64, 64);
 		celda[0].getEscenario().agregar(grafico, new Integer(CONFIG.PROFUNDIDAD_DISPARO));
 		activeTask = Director.ejecutar(this, arquero.getVelocidadDisparo());
-		System.out.println("Fin constructor arquero");
 	}
 
 	// Metodos Locales.
 	@Override
 	public void destruir() {
 		super.destruir();
-		restarDisparosEnEjecucion();
 		arquero = null;
 	}
 
@@ -51,7 +47,6 @@ public class DisparoArquero extends Disparo {
 
 	@Override
 	public void mover() {
-		System.out.println("Disparo Arquero");
 		Celda siguiente;
 		arquero.animarDisparo();
 		int xCelda = celda[0].getPosX();
@@ -93,11 +88,6 @@ public class DisparoArquero extends Disparo {
 	@Override
 	public void setVelocidad(int speed) {
 		arquero.setVelocidad(speed);
-	}
-
-	@Override
-	public void restarDisparosEnEjecucion() {
-		arquero.restarDisparosEnEjecucion();
 	}
 
 	@Override

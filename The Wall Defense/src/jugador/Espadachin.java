@@ -15,8 +15,9 @@ public class Espadachin extends Jugador {
 	// Constructor.
 	public Espadachin(Celda[] c) {
 		super(c);
-		vida = 2;
+		vida = 8;
 		velocidad = 10;
+		costo = 25;
 		setGrafico(grafico);
 	}
 

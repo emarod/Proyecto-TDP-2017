@@ -17,6 +17,7 @@ public class Caballero extends Jugador {
 		super(c);
 		vida = 10;
 		velocidad = 10;
+		costo = 30;
 		setGrafico(grafico);
 	}
 
