@@ -1,7 +1,6 @@
 package mapa;
 
 import java.awt.Color;
-import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -12,37 +11,43 @@ import java.util.Random;
 import java.io.InputStream;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
-
-import Controladores.ControladorAtaque;
-import Controladores.ControladorMovimiento;
+import Controladores.BancoRecursos;
+import Controladores.Director;
 import enemigo.Enemigo;
-import enemigo.WhiteWalker;
-
 import java.io.IOException;
-
 import main.GameObject;
+import powerUp.Bomba;
+import powerUp.DañoAtkAumentado;
+import powerUp.VelAtkAumentado;
+import powerUp.Invulnerable;
+import powerUp.PowerUp;
 import interfaz.Escenario;
-import jugador.Arquero;
-import jugador.Caballero;
-import jugador.Espadachin;
 import jugador.Jugador;
+import obstaculo.Obstaculo;
+
+/*
+ * Clase Map.
+ * Clase encargada de la construccion de toda la logica del campo de batalla.
+ */
 
 public class Map implements Runnable{
-	private Celda[][] celdas;
-	private Escenario escenario;
-	private ControladorMovimiento cMovimiento;
-	private ControladorAtaque cAtacar;
-	private JLabel celdaLabel;
-	private int puntaje;
-	private int x_mouse;
-	private int y_mouse;
 	
+	//Atributos locales.
+	protected Celda[][] celdas;
+	protected Escenario escenario;
+	protected JLabel celdaLabel;
+	protected int puntaje;
+	protected int x_mouse;
+	protected int y_mouse;
+	protected Director director;
+	protected BancoRecursos banco;
+	
+	//Constructor.
 	public Map(Escenario stage,int width,int height,int sprites) {
 		celdas= new Celda[width][height];
 		escenario = stage;
-//		Inicialización de controladores de acciones
-		cAtacar=new ControladorAtaque();
-		cMovimiento= new ControladorMovimiento();
+		director = new Director();
+		banco = new BancoRecursos();
 		try {
 			inicializarCeldas(sprites);
 		}
@@ -54,12 +59,15 @@ public class Map implements Runnable{
 		}
 	}
 	
-	
+	//Metodos locales.
 	private void inicializarCeldas(int t) throws FileNotFoundException, IOException {
 	    String sCurrentLine="";
 	    Random rnd=new Random();
 	    int r=rnd.nextInt(1);
-	    InputStream fileMap = getClass().getResourceAsStream("/resources/mapa_"+1+".txt");
+	    //Este es un random limitado entre 1 y 3, para establecer un rango nuevo Random[n,m]: (Math.random()*m)+n
+    	r = (int) (Math.random()*2) ;
+    	System.out.println(r);
+	    InputStream fileMap = getClass().getResourceAsStream("/resources/mapa_"+r+".txt");
         InputStreamReader entradaMapa = new InputStreamReader(fileMap);
 
 	    BufferedReader bufferMapa = new BufferedReader(entradaMapa);
@@ -82,13 +90,13 @@ public class Map implements Runnable{
 	    						if(celdaLabel==null) {
 	    							terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    							celdaLabel=terreno;
-	    							System.out.println("("+terreno.getX()/32+","+terreno.getY()/32+")");
+	    							System.out.println("("+terreno.getX()/64+","+terreno.getY()/64+")");
 	    						}
 	    						else{
 	    							celdaLabel.setBorder(null);
 	    							terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
 	    							celdaLabel=terreno;
-	    							System.out.println("("+terreno.getX()/32+","+terreno.getY()/32+")");
+	    							System.out.println("("+terreno.getX()/64+","+terreno.getY()/64+")");
 	    							
 	    						}
 	    					}
@@ -97,7 +105,7 @@ public class Map implements Runnable{
 		    					x_mouse=terreno.getX();
 	    						y_mouse=terreno.getY();
 	    						if(terreno!=celdaLabel) {
-	    							terreno.setBorder(new LineBorder(new Color(0, 255, 0)));
+	    							terreno.setBorder(new LineBorder(new Color(255, 0, 0)));
 	    						}
 	    					}
 	    					
@@ -109,35 +117,42 @@ public class Map implements Runnable{
 						}
 		    					
 					);
-	    			terreno.setBounds(32*x,32*y,32,32);
-	    		    escenario.agregar(terreno,new Integer(1));
+	    			terreno.setBounds(64*x,64*y,64,64);
+	    		    escenario.agregar(terreno,new Integer(0));
 	    			
 	    		}else {
 	    			if(objetos[2]!=null){
+	    				System.out.println("ghost code");
 	    				JLabel terreno= objetos[2].getGrafico();
-	    				terreno.setBounds(32*x,32*y,32,32);
+	    				terreno.setBounds(64*x,64*y,64,64);
 	    				escenario.agregar(terreno,new Integer(3));
 	    			}
 	    		}	    		
 	    	}
 	    	y++;
-	   }	  
+	    }
 	   
 	   bufferMapa.close();
+	   //Codido a prueba de token invulnerable
+	   GameObject[] objetos22=celdas[8][4].getObjects();
+	   PowerUp p = new Invulnerable(celdas[8][4],4);
+	   JLabel grafico22=p.getGraficoToken();
+	   objetos22[4]= p;
+	   grafico22.setBounds(8*64,4*64,64, 64);
+	   escenario.agregar(grafico22,new Integer(2));
+	   grafico22.addMouseListener(
+		   new MouseAdapter() {
+			   public void mouseClicked(MouseEvent e) {
+				   if(celdaLabel!=null) {
+					   setPowerUp(p);				
+				   }
+				   
+			   }
+		   }
+	   );
+	   //Fin de codigo prueba
+	   director.ejecutar(this);
 	   
-	}
-	
-	
-	
-	public void agregarPersonajeEnMapa(){
-		WhiteWalker white_walker2 = new WhiteWalker();
-		Enemigo enemigo2 = new Enemigo(celdas[18][2],2,white_walker2);
-		white_walker2.setEnemigo(enemigo2);
-		celdas[18][2].getObjects()[1]= enemigo2;
-		enemigo2.setCelda(celdas[18][2]);
-		JLabel graf4 = enemigo2.getGrafico();
-		graf4.setBounds(32*18,32*2,32,32);
-		escenario.agregar(graf4,new Integer(2));
 	}
 	
 	
@@ -148,122 +163,265 @@ public class Map implements Runnable{
     public Escenario getEscenario() {
     	return escenario;
     }
-    
-    public ControladorMovimiento getCM() {
-    	return cMovimiento;
-    }
-    
-    public ControladorAtaque getCA() {
-    	return cAtacar;
-    }
-    
-	public void run() {	
-		
-	}
-
-	public void crearPersonaje(String personaje) {
-		int x_cel= Math.round(celdaLabel.getX()/32);
-		int y_cel= Math.round(celdaLabel.getY()/32);
-		
-		switch (personaje) {
-		case "caminante":
-			if(celdaLabel!=null) {
-				añadirCaminante(x_cel,y_cel);
+	
+	public void crearJugador(Jugador j) {
+		if(celdaLabel!=null) {
+			int x_cel= Math.round(celdaLabel.getX()/64);
+			int y_cel= Math.round(celdaLabel.getY()/64);			
+			if(	celdas[x_cel][y_cel].getObjects()[2]==null) {
+				Celda[] c = new Celda[1];
+				c[0] = celdas[x_cel][y_cel];
+				Jugador player = j.clone(c);
+				celdas[x_cel][y_cel].getObjects()[2]= player;
+				JLabel icono = player.getGrafico();
+				player.setBancoRecursos(banco);
+				icono.setBounds(x_cel*64,y_cel*64,64,64);
+				icono.addMouseListener(
+					new MouseAdapter() {
+						public void mouseReleased(MouseEvent e) {
+							int x_cel = Math.round(x_mouse/64); 
+							int y_cel = Math.round(y_mouse/64);
+							GameObject[] objetosCelda =celdas[x_cel][y_cel].getObjects();
+							objetosCelda[2]= player;
+							player.getCeldas()[0].getObjects()[2]=null;
+							player.setCelda(celdas[x_cel][y_cel],0);
+							int x_terreno = objetosCelda[0].getGrafico().getX();
+							int y_terreno = objetosCelda[0].getGrafico().getY();
+							player.getGrafico().setBounds(x_terreno, y_terreno, 64, 64);
+						}
+					}
+				);
+				icono.addMouseMotionListener(
+					new MouseMotionAdapter() {
+						public void mouseDragged(MouseEvent e) {
+							player.getGrafico().setBounds(x_mouse,y_mouse,64,64);
+						}
+					}
+				);
+				escenario.agregar(icono,new Integer(2));
 			}
-			break;
-			
-		case "whitewalker":
-			if(celdaLabel!=null) {
-				añadirCaminanteEstatico(x_cel,y_cel);
-			}
-			break;
-			
-		default:
-			System.out.println("No existe la unidad --> "+personaje);
-			break;
 		}
-		
-	}
-	
-	public void crearJugador(Jugador j) {		
-		int x_cel= Math.round(celdaLabel.getX()/32);
-		int y_cel= Math.round(celdaLabel.getY()/32);
-		Jugador player = j.clone(celdas[x_cel][y_cel]);		
-		celdas[x_cel][y_cel].getObjects()[2]= player;
-		JLabel icono = player.getGrafico();
-		icono.setBounds(x_cel*32,y_cel*32,32,32);
-		icono.addMouseListener(
-			new MouseAdapter() {
-				public void mouseReleased(MouseEvent e) {
-					int x_cel = Math.round(x_mouse/32); 
-					int y_cel = Math.round(y_mouse/32);
-					GameObject[] objetosCelda =celdas[x_cel][y_cel].getObjects();
-					objetosCelda[2]= player;
-					player.getCelda().getObjects()[2]=null;
-					player.setCelda(celdas[x_cel][y_cel]);
-					int x_terreno = objetosCelda[0].getGrafico().getX();
-					int y_terreno = objetosCelda[0].getGrafico().getY();
-					player.getGrafico().setBounds(x_terreno, y_terreno, 32, 32);
-				}
-			}
-		);
-		icono.addMouseMotionListener(
-			new MouseMotionAdapter() {
-				public void mouseDragged(MouseEvent e) {
-					player.getGrafico().setBounds(x_mouse,y_mouse,32,32);
-				}
-			}
-		);
-		escenario.agregar(icono,new Integer(2));
-	}
-	
-	public void añadirCaminante(int x, int y) {
-		WhiteWalker white_walker = new WhiteWalker();
-		Enemigo enemigo1 = new Enemigo(celdas[x][y],1,white_walker);
-		white_walker.setEnemigo(enemigo1);
-		celdas[x][y].getObjects()[1]= enemigo1;
-		enemigo1.setCelda(celdas[x][y]);
-		JLabel graf3 = enemigo1.getGrafico();
-		graf3.setBounds(32*x,32*y,32,32);
-		escenario.agregar(graf3,new Integer(2));
-	}
-	
-	public void añadirCaminanteEstatico(int x, int y) {
-		WhiteWalker white_walker = new WhiteWalker();
-		Enemigo enemigo1 = new Enemigo(celdas[x][y],1,white_walker);
-		white_walker.setEnemigo(enemigo1);
-		enemigo1.getCelda().getCM().desactivar(enemigo1);
-		celdas[x][y].getObjects()[1]= enemigo1;
-		enemigo1.setCelda(celdas[x][y]);
-		JLabel graf3 = enemigo1.getGrafico();
-		graf3.setBounds(32*x,32*y,32,32);
-		escenario.agregar(graf3,new Integer(2));
 	}
 
+	public void crearJugadorLargo(Jugador j) {
+		int x_cel= Math.round(celdaLabel.getX()/64);
+		int y_cel= Math.round(celdaLabel.getY()/64);
+		if(	celdas[x_cel][y_cel].getObjects()[2]==null && celdas[x_cel+1][y_cel].getObjects()[2]==null) {
+			Celda[] c = new Celda[2];
+			c[0] = celdas[x_cel][y_cel];
+			c[1] = celdas[x_cel+1][y_cel];
+			Jugador player = j.clone(c);
+			celdas[x_cel][y_cel].getObjects()[2]= player;
+			celdas[x_cel+1][y_cel].getObjects()[2]= player;
+			JLabel icono = player.getGrafico();
+			player.setBancoRecursos(banco);
+			icono.setBounds(x_cel*64,y_cel*64,128,64);
+			
+			//Codigo de soltado de mouse.
+			icono.addMouseListener(
+				new MouseAdapter() {
+					public void mouseReleased(MouseEvent e) {
+						int x_celd = Math.round(x_mouse/64); 
+						int y_celd = Math.round(y_mouse/64);
+						GameObject[] objetosCelda1 =celdas[x_celd][y_celd].getObjects();
+						GameObject[] objetosCelda2 =celdas[x_celd+1][y_celd].getObjects();
+						objetosCelda1[2]= player;
+						objetosCelda2[2]= player;
+						player.getCeldas()[0].getObjects()[2]=null;
+						player.getCeldas()[1].getObjects()[2]=null;
+						player.setCelda(celdas[x_celd][y_celd],0);
+						player.setCelda(celdas[x_celd+1][y_celd],1);
+						int x_terreno = objetosCelda1[0].getGrafico().getX();
+						int y_terreno = objetosCelda1[0].getGrafico().getY();
+						player.getGrafico().setBounds(x_terreno, y_terreno,128, 64);
+					}
+				}
+			);
+			
+			//Codigo del arrastrado en mapa.
+			icono.addMouseMotionListener(
+				new MouseMotionAdapter() {
+					public void mouseDragged(MouseEvent e) {
+						player.getGrafico().setBounds(x_mouse,y_mouse,128,64);
+					}
+				}
+			);
+			escenario.agregarLargo(icono,new Integer(2));
+		}
+	}
 
-	public void hacerDaño() {
-		int x_cel= Math.round(celdaLabel.getX()/32);
-		int y_cel= Math.round(celdaLabel.getY()/32);
-		Celda celda= getCelda(x_cel, y_cel);
-		GameObject personaje = celda.getObjects()[1];
-		if(personaje!=null) {
-			Enemigo e = (Enemigo) personaje;
-			e.restarResistencia();
+	public void crearObstaculo(Obstaculo o) {
+		if(celdaLabel!=null) {
+			int x_cel= Math.round(celdaLabel.getX()/64);
+			int y_cel= Math.round(celdaLabel.getY()/64);			
+			if(	celdas[x_cel][y_cel].getObjects()[3]==null) {
+				Celda[] c = new Celda[1];
+				c[0] = celdas[x_cel][y_cel];
+				Obstaculo obstaculo = o.clone(c);
+				celdas[x_cel][y_cel].getObjects()[3]= obstaculo;
+				JLabel icono = obstaculo.getGrafico();
+				obstaculo.setBancoRecursos(banco);
+				icono.setBounds(x_cel*64,y_cel*64,64,64);
+				icono.addMouseListener(
+					new MouseAdapter() {
+						public void mouseReleased(MouseEvent e) {
+							int x_cel = Math.round(x_mouse/64); 
+							int y_cel = Math.round(y_mouse/64);
+							GameObject[] objetosCelda =celdas[x_cel][y_cel].getObjects();
+							objetosCelda[3]= obstaculo;
+							obstaculo.getCeldas()[0].getObjects()[2]=null;
+							obstaculo.setCelda(celdas[x_cel][y_cel],0);
+							int x_terreno = objetosCelda[0].getGrafico().getX();
+							int y_terreno = objetosCelda[0].getGrafico().getY();
+							obstaculo.getGrafico().setBounds(x_terreno, y_terreno, 64, 64);
+						}
+					}
+				);
+				icono.addMouseMotionListener(
+					new MouseMotionAdapter() {
+						public void mouseDragged(MouseEvent e) {
+							obstaculo.getGrafico().setBounds(x_mouse,y_mouse,64,64);
+						}
+					}
+				);
+				escenario.agregar(icono,new Integer(3));
+			}
+		}
+	}
+	
+	public void crearEnemigo(Enemigo e,int x, int y) {
+		System.out.println("Enemigo creado - x:"+x+" y:"+y);
+		if(celdas[x][y].getObjects()[2]==null) {
+			Celda[] c = new Celda[4];
+			c[0] = celdas[x][y];
+			Enemigo enemy = e.clone(c);
+			celdas[x][y].getObjects()[1]= enemy;
+			JLabel icono = enemy.getGrafico();
+			enemy.setBancoRecursos(banco);
+			icono.setBounds(x*64,y*64,64,64);
+			escenario.agregar(icono,new Integer(2));
+			enemy.activar();
 		}
 	}
 
     public void destruirEnemigo(Enemigo e){
     	System.out.println(puntaje);
-   	 	puntaje =puntaje+e.getPuntaje();
+   	 	puntaje =e.getPuntaje();
    	 	System.out.println(puntaje);
    	 	actualizarPuntaje();
+   	 	actualizarEnemigos();
    	 	escenario.repaint();
-   		 
+   		if(escenario.terminoHorda()){
+   			escenario.reiniciarHorda();
+   		}
     }
 
 
 	private void actualizarPuntaje() {		
-		escenario.setPuntaje("Puntaje: "+puntaje);
+		escenario.setPuntaje(""+puntaje);
 	}
 	
+	private void actualizarEnemigos() {		
+		escenario.actualizarEnemigos();
+	}
+	
+	public Director getDirector() {
+		return director;
+	}
+	
+	private void agregarPowerUp(){
+ 		Random r=new Random();
+ 		int x=r.nextInt(16);
+ 		int y=r.nextInt(6);
+ 			
+ 		if(celdas[x][y].getObjects()[4]==null){
+ 		   GameObject[] objetos2=celdas[x][y].getObjects();
+ 		   int c=r.nextInt(3)+0;
+ 		   PowerUp p;
+ 		   JLabel grafico2;
+ 		   switch(c){
+ 		   case 0:
+ 			   p=new DañoAtkAumentado(celdas[x][y],4);
+ 		  	   break;
+ 		  case 1:
+ 			   p=new VelAtkAumentado(celdas[x][y],4);
+ 			   grafico2=p.getGraficoToken();
+			   objetos2[4]= p;
+			   grafico2.setBounds(x*64,y*64,64, 64);
+	 		   grafico2.addMouseListener(
+	 				   new MouseAdapter() {
+	 					   public void mouseClicked(MouseEvent e) {
+	 						   if(celdaLabel!=null) {
+	 							   setPowerUp(p);				
+	 						   }
+	 						   
+	 					   }
+	 				   }
+	 			);
+			   escenario.agregar(grafico2,new Integer(4));
+ 		  	   break;
+ 		   case 2:
+ 			   p = new Bomba(celdas[x][y],4);
+ 			  grafico2=p.getGraficoToken();
+			   objetos2[4]= p;
+			   grafico2.setBounds(x*64,y*64,64, 64);
+	 		   grafico2.addMouseListener(
+	 				   new MouseAdapter() {
+	 					   public void mouseClicked(MouseEvent e) {
+	 						   if(celdaLabel!=null) {
+	 							   setPowerUp(p);				
+	 						   }
+	 						   
+	 					   }
+	 				   }
+	 			);
+			   escenario.agregar(grafico2,new Integer(4));
+ 		  	   break;
+ 		   case 3:
+ 			   p = new Invulnerable(celdas[x][y],4);
+ 			   grafico2=p.getGraficoToken();
+ 			   objetos2[4]= p;
+ 			   grafico2.setBounds(x*64,y*64,64, 64);
+ 	 		   grafico2.addMouseListener(
+ 	 				   new MouseAdapter() {
+ 	 					   public void mouseClicked(MouseEvent e) {
+ 	 						   if(celdaLabel!=null) {
+ 	 							   setPowerUp(p);				
+ 	 						   }
+ 	 						   
+ 	 					   }
+ 	 				   }
+ 	 			);
+ 			   escenario.agregar(grafico2,new Integer(4));
+ 		   		break;
+ 			}
+
+ 		  }
+ 		else
+ 		{
+ 			x=r.nextInt(16);
+ 			y=r.nextInt(6);
+ 			
+ 		}
+ 	}
+	
+	public void setPowerUp(PowerUp p){
+		int x_cel= Math.round(celdaLabel.getX()/64);
+		int y_cel= Math.round(celdaLabel.getY()/64);
+		Jugador player = (Jugador) celdas[x_cel][y_cel].getObjects()[2];
+		if(	celdas[x_cel][y_cel].getObjects()[2]!=null) {
+			p.aplicar(player);
+			escenario.remove(p.getGraficoToken());
+			p.getGraficoToken().setIcon(null);
+			celdas[x_cel][y_cel].getObjects()[4]=p.getCeldas()[0].getObjects()[4];
+			p.getGrafico().setBounds(x_cel*64, y_cel*64, 64, 64);
+			escenario.agregar(p.getGrafico(), new Integer(4));
+		}
+	}
+	
+	//Metodos heredados.
+	public void run() {	
+		escenario.repaint();
+		agregarPowerUp();
+	}
 }

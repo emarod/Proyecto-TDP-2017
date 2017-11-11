@@ -1,55 +1,64 @@
 package main;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
+import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.border.EmptyBorder;
-
 import interfaz.GUI;
+import interfaz.MenuInicio;
+
+/*
+ * Clase Juego.
+ * Esta clase posee el main.
+ * Clase encargada de controlar el menu de inicio.
+ */
 
 public class Juego {
-	private static GUI frame;
-
+	
+	//Atributos locales.
+	protected static GUI frame;
+	protected final JFrame menu=new JFrame("The Wall Defense");
+	protected MenuInicio opciones;
+	
+	//main
 	public static void main(String[] args) {
 		new Juego();
 
 	}
 	
+	//Constructor.
 	public Juego() {
 		pantallaPrincipal();
 	}
 	
+	//Metodos locales.
 	public void pantallaPrincipal(){
-		final JFrame menu=new JFrame("The Wall Defense");
 		menu.setVisible(true);
-		menu.setResizable(true);
+		menu.setResizable(false);
 		menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		menu.setBounds(100, 100, 525, 410);
 		menu.setLocationRelativeTo(null);
 		JLayeredPane contentPane=new JLayeredPane();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		menu.setContentPane(contentPane);
-		contentPane.setLayout(null);
+		Icon background=new ImageIcon(this.getClass().getResource("/resources/static/background/background.png"));
 		
-		//Menu
-		//Boton Jugar accede al juego.
-		final JButton jugar=new JButton("Jugar");
-		jugar.setBounds(185,140,150,50);
-		jugar.setVisible(true);	  	   
-		jugar.addActionListener(new ActionListener() { 
-			public void actionPerformed(ActionEvent e) {
-				menu.dispose();
-				crearGUI();			   
-			} 
-		}
-		);
-		menu.add(jugar,new Integer(2));
+		//Creo menu de inicio
+		opciones=new MenuInicio(this);
+		
+		
+		menu.setContentPane(new JLabel(background));
+		menu.pack();
+		menu.add(opciones,new Integer(2));
+
 	}
 	
 	public void crearGUI(){
-		frame=new GUI();
+		opciones.removeAll();
+		opciones=null;
+		menu.removeAll();
+		menu.dispose();
+		frame=new GUI();		
 		frame.setVisible(true);
 	}	
 

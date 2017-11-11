@@ -1,31 +1,57 @@
 package jugador;
 
-import disparo.DisparoPlayer;
+import disparo.Disparo;
 import enemigo.Enemigo;
 import main.Visitor;
-import obstaculo.Rock;
-import obstaculo.Water;
+import obstaculo.*;
+import terreno.Rock;
+
+/*
+ * Clase VisitorJugador.
+ * Clase encargada de implementar correctamente las colisiones de los jugadores.
+ * Especifica sus comportamientos mediante un patron de diseño visitor.
+ */
+
 public class VisitorJugador extends Visitor{
-		
-		Jugador jugador;
-	
+	   
+		//Atributos locales.
+   	   protected Jugador jugador;
+   	   
+   	   //Constructor.
 	   public VisitorJugador(Jugador j){
 		   jugador = j;
 	   }
 	    
+	   //Metodos locales.
+	   public boolean visitObstaculo(Obstaculo o) {
+			return false;
+		}
+	    
 	   public  boolean VisitRock(Rock r){
-		return false;
+		   return false;
 	   }
+	   
+	   /*
+	   public  boolean VisitBarricada(Barricada b){
+		   return false;
+	   }
+	   */
+	   
 	   public  boolean VisitWater(Water w){
 		   return false;
 	   }
-	   public  boolean visitPlayer(Jugador j){
+	   
+	   public  boolean visitPlayer(Jugador j){		   
 		   return false;
 	   }
-	   public boolean visitDisparoPlayer(DisparoPlayer d){
-		   return true;
+	   
+	   public boolean visitDisparoPlayer(Disparo d){
+		   return false;
 	   }
+	   
 	   public boolean visitEnemigo(Enemigo e){
+		   System.out.println("el enemigo visita a jugador");
+		   e.restarResistencia(jugador.getDaño());
 		   return false;
 	   }
 }

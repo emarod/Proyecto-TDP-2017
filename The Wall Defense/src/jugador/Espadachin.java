@@ -1,54 +1,51 @@
 package jugador;
-import javax.swing.Icon;
+
+import java.util.concurrent.Future;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import disparo.DisparoPlayer;
+/*
+ * Clase Espadachin.
+ * Clase que especifica las caracteristicas y comportamiento del jugador espadachin.
+ */
 
-public class Espadachin extends State{
+public class Espadachin extends PerfilJugador{
 	
+	//Constructor.
 	public Espadachin() {
 		resistencia=8;
-		disparos_simultaneos=1;
-		disparos_en_ejecucion=0;
-		velocidad_disparo=10;
+		costo=25;
 	}
 	
+	//Metodos heredados.
 	public void setJugador(Jugador jugador){
 		this.jugador = jugador;
 	}
 	
-    public void atacar(){
+    public Future<?> atacar(){
+		return null;
     	
     }
     
     public void setGrafico(JLabel grafico){
-    	ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/JonSnow.gif"));
+    	ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/jon_snow.gif"));
 		grafico.setIcon(imagen);
     }
-    
-    public void restarDisparosEnEjecucion(){
-    	disparos_en_ejecucion--;
-    }
-    
-    public int getDisparosEnEjecucion(){
-    	return disparos_en_ejecucion;
-    }
 
-	@Override
-	public void setGraficos(Icon[] graficos, JLabel grafico) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mover() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public State clone() {
+	public PerfilJugador clone() {
 		return new Espadachin();
+	}
+	
+	public void playSound() {
+		
+	}
+	
+	public void destruir(){
+		jugador.getCeldas()[0].getEscenario().remove(jugador.getGrafico());
+		jugador.getCeldas()[0].getDirector().desactivar(this.getJugador());
+	}
+	
+	public int getDaño(){
+		return daño;
 	}
 }

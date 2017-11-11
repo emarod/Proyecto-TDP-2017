@@ -1,89 +1,105 @@
 package enemigo;
 
+import java.util.concurrent.Future;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
-import jugador.Jugador;
 import main.GameObject;
 import mapa.Celda;
 
-public class WhiteWalker extends State{
+/*
+ * Clase WhiteWalker.
+ * Clase que especifica las caracteristicas y comportamiento del enemigo whitewalker.
+ */
+
+public class WhiteWalker extends PerfilEnemigo{
 	
-	protected int puntosCelda = 32;
-	protected int puntosVelocidad;	
+	//Atributos locales.
+	protected Enemigo enemigo;
+	protected Future<?> shot;
+	protected int velocidad_disparo;
+	protected int disparos_simultaneos;
+	protected int disparos_en_ejecucion;
 	
-	public WhiteWalker() {		
-		mover=false;
-		atacar=false;
+	//Constructor.
+	public WhiteWalker() {
 		puntaje=100;
-		velocidad_enemigo=700;
-		puntosVelocidad=velocidad_enemigo;
+		velocidad_enemigo=50;
 		resistencia=3;
+		daño = 1;
+		graficos= new Icon[11];
+		graficos[0]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando00.png"));
+		graficos[1]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando01.png"));
+		graficos[2]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando02.png"));
+		graficos[3]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando03.png"));
+		graficos[4]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando04.png"));
+		graficos[5]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando05.png"));
+		graficos[6]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando06.png"));
+		graficos[7]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando07.png"));
+		graficos[8]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando08.png"));
+		graficos[9]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando09.png"));
+		graficos[10]=new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando10.png"));
+	}
+	
+	//Metodos heredados.
+	public Future<?> atacar() {
+		return shot;
 	}
 
-	@Override
-	public void atacar() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void mover() {
-		enemigo.setMoviendo(true);
+	public void mover() {		
 		Celda siguiente;
-		int xCelda=this.enemigo.getCelda().getPosX();
-		int yCelda=this.enemigo.getCelda().getPosY();
+		boolean detener=false;
+		int xCelda= enemigo.getCeldas()[0].getPosX();
+		int yCelda= enemigo.getCeldas()[0].getPosY();
 		int xGrafico= enemigo.getGrafico().getX();
 		int yGrafico= enemigo.getGrafico().getY();
-		siguiente=this.enemigo.getCelda().getCelda(xCelda-1,yCelda);
-		for(int i=0;i<5 && mover;i++) {
-			GameObject objeto =siguiente.getObjects()[i];					
-			if (objeto!=null && !objeto.Accept(enemigo.getVisitor())){
-				this.enemigo.getCelda().getCM().desactivar(this.enemigo);
-				mover=false;
+		siguiente=enemigo.getCeldas()[0].getCelda(xCelda-1,yCelda);
+		for(int i=0;i<7;i++) {
+			GameObject objeto =siguiente.getObjects()[i];
+			if (objeto!=null && !objeto.accept(enemigo.getVisitor())){
+				//this.enemigo.getCeldas()[0].getDirector().desactivar(this.enemigo);
+				detener=true;
 			}
 		}
-		if(xCelda!=0 && mover) {
-			puntosVelocidad--;
-			if(puntosVelocidad==0) {
-				puntosCelda--;				
-				enemigo.getGrafico().setBounds(xGrafico-1, yGrafico, 32, 32);
-				puntosVelocidad=velocidad_enemigo;
-			}		
-			if(puntosCelda==0) {
-				enemigo.intercambiar_celdas(siguiente);
-				puntosCelda=32;				
-			}			
+		if(!detener && xCelda!=0) {
+			enemigo.getGrafico().setBounds(xGrafico-64, yGrafico, 64, 64);
+			enemigo.intercambiar_celdas(siguiente);
 		}
-		enemigo.setMoviendo(false);
-		
-	}
-	
-    public void destruir(){
-    	System.out.println("Destruir WhiteWalker");
-    	this.enemigo.getCelda().getCM().desactivar(this.enemigo);
-	   
 	}
 	
 	public void setEnemigo(Enemigo enemigo){
-		this.enemigo = enemigo;
-		this.enemigo.getCelda().getCM().activar(this.enemigo);
-		mover=true;
+		this.enemigo = enemigo;				
 	}
 	
 	public void setGrafico(JLabel grafico) {
-		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/dinamic/white_walker.gif"));
+		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando00.png"));
+		graph=0;
 		grafico.setIcon(imagen);
 	}
 	
-	@Override
 	public void setGraficos(Icon[] graficos, JLabel grafico) {
-		// TODO Auto-generated method stub
 		
 	}
 	
 	public int getPuntaje() {
 		return puntaje;
 	}
-
+	
+	public PerfilEnemigo clone() {
+		return new WhiteWalker();
+	}
+	
+	public void playSound(){
+		
+	}
+	
+    public void destruir(){
+    	System.out.println("Destruir WhiteWalker");
+    	this.enemigo.getCeldas()[0].getDirector().desactivar(this.enemigo);
+	   
+	}
+    
+    public int getDaño(){
+    	return daño;
+    }
 }

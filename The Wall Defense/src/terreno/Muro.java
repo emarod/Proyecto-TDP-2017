@@ -2,17 +2,19 @@ package terreno;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import main.Visitor;
 import mapa.Celda;
 
+/*
+ * Clase Muro.
+ * Clase encargada de establecer el comportamiento del terreno muro.
+ */
+
 public class Muro extends Terreno {
 	
-	private int sprite;
-	
-	
+	//Constructor
     public Muro(Celda c){    	
-    	celda=c;  
+    	celda[0]=c;  
     	//Este es un random limitado entre 1 y 2, para establecer un rango nuevo Random[n,m]: (Math.random()*m)+n
     	this.sprite = (int) (Math.random() * 2) +1; 
     	grafico=new JLabel();
@@ -21,9 +23,8 @@ public class Muro extends Terreno {
     	
     }
 
-	@Override
-	public boolean Accept(Visitor V) {
-		// TODO Auto-generated method stub
+	//Metodos heredados.
+	public boolean accept(Visitor V) {
 		return false;
 	}
 

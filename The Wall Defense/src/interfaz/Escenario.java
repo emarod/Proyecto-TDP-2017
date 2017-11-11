@@ -2,48 +2,78 @@ package interfaz;
 
 import java.awt.Dimension;
 import java.util.Random;
-
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import mapa.Map;
 
+/*
+ * Clase Escenario.
+ * Clase encargada de la grafica que muestra el campo de juego.
+ */
+
 public class Escenario extends JPanel {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private static final int width=20;
-	private static final int height=12;
-	private JLayeredPane layeredPane;
-	private Map mapa;
-	private ProximaHorda horda;
 	
+	//Atributos locales.
+	protected static final long serialVersionUID = 1L;
+	protected static final int width=16;
+	protected static final int height=6;
+	protected JLayeredPane layeredPane;
+	protected Map mapa;
+	protected ProximaHorda horda;
+	protected MenuCompra menucompra;
+	protected Dinero dinero;
+	protected Score score;
+	protected MenuPowerups powerups;
+	protected Nivel level;
+	
+	//Constructor.
 	public Escenario(){
 		Random rnd=new Random();
 		int r=rnd.nextInt(2);		
 		layeredPane= new JLayeredPane();
-		layeredPane.setPreferredSize(new Dimension(640, 384));
+		layeredPane.setPreferredSize(new Dimension(1026, 384));
+		
 		this.add(layeredPane);
 		mapa= new Map(this,width,height,r);
-//		this.setBackground(new Color(255, 0, 255, 255));
+		menucompra=new MenuCompra(this);
+		dinero=new Dinero(this);
+		score=new Score(this);
+		powerups=new MenuPowerups(this);
+		level=new Nivel(this);
 	}
 	
-	public void  agregar(JLabel objeto,Integer entero){
-		objeto.setSize(32,32);
-		layeredPane.add(objeto,entero);
+	//Metodos locales.
+	public void  agregar(JLabel objeto,int entero){
+		objeto.setSize(64,64);
+		layeredPane.add(objeto,new Integer(entero));
+		repaint();
 	}
-	
-	public void crearPersonaje(String personaje) {
-		mapa.crearPersonaje(personaje);
+
+	public void  agregarLargo(JLabel objeto,int entero){
+		objeto.setSize(128,64);
+		layeredPane.add(objeto,new Integer(entero));
+		repaint();
 	}
 	
 	public Map getMapa() {
 		return mapa;
 	}
 	
-	public void hacerDaño(){
-		mapa.hacerDaño();
+	public MenuCompra getMenu() {
+		return menucompra;
+	}
+	
+	public Dinero getDinero() {
+		return dinero;
+	}
+	
+	public Score getScore() {
+		return score;
+	}
+	
+	public Nivel getLevel() {
+		return level;
 	}
 	
 	public void setHorda(ProximaHorda p) {
@@ -55,6 +85,18 @@ public class Escenario extends JPanel {
 		
 	}
 	
+	public boolean terminoHorda(){
+		return horda.terminoHorda();
+	}
+	
+	public void reiniciarHorda(){
+		horda.reiniciarHorda();
+	}
+	
+	public void actualizarEnemigos(){
+		horda.actualizarEnemigos();
+	}
+	
 	public int getPosX() {
 		return this.getX();
 	}
@@ -62,5 +104,4 @@ public class Escenario extends JPanel {
 	public int getPosY() {
 		return this.getY();
 	}
-
 }

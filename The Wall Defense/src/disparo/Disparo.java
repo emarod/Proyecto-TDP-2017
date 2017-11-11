@@ -1,25 +1,21 @@
 package disparo;
 import main.Unidad;
-import main.Visitor;
-import mapa.Celda;
-public abstract class Disparo extends Unidad  {
-	protected Unidad j;
-	protected int ancho;
-	protected int alto;
 
-	protected Disparo(Celda c,Unidad j, int prof,int speed){
+/*
+ * Clase abstracta Disparo.
+ * clase que generaliza la idea de un proyectil.
+ */
+
+public abstract class Disparo extends Unidad  {
+	
+	//Constructor.
+	public Disparo(int prof){
 		profundidad=prof;
-		this.j=j;
-		ancho=32;
-		alto=32;    	   
-		celda=c;		
-		celda.getObjects()[profundidad]=this;
-		this.velocidad=speed;
+		ancho=64;
+		alto=64;
 	}
 	
-	   
-	public abstract boolean Accept(Visitor V);
-
+	//Metodos locales.
 	public int getAlto(){
 		return alto;
 	}
@@ -32,5 +28,7 @@ public abstract class Disparo extends Unidad  {
 		super.destruir();
 	}
 	
-	public void restarDisparosEnEjecucion(){}
+	//Metodos abstractos.
+	public abstract void restarDisparosEnEjecucion();
+	public abstract int getDaño();
 }

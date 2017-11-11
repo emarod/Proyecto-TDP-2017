@@ -1,35 +1,59 @@
 package enemigo;
 
-import obstaculo.Rock;
-import obstaculo.Water;
-import disparo.DisparoPlayer;
+import obstaculo.*;
+import disparo.Disparo;
 import jugador.Jugador;
 import main.Visitor;
+import terreno.Rock;
+
+/*
+ * Clase VisitorEnemigo.
+ * Clase encargada de implementar correctamente las colisiones de los enemigos.
+ * Especifica sus comportamientos mediante un patron de diseño visitor.
+ */
 
 public class VisitorEnemigo extends Visitor{
 	
-	Enemigo enemigo;
+	//Atributos locales.
+	protected Enemigo enemigo;
 	
+	//Constructor.
 	public VisitorEnemigo(Enemigo e){
     	enemigo = e;
     }
     
+	//Metodos heredados.
+	public boolean visitObstaculo(Obstaculo o) {
+		o.restarResistencia(enemigo.getDaño());
+		return false;
+	}
+	
    public  boolean VisitRock(Rock r){
-	   System.out.println("visito una roca.");
-	   enemigo.setVelocidad(0);
-	   return true;
-   }
-   public  boolean VisitWater(Water w){
-	   System.out.println("visito zona de agua.");
-	   return true;
-   }
-   public  boolean visitPlayer(Jugador j){
+	   r.restarResistencia(enemigo.getDaño());
 	   return false;
    }
-   public boolean visitDisparoPlayer(DisparoPlayer d){
-//	   d.destruir();
-//	   Enemigo e=(Enemigo)objeto;
-//	   e.restarResistencia();
+   
+   /*
+   public  boolean VisitBarricada(Barricada b){
+	   b.restarResistencia();
+	   return false;
+   }
+   */
+	
+   public  boolean VisitWater(Water w){
+	   enemigo.relentizar(w.getPenalizacion());
+	   return true;
+   }
+   
+   public  boolean visitPlayer(Jugador j){
+	   System.out.println("el juagador visita a enemigo");
+	   j.restarResistencia(enemigo.getDaño());
+	   return false;
+   }
+   
+   public boolean visitDisparoPlayer(Disparo d){
+	   d.destruir();
+	   enemigo.restarResistencia(d.getDaño());
 	   return true;
    }   
    

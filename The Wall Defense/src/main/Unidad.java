@@ -1,70 +1,50 @@
 package main;
 
-import javax.swing.JLabel;
-
+import java.util.concurrent.ScheduledFuture;
 import mapa.Celda;
 
-public abstract class Unidad extends GameObject{
+/*
+ * Clase abstracta Unidad.
+ * Clase que generaliza la nocion de personaje, tanto aliado como enemigo.
+ */
+
+public abstract class Unidad extends GameObject implements Runnable{
     
+	//Atributos locales.
 	protected Visitor V;
-
 	//Parametros de conducta
-    protected boolean esperar;
-	protected boolean atacar;
-	protected int velocidad;
-	protected int retrasar;
-	protected boolean congelar;    
-
-    public abstract int getAncho();
-	public abstract int getAlto(); 
-	public abstract void atacar();
-	public abstract void mover();
+    protected int alto;
+	protected int ancho;
+	protected ScheduledFuture<?> activeTask;
 	
+	//Metodos locales.
 	public void intercambiar_celdas(Celda C){
-		mover=true;
-	    C.getObjects()[profundidad]=this;	    
-		celda.getObjects()[profundidad]=null;
-		celda=C;
+		C.getObjects()[profundidad]=this;	    
+		celda[0].getObjects()[profundidad]=null;
+		celda[0]=C;
 	}
 	
     public void destruir(){
-    	super.destruir();
-    	
+    	super.destruir();    	
     }
-	
-	public boolean getMoviendo(){
-		return mover;
-	}
-	
-	public void setMoviendo(boolean b){
-		mover=b;
-	}
-	
-	public void setAtacar(boolean b) {
-		atacar=b;
-	}
-	
-	public boolean getAtacar() {
-		return atacar;
-	}
-	
-	public void setCongelar(boolean b) {
-		congelar=b;
-	}
-	
-	public void setRetraso(int i) {
-		retrasar=i;		
-	}
-	
-	public void setEsperar(boolean b) {
-		esperar=b;
-	}
-	
-	public void setVelocidad(int i) {
-		velocidad=i;		
+		
+	public ScheduledFuture<?> getTask(){
+		return activeTask;
 	}
 	
 	public void hacerDaño() {
 		
 	}
+	
+	public void setTask(ScheduledFuture<?> ejecutar) {
+		activeTask = ejecutar;
+		
+	}
+	
+	//Metodos abstractos.
+	public abstract void atacar();
+	public abstract void mover();
+	public abstract int getVelocidad();
+	public abstract void setVelocidad(int speed);
+	
 }

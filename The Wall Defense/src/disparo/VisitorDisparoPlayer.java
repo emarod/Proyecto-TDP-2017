@@ -1,50 +1,59 @@
 package disparo;
 
-
 import enemigo.Enemigo;
 import jugador.Jugador;
 import main.Visitor;
-import obstaculo.Rock;
-import obstaculo.Water;
+import obstaculo.*;
+import terreno.Rock;
+
+/*
+ * Clase VisitorDisparoPlayer.
+ * Clase encargada de implementar correctamente las colisiones de los proyectiles de los jugadores.
+ * Especifica sus comportamientos mediante un patron de diseño visitor.
+ */
+
 public class VisitorDisparoPlayer extends Visitor {
 	
-	DisparoPlayer disparo;
+	//Atributos locales.
+	protected Disparo disparo;
 	
-	public VisitorDisparoPlayer(DisparoPlayer dp){
+	//Constructor
+	public VisitorDisparoPlayer(Disparo dp){
 		disparo = dp;
 	}
-
-	@Override
+	
+	//Metodos heredados.
+	public boolean visitObstaculo(Obstaculo o) {
+		return true;
+	}
+	
 	public boolean VisitRock(Rock r) {
-		// TODO Auto-generated method stub
 		return true;
 	}
-
-	@Override
+	
+	/*
+	public boolean VisitBarricada(Barricada b) {
+		return true;
+	}
+	*/
+	
 	public boolean VisitWater(Water w) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
-	@Override
 	public boolean visitPlayer(Jugador j) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
-	@Override
-	public boolean visitDisparoPlayer(DisparoPlayer d) {		
+	public boolean visitDisparoPlayer(Disparo d) {		
 		return true;
 	}
 
 	public boolean visitEnemigo(Enemigo e){
-		System.out.println("Enemigo x="+e.getCelda().getPosX());
-		e.restarResistencia();
-		System.out.println("Disparo x="+disparo.getCelda().getPosX());
+		e.restarResistencia(disparo.getDaño());
 		disparo.destruir();
-		return false;
+		return true;
 	}
-
 
 }
 

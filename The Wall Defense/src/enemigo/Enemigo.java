@@ -1,49 +1,52 @@
 package enemigo;
 
+import java.util.concurrent.TimeUnit;
 import javax.swing.JLabel;
-
-//import interfaz.GUI;
+import Controladores.BancoRecursos;
 import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
+
+/*
+ * Clase Enemigo.
+ * Clase que generaliza la idea de un enemigo y su comportamiento.
+ */
+
 public class Enemigo extends Unidad{
-	 private int alto;
-	 private int ancho;
-	 private State tipo;
+	
+	//Atributos locales.
+	 protected PerfilEnemigo tipo;
+	 protected BancoRecursos bancoRecursos;
 	 
-	 public Enemigo(Celda c, int profundidad, State t){
+	 //Constructor.
+	 public Enemigo(Celda [] c, int profundidad, PerfilEnemigo t){
 		V=new VisitorEnemigo(this);
     	tipo=t;
     	alto=30;
     	ancho=30;
     	celda=c;    	
     	this.profundidad=profundidad;
-    	System.out.println("Creando enemigo"+this.profundidad);
     	grafico=new JLabel();
     	setGrafico();
-	}
+		getCeldas()[0].getDirector().ejecutar(this, 10);
 
-	public boolean Accept(Visitor V){
-		return V.visitEnemigo((Enemigo)this);
 	}
 	
-
+	//Metodos locales.
+	public void activar() {
+		activeTask=getCeldas()[0].getDirector().ejecutar(this,tipo.getVelocidad());
+	}
 	
-    public int getAlto(){
-    	return alto;
-    }
-    
-    public int getAncho(){
-    	return ancho;
-    }
+	public void activar(long l) {
+		activeTask=getCeldas()[0].getDirector().ejecutar(this,l,tipo.getVelocidad());
+	}
     
     public Visitor getVisitor() {
     	return V;
     }
-    	
     
-	public boolean restarResistencia(){ 
-		boolean destruir= tipo.impact();
+	public boolean restarResistencia(int d){ 
+		boolean destruir= tipo.impact(d);
 		if (destruir) {
 			System.out.println("Destruyendo");
 			System.out.println("Antes de restar profundidad "+profundidad);
@@ -61,30 +64,71 @@ public class Enemigo extends Unidad{
     	return grafico;
     }
     
-    public State getState(){
+    public PerfilEnemigo getState(){
     	return tipo;
     }
 	
 	public void destruir(){
-		System.out.println("In enemigo profundidad "+profundidad);
 		super.destruir();
-		System.out.println("Destruir enemigo");
-		celda.destruirEnemigo(this);
-
-	}
-
-	@Override
-	public void atacar() {
-		tipo.atacar();
-	}
-
-	@Override
-	public void mover() {
-		tipo.mover();
-		
+		celda[0].destruirEnemigo(this);
 	}
 	
 	public int getPuntaje() {
 		return tipo.getPuntaje();
+	}
+	
+	public void setBancoRecursos(BancoRecursos banco) {
+		bancoRecursos=banco;
+	}
+	
+	public BancoRecursos getBancoRecursos() {
+		return bancoRecursos;
+	}
+
+	public void relentizar(int penalizacion) {
+		activeTask.cancel(true);
+		activeTask= celda[0].getDirector().ejecutarUna(this,penalizacion);
+		activar(activeTask.getDelay(TimeUnit.MILLISECONDS));
+	}
+	
+	public Enemigo clone(Celda[] c) {
+		//Profundidad 1 predeterminada. Retorna una unidad de mismo tipo.
+		PerfilEnemigo tipo = this.tipo.clone();
+		Enemigo clon = new Enemigo(c, 1, tipo);
+		tipo.setEnemigo(clon);
+		return clon;
+	}
+	
+	public void playSound(){
+		tipo.playSound();
+	}
+	
+	//Metodos heredados.
+	public void run() {		
+		mover();		
+	}
+
+	public int getVelocidad() {
+		return tipo.getVelocidad();
+	}
+
+	public void setVelocidad(int speed) {
+		tipo.setVelocidad(speed);
+	}
+	
+	public void atacar() {
+		tipo.atacar();
+	}
+
+	public void mover() {
+		tipo.mover();
+	}
+	
+	public boolean accept(Visitor V){
+		return V.visitEnemigo(this);
+	}
+	
+	public int getDaño() {
+		return tipo.getDaño	();		
 	}
 }
