@@ -3,6 +3,7 @@ package obstaculos;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
+import main.CONFIG;
 import main.GameObject;
 import mapa.Celda;
 
@@ -14,8 +15,8 @@ public abstract class Obstaculo extends GameObject {
 	protected int graph;
 
 	// Constructor.
-	public Obstaculo(Celda[] c, int prof) {
-		profundidad = prof;
+	public Obstaculo(Celda[] c) {
+		profundidad = CONFIG.PROFUNDIDAD_OBSTACULO;
 		celda = c;
 		grafico = new JLabel();
 	}

@@ -13,8 +13,8 @@ import mapa.Celda;
 public class Caballero extends Jugador {
 
 	// Constructor.
-	public Caballero(Celda[] c, int prof) {
-		super(c, prof);
+	public Caballero(Celda[] c) {
+		super(c);
 		vida = 10;
 		velocidad = 10;
 		setGrafico(grafico);
@@ -37,7 +37,7 @@ public class Caballero extends Jugador {
 	@Override
 	public Jugador clone(Celda[] c) {
 		// Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
-		Jugador clon = new Caballero(c, 2);
+		Jugador clon = new Caballero(c);
 		return clon;
 
 	}

@@ -29,12 +29,6 @@ public class VisitorDisparoPlayer extends Visitor {
 		return true;
 	}
 
-	/*
-	 * public boolean VisitRock(Rock r) { return true; }
-	 *
-	 * public boolean VisitBarricada(Barricada b) { return true; }
-	 */
-
 	@Override
 	public boolean visitPlayer(Jugador j) {
 		return true;
@@ -54,20 +48,17 @@ public class VisitorDisparoPlayer extends Visitor {
 
 	@Override
 	public boolean visitObstaculo(ObstaculoVida o) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean visitObstaculo(ObstaculoTemporal o) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean visitObjetoPrecioso(ObjetoPrecioso op) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }

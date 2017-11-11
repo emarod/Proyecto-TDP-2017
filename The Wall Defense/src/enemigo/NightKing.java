@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 
 import Controladores.Director;
 import disparo.DisparoEnemigo;
-import main.GameObject;
 import mapa.Celda;
 
 /*
@@ -23,7 +22,7 @@ public class NightKing extends ShooterEnemigo {
 		super(c, prof);
 		puntaje = 200;
 		velocidad = 50;
-		daño = 1;
+		daño = 3;
 		vida = 6;
 		graficos = new Icon[14];
 		graficos[0] = new ImageIcon(
@@ -85,31 +84,10 @@ public class NightKing extends ShooterEnemigo {
 	public void atacar() {
 		if (disparos_en_ejecucion < disparos_simultaneos) {
 			playSound();
-			shot = new DisparoEnemigo(this, 6).getTask();
+			shot = new DisparoEnemigo(this).getTask();
 			disparos_en_ejecucion++;
 		}
 		graph = 0;
-	}
-
-	@Override
-	public void mover() {
-		Celda siguiente;
-		boolean detener = false;
-		int xCelda = getCeldas()[0].getPosX();
-		int yCelda = getCeldas()[0].getPosY();
-		int xGrafico = getGrafico().getX();
-		int yGrafico = getGrafico().getY();
-		siguiente = getCeldas()[0].getCelda(xCelda - 1, yCelda);
-		for (int i = 0; i < 7; i++) {
-			GameObject objeto = siguiente.getObjects()[i];
-			if (objeto != null && !objeto.accept(getVisitor())) {
-				detener = true;
-			}
-		}
-		if (!detener && xCelda != 0) {
-			getGrafico().setBounds(xGrafico - 64, yGrafico, 64, 64);
-			intercambiar_celdas(siguiente);
-		}
 	}
 
 	@Override

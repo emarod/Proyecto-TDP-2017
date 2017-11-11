@@ -36,13 +36,10 @@ public class Barricada extends ObjetoPrecioso {
 
 	@Override
 	public void destruir() {
-
+		super.destruir();
 	}
 
 	// Metodos heredados.
-	public void run() {
-
-	}
 
 	public void setGrafico(int i) {
 		grafico.setIcon(graficos[i]);

@@ -25,13 +25,6 @@ public class VisitorDisparoEnemigo extends Visitor {
 		return false;
 	}
 
-	/*
-	 * public boolean VisitRock(Rock r) { r.restarResistencia(); return false; }
-	 *
-	 * public boolean VisitBarricada(Barricada b) { b.restarResistencia(); return
-	 * false; }
-	 */
-
 	@Override
 	public boolean visitPlayer(Jugador j) {
 		j.recibirDaño(disparo.getDaño());

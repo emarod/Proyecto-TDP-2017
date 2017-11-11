@@ -3,6 +3,8 @@ package enemigo;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
+import main.CONFIG;
+import main.GameObject;
 import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
@@ -103,7 +105,25 @@ public abstract class Enemigo extends Unidad {
 	public abstract Enemigo clone(Celda[] c);
 
 	@Override
-	public abstract void mover();
+	public void mover() {
+		Celda siguiente;
+		boolean detener = false;
+		int xCelda = getCeldas()[0].getPosX();
+		int yCelda = getCeldas()[0].getPosY();
+		int xGrafico = getGrafico().getX();
+		int yGrafico = getGrafico().getY();
+		siguiente = getCeldas()[0].getCelda(xCelda - 1, yCelda);
+		for (int i = 0; i < CONFIG.PROFUNDIDAD_CELDA; i++) {
+			GameObject objeto = siguiente.getObjects()[i];
+			if (objeto != null && !objeto.accept(getVisitor())) {
+				detener = true;
+			}
+		}
+		if (!detener && xCelda != 0) {
+			getGrafico().setBounds(xGrafico - 64, yGrafico, 64, 64);
+			intercambiar_celdas(siguiente);
+		}
+	}
 
 	@Override
 	public abstract void atacar();

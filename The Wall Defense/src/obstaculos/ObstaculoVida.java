@@ -5,8 +5,8 @@ import mapa.Celda;
 public abstract class ObstaculoVida extends Obstaculo {
 	protected int vida;
 
-	public ObstaculoVida(Celda[] c, int prof) {
-		super(c, prof);
+	public ObstaculoVida(Celda[] c) {
+		super(c);
 	}
 
 	public boolean recibirDaño(int golpe) {

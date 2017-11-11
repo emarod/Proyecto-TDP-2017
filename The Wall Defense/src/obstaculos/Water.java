@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 
 import Controladores.Director;
 import enemigo.Enemigo;
+import main.CONFIG;
 import main.Visitor;
 import mapa.Celda;
 
@@ -24,9 +25,8 @@ public class Water extends ObstaculoTemporal implements Runnable {
 	protected JLabel[] labels;
 
 	// Constructor.
-	public Water(Celda[] c, int prof) {
-		super(c, prof);
-		profundidad = prof;
+	public Water(Celda[] c) {
+		super(c);
 		celda = c;
 		penalizacion = 100;
 		labels = new JLabel[4];
@@ -59,7 +59,7 @@ public class Water extends ObstaculoTemporal implements Runnable {
 	// Metodos heredados.
 	@Override
 	public Obstaculo clone(Celda[] c) {
-		Obstaculo clon = new Water(c, 3);
+		Obstaculo clon = new Water(c);
 		return clon;
 	}
 
@@ -88,7 +88,7 @@ public class Water extends ObstaculoTemporal implements Runnable {
 			celda[0].getEscenario().remove(labels[i]);
 			labels[i] = null;
 			i++;
-			celda[i].getObjects()[3] = null;
+			celda[i].getObjects()[CONFIG.PROFUNDIDAD_PRECIOSO] = null;
 			celda[i] = null;
 		}
 

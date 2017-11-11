@@ -18,10 +18,11 @@ public class Dragon extends Shooter {
 	// Atributos locales.
 
 	// Constructor.
-	public Dragon(Celda[] c, int prof) {
-		super(c, prof);
+	public Dragon(Celda[] c) {
+		super(c);
 		velocidad = 20;
 		vida = 5;
+		daño = 3;
 		disparos_simultaneos = 1;
 		disparos_en_ejecucion = 0;
 		velocidad_disparo = 75;
@@ -83,7 +84,7 @@ public class Dragon extends Shooter {
 	@Override
 	public Jugador clone(Celda[] c) {
 		// Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
-		Jugador clon = new Dragon(c, 2);
+		Jugador clon = new Dragon(c);
 		return clon;
 	}
 
@@ -103,7 +104,7 @@ public class Dragon extends Shooter {
 		// if(disparos_en_ejecucion<disparos_simultaneos){
 		if (shot == null || shot.isCancelled() || shot.isDone()) {
 			playSound();
-			shot = new DisparoDragon(this, 6).getTask();
+			shot = new DisparoDragon(this).getTask();
 			disparos_en_ejecucion++;
 		}
 		graph = 0;

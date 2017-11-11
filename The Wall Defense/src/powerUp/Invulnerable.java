@@ -2,6 +2,7 @@ package powerUp;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
 import jugador.Jugador;
 import mapa.Celda;
 
@@ -11,26 +12,23 @@ import mapa.Celda;
  */
 
 public class Invulnerable extends PowerUp {
-	
-	//Constructor.
+
+	// Constructor.
 	public Invulnerable(Celda c, int prof) {
 		super(c, prof);
-		grafico=new JLabel();
-		graficoToken = new JLabel();
-		graficoToken.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/token_campo_fuerza.gif")));
+		grafico = new JLabel();
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/campo_fuerza.gif")));
 	}
-	
-	//Metodos heredados.
-	public JLabel getGraficoToken(){
-		return graficoToken;
-	}
-	
-	public void aplicar(Jugador j){
-		
+
+	// Metodos heredados.
+
+	@Override
+	public void aplicar(Jugador j) {
+
 	}
 
+	@Override
 	public void run() {
-		super.run();		
+		super.run();
 	}
 }

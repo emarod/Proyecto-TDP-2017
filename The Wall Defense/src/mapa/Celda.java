@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import enemigo.Enemigo;
 import interfaz.Escenario;
+import main.CONFIG;
 import main.GameObject;
 
 /*
@@ -28,7 +29,7 @@ public class Celda {
 		this.posX = posX;
 		this.posY = posY;
 		this.mapa = mapa;
-		listaObjetosLogicos = new GameObject[7];
+		listaObjetosLogicos = new GameObject[CONFIG.PROFUNDIDAD_CELDA];
 		disparos = new LinkedList<GameObject>();
 	}
 
@@ -50,11 +51,11 @@ public class Celda {
 	}
 
 	public void refresh() {
-		if (listaObjetosLogicos[6] == null) {
+		if (listaObjetosLogicos[CONFIG.PROFUNDIDAD_DISPARO] == null) {
 			if (hayDisparo) {
 				GameObject recarga = disparos.pollLast();
 				if (recarga != null) {
-					listaObjetosLogicos[6] = recarga;
+					listaObjetosLogicos[CONFIG.PROFUNDIDAD_DISPARO] = recarga;
 				}
 				else {
 					hayDisparo = false;
@@ -64,7 +65,7 @@ public class Celda {
 	}
 
 	public GameObject hayDisparo() {
-		return listaObjetosLogicos[6];
+		return listaObjetosLogicos[CONFIG.PROFUNDIDAD_DISPARO];
 	}
 
 	public int getPosX() {

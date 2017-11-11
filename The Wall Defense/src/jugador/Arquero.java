@@ -16,8 +16,8 @@ import mapa.Celda;
 public class Arquero extends Shooter {
 
 	// Constructor.
-	public Arquero(Celda[] c, int prof) {
-		super(c, prof);
+	public Arquero(Celda[] c) {
+		super(c);
 		velocidad = 15;
 		vida = 2;
 		daño = 1;
@@ -70,7 +70,7 @@ public class Arquero extends Shooter {
 	@Override
 	public Jugador clone(Celda[] c) {
 		// Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
-		Jugador clon = new Arquero(c, 2);
+		Jugador clon = new Arquero(c);
 		return clon;
 	}
 
@@ -88,7 +88,7 @@ public class Arquero extends Shooter {
 	public void atacar() {
 		// if(disparos_en_ejecucion<disparos_simultaneos){
 		if (shot == null || shot.isCancelled() || shot.isDone()) {
-			shot = new DisparoArquero(this, 6).getTask();
+			shot = new DisparoArquero(this).getTask();
 			disparos_en_ejecucion++;
 		}
 		graph = 0;

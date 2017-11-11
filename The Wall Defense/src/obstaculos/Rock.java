@@ -16,8 +16,8 @@ import mapa.Celda;
 public class Rock extends ObstaculoVida {
 
 	// Constructor.
-	public Rock(Celda[] c, int prof) {
-		super(c, prof);
+	public Rock(Celda[] c) {
+		super(c);
 		vida = 3;
 		graficos = new Icon[3];
 		graficos[0] = new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca/roca_1.png"));
@@ -33,7 +33,7 @@ public class Rock extends ObstaculoVida {
 
 	@Override
 	public void destruir() {
-
+		super.destruir();
 	}
 
 	// Metodos heredados.
@@ -58,7 +58,7 @@ public class Rock extends ObstaculoVida {
 
 	@Override
 	public Obstaculo clone(Celda[] c) {
-		Obstaculo clon = new Rock(c, 3);
+		Obstaculo clon = new Rock(c);
 		return clon;
 	}
 

@@ -3,6 +3,7 @@ package jugador;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
+import main.CONFIG;
 import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
@@ -22,10 +23,10 @@ public abstract class Jugador extends Unidad {
 	protected int graph;
 
 	// Constructor.
-	public Jugador(Celda[] c, int prof) {
+	public Jugador(Celda[] c) {
 		alto = 30;
 		ancho = 30;
-		profundidad = prof;
+		profundidad = CONFIG.PROFUNDIDAD_JUGADOR;
 		V = new VisitorJugador(this);
 		celda = c;
 		grafico = new JLabel();

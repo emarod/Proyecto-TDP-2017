@@ -30,16 +30,8 @@ public class VisitorEnemigo extends Visitor {
 		return false;
 	}
 
-	/*
-	 * public boolean VisitRock(Rock r){ r.restarResistencia(); return false; }
-	 *
-	 * public boolean VisitBarricada(Barricada b){ b.restarResistencia(); return
-	 * false; }
-	 */
-
 	@Override
 	public boolean visitPlayer(Jugador j) {
-		System.out.println("el juagador visita a enemigo");
 		j.recibirDaño(enemigo.getDaño());
 		return false;
 	}
@@ -64,7 +56,7 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public boolean visitObjetoPrecioso(ObjetoPrecioso op) {
-		// TODO Auto-generated method stub
+		op.recibirDaño(enemigo.getDaño());
 		return false;
 	}
 }

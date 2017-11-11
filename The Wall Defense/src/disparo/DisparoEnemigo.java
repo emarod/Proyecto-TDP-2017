@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 
 import Controladores.Director;
 import enemigo.NightKing;
+import main.CONFIG;
 import main.GameObject;
 import main.Visitor;
 import mapa.Celda;
@@ -20,8 +21,8 @@ public class DisparoEnemigo extends Disparo {
 	protected NightKing nightking;
 
 	// Constructor.
-	public DisparoEnemigo(NightKing nk, int prof) {
-		super(prof);
+	public DisparoEnemigo(NightKing nk) {
+		super();
 		nightking = nk;
 		celda[0] = nightking.getCeldas()[0];
 		celda[0].addDisparo(this);
@@ -29,7 +30,7 @@ public class DisparoEnemigo extends Disparo {
 		grafico = new JLabel();
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
 		grafico.setBounds(64 * celda[0].getPosX(), 64 * celda[0].getPosY(), 64, 64);
-		celda[0].getEscenario().agregar(grafico, new Integer(2));
+		celda[0].getEscenario().agregar(grafico, new Integer(CONFIG.PROFUNDIDAD_DISPARO));
 		activeTask = Director.ejecutar(this, nightking.getVelocidadDisparo());
 	}
 
@@ -55,19 +56,19 @@ public class DisparoEnemigo extends Disparo {
 		int yCelda = celda[0].getPosY();
 		int xGrafico = grafico.getX();
 		int yGrafico = grafico.getY();
-		if (xCelda != 15) {
+		if (xCelda != CONFIG.CANT_CELDAS_X - 1) {
 			siguiente = celda[0].getCelda(xCelda + 1, yCelda);
 		}
 		else {
 			siguiente = celda[0].getCelda(xCelda, yCelda);
 		}
 
-		GameObject objeto = siguiente.getObjects()[1];
+		GameObject objeto = siguiente.getObjects()[CONFIG.PROFUNDIDAD_ENEMIGO];
 		if (objeto != null && !objeto.accept(V)) {
 			Director.desactivar(this);
 		}
 
-		if (xCelda == 16 || xGrafico >= 1026) {
+		if (xCelda == CONFIG.CANT_CELDAS_X || xGrafico >= 1026) {
 			destruir();
 		}
 		else {

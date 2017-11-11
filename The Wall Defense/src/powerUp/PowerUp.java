@@ -1,7 +1,5 @@
 package powerUp;
 
-import javax.swing.JLabel;
-
 import Controladores.Director;
 import jugador.Jugador;
 import main.GameObject;
@@ -16,7 +14,6 @@ import mapa.Celda;
 public abstract class PowerUp extends GameObject implements Runnable {
 
 	// Atributos locales.
-	protected JLabel graficoToken;
 	protected Jugador player;
 
 	// Constructor.
@@ -39,19 +36,11 @@ public abstract class PowerUp extends GameObject implements Runnable {
 
 	@Override
 	public void run() {
-		if (graficoToken.getIcon() != null) {
-			graficoToken.setIcon(null);
-			celda[0].getEscenario().remove(graficoToken);
-		}
-		else {
-			player.getCeldas()[0].getObjects()[4] = null;
-		}
+		player.getCeldas()[0].getObjects()[4] = null;
 		this.destruir();
 	}
 
 	// Metodos abstractos.
 	public abstract void aplicar(Jugador j);
-
-	public abstract JLabel getGraficoToken();
 
 }

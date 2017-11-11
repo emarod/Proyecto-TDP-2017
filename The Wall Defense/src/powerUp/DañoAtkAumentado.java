@@ -2,6 +2,7 @@ package powerUp;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
 import jugador.Jugador;
 import mapa.Celda;
 
@@ -11,28 +12,25 @@ import mapa.Celda;
  */
 
 public class DañoAtkAumentado extends PowerUp {
-	
-	//Constructor.
+
+	// Constructor.
 	public DañoAtkAumentado(Celda c, int prof) {
 		super(c, prof);
-		grafico=new JLabel();
-		graficoToken = new JLabel();
-		graficoToken.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/token_daño_atk_aumentado.gif")));
+		grafico = new JLabel();
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/daño_atk_aumentado.gif")));
 	}
-	
-	//Metodos heredados.
-	public JLabel getGraficoToken(){
-		return graficoToken;
-	}
-	
-	public void aplicar(Jugador j){
+
+	// Metodos heredados.
+
+	@Override
+	public void aplicar(Jugador j) {
 		int ataque_actual = j.getDaño();
-		j.setAtaque(ataque_actual*2);
+		j.setAtaque(ataque_actual * 2);
 	}
 
+	@Override
 	public void run() {
-		super.run();		
+		super.run();
 	}
-	
+
 }

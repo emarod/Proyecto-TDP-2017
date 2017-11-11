@@ -27,7 +27,7 @@ public abstract class ObjetoPrecioso extends GameObject {
 	}
 
 	private void construir(Celda[] c) {
-		for (int i = 0; i < celda.length; i++) {
+		for (int i = 0; i < celda.length && i < c.length; i++) {
 			celda[i] = c[i];
 		}
 	}

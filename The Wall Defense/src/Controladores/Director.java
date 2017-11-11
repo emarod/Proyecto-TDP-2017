@@ -27,16 +27,12 @@ public class Director {
 	protected static Partida partida;
 	protected static Mapa mapa;
 
-	// Constantes
-	protected static final int width = 16;
-	protected static final int height = 6;
-
 	// Constructor.
 	private Director() {
 		taskPool = Executors.newSingleThreadScheduledExecutor();
 		banco = new BancoRecursos();
 		partida = new Partida();
-		mapa = new Mapa(width, height);
+		mapa = new Mapa();
 	}
 
 	public static Director newDirector() {

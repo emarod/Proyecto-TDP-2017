@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 
 import Controladores.Director;
 import interfaz.Escenario;
+import main.CONFIG;
 import mapa.Celda;
 import mapa.Mapa;
 
@@ -51,26 +52,24 @@ public class Horda implements Runnable {
 		int r = rnd.nextInt(2);
 		int y;
 		Enemigo e;
-		y = (int) (Math.random() * 6);
-		while (mapa.getCelda(x, y).getObjects()[1] != null) {
-			y = (int) (Math.random() * 6);
+		y = rnd.nextInt(6);
+		while (mapa.getCelda(x, y).getObjects()[CONFIG.PROFUNDIDAD_ENEMIGO] != null) {
+			y = rnd.nextInt(6);
 		}
 		Celda c = mapa.getCelda(x, y);
 		Celda[] celdas = new Celda[4];
 		celdas[0] = c;
 		switch (r) {
 			case 0: {
+				System.out.println("case 0");
 				e = new WhiteWalker(celdas, 1);
-				System.out.println("x:" + x + " y:" + y);
 				mapa.crearEnemigo(e, x, y);
-				enemigos++;
 				break;
 			}
 			case 1: {
+				System.out.println("case 1");
 				e = new NightKing(celdas, 1);
-				System.out.println("x:" + x + " y:" + y);
 				mapa.crearEnemigo(e, x, y);
-				enemigos++;
 				break;
 			}
 

@@ -1,9 +1,9 @@
 package interfaz.botones;
 
 import javax.swing.ImageIcon;
+
 import interfaz.Escenario;
 import jugador.Dragon;
-import jugador.Jugador;
 import mapa.Celda;
 
 /*
@@ -12,22 +12,23 @@ import mapa.Celda;
  */
 
 public class BtnDragon extends BtnJugador {
-	
-	//Atributos locales.
+
+	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
 
-	//Constructor.
+	// Constructor.
 	public BtnDragon(Escenario e) {
 		super(e);
-		Celda [] c = new Celda[4];
-		player=new Dragon(c, 2);
+		Celda[] c = new Celda[4];
+		player = new Dragon(c);
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/dragon.png")));
 	}
-	
-	//Metodos heredados.
+
+	// Metodos heredados.
+	@Override
 	public void create() {
-		stage.getMapa().crearJugadorLargo(player);		
-		
+		stage.getMapa().crearJugadorLargo(player);
+
 	}
 
 }

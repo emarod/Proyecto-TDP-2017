@@ -1,4 +1,6 @@
 package disparo;
+
+import main.CONFIG;
 import main.Unidad;
 
 /*
@@ -6,29 +8,31 @@ import main.Unidad;
  * clase que generaliza la idea de un proyectil.
  */
 
-public abstract class Disparo extends Unidad  {
-	
-	//Constructor.
-	public Disparo(int prof){
-		profundidad=prof;
-		ancho=64;
-		alto=64;
+public abstract class Disparo extends Unidad {
+
+	// Constructor.
+	public Disparo() {
+		profundidad = CONFIG.PROFUNDIDAD_DISPARO;
+		ancho = 64;
+		alto = 64;
 	}
-	
-	//Metodos locales.
-	public int getAlto(){
+
+	// Metodos locales.
+	public int getAlto() {
 		return alto;
 	}
-	
-	public int getAncho(){
+
+	public int getAncho() {
 		return ancho;
 	}
-	
-	public void destruir(){
+
+	@Override
+	public void destruir() {
 		super.destruir();
 	}
-	
-	//Metodos abstractos.
+
+	// Metodos abstractos.
 	public abstract void restarDisparosEnEjecucion();
+
 	public abstract int getDaño();
 }

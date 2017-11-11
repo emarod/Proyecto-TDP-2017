@@ -1,9 +1,9 @@
 package interfaz.botones;
 
 import javax.swing.ImageIcon;
+
 import interfaz.Escenario;
 import jugador.Espadachin;
-import jugador.Jugador;
 import mapa.Celda;
 
 /*
@@ -12,19 +12,20 @@ import mapa.Celda;
  */
 
 public class BtnEspadachin extends BtnJugador {
-	
-	//Atributos locales.
+
+	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
-	
-	//Constructor
+
+	// Constructor
 	public BtnEspadachin(Escenario e) {
 		super(e);
-		Celda [] c = new Celda[4];
-		player=new Espadachin(c, 2);
+		Celda[] c = new Celda[4];
+		player = new Espadachin(c);
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/jonsnow.png")));
 	};
-	
-	//Metodos heredados.
+
+	// Metodos heredados.
+	@Override
 	public void create() {
 		stage.getMapa().crearJugador(player);
 	}
