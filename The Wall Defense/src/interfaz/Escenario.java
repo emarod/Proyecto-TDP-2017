@@ -68,7 +68,7 @@ public class Escenario extends JPanel {
 	}
 
 	public void setPuntaje(String p) {
-		horda.setPuntaje(p);
+		score.actualizar();
 
 	}
 

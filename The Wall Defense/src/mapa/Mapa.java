@@ -238,7 +238,8 @@ public class Mapa implements Runnable {
 	}
 
 	private void actualizarPuntaje() {
-		escenario.setPuntaje("Puntaje: " + puntaje);
+		Director.getPartida().añadirPuntaje(puntaje);
+		escenario.getScore().actualizar();
 	}
 
 	// public void randomToken() {

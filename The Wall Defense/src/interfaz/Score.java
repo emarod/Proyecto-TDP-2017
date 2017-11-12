@@ -7,6 +7,8 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Controladores.Director;
+
 /*
  * Clase Score.
  * Clase encargada de desplegar el panel con el puntaje.
@@ -17,13 +19,13 @@ public class Score extends JPanel {
 	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
 	protected JLabel puntaje;
-	protected int score;
+	protected Director director;
 
 	// Constructor.
 	public Score(Escenario stage) {
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.BLACK);
-		score = 0;
+		director = director.newDirector();
 		agregarLabel();
 
 	}
@@ -42,8 +44,7 @@ public class Score extends JPanel {
 		this.add(puntaje, BorderLayout.CENTER);
 	}
 
-	public void setPuntaje(int p) {
-		score += p;
-		puntaje.setText("Score " + (score));
+	public void actualizar() {
+		puntaje.setText("Score " + (director.getPartida().getScore()));
 	}
 }
