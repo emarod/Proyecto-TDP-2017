@@ -16,12 +16,13 @@ public class BancoRecursos {
 	protected Sound click;
 	protected Sound roca;
 	protected Sound barricada;
+	protected Music song;
 
 	// Constructor.
 	private BancoRecursos() {
 		TinySound.init();
 		// Cancion que se reproduce e forma infinita en el juego.
-		Music song = TinySound.loadMusic("/resources/sound/theme_song.ogg");
+		song = TinySound.loadMusic("/resources/sound/theme_song.ogg");
 		flecha = TinySound.loadSound("/resources/sound/laser4.wav");
 		bola_fuego = TinySound.loadSound("/resources/sound/bola_fuego.wav");
 		click = TinySound.loadSound("/resources/sound/mouseclick.wav");
@@ -50,7 +51,7 @@ public class BancoRecursos {
 		bola_fuego.play();
 	}
 
-	// Sonido para cada click.
+	// Sonido para click de menu inicial.
 	public void playClick() {
 		click.play();
 	}
@@ -63,6 +64,18 @@ public class BancoRecursos {
 	// Sonido para golpe a piedra.
 	public void playBarricada() {
 		barricada.play();
+	}
+
+	public void stopEfectos() {
+		flecha.stop();
+		bola_fuego.stop();
+		roca.stop();
+		barricada.stop();
+		click.stop();
+	}
+
+	public void stopMusica() {
+		song.stop();
 	}
 
 }

@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Controladores.Director;
 import interfaz.botones.BtnArquero;
 import interfaz.botones.BtnBarricada;
 import interfaz.botones.BtnCaballero;
@@ -36,6 +37,7 @@ public class MenuCompra extends JPanel {
 	protected BtnArquero ygritte;
 	protected BtnCaballero lannister;
 	protected BtnEspadachin JonSnow;
+	protected Director director;
 
 	// Constructor.
 	public MenuCompra(Escenario escenario) {
@@ -59,11 +61,13 @@ public class MenuCompra extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				escenario.getDinero().setMontoCompra(dragon.getJugador().getCosto());
-				if (escenario.getDinero().getTotal() < dragon.getJugador().getCosto()) {
+				director.getPartida().quitarDinero(dragon.getJugador().getCosto());
+				if (director.getPartida().getDinero() < dragon.getJugador().getCosto()) {
 					dragon.setEnabled(false);
 				}
 				chequear();
+				escenario.getDinero().actualizar();
+
 			}
 
 		});
@@ -73,11 +77,12 @@ public class MenuCompra extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				escenario.getDinero().setMontoCompra(ygritte.getJugador().getCosto());
-				if (escenario.getDinero().getTotal() < ygritte.getJugador().getCosto()) {
+				director.getPartida().quitarDinero(ygritte.getJugador().getCosto());
+				if (director.getPartida().getDinero() < ygritte.getJugador().getCosto()) {
 					ygritte.setEnabled(false);
 				}
 				chequear();
+				escenario.getDinero().actualizar();
 
 			}
 
@@ -88,11 +93,13 @@ public class MenuCompra extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				escenario.getDinero().setMontoCompra(lannister.getJugador().getCosto());
-				if (escenario.getDinero().getTotal() < lannister.getJugador().getCosto()) {
+				director.getPartida().quitarDinero(lannister.getJugador().getCosto());
+				if (director.getPartida().getDinero() < lannister.getJugador().getCosto()) {
 					lannister.setEnabled(false);
 				}
 				chequear();
+				escenario.getDinero().actualizar();
+
 			}
 
 		});
@@ -102,13 +109,13 @@ public class MenuCompra extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				escenario.getDinero().setMontoCompra(JonSnow.getJugador().getCosto());
-				if (escenario.getDinero().getTotal() < JonSnow.getJugador().getCosto()) {
+				director.getPartida().quitarDinero(JonSnow.getJugador().getCosto());
+				if (director.getPartida().getDinero() < JonSnow.getJugador().getCosto()) {
 					JonSnow.setEnabled(false);
 				}
 				chequear();
+				escenario.getDinero().actualizar();
 			}
-
 		});
 
 		BtnBarricada barricada = new BtnBarricada(this.escenario);
@@ -126,19 +133,19 @@ public class MenuCompra extends JPanel {
 	}
 
 	private void chequear() {
-		if (escenario.getDinero().getTotal() < 75) {
+		if (director.getPartida().getDinero() < 75) {
 			dragon.setEnabled(false);
 		}
 
-		if (escenario.getDinero().getTotal() < 50) {
+		if (director.getPartida().getDinero() < 50) {
 			ygritte.setEnabled(false);
 		}
 
-		if (escenario.getDinero().getTotal() < 30) {
+		if (director.getPartida().getDinero() < 30) {
 			JonSnow.setEnabled(false);
 		}
 
-		if (escenario.getDinero().getTotal() < 25) {
+		if (director.getPartida().getDinero() < 25) {
 			lannister.setEnabled(false);
 		}
 

@@ -19,7 +19,7 @@ public class Partida {
 	public Partida() {
 		nivel = 1;
 		puntaje = 0;
-		dinero = 0;
+		dinero = 200;
 		objetos = new ConcurrentHashMap<ObjetoPrecioso, Integer>();
 	}
 
@@ -37,6 +37,14 @@ public class Partida {
 
 	public void quitarPuntaje(int i) {
 		puntaje -= i;
+	}
+
+	public int getDinero() {
+		return dinero;
+	}
+
+	public int getScore() {
+		return puntaje;
 	}
 
 	// Cada tipo de objeto precioso deberá ser cargado para ser utilizado
