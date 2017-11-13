@@ -13,8 +13,8 @@ import mapa.Celda;
 public class VelAtkAumentado extends PowerUp {
 
 	// Constructor.
-	public VelAtkAumentado(Celda c, int prof) {
-		super(c, prof);
+	public VelAtkAumentado(Celda c) {
+		super(c);
 		grafico = new JLabel();
 	}
 
@@ -22,7 +22,8 @@ public class VelAtkAumentado extends PowerUp {
 
 	@Override
 	public void aplicar(Jugador j) {
-		// Duplicar la vel de ataque.
+		jugador = j;
+		jugador.setVelocidad(jugador.getVelocidad() * 2);
 	}
 
 	@Override

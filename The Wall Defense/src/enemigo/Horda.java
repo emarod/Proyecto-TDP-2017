@@ -31,7 +31,7 @@ public class Horda implements Runnable {
 	public Horda(Escenario s) {
 		stage = s;
 		mapa = Director.getMapa();
-		activeTask = Director.ejecutar(this, 10);
+		activeTask = Director.ejecutar(this, 20);
 	}
 
 	// Metodos locales.
@@ -61,14 +61,13 @@ public class Horda implements Runnable {
 		celdas[0] = c;
 		switch (r) {
 			case 0: {
-				System.out.println("case 0");
-				e = new WhiteWalker(celdas, 1);
+				e = new WhiteWalker(celdas);
 				mapa.crearEnemigo(e, x, y);
 				break;
 			}
 			case 1: {
 				System.out.println("case 1");
-				e = new NightKing(celdas, 1);
+				e = new NightKing(celdas);
 				mapa.crearEnemigo(e, x, y);
 				break;
 			}

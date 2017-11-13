@@ -17,8 +17,6 @@ public abstract class Jugador extends Unidad {
 
 	// Atributos locales.
 	protected JLabel imagen;
-	protected int daño;
-	protected int vida;
 	protected Icon[] graficos;
 	protected int graph;
 	protected int costo;
@@ -82,6 +80,7 @@ public abstract class Jugador extends Unidad {
 	}
 
 	// Metodos heredados.
+
 	@Override
 	public void run() {
 		atacar();
@@ -116,5 +115,9 @@ public abstract class Jugador extends Unidad {
 	public abstract void atacar();
 
 	public abstract void playSound();
+
+	public void setVida(int i) {
+		vida = i;
+	}
 
 }

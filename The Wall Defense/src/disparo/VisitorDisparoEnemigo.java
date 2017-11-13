@@ -18,6 +18,10 @@ public class VisitorDisparoEnemigo extends Visitor {
 	// Atributos locales.
 	protected Disparo disparo;
 
+	public VisitorDisparoEnemigo(Disparo dp) {
+		disparo = dp;
+	}
+
 	// Metodos heredados.
 	@Override
 	public boolean visitObstaculo(ObstaculoVida o) {
@@ -29,11 +33,6 @@ public class VisitorDisparoEnemigo extends Visitor {
 	public boolean visitPlayer(Jugador j) {
 		j.recibirDaño(disparo.getDaño());
 		disparo.destruir();
-		return false;
-	}
-
-	@Override
-	public boolean visitDisparoPlayer(Disparo d) {
 		return false;
 	}
 
@@ -52,6 +51,18 @@ public class VisitorDisparoEnemigo extends Visitor {
 	public boolean visitObjetoPrecioso(ObjetoPrecioso op) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public boolean visitDisparo(DisparoJugador d) {
+		// El disparo mas fuerte sobrevive
+		disparo.colision(d);
+		return true;
+	}
+
+	@Override
+	public boolean visitDisparo(DisparoEnemigo d) {
+		return true;
 	}
 
 }

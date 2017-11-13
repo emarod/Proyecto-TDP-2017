@@ -15,13 +15,13 @@ import mapa.Celda;
 public class Bomba extends ObjetoPrecioso {
 
 	// Constructor.
-	public Bomba(int prof) {
-		super(prof);
+	public Bomba() {
+		super();
 		construir();
 	}
 
-	public Bomba(Celda[] c, int prof) {
-		super(c, prof);
+	public Bomba(Celda[] c) {
+		super(c);
 		construir();
 	}
 

@@ -7,8 +7,8 @@ public abstract class Moneda extends Token {
 
 	protected int valor;
 
-	public Moneda(Celda c, int prof) {
-		super(c, prof);
+	public Moneda(Celda c) {
+		super(c);
 
 	}
 

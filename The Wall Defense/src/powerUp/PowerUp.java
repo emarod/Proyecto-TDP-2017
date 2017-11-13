@@ -2,6 +2,7 @@ package powerUp;
 
 import Controladores.Director;
 import jugador.Jugador;
+import main.CONFIG;
 import main.GameObject;
 import main.Visitor;
 import mapa.Celda;
@@ -14,19 +15,16 @@ import mapa.Celda;
 public abstract class PowerUp extends GameObject implements Runnable {
 
 	// Atributos locales.
-	protected Jugador player;
+	protected Jugador jugador;
 
 	// Constructor.
-	protected PowerUp(Celda c, int prof) {
+	protected PowerUp(Celda c) {
 		celda[0] = c;
-		profundidad = prof;
+		profundidad = CONFIG.PROFUNDIDAD_POWERUP;
 		Director.ejecutarUna(this, 10);
 	}
 
 	// Metodos locales.
-	public void setJugador(Jugador j) {
-		player = j;
-	}
 
 	// Metodos heredados.
 	@Override
@@ -36,11 +34,11 @@ public abstract class PowerUp extends GameObject implements Runnable {
 
 	@Override
 	public void run() {
-		player.getCeldas()[0].getObjects()[4] = null;
+		jugador.getCeldas()[0].getObjects()[4] = null;
+		jugador.regresarInicio();
 		this.destruir();
 	}
 
 	// Metodos abstractos.
 	public abstract void aplicar(Jugador j);
-
 }

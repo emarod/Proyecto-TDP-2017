@@ -16,8 +16,8 @@ public class WhiteWalker extends Enemigo {
 	// Atributos locales.
 
 	// Constructor.
-	public WhiteWalker(Celda[] c, int prof) {
-		super(c, prof);
+	public WhiteWalker(Celda[] c) {
+		super(c);
 		puntaje = 100;
 		velocidad = 50;
 		vida = 3;
@@ -61,7 +61,7 @@ public class WhiteWalker extends Enemigo {
 	@Override
 	public Enemigo clone(Celda[] c) {
 		// Profundidad 1 predeterminada. Retorna una unidad de mismo tipo.
-		Enemigo clon = new WhiteWalker(c, 1);
+		Enemigo clon = new WhiteWalker(c);
 		return clon;
 	}
 
@@ -79,5 +79,17 @@ public class WhiteWalker extends Enemigo {
 	@Override
 	public int getDaño() {
 		return daño;
+	}
+
+	@Override
+	public void guardarInicio() {
+		guardarEstado("WW");
+	}
+
+	@Override
+	public void regresarInicio() {
+		reset("WW");
+		careTaker.clearSavepoint();
+
 	}
 }

@@ -61,4 +61,16 @@ public class Caballero extends Jugador {
 	@Override
 	public void mover() {
 	}
+
+	@Override
+	public void guardarInicio() {
+		guardarEstado("CABALLERO");
+	}
+
+	@Override
+	public void regresarInicio() {
+		reset("CABALLERO");
+		careTaker.clearSavepoint();
+
+	}
 }

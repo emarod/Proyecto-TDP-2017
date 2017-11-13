@@ -8,12 +8,12 @@ public abstract class TokenPowerUp extends Token {
 
 	protected PowerUp power;
 
-	public TokenPowerUp(Celda c, int prof) {
-		super(c, prof);
+	public TokenPowerUp(Celda c) {
+		super(c);
 	}
 
 	public void aplicar(Jugador j) {
-		power.setJugador(j);
+		power.aplicar(j);
 	}
 
 }

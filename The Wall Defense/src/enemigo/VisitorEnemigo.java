@@ -1,6 +1,7 @@
 package enemigo;
 
-import disparo.Disparo;
+import disparo.DisparoEnemigo;
+import disparo.DisparoJugador;
 import jugador.Jugador;
 import main.Visitor;
 import obstaculos.ObstaculoTemporal;
@@ -37,13 +38,6 @@ public class VisitorEnemigo extends Visitor {
 	}
 
 	@Override
-	public boolean visitDisparoPlayer(Disparo d) {
-		enemigo.recibirDaño(d.getDaño());
-		d.destruir();
-		return true;
-	}
-
-	@Override
 	public boolean visitEnemigo(Enemigo e) {
 		return false;
 	}
@@ -58,5 +52,17 @@ public class VisitorEnemigo extends Visitor {
 	public boolean visitObjetoPrecioso(ObjetoPrecioso op) {
 		op.recibirDaño(enemigo.getDaño());
 		return false;
+	}
+
+	@Override
+	public boolean visitDisparo(DisparoJugador d) {
+		enemigo.recibirDaño(d.getDaño());
+		d.destruir();
+		return true;
+	}
+
+	@Override
+	public boolean visitDisparo(DisparoEnemigo d) {
+		return true;
 	}
 }

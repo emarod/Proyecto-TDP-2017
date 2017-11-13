@@ -7,11 +7,11 @@ import preciosos.Bomba;
 
 public class tkBomba extends TokenPrecioso {
 
-	public tkBomba(Celda c, int prof) {
-		super(c, prof);
+	public tkBomba(Celda c) {
+		super(c);
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/token_bomba.gif")));
 		duracion = 7;
-		precioso = new Bomba(prof);
+		precioso = new Bomba();
 		activar();
 	}
 
