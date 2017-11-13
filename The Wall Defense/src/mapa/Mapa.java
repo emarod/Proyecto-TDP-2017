@@ -22,7 +22,7 @@ import obstaculos.Rock;
 import obstaculos.Water;
 import preciosos.ObjetoPrecioso;
 import terreno.Muro;
-import terreno.Nieve;
+import terreno.Pasto;
 
 /*
  * Clase Map.
@@ -49,16 +49,17 @@ public class Mapa implements Runnable {
 
 	// Metodos locales.
 	public void inicializarCeldas() {
+		int nivel = Director.getPartida().getNivel();
 		int y = 0;
 		while (y < CONFIG.CANT_CELDAS_Y) {
 			for (int x = 0; x < CONFIG.CANT_CELDAS_X; x++) {
 				celdas[x][y] = new Celda(this, x, y);
 				GameObject[] objetos = celdas[x][y].getObjects();
 				if (x == 0) {
-					objetos[CONFIG.PROFUNDIDAD_TERRENO] = new Muro(celdas[x][y]);
+					objetos[CONFIG.PROFUNDIDAD_TERRENO] = new Muro(celdas[x][y], nivel);
 				}
 				else {
-					objetos[CONFIG.PROFUNDIDAD_TERRENO] = new Nieve(celdas[x][y]);
+					objetos[CONFIG.PROFUNDIDAD_TERRENO] = new Pasto(celdas[x][y]);
 				}
 				JLabel terreno = objetos[CONFIG.PROFUNDIDAD_TERRENO].getGrafico();
 				terreno.addMouseListener(new MouseAdapter() {
