@@ -1,9 +1,9 @@
 package preciosos;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
-import jugador.Jugador;
-import main.GameObject;
 import main.Visitor;
 import mapa.Celda;
 
@@ -15,43 +15,57 @@ import mapa.Celda;
 public class Bomba extends ObjetoPrecioso {
 
 	// Constructor.
-	public Bomba() {
-		super();
-		construir();
-	}
-
 	public Bomba(Celda[] c) {
 		super(c);
-		construir();
+		vida = 1;
+		graficos = new Icon[1];
+		graficos[0] = new ImageIcon(this.getClass().getResource("/resources/static/objetospreciosos/bomb.png"));
+		// graficos[1] = new
+		// ImageIcon(this.getClass().getResource("/resources/dinamic/explosion.gif"));
+		// setGrafico(new JLabel(new
+		// ImageIcon(this.getClass().getResource("/resources/static/objetospreciosos/bomb.png"))));
+		setGrafico(0);
 	}
 
-	private void construir() {
-		celda[0].getEscenario().repaint();
-		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/explosion.gif")));
+	public Bomba() {
+
 	}
 
-	public void aplicar(Celda c) {
-		GameObject objetos[] = c.getObjects();
-		for (int i = 1; i < objetos.length; i++) {
-			objetos[i] = null;
-		}
-	}
-
-	// Metodos heredados.
-	public void aplicar(Jugador j) {
-
+	// Metodos locales.
+	public int getResistencia() {
+		return vida;
 	}
 
 	@Override
-	public ObjetoPrecioso clone(Celda[] c) {
-		// TODO Auto-generated method stub
-		return null;
+	public void destruir() {
+		super.destruir();
+	}
+
+	// Metodos heredados.
+
+	public void setGrafico(int i) {
+		grafico.setIcon(graficos[i]);
+	}
+
+	@Override
+	public void setGrafico(JLabel grafico) {
+		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/objetospreciosos/bomb.png"));
+		graph = 0;
+		grafico.setIcon(imagen);
+	}
+
+	public void playSound() {
 	}
 
 	@Override
 	public boolean accept(Visitor V) {
-		// TODO Auto-generated method stub
-		return false;
+		return V.visitObjetoPrecioso(this);
+	}
+
+	@Override
+	public ObjetoPrecioso clone(Celda[] c) {
+		ObjetoPrecioso clon = new Bomba(c);
+		return clon;
 	}
 
 }

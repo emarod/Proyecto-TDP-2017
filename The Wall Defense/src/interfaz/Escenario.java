@@ -24,7 +24,7 @@ public class Escenario extends JPanel {
 	protected MenuCompra menucompra;
 	protected Dinero dinero;
 	protected Score score;
-	protected MenuPowerups powerups;
+	protected MenuObjetos powerups;
 	protected Nivel level;
 
 	// Constructor.
@@ -38,7 +38,7 @@ public class Escenario extends JPanel {
 		menucompra = new MenuCompra(this);
 		dinero = new Dinero(this);
 		score = new Score(this);
-		powerups = new MenuPowerups(this);
+		powerups = new MenuObjetos(this);
 		level = new Nivel(this);
 
 		mapa = Director.getMapa();
@@ -94,6 +94,10 @@ public class Escenario extends JPanel {
 
 	public Nivel getLevel() {
 		return level;
+	}
+
+	public MenuObjetos getMenuObjetos() {
+		return powerups;
 	}
 
 }

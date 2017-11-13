@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import interfaz.botones.BtnBarricada;
+import interfaz.botones.BtnBomba;
 import mapa.Mapa;
 
 /*
@@ -16,7 +17,7 @@ import mapa.Mapa;
 * Clase encargada de desplegar el menu de power ups.
 */
 
-public class MenuPowerups extends JPanel {
+public class MenuObjetos extends JPanel {
 
 	// Atributos locales.
 	protected JLabel personaje;
@@ -27,7 +28,7 @@ public class MenuPowerups extends JPanel {
 	protected Icon background;
 
 	// Constructor.
-	public MenuPowerups(Escenario escenario) {
+	public MenuObjetos(Escenario escenario) {
 		this.escenario = escenario;
 		this.setLayout(new FlowLayout());
 		this.setBounds(76, 0, 300, 200);
@@ -39,10 +40,10 @@ public class MenuPowerups extends JPanel {
 	private void armarBotonera() {
 
 		BtnBarricada barricada = new BtnBarricada(this.escenario);
-		BtnBarricada barricada2 = new BtnBarricada(this.escenario);
+		BtnBomba bomba = new BtnBomba(this.escenario);
 
 		agregarBoton(barricada);
-		agregarBoton(barricada2);
+		agregarBoton(bomba);
 
 	}
 

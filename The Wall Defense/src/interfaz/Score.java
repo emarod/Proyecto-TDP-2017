@@ -3,6 +3,9 @@ package interfaz;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
+import java.io.IOException;
+import java.io.InputStream;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,6 +37,23 @@ public class Score extends JPanel {
 
 	private void agregarLabel() {
 		puntaje = new JLabel("Score 0000");
+
+		String fName = "/resources/font/ARCADECLASSIC.TTF";
+		InputStream is = this.getClass().getResourceAsStream(fName);
+		Font font = new Font("fName", Font.CENTER_BASELINE, 50);
+		try {
+			font = Font.createFont(Font.TRUETYPE_FONT, is);
+			puntaje.setFont(font);
+		}
+		catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		// puntaje.setSize(puntaje.getWidth(), this.getHeight());
 		// Recojo la fuente que se esta utilizando actualmente.
 		Font auxFont = new Font("ArcadeClassic", Font.CENTER_BASELINE, 50);

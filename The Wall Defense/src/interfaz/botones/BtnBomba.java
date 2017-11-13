@@ -4,26 +4,25 @@ import javax.swing.ImageIcon;
 
 import interfaz.Escenario;
 import mapa.Celda;
-import preciosos.Barricada;
+import preciosos.Bomba;
 
 /*
- * Clase BtnBarricada.
- * Clase encargada del boton para el despliegue de una barricadao.
+ * Clase BtnBomba.
+ * Clase encargada del boton para el despliegue de una bomba.
  */
 
-public class BtnBarricada extends BtnObjetoPrecioso {
+public class BtnBomba extends BtnObjetoPrecioso {
 
 	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
 
 	// Constructor.
-	public BtnBarricada(Escenario e) {
+	public BtnBomba(Escenario e) {
 		super(e);
 		Celda[] c = new Celda[4];
-		precioso = new Barricada(c);
-		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/barricada.png")));
-
-	};
+		precioso = new Bomba(c);
+		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/bomba.png")));
+	}
 
 	// Metodos heredados.
 	@Override

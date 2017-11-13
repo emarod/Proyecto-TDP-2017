@@ -21,6 +21,7 @@ public class GUI extends JFrame {
 	protected MenuCompra tienda;
 	protected ProximaHorda horda;
 	protected Score puntaje;
+	protected MenuObjetos objetos;
 	protected JPanel panelInferior;
 	protected JPanel panelIzquierdo;
 	protected JPanel panelDerecho;
@@ -65,6 +66,7 @@ public class GUI extends JFrame {
 		panelDerecho.setPreferredSize(new Dimension(100, 100));
 		panelDerecho.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelDerecho.setBackground(Color.BLACK);
+		panelDerecho.add(escenario.getMenuObjetos());
 		getContentPane().add(panelDerecho, BorderLayout.EAST);
 
 		// Panel Superior
