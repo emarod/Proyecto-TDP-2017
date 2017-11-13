@@ -141,11 +141,11 @@ public class MenuCompra extends JPanel {
 			ygritte.setEnabled(false);
 		}
 
-		if (director.getPartida().getDinero() < 30) {
+		if (director.getPartida().getDinero() < 25) {
 			JonSnow.setEnabled(false);
 		}
 
-		if (director.getPartida().getDinero() < 25) {
+		if (director.getPartida().getDinero() < 30) {
 			lannister.setEnabled(false);
 		}
 

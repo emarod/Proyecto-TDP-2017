@@ -4,6 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="src/lib/tinysound-1.1.1.jar"/>
 	<classpathentry kind="lib" path="src/lib/vorbis-support-1.1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/flopy/Desktop/Flor/TDP/The-Wall-Defense-interfaz/The Wall Defense/The-Wall-Defense/The Wall Defense/src/resources/font/ARCADECLASSIC.TTF"/>
+	<classpathentry kind="lib" path="C:/Users/flopy/Downloads/arcadeclassic.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
