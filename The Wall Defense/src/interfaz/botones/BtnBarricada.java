@@ -31,4 +31,16 @@ public class BtnBarricada extends BtnObjetoPrecioso {
 		stage.getMapa().crearPrecioso(precioso);
 
 	}
+
+	public void crearPersonaje() {
+
+		if (this.isEnabled()) {
+			create();
+		}
+
+	}
+
+	public void deshabilitar() {
+		this.setEnabled(false);
+	}
 }

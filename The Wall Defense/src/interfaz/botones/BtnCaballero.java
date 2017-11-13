@@ -59,4 +59,16 @@ public class BtnCaballero extends BtnJugador {
 		});
 	}
 
+	public void crearPersonaje() {
+
+		if (this.isEnabled()) {
+			create();
+		}
+
+	}
+
+	public void deshabilitar() {
+		this.setEnabled(false);
+	}
+
 }

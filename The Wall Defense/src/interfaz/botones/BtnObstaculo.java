@@ -40,4 +40,5 @@ public abstract class BtnObstaculo extends JButton {
 
 	// Metodos abstractos.
 	public abstract void create();
+
 }
