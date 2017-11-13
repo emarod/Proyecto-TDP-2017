@@ -28,6 +28,7 @@ public class BtnArquero extends BtnJugador {
 		info = new ImageIcon(
 				this.getClass().getResource("/resources/static/botones/personajes/ygrittedescripcion.png"));
 		this.setIcon(imagen);
+
 	}
 
 	// Metodos heredados.
@@ -37,6 +38,7 @@ public class BtnArquero extends BtnJugador {
 
 	}
 
+	@Override
 	public void oyente() {
 
 		this.addMouseListener(new MouseAdapter() {
@@ -54,6 +56,10 @@ public class BtnArquero extends BtnJugador {
 			}
 
 		});
+	}
+
+	public void deshabilitar() {
+		this.setEnabled(false);
 	}
 
 }

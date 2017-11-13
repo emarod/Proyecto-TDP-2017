@@ -35,6 +35,8 @@ public class MenuCompra extends JPanel {
 	protected Icon background;
 	protected BtnDragon dragon;
 	protected BtnArquero ygritte;
+	protected JButton ygritte2;
+
 	protected BtnCaballero lannister;
 	protected BtnEspadachin JonSnow;
 	protected Director director;
@@ -63,7 +65,6 @@ public class MenuCompra extends JPanel {
 			public void mouseReleased(MouseEvent evento) {
 				director.getPartida().quitarDinero(dragon.getJugador().getCosto());
 				if (director.getPartida().getDinero() < dragon.getJugador().getCosto()) {
-					dragon.setEnabled(false);
 				}
 				chequear();
 				escenario.getDinero().actualizar();
@@ -79,7 +80,7 @@ public class MenuCompra extends JPanel {
 			public void mouseReleased(MouseEvent evento) {
 				director.getPartida().quitarDinero(ygritte.getJugador().getCosto());
 				if (director.getPartida().getDinero() < ygritte.getJugador().getCosto()) {
-					ygritte.setEnabled(false);
+					ygritte.deshabilitar();
 				}
 				chequear();
 				escenario.getDinero().actualizar();
@@ -138,17 +139,17 @@ public class MenuCompra extends JPanel {
 		}
 
 		if (director.getPartida().getDinero() < 50) {
-			ygritte.setEnabled(false);
-		}
+			ygritte.deshabilitar();
 
-		if (director.getPartida().getDinero() < 25) {
-			JonSnow.setEnabled(false);
-		}
+			if (director.getPartida().getDinero() < 25) {
+				JonSnow.setEnabled(false);
+			}
 
-		if (director.getPartida().getDinero() < 30) {
-			lannister.setEnabled(false);
+			if (director.getPartida().getDinero() < 30) {
+				lannister.setEnabled(false);
+			}
+
 		}
 
 	}
-
 }
