@@ -1,6 +1,7 @@
 package mapa;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import main.CONFIG;
 import main.GameObject;
@@ -10,7 +11,7 @@ import main.GameObject;
  * Clase encargada de la construccion logica de una posicion en el campo de batalla.
  */
 
-public class Celda {
+public abstract class Celda {
 
 	// Atributos locales.
 	protected GameObject[] listaObjetosLogicos;
@@ -83,5 +84,11 @@ public class Celda {
 		}
 		return listaObjetosLogicos[i];
 	}
+
+	public abstract void addChild(Celda c);
+
+	public abstract void removeChild(Celda c);
+
+	public abstract List<Celda> getChildren(Celda c);
 
 }
