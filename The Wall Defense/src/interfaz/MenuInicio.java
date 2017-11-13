@@ -33,6 +33,7 @@ public class MenuInicio extends JPanel {
 	protected JButton buttons[];
 	protected Juego game;
 	protected BancoRecursos bancoRecursos;
+	protected PopUp popup;
 
 	// Constructor.
 	public MenuInicio(Juego game) {
@@ -137,6 +138,8 @@ public class MenuInicio extends JPanel {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				buttons[2].setIcon(help[2]);
+				popup = new PopUp();
+				popup.ErrorArbol();
 			}
 
 			@Override
