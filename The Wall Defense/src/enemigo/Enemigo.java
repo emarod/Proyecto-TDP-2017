@@ -3,6 +3,7 @@ package enemigo;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
+import Controladores.Director;
 import main.CONFIG;
 import main.GameObject;
 import main.Unidad;
@@ -63,7 +64,7 @@ public abstract class Enemigo extends Unidad {
 	@Override
 	public void destruir() {
 		super.destruir();
-		celda[0].destruirEnemigo(this);
+		Director.getMapa().destruirEnemigo(this);
 
 	}
 
@@ -113,7 +114,7 @@ public abstract class Enemigo extends Unidad {
 		int yCelda = getCeldas()[0].getPosY();
 		int xGrafico = getGrafico().getX();
 		int yGrafico = getGrafico().getY();
-		siguiente = getCeldas()[0].getCelda(xCelda - 1, yCelda);
+		siguiente = Director.getMapa().getCelda(xCelda - 1, yCelda);
 		for (int i = 0; i < CONFIG.PROFUNDIDAD_CELDA; i++) {
 			GameObject objeto = siguiente.getObjects()[i];
 			if (objeto != null && !objeto.accept(getVisitor())) {

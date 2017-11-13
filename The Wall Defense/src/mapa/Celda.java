@@ -2,8 +2,6 @@ package mapa;
 
 import java.util.LinkedList;
 
-import enemigo.Enemigo;
-import interfaz.Escenario;
 import main.CONFIG;
 import main.GameObject;
 
@@ -24,11 +22,10 @@ public class Celda {
 	protected LinkedList<GameObject> disparos;
 
 	// Constructor.
-	public Celda(Mapa mapa, int posX, int posY) {
+	public Celda(int posX, int posY) {
 		hayDisparo = false;
 		this.posX = posX;
 		this.posY = posY;
-		this.mapa = mapa;
 		listaObjetosLogicos = new GameObject[CONFIG.PROFUNDIDAD_CELDA];
 		disparos = new LinkedList<GameObject>();
 	}
@@ -74,18 +71,6 @@ public class Celda {
 
 	public int getPosY() {
 		return posY;
-	}
-
-	public Celda getCelda(int x, int y) {
-		return mapa.getCelda(x, y);
-	}
-
-	public Escenario getEscenario() {
-		return mapa.getEscenario();
-	}
-
-	public void destruirEnemigo(Enemigo e) {
-		mapa.destruirEnemigo(e);
 	}
 
 	// Si la celda contiene un enemigo, aliado, o obstaculo lo retorna cc null

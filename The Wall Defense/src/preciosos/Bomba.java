@@ -2,6 +2,7 @@ package preciosos;
 
 import javax.swing.ImageIcon;
 
+import Controladores.Director;
 import jugador.Jugador;
 import main.GameObject;
 import main.Visitor;
@@ -26,7 +27,7 @@ public class Bomba extends ObjetoPrecioso {
 	}
 
 	private void construir() {
-		celda[0].getEscenario().repaint();
+		Director.getMapa().getEscenario().repaint();
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/explosion.gif")));
 	}
 

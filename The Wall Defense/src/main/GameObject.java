@@ -4,6 +4,7 @@ import java.awt.Point;
 
 import javax.swing.JLabel;
 
+import Controladores.Director;
 import mapa.Celda;
 
 /*
@@ -29,7 +30,7 @@ public abstract class GameObject {
 
 	public void destruir() {
 		grafico.setIcon(null);
-		celda[0].getEscenario().remove(grafico);
+		Director.getMapa().getEscenario().remove(grafico);
 		celda[0].getObjects()[profundidad] = null;
 	}
 
