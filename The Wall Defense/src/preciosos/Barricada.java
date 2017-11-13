@@ -15,6 +15,8 @@ import mapa.Celda;
 
 public class Barricada extends ObjetoPrecioso {
 
+	protected int costo;
+
 	// Constructor.
 	public Barricada(Celda[] c) {
 		super(c);
@@ -27,6 +29,7 @@ public class Barricada extends ObjetoPrecioso {
 		graficos[2] = new ImageIcon(
 				this.getClass().getResource("/resources/static/terrenos/barricada/barricada_3.png"));
 		setGrafico(2);
+		costo = 10;
 	}
 
 	// Metodos locales.
@@ -37,6 +40,11 @@ public class Barricada extends ObjetoPrecioso {
 	@Override
 	public void destruir() {
 		super.destruir();
+	}
+
+	@Override
+	public int getCosto() {
+		return costo;
 	}
 
 	// Metodos heredados.

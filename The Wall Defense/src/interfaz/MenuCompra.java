@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 
 import Controladores.Director;
 import interfaz.botones.BtnArquero;
-import interfaz.botones.BtnBarricada;
 import interfaz.botones.BtnCaballero;
 import interfaz.botones.BtnDragon;
 import interfaz.botones.BtnEspadachin;
@@ -132,9 +131,6 @@ public class MenuCompra extends JPanel {
 			}
 		});
 
-		BtnBarricada barricada = new BtnBarricada(this.escenario);
-		barricada.setBounds(0, 50, barricada.getIcon().getIconWidth(), barricada.getIcon().getIconHeight());
-
 		agregarBoton(ygritte);
 		agregarBoton(dragon);
 		agregarBoton(lannister);
@@ -146,7 +142,8 @@ public class MenuCompra extends JPanel {
 		this.add(boton);
 	}
 
-	private void chequear() {
+	public void chequear() {
+
 		if (director.getPartida().getDinero() < 75) {
 			dragon.deshabilitar();
 		}
@@ -163,6 +160,16 @@ public class MenuCompra extends JPanel {
 			lannister.deshabilitar();
 		}
 
+		if (!JonSnow.isEnabled()) {
+			escenario.getMenuObjetos().chequear();
+		}
+	}
+
+	@Override
+	public void disable() {
+		if (director.getPartida().getDinero() < 10) {
+			escenario.getMenuObjetos().chequear();
+		}
 	}
 
 }

@@ -1,8 +1,6 @@
 package interfaz.botones;
 
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 
@@ -29,13 +27,6 @@ public abstract class BtnObjetoPrecioso extends JButton {
 		this.setContentAreaFilled(false);
 		this.setOpaque(true);
 		this.setBackground(Color.BLACK);
-
-		this.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				create();
-			}
-		});
 	}
 
 	// Metodos abstractos.

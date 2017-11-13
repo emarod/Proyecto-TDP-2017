@@ -2,12 +2,14 @@ package interfaz;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Controladores.Director;
 import interfaz.botones.BtnBarricada;
 import interfaz.botones.BtnBomba;
 import mapa.Mapa;
@@ -25,7 +27,8 @@ public class MenuObjetos extends JPanel {
 	protected Escenario escenario;
 	protected static final long serialVersionUID = 1L;
 	protected JPanel botonera;
-	protected Icon background;
+	protected BtnBarricada barricada;
+	protected BtnBomba bomba;
 
 	// Constructor.
 	public MenuObjetos(Escenario escenario) {
@@ -39,8 +42,45 @@ public class MenuObjetos extends JPanel {
 	// Metodos locales.
 	private void armarBotonera() {
 
-		BtnBarricada barricada = new BtnBarricada(this.escenario);
-		BtnBomba bomba = new BtnBomba(this.escenario);
+		barricada = new BtnBarricada(this.escenario);
+		bomba = new BtnBomba(this.escenario);
+
+		barricada.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseReleased(MouseEvent evento) {
+				if (Director.getPartida().getDinero() >= barricada.getObjeto().getCosto()) {
+					Director.getPartida().quitarDinero(barricada.getObjeto().getCosto());
+					barricada.crearObjeto();
+				}
+				if (Director.getPartida().getDinero() < barricada.getObjeto().getCosto()) {
+					barricada.setEnabled(false);
+				}
+				chequear();
+				escenario.getDinero().actualizar();
+
+			}
+
+		});
+
+		bomba.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseReleased(MouseEvent evento) {
+				if (Director.getPartida().getDinero() >= bomba.getObjeto().getCosto()) {
+					Director.getPartida().quitarDinero(bomba.getObjeto().getCosto());
+					bomba.crearObjeto();
+				}
+				if (Director.getPartida().getDinero() < bomba.getObjeto().getCosto()) {
+					bomba.setEnabled(false);
+				}
+				chequear();
+				disable();
+				escenario.getDinero().actualizar();
+
+			}
+
+		});
 
 		agregarBoton(barricada);
 		agregarBoton(bomba);
@@ -50,4 +90,26 @@ public class MenuObjetos extends JPanel {
 	public void agregarBoton(JButton boton) {
 		this.add(boton);
 	}
+
+	public void chequear() {
+
+		if (Director.getPartida().getDinero() < 10) {
+			barricada.deshabilitar();
+		}
+		if (Director.getPartida().getDinero() < 15) {
+			bomba.deshabilitar();
+		}
+
+		if (!barricada.isEnabled()) {
+			escenario.getMenu().chequear();
+		}
+	}
+
+	@Override
+	public void disable() {
+		if (Director.getPartida().getDinero() < 25) {
+			escenario.getMenu().chequear();
+		}
+	}
+
 }

@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import interfaz.Escenario;
 import mapa.Celda;
 import preciosos.Bomba;
+import preciosos.ObjetoPrecioso;
 
 /*
  * Clase BtnBomba.
@@ -31,7 +32,7 @@ public class BtnBomba extends BtnObjetoPrecioso {
 
 	}
 
-	public void crearPersonaje() {
+	public void crearObjeto() {
 
 		if (this.isEnabled()) {
 			create();
@@ -41,5 +42,9 @@ public class BtnBomba extends BtnObjetoPrecioso {
 
 	public void deshabilitar() {
 		this.setEnabled(false);
+	}
+
+	public ObjetoPrecioso getObjeto() {
+		return precioso;
 	}
 }

@@ -14,6 +14,8 @@ import mapa.Celda;
 
 public class Bomba extends ObjetoPrecioso {
 
+	protected int costo;
+
 	// Constructor.
 	public Bomba(Celda[] c) {
 		super(c);
@@ -25,6 +27,7 @@ public class Bomba extends ObjetoPrecioso {
 		// setGrafico(new JLabel(new
 		// ImageIcon(this.getClass().getResource("/resources/static/objetospreciosos/bomb.png"))));
 		setGrafico(0);
+		costo = 15;
 	}
 
 	public Bomba() {
@@ -38,6 +41,11 @@ public class Bomba extends ObjetoPrecioso {
 	@Override
 	public void destruir() {
 		super.destruir();
+	}
+
+	@Override
+	public int getCosto() {
+		return costo;
 	}
 
 	// Metodos heredados.

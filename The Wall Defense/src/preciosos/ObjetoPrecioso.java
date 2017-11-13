@@ -55,4 +55,6 @@ public abstract class ObjetoPrecioso extends GameObject {
 
 	public abstract ObjetoPrecioso clone(Celda[] c);
 
+	public abstract int getCosto();
+
 }

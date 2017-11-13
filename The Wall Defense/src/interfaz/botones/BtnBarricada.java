@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import interfaz.Escenario;
 import mapa.Celda;
 import preciosos.Barricada;
+import preciosos.ObjetoPrecioso;
 
 /*
  * Clase BtnBarricada.
@@ -32,12 +33,16 @@ public class BtnBarricada extends BtnObjetoPrecioso {
 
 	}
 
-	public void crearPersonaje() {
+	public void crearObjeto() {
 
 		if (this.isEnabled()) {
 			create();
 		}
 
+	}
+
+	public ObjetoPrecioso getObjeto() {
+		return precioso;
 	}
 
 	public void deshabilitar() {
