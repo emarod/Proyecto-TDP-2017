@@ -33,7 +33,7 @@ public class PopUp extends JOptionPane {
 		UIManager.put("OptionPane.messageFont",
 				new FontUIResource(new Font("ArcadeClassic", Font.CENTER_BASELINE, 18)));
 
-		fondo = new ImageIcon(this.getClass().getResource("/resources/static/background/icon.jpg"));
+		fondo = new ImageIcon(this.getClass().getResource("/resources/static/background/icon2.jpg"));
 
 		JOptionPane.showMessageDialog(null,
 				"<html><html><font color='white'>Manual: E l  objetivo  es  defender  el  muro <br> "
@@ -42,15 +42,6 @@ public class PopUp extends JOptionPane {
 						+ "<br>en el mapa para luchar contra las tropas<br> "
 						+ "<br>del  Night  King  y  asi  poder  salvar  el  Gran  Muro.</html> </font></html>",
 				"Instrucciones de juego", JOptionPane.INFORMATION_MESSAGE, fondo);
-	}
-
-	public JPanel armarPanel() {
-		fondo = new ImageIcon(this.getClass().getResource("/resources/static/background/background.png"));
-		panel = new JPanel();
-		imagen = new JLabel(fondo);
-		panel.add(imagen);
-		return panel;
-
 	}
 
 }
