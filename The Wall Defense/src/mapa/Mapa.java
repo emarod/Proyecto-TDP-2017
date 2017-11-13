@@ -53,7 +53,7 @@ public class Mapa implements Runnable {
 		int y = 0;
 		while (y < CONFIG.CANT_CELDAS_Y) {
 			for (int x = 0; x < CONFIG.CANT_CELDAS_X; x++) {
-				celdas[x][y] = new Celda(x, y);
+				celdas[x][y] = new Cell(x, y);
 				GameObject[] objetos = celdas[x][y].getObjects();
 				if (x == 0) {
 					objetos[CONFIG.PROFUNDIDAD_TERRENO] = new Muro(celdas[x][y], nivel);
