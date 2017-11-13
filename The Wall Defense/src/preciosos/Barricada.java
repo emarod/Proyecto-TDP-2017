@@ -16,8 +16,8 @@ import mapa.Celda;
 public class Barricada extends ObjetoPrecioso {
 
 	// Constructor.
-	public Barricada(Celda[] c, int prof) {
-		super(c, prof);
+	public Barricada(Celda[] c) {
+		super(c);
 		vida = 3;
 		graficos = new Icon[3];
 		graficos[0] = new ImageIcon(
@@ -64,7 +64,7 @@ public class Barricada extends ObjetoPrecioso {
 
 	@Override
 	public ObjetoPrecioso clone(Celda[] c) {
-		ObjetoPrecioso clon = new Barricada(c, 3);
+		ObjetoPrecioso clon = new Barricada(c);
 		return clon;
 	}
 }

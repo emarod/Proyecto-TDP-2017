@@ -36,32 +36,19 @@ public class Arquero extends Shooter {
 		graficos[4] = new ImageIcon(
 				this.getClass().getResource("/resources/static/ygritte_atacando/ygritte_atacando_4.png"));
 		setGrafico(0);
+		// disparo = new DisparoArquero(this);
 	}
 
 	// Metodos locales.
-	public void animarDisparo() {
-		if (graph < 4) {
-			graph++;
-		}
-		setGrafico(graph);
-		if (graph == 4) {
-			setGrafico(0);
-		}
-	}
-
-	public void setGrafico(int i) {
-		getGrafico().setIcon(graficos[i]);
-	}
-
-	public int getVelocidadDisparo() {
-		return velocidad_disparo;
-	}
 
 	// Metodos heredados.
 	@Override
 	public Jugador clone(Celda[] c) {
 		// Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
-		Jugador clon = new Arquero(c);
+		Shooter clon = new Arquero(c);
+		// clon.getDisparo().setCelda();
+		// clon.getDisparo().activar();
+		System.out.println("Clonado");
 		return clon;
 	}
 
@@ -77,10 +64,14 @@ public class Arquero extends Shooter {
 
 	@Override
 	public void atacar() {
-		if (shot == null || shot.isCancelled() || shot.isDone()) {
-			shot = new DisparoArquero(this).getTask();
+		if (disparo == null) {
+			disparo = new DisparoArquero(this);
+			disparo.setCelda();
+			disparo.activar();
 		}
 		graph = 0;
+		activeTask = null;
+		activar();
 	}
 
 	@Override
@@ -98,5 +89,17 @@ public class Arquero extends Shooter {
 
 	@Override
 	public void mover() {
+	}
+
+	@Override
+	public void guardarInicio() {
+		guardarEstado("ARQUERO");
+	}
+
+	@Override
+	public void regresarInicio() {
+		reset("ARQUERO");
+		careTaker.clearSavepoint();
+
 	}
 }

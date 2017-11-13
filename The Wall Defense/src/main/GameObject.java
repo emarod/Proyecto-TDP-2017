@@ -49,6 +49,13 @@ public abstract class GameObject {
 		celda[pos] = c;
 	}
 
+	public void intercambiar_celdas(Celda C) {
+		C.getObjects()[profundidad] = this;
+		celda[0].getObjects()[profundidad] = null;
+		celda[0] = C;
+
+	}
+
 	// Metodos abstractos.
 	public abstract boolean accept(Visitor V);
 

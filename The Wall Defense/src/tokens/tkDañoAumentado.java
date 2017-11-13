@@ -7,11 +7,11 @@ import powerUp.DañoAtkAumentado;
 
 public class tkDañoAumentado extends TokenPowerUp {
 
-	public tkDañoAumentado(Celda c, int prof) {
-		super(c, prof);
+	public tkDañoAumentado(Celda c) {
+		super(c);
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/token_daño_atk_aumentado.gif")));
 		duracion = 7;
-		power = new DañoAtkAumentado(c, prof);
+		power = new DañoAtkAumentado(c);
 		activar();
 	}
 

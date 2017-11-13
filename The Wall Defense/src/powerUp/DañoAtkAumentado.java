@@ -14,8 +14,8 @@ import mapa.Celda;
 public class DañoAtkAumentado extends PowerUp {
 
 	// Constructor.
-	public DañoAtkAumentado(Celda c, int prof) {
-		super(c, prof);
+	public DañoAtkAumentado(Celda c) {
+		super(c);
 		grafico = new JLabel();
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/daño_atk_aumentado.gif")));
 	}
@@ -24,8 +24,8 @@ public class DañoAtkAumentado extends PowerUp {
 
 	@Override
 	public void aplicar(Jugador j) {
-		int ataque_actual = j.getDaño();
-		j.setAtaque(ataque_actual * 2);
+		jugador = j;
+		jugador.setAtaque(jugador.getDaño() * 2);
 	}
 
 	@Override

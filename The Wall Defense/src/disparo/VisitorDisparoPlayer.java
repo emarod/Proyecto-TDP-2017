@@ -17,10 +17,10 @@ import preciosos.ObjetoPrecioso;
 public class VisitorDisparoPlayer extends Visitor {
 
 	// Atributos locales.
-	protected Disparo disparo;
+	protected DisparoJugador disparo;
 
 	// Constructor
-	public VisitorDisparoPlayer(Disparo dp) {
+	public VisitorDisparoPlayer(DisparoJugador dp) {
 		disparo = dp;
 	}
 
@@ -35,15 +35,10 @@ public class VisitorDisparoPlayer extends Visitor {
 	}
 
 	@Override
-	public boolean visitDisparoPlayer(Disparo d) {
-		return true;
-	}
-
-	@Override
 	public boolean visitEnemigo(Enemigo e) {
 		e.recibirDaño(disparo.getDaño());
 		disparo.destruir();
-		return true;
+		return false;
 	}
 
 	@Override
@@ -58,6 +53,18 @@ public class VisitorDisparoPlayer extends Visitor {
 
 	@Override
 	public boolean visitObjetoPrecioso(ObjetoPrecioso op) {
+		return true;
+	}
+
+	@Override
+	public boolean visitDisparo(DisparoJugador d) {
+		return true;
+	}
+
+	@Override
+	public boolean visitDisparo(DisparoEnemigo d) {
+		// El disparo mas fuerte sobrevive
+		disparo.colision(d);
 		return true;
 	}
 

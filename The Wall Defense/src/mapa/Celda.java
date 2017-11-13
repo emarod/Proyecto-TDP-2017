@@ -40,7 +40,6 @@ public class Celda {
 	}
 
 	public void addDisparo(GameObject d) {
-		System.out.println("addDisparo(d)");
 		if (hayDisparo) {
 			disparos.addFirst(d);
 			refresh();

@@ -20,7 +20,7 @@ public class BtnBarricada extends BtnObjetoPrecioso {
 	public BtnBarricada(Escenario e) {
 		super(e);
 		Celda[] c = new Celda[4];
-		precioso = new Barricada(c, 3);
+		precioso = new Barricada(c);
 		this.setIcon(
 				new ImageIcon(this.getClass().getResource("/resources/static/terrenos/barricada/barricada_3.png")));
 	};

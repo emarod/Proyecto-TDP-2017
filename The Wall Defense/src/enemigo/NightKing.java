@@ -5,7 +5,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Controladores.Director;
-import disparo.DisparoEnemigo;
 import mapa.Celda;
 
 /*
@@ -18,8 +17,8 @@ public class NightKing extends ShooterEnemigo {
 	// Atributos locales.
 
 	// Constructor.
-	public NightKing(Celda[] c, int prof) {
-		super(c, prof);
+	public NightKing(Celda[] c) {
+		super(c);
 		puntaje = 200;
 		velocidad = 100;
 		daño = 3;
@@ -57,37 +56,20 @@ public class NightKing extends ShooterEnemigo {
 
 	// Metodos locales.
 
-	public int getVelocidadDisparo() {
-		return velocidad_disparo;
-	}
-
-	public void animarDisparo() {
-		if (graph < 4) {
-			graph++;
-		}
-		setGrafico(graph);
-		if (graph == 4) {
-			setGrafico(0);
-		}
-	}
-
+	@Override
 	public void setGrafico(int i) {
 		getGrafico().setIcon(graficos[i]);
 	}
 
-	public void restarDisparosEnEjecucion() {
-		disparos_en_ejecucion--;
-	}
-
 	// Metodos heredados.
+
 	@Override
 	public void atacar() {
-		if (disparos_en_ejecucion < disparos_simultaneos) {
-			playSound();
-			shot = new DisparoEnemigo(this).getTask();
-			disparos_en_ejecucion++;
-		}
-		graph = 0;
+		// if (shot == null || shot.isCancelled() || shot.isDone()) {
+		// playSound();
+		// shot = new DisparoNightKing(this).getTask();
+		// }
+		// graph = 0;
 	}
 
 	@Override
@@ -105,7 +87,6 @@ public class NightKing extends ShooterEnemigo {
 	@Override
 	public void destruir() {
 		super.destruir();
-		System.out.println("Destruir WhiteWalker");
 	}
 
 	@Override
@@ -116,7 +97,7 @@ public class NightKing extends ShooterEnemigo {
 	@Override
 	public Enemigo clone(Celda[] c) {
 		// Profundidad 1 predeterminada. Retorna una unidad de mismo tipo.
-		Enemigo clon = new NightKing(c, 1);
+		Enemigo clon = new NightKing(c);
 		return clon;
 	}
 
@@ -128,5 +109,17 @@ public class NightKing extends ShooterEnemigo {
 	@Override
 	public int getDaño() {
 		return daño;
+	}
+
+	@Override
+	public void guardarInicio() {
+		guardarEstado("NK");
+	}
+
+	@Override
+	public void regresarInicio() {
+		reset("NK");
+		careTaker.clearSavepoint();
+
 	}
 }

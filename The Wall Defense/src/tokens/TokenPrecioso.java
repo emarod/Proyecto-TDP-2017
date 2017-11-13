@@ -8,8 +8,8 @@ public abstract class TokenPrecioso extends Token {
 
 	protected ObjetoPrecioso precioso;
 
-	public TokenPrecioso(Celda c, int prof) {
-		super(c, prof);
+	public TokenPrecioso(Celda c) {
+		super(c);
 	}
 
 	public void guardar() {

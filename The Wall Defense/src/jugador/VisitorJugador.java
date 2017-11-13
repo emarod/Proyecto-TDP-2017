@@ -1,6 +1,7 @@
 package jugador;
 
-import disparo.Disparo;
+import disparo.DisparoEnemigo;
+import disparo.DisparoJugador;
 import enemigo.Enemigo;
 import main.Visitor;
 import obstaculos.Obstaculo;
@@ -41,11 +42,6 @@ public class VisitorJugador extends Visitor {
 	}
 
 	@Override
-	public boolean visitDisparoPlayer(Disparo d) {
-		return false;
-	}
-
-	@Override
 	public boolean visitEnemigo(Enemigo e) {
 		System.out.println("el enemigo visita a jugador");
 		e.recibirDaño(jugador.getDaño());
@@ -68,5 +64,17 @@ public class VisitorJugador extends Visitor {
 	public boolean visitObjetoPrecioso(ObjetoPrecioso op) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public boolean visitDisparo(DisparoJugador d) {
+		return true;
+	}
+
+	@Override
+	public boolean visitDisparo(DisparoEnemigo d) {
+		jugador.recibirDaño(d.getDaño());
+		d.destruir();
+		return true;
 	}
 }

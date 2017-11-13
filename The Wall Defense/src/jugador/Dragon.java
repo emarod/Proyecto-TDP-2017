@@ -43,22 +43,10 @@ public class Dragon extends Shooter {
 		graficos[7] = new ImageIcon(
 				this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_7.png"));
 		setGrafico(0);
+		// disparo = new DisparoDragon(this);
 	}
 
-	public void animarDisparo() {
-		if (graph < 4) {
-			graph++;
-		}
-		setGrafico(graph);
-		if (graph == 4) {
-			setGrafico(0);
-		}
-	}
-
-	public void setGrafico(int i) {
-		getGrafico().setIcon(graficos[i]);
-	}
-
+	@Override
 	public int getVelocidadDisparo() {
 		return velocidad_disparo;
 	}
@@ -74,7 +62,8 @@ public class Dragon extends Shooter {
 	@Override
 	public Jugador clone(Celda[] c) {
 		// Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
-		Jugador clon = new Dragon(c);
+		Shooter clon = new Dragon(c);
+		// clon.getDisparo().setCelda();
 		return clon;
 	}
 
@@ -91,11 +80,15 @@ public class Dragon extends Shooter {
 
 	@Override
 	public void atacar() {
-		if (shot == null || shot.isCancelled() || shot.isDone()) {
+		if (disparo == null) {
 			playSound();
-			shot = new DisparoDragon(this).getTask();
+			disparo = new DisparoDragon(this);
+			disparo.setCelda();
+			disparo.activar();
 		}
 		graph = 0;
+		activeTask = null;
+		activar();
 	}
 
 	@Override
@@ -105,5 +98,17 @@ public class Dragon extends Shooter {
 
 	@Override
 	public void mover() {
+	}
+
+	@Override
+	public void guardarInicio() {
+		guardarEstado("DRAGON");
+	}
+
+	@Override
+	public void regresarInicio() {
+		reset("DRAGON");
+		careTaker.clearSavepoint();
+
 	}
 }

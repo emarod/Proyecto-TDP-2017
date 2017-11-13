@@ -26,6 +26,7 @@ public class Director {
 	protected static BancoRecursos banco;
 	protected static Partida partida;
 	protected static Mapa mapa;
+	protected static CareTaker careTaker;
 
 	// Constructor.
 	private Director() {
@@ -33,6 +34,7 @@ public class Director {
 		banco = BancoRecursos.newBancoRecursos();
 		partida = new Partida();
 		mapa = new Mapa();
+		careTaker = new CareTaker();
 	}
 
 	public static Director newDirector() {
@@ -46,6 +48,10 @@ public class Director {
 		return banco;
 	}
 
+	public static CareTaker getCareTaker() {
+		return careTaker;
+	}
+
 	public static Mapa getMapa() {
 		return mapa;
 	}
@@ -54,9 +60,16 @@ public class Director {
 		return partida;
 	}
 
-	// Metodos locales para utilizar el pool piscina loca.
+	// Metodos locales para utilizar el pool piscina local.
+
+	// Permite desactivar una tarea activa
 	public static boolean desactivar(Unidad unidad) {
 		return unidad.getTask().cancel(true);
+
+	}
+
+	public static boolean desactivar(Disparo disparo) {
+		return disparo.getTask().cancel(true);
 
 	}
 
@@ -72,12 +85,8 @@ public class Director {
 		return taskPool.scheduleWithFixedDelay(d, l + 500, 100 * delay, TimeUnit.MILLISECONDS);
 	}
 
-	public static ScheduledFuture<?> ejecutar(Disparo d, int delay) {
-		return taskPool.scheduleWithFixedDelay(d, 0, 1000 * delay, TimeUnit.MICROSECONDS);
-	}
-
 	public static void ejecutar(Mapa mapa) {
-		taskPool.scheduleWithFixedDelay(mapa, 1, 3, TimeUnit.SECONDS);
+		taskPool.scheduleWithFixedDelay(mapa, 1, 10, TimeUnit.SECONDS);
 	}
 
 	public static void ejecutarUna(PowerUp powerUp, int delay) {
@@ -100,4 +109,13 @@ public class Director {
 	public static ScheduledFuture<?> ejecutar(Horda horda, int delay) {
 		return taskPool.scheduleWithFixedDelay(horda, 1, delay, TimeUnit.SECONDS);
 	}
+
+	public static ScheduledFuture<?> ejecutarUna(Disparo disparo, int velocidad) {
+		return taskPool.schedule(disparo, 500 * velocidad, TimeUnit.MICROSECONDS);
+	}
+
+	public static ScheduledFuture<?> ejecutar(Disparo d, int delay) {
+		return taskPool.scheduleWithFixedDelay(d, 100, 800 * delay, TimeUnit.MICROSECONDS);
+	}
+
 }

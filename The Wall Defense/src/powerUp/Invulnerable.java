@@ -14,8 +14,8 @@ import mapa.Celda;
 public class Invulnerable extends PowerUp {
 
 	// Constructor.
-	public Invulnerable(Celda c, int prof) {
-		super(c, prof);
+	public Invulnerable(Celda c) {
+		super(c);
 		grafico = new JLabel();
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/campo_fuerza.gif")));
 	}
@@ -24,7 +24,8 @@ public class Invulnerable extends PowerUp {
 
 	@Override
 	public void aplicar(Jugador j) {
-
+		jugador = j;
+		jugador.setVida(9999);
 	}
 
 	@Override

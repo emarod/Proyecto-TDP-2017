@@ -17,21 +17,17 @@ import mapa.Celda;
 public abstract class Enemigo extends Unidad {
 
 	// Atributos locales.
-	protected int vida;
-	protected int daño;
 	protected int puntaje;
-	protected boolean atacar;
-	protected boolean mover;
 	protected Icon[] graficos;
 	protected int graph;
 
 	// Constructor.
-	public Enemigo(Celda[] c, int profundidad) {
+	public Enemigo(Celda[] c) {
 		V = new VisitorEnemigo(this);
 		alto = 30;
 		ancho = 30;
 		celda = c;
-		this.profundidad = profundidad;
+		profundidad = CONFIG.PROFUNDIDAD_ENEMIGO;
 		grafico = new JLabel();
 		setGrafico();
 	}
@@ -42,10 +38,9 @@ public abstract class Enemigo extends Unidad {
 		return V;
 	}
 
-	public boolean recibirDaño(int golpe) {
+	public void recibirDaño(int golpe) {
 		boolean destruir = false;
 		if (vida <= golpe) {
-			System.out.println("Enemigo abatido en " + vida);
 			destruir = true;
 		}
 		else {
@@ -54,7 +49,6 @@ public abstract class Enemigo extends Unidad {
 		if (destruir) {
 			destruir();
 		}
-		return destruir;
 	}
 
 	public void setGrafico() {
@@ -78,6 +72,13 @@ public abstract class Enemigo extends Unidad {
 	}
 
 	// Metodos heredados.
+
+	@Override
+	public void regresarInicio() {
+		reset("ENEMIGO");
+		careTaker.clearSavepoint();
+	}
+
 	@Override
 	public void run() {
 		mover();
@@ -122,6 +123,8 @@ public abstract class Enemigo extends Unidad {
 		if (!detener && xCelda != 0) {
 			getGrafico().setBounds(xGrafico - 64, yGrafico, 64, 64);
 			intercambiar_celdas(siguiente);
+			activeTask = null;
+			activar();
 		}
 	}
 
