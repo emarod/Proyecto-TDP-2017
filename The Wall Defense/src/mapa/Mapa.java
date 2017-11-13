@@ -4,13 +4,13 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.util.Random;
 
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 
 import Controladores.BancoRecursos;
 import Controladores.Director;
+import Controladores.RandomGenerator;
 import enemigo.Enemigo;
 import enemigo.Horda;
 import interfaz.Escenario;
@@ -53,7 +53,7 @@ public class Mapa implements Runnable {
 		int y = 0;
 		while (y < CONFIG.CANT_CELDAS_Y) {
 			for (int x = 0; x < CONFIG.CANT_CELDAS_X; x++) {
-				celdas[x][y] = new Celda(this, x, y);
+				celdas[x][y] = new Celda(x, y);
 				GameObject[] objetos = celdas[x][y].getObjects();
 				if (x == 0) {
 					objetos[CONFIG.PROFUNDIDAD_TERRENO] = new Muro(celdas[x][y], nivel);
@@ -243,13 +243,9 @@ public class Mapa implements Runnable {
 		escenario.getScore().actualizar();
 	}
 
-	// public void randomToken() {
-	// Random r = new Random();
-	// int x = r.nextInt(16);
-	// int y = r.nextInt(6);
-	// celda
-	//
-	// }
+	public void randomToken(int x, int y) {
+
+	}
 
 	public void agregar(GameObject g) {
 		JLabel objeto = g.getGrafico();
@@ -259,7 +255,7 @@ public class Mapa implements Runnable {
 	}
 
 	public void agregarObstaculos() {
-		Random r = new Random();
+		RandomGenerator r = new RandomGenerator();
 		int x = r.nextInt(16);
 		int y = r.nextInt(6);
 

@@ -28,7 +28,6 @@ public class Bomba extends ObjetoPrecioso {
 	}
 
 	public Bomba() {
-
 	}
 
 	// Metodos locales.

@@ -45,7 +45,7 @@ public class Water extends ObstaculoTemporal implements Runnable {
 			labels[i] = new JLabel();
 			labels[i].setIcon(graficos[i]);
 			labels[i].setBounds(celda[i].getPosX() * 64, celda[i].getPosY() * 64, 64, 64);
-			celda[0].getEscenario().agregar(labels[i], 3);
+			Director.getMapa().getEscenario().agregar(labels[i], 3);
 			i++;
 		}
 		Director.ejecutarUna(this, 7);
@@ -85,7 +85,7 @@ public class Water extends ObstaculoTemporal implements Runnable {
 		while (i < 4) {
 			labels[i].setIcon(null);
 			graficos[i] = null;
-			celda[0].getEscenario().remove(labels[i]);
+			Director.getMapa().getEscenario().remove(labels[i]);
 			labels[i] = null;
 			i++;
 			celda[i].getObjects()[CONFIG.PROFUNDIDAD_PRECIOSO] = null;

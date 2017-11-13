@@ -1,11 +1,11 @@
 package enemigo;
 
-import java.util.Random;
 import java.util.concurrent.ScheduledFuture;
 
 import javax.swing.JLabel;
 
 import Controladores.Director;
+import Controladores.RandomGenerator;
 import interfaz.Escenario;
 import main.CONFIG;
 import mapa.Celda;
@@ -48,7 +48,7 @@ public class Horda implements Runnable {
 
 	@Override
 	public void run() {
-		Random rnd = new Random();
+		RandomGenerator rnd = new RandomGenerator();
 		int r = rnd.nextInt(2);
 		int y;
 		Enemigo e;

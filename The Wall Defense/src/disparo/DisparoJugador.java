@@ -1,5 +1,6 @@
 package disparo;
 
+import Controladores.Director;
 import jugador.Shooter;
 import main.CONFIG;
 import main.GameObject;
@@ -27,10 +28,10 @@ public abstract class DisparoJugador extends Disparo {
 		int xGrafico = grafico.getX();
 		int yGrafico = grafico.getY();
 		if (xCelda != CONFIG.CANT_CELDAS_X - 1) {
-			siguiente = celda[0].getCelda(xCelda + 1, yCelda);
+			siguiente = Director.getMapa().getCelda(xCelda + 1, yCelda);
 		}
 		else {
-			siguiente = celda[0].getCelda(xCelda, yCelda);
+			siguiente = Director.getMapa().getCelda(xCelda, yCelda);
 		}
 
 		GameObject objeto = siguiente.getObjects()[CONFIG.PROFUNDIDAD_ENEMIGO];
@@ -53,7 +54,7 @@ public abstract class DisparoJugador extends Disparo {
 		celda[0] = jugador.getCeldas()[0];
 		celda[0].addDisparo(this);
 		grafico.setBounds(64 * celda[0].getPosX(), 64 * celda[0].getPosY(), 64, 64);
-		celda[0].getEscenario().agregar(grafico, new Integer(CONFIG.PROFUNDIDAD_DISPARO));
+		Director.getMapa().getEscenario().agregar(grafico, new Integer(CONFIG.PROFUNDIDAD_DISPARO));
 		// activar();
 	}
 
