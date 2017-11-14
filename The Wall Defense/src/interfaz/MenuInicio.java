@@ -36,6 +36,8 @@ public class MenuInicio extends JPanel {
 	protected PopUp popup;
 	protected JButton opcion1;
 	protected JButton opcion2;
+	protected boolean onefects = true;
+	protected boolean onmusic = true;
 
 	// Constructor.
 	public MenuInicio(Juego game) {
@@ -213,16 +215,25 @@ public class MenuInicio extends JPanel {
 		opcion1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				bancoRecursos.stopEfectos();
-				opcion1.setIcon(
-						new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
+				if (onefects) {
+					bancoRecursos.stopEfectos();
+					opcion1.setIcon(new ImageIcon(
+							this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
+					onefects = false;
+				}
+				else {
+					bancoRecursos.playEfectos();
+					opcion1.setIcon(new ImageIcon(
+							this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
+					onefects = true;
+				}
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
 				opcion1.setIcon(
-						new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonpressed.png")));
+						new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonpresed.png")));
 				bancoRecursos.playClick();
 
 			}
@@ -231,9 +242,19 @@ public class MenuInicio extends JPanel {
 		opcion2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				bancoRecursos.stopMusica();
-				opcion2.setIcon(
-						new ImageIcon(this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
+
+				if (onmusic) {
+					bancoRecursos.stopMusica();
+					opcion2.setIcon(new ImageIcon(
+							this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
+					onmusic = false;
+				}
+				else {
+					bancoRecursos.playMusica();
+					opcion2.setIcon(new ImageIcon(
+							this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
+					onmusic = true;
+				}
 
 			}
 

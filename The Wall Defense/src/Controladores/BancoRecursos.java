@@ -78,4 +78,16 @@ public class BancoRecursos {
 		song.stop();
 	}
 
+	public void playEfectos() {
+		flecha.play();
+		bola_fuego.play();
+		roca.play();
+		barricada.play();
+		click.play();
+	}
+
+	public void playMusica() {
+		song.play(true);
+	}
+
 }
