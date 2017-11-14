@@ -25,6 +25,8 @@ public class Dinero extends JPanel {
 	protected Icon coin;
 	protected int dinero;
 	protected Director director;
+	protected MenuCompra menu;
+	protected MenuObjetos objects;
 
 	// Constructor.
 	public Dinero(Escenario esc) {
@@ -33,6 +35,8 @@ public class Dinero extends JPanel {
 		this.escenario = esc;
 		agregarLabel();
 		this.setBackground(Color.BLACK);
+		menu = esc.getMenu();
+		objects = esc.getMenuObjetos();
 	}
 
 	// Metodos locales.
@@ -52,6 +56,8 @@ public class Dinero extends JPanel {
 
 	public void actualizar() {
 		monto.setText("" + Director.getPartida().getDinero());
+		menu.chequear();
+		objects.chequear();
 	}
 
 }

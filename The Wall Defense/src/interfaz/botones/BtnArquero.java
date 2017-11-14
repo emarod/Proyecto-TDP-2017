@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 
 import interfaz.Escenario;
 import jugador.Arquero;
+import jugador.Jugador;
 import mapa.Celda;
 
 /*
@@ -29,6 +30,7 @@ public class BtnArquero extends BtnJugador {
 		info = new ImageIcon(
 				this.getClass().getResource("/resources/static/botones/personajes/ygrittedescripcion.png"));
 		this.setIcon(imagen);
+		costo = player.getCosto();
 		oyente();
 
 	}
@@ -70,6 +72,11 @@ public class BtnArquero extends BtnJugador {
 
 	public void deshabilitar() {
 		this.setEnabled(false);
+	}
+
+	public Jugador getPlayer() {
+		// TODO Auto-generated method stub
+		return player;
 	}
 
 }

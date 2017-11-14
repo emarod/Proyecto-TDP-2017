@@ -169,6 +169,9 @@ public class MenuInicio extends JPanel {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				buttons[1].setIcon(options[2]);
+				buttons[0].setVisible(false);
+				buttons[1].setVisible(false);
+				buttons[2].setVisible(false);
 			}
 
 			@Override
@@ -191,6 +194,13 @@ public class MenuInicio extends JPanel {
 			}
 
 		});
+
+	}
+
+	public void armarOpciones() {
+
+		JButton opcion1 = new JButton();
+		JButton opcion2 = new JButton();
 
 	}
 

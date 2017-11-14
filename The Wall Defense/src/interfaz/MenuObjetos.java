@@ -49,14 +49,13 @@ public class MenuObjetos extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				if (Director.getPartida().getDinero() >= barricada.getObjeto().getCosto()) {
-					Director.getPartida().quitarDinero(barricada.getObjeto().getCosto());
+				if (Director.getPartida().getDinero() >= barricada.costo) {
+					Director.getPartida().quitarDinero(barricada.costo);
 					barricada.crearObjeto();
 				}
-				if (Director.getPartida().getDinero() < barricada.getObjeto().getCosto()) {
+				if (Director.getPartida().getDinero() < barricada.costo) {
 					barricada.setEnabled(false);
 				}
-				chequear();
 				escenario.getDinero().actualizar();
 
 			}
@@ -67,15 +66,13 @@ public class MenuObjetos extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				if (Director.getPartida().getDinero() >= bomba.getObjeto().getCosto()) {
-					Director.getPartida().quitarDinero(bomba.getObjeto().getCosto());
+				if (Director.getPartida().getDinero() >= bomba.costo) {
+					Director.getPartida().quitarDinero(bomba.costo);
 					bomba.crearObjeto();
 				}
-				if (Director.getPartida().getDinero() < bomba.getObjeto().getCosto()) {
+				if (Director.getPartida().getDinero() < bomba.costo) {
 					bomba.setEnabled(false);
 				}
-				chequear();
-				disable();
 				escenario.getDinero().actualizar();
 
 			}
@@ -93,23 +90,13 @@ public class MenuObjetos extends JPanel {
 
 	public void chequear() {
 
-		if (Director.getPartida().getDinero() < 10) {
+		if (Director.getPartida().getDinero() < barricada.costo) {
 			barricada.deshabilitar();
 		}
-		if (Director.getPartida().getDinero() < 15) {
+		if (Director.getPartida().getDinero() < bomba.costo) {
 			bomba.deshabilitar();
 		}
 
-		if (!barricada.isEnabled()) {
-			escenario.getMenu().chequear();
-		}
-	}
-
-	@Override
-	public void disable() {
-		if (Director.getPartida().getDinero() < 25) {
-			escenario.getMenu().chequear();
-		}
 	}
 
 }

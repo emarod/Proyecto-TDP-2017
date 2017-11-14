@@ -28,6 +28,8 @@ public class BtnBarricada extends BtnObjetoPrecioso {
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/barricada.png")));
 		info = new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/barricadadescripcion.png"));
 		oyente();
+		costo = precioso.getCosto();
+
 	}
 
 	@Override

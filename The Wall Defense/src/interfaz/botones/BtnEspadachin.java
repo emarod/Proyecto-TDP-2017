@@ -29,6 +29,8 @@ public class BtnEspadachin extends BtnJugador {
 		info = new ImageIcon(
 				this.getClass().getResource("/resources/static/botones/personajes/espadachindescripcion.png"));
 		this.setIcon(imagen);
+		costo = player.getCosto();
+
 		oyente();
 	};
 

@@ -21,6 +21,7 @@ public abstract class BtnJugador extends JButton {
 	protected Jugador player;
 	protected Icon imagen;
 	protected Icon info;
+	public static int costo;
 
 	// Constructor.
 	public BtnJugador(Escenario e) {

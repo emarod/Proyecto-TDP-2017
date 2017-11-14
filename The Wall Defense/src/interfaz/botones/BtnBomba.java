@@ -28,6 +28,8 @@ public class BtnBomba extends BtnObjetoPrecioso {
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/bomba.png")));
 		info = new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/bombadescripcion.png"));
 		oyente();
+		costo = precioso.getCosto();
+
 	}
 
 	// Metodos heredados.

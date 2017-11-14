@@ -20,6 +20,7 @@ public abstract class BtnObjetoPrecioso extends JButton {
 	protected Escenario stage;
 	protected ObjetoPrecioso precioso;
 	protected Icon info;
+	public static int costo;
 
 	// Constructor.
 	public BtnObjetoPrecioso(Escenario e) {
@@ -29,6 +30,7 @@ public abstract class BtnObjetoPrecioso extends JButton {
 		this.setContentAreaFilled(false);
 		this.setOpaque(true);
 		this.setBackground(Color.BLACK);
+
 	}
 
 	// Metodos abstractos.
