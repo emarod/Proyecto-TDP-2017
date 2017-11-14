@@ -23,7 +23,7 @@ public abstract class Enemigo extends Unidad {
 	protected int graph;
 
 	// Constructor.
-	public Enemigo(Celda[] c) {
+	public Enemigo(Celda c) {
 		super();
 		V = new VisitorEnemigo(this);
 		alto = 30;
@@ -104,14 +104,14 @@ public abstract class Enemigo extends Unidad {
 		return daño;
 	}
 
-	public abstract Enemigo clone(Celda[] c);
+	public abstract Enemigo clone(Celda c);
 
 	@Override
 	public void mover() {
 		Celda siguiente;
 		boolean detener = false;
-		int xCelda = getCeldas()[0].getPosX();
-		int yCelda = getCeldas()[0].getPosY();
+		int xCelda = celda.getPosX();
+		int yCelda = celda.getPosY();
 		int xGrafico = getGrafico().getX();
 		int yGrafico = getGrafico().getY();
 		siguiente = Director.getMapa().getCelda(xCelda - 1, yCelda);

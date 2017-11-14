@@ -3,9 +3,9 @@ package disparo;
 import enemigo.Enemigo;
 import jugador.Jugador;
 import main.Visitor;
-import obstaculos.ObstaculoTemporal;
-import obstaculos.ObstaculoVida;
-import preciosos.ObjetoPrecioso;
+import objetoMapa.ObjetoMapaTemporal;
+import objetoMapa.ObjetoMapaVida;
+import premios.Premio;
 
 /*
  * Clase VisitorDisparoEnemigo.
@@ -24,7 +24,7 @@ public class VisitorDisparoEnemigo extends Visitor {
 
 	// Metodos heredados.
 	@Override
-	public boolean visitObstaculo(ObstaculoVida o) {
+	public boolean visitObstaculo(ObjetoMapaVida o) {
 		o.recibirDaño(disparo.getDaño());
 		return false;
 	}
@@ -42,13 +42,13 @@ public class VisitorDisparoEnemigo extends Visitor {
 	}
 
 	@Override
-	public boolean visitObstaculo(ObstaculoTemporal o) {
+	public boolean visitObstaculo(ObjetoMapaTemporal o) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean visitObjetoPrecioso(ObjetoPrecioso op) {
+	public boolean visitObjetoPrecioso(Premio op) {
 		// TODO Auto-generated method stub
 		return false;
 	}

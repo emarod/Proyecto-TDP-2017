@@ -1,11 +1,11 @@
-package obstaculos;
+package objetoMapa;
 
 import enemigo.Enemigo;
 import mapa.Celda;
 
-public abstract class ObstaculoTemporal extends Obstaculo {
+public abstract class ObjetoMapaTemporal extends ObjetoMapa {
 
-	public ObstaculoTemporal(Celda[] c) {
+	public ObjetoMapaTemporal(Celda c) {
 		super(c);
 		// TODO Auto-generated constructor stub
 	}

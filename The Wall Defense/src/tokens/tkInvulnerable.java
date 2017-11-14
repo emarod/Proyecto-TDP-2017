@@ -2,8 +2,8 @@ package tokens;
 
 import javax.swing.ImageIcon;
 
+import efectos.Invulnerable;
 import mapa.Celda;
-import powerUp.Invulnerable;
 
 public class tkInvulnerable extends TokenPowerUp {
 

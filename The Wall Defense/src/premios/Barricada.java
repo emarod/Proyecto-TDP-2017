@@ -1,4 +1,4 @@
-package preciosos;
+package premios;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -13,12 +13,12 @@ import mapa.Celda;
  * Clase que determina como esta compuesta y como se comporta una roca.
  */
 
-public class Barricada extends ObjetoPrecioso {
+public class Barricada extends Premio {
 
 	protected int costo;
 
 	// Constructor.
-	public Barricada(Celda[] c) {
+	public Barricada(Celda c) {
 		super(c);
 		vida = 3;
 		graficos = new Icon[3];
@@ -71,8 +71,8 @@ public class Barricada extends ObjetoPrecioso {
 	}
 
 	@Override
-	public ObjetoPrecioso clone(Celda[] c) {
-		ObjetoPrecioso clon = new Barricada(c);
+	public Premio clone(Celda c) {
+		Premio clon = new Barricada(c);
 		return clon;
 	}
 }

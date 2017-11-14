@@ -1,4 +1,4 @@
-package powerUp;
+package efectos;
 
 import jugador.Jugador;
 import mapa.Celda;

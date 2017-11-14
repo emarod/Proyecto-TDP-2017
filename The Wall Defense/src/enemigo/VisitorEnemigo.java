@@ -4,9 +4,9 @@ import disparo.DisparoEnemigo;
 import disparo.DisparoJugador;
 import jugador.Jugador;
 import main.Visitor;
-import obstaculos.ObstaculoTemporal;
-import obstaculos.ObstaculoVida;
-import preciosos.ObjetoPrecioso;
+import objetoMapa.ObjetoMapaTemporal;
+import objetoMapa.ObjetoMapaVida;
+import premios.Premio;
 
 /*
  * Clase VisitorEnemigo.
@@ -26,7 +26,7 @@ public class VisitorEnemigo extends Visitor {
 
 	// Metodos heredados.
 	@Override
-	public boolean visitObstaculo(ObstaculoVida o) {
+	public boolean visitObstaculo(ObjetoMapaVida o) {
 		o.recibirDaño(enemigo.getDaño());
 		return false;
 	}
@@ -43,13 +43,13 @@ public class VisitorEnemigo extends Visitor {
 	}
 
 	@Override
-	public boolean visitObstaculo(ObstaculoTemporal o) {
+	public boolean visitObstaculo(ObjetoMapaTemporal o) {
 		o.aplicarEfecto(enemigo);
 		return true;
 	}
 
 	@Override
-	public boolean visitObjetoPrecioso(ObjetoPrecioso op) {
+	public boolean visitObjetoPrecioso(Premio op) {
 		op.recibirDaño(enemigo.getDaño());
 		return false;
 	}

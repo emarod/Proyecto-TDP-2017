@@ -22,7 +22,7 @@ public abstract class Jugador extends Unidad {
 	protected int costo;
 
 	// Constructor.
-	public Jugador(Celda[] c) {
+	public Jugador(Celda c) {
 		super();
 		alto = 30;
 		ancho = 30;
@@ -106,7 +106,7 @@ public abstract class Jugador extends Unidad {
 	}
 
 	// abstract methods
-	public abstract Jugador clone(Celda[] c);
+	public abstract Jugador clone(Celda c);
 
 	@Override
 	public abstract void mover();

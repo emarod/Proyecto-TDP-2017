@@ -35,8 +35,8 @@ public abstract class Unidad extends GameObject implements Runnable {
 	@Override
 	public void intercambiar_celdas(Celda C) {
 		C.getObjects()[profundidad] = this;
-		celda[0].getObjects()[profundidad] = null;
-		celda[0] = C;
+		celda.getObjects()[profundidad] = null;
+		celda = C;
 
 	}
 

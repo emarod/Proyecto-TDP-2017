@@ -1,11 +1,11 @@
-package obstaculos;
+package objetoMapa;
 
 import mapa.Celda;
 
-public abstract class ObstaculoVida extends Obstaculo {
+public abstract class ObjetoMapaVida extends ObjetoMapa {
 	protected int vida;
 
-	public ObstaculoVida(Celda[] c) {
+	public ObjetoMapaVida(Celda c) {
 		super(c);
 	}
 

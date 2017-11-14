@@ -1,4 +1,4 @@
-package powerUp;
+package efectos;
 
 import javax.swing.ImageIcon;
 

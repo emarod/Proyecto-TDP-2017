@@ -6,12 +6,12 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import disparo.Disparo;
+import efectos.PowerUp;
 import enemigo.Horda;
 import main.Partida;
 import main.Unidad;
 import mapa.Mapa;
-import obstaculos.Water;
-import powerUp.PowerUp;
+import objetoMapa.Water;
 import tokens.Token;
 
 /*

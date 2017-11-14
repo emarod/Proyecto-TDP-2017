@@ -1,4 +1,4 @@
-package powerUp;
+package efectos;
 
 import Controladores.Director;
 import jugador.Jugador;
@@ -20,7 +20,7 @@ public abstract class PowerUp extends GameObject implements Runnable {
 	// Constructor.
 	protected PowerUp(Celda c) {
 		super();
-		celda[0] = c;
+		celda = c;
 		profundidad = CONFIG.PROFUNDIDAD_POWERUP;
 		Director.ejecutarUna(this, 10);
 	}
@@ -35,7 +35,7 @@ public abstract class PowerUp extends GameObject implements Runnable {
 
 	@Override
 	public void run() {
-		jugador.getCeldas()[0].getObjects()[4] = null;
+		jugador.getCelda().getObjects()[CONFIG.PROFUNDIDAD_POWERUP] = null;
 		jugador.regresarInicio();
 		this.destruir();
 	}

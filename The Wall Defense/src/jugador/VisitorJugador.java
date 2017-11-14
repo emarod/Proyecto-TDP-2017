@@ -4,10 +4,10 @@ import disparo.DisparoEnemigo;
 import disparo.DisparoJugador;
 import enemigo.Enemigo;
 import main.Visitor;
-import obstaculos.Obstaculo;
-import obstaculos.ObstaculoTemporal;
-import obstaculos.ObstaculoVida;
-import preciosos.ObjetoPrecioso;
+import objetoMapa.ObjetoMapa;
+import objetoMapa.ObjetoMapaTemporal;
+import objetoMapa.ObjetoMapaVida;
+import premios.Premio;
 
 /*
  * Clase VisitorJugador.
@@ -26,7 +26,7 @@ public class VisitorJugador extends Visitor {
 	}
 
 	// Metodos locales.
-	public boolean visitObstaculo(Obstaculo o) {
+	public boolean visitObstaculo(ObjetoMapa o) {
 		return false;
 	}
 
@@ -49,19 +49,19 @@ public class VisitorJugador extends Visitor {
 	}
 
 	@Override
-	public boolean visitObstaculo(ObstaculoVida o) {
+	public boolean visitObstaculo(ObjetoMapaVida o) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean visitObstaculo(ObstaculoTemporal o) {
+	public boolean visitObstaculo(ObjetoMapaTemporal o) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean visitObjetoPrecioso(ObjetoPrecioso op) {
+	public boolean visitObjetoPrecioso(Premio op) {
 		// TODO Auto-generated method stub
 		return false;
 	}

@@ -16,7 +16,7 @@ public class Muro extends Terreno {
 	// Constructor
 	public Muro(Celda c, int nivel) {
 		super();
-		celda[0] = c;
+		celda = c;
 		// Este es un random limitado entre 1 y 2, para establecer un rango
 		// nuevo Random[n,m]: (Math.random()*m)+n
 		RandomGenerator r = new RandomGenerator();

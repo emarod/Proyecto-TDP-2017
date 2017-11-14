@@ -3,7 +3,7 @@ package tokens;
 import javax.swing.ImageIcon;
 
 import mapa.Celda;
-import preciosos.Bomba;
+import premios.Bomba;
 
 public class tkBomba extends TokenPrecioso {
 

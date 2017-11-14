@@ -1,4 +1,4 @@
-package preciosos;
+package premios;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -12,12 +12,12 @@ import mapa.Celda;
  * Clase que especifica el comportamiento del poder bomba.
  */
 
-public class Bomba extends ObjetoPrecioso {
+public class Bomba extends Premio {
 
 	protected int costo;
 
 	// Constructor.
-	public Bomba(Celda[] c) {
+	public Bomba(Celda c) {
 		super(c);
 		vida = 1;
 		graficos = new Icon[1];
@@ -70,8 +70,8 @@ public class Bomba extends ObjetoPrecioso {
 	}
 
 	@Override
-	public ObjetoPrecioso clone(Celda[] c) {
-		ObjetoPrecioso clon = new Bomba(c);
+	public Premio clone(Celda c) {
+		Premio clon = new Bomba(c);
 		return clon;
 	}
 

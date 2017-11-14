@@ -1,8 +1,8 @@
 package tokens;
 
+import efectos.PowerUp;
 import jugador.Jugador;
 import mapa.Celda;
-import powerUp.PowerUp;
 
 public abstract class TokenPowerUp extends Token {
 

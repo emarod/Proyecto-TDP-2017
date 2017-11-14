@@ -10,7 +10,7 @@ public abstract class ShooterEnemigo extends Enemigo {
 	protected ScheduledFuture<?> shot;
 	protected int velocidad_disparo;
 
-	public ShooterEnemigo(Celda[] c) {
+	public ShooterEnemigo(Celda c) {
 		super(c);
 	}
 

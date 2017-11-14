@@ -19,9 +19,9 @@ public class DisparoDragon extends DisparoJugador {
 	public DisparoDragon(Dragon drake) {
 		super(drake);
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/bola_fuego.png")));
-		celda[0] = jugador.getCeldas()[0].getChild();
-		celda[0].addDisparo(this);
-		grafico.setBounds(64 * celda[0].getPosX(), 64 * celda[0].getPosY(), 64, 64);
+		celda = jugador.getCelda().getChild();
+		celda.addDisparo(this);
+		grafico.setBounds(64 * celda.getPosX(), 64 * celda.getPosY(), 64, 64);
 		Director.getMapa().getEscenario().agregar(grafico, new Integer(CONFIG.PROFUNDIDAD_DISPARO));
 	}
 
