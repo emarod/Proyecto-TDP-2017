@@ -80,7 +80,6 @@ public class MenuCompra extends JPanel {
 				if (Director.getPartida().getDinero() >= ygritte.costo) {
 					Director.getPartida().quitarDinero(ygritte.costo);
 					ygritte.crearPersonaje();
-					System.out.println("" + ygritte.costo);
 				}
 				if (Director.getPartida().getDinero() < ygritte.costo) {
 					ygritte.setEnabled(false);

@@ -20,7 +20,7 @@ public abstract class BtnObjetoPrecioso extends JButton {
 	protected Escenario stage;
 	protected ObjetoPrecioso precioso;
 	protected Icon info;
-	public static int costo;
+	public int costo;
 
 	// Constructor.
 	public BtnObjetoPrecioso(Escenario e) {

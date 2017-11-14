@@ -79,4 +79,10 @@ public class BtnArquero extends BtnJugador {
 		return player;
 	}
 
+	@Override
+	public int getCosto() {
+		// TODO Auto-generated method stub
+		return costo;
+	}
+
 }

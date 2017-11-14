@@ -72,4 +72,10 @@ public class BtnDragon extends BtnJugador {
 		this.setEnabled(false);
 	}
 
+	@Override
+	public int getCosto() {
+		// TODO Auto-generated method stub
+		return costo;
+	}
+
 }
