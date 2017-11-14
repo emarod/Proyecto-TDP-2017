@@ -33,7 +33,6 @@ public class Dinero extends JPanel {
 		this.escenario = esc;
 		agregarLabel();
 		this.setBackground(Color.BLACK);
-		director.newDirector();
 	}
 
 	// Metodos locales.
@@ -52,7 +51,7 @@ public class Dinero extends JPanel {
 	}
 
 	public void actualizar() {
-		monto.setText("" + director.getPartida().getDinero());
+		monto.setText("" + Director.getPartida().getDinero());
 	}
 
 }

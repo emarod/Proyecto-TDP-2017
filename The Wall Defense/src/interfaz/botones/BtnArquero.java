@@ -29,6 +29,7 @@ public class BtnArquero extends BtnJugador {
 		info = new ImageIcon(
 				this.getClass().getResource("/resources/static/botones/personajes/ygrittedescripcion.png"));
 		this.setIcon(imagen);
+		oyente();
 
 	}
 

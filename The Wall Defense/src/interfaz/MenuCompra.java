@@ -44,12 +44,9 @@ public class MenuCompra extends JPanel {
 	public MenuCompra(Escenario escenario) {
 		this.escenario = escenario;
 		this.setLayout(new GridLayout(5, 1));
-		// this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		this.setBounds(76, 0, 381, 811);
 		this.setBackground(Color.RED);
 		background = new ImageIcon(this.getClass().getResource("/resources/static/tienda/fondo.png"));
-		// this.add(new JLabel(background));
-		// armarPanel();
 		armarBotonera();
 	}
 
@@ -62,11 +59,11 @@ public class MenuCompra extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				if (director.getPartida().getDinero() >= dragon.getJugador().getCosto()) {
-					director.getPartida().quitarDinero(dragon.getJugador().getCosto());
+				if (Director.getPartida().getDinero() >= dragon.getJugador().getCosto()) {
+					Director.getPartida().quitarDinero(dragon.getJugador().getCosto());
 					dragon.crearPersonaje();
 				}
-				if (director.getPartida().getDinero() < dragon.getJugador().getCosto()) {
+				if (Director.getPartida().getDinero() < dragon.getJugador().getCosto()) {
 					dragon.setEnabled(false);
 				}
 				chequear();
@@ -81,11 +78,11 @@ public class MenuCompra extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				if (director.getPartida().getDinero() >= ygritte.getJugador().getCosto()) {
-					director.getPartida().quitarDinero(ygritte.getJugador().getCosto());
+				if (Director.getPartida().getDinero() >= ygritte.getJugador().getCosto()) {
+					Director.getPartida().quitarDinero(ygritte.getJugador().getCosto());
 					ygritte.crearPersonaje();
 				}
-				if (director.getPartida().getDinero() < ygritte.getJugador().getCosto()) {
+				if (Director.getPartida().getDinero() < ygritte.getJugador().getCosto()) {
 					ygritte.setEnabled(false);
 				}
 				chequear();
@@ -100,11 +97,11 @@ public class MenuCompra extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				if (director.getPartida().getDinero() >= lannister.getJugador().getCosto()) {
-					director.getPartida().quitarDinero(lannister.getJugador().getCosto());
+				if (Director.getPartida().getDinero() >= lannister.getJugador().getCosto()) {
+					Director.getPartida().quitarDinero(lannister.getJugador().getCosto());
 					lannister.crearPersonaje();
 				}
-				if (director.getPartida().getDinero() < lannister.getJugador().getCosto()) {
+				if (Director.getPartida().getDinero() < lannister.getJugador().getCosto()) {
 					lannister.setEnabled(false);
 				}
 				chequear();
@@ -119,11 +116,11 @@ public class MenuCompra extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				if (director.getPartida().getDinero() >= JonSnow.getJugador().getCosto()) {
-					director.getPartida().quitarDinero(JonSnow.getJugador().getCosto());
+				if (Director.getPartida().getDinero() >= JonSnow.getJugador().getCosto()) {
+					Director.getPartida().quitarDinero(JonSnow.getJugador().getCosto());
 					JonSnow.crearPersonaje();
 				}
-				if (director.getPartida().getDinero() < JonSnow.getJugador().getCosto()) {
+				if (Director.getPartida().getDinero() < JonSnow.getJugador().getCosto()) {
 					JonSnow.setEnabled(false);
 				}
 				chequear();
@@ -144,19 +141,19 @@ public class MenuCompra extends JPanel {
 
 	public void chequear() {
 
-		if (director.getPartida().getDinero() < 75) {
+		if (Director.getPartida().getDinero() < 75) {
 			dragon.deshabilitar();
 		}
 
-		if (director.getPartida().getDinero() < 50) {
+		if (Director.getPartida().getDinero() < 50) {
 			ygritte.deshabilitar();
 		}
 
-		if (director.getPartida().getDinero() < 25) {
+		if (Director.getPartida().getDinero() < 25) {
 			JonSnow.deshabilitar();
 		}
 
-		if (director.getPartida().getDinero() < 30) {
+		if (Director.getPartida().getDinero() < 30) {
 			lannister.deshabilitar();
 		}
 
@@ -167,7 +164,7 @@ public class MenuCompra extends JPanel {
 
 	@Override
 	public void disable() {
-		if (director.getPartida().getDinero() < 10) {
+		if (Director.getPartida().getDinero() < 10) {
 			escenario.getMenuObjetos().chequear();
 		}
 	}

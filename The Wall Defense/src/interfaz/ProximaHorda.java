@@ -3,11 +3,7 @@ package interfaz;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -52,28 +48,5 @@ public class ProximaHorda extends JPanel {
 
 	public void setPuntaje(String str) {
 		puntaje.setText(str);
-	}
-
-	private void agregarBoton() {
-		JButton wwalker = new JButton(new ImageIcon(
-				this.getClass().getResource("/resources/dinamic/personajes/whitewalker_espadachin_atacando.gif")));
-		wwalker.setSize(32, 32);
-		wwalker.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// escenario.agregar();
-			}
-		});
-		this.add(wwalker);
-
-		JButton dañar = new JButton(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
-		dañar.setSize(32, 32);
-		dañar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// escenario.hacerDaño();
-			}
-		});
-		this.add(dañar);
 	}
 }

@@ -2,6 +2,7 @@ package interfaz.botones;
 
 import java.awt.Color;
 
+import javax.swing.Icon;
 import javax.swing.JButton;
 
 import interfaz.Escenario;
@@ -18,6 +19,7 @@ public abstract class BtnObjetoPrecioso extends JButton {
 	protected static final long serialVersionUID = 1L;
 	protected Escenario stage;
 	protected ObjetoPrecioso precioso;
+	protected Icon info;
 
 	// Constructor.
 	public BtnObjetoPrecioso(Escenario e) {
@@ -31,4 +33,6 @@ public abstract class BtnObjetoPrecioso extends JButton {
 
 	// Metodos abstractos.
 	public abstract void create();
+
+	public abstract void oyente();
 }
