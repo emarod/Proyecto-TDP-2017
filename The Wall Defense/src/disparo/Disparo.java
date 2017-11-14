@@ -2,8 +2,6 @@ package disparo;
 
 import java.util.concurrent.ScheduledFuture;
 
-import javax.swing.JLabel;
-
 import Controladores.Director;
 import main.CONFIG;
 import main.GameObject;
@@ -25,10 +23,10 @@ public abstract class Disparo extends GameObject implements Runnable {
 
 	// Constructor.
 	public Disparo() {
+		super();
 		profundidad = CONFIG.PROFUNDIDAD_DISPARO;
 		ancho = 64;
 		alto = 64;
-		grafico = new JLabel();
 	}
 
 	// Metodos locales.

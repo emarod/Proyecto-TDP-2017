@@ -19,6 +19,7 @@ public abstract class PowerUp extends GameObject implements Runnable {
 
 	// Constructor.
 	protected PowerUp(Celda c) {
+		super();
 		celda[0] = c;
 		profundidad = CONFIG.PROFUNDIDAD_POWERUP;
 		Director.ejecutarUna(this, 10);

@@ -1,7 +1,5 @@
 package powerUp;
 
-import javax.swing.JLabel;
-
 import jugador.Jugador;
 import mapa.Celda;
 
@@ -15,7 +13,6 @@ public class VelAtkAumentado extends PowerUp {
 	// Constructor.
 	public VelAtkAumentado(Celda c) {
 		super(c);
-		grafico = new JLabel();
 	}
 
 	// Metodos heredados.

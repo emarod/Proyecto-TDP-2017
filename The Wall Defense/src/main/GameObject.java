@@ -19,6 +19,10 @@ public abstract class GameObject {
 	protected Celda[] celda = new Celda[4];
 	protected int profundidad;
 
+	public GameObject() {
+		grafico = new JLabel();
+	}
+
 	// Metodos locales.
 	public JLabel getGrafico() {
 		return grafico;

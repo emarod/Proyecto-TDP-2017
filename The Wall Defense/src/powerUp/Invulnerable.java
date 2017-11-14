@@ -1,7 +1,6 @@
 package powerUp;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import jugador.Jugador;
 import mapa.Celda;
@@ -16,7 +15,6 @@ public class Invulnerable extends PowerUp {
 	// Constructor.
 	public Invulnerable(Celda c) {
 		super(c);
-		grafico = new JLabel();
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/campo_fuerza.gif")));
 	}
 
