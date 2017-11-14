@@ -1,5 +1,8 @@
 package interfaz.botones;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.ImageIcon;
 
 import interfaz.Escenario;
@@ -23,8 +26,29 @@ public class BtnBarricada extends BtnObjetoPrecioso {
 		Celda[] c = new Celda[4];
 		precioso = new Barricada(c);
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/barricada.png")));
+		info = new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/barricadadescripcion.png"));
+		oyente();
+	}
 
-	};
+	@Override
+	public void oyente() {
+
+		this.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseEntered(MouseEvent evento) {
+				setIcon(info);
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent evento) {
+				setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/barricada.png")));
+
+			}
+
+		});
+	}
 
 	// Metodos heredados.
 	@Override

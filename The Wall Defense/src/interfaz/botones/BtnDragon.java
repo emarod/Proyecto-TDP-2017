@@ -28,6 +28,7 @@ public class BtnDragon extends BtnJugador {
 		imagen = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/dragon.png"));
 		info = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/dragondescripcion.png"));
 		this.setIcon(imagen);
+		oyente();
 	}
 
 	// Metodos heredados.

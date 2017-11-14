@@ -44,12 +44,9 @@ public class MenuCompra extends JPanel {
 	public MenuCompra(Escenario escenario) {
 		this.escenario = escenario;
 		this.setLayout(new GridLayout(5, 1));
-		// this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		this.setBounds(76, 0, 381, 811);
 		this.setBackground(Color.RED);
 		background = new ImageIcon(this.getClass().getResource("/resources/static/tienda/fondo.png"));
-		// this.add(new JLabel(background));
-		// armarPanel();
 		armarBotonera();
 	}
 

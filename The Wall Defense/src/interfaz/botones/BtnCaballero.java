@@ -29,6 +29,7 @@ public class BtnCaballero extends BtnJugador {
 		info = new ImageIcon(
 				this.getClass().getResource("/resources/static/botones/personajes/caballerodescripcion.png"));
 		this.setIcon(imagen);
+		oyente();
 
 	}
 
