@@ -34,6 +34,8 @@ public class MenuInicio extends JPanel {
 	protected Juego game;
 	protected BancoRecursos bancoRecursos;
 	protected PopUp popup;
+	protected JButton opcion1;
+	protected JButton opcion2;
 
 	// Constructor.
 	public MenuInicio(Juego game) {
@@ -172,6 +174,7 @@ public class MenuInicio extends JPanel {
 				buttons[0].setVisible(false);
 				buttons[1].setVisible(false);
 				buttons[2].setVisible(false);
+				armarOpciones();
 			}
 
 			@Override
@@ -199,8 +202,52 @@ public class MenuInicio extends JPanel {
 
 	public void armarOpciones() {
 
-		JButton opcion1 = new JButton();
-		JButton opcion2 = new JButton();
+		opcion1 = new JButton();
+		opcion2 = new JButton();
+		opcion1.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
+		opcion2.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
+
+		opcion1.setBounds(50, 150, opcion1.getIcon().getIconWidth(), opcion1.getIcon().getIconHeight());
+		opcion2.setBounds(50, 250, opcion2.getIcon().getIconWidth(), opcion2.getIcon().getIconHeight());
+
+		opcion1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				bancoRecursos.stopEfectos();
+				opcion1.setIcon(
+						new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				opcion1.setIcon(
+						new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonpressed.png")));
+				bancoRecursos.playClick();
+
+			}
+		});
+
+		opcion2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				bancoRecursos.stopMusica();
+				opcion2.setIcon(
+						new ImageIcon(this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				opcion2.setIcon(
+						new ImageIcon(this.getClass().getResource("/resources/static/botones/musicbotonpressed.png")));
+				bancoRecursos.playClick();
+
+			}
+		});
+
+		menupanel.add(opcion1);
+		menupanel.add(opcion2);
 
 	}
 
