@@ -15,7 +15,7 @@ public abstract class Obstaculo extends GameObject {
 	protected int graph;
 
 	// Constructor.
-	public Obstaculo(Celda[] c) {
+	public Obstaculo(Celda c) {
 		super();
 		profundidad = CONFIG.PROFUNDIDAD_OBSTACULO;
 		celda = c;
@@ -26,5 +26,5 @@ public abstract class Obstaculo extends GameObject {
 		setGrafico(grafico);
 	}
 
-	public abstract Obstaculo clone(Celda[] c);// profundidad 3
+	public abstract Obstaculo clone(Celda c);// profundidad 3
 }

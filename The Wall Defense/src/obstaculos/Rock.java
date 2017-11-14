@@ -16,7 +16,7 @@ import mapa.Celda;
 public class Rock extends ObstaculoVida {
 
 	// Constructor.
-	public Rock(Celda[] c) {
+	public Rock(Celda c) {
 		super(c);
 		vida = 3;
 		graficos = new Icon[3];
@@ -57,7 +57,7 @@ public class Rock extends ObstaculoVida {
 	}
 
 	@Override
-	public Obstaculo clone(Celda[] c) {
+	public Obstaculo clone(Celda c) {
 		Obstaculo clon = new Rock(c);
 		return clon;
 	}

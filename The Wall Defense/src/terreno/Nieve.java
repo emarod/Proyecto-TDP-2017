@@ -16,7 +16,7 @@ public class Nieve extends Terreno {
 	// Constructor.
 	public Nieve(Celda c) {
 		super();
-		celda[0] = c;
+		celda = c;
 		// Este es un random limitado entre 1 y 3, para establecer un rango nuevo
 		// Random[n,m]: (Math.random()*m)+n
 		RandomGenerator r = new RandomGenerator();

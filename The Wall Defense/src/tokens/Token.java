@@ -13,7 +13,7 @@ public abstract class Token extends GameObject implements Runnable {
 	public Token(Celda c) {
 		super();
 		profundidad = CONFIG.PROFUNDIDAD_TOKEN;
-		celda[0] = c;
+		celda = c;
 	}
 
 	public void activar() {

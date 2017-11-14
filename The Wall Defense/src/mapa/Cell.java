@@ -21,4 +21,9 @@ public class Cell extends Celda {
 		throw new UnsupportedOperationException("Operacion no soportada");
 	}
 
+	@Override
+	public int size() {
+		throw new UnsupportedOperationException("Operacion no soportada");
+	}
+
 }

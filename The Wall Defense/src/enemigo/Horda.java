@@ -57,17 +57,15 @@ public class Horda implements Runnable {
 			y = rnd.nextInt(6);
 		}
 		Celda c = mapa.getCelda(x, y);
-		Celda[] celdas = new Celda[4];
-		celdas[0] = c;
 		switch (r) {
 			case 0: {
-				e = new WhiteWalker(celdas);
+				e = new WhiteWalker(c);
 				mapa.crearEnemigo(e, x, y);
 				break;
 			}
 			case 1: {
 				System.out.println("case 1");
-				e = new NightKing(celdas);
+				e = new NightKing(c);
 				mapa.crearEnemigo(e, x, y);
 				break;
 			}
