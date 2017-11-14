@@ -28,7 +28,6 @@ public class Score extends JPanel {
 	public Score(Escenario stage) {
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.BLACK);
-		director = director.newDirector();
 		agregarLabel();
 
 	}
@@ -65,6 +64,6 @@ public class Score extends JPanel {
 	}
 
 	public void actualizar() {
-		puntaje.setText("Score " + (director.getPartida().getScore()));
+		puntaje.setText("Score " + (Director.getPartida().getScore()));
 	}
 }
