@@ -1,7 +1,5 @@
 package mapa;
 
-import java.util.List;
-
 public class Cell extends Celda {
 
 	public Cell(int posX, int posY) {
@@ -14,12 +12,12 @@ public class Cell extends Celda {
 	}
 
 	@Override
-	public void removeChild(Celda c) {
+	public void removeChild() {
 		throw new UnsupportedOperationException("Operacion no soportada");
 	}
 
 	@Override
-	public List<Celda> getChildren(Celda c) {
+	public Celda getChild() {
 		throw new UnsupportedOperationException("Operacion no soportada");
 	}
 

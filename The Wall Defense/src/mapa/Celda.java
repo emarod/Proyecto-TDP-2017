@@ -1,7 +1,6 @@
 package mapa;
 
 import java.util.LinkedList;
-import java.util.List;
 
 import main.CONFIG;
 import main.GameObject;
@@ -87,8 +86,8 @@ public abstract class Celda {
 
 	public abstract void addChild(Celda c);
 
-	public abstract void removeChild(Celda c);
+	public abstract void removeChild();
 
-	public abstract List<Celda> getChildren(Celda c);
+	public abstract Celda getChild();
 
 }

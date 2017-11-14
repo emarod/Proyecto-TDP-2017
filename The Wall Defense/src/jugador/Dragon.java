@@ -70,7 +70,8 @@ public class Dragon extends Shooter {
 	@Override
 	public void destruir() {
 		super.destruir();
-		celda[1] = null;
+		celda[0].removeChild();
+		;
 	}
 
 	@Override
@@ -83,7 +84,7 @@ public class Dragon extends Shooter {
 		if (disparo == null) {
 			playSound();
 			disparo = new DisparoDragon(this);
-			disparo.setCelda();
+			// disparo.setCelda();
 			disparo.activar();
 		}
 		graph = 0;

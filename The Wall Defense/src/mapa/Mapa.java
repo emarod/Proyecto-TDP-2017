@@ -147,7 +147,7 @@ public class Mapa implements Runnable {
 				&& celdas[x_cel + 1][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null) {
 			Celda[] c = new Celda[2];
 			c[0] = celdas[x_cel][y_cel];
-			c[1] = celdas[x_cel + 1][y_cel];
+			c[0].addChild(celdas[x_cel + 1][y_cel]);
 			Jugador player = j.clone(c);
 			celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = player;
 			celdas[x_cel + 1][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = player;
@@ -165,9 +165,9 @@ public class Mapa implements Runnable {
 					objetosCelda1[CONFIG.PROFUNDIDAD_JUGADOR] = player;
 					objetosCelda2[CONFIG.PROFUNDIDAD_JUGADOR] = player;
 					player.getCeldas()[0].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = null;
-					player.getCeldas()[1].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = null;
+					player.getCeldas()[0].getChild().getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = null;
+					celdas[x_celd][y_celd].addChild(celdas[x_celd + 1][y_celd]);
 					player.setCelda(celdas[x_celd][y_celd], 0);
-					player.setCelda(celdas[x_celd + 1][y_celd], 1);
 					int x_terreno = objetosCelda1[0].getGrafico().getX();
 					int y_terreno = objetosCelda1[0].getGrafico().getY();
 					player.getGrafico().setBounds(x_terreno, y_terreno, 128, 64);

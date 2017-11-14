@@ -1,29 +1,25 @@
 package mapa;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class ParentCell extends Celda {
 
-	protected List<Celda> children;
+	protected Celda child;
 
 	public ParentCell(int posX, int posY) {
 		super(posX, posY);
-		children = new LinkedList<Celda>();
 	}
 
 	@Override
 	public void addChild(Celda c) {
-		children.add(c);
+		child = c;
 	}
 
 	@Override
-	public void removeChild(Celda c) {
-		children.remove(c);
+	public void removeChild() {
+		child = null;
 	}
 
 	@Override
-	public List<Celda> getChildren(Celda c) {
-		return children;
+	public Celda getChild() {
+		return child;
 	}
 }
