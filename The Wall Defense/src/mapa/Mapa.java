@@ -1,12 +1,10 @@
 package mapa;
 
-import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JLabel;
-import javax.swing.border.LineBorder;
 
 import Controladores.BancoRecursos;
 import Controladores.Director;
@@ -22,6 +20,7 @@ import obstaculos.Rock;
 import obstaculos.Water;
 import preciosos.ObjetoPrecioso;
 import terreno.Muro;
+import terreno.OyenteTerreno;
 import terreno.Pasto;
 import tokens.MonedaOro;
 import tokens.Token;
@@ -42,11 +41,14 @@ public class Mapa implements Runnable {
 	protected int y_mouse;
 	protected BancoRecursos banco;
 	protected Horda horda;
+	protected OyenteTerreno oyenteTerreno;
 
 	// Constructor.
 	public Mapa() {
 		celdas = new Celda[CONFIG.CANT_CELDAS_X][CONFIG.CANT_CELDAS_Y];
 		banco = Director.getBancoRecursos();
+		oyenteTerreno = new OyenteTerreno();
+
 	}
 
 	// Metodos locales.
@@ -63,47 +65,10 @@ public class Mapa implements Runnable {
 				else {
 					objetos[CONFIG.PROFUNDIDAD_TERRENO] = new Pasto(celdas[x][y]);
 				}
-				JLabel terreno = objetos[CONFIG.PROFUNDIDAD_TERRENO].getGrafico();
-				terreno.addMouseListener(new MouseAdapter() {
-
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						if (celdaLabel == null) {
-							terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
-							celdaLabel = terreno;
-							System.out.println("(" + terreno.getX() / 64 + "," + terreno.getY() / 64 + ")");
-							ver();
-						}
-						else {
-							celdaLabel.setBorder(null);
-							terreno.setBorder(new LineBorder(new Color(0, 0, 0)));
-							celdaLabel = terreno;
-							System.out.println("(" + terreno.getX() / 64 + "," + terreno.getY() / 64 + ")");
-							ver();
-
-						}
-					}
-
-					@Override
-					public void mouseEntered(MouseEvent e) {
-						x_mouse = terreno.getX();
-						y_mouse = terreno.getY();
-						if (terreno != celdaLabel) {
-							terreno.setBorder(new LineBorder(new Color(255, 0, 0)));
-						}
-					}
-
-					@Override
-					public void mouseExited(MouseEvent e) {
-						if (terreno != celdaLabel) {
-							terreno.setBorder(null);
-						}
-					}
-				}
-
-				);
-				terreno.setBounds(64 * x, 64 * y, 64, 64);
-				escenario.agregar(terreno, new Integer(CONFIG.PROFUNDIDAD_TERRENO));
+				JLabel graficoTerreno = objetos[CONFIG.PROFUNDIDAD_TERRENO].getGrafico();
+				graficoTerreno.addMouseListener(oyenteTerreno);
+				graficoTerreno.setBounds(64 * x, 64 * y, 64, 64);
+				escenario.agregar(graficoTerreno, new Integer(CONFIG.PROFUNDIDAD_TERRENO));
 			}
 			y++;
 		}
@@ -376,5 +341,29 @@ public class Mapa implements Runnable {
 
 	public void setEscenario(Escenario e) {
 		escenario = e;
+	}
+
+	public JLabel getCeldaLabel() {
+		return celdaLabel;
+	}
+
+	public void setCeldaLabel(JLabel l) {
+		celdaLabel = l;
+	}
+
+	public int get_x_mouse() {
+		return x_mouse;
+	}
+
+	public int get_y_mouse() {
+		return y_mouse;
+	}
+
+	public void set_x_mouse(int i) {
+		x_mouse = i;
+	}
+
+	public void set_y_mouse(int i) {
+		y_mouse = i;
 	}
 }
