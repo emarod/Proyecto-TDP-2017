@@ -5,7 +5,7 @@ import mapa.Celda;
 public abstract class ObstaculoVida extends Obstaculo {
 	protected int vida;
 
-	public ObstaculoVida(Celda[] c) {
+	public ObstaculoVida(Celda c) {
 		super(c);
 	}
 

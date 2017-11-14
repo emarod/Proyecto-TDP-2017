@@ -5,7 +5,7 @@ import mapa.Celda;
 
 public abstract class ObstaculoTemporal extends Obstaculo {
 
-	public ObstaculoTemporal(Celda[] c) {
+	public ObstaculoTemporal(Celda c) {
 		super(c);
 		// TODO Auto-generated constructor stub
 	}

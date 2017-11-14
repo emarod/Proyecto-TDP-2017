@@ -13,7 +13,7 @@ import mapa.Celda;
 public class Espadachin extends Jugador {
 
 	// Constructor.
-	public Espadachin(Celda[] c) {
+	public Espadachin(Celda c) {
 		super(c);
 		vida = 8;
 		velocidad = 10;
@@ -34,7 +34,7 @@ public class Espadachin extends Jugador {
 	}
 
 	@Override
-	public Jugador clone(Celda[] c) {
+	public Jugador clone(Celda c) {
 		// Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
 		Jugador clon = new Espadachin(c);
 		return clon;

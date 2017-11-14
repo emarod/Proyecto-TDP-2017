@@ -60,7 +60,7 @@ public class Partida {
 	// Devuelve true si el jugador tiene stock de objeto.
 	// Tener en cuenta que de devolver true se considera que será utilizado
 	// y por ende se decrementa una unidad.
-	public ObjetoPrecioso usarObjeto(ObjetoPrecioso precioso, Celda[] c) {
+	public ObjetoPrecioso usarObjeto(ObjetoPrecioso precioso, Celda c) {
 		int hay = objetos.get(precioso);
 		ObjetoPrecioso myprecious = null;
 		if (hay > 0) {

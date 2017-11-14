@@ -38,8 +38,8 @@ public class DisparoEnemigo extends Disparo {
 	public void mover() {
 		Celda siguiente;
 		enemigo.animarDisparo();
-		int xCelda = celda[0].getPosX();
-		int yCelda = celda[0].getPosY();
+		int xCelda = celda.getPosX();
+		int yCelda = celda.getPosY();
 		int xGrafico = grafico.getX();
 		int yGrafico = grafico.getY();
 		if (xCelda != 0) {
@@ -71,9 +71,9 @@ public class DisparoEnemigo extends Disparo {
 
 	@Override
 	public void setCelda() {
-		celda[0] = enemigo.getCeldas()[0];
-		celda[0].addDisparo(this);
-		grafico.setBounds(64 * celda[0].getPosX(), 64 * celda[0].getPosY(), 64, 64);
+		celda = enemigo.getCelda();
+		celda.addDisparo(this);
+		grafico.setBounds(64 * celda.getPosX(), 64 * celda.getPosY(), 64, 64);
 		Director.getMapa().getEscenario().agregar(grafico, new Integer(CONFIG.PROFUNDIDAD_DISPARO));
 
 	}

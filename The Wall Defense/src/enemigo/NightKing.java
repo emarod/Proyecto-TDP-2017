@@ -17,7 +17,7 @@ public class NightKing extends ShooterEnemigo {
 	// Atributos locales.
 
 	// Constructor.
-	public NightKing(Celda[] c) {
+	public NightKing(Celda c) {
 		super(c);
 		puntaje = 200;
 		velocidad = 100;
@@ -95,7 +95,7 @@ public class NightKing extends ShooterEnemigo {
 	}
 
 	@Override
-	public Enemigo clone(Celda[] c) {
+	public Enemigo clone(Celda c) {
 		// Profundidad 1 predeterminada. Retorna una unidad de mismo tipo.
 		Enemigo clon = new NightKing(c);
 		return clon;

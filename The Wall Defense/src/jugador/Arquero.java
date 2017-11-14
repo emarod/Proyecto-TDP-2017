@@ -16,7 +16,7 @@ import mapa.Celda;
 public class Arquero extends Shooter {
 
 	// Constructor.
-	public Arquero(Celda[] c) {
+	public Arquero(Celda c) {
 		super(c);
 		velocidad = 15;
 		vida = 2;
@@ -43,7 +43,7 @@ public class Arquero extends Shooter {
 
 	// Metodos heredados.
 	@Override
-	public Jugador clone(Celda[] c) {
+	public Jugador clone(Celda c) {
 		// Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
 		Shooter clon = new Arquero(c);
 		// clon.getDisparo().setCelda();

@@ -22,6 +22,7 @@ public class OyenteTerreno extends MouseAdapter {
 			graficoTerreno.setBorder(new LineBorder(new Color(0, 0, 0)));
 			Director.getMapa().setCeldaLabel(graficoTerreno);
 			System.out.println("(" + graficoTerreno.getX() / 64 + "," + graficoTerreno.getY() / 64 + ")");
+			Director.getMapa().ver();
 
 		}
 		else {
@@ -29,6 +30,7 @@ public class OyenteTerreno extends MouseAdapter {
 			graficoTerreno.setBorder(new LineBorder(new Color(0, 0, 0)));
 			Director.getMapa().setCeldaLabel(graficoTerreno);
 			System.out.println("(" + graficoTerreno.getX() / 64 + "," + graficoTerreno.getY() / 64 + ")");
+			Director.getMapa().ver();
 
 		}
 	}

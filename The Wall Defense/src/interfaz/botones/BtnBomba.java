@@ -6,7 +6,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 
 import interfaz.Escenario;
-import mapa.Celda;
 import preciosos.Bomba;
 import preciosos.ObjetoPrecioso;
 
@@ -23,8 +22,7 @@ public class BtnBomba extends BtnObjetoPrecioso {
 	// Constructor.
 	public BtnBomba(Escenario e) {
 		super(e);
-		Celda[] c = new Celda[4];
-		precioso = new Bomba(c);
+		precioso = new Bomba();
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/bomba.png")));
 		info = new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/bombadescripcion.png"));
 		oyente();

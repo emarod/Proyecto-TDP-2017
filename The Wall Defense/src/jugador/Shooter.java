@@ -9,7 +9,7 @@ public abstract class Shooter extends Jugador {
 	protected int velocidad_disparo;
 	protected Disparo disparo;
 
-	public Shooter(Celda[] c) {
+	public Shooter(Celda c) {
 		super(c);
 	}
 

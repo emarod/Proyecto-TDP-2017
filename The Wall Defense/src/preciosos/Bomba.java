@@ -17,7 +17,7 @@ public class Bomba extends ObjetoPrecioso {
 	protected int costo;
 
 	// Constructor.
-	public Bomba(Celda[] c) {
+	public Bomba(Celda c) {
 		super(c);
 		vida = 1;
 		graficos = new Icon[1];
@@ -70,7 +70,7 @@ public class Bomba extends ObjetoPrecioso {
 	}
 
 	@Override
-	public ObjetoPrecioso clone(Celda[] c) {
+	public ObjetoPrecioso clone(Celda c) {
 		ObjetoPrecioso clon = new Bomba(c);
 		return clon;
 	}

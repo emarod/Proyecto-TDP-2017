@@ -1,8 +1,5 @@
 package obstaculos;
 
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -25,30 +22,39 @@ public class Water extends ObstaculoTemporal implements Runnable {
 	protected JLabel[] labels;
 
 	// Constructor.
-	public Water(Celda[] c) {
+	public Water(Celda c) {
 		super(c);
-		celda = c;
+
 		penalizacion = 100;
 		labels = new JLabel[4];
 		graficos = new Icon[4];
+		System.out.println("creando agua");
 		// Esquina superior izquierda.
 		graficos[0] = new ImageIcon(this.getClass().getResource("/resources/dinamic/lago/lago_esquina_sup_izq_1.gif"));
 		// Esquina superior derecha.
 		graficos[1] = new ImageIcon(this.getClass().getResource("/resources/dinamic/lago/lago_esquina_sup_der_1.gif"));
-		// Esquina inferior derecha.
-		graficos[2] = new ImageIcon(this.getClass().getResource("/resources/dinamic/lago/lago_esquina_inf_der_1.gif"));
 		// Esquina inferior izquierda.
-		graficos[3] = new ImageIcon(this.getClass().getResource("/resources/dinamic/lago/lago_esquina_inf_izq_1.gif"));
+		graficos[2] = new ImageIcon(this.getClass().getResource("/resources/dinamic/lago/lago_esquina_inf_izq_1.gif"));
+		// Esquina inferior derecha.
+		graficos[3] = new ImageIcon(this.getClass().getResource("/resources/dinamic/lago/lago_esquina_inf_der_1.gif"));
+
 		// grafico.setLayout(new FlowLayout(0, 0, 0));
+		Celda ce = celda;
 		int i = 0;
-		while (i < 4) {
+		while (ce != null) {
+			System.out.println(i + " padre " + ce);
+			System.out.println(i + " Padre " + ce.getPosX() + ":" + ce.getPosY());
+			System.out.println(i + " hijo " + ce.getChild());
 			labels[i] = new JLabel();
 			labels[i].setIcon(graficos[i]);
-			labels[i].setBounds(celda[i].getPosX() * 64, celda[i].getPosY() * 64, 64, 64);
-			Director.getMapa().getEscenario().agregar(labels[i], 3);
+			labels[i].setBounds(ce.getPosX() * 64, ce.getPosY() * 64, 64, 64);
+			Director.getMapa().getEscenario().agregar(labels[i], profundidad);
+			ce.getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] = this;
+			ce = ce.getChild();
 			i++;
 		}
 		Director.ejecutarUna(this, 7);
+		System.out.println("ya la creamos agua");
 	}
 
 	// Metodos locales.
@@ -58,7 +64,7 @@ public class Water extends ObstaculoTemporal implements Runnable {
 
 	// Metodos heredados.
 	@Override
-	public Obstaculo clone(Celda[] c) {
+	public Obstaculo clone(Celda c) {
 		Obstaculo clon = new Water(c);
 		return clon;
 	}
@@ -70,26 +76,19 @@ public class Water extends ObstaculoTemporal implements Runnable {
 
 	@Override
 	public void aplicarEfecto(Enemigo e) {
-		ScheduledFuture<?> taskEnemigo = e.getTask();
-		taskEnemigo.cancel(true);
-		ScheduledFuture<?> newTask = Director.ejecutarUna(this, penalizacion);
-		e.setTask(newTask);
-		e.activar(newTask.getDelay(TimeUnit.MILLISECONDS));
-
+		e.setVelocidad(penalizacion);
 	}
 
 	@Override
 	public void destruir() {
 		super.destruir();
 		int i = 0;
-		while (i < 4) {
+		while (i < labels.length) {
 			labels[i].setIcon(null);
-			graficos[i] = null;
 			Director.getMapa().getEscenario().remove(labels[i]);
+			graficos[i] = null;
 			labels[i] = null;
 			i++;
-			celda[i].getObjects()[CONFIG.PROFUNDIDAD_PRECIOSO] = null;
-			celda[i] = null;
 		}
 
 	}

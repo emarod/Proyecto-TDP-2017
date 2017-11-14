@@ -16,7 +16,7 @@ public abstract class GameObject {
 
 	// Atributos locales.
 	protected JLabel grafico;
-	protected Celda[] celda = new Celda[4];
+	protected Celda celda;
 	protected int profundidad;
 
 	public GameObject() {
@@ -35,30 +35,36 @@ public abstract class GameObject {
 	public void destruir() {
 		grafico.setIcon(null);
 		Director.getMapa().getEscenario().remove(grafico);
-		celda[0].getObjects()[profundidad] = null;
+		while (celda.getChild() != null) {
+			celda.getChild().getObjects()[profundidad] = null;
+			celda.removeChild();
+		}
+		celda.getObjects()[profundidad] = null;
+		grafico = null;
+		celda = null;
 	}
 
 	public int getProfundidad() {
 		return profundidad;
 	}
 
-	public Celda[] getCeldas() {
-		return celda;
-	}
-
 	public Point xy() {
-		return new Point(celda[0].getPosX(), celda[0].getPosY());
+		return new Point(celda.getPosX(), celda.getPosY());
 	}
 
-	public void setCelda(Celda c, int pos) {
-		celda[pos] = c;
+	public void setCelda(Celda c) {
+		celda = c;
 	}
 
 	public void intercambiar_celdas(Celda C) {
 		C.getObjects()[profundidad] = this;
-		celda[0].getObjects()[profundidad] = null;
-		celda[0] = C;
+		celda.getObjects()[profundidad] = null;
+		celda = C;
 
+	}
+
+	public Celda getCelda() {
+		return celda;
 	}
 
 	// Metodos abstractos.
