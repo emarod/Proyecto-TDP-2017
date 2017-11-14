@@ -1,7 +1,6 @@
 package powerUp;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import jugador.Jugador;
 import mapa.Celda;
@@ -16,7 +15,6 @@ public class DañoAtkAumentado extends PowerUp {
 	// Constructor.
 	public DañoAtkAumentado(Celda c) {
 		super(c);
-		grafico = new JLabel();
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/daño_atk_aumentado.gif")));
 	}
 

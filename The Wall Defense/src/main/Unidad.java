@@ -27,6 +27,7 @@ public abstract class Unidad extends GameObject implements Runnable {
 	protected String backup;
 
 	public Unidad() {
+		super();
 		careTaker = Director.getCareTaker();
 	}
 

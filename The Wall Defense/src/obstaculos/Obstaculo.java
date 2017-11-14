@@ -16,9 +16,9 @@ public abstract class Obstaculo extends GameObject {
 
 	// Constructor.
 	public Obstaculo(Celda[] c) {
+		super();
 		profundidad = CONFIG.PROFUNDIDAD_OBSTACULO;
 		celda = c;
-		grafico = new JLabel();
 	}
 
 	// Metodos locales

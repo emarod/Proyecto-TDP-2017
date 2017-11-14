@@ -1,7 +1,6 @@
 package preciosos;
 
 import javax.swing.Icon;
-import javax.swing.JLabel;
 
 import main.CONFIG;
 import main.GameObject;
@@ -14,6 +13,7 @@ public abstract class ObjetoPrecioso extends GameObject {
 	protected int graph;
 
 	public ObjetoPrecioso(Celda[] c) {
+		super();
 		construir(c);
 		construir();
 	}
@@ -23,7 +23,6 @@ public abstract class ObjetoPrecioso extends GameObject {
 	}
 
 	private void construir() {
-		grafico = new JLabel();
 		profundidad = CONFIG.PROFUNDIDAD_PRECIOSO;
 	}
 

@@ -24,12 +24,12 @@ public abstract class Enemigo extends Unidad {
 
 	// Constructor.
 	public Enemigo(Celda[] c) {
+		super();
 		V = new VisitorEnemigo(this);
 		alto = 30;
 		ancho = 30;
 		celda = c;
 		profundidad = CONFIG.PROFUNDIDAD_ENEMIGO;
-		grafico = new JLabel();
 		setGrafico();
 	}
 

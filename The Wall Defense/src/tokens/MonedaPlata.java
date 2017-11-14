@@ -6,7 +6,7 @@ import mapa.Celda;
 
 public class MonedaPlata extends Moneda {
 
-	public MonedaPlata(Celda c, int prof) {
+	public MonedaPlata(Celda c) {
 		super(c);
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/MonedaPlata.gif")));
 		duracion = 10;

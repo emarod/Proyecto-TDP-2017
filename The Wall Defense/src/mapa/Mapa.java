@@ -23,6 +23,8 @@ import obstaculos.Water;
 import preciosos.ObjetoPrecioso;
 import terreno.Muro;
 import terreno.Pasto;
+import tokens.MonedaOro;
+import tokens.Token;
 
 /*
  * Clase Map.
@@ -53,7 +55,7 @@ public class Mapa implements Runnable {
 		int y = 0;
 		while (y < CONFIG.CANT_CELDAS_Y) {
 			for (int x = 0; x < CONFIG.CANT_CELDAS_X; x++) {
-				celdas[x][y] = new Cell(x, y);
+				celdas[x][y] = new ParentCell(x, y);
 				GameObject[] objetos = celdas[x][y].getObjects();
 				if (x == 0) {
 					objetos[CONFIG.PROFUNDIDAD_TERRENO] = new Muro(celdas[x][y], nivel);
@@ -243,8 +245,29 @@ public class Mapa implements Runnable {
 		escenario.getScore().actualizar();
 	}
 
-	public void randomToken(int x, int y) {
+	public void agregarTokens() {
+		RandomGenerator r = new RandomGenerator();
+		int x = r.nextInt(16);
+		int y = r.nextInt(6);
 
+		if (celdas[x][y].getObjects()[CONFIG.PROFUNDIDAD_TOKEN] == null) {
+			GameObject[] objetos = celdas[x][y].getObjects();
+			// int c = r.nextInt(1);
+			Token tk;
+			JLabel grafico;
+			int c = 0;
+			switch (c) {
+				case 0: {
+					tk = new MonedaOro(celdas[x][y]);
+					objetos[CONFIG.PROFUNDIDAD_TOKEN] = tk;
+					grafico = tk.getGrafico();
+					grafico.setBounds(x * 64, y * 64, 64, 64);
+					escenario.agregar(grafico, new Integer(CONFIG.PROFUNDIDAD_OBSTACULO));
+					break;
+				}
+			}
+
+		}
 	}
 
 	public void agregar(GameObject g) {
@@ -311,7 +334,7 @@ public class Mapa implements Runnable {
 	@Override
 	public void run() {
 		escenario.repaint();
-		// randomToken();
+		agregarTokens();
 		agregarObstaculos();
 	}
 

@@ -1,7 +1,6 @@
 package terreno;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import Controladores.RandomGenerator;
 import main.Visitor;
@@ -16,12 +15,12 @@ public class Pasto extends Terreno {
 
 	// Constructor.
 	public Pasto(Celda c) {
+		super();
 		celda[0] = c;
 		// Este es un random limitado entre 1 y 3, para establecer un rango
 		// nuevo Random[n,m]: (Math.random()*m)+n
 		RandomGenerator r = new RandomGenerator();
 		this.sprite = r.nextInt(3) + 1;
-		grafico = new JLabel();
 		grafico.setIcon(new ImageIcon(
 				this.getClass().getResource("/resources/static/terrenos/pasto/piso_pasto_" + sprite + ".png")));
 	}

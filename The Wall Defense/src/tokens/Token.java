@@ -1,7 +1,5 @@
 package tokens;
 
-import javax.swing.JLabel;
-
 import Controladores.Director;
 import main.CONFIG;
 import main.GameObject;
@@ -13,7 +11,7 @@ public abstract class Token extends GameObject implements Runnable {
 	protected int duracion;
 
 	public Token(Celda c) {
-		grafico = new JLabel();
+		super();
 		profundidad = CONFIG.PROFUNDIDAD_TOKEN;
 		celda[0] = c;
 	}
