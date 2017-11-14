@@ -3,10 +3,10 @@ package disparo;
 import enemigo.Enemigo;
 import jugador.Jugador;
 import main.Visitor;
-import obstaculos.Obstaculo;
-import obstaculos.ObstaculoTemporal;
-import obstaculos.ObstaculoVida;
-import preciosos.ObjetoPrecioso;
+import objetoMapa.ObjetoMapa;
+import objetoMapa.ObjetoMapaTemporal;
+import objetoMapa.ObjetoMapaVida;
+import premios.Premio;
 
 /*
  * Clase VisitorDisparoPlayer.
@@ -25,7 +25,7 @@ public class VisitorDisparoPlayer extends Visitor {
 	}
 
 	// Metodos heredados.
-	public boolean visitObstaculo(Obstaculo o) {
+	public boolean visitObstaculo(ObjetoMapa o) {
 		return true;
 	}
 
@@ -42,17 +42,17 @@ public class VisitorDisparoPlayer extends Visitor {
 	}
 
 	@Override
-	public boolean visitObstaculo(ObstaculoVida o) {
+	public boolean visitObstaculo(ObjetoMapaVida o) {
 		return true;
 	}
 
 	@Override
-	public boolean visitObstaculo(ObstaculoTemporal o) {
+	public boolean visitObstaculo(ObjetoMapaTemporal o) {
 		return true;
 	}
 
 	@Override
-	public boolean visitObjetoPrecioso(ObjetoPrecioso op) {
+	public boolean visitObjetoPrecioso(Premio op) {
 		return true;
 	}
 

@@ -6,7 +6,7 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 
 import interfaz.Escenario;
-import preciosos.ObjetoPrecioso;
+import premios.Premio;
 
 /*
  * Clase abstracta BtnObstaculo.
@@ -18,7 +18,7 @@ public abstract class BtnObjetoPrecioso extends JButton {
 	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
 	protected Escenario stage;
-	protected ObjetoPrecioso precioso;
+	protected Premio precioso;
 	protected Icon info;
 	public int costo;
 

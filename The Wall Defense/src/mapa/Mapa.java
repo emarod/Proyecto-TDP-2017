@@ -15,10 +15,10 @@ import interfaz.Escenario;
 import jugador.Jugador;
 import main.CONFIG;
 import main.GameObject;
-import obstaculos.Obstaculo;
-import obstaculos.Rock;
-import obstaculos.Water;
-import preciosos.ObjetoPrecioso;
+import objetoMapa.ObjetoMapa;
+import objetoMapa.Rock;
+import objetoMapa.Water;
+import premios.Premio;
 import terreno.Muro;
 import terreno.OyenteTerreno;
 import terreno.Pasto;
@@ -248,7 +248,7 @@ public class Mapa implements Runnable {
 		if (celdas[x][y].getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] == null) {
 			GameObject[] objetos = celdas[x][y].getObjects();
 			// int c = r.nextInt(2) + 0;
-			Obstaculo obs;
+			ObjetoMapa obs;
 			JLabel grafico;
 			Celda celda;
 			int c = 1;
@@ -297,13 +297,13 @@ public class Mapa implements Runnable {
 		agregarObstaculos();
 	}
 
-	public void crearPrecioso(ObjetoPrecioso precioso) {
+	public void crearPrecioso(Premio precioso) {
 		if (celdaLabel != null) {
 			int x_cel = Math.round(celdaLabel.getX() / 64);
 			int y_cel = Math.round(celdaLabel.getY() / 64);
 			if (celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_PRECIOSO] == null) {
 				Celda c = celdas[x_cel][y_cel];
-				ObjetoPrecioso objeto = precioso.clone(c);
+				Premio objeto = precioso.clone(c);
 				celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_PRECIOSO] = objeto;
 				JLabel icono = objeto.getGrafico();
 				icono.setBounds(x_cel * 64, y_cel * 64, 64, 64);

@@ -6,8 +6,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 
 import interfaz.Escenario;
-import preciosos.Bomba;
-import preciosos.ObjetoPrecioso;
+import premios.Bomba;
+import premios.Premio;
 
 /*
  * Clase BtnBomba.
@@ -49,7 +49,7 @@ public class BtnBomba extends BtnObjetoPrecioso {
 		this.setEnabled(false);
 	}
 
-	public ObjetoPrecioso getObjeto() {
+	public Premio getObjeto() {
 		return precioso;
 	}
 

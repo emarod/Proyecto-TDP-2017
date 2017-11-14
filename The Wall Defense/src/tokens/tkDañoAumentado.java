@@ -2,8 +2,8 @@ package tokens;
 
 import javax.swing.ImageIcon;
 
+import efectos.DañoAtkAumentado;
 import mapa.Celda;
-import powerUp.DañoAtkAumentado;
 
 public class tkDañoAumentado extends TokenPowerUp {
 

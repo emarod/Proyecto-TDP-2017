@@ -1,4 +1,4 @@
-package obstaculos;
+package objetoMapa;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -13,7 +13,7 @@ import mapa.Celda;
  * Clase que determina como esta compuesta y como se comporta una roca.
  */
 
-public class Rock extends ObstaculoVida {
+public class Rock extends ObjetoMapaVida {
 
 	// Constructor.
 	public Rock(Celda c) {
@@ -57,8 +57,8 @@ public class Rock extends ObstaculoVida {
 	}
 
 	@Override
-	public Obstaculo clone(Celda c) {
-		Obstaculo clon = new Rock(c);
+	public ObjetoMapa clone(Celda c) {
+		ObjetoMapa clon = new Rock(c);
 		return clon;
 	}
 

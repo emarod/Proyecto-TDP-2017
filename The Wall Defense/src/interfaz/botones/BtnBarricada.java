@@ -7,8 +7,8 @@ import javax.swing.ImageIcon;
 
 import interfaz.Escenario;
 import mapa.Celda;
-import preciosos.Barricada;
-import preciosos.ObjetoPrecioso;
+import premios.Barricada;
+import premios.Premio;
 
 /*
  * Clase BtnBarricada.
@@ -67,7 +67,7 @@ public class BtnBarricada extends BtnObjetoPrecioso {
 
 	}
 
-	public ObjetoPrecioso getObjeto() {
+	public Premio getObjeto() {
 		return precioso;
 	}
 

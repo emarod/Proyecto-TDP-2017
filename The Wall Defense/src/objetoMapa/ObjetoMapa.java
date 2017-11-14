@@ -1,4 +1,4 @@
-package obstaculos;
+package objetoMapa;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -7,7 +7,7 @@ import main.CONFIG;
 import main.GameObject;
 import mapa.Celda;
 
-public abstract class Obstaculo extends GameObject {
+public abstract class ObjetoMapa extends GameObject {
 
 	// Atributos locales.
 	protected JLabel imagen;
@@ -15,7 +15,7 @@ public abstract class Obstaculo extends GameObject {
 	protected int graph;
 
 	// Constructor.
-	public Obstaculo(Celda c) {
+	public ObjetoMapa(Celda c) {
 		super();
 		profundidad = CONFIG.PROFUNDIDAD_OBSTACULO;
 		celda = c;
@@ -26,5 +26,5 @@ public abstract class Obstaculo extends GameObject {
 		setGrafico(grafico);
 	}
 
-	public abstract Obstaculo clone(Celda c);// profundidad 3
+	public abstract ObjetoMapa clone(Celda c);// profundidad 3
 }

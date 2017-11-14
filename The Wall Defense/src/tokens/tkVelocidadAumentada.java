@@ -2,8 +2,8 @@ package tokens;
 
 import javax.swing.ImageIcon;
 
+import efectos.VelAtkAumentado;
 import mapa.Celda;
-import powerUp.VelAtkAumentado;
 
 public class tkVelocidadAumentada extends TokenPowerUp {
 

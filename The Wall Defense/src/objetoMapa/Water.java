@@ -1,4 +1,4 @@
-package obstaculos;
+package objetoMapa;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -15,7 +15,7 @@ import mapa.Celda;
  * Clase que determina como esta compuesta y como se comporta el agua.
  */
 
-public class Water extends ObstaculoTemporal implements Runnable {
+public class Water extends ObjetoMapaTemporal implements Runnable {
 
 	// Atributos locales.
 	protected int penalizacion;
@@ -64,8 +64,8 @@ public class Water extends ObstaculoTemporal implements Runnable {
 
 	// Metodos heredados.
 	@Override
-	public Obstaculo clone(Celda c) {
-		Obstaculo clon = new Water(c);
+	public ObjetoMapa clone(Celda c) {
+		ObjetoMapa clon = new Water(c);
 		return clon;
 	}
 

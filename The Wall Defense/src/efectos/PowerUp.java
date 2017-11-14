@@ -1,4 +1,4 @@
-package powerUp;
+package efectos;
 
 import Controladores.Director;
 import jugador.Jugador;

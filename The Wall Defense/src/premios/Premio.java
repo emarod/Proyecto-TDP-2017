@@ -1,4 +1,4 @@
-package preciosos;
+package premios;
 
 import javax.swing.Icon;
 
@@ -6,19 +6,19 @@ import main.CONFIG;
 import main.GameObject;
 import mapa.Celda;
 
-public abstract class ObjetoPrecioso extends GameObject {
+public abstract class Premio extends GameObject {
 	// Atributos locales.
 	protected int vida;
 	protected Icon[] graficos;
 	protected int graph;
 
-	public ObjetoPrecioso(Celda c) {
+	public Premio(Celda c) {
 		super();
 		construir(c);
 		construir();
 	}
 
-	public ObjetoPrecioso() {
+	public Premio() {
 		construir();
 	}
 
@@ -51,7 +51,7 @@ public abstract class ObjetoPrecioso extends GameObject {
 		construir(c);
 	}
 
-	public abstract ObjetoPrecioso clone(Celda c);
+	public abstract Premio clone(Celda c);
 
 	public abstract int getCosto();
 

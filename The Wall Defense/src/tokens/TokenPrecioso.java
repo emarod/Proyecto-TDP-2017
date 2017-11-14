@@ -2,11 +2,11 @@ package tokens;
 
 import Controladores.Director;
 import mapa.Celda;
-import preciosos.ObjetoPrecioso;
+import premios.Premio;
 
 public abstract class TokenPrecioso extends Token {
 
-	protected ObjetoPrecioso precioso;
+	protected Premio precioso;
 
 	public TokenPrecioso(Celda c) {
 		super(c);
