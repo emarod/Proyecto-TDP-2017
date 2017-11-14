@@ -9,7 +9,7 @@ import mapa.Celda;
 public class EsqueletoSuicida extends Enemigo {
 
 	// Constructor.
-	public EsqueletoSuicida(Celda[] c) {
+	public EsqueletoSuicida(Celda c) {
 		super(c);
 		puntaje = 100;
 		velocidad = 50;
@@ -41,7 +41,7 @@ public class EsqueletoSuicida extends Enemigo {
 	}
 
 	@Override
-	public Enemigo clone(Celda[] c) {
+	public Enemigo clone(Celda c) {
 		// Profundidad 1 predeterminada. Retorna una unidad de mismo tipo.
 		Enemigo clon = new WhiteWalker(c);
 		return clon;
