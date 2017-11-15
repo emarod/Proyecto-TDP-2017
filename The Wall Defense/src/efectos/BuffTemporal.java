@@ -1,9 +1,22 @@
 package efectos;
 
-public abstract class BuffTemporal extends Buff {
+import main.CONFIG;
+import mapa.Celda;
 
-	public BuffTemporal() {
-		// TODO Auto-generated constructor stub
+public abstract class BuffTemporal extends Buff implements Runnable {
+
+	protected int tiempo;
+
+	public BuffTemporal(Celda c) {
+		super(c);
+
+	}
+
+	@Override
+	public void run() {
+		unidad.getCelda().getObjects()[CONFIG.PROFUNDIDAD_EFECTO] = null;
+		unidad.regresarInicio();
+		this.destruir();
 	}
 
 }

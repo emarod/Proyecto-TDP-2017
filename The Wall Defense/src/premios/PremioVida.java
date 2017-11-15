@@ -1,35 +1,31 @@
 package premios;
 
-import main.Visitor;
 import mapa.Celda;
 
 public abstract class PremioVida extends Premio {
 
+	protected int vida;
+
 	public PremioVida(Celda c) {
 		super(c);
-		// TODO Auto-generated constructor stub
 	}
 
 	public PremioVida() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
-	@Override
-	public Premio clone(Celda c) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getCosto() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean accept(Visitor V) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean recibirDaño(int golpe) {
+		boolean destruir = false;
+		if (vida <= golpe) {
+			destruir = true;
+		}
+		else {
+			vida = vida - golpe;
+		}
+		if (destruir) {
+			destruir();
+		}
+		return destruir;
 	}
 
 }

@@ -35,7 +35,6 @@ public class MenuInicio extends JPanel {
 	protected JButton buttons[];
 	protected Juego game;
 	protected BancoRecursos bancoRecursos;
-	protected PopUp popup;
 	protected JButton opcion1;
 	protected JButton opcion2;
 	protected JButton close;
@@ -145,8 +144,11 @@ public class MenuInicio extends JPanel {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				buttons[2].setIcon(help[2]);
-				popup = new PopUp();
-				popup.ErrorArbol();
+				buttons[0].setVisible(false);
+				buttons[1].setVisible(false);
+				buttons[2].setVisible(false);
+				armarAyuda();
+
 			}
 
 			@Override
@@ -316,6 +318,28 @@ public class MenuInicio extends JPanel {
 		menupanel.add(close);
 		menupanel.add(opcion1);
 		menupanel.add(opcion2);
+
+	}
+
+	public void armarAyuda() {
+		menupanel.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/background/ayuda.png")));
+		menupanel.add(close);
+		close.setVisible(true);
+
+		close.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				opcion1.setVisible(false);
+				opcion2.setVisible(false);
+				close.setVisible(false);
+				buttons[0].setVisible(true);
+				buttons[1].setVisible(true);
+				buttons[2].setVisible(true);
+				menupanel.setIcon(menuback);
+
+			}
+
+		});
 
 	}
 

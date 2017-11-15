@@ -71,7 +71,7 @@ public class Water extends ObjetoMapaTemporal implements Runnable {
 
 	@Override
 	public boolean accept(Visitor V) {
-		return V.visitObstaculo(this);
+		return V.visitObjetoMapa(this);
 	}
 
 	@Override

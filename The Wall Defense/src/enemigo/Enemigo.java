@@ -86,22 +86,8 @@ public abstract class Enemigo extends Unidad {
 	}
 
 	@Override
-	public int getVelocidad() {
-		return velocidad;
-	}
-
-	@Override
-	public void setVelocidad(int speed) {
-		velocidad = speed;
-	}
-
-	@Override
 	public boolean accept(Visitor V) {
 		return V.visitEnemigo(this);
-	}
-
-	public int getDaño() {
-		return daño;
 	}
 
 	public abstract Enemigo clone(Celda c);

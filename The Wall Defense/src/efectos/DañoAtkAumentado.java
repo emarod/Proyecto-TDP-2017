@@ -2,7 +2,7 @@ package efectos;
 
 import javax.swing.ImageIcon;
 
-import jugador.Jugador;
+import main.Unidad;
 import mapa.Celda;
 
 /*
@@ -10,7 +10,7 @@ import mapa.Celda;
  * Clase que especifica el comportamiento del poder que aumenta el daño de ataque.
  */
 
-public class DañoAtkAumentado extends PowerUp {
+public class DañoAtkAumentado extends PowerUpTemporal {
 
 	// Constructor.
 	public DañoAtkAumentado(Celda c) {
@@ -21,9 +21,9 @@ public class DañoAtkAumentado extends PowerUp {
 	// Metodos heredados.
 
 	@Override
-	public void aplicar(Jugador j) {
-		jugador = j;
-		jugador.setAtaque(jugador.getDaño() * 2);
+	public void aplicar(Unidad u) {
+		unidad = u;
+		unidad.setAtaque(unidad.getDaño() * 2);
 	}
 
 	@Override

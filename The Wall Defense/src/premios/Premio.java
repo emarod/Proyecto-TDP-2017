@@ -8,7 +8,6 @@ import mapa.Celda;
 
 public abstract class Premio extends GameObject {
 	// Atributos locales.
-	protected int vida;
 	protected Icon[] graficos;
 	protected int graph;
 
@@ -23,25 +22,11 @@ public abstract class Premio extends GameObject {
 	}
 
 	private void construir() {
-		profundidad = CONFIG.PROFUNDIDAD_PRECIOSO;
+		profundidad = CONFIG.PROFUNDIDAD_PREMIO;
 	}
 
 	private void construir(Celda c) {
 		celda = c;
-	}
-
-	public boolean recibirDaño(int golpe) {
-		boolean destruir = false;
-		if (vida <= golpe) {
-			destruir = true;
-		}
-		else {
-			vida = vida - golpe;
-		}
-		if (destruir) {
-			destruir();
-		}
-		return destruir;
 	}
 
 	// Si el objeto se construyo con el constructor alternativo debe setearse la
@@ -52,7 +37,5 @@ public abstract class Premio extends GameObject {
 	}
 
 	public abstract Premio clone(Celda c);
-
-	public abstract int getCosto();
 
 }

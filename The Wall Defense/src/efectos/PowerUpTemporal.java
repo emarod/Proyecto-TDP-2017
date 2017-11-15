@@ -1,19 +1,23 @@
 package efectos;
 
-import jugador.Jugador;
+import Controladores.Director;
+import main.CONFIG;
 import mapa.Celda;
 
-public abstract class PowerUpTemporal extends PowerUp {
+public abstract class PowerUpTemporal extends PowerUp implements Runnable {
+
+	protected int tiempo;
 
 	public PowerUpTemporal(Celda c) {
 		super(c);
-		// TODO Auto-generated constructor stub
+		Director.ejecutarUna(this, tiempo);
 	}
 
 	@Override
-	public void aplicar(Jugador j) {
-		// TODO Auto-generated method stub
-
+	public void run() {
+		unidad.getCelda().getObjects()[CONFIG.PROFUNDIDAD_EFECTO] = null;
+		unidad.regresarInicio();
+		this.destruir();
 	}
 
 }

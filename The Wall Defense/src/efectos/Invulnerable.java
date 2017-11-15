@@ -2,7 +2,7 @@ package efectos;
 
 import javax.swing.ImageIcon;
 
-import jugador.Jugador;
+import main.Unidad;
 import mapa.Celda;
 
 /*
@@ -10,7 +10,7 @@ import mapa.Celda;
  * Clase que especifica el comportamiento del poder que vuelve invulnerable a un personaje.
  */
 
-public class Invulnerable extends PowerUp {
+public class Invulnerable extends PowerUpTemporal {
 
 	// Constructor.
 	public Invulnerable(Celda c) {
@@ -21,9 +21,9 @@ public class Invulnerable extends PowerUp {
 	// Metodos heredados.
 
 	@Override
-	public void aplicar(Jugador j) {
-		jugador = j;
-		jugador.setVida(9999);
+	public void aplicar(Unidad u) {
+		unidad = u;
+		unidad.setVida(9999);
 	}
 
 	@Override
