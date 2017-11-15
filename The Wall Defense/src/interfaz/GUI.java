@@ -61,6 +61,7 @@ public class GUI extends JFrame {
 			public void mouseReleased(MouseEvent e) {
 				go.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/go.png")));
 				escenario.getHorda().ejecutar();
+				escenario.getMapa().ejecutar();
 			}
 
 			@Override

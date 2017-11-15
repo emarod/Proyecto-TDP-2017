@@ -72,8 +72,11 @@ public class Mapa implements Runnable {
 			}
 			y++;
 		}
+		// horda = new Horda(escenario);
+	}
+
+	public void ejecutar() {
 		Director.ejecutar(this);
-		horda = new Horda(escenario);
 	}
 
 	public void ver() {
