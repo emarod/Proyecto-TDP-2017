@@ -1,12 +1,14 @@
 package disparo;
 
+import comprables.ComprableTemporal;
+import comprables.ComprableVida;
 import enemigo.Enemigo;
 import jugador.Jugador;
 import main.Visitor;
-import objetoMapa.ObjetoMapa;
 import objetoMapa.ObjetoMapaTemporal;
 import objetoMapa.ObjetoMapaVida;
-import premios.Premio;
+import premios.PremioTemporal;
+import premios.PremioVida;
 
 /*
  * Clase VisitorDisparoPlayer.
@@ -25,10 +27,6 @@ public class VisitorDisparoPlayer extends Visitor {
 	}
 
 	// Metodos heredados.
-	public boolean visitObstaculo(ObjetoMapa o) {
-		return true;
-	}
-
 	@Override
 	public boolean visitPlayer(Jugador j) {
 		return true;
@@ -42,17 +40,17 @@ public class VisitorDisparoPlayer extends Visitor {
 	}
 
 	@Override
-	public boolean visitObstaculo(ObjetoMapaVida o) {
+	public boolean visitObjetoMapa(ObjetoMapaVida o) {
 		return true;
 	}
 
 	@Override
-	public boolean visitObstaculo(ObjetoMapaTemporal o) {
+	public boolean visitObjetoMapa(ObjetoMapaTemporal o) {
 		return true;
 	}
 
 	@Override
-	public boolean visitObjetoPrecioso(Premio op) {
+	public boolean visitPremio(PremioVida op) {
 		return true;
 	}
 
@@ -66,6 +64,21 @@ public class VisitorDisparoPlayer extends Visitor {
 		// El disparo mas fuerte sobrevive
 		disparo.colision(d);
 		return true;
+	}
+
+	@Override
+	public boolean visitPremio(PremioTemporal op) {
+		return false;
+	}
+
+	@Override
+	public boolean visitComprable(ComprableVida comprable) {
+		return false;
+	}
+
+	@Override
+	public boolean visitComprable(ComprableTemporal comprable) {
+		return false;
 	}
 
 }

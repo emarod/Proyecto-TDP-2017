@@ -5,17 +5,16 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 
+import comprables.Barricada;
 import interfaz.Escenario;
 import mapa.Celda;
-import premios.Barricada;
-import premios.Premio;
 
 /*
  * Clase BtnBarricada.
  * Clase encargada del boton para el despliegue de una barricadao.
  */
 
-public class BtnBarricada extends BtnObjetoPrecioso {
+public class BtnBarricada extends BtnComprables {
 
 	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
@@ -24,11 +23,11 @@ public class BtnBarricada extends BtnObjetoPrecioso {
 	public BtnBarricada(Escenario e) {
 		super(e);
 		Celda c = null;
-		precioso = new Barricada(c);
+		comprable = new Barricada(c);
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/barricada.png")));
 		info = new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/barricadadescripcion.png"));
 		oyente();
-		costo = precioso.getCosto();
+		costo = comprable.getCosto();
 
 	}
 
@@ -55,7 +54,7 @@ public class BtnBarricada extends BtnObjetoPrecioso {
 	// Metodos heredados.
 	@Override
 	public void create() {
-		stage.getMapa().crearPrecioso(precioso);
+		stage.getMapa().crearComprable(comprable);
 
 	}
 
@@ -65,10 +64,6 @@ public class BtnBarricada extends BtnObjetoPrecioso {
 			create();
 		}
 
-	}
-
-	public Premio getObjeto() {
-		return precioso;
 	}
 
 	public void deshabilitar() {

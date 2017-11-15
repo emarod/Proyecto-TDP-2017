@@ -1,18 +1,24 @@
 package efectos;
 
-import main.GameObject;
-import main.Visitor;
+import main.Unidad;
+import mapa.Celda;
 
-public abstract class Buff extends GameObject {
+public abstract class Buff extends Efecto {
 
-	public Buff() {
-		// TODO Auto-generated constructor stub
+	// Atributos locales.
+	protected Unidad unidad;
+
+	// Constructor.
+	protected Buff(Celda c) {
+		super(c);
+
 	}
 
-	@Override
-	public boolean accept(Visitor V) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	// Metodos locales.
+
+	// Metodos heredados.
+
+	// Metodos abstractos.
+	public abstract void aplicar(Unidad u);
 
 }

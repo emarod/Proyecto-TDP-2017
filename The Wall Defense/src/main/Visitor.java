@@ -1,12 +1,15 @@
 package main;
 
+import comprables.ComprableTemporal;
+import comprables.ComprableVida;
 import disparo.DisparoEnemigo;
 import disparo.DisparoJugador;
 import enemigo.Enemigo;
 import jugador.Jugador;
 import objetoMapa.ObjetoMapaTemporal;
 import objetoMapa.ObjetoMapaVida;
-import premios.Premio;
+import premios.PremioTemporal;
+import premios.PremioVida;
 
 /*
  * Clase Visitor.
@@ -17,12 +20,6 @@ import premios.Premio;
 public abstract class Visitor {
 
 	// Metodos abstractos.
-	public abstract boolean visitObstaculo(ObjetoMapaVida o);
-
-	public abstract boolean visitObstaculo(ObjetoMapaTemporal o);
-
-	// public abstract boolean VisitBarricada(Barricada b);
-	// public abstract boolean VisitRock(Rock r);
 
 	public abstract boolean visitPlayer(Jugador j);
 
@@ -32,5 +29,16 @@ public abstract class Visitor {
 
 	public abstract boolean visitEnemigo(Enemigo e);
 
-	public abstract boolean visitObjetoPrecioso(Premio op);
+	public abstract boolean visitPremio(PremioTemporal op);
+
+	public abstract boolean visitPremio(PremioVida op);
+
+	public abstract boolean visitComprable(ComprableVida comprable);
+
+	public abstract boolean visitComprable(ComprableTemporal comprable);
+
+	public abstract boolean visitObjetoMapa(ObjetoMapaVida o);
+
+	public abstract boolean visitObjetoMapa(ObjetoMapaTemporal o);
+
 }

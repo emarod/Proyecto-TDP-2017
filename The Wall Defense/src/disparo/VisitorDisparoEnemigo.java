@@ -1,11 +1,14 @@
 package disparo;
 
+import comprables.ComprableTemporal;
+import comprables.ComprableVida;
 import enemigo.Enemigo;
 import jugador.Jugador;
 import main.Visitor;
 import objetoMapa.ObjetoMapaTemporal;
 import objetoMapa.ObjetoMapaVida;
-import premios.Premio;
+import premios.PremioTemporal;
+import premios.PremioVida;
 
 /*
  * Clase VisitorDisparoEnemigo.
@@ -24,7 +27,7 @@ public class VisitorDisparoEnemigo extends Visitor {
 
 	// Metodos heredados.
 	@Override
-	public boolean visitObstaculo(ObjetoMapaVida o) {
+	public boolean visitObjetoMapa(ObjetoMapaVida o) {
 		o.recibirDaño(disparo.getDaño());
 		return false;
 	}
@@ -42,20 +45,17 @@ public class VisitorDisparoEnemigo extends Visitor {
 	}
 
 	@Override
-	public boolean visitObstaculo(ObjetoMapaTemporal o) {
-		// TODO Auto-generated method stub
+	public boolean visitObjetoMapa(ObjetoMapaTemporal o) {
 		return false;
 	}
 
 	@Override
-	public boolean visitObjetoPrecioso(Premio op) {
-		// TODO Auto-generated method stub
+	public boolean visitPremio(PremioVida op) {
 		return false;
 	}
 
 	@Override
 	public boolean visitDisparo(DisparoJugador d) {
-		// El disparo mas fuerte sobrevive
 		disparo.colision(d);
 		return true;
 	}
@@ -63,6 +63,24 @@ public class VisitorDisparoEnemigo extends Visitor {
 	@Override
 	public boolean visitDisparo(DisparoEnemigo d) {
 		return true;
+	}
+
+	@Override
+	public boolean visitPremio(PremioTemporal op) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean visitComprable(ComprableVida comprable) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean visitComprable(ComprableTemporal comprable) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

@@ -32,6 +32,12 @@ public abstract class GameObject {
 		grafico = graf;
 	}
 
+	public void crear() {
+		celda.getObjects()[profundidad] = this;
+		grafico.setBounds(celda.getPosX() * 64, celda.getPosY() * 64, 64, 64);
+		Director.getMapa().getEscenario().agregar(grafico, profundidad);
+	}
+
 	public void destruir() {
 		grafico.setIcon(null);
 		Director.getMapa().getEscenario().remove(grafico);

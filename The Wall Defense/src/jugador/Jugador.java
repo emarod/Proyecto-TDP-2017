@@ -71,12 +71,9 @@ public abstract class Jugador extends Unidad {
 		return V;
 	}
 
+	@Override
 	public int getDaño() {
 		return getDaño();
-	}
-
-	public void setAtaque(int a) {
-		setAtaque(a);
 	}
 
 	// Metodos heredados.
@@ -84,16 +81,6 @@ public abstract class Jugador extends Unidad {
 	@Override
 	public void run() {
 		atacar();
-	}
-
-	@Override
-	public int getVelocidad() {
-		return velocidad;
-	}
-
-	@Override
-	public void setVelocidad(int speed) {
-		velocidad = speed;
 	}
 
 	public int getCosto() {
@@ -115,9 +102,5 @@ public abstract class Jugador extends Unidad {
 	public abstract void atacar();
 
 	public abstract void playSound();
-
-	public void setVida(int i) {
-		vida = i;
-	}
 
 }

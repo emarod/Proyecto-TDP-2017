@@ -1,10 +1,6 @@
 package efectos;
 
-import Controladores.Director;
-import jugador.Jugador;
-import main.CONFIG;
-import main.GameObject;
-import main.Visitor;
+import main.Unidad;
 import mapa.Celda;
 
 /*
@@ -12,34 +8,19 @@ import mapa.Celda;
  * Clase que generaliza el comportamiento de un poder.
  */
 
-public abstract class PowerUp extends GameObject implements Runnable {
+public abstract class PowerUp extends Efecto {
 
 	// Atributos locales.
-	protected Jugador jugador;
 
 	// Constructor.
 	protected PowerUp(Celda c) {
-		super();
-		celda = c;
-		profundidad = CONFIG.PROFUNDIDAD_POWERUP;
-		Director.ejecutarUna(this, 10);
+		super(c);
 	}
 
 	// Metodos locales.
 
 	// Metodos heredados.
-	@Override
-	public boolean accept(Visitor V) {
-		return true;
-	}
-
-	@Override
-	public void run() {
-		jugador.getCelda().getObjects()[CONFIG.PROFUNDIDAD_POWERUP] = null;
-		jugador.regresarInicio();
-		this.destruir();
-	}
 
 	// Metodos abstractos.
-	public abstract void aplicar(Jugador j);
+	public abstract void aplicar(Unidad unidad);
 }

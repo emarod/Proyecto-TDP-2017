@@ -1,4 +1,4 @@
-package premios;
+package comprables;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -13,7 +13,7 @@ import mapa.Celda;
  * Clase que determina como esta compuesta y como se comporta una roca.
  */
 
-public class Barricada extends Premio {
+public class Barricada extends ComprableVida {
 
 	protected int costo;
 
@@ -42,11 +42,6 @@ public class Barricada extends Premio {
 		super.destruir();
 	}
 
-	@Override
-	public int getCosto() {
-		return costo;
-	}
-
 	// Metodos heredados.
 
 	public void setGrafico(int i) {
@@ -66,13 +61,13 @@ public class Barricada extends Premio {
 	}
 
 	@Override
-	public boolean accept(Visitor V) {
-		return V.visitObjetoPrecioso(this);
+	public Comprable clone(Celda c) {
+		Comprable clon = new Barricada(c);
+		return clon;
 	}
 
 	@Override
-	public Premio clone(Celda c) {
-		Premio clon = new Barricada(c);
-		return clon;
+	public boolean accept(Visitor V) {
+		return V.visitComprable(this);
 	}
 }

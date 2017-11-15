@@ -6,12 +6,15 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import disparo.Disparo;
-import efectos.PowerUp;
+import efectos.BuffTemporal;
+import efectos.PowerUpTemporal;
 import enemigo.Horda;
 import main.Partida;
 import main.Unidad;
+import mapa.Celda;
 import mapa.Mapa;
 import objetoMapa.Water;
+import premios.PremioTemporal;
 import tokens.Token;
 
 /*
@@ -89,9 +92,8 @@ public class Director {
 		taskPool.scheduleWithFixedDelay(mapa, 1, 10, TimeUnit.SECONDS);
 	}
 
-	public static void ejecutarUna(PowerUp powerUp, int delay) {
+	public static void ejecutarUna(PowerUpTemporal powerUp, int delay) {
 		taskPool.schedule(powerUp, delay, TimeUnit.SECONDS);
-
 	}
 
 	public static ScheduledFuture<?>
@@ -116,6 +118,20 @@ public class Director {
 
 	public static ScheduledFuture<?> ejecutar(Disparo d, int delay) {
 		return taskPool.scheduleWithFixedDelay(d, 100, 800 * delay, TimeUnit.MICROSECONDS);
+	}
+
+	public static void ejecutarUna(BuffTemporal buff, int delay, TimeUnit t) {
+		taskPool.schedule(buff, delay, t);
+
+	}
+
+	public static Celda getCelda(int x, int y) {
+		return mapa.getCelda(x, y);
+	}
+
+	public static ScheduledFuture<?> ejecutarUna(PremioTemporal premio, int delay) {
+		return taskPool.schedule(premio, delay, TimeUnit.SECONDS);
+
 	}
 
 }

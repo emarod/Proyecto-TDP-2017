@@ -1,9 +1,11 @@
 package efectos;
 
+import mapa.Celda;
+
 public abstract class BuffVida extends Buff {
 
-	public BuffVida() {
-		// TODO Auto-generated constructor stub
+	public BuffVida(Celda c) {
+		super(c);
 	}
 
 }
