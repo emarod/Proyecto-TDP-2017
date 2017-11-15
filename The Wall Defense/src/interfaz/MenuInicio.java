@@ -1,6 +1,7 @@
 package interfaz;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -11,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import Controladores.BancoRecursos;
 import Controladores.Director;
@@ -36,6 +38,7 @@ public class MenuInicio extends JPanel {
 	protected PopUp popup;
 	protected JButton opcion1;
 	protected JButton opcion2;
+	protected JButton close;
 	protected boolean onefects = true;
 	protected boolean onmusic = true;
 
@@ -200,17 +203,31 @@ public class MenuInicio extends JPanel {
 
 		});
 
+		opcion1 = new JButton();
+		opcion2 = new JButton();
+		close = new JButton();
+
+		opcion1.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
+		opcion2.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
+		close.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/close.png")));
+
+		opcion1.setBounds(50, 150, opcion1.getIcon().getIconWidth(), opcion1.getIcon().getIconHeight());
+		opcion2.setBounds(50, 250, opcion2.getIcon().getIconWidth(), opcion2.getIcon().getIconHeight());
+		close.setBounds(110, 350, close.getIcon().getIconWidth(), close.getIcon().getIconHeight());
+		close.setBackground(Color.BLACK);
+		close.setBorderPainted(false);
+		close.setBorder(new LineBorder(Color.BLACK));
+		close.setFocusPainted(false);
+		close.setOpaque(false);
+		close.setContentAreaFilled(false);
+
 	}
 
 	public void armarOpciones() {
 
-		opcion1 = new JButton();
-		opcion2 = new JButton();
-		opcion1.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
-		opcion2.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
-
-		opcion1.setBounds(50, 150, opcion1.getIcon().getIconWidth(), opcion1.getIcon().getIconHeight());
-		opcion2.setBounds(50, 250, opcion2.getIcon().getIconWidth(), opcion2.getIcon().getIconHeight());
+		opcion1.setVisible(true);
+		opcion2.setVisible(true);
+		close.setVisible(true);
 
 		opcion1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -267,6 +284,21 @@ public class MenuInicio extends JPanel {
 			}
 		});
 
+		close.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				opcion1.setVisible(false);
+				opcion2.setVisible(false);
+				close.setVisible(false);
+				buttons[0].setVisible(true);
+				buttons[1].setVisible(true);
+				buttons[2].setVisible(true);
+
+			}
+
+		});
+
+		menupanel.add(close);
 		menupanel.add(opcion1);
 		menupanel.add(opcion2);
 
