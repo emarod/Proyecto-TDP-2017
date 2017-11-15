@@ -207,8 +207,23 @@ public class MenuInicio extends JPanel {
 		opcion2 = new JButton();
 		close = new JButton();
 
-		opcion1.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
-		opcion2.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
+		if (onefects) {
+			opcion1.setIcon(
+					new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
+		}
+		else {
+			opcion1.setIcon(
+					new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonpresed.png")));
+		}
+
+		if (onmusic) {
+			opcion2.setIcon(
+					new ImageIcon(this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
+		}
+		else {
+			opcion2.setIcon(
+					new ImageIcon(this.getClass().getResource("/resources/static/botones/musicbotonpressed.png")));
+		}
 		close.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/close.png")));
 
 		opcion1.setBounds(50, 150, opcion1.getIcon().getIconWidth(), opcion1.getIcon().getIconHeight());
@@ -235,7 +250,7 @@ public class MenuInicio extends JPanel {
 				if (onefects) {
 					bancoRecursos.stopEfectos();
 					opcion1.setIcon(new ImageIcon(
-							this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
+							this.getClass().getResource("/resources/static/botones/efectbotonpresed.png")));
 					onefects = false;
 				}
 				else {
@@ -263,7 +278,7 @@ public class MenuInicio extends JPanel {
 				if (onmusic) {
 					bancoRecursos.stopMusica();
 					opcion2.setIcon(new ImageIcon(
-							this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
+							this.getClass().getResource("/resources/static/botones/musicbotonpressed.png")));
 					onmusic = false;
 				}
 				else {
