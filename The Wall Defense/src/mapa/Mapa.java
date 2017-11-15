@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import Controladores.BancoRecursos;
 import Controladores.Director;
 import Controladores.RandomGenerator;
+import comprables.Comprable;
 import enemigo.Enemigo;
 import enemigo.Horda;
 import interfaz.Escenario;
@@ -300,14 +301,14 @@ public class Mapa implements Runnable {
 		agregarObstaculos();
 	}
 
-	public void crearPrecioso(Premio precioso) {
+	public void crearPremio(Premio precioso) {
 		if (celdaLabel != null) {
 			int x_cel = Math.round(celdaLabel.getX() / 64);
 			int y_cel = Math.round(celdaLabel.getY() / 64);
-			if (celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_PRECIOSO] == null) {
+			if (celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_PREMIO] == null) {
 				Celda c = celdas[x_cel][y_cel];
 				Premio objeto = precioso.clone(c);
-				celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_PRECIOSO] = objeto;
+				celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_PREMIO] = objeto;
 				JLabel icono = objeto.getGrafico();
 				icono.setBounds(x_cel * 64, y_cel * 64, 64, 64);
 				icono.addMouseListener(new MouseAdapter() {
@@ -317,7 +318,7 @@ public class Mapa implements Runnable {
 						int y_cel = Math.round(y_mouse / 64);
 						GameObject[] objetosCelda = celdas[x_cel][y_cel].getObjects();
 						objetosCelda[CONFIG.PROFUNDIDAD_PRECIOSO] = objeto;
-						objeto.getCelda().getObjects()[CONFIG.PROFUNDIDAD_PRECIOSO] = null;
+						objeto.getCelda().getObjects()[CONFIG.PROFUNDIDAD_PREMIO] = null;
 						objeto.setCelda(celdas[x_cel][y_cel]);
 						int x_terreno = objetosCelda[0].getGrafico().getX();
 						int y_terreno = objetosCelda[0].getGrafico().getY();
@@ -361,5 +362,18 @@ public class Mapa implements Runnable {
 
 	public void set_y_mouse(int i) {
 		y_mouse = i;
+	}
+
+	public void crearComprable(Comprable comprable) {
+		if (celdaLabel != null) {
+			int x_cel = Math.round(celdaLabel.getX() / 64);
+			int y_cel = Math.round(celdaLabel.getY() / 64);
+			if (celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_COMPRABLE] == null) {
+				Celda c = celdas[x_cel][y_cel];
+				Comprable objeto = comprable.clone(c);
+				objeto.crear();
+			}
+		}
+
 	}
 }

@@ -14,7 +14,7 @@ import premios.Premio;
  * Clase encargada del boton para el despliegue de una bomba.
  */
 
-public class BtnBomba extends BtnObjetoPrecioso {
+public class BtnBomba extends BtnPremio {
 
 	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
@@ -26,14 +26,13 @@ public class BtnBomba extends BtnObjetoPrecioso {
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/bomba.png")));
 		info = new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/bombadescripcion.png"));
 		oyente();
-		costo = precioso.getCosto();
 
 	}
 
 	// Metodos heredados.
 	@Override
 	public void create() {
-		stage.getMapa().crearPrecioso(precioso);
+		stage.getMapa().crearPremio(precioso);
 
 	}
 

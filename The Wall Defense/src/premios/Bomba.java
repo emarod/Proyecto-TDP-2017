@@ -2,8 +2,9 @@ package premios;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
+import Controladores.Director;
+import efectos.Explosion;
 import main.Visitor;
 import mapa.Celda;
 
@@ -12,40 +13,66 @@ import mapa.Celda;
  * Clase que especifica el comportamiento del poder bomba.
  */
 
-public class Bomba extends Premio {
+public class Bomba extends PremioTemporal {
 
 	protected int costo;
+	protected Icon[] explosion;
 
 	// Constructor.
+	public Bomba() {
+		super();
+		construir();
+	}
+
 	public Bomba(Celda c) {
 		super(c);
-		vida = 1;
-		graficos = new Icon[1];
-		graficos[0] = new ImageIcon(this.getClass().getResource("/resources/static/objetospreciosos/bomb.png"));
-		// graficos[1] = new
-		// ImageIcon(this.getClass().getResource("/resources/dinamic/explosion.gif"));
-		// setGrafico(new JLabel(new
-		// ImageIcon(this.getClass().getResource("/resources/static/objetospreciosos/bomb.png"))));
-		setGrafico(0);
-		costo = 15;
+		construir();
+
 	}
 
-	public Bomba() {
+	private void construir() {
+		tiempo = 1;
+		graficos = new Icon[5];
+		explosion = new Icon[7];
+		for (int i = 0; i < graficos.length; i++) {
+			if (i < 5) {
+				graficos[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/00" + i + ".png"));
+			}
+		}
+		for (int i = 5; i < explosion.length; i++) {
+			if (i < 10) {
+				explosion[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/00" + i + ".png"));
+			}
+			else {
+				explosion[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/0" + i + ".png"));
+			}
+		}
+
+		graph = 0;
+		grafico.setIcon(graficos[graph]);
+		Director.ejecutarUna(this, tiempo);
+
 	}
 
-	// Metodos locales.
-	public int getResistencia() {
-		return vida;
+	public void explotar() {
+		if (graph < 4) {
+			grafico.setIcon(graficos[graph++]);
+			Director.ejecutarUna(this, tiempo);
+		}
+		else {
+			grafico.setIcon(graficos[graph]);
+			new Explosion(celda, explosion);
+			new Explosion(Director.getCelda(celda.getPosX() + 1, celda.getPosY()), explosion);
+			new Explosion(Director.getCelda(celda.getPosX() - 1, celda.getPosY()), explosion);
+			new Explosion(Director.getCelda(celda.getPosX(), celda.getPosY() + 1), explosion);
+			new Explosion(Director.getCelda(celda.getPosX(), celda.getPosY() - 1), explosion);
+			destruir();
+		}
 	}
 
 	@Override
 	public void destruir() {
 		super.destruir();
-	}
-
-	@Override
-	public int getCosto() {
-		return costo;
 	}
 
 	// Metodos heredados.
@@ -55,24 +82,19 @@ public class Bomba extends Premio {
 	}
 
 	@Override
-	public void setGrafico(JLabel grafico) {
-		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/objetospreciosos/bomb.png"));
-		graph = 0;
-		grafico.setIcon(imagen);
-	}
-
-	public void playSound() {
-	}
-
-	@Override
 	public boolean accept(Visitor V) {
-		return V.visitObjetoPrecioso(this);
+		return V.visitPremio(this);
 	}
 
 	@Override
 	public Premio clone(Celda c) {
 		Premio clon = new Bomba(c);
 		return clon;
+	}
+
+	@Override
+	public void run() {
+		explotar();
 	}
 
 }

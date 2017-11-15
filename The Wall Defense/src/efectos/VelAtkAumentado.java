@@ -1,6 +1,6 @@
 package efectos;
 
-import jugador.Jugador;
+import main.Unidad;
 import mapa.Celda;
 
 /*
@@ -8,7 +8,7 @@ import mapa.Celda;
  * Clase que especifica el comportamiento del poder que aumenta la velocidad de ataque.
  */
 
-public class VelAtkAumentado extends PowerUp {
+public class VelAtkAumentado extends PowerUpTemporal {
 
 	// Constructor.
 	public VelAtkAumentado(Celda c) {
@@ -18,9 +18,9 @@ public class VelAtkAumentado extends PowerUp {
 	// Metodos heredados.
 
 	@Override
-	public void aplicar(Jugador j) {
-		jugador = j;
-		jugador.setVelocidad(jugador.getVelocidad() * 2);
+	public void aplicar(Unidad u) {
+		unidad = u;
+		unidad.setVelocidad(unidad.getVelocidad() * 2);
 	}
 
 	@Override

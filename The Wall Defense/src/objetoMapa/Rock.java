@@ -64,6 +64,6 @@ public class Rock extends ObjetoMapaVida {
 
 	@Override
 	public boolean accept(Visitor V) {
-		return V.visitObstaculo(this);
+		return V.visitObjetoMapa(this);
 	}
 }

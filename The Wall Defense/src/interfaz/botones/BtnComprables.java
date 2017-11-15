@@ -5,25 +5,25 @@ import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
+import comprables.Comprable;
 import interfaz.Escenario;
-import premios.Premio;
 
 /*
  * Clase abstracta BtnObstaculo.
  * Clase que generaliza el comportamiento de un boton para el despliegue de un obstaculo.
  */
 
-public abstract class BtnObjetoPrecioso extends JButton {
+public abstract class BtnComprables extends JButton {
 
 	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
 	protected Escenario stage;
-	protected Premio precioso;
+	protected Comprable comprable;
 	protected Icon info;
 	public int costo;
 
 	// Constructor.
-	public BtnObjetoPrecioso(Escenario e) {
+	public BtnComprables(Escenario e) {
 		stage = e;
 		this.setSize(32, 32);
 		this.setBorderPainted(true);

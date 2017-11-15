@@ -1,5 +1,7 @@
 package jugador;
 
+import comprables.ComprableTemporal;
+import comprables.ComprableVida;
 import disparo.DisparoEnemigo;
 import disparo.DisparoJugador;
 import enemigo.Enemigo;
@@ -7,7 +9,8 @@ import main.Visitor;
 import objetoMapa.ObjetoMapa;
 import objetoMapa.ObjetoMapaTemporal;
 import objetoMapa.ObjetoMapaVida;
-import premios.Premio;
+import premios.PremioTemporal;
+import premios.PremioVida;
 
 /*
  * Clase VisitorJugador.
@@ -30,12 +33,6 @@ public class VisitorJugador extends Visitor {
 		return false;
 	}
 
-	/*
-	 * public boolean VisitRock(Rock r){ return false; }
-	 *
-	 * public boolean VisitBarricada(Barricada b){ return false; }
-	 */
-
 	@Override
 	public boolean visitPlayer(Jugador j) {
 		return false;
@@ -49,24 +46,6 @@ public class VisitorJugador extends Visitor {
 	}
 
 	@Override
-	public boolean visitObstaculo(ObjetoMapaVida o) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean visitObstaculo(ObjetoMapaTemporal o) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean visitObjetoPrecioso(Premio op) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public boolean visitDisparo(DisparoJugador d) {
 		return true;
 	}
@@ -76,5 +55,35 @@ public class VisitorJugador extends Visitor {
 		jugador.recibirDaño(d.getDaño());
 		d.destruir();
 		return true;
+	}
+
+	@Override
+	public boolean visitComprable(ComprableVida comprable) {
+		return false;
+	}
+
+	@Override
+	public boolean visitComprable(ComprableTemporal comprable) {
+		return false;
+	}
+
+	@Override
+	public boolean visitPremio(PremioTemporal op) {
+		return false;
+	}
+
+	@Override
+	public boolean visitPremio(PremioVida op) {
+		return false;
+	}
+
+	@Override
+	public boolean visitObjetoMapa(ObjetoMapaVida o) {
+		return false;
+	}
+
+	@Override
+	public boolean visitObjetoMapa(ObjetoMapaTemporal o) {
+		return false;
 	}
 }

@@ -95,13 +95,33 @@ public abstract class Unidad extends GameObject implements Runnable {
 		velocidad = recuperar.getVelocidad();
 	}
 
+	public int getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(int speed) {
+		velocidad = speed;
+	}
+
+	public void setVida(int i) {
+		vida = i;
+	}
+
+	public int getVida() {
+		return vida;
+	}
+
+	public int getDaño() {
+		return daño;
+	}
+
+	public void setAtaque(int a) {
+		setAtaque(a);
+	}
+
 	// Metodos abstractos.
 	public abstract void atacar();
 
 	public abstract void mover();
-
-	public abstract int getVelocidad();
-
-	public abstract void setVelocidad(int speed);
 
 }
