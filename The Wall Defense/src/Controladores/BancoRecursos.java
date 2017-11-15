@@ -10,6 +10,7 @@ import kuusisto.tinysound.TinySound;
 public class BancoRecursos {
 
 	// Atributos locales.
+	protected boolean efectos_activados = true;
 	protected static BancoRecursos banco = null;
 	protected Sound flecha;
 	protected Sound bola_fuego;
@@ -43,35 +44,41 @@ public class BancoRecursos {
 	// Metodos locales.
 	// Sonido de la flecha.
 	public void playFlecha() {
-		flecha.play();
+		if (efectos_activados) {
+			flecha.play();
+		}
 	}
 
 	// Sonido de la bola de fuego.
 	public void playBolaFuego() {
-		bola_fuego.play();
+		if (efectos_activados) {
+			bola_fuego.play();
+		}
 	}
 
 	// Sonido para click de menu inicial.
 	public void playClick() {
-		click.play();
+		if (efectos_activados) {
+			click.play();
+		}
 	}
 
 	// Sonido para golpe a piedra.
 	public void playRoca() {
-		roca.play();
+		if (efectos_activados) {
+			roca.play();
+		}
 	}
 
 	// Sonido para golpe a piedra.
 	public void playBarricada() {
-		barricada.play();
+		if (efectos_activados) {
+			barricada.play();
+		}
 	}
 
 	public void stopEfectos() {
-		flecha.stop();
-		bola_fuego.stop();
-		roca.stop();
-		barricada.stop();
-		click.stop();
+		efectos_activados = false;
 	}
 
 	public void stopMusica() {
@@ -79,11 +86,7 @@ public class BancoRecursos {
 	}
 
 	public void playEfectos() {
-		flecha.play();
-		bola_fuego.play();
-		roca.play();
-		barricada.play();
-		click.play();
+		efectos_activados = true;
 	}
 
 	public void playMusica() {
