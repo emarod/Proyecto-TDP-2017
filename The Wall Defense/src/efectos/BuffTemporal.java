@@ -1,6 +1,5 @@
 package efectos;
 
-import main.CONFIG;
 import mapa.Celda;
 
 public abstract class BuffTemporal extends Buff implements Runnable {
@@ -10,13 +9,6 @@ public abstract class BuffTemporal extends Buff implements Runnable {
 	public BuffTemporal(Celda c) {
 		super(c);
 
-	}
-
-	@Override
-	public void run() {
-		unidad.getCelda().getObjects()[CONFIG.PROFUNDIDAD_EFECTO] = null;
-		unidad.regresarInicio();
-		this.destruir();
 	}
 
 }

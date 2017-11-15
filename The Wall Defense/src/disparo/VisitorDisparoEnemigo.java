@@ -2,6 +2,7 @@ package disparo;
 
 import comprables.ComprableTemporal;
 import comprables.ComprableVida;
+import efectos.Efecto;
 import enemigo.Enemigo;
 import jugador.Jugador;
 import main.Visitor;
@@ -81,6 +82,11 @@ public class VisitorDisparoEnemigo extends Visitor {
 	public boolean visitComprable(ComprableTemporal comprable) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public boolean visitEfect(Efecto efecto) {
+		return true;
 	}
 
 }

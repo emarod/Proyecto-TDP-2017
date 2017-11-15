@@ -28,7 +28,6 @@ public class Water extends ObjetoMapaTemporal implements Runnable {
 		penalizacion = 100;
 		labels = new JLabel[4];
 		graficos = new Icon[4];
-		System.out.println("creando agua");
 		// Esquina superior izquierda.
 		graficos[0] = new ImageIcon(this.getClass().getResource("/resources/dinamic/lago/lago_esquina_sup_izq_1.gif"));
 		// Esquina superior derecha.
@@ -42,9 +41,6 @@ public class Water extends ObjetoMapaTemporal implements Runnable {
 		Celda ce = celda;
 		int i = 0;
 		while (ce != null) {
-			System.out.println(i + " padre " + ce);
-			System.out.println(i + " Padre " + ce.getPosX() + ":" + ce.getPosY());
-			System.out.println(i + " hijo " + ce.getChild());
 			labels[i] = new JLabel();
 			labels[i].setIcon(graficos[i]);
 			labels[i].setBounds(ce.getPosX() * 64, ce.getPosY() * 64, 64, 64);
@@ -54,7 +50,6 @@ public class Water extends ObjetoMapaTemporal implements Runnable {
 			i++;
 		}
 		Director.ejecutarUna(this, 7);
-		System.out.println("ya la creamos agua");
 	}
 
 	// Metodos locales.

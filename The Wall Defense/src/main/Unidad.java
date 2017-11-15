@@ -55,6 +55,21 @@ public abstract class Unidad extends GameObject implements Runnable {
 
 	}
 
+	public void recibirDaño(int golpe) {
+		System.out.println("destruir golpe " + golpe);
+		boolean destruir = false;
+		if (vida <= golpe) {
+			destruir = true;
+			System.out.println("destruir boolean");
+		}
+		else {
+			vida = vida - golpe;
+		}
+		if (destruir) {
+			destruir();
+		}
+	}
+
 	public void activar() {
 		if (activeTask == null || activeTask.isDone()) {
 			// System.out.println("unidad activada " + this.getClass());

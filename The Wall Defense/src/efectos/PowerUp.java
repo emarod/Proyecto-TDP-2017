@@ -1,6 +1,5 @@
 package efectos;
 
-import main.Unidad;
 import mapa.Celda;
 
 /*
@@ -22,5 +21,5 @@ public abstract class PowerUp extends Efecto {
 	// Metodos heredados.
 
 	// Metodos abstractos.
-	public abstract void aplicar(Unidad unidad);
+
 }

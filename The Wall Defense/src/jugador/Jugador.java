@@ -32,21 +32,6 @@ public abstract class Jugador extends Unidad {
 	}
 
 	// Metodos locales.
-	public boolean recibirDaño(int golpe) {
-		boolean destruir = false;
-		if (vida <= golpe) {
-			System.out.println("Enemigo abatido en " + vida);
-			destruir = true;
-		}
-		else {
-			vida = vida - golpe;
-		}
-		if (destruir) {
-			System.out.println("antes de restar resistencia de jugador");
-			destruir();
-		}
-		return destruir;
-	}
 
 	public void setVisitor(Visitor v) {
 		V = v;

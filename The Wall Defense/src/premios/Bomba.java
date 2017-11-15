@@ -16,6 +16,7 @@ import mapa.Celda;
 public class Bomba extends PremioTemporal {
 
 	protected int costo;
+	protected int daño;
 	protected Icon[] explosion;
 
 	// Constructor.
@@ -32,6 +33,7 @@ public class Bomba extends PremioTemporal {
 
 	private void construir() {
 		tiempo = 1;
+		daño = 10;
 		graficos = new Icon[5];
 		explosion = new Icon[7];
 		for (int i = 0; i < graficos.length; i++) {
@@ -47,7 +49,6 @@ public class Bomba extends PremioTemporal {
 				explosion[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/0" + i + ".png"));
 			}
 		}
-
 		graph = 0;
 		grafico.setIcon(graficos[graph]);
 		Director.ejecutarUna(this, tiempo);
@@ -61,11 +62,11 @@ public class Bomba extends PremioTemporal {
 		}
 		else {
 			grafico.setIcon(graficos[graph]);
-			new Explosion(celda, explosion);
-			new Explosion(Director.getCelda(celda.getPosX() + 1, celda.getPosY()), explosion);
-			new Explosion(Director.getCelda(celda.getPosX() - 1, celda.getPosY()), explosion);
-			new Explosion(Director.getCelda(celda.getPosX(), celda.getPosY() + 1), explosion);
-			new Explosion(Director.getCelda(celda.getPosX(), celda.getPosY() - 1), explosion);
+			new Explosion(celda, explosion, daño);
+			new Explosion(Director.getCelda(celda.getPosX() + 1, celda.getPosY()), explosion, daño);
+			new Explosion(Director.getCelda(celda.getPosX() - 1, celda.getPosY()), explosion, daño);
+			new Explosion(Director.getCelda(celda.getPosX(), celda.getPosY() + 1), explosion, daño);
+			new Explosion(Director.getCelda(celda.getPosX(), celda.getPosY() - 1), explosion, daño);
 			destruir();
 		}
 	}

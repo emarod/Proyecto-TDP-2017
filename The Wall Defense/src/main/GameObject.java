@@ -46,6 +46,7 @@ public abstract class GameObject {
 			celda.removeChild();
 		}
 		celda.getObjects()[profundidad] = null;
+		System.out.println("borrando celda " + this.getClass());
 		grafico = null;
 		celda = null;
 	}

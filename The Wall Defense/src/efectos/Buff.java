@@ -19,6 +19,5 @@ public abstract class Buff extends Efecto {
 	// Metodos heredados.
 
 	// Metodos abstractos.
-	public abstract void aplicar(Unidad u);
 
 }

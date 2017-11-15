@@ -39,19 +39,6 @@ public abstract class Enemigo extends Unidad {
 		return V;
 	}
 
-	public void recibirDaño(int golpe) {
-		boolean destruir = false;
-		if (vida <= golpe) {
-			destruir = true;
-		}
-		else {
-			vida = vida - golpe;
-		}
-		if (destruir) {
-			destruir();
-		}
-	}
-
 	public void setGrafico() {
 		setGrafico(grafico);
 	}

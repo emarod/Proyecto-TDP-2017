@@ -4,6 +4,7 @@ import comprables.ComprableTemporal;
 import comprables.ComprableVida;
 import disparo.DisparoEnemigo;
 import disparo.DisparoJugador;
+import efectos.Efecto;
 import jugador.Jugador;
 import main.Visitor;
 import objetoMapa.ObjetoMapaTemporal;
@@ -82,5 +83,13 @@ public class VisitorEnemigo extends Visitor {
 	@Override
 	public boolean visitPremio(PremioTemporal op) {
 		return false;
+	}
+
+	@Override
+	public boolean visitEfect(Efecto efecto) {
+		// System.out.println("Inicio visitor enemigo");
+		// efecto.aplicar(enemigo);
+		// System.out.println("Fin visitor enemigo");
+		return true;
 	}
 }

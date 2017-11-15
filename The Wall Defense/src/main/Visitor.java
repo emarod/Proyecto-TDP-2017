@@ -4,6 +4,7 @@ import comprables.ComprableTemporal;
 import comprables.ComprableVida;
 import disparo.DisparoEnemigo;
 import disparo.DisparoJugador;
+import efectos.Efecto;
 import enemigo.Enemigo;
 import jugador.Jugador;
 import objetoMapa.ObjetoMapaTemporal;
@@ -40,5 +41,7 @@ public abstract class Visitor {
 	public abstract boolean visitObjetoMapa(ObjetoMapaVida o);
 
 	public abstract boolean visitObjetoMapa(ObjetoMapaTemporal o);
+
+	public abstract boolean visitEfect(Efecto efecto);
 
 }

@@ -272,7 +272,6 @@ public class Mapa implements Runnable {
 							if (celdas[x][y + 1].getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] == null) {
 								if (celdas[x + 1][y].getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] == null) {
 									// Cada hijo se agrega siguiente a la celda principal
-									System.out.println("Celda habilitada ");
 									// Esquina izquierda superior
 									celda = celdas[x][y];
 									// Esquina derecha inferior
@@ -311,26 +310,6 @@ public class Mapa implements Runnable {
 				celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_PREMIO] = objeto;
 				JLabel icono = objeto.getGrafico();
 				icono.setBounds(x_cel * 64, y_cel * 64, 64, 64);
-				icono.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseReleased(MouseEvent e) {
-						int x_cel = Math.round(x_mouse / 64);
-						int y_cel = Math.round(y_mouse / 64);
-						GameObject[] objetosCelda = celdas[x_cel][y_cel].getObjects();
-						objetosCelda[CONFIG.PROFUNDIDAD_PRECIOSO] = objeto;
-						objeto.getCelda().getObjects()[CONFIG.PROFUNDIDAD_PREMIO] = null;
-						objeto.setCelda(celdas[x_cel][y_cel]);
-						int x_terreno = objetosCelda[0].getGrafico().getX();
-						int y_terreno = objetosCelda[0].getGrafico().getY();
-						objeto.getGrafico().setBounds(x_terreno, y_terreno, 64, 64);
-					}
-				});
-				icono.addMouseMotionListener(new MouseMotionAdapter() {
-					@Override
-					public void mouseDragged(MouseEvent e) {
-						objeto.getGrafico().setBounds(x_mouse, y_mouse, 64, 64);
-					}
-				});
 				escenario.agregar(icono, new Integer(CONFIG.PROFUNDIDAD_PRECIOSO));
 			}
 		}

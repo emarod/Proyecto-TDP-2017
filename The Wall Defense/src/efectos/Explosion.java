@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.Icon;
 
 import Controladores.Director;
+import main.CONFIG;
 import main.Unidad;
 import mapa.Celda;
 
@@ -12,11 +13,13 @@ public class Explosion extends BuffTemporal {
 
 	protected Icon[] graficos;
 	protected int graph;
+	protected int daño;
 
-	public Explosion(Celda c, Icon[] graficos) {
+	public Explosion(Celda c, Icon[] graficos, int d) {
 		super(c);
 		this.graficos = graficos;
 		tiempo = 100;
+		daño = d;
 		graph = 0;
 		grafico.setIcon(this.graficos[graph]);
 		grafico.setBounds(celda.getPosX() * 64, celda.getPosY() * 64, 64, 64);
@@ -27,7 +30,8 @@ public class Explosion extends BuffTemporal {
 
 	@Override
 	public void aplicar(Unidad u) {
-
+		System.out.println("destruir daño " + daño);
+		u.recibirDaño(daño);
 	}
 
 	public void setIcon(Icon i) {
@@ -37,7 +41,6 @@ public class Explosion extends BuffTemporal {
 	@Override
 	public void destruir() {
 		super.destruir();
-
 	}
 
 	@Override
@@ -46,8 +49,8 @@ public class Explosion extends BuffTemporal {
 			destruir();
 		}
 		else {
-			System.out.println("holaaa " + celda.getPosX() + "," + celda.getPosY());
 			grafico.setIcon(graficos[graph++]);
+			celda.getObjects()[CONFIG.PROFUNDIDAD_ENEMIGO].accept(visitor);
 			Director.ejecutarUna(this, tiempo, TimeUnit.MILLISECONDS);
 		}
 

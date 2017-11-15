@@ -4,6 +4,7 @@ import comprables.ComprableTemporal;
 import comprables.ComprableVida;
 import disparo.DisparoEnemigo;
 import disparo.DisparoJugador;
+import efectos.Efecto;
 import enemigo.Enemigo;
 import main.Visitor;
 import objetoMapa.ObjetoMapa;
@@ -85,5 +86,10 @@ public class VisitorJugador extends Visitor {
 	@Override
 	public boolean visitObjetoMapa(ObjetoMapaTemporal o) {
 		return false;
+	}
+
+	@Override
+	public boolean visitEfect(Efecto efecto) {
+		return true;
 	}
 }
