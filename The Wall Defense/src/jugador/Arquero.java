@@ -83,11 +83,6 @@ public class Arquero extends Shooter {
 	}
 
 	@Override
-	public int getDaño() {
-		return daño;
-	}
-
-	@Override
 	public void guardarInicio() {
 		guardarEstado("ARQUERO");
 	}

@@ -43,7 +43,6 @@ public class Dragon extends Shooter {
 		graficos[7] = new ImageIcon(
 				this.getClass().getResource("/resources/static/dragon_atacando/dragon_atacando_7.png"));
 		setGrafico(0);
-		// disparo = new DisparoDragon(this);
 	}
 
 	@Override

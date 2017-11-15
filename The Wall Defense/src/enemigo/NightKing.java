@@ -106,11 +106,6 @@ public class NightKing extends ShooterEnemigo {
 	}
 
 	@Override
-	public int getDaño() {
-		return daño;
-	}
-
-	@Override
 	public void guardarInicio() {
 		guardarEstado("NK");
 	}

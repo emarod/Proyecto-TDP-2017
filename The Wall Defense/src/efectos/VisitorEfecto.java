@@ -22,6 +22,7 @@ public class VisitorEfecto extends Visitor {
 
 	@Override
 	public boolean visitPlayer(Jugador j) {
+		efecto.aplicar(j);
 		return true;
 	}
 
@@ -37,9 +38,7 @@ public class VisitorEfecto extends Visitor {
 
 	@Override
 	public boolean visitEnemigo(Enemigo e) {
-		System.out.println("Inicio visitor efecto");
 		efecto.aplicar(e);
-		System.out.println("Fin visitor efectoo");
 		return true;
 	}
 

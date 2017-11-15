@@ -3,6 +3,8 @@ package jugador;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Controladores.Director;
+import main.CONFIG;
 import mapa.Celda;
 
 /*
@@ -16,7 +18,8 @@ public class Caballero extends Jugador {
 	public Caballero(Celda c) {
 		super(c);
 		vida = 10;
-		velocidad = 10;
+		velocidad = 50;
+		daño = 4;
 		costo = 30;
 		setGrafico(grafico);
 	}
@@ -25,7 +28,12 @@ public class Caballero extends Jugador {
 
 	@Override
 	public void atacar() {
-
+		Celda siguiente = Director.getCelda(celda.getPosX() + 1, celda.getPosY());
+		if (siguiente != null) {
+			siguiente.getObjects()[CONFIG.PROFUNDIDAD_ENEMIGO].accept(V);
+		}
+		activeTask = null;
+		activar();
 	}
 
 	@Override

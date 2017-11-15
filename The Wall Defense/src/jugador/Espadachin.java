@@ -3,6 +3,8 @@ package jugador;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Controladores.Director;
+import main.CONFIG;
 import mapa.Celda;
 
 /*
@@ -16,7 +18,8 @@ public class Espadachin extends Jugador {
 	public Espadachin(Celda c) {
 		super(c);
 		vida = 8;
-		velocidad = 10;
+		velocidad = 40;
+		daño = 3;
 		costo = 25;
 		setGrafico(grafico);
 	}
@@ -25,6 +28,12 @@ public class Espadachin extends Jugador {
 
 	@Override
 	public void atacar() {
+		Celda siguiente = Director.getCelda(celda.getPosX() + 1, celda.getPosY());
+		if (siguiente != null) {
+			siguiente.getObjects()[CONFIG.PROFUNDIDAD_ENEMIGO].accept(V);
+		}
+		activeTask = null;
+		activar();
 	}
 
 	@Override
