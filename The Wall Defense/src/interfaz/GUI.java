@@ -3,7 +3,11 @@ package interfaz;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -27,6 +31,7 @@ public class GUI extends JFrame {
 	protected JPanel panelDerecho;
 	protected JPanel panelSuperior;
 	protected JPanel grafica;
+	protected JButton go;
 
 	// Constructor.
 	public GUI() {
@@ -41,11 +46,47 @@ public class GUI extends JFrame {
 		escenario = new Escenario();
 		getContentPane().add(escenario, BorderLayout.CENTER);
 
+		// Creo boton de inicio de horda.
+		go = new JButton();
+		go.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/go.png")));
+		go.setSize(go.getIcon().getIconWidth(), go.getIcon().getIconHeight());
+		go.setBackground(Color.BLACK);
+		go.setBorderPainted(false);
+		go.setBorder(new LineBorder(Color.BLACK));
+		go.setFocusPainted(false);
+		go.setContentAreaFilled(false);
+
+		go.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				go.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/go.png")));
+				escenario.getHorda().ejecutar();
+				escenario.getMapa().ejecutar();
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				go.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/gopressed.png")));
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent evento) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent evento) {
+
+			}
+
+		});
+
 		// Panel Inferior
 		panelInferior = new JPanel();
 		panelInferior.setLayout(new BorderLayout());
-		panelInferior.setPreferredSize(new Dimension(10, 150));
+		panelInferior.setPreferredSize(new Dimension(10, 90));
 		panelInferior.setBackground(Color.BLACK);
+		panelInferior.add(go, BorderLayout.EAST);
 		getContentPane().add(panelInferior, BorderLayout.SOUTH);
 
 		// Panel izquierdo

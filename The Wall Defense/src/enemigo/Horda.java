@@ -31,7 +31,6 @@ public class Horda implements Runnable {
 	public Horda(Escenario s) {
 		stage = s;
 		mapa = Director.getMapa();
-		activeTask = Director.ejecutar(this, 20);
 	}
 
 	// Metodos locales.
@@ -44,6 +43,10 @@ public class Horda implements Runnable {
 			enemigos--;
 			System.out.println("Numero de enemigos en la horda: " + enemigos);
 		}
+	}
+
+	public void ejecutar() {
+		activeTask = Director.ejecutar(this, 20);
 	}
 
 	@Override
