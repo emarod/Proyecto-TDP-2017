@@ -41,12 +41,13 @@ public class Bomba extends PremioTemporal {
 				graficos[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/00" + i + ".png"));
 			}
 		}
-		for (int i = 5; i < explosion.length; i++) {
-			if (i < 10) {
-				explosion[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/00" + i + ".png"));
+		for (int i = 0; i < explosion.length; i++) {
+			int f = i + 5;
+			if (f < 10) {
+				explosion[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/00" + f + ".png"));
 			}
 			else {
-				explosion[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/0" + i + ".png"));
+				explosion[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/0" + f + ".png"));
 			}
 		}
 		graph = 0;
@@ -67,6 +68,7 @@ public class Bomba extends PremioTemporal {
 			new Explosion(Director.getCelda(celda.getPosX() - 1, celda.getPosY()), explosion, daño);
 			new Explosion(Director.getCelda(celda.getPosX(), celda.getPosY() + 1), explosion, daño);
 			new Explosion(Director.getCelda(celda.getPosX(), celda.getPosY() - 1), explosion, daño);
+			Director.getBancoRecursos().playExplosion();
 			destruir();
 		}
 	}

@@ -79,7 +79,6 @@ public abstract class Enemigo extends Unidad {
 
 	public abstract Enemigo clone(Celda c);
 
-	@Override
 	public void mover() {
 		Celda siguiente;
 		boolean detener = false;
@@ -101,9 +100,6 @@ public abstract class Enemigo extends Unidad {
 			activar();
 		}
 	}
-
-	@Override
-	public abstract void atacar();
 
 	public abstract void playSound();
 }

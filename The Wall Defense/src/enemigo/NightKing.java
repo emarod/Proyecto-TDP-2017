@@ -63,7 +63,6 @@ public class NightKing extends ShooterEnemigo {
 
 	// Metodos heredados.
 
-	@Override
 	public void atacar() {
 		// if (shot == null || shot.isCancelled() || shot.isDone()) {
 		// playSound();

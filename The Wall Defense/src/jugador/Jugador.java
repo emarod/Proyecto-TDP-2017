@@ -80,10 +80,6 @@ public abstract class Jugador extends Unidad {
 	// abstract methods
 	public abstract Jugador clone(Celda c);
 
-	@Override
-	public abstract void mover();
-
-	@Override
 	public abstract void atacar();
 
 	public abstract void playSound();

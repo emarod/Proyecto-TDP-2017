@@ -94,10 +94,6 @@ public class Dragon extends Shooter {
 	}
 
 	@Override
-	public void mover() {
-	}
-
-	@Override
 	public void guardarInicio() {
 		guardarEstado("DRAGON");
 	}

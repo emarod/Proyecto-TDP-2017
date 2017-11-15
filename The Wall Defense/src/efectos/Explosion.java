@@ -6,6 +6,7 @@ import javax.swing.Icon;
 
 import Controladores.Director;
 import main.CONFIG;
+import main.GameObject;
 import main.Unidad;
 import mapa.Celda;
 
@@ -30,7 +31,6 @@ public class Explosion extends BuffTemporal {
 
 	@Override
 	public void aplicar(Unidad u) {
-		System.out.println("destruir daño " + daño);
 		u.recibirDaño(daño);
 	}
 
@@ -46,11 +46,17 @@ public class Explosion extends BuffTemporal {
 	@Override
 	public void run() {
 		if (graph == graficos.length) {
+			System.out.println("destyyrmdoom");
 			destruir();
 		}
 		else {
-			grafico.setIcon(graficos[graph++]);
-			celda.getObjects()[CONFIG.PROFUNDIDAD_ENEMIGO].accept(visitor);
+			grafico.setIcon(graficos[graph]);
+			graph++;
+			GameObject afectar = celda.getObjects()[CONFIG.PROFUNDIDAD_ENEMIGO];
+			if (afectar != null) {
+				afectar.accept(visitor);
+			}
+			System.out.println("Hola " + graficos.length + " graf=" + graph);
 			Director.ejecutarUna(this, tiempo, TimeUnit.MILLISECONDS);
 		}
 

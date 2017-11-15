@@ -37,9 +37,6 @@ public class WhiteWalker extends Enemigo {
 	}
 
 	// Metodos heredados.
-	@Override
-	public void atacar() {
-	}
 
 	@Override
 	public void setGrafico(JLabel grafico) {

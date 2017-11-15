@@ -54,15 +54,6 @@ public class Caballero extends Jugador {
 	}
 
 	@Override
-	public int getDaño() {
-		return daño;
-	}
-
-	@Override
-	public void mover() {
-	}
-
-	@Override
 	public void guardarInicio() {
 		guardarEstado("CABALLERO");
 	}

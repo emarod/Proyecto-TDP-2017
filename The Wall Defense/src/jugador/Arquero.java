@@ -88,10 +88,6 @@ public class Arquero extends Shooter {
 	}
 
 	@Override
-	public void mover() {
-	}
-
-	@Override
 	public void guardarInicio() {
 		guardarEstado("ARQUERO");
 	}

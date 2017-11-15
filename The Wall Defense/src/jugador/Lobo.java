@@ -57,10 +57,6 @@ public class Lobo extends Jugador {
 	}
 
 	@Override
-	public void mover() {
-	}
-
-	@Override
 	public void guardarInicio() {
 		guardarEstado("LOBO");
 	}

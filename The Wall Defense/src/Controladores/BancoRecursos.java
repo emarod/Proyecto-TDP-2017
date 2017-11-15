@@ -18,6 +18,7 @@ public class BancoRecursos {
 	protected Sound roca;
 	protected Sound barricada;
 	protected Music song;
+	protected Sound explosion;
 
 	// Constructor.
 	private BancoRecursos() {
@@ -29,6 +30,7 @@ public class BancoRecursos {
 		click = TinySound.loadSound("/resources/sound/mouseclick.wav");
 		roca = TinySound.loadSound("/resources/sound/golpe_roca.wav");
 		barricada = TinySound.loadSound("/resources/sound/golpe_roca.wav");
+		explosion = TinySound.loadSound("/resources/sound/explosion.wav");
 		// Inicializa el loop
 		song.play(true);
 
@@ -46,6 +48,12 @@ public class BancoRecursos {
 	public void playFlecha() {
 		if (efectos_activados) {
 			flecha.play();
+		}
+	}
+
+	public void playExplosion() {
+		if (efectos_activados) {
+			explosion.play();
 		}
 	}
 

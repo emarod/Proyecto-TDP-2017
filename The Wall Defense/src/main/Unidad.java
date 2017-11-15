@@ -135,8 +135,5 @@ public abstract class Unidad extends GameObject implements Runnable {
 	}
 
 	// Metodos abstractos.
-	public abstract void atacar();
-
-	public abstract void mover();
 
 }
