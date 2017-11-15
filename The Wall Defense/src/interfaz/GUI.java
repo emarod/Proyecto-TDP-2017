@@ -3,6 +3,8 @@ package interfaz;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -53,6 +55,30 @@ public class GUI extends JFrame {
 		go.setBorder(new LineBorder(Color.BLACK));
 		go.setFocusPainted(false);
 		go.setContentAreaFilled(false);
+
+		go.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				go.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/go.png")));
+				escenario.getHorda().ejecutar();
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				go.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/gopressed.png")));
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent evento) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent evento) {
+
+			}
+
+		});
 
 		// Panel Inferior
 		panelInferior = new JPanel();

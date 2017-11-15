@@ -94,9 +94,7 @@ public class Director {
 
 	}
 
-	public static ScheduledFuture<?>
-
-			ejecutarUna(Water water, int delay) {
+	public static ScheduledFuture<?> ejecutarUna(Water water, int delay) {
 		return taskPool.schedule(water, delay, TimeUnit.SECONDS);
 
 	}
