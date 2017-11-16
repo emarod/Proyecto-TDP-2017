@@ -43,7 +43,6 @@ public class MenuInicio extends JPanel {
 	protected boolean oyentesCreados;
 	protected JLabel musicOn, efectsOn;
 	protected JLabel musicOff, efectsOff;
-	boolean musicaprendida;
 
 	// Constructor.
 	public MenuInicio(Juego game) {

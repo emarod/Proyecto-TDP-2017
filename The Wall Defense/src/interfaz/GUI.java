@@ -63,6 +63,7 @@ public class GUI extends JFrame {
 				escenario.getHorda().ejecutar();
 				escenario.getMapa().ejecutar();
 				go.setVisible(false);
+				escenario.getMenu().deshabilitarCompra();
 			}
 
 			@Override
