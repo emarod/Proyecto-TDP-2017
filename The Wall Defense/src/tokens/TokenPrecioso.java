@@ -12,7 +12,9 @@ public abstract class TokenPrecioso extends Token {
 		super(c);
 	}
 
-	public void guardar() {
+	@Override
+	public void aplicar() {
 		Director.getPartida().aumentarObjeto(precioso);
+		destruir();
 	}
 }

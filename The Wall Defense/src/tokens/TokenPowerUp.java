@@ -1,7 +1,11 @@
 package tokens;
 
+import javax.swing.JLabel;
+
+import Controladores.Director;
 import efectos.PowerUp;
-import jugador.Jugador;
+import main.CONFIG;
+import main.GameObject;
 import mapa.Celda;
 
 public abstract class TokenPowerUp extends Token {
@@ -12,8 +16,16 @@ public abstract class TokenPowerUp extends Token {
 		super(c);
 	}
 
-	public void aplicar(Jugador j) {
-		power.aplicar(j);
+	@Override
+	public void aplicar() {
+		JLabel celdaLabel = Director.getMapa().getCeldaLabel();
+		int x_jugador = Math.round(celdaLabel.getX() / 64);
+		int y_jugador = Math.round(celdaLabel.getY() / 64);
+		GameObject jugador = Director.getCelda(x_jugador, y_jugador).getObjects()[CONFIG.PROFUNDIDAD_JUGADOR];
+		if (jugador != null) {
+			jugador.accept(power.getVisitor());
+			destruir();
+		}
 	}
 
 }

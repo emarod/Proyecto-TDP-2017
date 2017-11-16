@@ -12,8 +12,10 @@ public abstract class Moneda extends Token {
 
 	}
 
-	public void cargar() {
+	@Override
+	public void aplicar() {
 		Director.getPartida().cargarDinero(this);
+		destruir();
 	}
 
 	public int getValor() {

@@ -22,5 +22,9 @@ public abstract class Efecto extends GameObject {
 		return V.visitEfect(this);
 	}
 
+	public Visitor getVisitor() {
+		return visitor;
+	}
+
 	public abstract void aplicar(Unidad unidad);
 }

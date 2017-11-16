@@ -56,11 +56,6 @@ public abstract class Jugador extends Unidad {
 		return V;
 	}
 
-	@Override
-	public int getDaño() {
-		return getDaño();
-	}
-
 	// Metodos heredados.
 
 	@Override

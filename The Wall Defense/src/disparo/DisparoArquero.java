@@ -17,8 +17,7 @@ public class DisparoArquero extends DisparoJugador {
 	public DisparoArquero(Arquero archer) {
 		super(archer);
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
-		// setCelda();
-		// activar();
+		setCelda();
 	}
 
 	// Metodos Locales.

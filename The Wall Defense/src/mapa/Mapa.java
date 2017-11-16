@@ -23,8 +23,16 @@ import premios.Premio;
 import terreno.Muro;
 import terreno.OyenteTerreno;
 import terreno.Pasto;
+import tokens.Diamante;
+import tokens.MonedaBronce;
 import tokens.MonedaOro;
+import tokens.MonedaPlata;
+import tokens.OyenteToken;
 import tokens.Token;
+import tokens.tkBomba;
+import tokens.tkDañoAumentado;
+import tokens.tkInvulnerable;
+import tokens.tkVelocidadAumentada;
 
 /*
  * Clase Map.
@@ -43,12 +51,14 @@ public class Mapa implements Runnable {
 	protected BancoRecursos banco;
 	protected Horda horda;
 	protected OyenteTerreno oyenteTerreno;
+	protected OyenteToken oyenteToken;
 
 	// Constructor.
 	public Mapa() {
 		celdas = new Celda[CONFIG.CANT_CELDAS_X][CONFIG.CANT_CELDAS_Y];
 		banco = Director.getBancoRecursos();
 		oyenteTerreno = new OyenteTerreno();
+		oyenteToken = new OyenteToken();
 
 	}
 
@@ -224,20 +234,54 @@ public class Mapa implements Runnable {
 		int y = r.nextInt(6);
 
 		if (celdas[x][y].getObjects()[CONFIG.PROFUNDIDAD_TOKEN] == null) {
-			GameObject[] objetos = celdas[x][y].getObjects();
-			// int c = r.nextInt(1);
-			Token tk;
-			JLabel grafico;
-			int c = 0;
+			int c = r.nextInt(30);
+			Token tk = null;
+			JLabel grafico = null;
 			switch (c) {
-				case 0: {
+				case 5: {
 					tk = new MonedaOro(celdas[x][y]);
-					objetos[CONFIG.PROFUNDIDAD_TOKEN] = tk;
 					grafico = tk.getGrafico();
-					grafico.setBounds(x * 64, y * 64, 64, 64);
-					escenario.agregar(grafico, new Integer(CONFIG.PROFUNDIDAD_OBSTACULO));
 					break;
 				}
+				case 25: {
+					tk = new MonedaPlata(celdas[x][y]);
+					grafico = tk.getGrafico();
+					break;
+				}
+				case 12: {
+					tk = new MonedaBronce(celdas[x][y]);
+					grafico = tk.getGrafico();
+					break;
+				}
+				case 9: {
+					tk = new Diamante(celdas[x][y]);
+					grafico = tk.getGrafico();
+					break;
+				}
+				case 17: {
+					tk = new tkBomba(celdas[x][y]);
+					grafico = tk.getGrafico();
+					break;
+				}
+				case 26: {
+					tk = new tkDañoAumentado(celdas[x][y]);
+					grafico = tk.getGrafico();
+					break;
+				}
+				case 8: {
+					tk = new tkInvulnerable(celdas[x][y]);
+					grafico = tk.getGrafico();
+					break;
+				}
+				case 13: {
+					tk = new tkVelocidadAumentada(celdas[x][y]);
+					grafico = tk.getGrafico();
+					break;
+				}
+			}
+			if (grafico != null) {
+				grafico.addMouseListener(oyenteToken);
+				oyenteToken.setToken(tk);
 			}
 
 		}
@@ -302,8 +346,9 @@ public class Mapa implements Runnable {
 	@Override
 	public void run() {
 		escenario.repaint();
-		agregarTokens();
-		agregarObstaculos();
+		// agregarTokens();
+		// agregarObstaculos();
+
 	}
 
 	public void crearPremio(Premio precioso) {

@@ -79,6 +79,7 @@ public class Partida {
 	}
 
 	public void cargarDinero(Moneda moneda) {
+		System.out.println("guitaa " + moneda.getValor());
 		dinero += moneda.getValor();
 	}
 

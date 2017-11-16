@@ -12,7 +12,7 @@ import Controladores.Director;
 public class OyenteTerreno extends MouseAdapter {
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void mousePressed(MouseEvent e) {
 		JLabel graficoTerreno = (JLabel) e.getSource();
 		JLabel celdaLabel = Director.getMapa().getCeldaLabel();
 		int x_mouse = Director.getMapa().get_x_mouse();

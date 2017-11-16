@@ -26,8 +26,6 @@ public abstract class Enemigo extends Unidad {
 	public Enemigo(Celda c) {
 		super();
 		V = new VisitorEnemigo(this);
-		alto = 30;
-		ancho = 30;
 		celda = c;
 		profundidad = CONFIG.PROFUNDIDAD_ENEMIGO;
 		setGrafico();
@@ -51,6 +49,7 @@ public abstract class Enemigo extends Unidad {
 	@Override
 	public void destruir() {
 		super.destruir();
+		Director.getMapa().agregarTokens();
 		Director.getMapa().destruirEnemigo(this);
 
 	}
