@@ -63,11 +63,22 @@ public class Bomba extends PremioTemporal {
 		}
 		else {
 			grafico.setIcon(graficos[graph]);
-			new Explosion(celda, explosion, daño);
-			new Explosion(Director.getCelda(celda.getPosX() + 1, celda.getPosY()), explosion, daño);
-			new Explosion(Director.getCelda(celda.getPosX() - 1, celda.getPosY()), explosion, daño);
-			new Explosion(Director.getCelda(celda.getPosX(), celda.getPosY() + 1), explosion, daño);
-			new Explosion(Director.getCelda(celda.getPosX(), celda.getPosY() - 1), explosion, daño);
+			int x = celda.getPosX();
+			int y = celda.getPosY();
+			nuevaExplosion(celda);
+
+			Celda celda1 = Director.getCelda(x + 1, y);
+			nuevaExplosion(celda1);
+
+			Celda celda2 = Director.getCelda(x - 1, y);
+			nuevaExplosion(celda2);
+
+			Celda celda3 = Director.getCelda(x, y + 1);
+			nuevaExplosion(celda3);
+
+			Celda celda4 = Director.getCelda(x, y - 1);
+			nuevaExplosion(celda4);
+
 			Director.getBancoRecursos().playExplosion();
 			destruir();
 		}
@@ -76,6 +87,12 @@ public class Bomba extends PremioTemporal {
 	@Override
 	public void destruir() {
 		super.destruir();
+	}
+
+	private void nuevaExplosion(Celda c) {
+		if (c != null) {
+			new Explosion(c, explosion, daño);
+		}
 	}
 
 	// Metodos heredados.
