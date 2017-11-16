@@ -16,8 +16,9 @@ public class Lobo extends Jugador {
 	public Lobo(Celda c) {
 		super(c);
 		vida = 3;
+		daño = 3;
 		velocidad = 10;
-		costo = 20;
+		costo = 8;
 		setGrafico(grafico);
 	}
 

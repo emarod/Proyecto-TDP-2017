@@ -48,6 +48,10 @@ public class Juego {
 		menu.setContentPane(contentPane);
 		Icon background = new ImageIcon(this.getClass().getResource("/resources/static/background/background.png"));
 
+		// Imagen de frame
+		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/background/icon2.jpg"));
+		menu.setIconImage(imagen.getImage());
+
 		// Carga de juego
 		director = Director.newDirector();
 

@@ -6,8 +6,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 
 import interfaz.Escenario;
-import jugador.Arquero;
 import jugador.Jugador;
+import jugador.Lobo;
 import mapa.Celda;
 
 /*
@@ -15,20 +15,19 @@ import mapa.Celda;
  * Clase encargada del boton para el despliegue de un arquero.
  */
 
-public class BtnArquero extends BtnJugador {
+public class BtnLobo extends BtnJugador {
 
 	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
 
 	// Constructor.
-	public BtnArquero(Escenario e) {
+	public BtnLobo(Escenario e) {
 		super(e);
 		Celda c = null;
-		player = new Arquero(c);
+		player = new Lobo(c);
 		player.guardarInicio();
-		imagen = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/ygritte2.png"));
-		info = new ImageIcon(
-				this.getClass().getResource("/resources/static/botones/personajes/ygrittedescripcion.png"));
+		imagen = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/lobo.png"));
+		info = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/lobodescripcion.png"));
 		this.setIcon(imagen);
 		costo = player.getCosto();
 		oyente();

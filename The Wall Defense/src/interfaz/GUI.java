@@ -101,8 +101,7 @@ public class GUI extends JFrame {
 		panelIzquierdo.setLayout(new BorderLayout());
 		// Icon bannerLeft=new
 		// ImageIcon(this.getClass().getResource("/resources/static/banner/Banner_4.jpg"));
-		panelIzquierdo.setBounds(0, 0, 400, 310);
-		panelIzquierdo.setPreferredSize(new Dimension(100, 250));
+		panelIzquierdo.setPreferredSize(new Dimension(150, 300));
 		panelIzquierdo.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelIzquierdo.setBackground(Color.BLACK);
 		panelIzquierdo.add(escenario.getMenu());
@@ -111,7 +110,7 @@ public class GUI extends JFrame {
 		// Panel Derecho
 		panelDerecho = new JPanel();
 		panelDerecho.setLayout(new BorderLayout());
-		panelDerecho.setPreferredSize(new Dimension(100, 250));
+		panelDerecho.setPreferredSize(new Dimension(100, 300));
 		panelDerecho.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelDerecho.setBackground(Color.BLACK);
 		panelDerecho.add(escenario.getMenuObjetos());

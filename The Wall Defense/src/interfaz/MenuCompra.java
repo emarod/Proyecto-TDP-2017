@@ -18,6 +18,7 @@ import interfaz.botones.BtnCaballero;
 import interfaz.botones.BtnDragon;
 import interfaz.botones.BtnEspadachin;
 import interfaz.botones.BtnGigante;
+import interfaz.botones.BtnLobo;
 import mapa.Mapa;
 
 /*
@@ -39,6 +40,7 @@ public class MenuCompra extends JPanel {
 	protected BtnGigante gigante;
 	protected BtnCaballero lannister;
 	protected BtnEspadachin JonSnow;
+	protected BtnLobo lobo;
 	protected Director director;
 
 	protected JLabel iconoYgritte, iconoJon, iconoLannister, iconoDragon;
@@ -46,7 +48,7 @@ public class MenuCompra extends JPanel {
 	// Constructor.
 	public MenuCompra(Escenario escenario) {
 		this.escenario = escenario;
-		this.setLayout(new GridLayout(5, 1));
+		this.setLayout(new GridLayout(3, 2));
 		this.setBounds(76, 0, 381, 811);
 		this.setBackground(Color.BLACK);
 		background = new ImageIcon(this.getClass().getResource("/resources/static/tienda/fondo.png"));
@@ -57,6 +59,24 @@ public class MenuCompra extends JPanel {
 	private void armarBotonera() {
 
 		gigante = new BtnGigante(this.escenario);
+
+		lobo = new BtnLobo(this.escenario);
+		lobo.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseReleased(MouseEvent evento) {
+				if (Director.getPartida().getDinero() >= lobo.costo) {
+					Director.getPartida().quitarDinero(lobo.costo);
+					lobo.crearPersonaje();
+				}
+				if (Director.getPartida().getDinero() < lobo.costo) {
+					lobo.setEnabled(false);
+				}
+				escenario.getDinero().actualizar();
+
+			}
+
+		});
 
 		dragon = new BtnDragon(this.escenario);
 
@@ -134,6 +154,7 @@ public class MenuCompra extends JPanel {
 		agregarBoton(lannister);
 		agregarBoton(JonSnow);
 		agregarBoton(gigante);
+		agregarBoton(lobo);
 
 	}
 
@@ -159,6 +180,14 @@ public class MenuCompra extends JPanel {
 			lannister.deshabilitar();
 		}
 
+		if (Director.getPartida().getDinero() < lobo.costo) {
+			lobo.deshabilitar();
+		}
+
+		if (Director.getPartida().getDinero() < gigante.costo) {
+			gigante.deshabilitar();
+		}
+
 	}
 
 	public void deshabilitarCompra() {
@@ -169,9 +198,11 @@ public class MenuCompra extends JPanel {
 		dragon.setVisible(false);
 		lannister.setVisible(false);
 		JonSnow.setVisible(false);
+		lobo.setVisible(false);
+		gigante.setVisible(false);
 
 		iconoYgritte = new JLabel(
-				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/ygritte.png")));
+				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/ygritte2.png")));
 		iconoDragon = new JLabel(
 				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/dragon.png")));
 		iconoLannister = new JLabel(
