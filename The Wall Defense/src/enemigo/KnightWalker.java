@@ -6,10 +6,10 @@ import javax.swing.JLabel;
 
 import mapa.Celda;
 
-public class Caballero extends Enemigo {
+public class KnightWalker extends Enemigo {
 
 	// Constructor.
-	public Caballero(Celda c) {
+	public KnightWalker(Celda c) {
 		super(c);
 		puntaje = 100;
 		velocidad = 50;

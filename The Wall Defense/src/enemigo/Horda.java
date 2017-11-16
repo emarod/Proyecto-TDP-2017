@@ -52,12 +52,12 @@ public class Horda implements Runnable {
 	@Override
 	public void run() {
 		RandomGenerator rnd = Director.getRandom();
-		int r = rnd.poll(2);
+		int r = rnd.poll(4);
 		int y;
 		Enemigo e;
-		y = rnd.nextInt(6);
+		y = rnd.poll(6);
 		while (mapa.getCelda(x, y).getObjects()[CONFIG.PROFUNDIDAD_ENEMIGO] != null) {
-			y = rnd.nextInt(6);
+			y = rnd.poll(6);
 		}
 		Celda c = mapa.getCelda(x, y);
 		switch (r) {
@@ -67,7 +67,21 @@ public class Horda implements Runnable {
 				break;
 			}
 			case 1: {
-				System.out.println("case 1");
+				e = new NightKing(c);
+				mapa.crearEnemigo(e, x, y);
+				break;
+			}
+			case 2: {
+				e = new Araña(c);
+				mapa.crearEnemigo(e, x, y);
+				break;
+			}
+			case 3: {
+				e = new KnightWalker(c);
+				mapa.crearEnemigo(e, x, y);
+				break;
+			}
+			case 4: {
 				e = new NightKing(c);
 				mapa.crearEnemigo(e, x, y);
 				break;
