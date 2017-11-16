@@ -1,5 +1,6 @@
 package interfaz;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
@@ -34,18 +35,19 @@ public class MenuCompra extends JPanel {
 	protected Icon background;
 	protected BtnDragon dragon;
 	protected BtnArquero ygritte;
-	protected JButton ygritte2;
 
 	protected BtnCaballero lannister;
 	protected BtnEspadachin JonSnow;
 	protected Director director;
+
+	protected JLabel iconoYgritte, iconoJon, iconoLannister, iconoDragon;
 
 	// Constructor.
 	public MenuCompra(Escenario escenario) {
 		this.escenario = escenario;
 		this.setLayout(new GridLayout(5, 1));
 		this.setBounds(76, 0, 381, 811);
-		this.setBackground(Color.RED);
+		this.setBackground(Color.BLACK);
 		background = new ImageIcon(this.getClass().getResource("/resources/static/tienda/fondo.png"));
 		armarBotonera();
 	}
@@ -152,6 +154,48 @@ public class MenuCompra extends JPanel {
 		if (Director.getPartida().getDinero() < lannister.costo) {
 			lannister.deshabilitar();
 		}
+
+	}
+
+	public void deshabilitarCompra() {
+
+		this.setLayout(new BorderLayout());
+
+		ygritte.setVisible(false);
+		dragon.setVisible(false);
+		lannister.setVisible(false);
+		JonSnow.setVisible(false);
+
+		iconoYgritte = new JLabel(
+				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/ygritte.png")));
+		iconoDragon = new JLabel(
+				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/dragon.png")));
+		iconoLannister = new JLabel(
+				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/lannister.png")));
+		iconoJon = new JLabel(
+				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/jonsnow.png")));
+		/*
+		 * iconoJon = new JLabel( new ImageIcon(this.getClass().getResource(
+		 * "/resources/static/botones/personajes/jonsnow.png"))); iconoLannister = new
+		 * JLabel( new ImageIcon(this.getClass().getResource(
+		 * "/resources/static/botones/personajes/lannister.png"))); iconoDragon = new
+		 * JLabel( new ImageIcon(this.getClass().getResource(
+		 * "/resources/static/botones/personajes/dragon.png")));
+		 *
+		 * iconoYgritte.setBounds(0, 50, iconoYgritte.getIcon().getIconWidth(),
+		 * iconoYgritte.getIcon().getIconHeight());
+		 */
+
+		iconoYgritte.setBounds(9, -1, iconoYgritte.getIcon().getIconWidth(), iconoYgritte.getIcon().getIconHeight());
+		iconoDragon.setBounds(9, 78, iconoDragon.getIcon().getIconWidth(), iconoDragon.getIcon().getIconHeight());
+		iconoLannister.setBounds(9, 280, iconoLannister.getIcon().getIconWidth(),
+				iconoLannister.getIcon().getIconHeight());
+		iconoJon.setBounds(-6, 221, iconoJon.getIcon().getIconWidth(), iconoJon.getIcon().getIconHeight());
+
+		this.add(iconoYgritte);
+		this.add(iconoDragon);
+		this.add(iconoJon);
+		this.add(iconoLannister);
 
 	}
 
