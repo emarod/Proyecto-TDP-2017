@@ -53,8 +53,7 @@ public class Horda implements Runnable {
 	public void run() {
 		System.out.println("Inicio horda");
 		RandomGenerator rnd = Director.getRandom();
-		// int r = rnd.poll(4);
-		int r = 1;
+		int r = rnd.poll(4);
 		int y;
 		Enemigo e;
 		y = rnd.poll(6);
