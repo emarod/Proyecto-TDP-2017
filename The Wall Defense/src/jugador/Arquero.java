@@ -46,9 +46,6 @@ public class Arquero extends Shooter {
 	public Jugador clone(Celda c) {
 		// Profundidad 2 predeterminada. Retorna una unidad de mismo tipo.
 		Shooter clon = new Arquero(c);
-		// clon.getDisparo().setCelda();
-		// clon.getDisparo().activar();
-		System.out.println("Clonado");
 		return clon;
 	}
 
@@ -66,7 +63,6 @@ public class Arquero extends Shooter {
 	public void atacar() {
 		if (disparo == null) {
 			disparo = new DisparoArquero(this);
-			disparo.setCelda();
 			disparo.activar();
 		}
 		graph = 0;

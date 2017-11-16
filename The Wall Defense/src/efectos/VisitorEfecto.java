@@ -22,6 +22,7 @@ public class VisitorEfecto extends Visitor {
 
 	@Override
 	public boolean visitPlayer(Jugador j) {
+		System.out.println("magic happens roberto");
 		efecto.aplicar(j);
 		return true;
 	}

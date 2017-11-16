@@ -2,9 +2,7 @@ package disparo;
 
 import javax.swing.ImageIcon;
 
-import Controladores.Director;
 import jugador.Dragon;
-import main.CONFIG;
 
 /*
  * Clase DisparoDragon
@@ -20,9 +18,7 @@ public class DisparoDragon extends DisparoJugador {
 		super(drake);
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/bola_fuego.png")));
 		celda = jugador.getCelda().getChild();
-		celda.addDisparo(this);
-		grafico.setBounds(64 * celda.getPosX(), 64 * celda.getPosY(), 64, 64);
-		Director.getMapa().getEscenario().agregar(grafico, new Integer(CONFIG.PROFUNDIDAD_DISPARO));
+		setCelda();
 	}
 
 	// Metodos locales.

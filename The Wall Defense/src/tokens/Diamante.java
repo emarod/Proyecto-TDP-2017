@@ -6,7 +6,7 @@ import mapa.Celda;
 
 public class Diamante extends Moneda {
 
-	public Diamante(Celda c, int prof) {
+	public Diamante(Celda c) {
 		super(c);
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/diamante.gif")));
 		duracion = 10;

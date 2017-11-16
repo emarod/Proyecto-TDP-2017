@@ -46,7 +46,6 @@ public class Explosion extends BuffTemporal {
 	@Override
 	public void run() {
 		if (graph == graficos.length) {
-			System.out.println("destyyrmdoom");
 			destruir();
 		}
 		else {
@@ -56,7 +55,6 @@ public class Explosion extends BuffTemporal {
 			if (afectar != null) {
 				afectar.accept(visitor);
 			}
-			System.out.println("Hola " + graficos.length + " graf=" + graph);
 			Director.ejecutarUna(this, tiempo, TimeUnit.MILLISECONDS);
 		}
 
