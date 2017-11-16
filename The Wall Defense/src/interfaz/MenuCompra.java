@@ -17,6 +17,7 @@ import interfaz.botones.BtnArquero;
 import interfaz.botones.BtnCaballero;
 import interfaz.botones.BtnDragon;
 import interfaz.botones.BtnEspadachin;
+import interfaz.botones.BtnGigante;
 import mapa.Mapa;
 
 /*
@@ -35,7 +36,7 @@ public class MenuCompra extends JPanel {
 	protected Icon background;
 	protected BtnDragon dragon;
 	protected BtnArquero ygritte;
-
+	protected BtnGigante gigante;
 	protected BtnCaballero lannister;
 	protected BtnEspadachin JonSnow;
 	protected Director director;
@@ -54,6 +55,8 @@ public class MenuCompra extends JPanel {
 
 	// Metodos locales.
 	private void armarBotonera() {
+
+		gigante = new BtnGigante(this.escenario);
 
 		dragon = new BtnDragon(this.escenario);
 
@@ -130,6 +133,7 @@ public class MenuCompra extends JPanel {
 		agregarBoton(dragon);
 		agregarBoton(lannister);
 		agregarBoton(JonSnow);
+		agregarBoton(gigante);
 
 	}
 

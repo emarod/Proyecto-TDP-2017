@@ -32,6 +32,7 @@ public class GUI extends JFrame {
 	protected JPanel panelSuperior;
 	protected JPanel grafica;
 	protected JButton go;
+	protected ImageIcon imagen;
 
 	// Constructor.
 	public GUI() {
@@ -82,6 +83,10 @@ public class GUI extends JFrame {
 			}
 
 		});
+
+		// Imagen de frame
+		imagen = new ImageIcon(this.getClass().getResource("/resources/static/background/icon2.jpg"));
+		this.setIconImage(imagen.getImage());
 
 		// Panel Inferior
 		panelInferior = new JPanel();
