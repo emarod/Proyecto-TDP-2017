@@ -18,7 +18,7 @@ public class Arquero extends Shooter {
 	// Constructor.
 	public Arquero(Celda c) {
 		super(c);
-		velocidad = 15;
+		velocidad = 30;
 		vida = 2;
 		daño = 1;
 		costo = 50;
@@ -36,7 +36,6 @@ public class Arquero extends Shooter {
 		graficos[4] = new ImageIcon(
 				this.getClass().getResource("/resources/static/ygritte_atacando/ygritte_atacando_4.png"));
 		setGrafico(0);
-		// disparo = new DisparoArquero(this);
 	}
 
 	// Metodos locales.
@@ -66,6 +65,7 @@ public class Arquero extends Shooter {
 			disparo.activar();
 		}
 		graph = 0;
+		setGrafico(0);
 		activeTask = null;
 		activar();
 	}

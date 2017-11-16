@@ -1,5 +1,6 @@
 package jugador;
 
+import Controladores.Director;
 import disparo.Disparo;
 import mapa.Celda;
 
@@ -18,13 +19,19 @@ public abstract class Shooter extends Jugador {
 	}
 
 	public void animarDisparo() {
+		if (graph == 4) {
+			// setGrafico(0);
+			graph++;
+			atacar();
+
+		}
 		if (graph < 4) {
 			graph++;
+			activeTask = null;
+			Director.ejecutarUna(this, 5);
 		}
 		setGrafico(graph);
-		if (graph == 4) {
-			setGrafico(0);
-		}
+
 	}
 
 	public void setGrafico(int i) {
@@ -37,6 +44,17 @@ public abstract class Shooter extends Jugador {
 
 	public void removeDisparo() {
 		disparo = null;
+	}
+
+	@Override
+	public void run() {
+		if (disparo == null) {
+			animarDisparo();
+		}
+		else {
+			// activar();
+		}
+
 	}
 
 }

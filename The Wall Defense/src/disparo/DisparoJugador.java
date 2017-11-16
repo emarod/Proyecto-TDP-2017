@@ -22,7 +22,7 @@ public abstract class DisparoJugador extends Disparo {
 	@Override
 	public void mover() {
 		Celda siguiente;
-		jugador.animarDisparo();
+		// jugador.animarDisparo();
 		int xCelda = celda.getPosX();
 		int yCelda = celda.getPosY();
 		int xGrafico = grafico.getX();
