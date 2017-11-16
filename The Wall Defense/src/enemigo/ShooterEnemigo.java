@@ -1,14 +1,13 @@
 package enemigo;
 
-import java.util.concurrent.ScheduledFuture;
-
+import disparo.Disparo;
 import mapa.Celda;
 
 public abstract class ShooterEnemigo extends Enemigo {
 
 	// Atributos locales.
-	protected ScheduledFuture<?> shot;
 	protected int velocidad_disparo;
+	protected Disparo disparo;
 
 	public ShooterEnemigo(Celda c) {
 		super(c);
@@ -16,10 +15,6 @@ public abstract class ShooterEnemigo extends Enemigo {
 
 	public int getVelocidadDisparo() {
 		return velocidad_disparo;
-	}
-
-	public ScheduledFuture<?> getTaskShot() {
-		return shot;
 	}
 
 	public void animarDisparo() {
@@ -34,5 +29,13 @@ public abstract class ShooterEnemigo extends Enemigo {
 
 	public void setGrafico(int i) {
 		getGrafico().setIcon(graficos[i]);
+	}
+
+	public Disparo getDisparo() {
+		return disparo;
+	}
+
+	public void removeDisparo() {
+		disparo = null;
 	}
 }

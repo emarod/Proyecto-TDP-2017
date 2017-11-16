@@ -51,6 +51,7 @@ public class Horda implements Runnable {
 
 	@Override
 	public void run() {
+		System.out.println("Inicio horda");
 		RandomGenerator rnd = Director.getRandom();
 		int r = rnd.poll(4);
 		int y;
@@ -82,7 +83,7 @@ public class Horda implements Runnable {
 				break;
 			}
 			case 4: {
-				e = new NightKing(c);
+				e = new EsqueletoSuicida(c);
 				mapa.crearEnemigo(e, x, y);
 				break;
 			}

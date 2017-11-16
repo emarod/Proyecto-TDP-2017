@@ -16,7 +16,7 @@ public class DisparoNightKing extends DisparoEnemigo {
 	// Constructor.
 	public DisparoNightKing(NightKing nk) {
 		super(nk);
-		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/flecha.png")));
-
+		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/disparo/lanza.png")));
+		setCelda();
 	}
 }

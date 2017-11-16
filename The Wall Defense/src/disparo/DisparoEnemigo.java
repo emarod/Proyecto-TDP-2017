@@ -77,4 +77,5 @@ public class DisparoEnemigo extends Disparo {
 		Director.getMapa().getEscenario().agregar(grafico, new Integer(CONFIG.PROFUNDIDAD_DISPARO));
 
 	}
+
 }
