@@ -40,6 +40,7 @@ public class MenuInicio extends JPanel {
 	protected JButton close;
 	protected boolean onefects;
 	protected boolean onmusic;
+	protected boolean oyentesCreados;
 	protected JLabel musicOn, efectsOn;
 	protected JLabel musicOff, efectsOff;
 	boolean musicaprendida;
@@ -63,7 +64,7 @@ public class MenuInicio extends JPanel {
 
 		onefects = true;
 		onmusic = true;
-
+		oyentesCreados = false;
 	}
 
 	// Metodos locales.
@@ -192,8 +193,9 @@ public class MenuInicio extends JPanel {
 				opcion2.setVisible(true);
 				close.setVisible(true);
 
+				armarOyentesSonido();
+
 				armarOpciones();
-				System.out.println(onmusic);
 
 			}
 
@@ -247,6 +249,104 @@ public class MenuInicio extends JPanel {
 
 	}
 
+	public void armarOyentesSonido() {
+		if (!oyentesCreados) {
+			oyentesCreados = true;
+			// oyente boton efectos
+			opcion1.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseReleased(MouseEvent e) {
+
+					if (onefects) {
+						bancoRecursos.stopEfectos();
+						opcion1.setIcon(new ImageIcon(
+								this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
+						onefects = false;
+						System.out.println("1-Efectos habilitados: " + onefects);
+						efectsOff.setVisible(true);
+						efectsOn.setVisible(false);
+					}
+					else {
+						bancoRecursos.playEfectos();
+						opcion1.setIcon(new ImageIcon(
+								this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
+						onefects = true;
+						System.out.println("1-Efectos habilitados: " + onefects);
+
+						efectsOff.setVisible(false);
+						efectsOn.setVisible(true);
+					}
+
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+					opcion1.setIcon(new ImageIcon(
+							this.getClass().getResource("/resources/static/botones/efectbotonpresed.png")));
+					bancoRecursos.playClick();
+
+				}
+			});
+
+			// Oyente boton musica
+			opcion2.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseReleased(MouseEvent e) {
+
+					if (onmusic == true) {
+						bancoRecursos.stopMusica();
+						opcion2.setIcon(new ImageIcon(
+								this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
+						onmusic = false;
+						System.out.println("2-Musica habilitada: " + onmusic);
+						musicOff.setVisible(true);
+						musicOn.setVisible(false);
+					}
+					else {
+						if (onmusic == false) {
+							bancoRecursos.playMusica();
+							opcion2.setIcon(new ImageIcon(
+									this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
+							onmusic = true;
+							System.out.println("2-Musica habilitada: " + onmusic);
+
+							musicOff.setVisible(false);
+							musicOn.setVisible(true);
+						}
+					}
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+
+					opcion2.setIcon(new ImageIcon(
+							this.getClass().getResource("/resources/static/botones/musicbotonpressed.png")));
+					bancoRecursos.playClick();
+
+				}
+			});
+
+			close.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					opcion1.setVisible(false);
+					opcion2.setVisible(false);
+					close.setVisible(false);
+					musicOn.setVisible(false);
+					musicOff.setVisible(false);
+					efectsOn.setVisible(false);
+					efectsOff.setVisible(false);
+					buttons[0].setVisible(true);
+					buttons[1].setVisible(true);
+					buttons[2].setVisible(true);
+					System.out.println("3-Musica habilitada: " + onmusic);
+					System.out.println("3-Efector habilitados: " + onefects);
+				}
+
+			});
+		}
+	}
+
 	public void armarOpciones() {
 
 		if (onmusic) {
@@ -262,103 +362,6 @@ public class MenuInicio extends JPanel {
 		else {
 			efectsOff.setVisible(true);
 		}
-
-		// oyente boton efectos
-		opcion1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-
-				if (onefects) {
-					bancoRecursos.stopEfectos();
-					opcion1.setIcon(new ImageIcon(
-							this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
-					onefects = false;
-					System.out.println(onefects);
-					efectsOff.setVisible(true);
-					efectsOn.setVisible(false);
-				}
-				else {
-					bancoRecursos.playEfectos();
-					opcion1.setIcon(new ImageIcon(
-							this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
-					onefects = true;
-					System.out.println(onefects);
-
-					efectsOff.setVisible(false);
-					efectsOn.setVisible(true);
-				}
-
-				System.out.println(onefects);
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				opcion1.setIcon(
-						new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonpresed.png")));
-				bancoRecursos.playClick();
-
-			}
-		});
-
-		// Oyente boton musica
-		opcion2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-
-				if (onmusic == true) {
-					bancoRecursos.stopMusica();
-					opcion2.setIcon(new ImageIcon(
-							this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
-					onmusic = false;
-					System.out.println(onmusic);
-					musicOff.setVisible(true);
-					musicOn.setVisible(false);
-				}
-				else {
-					if (onmusic == false) {
-						bancoRecursos.playMusica();
-						opcion2.setIcon(new ImageIcon(
-								this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
-						onmusic = true;
-						System.out.println(onmusic);
-
-						musicOff.setVisible(false);
-						musicOn.setVisible(true);
-					}
-				}
-
-				System.out.println(onmusic);
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-
-				opcion2.setIcon(
-						new ImageIcon(this.getClass().getResource("/resources/static/botones/musicbotonpressed.png")));
-				bancoRecursos.playClick();
-
-			}
-		});
-
-		close.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				opcion1.setVisible(false);
-				opcion2.setVisible(false);
-				close.setVisible(false);
-				musicOn.setVisible(false);
-				musicOff.setVisible(false);
-				efectsOn.setVisible(false);
-				efectsOff.setVisible(false);
-				buttons[0].setVisible(true);
-				buttons[1].setVisible(true);
-				buttons[2].setVisible(true);
-				System.out.println(onmusic);
-				System.out.println(onefects);
-			}
-
-		});
 
 		menupanel.add(close);
 		menupanel.add(opcion1);
