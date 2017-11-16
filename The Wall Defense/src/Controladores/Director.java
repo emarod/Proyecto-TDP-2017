@@ -30,6 +30,7 @@ public class Director {
 	protected static Partida partida;
 	protected static Mapa mapa;
 	protected static CareTaker careTaker;
+	protected static RandomGenerator random;
 
 	// Constructor.
 	private Director() {
@@ -38,6 +39,8 @@ public class Director {
 		partida = new Partida();
 		mapa = new Mapa();
 		careTaker = new CareTaker();
+		random = new RandomGenerator();
+		random.generar(100, 100);
 	}
 
 	public static Director newDirector() {
@@ -61,6 +64,10 @@ public class Director {
 
 	public static Partida getPartida() {
 		return partida;
+	}
+
+	public static RandomGenerator getRandom() {
+		return random;
 	}
 
 	// Metodos locales para utilizar el pool piscina local.

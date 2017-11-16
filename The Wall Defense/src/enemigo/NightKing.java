@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Controladores.Director;
+import disparo.DisparoNightKing;
 import mapa.Celda;
 
 /*
@@ -64,11 +65,13 @@ public class NightKing extends ShooterEnemigo {
 	// Metodos heredados.
 
 	public void atacar() {
-		// if (shot == null || shot.isCancelled() || shot.isDone()) {
-		// playSound();
-		// shot = new DisparoNightKing(this).getTask();
-		// }
-		// graph = 0;
+		if (disparo == null) {
+			disparo = new DisparoNightKing(this);
+			disparo.activar();
+		}
+		graph = 0;
+		activeTask = null;
+		activar();
 	}
 
 	@Override
@@ -91,6 +94,11 @@ public class NightKing extends ShooterEnemigo {
 	@Override
 	public int getPuntaje() {
 		return puntaje;
+	}
+
+	@Override
+	public void run() {
+		atacar();
 	}
 
 	@Override
