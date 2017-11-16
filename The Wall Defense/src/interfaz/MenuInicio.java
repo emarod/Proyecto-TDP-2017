@@ -38,10 +38,11 @@ public class MenuInicio extends JPanel {
 	protected JButton opcion1;
 	protected JButton opcion2;
 	protected JButton close;
-	protected boolean onefects = true;
-	protected boolean onmusic = true;
+	protected boolean onefects;
+	protected boolean onmusic;
 	protected JLabel musicOn, efectsOn;
 	protected JLabel musicOff, efectsOff;
+	boolean musicaprendida;
 
 	// Constructor.
 	public MenuInicio(Juego game) {
@@ -59,6 +60,9 @@ public class MenuInicio extends JPanel {
 		menupanel.setIcon(menuback);
 		menupanel.setSize(243, 423);
 		this.add(menupanel);
+
+		onefects = true;
+		onmusic = true;
 
 	}
 
@@ -183,7 +187,14 @@ public class MenuInicio extends JPanel {
 				buttons[0].setVisible(false);
 				buttons[1].setVisible(false);
 				buttons[2].setVisible(false);
+
+				opcion1.setVisible(true);
+				opcion2.setVisible(true);
+				close.setVisible(true);
+
 				armarOpciones();
+				System.out.println(onmusic);
+
 			}
 
 			@Override
@@ -211,28 +222,22 @@ public class MenuInicio extends JPanel {
 		opcion2 = new JButton();
 		close = new JButton();
 
-		if (onefects) {
-			opcion1.setIcon(
-					new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
-		}
-		else {
-			opcion1.setIcon(
-					new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonpresed.png")));
-		}
-
-		if (onmusic) {
-			opcion2.setIcon(
-					new ImageIcon(this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
-		}
-		else {
-			opcion2.setIcon(
-					new ImageIcon(this.getClass().getResource("/resources/static/botones/musicbotonpressed.png")));
-		}
+		opcion1.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
+		opcion2.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
 		close.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/close.png")));
+		musicOn = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/botones/on.png")));
+		musicOff = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/botones/off.png")));
+		efectsOn = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/botones/on.png")));
+		efectsOff = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/botones/off.png")));
 
 		opcion1.setBounds(50, 150, opcion1.getIcon().getIconWidth(), opcion1.getIcon().getIconHeight());
 		opcion2.setBounds(50, 250, opcion2.getIcon().getIconWidth(), opcion2.getIcon().getIconHeight());
 		close.setBounds(110, 350, close.getIcon().getIconWidth(), close.getIcon().getIconHeight());
+		musicOn.setBounds(110, 220, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
+		musicOff.setBounds(110, 220, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
+		efectsOn.setBounds(110, 120, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
+		efectsOff.setBounds(110, 120, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
+
 		close.setBackground(Color.BLACK);
 		close.setBorderPainted(false);
 		close.setBorder(new LineBorder(Color.BLACK));
@@ -244,30 +249,31 @@ public class MenuInicio extends JPanel {
 
 	public void armarOpciones() {
 
-		opcion1.setVisible(true);
-		opcion2.setVisible(true);
-		close.setVisible(true);
+		if (onmusic) {
+			musicOn.setVisible(true);
+		}
+		else {
+			musicOff.setVisible(true);
+		}
 
-		musicOn = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/botones/on.png")));
-		musicOff = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/botones/off.png")));
+		if (onefects) {
+			efectsOn.setVisible(true);
+		}
+		else {
+			efectsOff.setVisible(true);
+		}
 
-		efectsOn = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/botones/on.png")));
-		efectsOff = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/botones/off.png")));
-
-		musicOn.setBounds(110, 220, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
-		musicOff.setBounds(110, 220, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
-
-		efectsOn.setBounds(110, 120, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
-		efectsOff.setBounds(110, 120, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
-
+		// oyente boton efectos
 		opcion1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
+
 				if (onefects) {
 					bancoRecursos.stopEfectos();
 					opcion1.setIcon(new ImageIcon(
-							this.getClass().getResource("/resources/static/botones/efectbotonpresed.png")));
+							this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
 					onefects = false;
+					System.out.println(onefects);
 					efectsOff.setVisible(true);
 					efectsOn.setVisible(false);
 				}
@@ -276,9 +282,13 @@ public class MenuInicio extends JPanel {
 					opcion1.setIcon(new ImageIcon(
 							this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
 					onefects = true;
+					System.out.println(onefects);
+
 					efectsOff.setVisible(false);
 					efectsOn.setVisible(true);
 				}
+
+				System.out.println(onefects);
 
 			}
 
@@ -291,31 +301,39 @@ public class MenuInicio extends JPanel {
 			}
 		});
 
+		// Oyente boton musica
 		opcion2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 
-				if (onmusic) {
+				if (onmusic == true) {
 					bancoRecursos.stopMusica();
 					opcion2.setIcon(new ImageIcon(
-							this.getClass().getResource("/resources/static/botones/musicbotonpressed.png")));
+							this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
 					onmusic = false;
+					System.out.println(onmusic);
 					musicOff.setVisible(true);
 					musicOn.setVisible(false);
 				}
 				else {
-					bancoRecursos.playMusica();
-					opcion2.setIcon(new ImageIcon(
-							this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
-					onmusic = true;
-					musicOff.setVisible(false);
-					musicOn.setVisible(true);
+					if (onmusic == false) {
+						bancoRecursos.playMusica();
+						opcion2.setIcon(new ImageIcon(
+								this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
+						onmusic = true;
+						System.out.println(onmusic);
+
+						musicOff.setVisible(false);
+						musicOn.setVisible(true);
+					}
 				}
 
+				System.out.println(onmusic);
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
+
 				opcion2.setIcon(
 						new ImageIcon(this.getClass().getResource("/resources/static/botones/musicbotonpressed.png")));
 				bancoRecursos.playClick();
@@ -329,10 +347,15 @@ public class MenuInicio extends JPanel {
 				opcion1.setVisible(false);
 				opcion2.setVisible(false);
 				close.setVisible(false);
+				musicOn.setVisible(false);
+				musicOff.setVisible(false);
+				efectsOn.setVisible(false);
+				efectsOff.setVisible(false);
 				buttons[0].setVisible(true);
 				buttons[1].setVisible(true);
 				buttons[2].setVisible(true);
-
+				System.out.println(onmusic);
+				System.out.println(onefects);
 			}
 
 		});
@@ -344,7 +367,6 @@ public class MenuInicio extends JPanel {
 		menupanel.add(efectsOn);
 		menupanel.add(musicOff);
 		menupanel.add(efectsOff);
-
 	}
 
 	public void armarAyuda() {

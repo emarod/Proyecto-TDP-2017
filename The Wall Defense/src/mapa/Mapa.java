@@ -100,7 +100,13 @@ public class Mapa implements Runnable {
 	}
 
 	public Celda getCelda(int x, int y) {
-		return celdas[x][y];
+		Celda celda = null;
+		if (x < CONFIG.CANT_CELDAS_X && x > 0) {
+			if (y < CONFIG.CANT_CELDAS_Y && y > 0) {
+				celda = celdas[x][y];
+			}
+		}
+		return celda;
 	}
 
 	public Escenario getEscenario() {
