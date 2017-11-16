@@ -108,13 +108,10 @@ public class Bomba extends PremioTemporal {
 
 			Celda celda1 = Director.getCelda(x + 1, y);
 			nuevaOnda(celda1, OED);
-
 			Celda celda2 = Director.getCelda(x - 1, y);
 			nuevaOnda(celda2, OEI);
-
 			Celda celda3 = Director.getCelda(x, y + 1);
 			nuevaOnda(celda3, OEAB);
-
 			Celda celda4 = Director.getCelda(x, y - 1);
 			nuevaOnda(celda4, OEAR);
 
