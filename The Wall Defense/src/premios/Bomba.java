@@ -18,6 +18,10 @@ public class Bomba extends PremioTemporal {
 	protected int costo;
 	protected int daño;
 	protected Icon[] explosion;
+	protected Icon[] OEAR;
+	protected Icon[] OEAB;
+	protected Icon[] OED;
+	protected Icon[] OEI;
 
 	// Constructor.
 	public Bomba() {
@@ -36,11 +40,19 @@ public class Bomba extends PremioTemporal {
 		daño = 10;
 		graficos = new Icon[5];
 		explosion = new Icon[7];
+		OEAR = new Icon[7];
+		OEAB = new Icon[7];
+		OED = new Icon[7];
+		OEI = new Icon[7];
+
+		// BOMBA
 		for (int i = 0; i < graficos.length; i++) {
 			if (i < 5) {
 				graficos[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/00" + i + ".png"));
 			}
 		}
+
+		// EXPLOSION
 		for (int i = 0; i < explosion.length; i++) {
 			int f = i + 5;
 			if (f < 10) {
@@ -50,6 +62,33 @@ public class Bomba extends PremioTemporal {
 				explosion[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/0" + f + ".png"));
 			}
 		}
+
+		// ONDA abajo
+		for (int i = 0; i < OEAB.length; i++) {
+			if (i < 7) {
+				System.out.print("10" + i);
+				OEAB[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/10" + i + ".png"));
+			}
+		}
+		// ONDA arriba
+		for (int i = 0; i < OEAR.length; i++) {
+			if (i < 7) {
+				OEAR[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/20" + i + ".png"));
+			}
+		}
+		// ONDA derecha
+		for (int i = 0; i < OED.length; i++) {
+			if (i < 7) {
+				OED[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/30" + i + ".png"));
+			}
+		}
+		// ONDA izquierda
+		for (int i = 0; i < OEI.length; i++) {
+			if (i < 7) {
+				OEI[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/40" + i + ".png"));
+			}
+		}
+
 		graph = 0;
 		grafico.setIcon(graficos[graph]);
 		Director.ejecutarUna(this, tiempo);
@@ -68,16 +107,16 @@ public class Bomba extends PremioTemporal {
 			nuevaExplosion(celda);
 
 			Celda celda1 = Director.getCelda(x + 1, y);
-			nuevaExplosion(celda1);
+			nuevaOnda(celda1, OED);
 
 			Celda celda2 = Director.getCelda(x - 1, y);
-			nuevaExplosion(celda2);
+			nuevaOnda(celda2, OEI);
 
 			Celda celda3 = Director.getCelda(x, y + 1);
-			nuevaExplosion(celda3);
+			nuevaOnda(celda3, OEAR);
 
 			Celda celda4 = Director.getCelda(x, y - 1);
-			nuevaExplosion(celda4);
+			nuevaOnda(celda4, OEAB);
 
 			Director.getBancoRecursos().playExplosion();
 			destruir();
@@ -92,6 +131,12 @@ public class Bomba extends PremioTemporal {
 	private void nuevaExplosion(Celda c) {
 		if (c != null) {
 			new Explosion(c, explosion, daño);
+		}
+	}
+
+	private void nuevaOnda(Celda c, Icon[] graficos) {
+		if (c != null) {
+			new Explosion(c, graficos, daño);
 		}
 	}
 
