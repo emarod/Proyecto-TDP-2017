@@ -39,7 +39,7 @@ public abstract class DisparoJugador extends Disparo {
 			activeTask.cancel(true);
 		}
 
-		if (xCelda == CONFIG.CANT_CELDAS_X || xGrafico >= 1026) {
+		if (xCelda == CONFIG.CANT_CELDAS_X - 1 || xGrafico >= 1026) {
 			destruir();
 		}
 		else {

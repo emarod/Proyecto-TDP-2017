@@ -21,9 +21,11 @@ public class NightKing extends ShooterEnemigo {
 	public NightKing(Celda c) {
 		super(c);
 		puntaje = 200;
-		velocidad = 100;
+		velocidad = 60;
+		velocidad_disparo = 75;
 		daño = 3;
 		vida = 6;
+
 		graficos = new Icon[14];
 		graficos[0] = new ImageIcon(
 				this.getClass().getResource("/resources/static/ww_nightking_atacando/ww_nightking_atacando00.png"));
@@ -94,11 +96,6 @@ public class NightKing extends ShooterEnemigo {
 	@Override
 	public int getPuntaje() {
 		return puntaje;
-	}
-
-	@Override
-	public void run() {
-		atacar();
 	}
 
 	@Override

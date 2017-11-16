@@ -42,12 +42,12 @@ public class VisitorDisparoEnemigo extends Visitor {
 
 	@Override
 	public boolean visitEnemigo(Enemigo e) {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean visitObjetoMapa(ObjetoMapaTemporal o) {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -80,8 +80,7 @@ public class VisitorDisparoEnemigo extends Visitor {
 
 	@Override
 	public boolean visitComprable(ComprableTemporal comprable) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
