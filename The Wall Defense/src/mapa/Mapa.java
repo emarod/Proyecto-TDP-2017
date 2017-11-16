@@ -346,7 +346,6 @@ public class Mapa implements Runnable {
 	@Override
 	public void run() {
 		escenario.repaint();
-		// agregarTokens();
 		// agregarObstaculos();
 
 	}

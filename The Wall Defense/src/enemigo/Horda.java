@@ -51,8 +51,8 @@ public class Horda implements Runnable {
 
 	@Override
 	public void run() {
-		RandomGenerator rnd = new RandomGenerator();
-		int r = rnd.nextInt(2);
+		RandomGenerator rnd = Director.getRandom();
+		int r = rnd.poll(2);
 		int y;
 		Enemigo e;
 		y = rnd.nextInt(6);
