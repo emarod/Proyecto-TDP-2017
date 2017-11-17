@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import Controladores.Director;
 import interfaz.botones.BtnBarricada;
+import interfaz.botones.BtnTrampa;
 import mapa.Mapa;
 
 /*
@@ -27,6 +28,7 @@ public class MenuObjetos extends JPanel {
 	protected static final long serialVersionUID = 1L;
 	protected JPanel botonera;
 	protected BtnBarricada barricada;
+	protected BtnTrampa trampa;
 
 	// Constructor.
 	public MenuObjetos(Escenario escenario) {
@@ -60,7 +62,28 @@ public class MenuObjetos extends JPanel {
 
 		});
 
+		trampa = new BtnTrampa(this.escenario);
+		trampa.oyente();
+
+		trampa.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseReleased(MouseEvent evento) {
+				if (Director.getPartida().getDinero() >= trampa.costo) {
+					Director.getPartida().quitarDinero(trampa.costo);
+					trampa.crearObjeto();
+				}
+				if (Director.getPartida().getDinero() < barricada.costo) {
+					trampa.setEnabled(false);
+				}
+				escenario.getDinero().actualizar();
+
+			}
+
+		});
+
 		agregarBoton(barricada);
+		agregarBoton(trampa);
 
 	}
 
@@ -72,6 +95,10 @@ public class MenuObjetos extends JPanel {
 
 		if (Director.getPartida().getDinero() < barricada.costo) {
 			barricada.deshabilitar();
+		}
+
+		if (Director.getPartida().getDinero() < trampa.costo) {
+			trampa.deshabilitar();
 		}
 
 	}
