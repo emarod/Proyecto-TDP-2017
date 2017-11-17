@@ -51,7 +51,7 @@ public class MenuObjetos extends JPanel {
 			public void mouseReleased(MouseEvent evento) {
 				if (Director.getPartida().getDinero() >= barricada.costo) {
 					Director.getPartida().quitarDinero(barricada.costo);
-					barricada.crearObjeto();
+					escenario.getAcumulados().acumularBarricada();
 				}
 				if (Director.getPartida().getDinero() < barricada.costo) {
 					barricada.setEnabled(false);
@@ -71,7 +71,7 @@ public class MenuObjetos extends JPanel {
 			public void mouseReleased(MouseEvent evento) {
 				if (Director.getPartida().getDinero() >= trampa.costo) {
 					Director.getPartida().quitarDinero(trampa.costo);
-					trampa.crearObjeto();
+					escenario.getAcumulados().acumularTrampa();
 				}
 				if (Director.getPartida().getDinero() < barricada.costo) {
 					trampa.setEnabled(false);

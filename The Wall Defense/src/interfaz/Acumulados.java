@@ -1,6 +1,5 @@
 package interfaz;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -17,6 +16,7 @@ import javax.swing.border.LineBorder;
 
 import interfaz.botones.BtnBarricada;
 import interfaz.botones.BtnBomba;
+import interfaz.botones.BtnTrampa;
 
 /*
 * Clase ComprablesAcumulados.
@@ -31,8 +31,9 @@ public class Acumulados extends JPanel {
 	protected Escenario escenario;
 	protected BtnBarricada barricada;
 	protected BtnBomba bomba;
+	protected BtnTrampa trampa;
 	protected int cantBomba, cantBarricada, cantTrampa;
-	protected JLabel bombasLeft, barricadasLeft, trampaLeft;
+	protected JLabel bombasLeft, barricadasLeft, trampasLeft;
 	protected Icon iconoBomba, iconoBarricada, iconoTrampa;
 
 	public Acumulados(Escenario esc) {
@@ -50,21 +51,27 @@ public class Acumulados extends JPanel {
 
 		barricada = new BtnBarricada(escenario);
 		bomba = new BtnBomba(escenario);
+		trampa = new BtnTrampa(escenario);
 
-		barricada.setBounds(150, 0, 64, 64);
+		// barricada.setBounds(150, 0, 64, 64);
 
 		iconoBomba = new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/bombaacumulada.png"));
 		iconoBarricada = new ImageIcon(
 				this.getClass().getResource("/resources/static/botones/objetos/barricadaacumulada.png"));
+		iconoTrampa = new ImageIcon(
+				this.getClass().getResource("/resources/static/botones/objetos/trampaacumulada.png"));
 
 		bombasLeft = new JLabel("" + cantBomba);
 		barricadasLeft = new JLabel("" + cantBarricada);
+		trampasLeft = new JLabel("" + cantTrampa);
 
 		configurarLabel(barricadasLeft);
 		configurarLabel(bombasLeft);
+		configurarLabel(trampasLeft);
 
 		bomba.setIcon(iconoBomba);
 		barricada.setIcon(iconoBarricada);
+		trampa.setIcon(iconoTrampa);
 
 		barricada.addMouseListener(new MouseAdapter() {
 
@@ -93,12 +100,28 @@ public class Acumulados extends JPanel {
 
 		});
 
+		trampa.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseReleased(MouseEvent evento) {
+				if (cantTrampa > 0) {
+					trampa.crearObjeto();
+					cantTrampa--;
+					trampasLeft.setText("" + cantTrampa);
+				}
+			}
+
+		});
+
 		configurarBoton(barricada);
 		configurarBoton(bomba);
+		configurarBoton(trampa);
 		this.add(barricadasLeft);
 		this.add(barricada);
 		this.add(bombasLeft);
-		this.add(bomba, BorderLayout.NORTH);
+		this.add(bomba);
+		this.add(trampasLeft);
+		this.add(trampa);
 
 	}
 
@@ -128,5 +151,20 @@ public class Acumulados extends JPanel {
 			bomba.setEnabled(false);
 		}
 
+	}
+
+	public void acumularBomba() {
+		cantBomba++;
+		bombasLeft.setText("" + cantBomba);
+	}
+
+	public void acumularTrampa() {
+		cantTrampa++;
+		trampasLeft.setText("" + cantTrampa);
+	}
+
+	public void acumularBarricada() {
+		cantBarricada++;
+		barricadasLeft.setText("" + cantBarricada);
 	}
 }
