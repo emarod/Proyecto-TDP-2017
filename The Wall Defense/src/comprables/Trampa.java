@@ -13,12 +13,11 @@ import mapa.Celda;
  * Clase que determina como esta compuesta y como se comporta una roca.
  */
 
-public class Trampa extends ComprableVida {
+public class Trampa extends ComprableTemporal {
 
 	// Constructor.
 	public Trampa(Celda c) {
 		super(c);
-		vida = 3;
 		graficos = new Icon[3];
 		graficos[0] = new ImageIcon(this.getClass().getResource("/resources/static/trampa/trampa1.png"));
 		graficos[1] = new ImageIcon(this.getClass().getResource("/resources/static/trampa/trampa2.png"));
@@ -28,9 +27,6 @@ public class Trampa extends ComprableVida {
 	}
 
 	// Metodos locales.
-	public int getResistencia() {
-		return vida;
-	}
 
 	@Override
 	public void destruir() {
