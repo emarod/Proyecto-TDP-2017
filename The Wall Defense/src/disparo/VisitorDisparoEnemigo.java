@@ -8,7 +8,6 @@ import jugador.Jugador;
 import main.Visitor;
 import objetoMapa.ObjetoMapaTemporal;
 import objetoMapa.ObjetoMapaVida;
-import premios.PremioTemporal;
 import premios.PremioVida;
 
 /*
@@ -64,12 +63,6 @@ public class VisitorDisparoEnemigo extends Visitor {
 	@Override
 	public boolean visitDisparo(DisparoEnemigo d) {
 		return true;
-	}
-
-	@Override
-	public boolean visitPremio(PremioTemporal op) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override

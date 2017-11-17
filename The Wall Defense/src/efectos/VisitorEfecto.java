@@ -9,7 +9,6 @@ import jugador.Jugador;
 import main.Visitor;
 import objetoMapa.ObjetoMapaTemporal;
 import objetoMapa.ObjetoMapaVida;
-import premios.PremioTemporal;
 import premios.PremioVida;
 
 public class VisitorEfecto extends Visitor {
@@ -39,11 +38,6 @@ public class VisitorEfecto extends Visitor {
 	@Override
 	public boolean visitEnemigo(Enemigo e) {
 		efecto.aplicar(e);
-		return true;
-	}
-
-	@Override
-	public boolean visitPremio(PremioTemporal op) {
 		return true;
 	}
 

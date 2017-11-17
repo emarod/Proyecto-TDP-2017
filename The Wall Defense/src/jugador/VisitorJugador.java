@@ -10,7 +10,6 @@ import main.Visitor;
 import objetoMapa.ObjetoMapa;
 import objetoMapa.ObjetoMapaTemporal;
 import objetoMapa.ObjetoMapaVida;
-import premios.PremioTemporal;
 import premios.PremioVida;
 
 /*
@@ -64,11 +63,6 @@ public class VisitorJugador extends Visitor {
 
 	@Override
 	public boolean visitComprable(ComprableTemporal comprable) {
-		return false;
-	}
-
-	@Override
-	public boolean visitPremio(PremioTemporal op) {
 		return false;
 	}
 

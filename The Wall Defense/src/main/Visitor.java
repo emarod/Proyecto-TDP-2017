@@ -9,7 +9,6 @@ import enemigo.Enemigo;
 import jugador.Jugador;
 import objetoMapa.ObjetoMapaTemporal;
 import objetoMapa.ObjetoMapaVida;
-import premios.PremioTemporal;
 import premios.PremioVida;
 
 /*
@@ -29,8 +28,6 @@ public abstract class Visitor {
 	public abstract boolean visitDisparo(DisparoEnemigo d);
 
 	public abstract boolean visitEnemigo(Enemigo e);
-
-	public abstract boolean visitPremio(PremioTemporal op);
 
 	public abstract boolean visitPremio(PremioVida op);
 
