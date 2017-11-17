@@ -117,22 +117,6 @@ public class Mapa implements Runnable {
 
 	}
 
-	public void ver2(int x, int y) {
-
-		GameObject[] objetos = celdas[x][y].getObjects();
-		System.out.println("Ver2 celda(" + x + "," + y + ")");
-		for (int i = 0; i < CONFIG.PROFUNDIDAD_CELDA; i++) {
-			if (objetos[i] != null) {
-				System.out.println(i + "." + objetos[i].getClass());
-			}
-			else {
-				System.out.println(i + "." + null);
-			}
-
-		}
-
-	}
-
 	public Celda getCelda(int x, int y) {
 		Celda celda = null;
 		if (x < CONFIG.CANT_CELDAS_X && x > 0) {
