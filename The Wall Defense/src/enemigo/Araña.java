@@ -34,11 +34,6 @@ public class Araña extends Enemigo {
 	}
 
 	@Override
-	public int getPuntaje() {
-		return puntaje;
-	}
-
-	@Override
 	public Enemigo clone(Celda c) {
 		// Profundidad 1 predeterminada. Retorna una unidad de mismo tipo.
 		Enemigo clon = new Araña(c);
@@ -54,11 +49,6 @@ public class Araña extends Enemigo {
 	public void destruir() {
 		super.destruir();
 		System.out.println("Destruir Araña.");
-	}
-
-	@Override
-	public int getDaño() {
-		return daño;
 	}
 
 	@Override

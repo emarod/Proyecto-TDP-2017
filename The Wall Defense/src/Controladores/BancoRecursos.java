@@ -32,7 +32,7 @@ public class BancoRecursos {
 		barricada = TinySound.loadSound("/resources/sound/golpe_roca.wav");
 		explosion = TinySound.loadSound("/resources/sound/explosion.wav");
 		// Inicializa el loop
-		song.play(true);
+		// song.play(true);
 
 	};
 

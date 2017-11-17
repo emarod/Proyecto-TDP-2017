@@ -2,6 +2,7 @@ package main;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+import Controladores.Director;
 import mapa.Celda;
 import premios.Premio;
 import tokens.Moneda;
@@ -81,6 +82,7 @@ public class Partida {
 	public void cargarDinero(Moneda moneda) {
 		System.out.println("guitaa " + moneda.getValor());
 		dinero += moneda.getValor();
+		Director.getMapa().getEscenario().getDinero().actualizar();
 	}
 
 }

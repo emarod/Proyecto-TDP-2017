@@ -35,11 +35,6 @@ public class KnightWalker extends Enemigo {
 	}
 
 	@Override
-	public int getPuntaje() {
-		return puntaje;
-	}
-
-	@Override
 	public Enemigo clone(Celda c) {
 		// Profundidad 1 predeterminada. Retorna una unidad de mismo tipo.
 		Enemigo clon = new WhiteWalker(c);
@@ -55,11 +50,6 @@ public class KnightWalker extends Enemigo {
 	public void destruir() {
 		super.destruir();
 		System.out.println("Destruir WhiteWalker");
-	}
-
-	@Override
-	public int getDaño() {
-		return daño;
 	}
 
 	@Override

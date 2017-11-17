@@ -56,11 +56,6 @@ public class EsqueletoSuicida extends Enemigo {
 	}
 
 	@Override
-	public int getDaño() {
-		return daño;
-	}
-
-	@Override
 	public void guardarInicio() {
 		guardarEstado("ESQUELETO");
 	}

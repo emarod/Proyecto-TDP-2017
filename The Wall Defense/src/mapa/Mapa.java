@@ -157,28 +157,44 @@ public class Mapa implements Runnable {
 				player.crear();
 				JLabel icono = player.getGrafico();
 				icono.addMouseListener(new MouseAdapter() {
+
+					protected boolean mover = true;
+
 					@Override
 					public void mouseReleased(MouseEvent e) {
-						int x_cel = Math.round(x_mouse / 64);
-						int y_cel = Math.round(y_mouse / 64);
-						GameObject[] objetosCelda = celdas[x_cel][y_cel].getObjects();
-						objetosCelda[CONFIG.PROFUNDIDAD_JUGADOR] = player;
-						player.getCelda().getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = null;
-						player.setCelda(celdas[x_cel][y_cel]);
-						int x_terreno = objetosCelda[0].getGrafico().getX();
-						int y_terreno = objetosCelda[0].getGrafico().getY();
-						player.getGrafico().setBounds(x_terreno, y_terreno, 64, 64);
+						if (hordaActiva()) {
+							int x_cel = Math.round(x_mouse / 64);
+							int y_cel = Math.round(y_mouse / 64);
+							GameObject[] objetosCelda = celdas[x_cel][y_cel].getObjects();
+							objetosCelda[CONFIG.PROFUNDIDAD_JUGADOR] = player;
+							player.getCelda().getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = null;
+							player.setCelda(celdas[x_cel][y_cel]);
+							int x_terreno = objetosCelda[0].getGrafico().getX();
+							int y_terreno = objetosCelda[0].getGrafico().getY();
+							player.getGrafico().setBounds(x_terreno, y_terreno, 64, 64);
+						}
 					}
 				});
 				icono.addMouseMotionListener(new MouseMotionAdapter() {
+
 					@Override
 					public void mouseDragged(MouseEvent e) {
-						player.getGrafico().setBounds(x_mouse, y_mouse, 64, 64);
+						if (hordaActiva()) {
+							player.getGrafico().setBounds(x_mouse, y_mouse, 64, 64);
+						}
 					}
 				});
 				player.activar();
 			}
 		}
+	}
+
+	protected boolean hordaActiva() {
+		boolean activa = false;
+		if (horda != null) {
+			activa = horda.getEnemigos() == 0;
+		}
+		return activa;
 	}
 
 	public void crearJugadorLargo(Jugador j) {
@@ -317,6 +333,11 @@ public class Mapa implements Runnable {
 
 	}
 
+	public Horda nuevaHorda() {
+		horda = CONFIG.crearHorda();
+		return horda;
+	}
+
 	public void agregarObstaculos() {
 		RandomGenerator r = Director.getRandom();
 		int x = r.poll(16);
@@ -367,6 +388,10 @@ public class Mapa implements Runnable {
 	public void run() {
 		escenario.repaint();
 		agregarObstaculos();
+		agregarTokens();
+		agregarTokens();
+		agregarTokens();
+		agregarTokens();
 		agregarTokens();
 
 	}

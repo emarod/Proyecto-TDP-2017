@@ -29,8 +29,9 @@ public class Horda implements Runnable {
 
 	// Constructor.
 	public Horda(Escenario s) {
-		stage = s;
 		mapa = Director.getMapa();
+		stage = mapa.getEscenario();
+
 	}
 
 	// Metodos locales.
@@ -98,6 +99,10 @@ public class Horda implements Runnable {
 			System.out.println("quedan " + enemigos + " enemigos");
 		}
 
+	}
+
+	public int getEnemigos() {
+		return enemigos;
 	}
 
 }

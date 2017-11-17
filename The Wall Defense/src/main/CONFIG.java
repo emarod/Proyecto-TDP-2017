@@ -1,6 +1,7 @@
 package main;
 
 import Controladores.Director;
+import enemigo.Horda;
 import mapa.Celda;
 import terreno.Nieve;
 import terreno.Pasto;
@@ -43,4 +44,7 @@ public class CONFIG {
 
 	}
 
+	public static Horda crearHorda() {
+		return new Horda(Director.getMapa().getEscenario());
+	}
 }
