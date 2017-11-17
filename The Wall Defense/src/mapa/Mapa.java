@@ -6,7 +6,6 @@ import Controladores.BancoRecursos;
 import Controladores.Director;
 import Controladores.RandomGenerator;
 import comprables.Comprable;
-import enemigo.Enemigo;
 import enemigo.Horda;
 import interfaz.Escenario;
 import jugador.Jugador;
@@ -215,15 +214,15 @@ public class Mapa implements Runnable {
 		}
 	}
 
-	public void crearEnemigo(Enemigo e, int x, int y) {
-		System.out.println("Enemigo creado - x:" + x + " y:" + y);
-		celdas[x][y].getObjects()[CONFIG.PROFUNDIDAD_ENEMIGO] = e;
-		JLabel icono = e.getGrafico();
-		icono.setBounds(x * 64, y * 64, 64, 64);
-		escenario.agregar(icono, new Integer(CONFIG.PROFUNDIDAD_ENEMIGO));
-		e.activar();
-
-	}
+	// public void crearEnemigo(Enemigo e, int x, int y) {
+	// System.out.println("Enemigo creado - x:" + x + " y:" + y);
+	// celdas[x][y].getObjects()[CONFIG.PROFUNDIDAD_ENEMIGO] = e;
+	// JLabel icono = e.getGrafico();
+	// icono.setBounds(x * 64, y * 64, 64, 64);
+	// escenario.agregar(icono, new Integer(CONFIG.PROFUNDIDAD_ENEMIGO));
+	// e.activar();
+	//
+	// }
 
 	private void actualizarPuntaje() {
 		Director.getPartida().añadirPuntaje(puntaje);

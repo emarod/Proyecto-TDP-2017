@@ -70,31 +70,31 @@ public class Horda implements Runnable {
 		switch (r) {
 			case 0: {
 				e = new WhiteWalker(c);
-				mapa.crearEnemigo(e, x, y);
 				break;
 			}
 			case 1: {
 				e = new NightKing(c);
-				mapa.crearEnemigo(e, x, y);
 				break;
 			}
 			case 2: {
 				e = new Araña(c);
-				mapa.crearEnemigo(e, x, y);
 				break;
 			}
 			case 3: {
 				e = new KnightWalker(c);
-				mapa.crearEnemigo(e, x, y);
 				break;
 			}
 			case 4: {
 				e = new EsqueletoSuicida(c);
-				mapa.crearEnemigo(e, x, y);
 				break;
+			}
+			default: {
+				e = new WhiteWalker(c);
 			}
 
 		}
+		e.crear();
+		e.activar();
 		enemigos--;
 		if (enemigos == 0) {
 			activeTask.cancel(true);
