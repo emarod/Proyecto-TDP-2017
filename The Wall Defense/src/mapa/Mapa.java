@@ -225,15 +225,6 @@ public class Mapa implements Runnable {
 
 	}
 
-	public void destruirEnemigo(Enemigo e) {
-		System.out.println(puntaje);
-		puntaje = puntaje + e.getPuntaje();
-		System.out.println(puntaje);
-		actualizarPuntaje();
-		escenario.repaint();
-
-	}
-
 	private void actualizarPuntaje() {
 		Director.getPartida().añadirPuntaje(puntaje);
 		escenario.getScore().actualizar();

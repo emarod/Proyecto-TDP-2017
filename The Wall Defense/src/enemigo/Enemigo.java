@@ -53,6 +53,7 @@ public abstract class Enemigo extends Unidad {
 		Director.getMapa().agregarTokens();
 		Director.getMapa().destruirEnemigo(this);
 		Director.getMapa().getHorda().setMatados();
+		Director.getPartida().añadirPuntaje(puntaje);
 	}
 
 	public int getPuntaje() {
