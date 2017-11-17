@@ -132,6 +132,7 @@ public class GUI extends JFrame {
 		panelInferior.setPreferredSize(new Dimension(10, 90));
 		panelInferior.setBackground(Color.BLACK);
 		panelInferior.add(go, BorderLayout.EAST);
+		panelInferior.add(escenario.getAcumulados(), BorderLayout.CENTER);
 		getContentPane().add(panelInferior, BorderLayout.SOUTH);
 
 		// Panel izquierdo

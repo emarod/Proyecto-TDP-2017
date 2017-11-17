@@ -25,6 +25,7 @@ public class Escenario extends JPanel {
 	protected Score score;
 	protected MenuObjetos menuObjetos;
 	protected Nivel level;
+	protected Acumulados acumulados;
 
 	// Constructor.
 	public Escenario() {
@@ -39,6 +40,7 @@ public class Escenario extends JPanel {
 		menuObjetos = new MenuObjetos(this);
 		level = new Nivel(this);
 		dinero = new Dinero(this);
+		acumulados = new Acumulados(this);
 
 		mapa = Director.getMapa();
 		mapa.setEscenario(this);
@@ -94,6 +96,10 @@ public class Escenario extends JPanel {
 
 	public MenuObjetos getMenuObjetos() {
 		return menuObjetos;
+	}
+
+	public Acumulados getAcumulados() {
+		return acumulados;
 	}
 
 }
