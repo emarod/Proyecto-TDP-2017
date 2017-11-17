@@ -191,8 +191,7 @@ public class Mapa implements Runnable {
 			Celda c = celdas[x_cel][y_cel];
 			c.addChild(celdas[x_cel + 1][y_cel]);
 			Jugador player = j.clone(c);
-			celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = player;
-			celdas[x_cel + 1][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = player;
+			player.crearMulticelda();
 			JLabel icono = player.getGrafico();
 			icono.setBounds(x_cel * 64, y_cel * 64, 128, 64);
 
@@ -358,6 +357,9 @@ public class Mapa implements Runnable {
 									celda.addChild(celdas[x + 1][y]);
 									obs = new Water(celda);
 									obs.crearMulticelda();
+									JLabel icono = obs.getGrafico();
+									icono.setBounds(x * 64, y * 64, 128, 128);
+
 								}
 							}
 						}
