@@ -18,6 +18,8 @@ public abstract class GameObject {
 	protected JLabel grafico;
 	protected Celda celda;
 	protected int profundidad;
+	protected int alto;
+	protected int ancho;
 
 	public GameObject() {
 		grafico = new JLabel();
@@ -36,6 +38,19 @@ public abstract class GameObject {
 		celda.getObjects()[profundidad] = this;
 		grafico.setBounds(celda.getPosX() * 64, celda.getPosY() * 64, 64, 64);
 		Director.getMapa().getEscenario().agregar(grafico, profundidad);
+	}
+
+	public void crearMulticelda() {
+		celda.getObjects()[profundidad] = this;
+		Celda ce = celda;
+		while (ce.getChild() != null) {
+			ce.getChild().getObjects()[profundidad] = this;
+			ce = ce.getChild();
+			System.out.println("Creado " + ce);
+		}
+		grafico.setBounds(celda.getPosX() * 64, celda.getPosY() * 64, ancho, alto);
+		Director.getMapa().getEscenario().agregar(grafico, profundidad);
+		System.out.println("Creado" + grafico.getIcon() + " " + grafico.getIcon().getIconWidth());
 	}
 
 	public void destruir() {
