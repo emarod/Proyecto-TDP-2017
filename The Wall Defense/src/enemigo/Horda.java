@@ -33,7 +33,7 @@ public class Horda implements Runnable {
 	public Horda(Escenario s) {
 		mapa = Director.getMapa();
 		stage = mapa.getEscenario();
-		matados = 0;
+		matados = 10;
 
 	}
 
@@ -98,7 +98,7 @@ public class Horda implements Runnable {
 		enemigos--;
 		if (enemigos == 0) {
 			activeTask.cancel(true);
-
+			terminoHorda();
 			System.out.println("fin horda");
 
 		}
@@ -124,11 +124,12 @@ public class Horda implements Runnable {
 		return llego;
 	}
 
-	public void setMatados() {
-		matados++;
+	public int setMatados() {
+		matados = matados - 1;
 		if (matados == 10) {
 			terminoHorda();
 		}
+		return matados;
 	}
 
 }
