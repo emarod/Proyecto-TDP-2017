@@ -24,6 +24,7 @@ public class Trampa extends ComprableTemporal {
 		graficos[2] = new ImageIcon(this.getClass().getResource("/resources/static/trampa/trampa3.png"));
 		setGrafico(2);
 		costo = 5;
+		tiempo = 15;
 	}
 
 	// Metodos locales.
