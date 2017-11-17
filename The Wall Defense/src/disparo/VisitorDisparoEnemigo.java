@@ -20,9 +20,9 @@ import premios.PremioVida;
 public class VisitorDisparoEnemigo extends Visitor {
 
 	// Atributos locales.
-	protected Disparo disparo;
+	protected DisparoEnemigo disparo;
 
-	public VisitorDisparoEnemigo(Disparo dp) {
+	public VisitorDisparoEnemigo(DisparoEnemigo dp) {
 		disparo = dp;
 	}
 
