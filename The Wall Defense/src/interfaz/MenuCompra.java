@@ -43,7 +43,7 @@ public class MenuCompra extends JPanel {
 	protected BtnLobo lobo;
 	protected Director director;
 
-	protected JLabel iconoYgritte, iconoJon, iconoLannister, iconoDragon;
+	protected JLabel iconoYgritte, iconoJon, iconoLannister, iconoDragon, iconoGigante, iconoLobo;
 
 	// Constructor.
 	public MenuCompra(Escenario escenario) {
@@ -206,31 +206,28 @@ public class MenuCompra extends JPanel {
 		iconoDragon = new JLabel(
 				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/dragon.png")));
 		iconoLannister = new JLabel(
-				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/lannister.png")));
+				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/lannister2.png")));
 		iconoJon = new JLabel(
 				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/jonsnow.png")));
-		/*
-		 * iconoJon = new JLabel( new ImageIcon(this.getClass().getResource(
-		 * "/resources/static/botones/personajes/jonsnow.png"))); iconoLannister = new
-		 * JLabel( new ImageIcon(this.getClass().getResource(
-		 * "/resources/static/botones/personajes/lannister.png"))); iconoDragon = new
-		 * JLabel( new ImageIcon(this.getClass().getResource(
-		 * "/resources/static/botones/personajes/dragon.png")));
-		 *
-		 * iconoYgritte.setBounds(0, 50, iconoYgritte.getIcon().getIconWidth(),
-		 * iconoYgritte.getIcon().getIconHeight());
-		 */
+		iconoGigante = new JLabel(
+				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/gigante.png")));
+		iconoLobo = new JLabel(
+				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/lobo.png")));
 
-		iconoYgritte.setBounds(9, -1, iconoYgritte.getIcon().getIconWidth(), iconoYgritte.getIcon().getIconHeight());
-		iconoDragon.setBounds(9, 78, iconoDragon.getIcon().getIconWidth(), iconoDragon.getIcon().getIconHeight());
+		iconoYgritte.setBounds(12, 32, iconoYgritte.getIcon().getIconWidth(), iconoYgritte.getIcon().getIconHeight());
+		iconoDragon.setBounds(80, 32, iconoDragon.getIcon().getIconWidth(), iconoDragon.getIcon().getIconHeight());
 		iconoLannister.setBounds(9, 280, iconoLannister.getIcon().getIconWidth(),
 				iconoLannister.getIcon().getIconHeight());
-		iconoJon.setBounds(-6, 221, iconoJon.getIcon().getIconWidth(), iconoJon.getIcon().getIconHeight());
+		iconoJon.setBounds(90, 168, iconoJon.getIcon().getIconWidth(), iconoJon.getIcon().getIconHeight());
+		iconoGigante.setBounds(12, 300, iconoGigante.getIcon().getIconWidth(), iconoGigante.getIcon().getIconHeight());
+		iconoLobo.setBounds(80, 300, iconoLobo.getIcon().getIconWidth(), iconoLobo.getIcon().getIconHeight());
 
 		this.add(iconoYgritte);
 		this.add(iconoDragon);
+		this.add(iconoGigante);
+		this.add(iconoLobo);
 		this.add(iconoJon);
-		this.add(iconoLannister);
+		this.add(iconoLannister, BorderLayout.WEST);
 
 	}
 
