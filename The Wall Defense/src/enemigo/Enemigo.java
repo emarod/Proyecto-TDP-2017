@@ -21,6 +21,7 @@ public abstract class Enemigo extends Unidad {
 	protected int puntaje;
 	protected Icon[] graficos;
 	protected int graph;
+	protected int matados;
 
 	// Constructor.
 	public Enemigo(Celda c) {
@@ -51,7 +52,7 @@ public abstract class Enemigo extends Unidad {
 		super.destruir();
 		Director.getMapa().agregarTokens();
 		Director.getMapa().destruirEnemigo(this);
-
+		Director.getMapa().getHorda().setMatados();
 	}
 
 	public int getPuntaje() {
@@ -100,6 +101,13 @@ public abstract class Enemigo extends Unidad {
 			intercambiar_celdas(siguiente);
 			activeTask = null;
 			activar();
+		}
+
+		if (detener && xCelda != 0) {
+			// getGrafico().setBounds(xGrafico - 64, yGrafico, 64, 64);
+			activeTask = null;
+			System.out.println("llego enemigo al muro");
+			Director.getMapa().getHorda().setLlego(true);
 		}
 	}
 

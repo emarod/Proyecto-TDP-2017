@@ -427,6 +427,10 @@ public class Mapa implements Runnable {
 		y_mouse = i;
 	}
 
+	public Horda getHorda() {
+		return horda;
+	}
+
 	public void crearComprable(Comprable comprable) {
 		if (celdaLabel != null) {
 			int x_cel = Math.round(celdaLabel.getX() / 64);

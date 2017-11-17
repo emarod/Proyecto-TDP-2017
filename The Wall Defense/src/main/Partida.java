@@ -85,4 +85,8 @@ public class Partida {
 		Director.getMapa().getEscenario().getDinero().actualizar();
 	}
 
+	public void perder() {
+		Director.getMapa().getEscenario().repaint();
+	}
+
 }

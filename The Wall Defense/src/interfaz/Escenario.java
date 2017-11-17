@@ -102,4 +102,8 @@ public class Escenario extends JPanel {
 		return acumulados;
 	}
 
+	public void nextLevel() {
+		layeredPane.removeAll();
+		mapa.inicializarCeldas();
+	}
 }
