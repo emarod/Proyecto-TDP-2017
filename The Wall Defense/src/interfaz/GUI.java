@@ -9,8 +9,13 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+
+import Controladores.Director;
+import main.CONFIG;
+import main.GameObject;
 
 /*
  * Clase GUI.
@@ -103,6 +108,15 @@ public class GUI extends JFrame {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				sell.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/sell.png")));
+				JLabel celdaLabel = Director.getMapa().getCeldaLabel();
+				int x_jugador = Math.round(celdaLabel.getX() / 64);
+				int y_jugador = Math.round(celdaLabel.getY() / 64);
+				GameObject jugador = Director.getCelda(x_jugador, y_jugador).getObjects()[CONFIG.PROFUNDIDAD_JUGADOR];
+				if (jugador != null) {
+					jugador.destruir();
+				}
+				// Director.getPartida().añadirDinero();
+				escenario.getDinero().actualizar();
 
 			}
 

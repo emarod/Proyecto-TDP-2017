@@ -72,6 +72,10 @@ public abstract class Jugador extends Unidad {
 		return V.visitPlayer(this);
 	}
 
+	public void vender() {
+
+	}
+
 	// abstract methods
 	public abstract Jugador clone(Celda c);
 
