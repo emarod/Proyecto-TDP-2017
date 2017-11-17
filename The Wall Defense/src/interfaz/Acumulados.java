@@ -31,16 +31,16 @@ public class Acumulados extends JPanel {
 	protected Escenario escenario;
 	protected BtnBarricada barricada;
 	protected BtnBomba bomba;
-	protected int cantBomba, cantBarricada;
-	protected JLabel bombasLeft, barricadasLeft;
-	protected Icon iconoBomba, iconoBarricada;
+	protected int cantBomba, cantBarricada, cantTrampa;
+	protected JLabel bombasLeft, barricadasLeft, trampaLeft;
+	protected Icon iconoBomba, iconoBarricada, iconoTrampa;
 
 	public Acumulados(Escenario esc) {
 		this.escenario = esc;
 		this.setLayout(new FlowLayout());
 		this.setPreferredSize(new Dimension(10, 50));
 		this.setBackground(Color.BLACK);
-		cantBomba = 0;
+		cantBomba = 20;
 		cantBarricada = 1;
 		armarBotonera();
 	}
