@@ -22,7 +22,7 @@ public class Explosion extends BuffTemporal {
 		tiempo = 100;
 		daño = d;
 		graph = 0;
-		grafico.setIcon(this.graficos[graph]);
+		// grafico.setIcon(this.graficos[graph]);
 		Director.ejecutarUna(this, tiempo, TimeUnit.MILLISECONDS);
 	}
 
@@ -52,6 +52,7 @@ public class Explosion extends BuffTemporal {
 			if (afectar != null) {
 				afectar.accept(visitor);
 			}
+			System.out.println("graph->" + graph);
 			Director.ejecutarUna(this, tiempo, TimeUnit.MILLISECONDS);
 		}
 

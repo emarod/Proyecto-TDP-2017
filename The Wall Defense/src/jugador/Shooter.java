@@ -48,12 +48,13 @@ public abstract class Shooter extends Jugador {
 
 	@Override
 	public void run() {
-		if (disparo == null) {
-			animarDisparo();
-		}
-		else {
-			// activar();
-		}
+		// if (disparo == null) {
+		// animarDisparo();
+		// }
+		// else {
+		// // activar();
+		// }
+		// atacar();
 
 	}
 
