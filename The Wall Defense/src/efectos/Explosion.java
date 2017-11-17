@@ -22,10 +22,7 @@ public class Explosion extends BuffTemporal {
 		tiempo = 100;
 		daño = d;
 		graph = 0;
-		grafico.setIcon(this.graficos[graph]);
-		grafico.setBounds(celda.getPosX() * 64, celda.getPosY() * 64, 64, 64);
-		celda.getObjects()[profundidad] = this;
-		Director.getMapa().getEscenario().agregar(grafico, profundidad);
+		// grafico.setIcon(this.graficos[graph]);
 		Director.ejecutarUna(this, tiempo, TimeUnit.MILLISECONDS);
 	}
 
@@ -55,6 +52,7 @@ public class Explosion extends BuffTemporal {
 			if (afectar != null) {
 				afectar.accept(visitor);
 			}
+			System.out.println("graph->" + graph);
 			Director.ejecutarUna(this, tiempo, TimeUnit.MILLISECONDS);
 		}
 

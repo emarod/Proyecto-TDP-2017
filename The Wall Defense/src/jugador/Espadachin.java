@@ -17,7 +17,7 @@ public class Espadachin extends Jugador {
 	// Constructor.
 	public Espadachin(Celda c) {
 		super(c);
-		vida = 2;
+		vida = 5;
 		velocidad = 40;
 		daño = 3;
 		costo = 25;
@@ -52,11 +52,6 @@ public class Espadachin extends Jugador {
 	@Override
 	public void playSound() {
 
-	}
-
-	@Override
-	public void destruir() {
-		super.destruir();
 	}
 
 	@Override

@@ -43,24 +43,28 @@ public abstract class GameObject {
 	public void crearMulticelda() {
 		celda.getObjects()[profundidad] = this;
 		Celda ce = celda;
-		while (ce.getChild() != null) {
+		int cant = 0;
+		while (cant < celda.size()) {
 			ce.getChild().getObjects()[profundidad] = this;
 			ce = ce.getChild();
-			System.out.println("Creado " + ce);
+			cant++;
 		}
-		grafico.setBounds(celda.getPosX() * 64, celda.getPosY() * 64, ancho, alto);
+		// grafico.setBounds(celda.getPosX() * 64, celda.getPosY() * 64, ancho, alto);
 		Director.getMapa().getEscenario().agregar(grafico, profundidad);
-		System.out.println("Creado" + grafico.getIcon() + " " + grafico.getIcon().getIconWidth());
 	}
 
 	public void destruir() {
 		grafico.setIcon(null);
 		Director.getMapa().getEscenario().remove(grafico);
-		while (celda.getChild() != null) {
+		while (celda.size() > 0) {
 			celda.getChild().getObjects()[profundidad] = null;
 			celda.removeChild();
 		}
 		celda.getObjects()[profundidad] = null;
+		for (int i = 0; i < celda.getObjects().length; i++) {
+			System.out.println(this + " " + i + "-->" + celda.getObjects()[i]);
+		}
+		grafico.getMouseListeners();
 		grafico = null;
 		celda = null;
 	}
