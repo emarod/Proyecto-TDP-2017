@@ -18,9 +18,8 @@ public class BtnTrampa extends BtnComprables {
 		super(e);
 		Celda c = null;
 		comprable = new Trampa(c);
-		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/trampa/trampa3.png")));
-		// info = new
-		// ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/barricadadescripcion.png"));
+		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/trampa.png")));
+		info = new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/trampadescripcion.png"));
 		costo = comprable.getCosto();
 
 	}
@@ -32,12 +31,12 @@ public class BtnTrampa extends BtnComprables {
 
 			@Override
 			public void mouseEntered(MouseEvent evento) {
-
+				setIcon(info);
 			}
 
 			@Override
 			public void mouseExited(MouseEvent evento) {
-
+				setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/trampa.png")));
 			}
 
 		});
