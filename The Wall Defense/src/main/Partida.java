@@ -26,18 +26,24 @@ public class Partida {
 
 	public void añadirDinero(int i) {
 		dinero += i;
+		Director.getMapa().getEscenario().getDinero().actualizar();
+
 	}
 
 	public void quitarDinero(int i) {
 		dinero -= i;
+		Director.getMapa().getEscenario().getDinero().actualizar();
 	}
 
 	public void añadirPuntaje(int i) {
 		puntaje += i;
+		Director.getMapa().getEscenario().getScore().actualizar();
+
 	}
 
 	public void quitarPuntaje(int i) {
 		puntaje -= i;
+		Director.getMapa().getEscenario().getScore().actualizar();
 	}
 
 	public int getDinero() {
@@ -80,7 +86,6 @@ public class Partida {
 	}
 
 	public void cargarDinero(Moneda moneda) {
-		System.out.println("guitaa " + moneda.getValor());
 		dinero += moneda.getValor();
 		Director.getMapa().getEscenario().getDinero().actualizar();
 	}

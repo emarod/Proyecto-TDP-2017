@@ -74,11 +74,6 @@ public class WhiteWalker extends Enemigo {
 	}
 
 	@Override
-	public int getDaño() {
-		return daño;
-	}
-
-	@Override
 	public void guardarInicio() {
 		guardarEstado("WW");
 	}

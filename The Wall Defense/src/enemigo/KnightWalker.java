@@ -37,7 +37,7 @@ public class KnightWalker extends Enemigo {
 	@Override
 	public Enemigo clone(Celda c) {
 		// Profundidad 1 predeterminada. Retorna una unidad de mismo tipo.
-		Enemigo clon = new WhiteWalker(c);
+		Enemigo clon = new KnightWalker(c);
 		return clon;
 	}
 
