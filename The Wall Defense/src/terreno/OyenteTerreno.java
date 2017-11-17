@@ -15,8 +15,6 @@ public class OyenteTerreno extends MouseAdapter {
 	public void mousePressed(MouseEvent e) {
 		JLabel graficoTerreno = (JLabel) e.getSource();
 		JLabel celdaLabel = Director.getMapa().getCeldaLabel();
-		int x_mouse = Director.getMapa().get_x_mouse();
-		int y_mouse = Director.getMapa().get_y_mouse();
 
 		if (celdaLabel == null) {
 			graficoTerreno.setBorder(new LineBorder(new Color(0, 0, 0)));

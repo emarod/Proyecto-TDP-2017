@@ -1,9 +1,5 @@
 package mapa;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
-
 import javax.swing.JLabel;
 
 import Controladores.BancoRecursos;
@@ -135,36 +131,32 @@ public class Mapa implements Runnable {
 				Jugador player = j.clone(c);
 				player.crear();
 				JLabel icono = player.getGrafico();
-				icono.addMouseListener(new MouseAdapter() {
-
-					@Override
-					public void mouseReleased(MouseEvent e) {
-						if (!hordaActiva()) {
-							int x_cel = Math.round(x_mouse / 64);
-							int y_cel = Math.round(y_mouse / 64);
-							GameObject[] objetosCelda = celdas[x_cel][y_cel].getObjects();
-							objetosCelda[CONFIG.PROFUNDIDAD_JUGADOR] = player;
-							System.out.println(player + " que pacho player?");
-							System.out.println(player.getCelda() + "que pacho player celda ?");
-							player.getCelda().getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = null;
-							player.setCelda(celdas[x_cel][y_cel]);
-							System.out.println(objetosCelda[0] + " que pacho ojeto celda 0?");
-							System.out.println(objetosCelda[0].getGrafico() + " que pacho grafico?");
-							int x_terreno = objetosCelda[0].getGrafico().getX();
-							int y_terreno = objetosCelda[0].getGrafico().getY();
-							player.getGrafico().setBounds(x_terreno, y_terreno, 64, 64);
-						}
-					}
-				});
-				icono.addMouseMotionListener(new MouseMotionAdapter() {
-
-					@Override
-					public void mouseDragged(MouseEvent e) {
-						if (!hordaActiva()) {
-							player.getGrafico().setBounds(x_mouse, y_mouse, 64, 64);
-						}
-					}
-				});
+				// icono.addMouseListener(new MouseAdapter() {
+				//
+				// @Override
+				// public void mouseReleased(MouseEvent e) {
+				// if (!hordaActiva()) {
+				// int x_cel = Math.round(x_mouse / 64);
+				// int y_cel = Math.round(y_mouse / 64);
+				// GameObject[] objetosCelda = celdas[x_cel][y_cel].getObjects();
+				// objetosCelda[CONFIG.PROFUNDIDAD_JUGADOR] = player;
+				// player.getCelda().getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = null;
+				// player.setCelda(celdas[x_cel][y_cel]);
+				// int x_terreno = objetosCelda[0].getGrafico().getX();
+				// int y_terreno = objetosCelda[0].getGrafico().getY();
+				// player.getGrafico().setBounds(x_terreno, y_terreno, 64, 64);
+				// }
+				// }
+				// });
+				// icono.addMouseMotionListener(new MouseMotionAdapter() {
+				//
+				// @Override
+				// public void mouseDragged(MouseEvent e) {
+				// if (!hordaActiva()) {
+				// player.getGrafico().setBounds(x_mouse, y_mouse, 64, 64);
+				// }
+				// }
+				// });
 				player.activar();
 			}
 		}
@@ -192,32 +184,32 @@ public class Mapa implements Runnable {
 			icono.setBounds(x_cel * 64, y_cel * 64, 128, 64);
 
 			// Codigo de soltado de mouse.
-			icono.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					int x_celd = Math.round(x_mouse / 64);
-					int y_celd = Math.round(y_mouse / 64);
-					GameObject[] objetosCelda1 = celdas[x_celd][y_celd].getObjects();
-					GameObject[] objetosCelda2 = celdas[x_celd + 1][y_celd].getObjects();
-					objetosCelda1[CONFIG.PROFUNDIDAD_JUGADOR] = player;
-					objetosCelda2[CONFIG.PROFUNDIDAD_JUGADOR] = player;
-					player.getCelda().getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = null;
-					player.getCelda().getChild().getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = null;
-					celdas[x_celd][y_celd].addChild(celdas[x_celd + 1][y_celd]);
-					player.setCelda(celdas[x_celd][y_celd]);
-					int x_terreno = objetosCelda1[0].getGrafico().getX();
-					int y_terreno = objetosCelda1[0].getGrafico().getY();
-					player.getGrafico().setBounds(x_terreno, y_terreno, 128, 64);
-				}
-			});
-
-			// Codigo del arrastrado en mapa.
-			icono.addMouseMotionListener(new MouseMotionAdapter() {
-				@Override
-				public void mouseDragged(MouseEvent e) {
-					player.getGrafico().setBounds(x_mouse, y_mouse, 128, 64);
-				}
-			});
+			// icono.addMouseListener(new MouseAdapter() {
+			// @Override
+			// public void mouseReleased(MouseEvent e) {
+			// int x_celd = Math.round(x_mouse / 64);
+			// int y_celd = Math.round(y_mouse / 64);
+			// GameObject[] objetosCelda1 = celdas[x_celd][y_celd].getObjects();
+			// GameObject[] objetosCelda2 = celdas[x_celd + 1][y_celd].getObjects();
+			// objetosCelda1[CONFIG.PROFUNDIDAD_JUGADOR] = player;
+			// objetosCelda2[CONFIG.PROFUNDIDAD_JUGADOR] = player;
+			// player.getCelda().getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = null;
+			// player.getCelda().getChild().getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = null;
+			// celdas[x_celd][y_celd].addChild(celdas[x_celd + 1][y_celd]);
+			// player.setCelda(celdas[x_celd][y_celd]);
+			// int x_terreno = objetosCelda1[0].getGrafico().getX();
+			// int y_terreno = objetosCelda1[0].getGrafico().getY();
+			// player.getGrafico().setBounds(x_terreno, y_terreno, 128, 64);
+			// }
+			// });
+			//
+			// // Codigo del arrastrado en mapa.
+			// icono.addMouseMotionListener(new MouseMotionAdapter() {
+			// @Override
+			// public void mouseDragged(MouseEvent e) {
+			// player.getGrafico().setBounds(x_mouse, y_mouse, 128, 64);
+			// }
+			// });
 			escenario.agregarLargo(icono, new Integer(CONFIG.PROFUNDIDAD_JUGADOR));
 			player.activar();
 		}
@@ -307,13 +299,6 @@ public class Mapa implements Runnable {
 		}
 	}
 
-	public void agregar(GameObject g) {
-		JLabel objeto = g.getGrafico();
-		objeto.setBounds(g.xy().x * 64, g.xy().y * 64, 64, 64);
-		escenario.agregar(objeto, new Integer(g.getProfundidad()));
-
-	}
-
 	public Horda nuevaHorda() {
 		horda = CONFIG.crearHorda();
 		return horda;
@@ -325,10 +310,9 @@ public class Mapa implements Runnable {
 		int y = r.poll(6);
 
 		if (celdas[x][y].getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] == null) {
-			// int c = r.poll(2);
+			int c = r.poll(2);
 			ObjetoMapa obs;
 			Celda celda;
-			int c = 1;
 			switch (c) {
 				case 0: {
 					celda = celdas[x][y];
@@ -387,10 +371,7 @@ public class Mapa implements Runnable {
 			if (celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_PREMIO] == null) {
 				Celda c = celdas[x_cel][y_cel];
 				Premio objeto = precioso.clone(c);
-				celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_PREMIO] = objeto;
-				JLabel icono = objeto.getGrafico();
-				icono.setBounds(x_cel * 64, y_cel * 64, 64, 64);
-				escenario.agregar(icono, new Integer(CONFIG.PROFUNDIDAD_PRECIOSO));
+				objeto.crear();
 			}
 		}
 	}

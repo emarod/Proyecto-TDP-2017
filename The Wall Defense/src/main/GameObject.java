@@ -62,7 +62,7 @@ public abstract class GameObject {
 		}
 		celda.getObjects()[profundidad] = null;
 		for (int i = 0; i < celda.getObjects().length; i++) {
-			System.out.println(getClass() + " " + i + "-->" + celda.getObjects()[i]);
+			System.out.println(this + " " + i + "-->" + celda.getObjects()[i]);
 		}
 		grafico.getMouseListeners();
 		grafico = null;

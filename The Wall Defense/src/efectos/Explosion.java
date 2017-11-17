@@ -38,8 +38,6 @@ public class Explosion extends BuffTemporal {
 	@Override
 	public void destruir() {
 		super.destruir();
-		graficos = null;
-		System.out.println("explosion eliminada");
 	}
 
 	@Override
