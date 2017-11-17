@@ -1,5 +1,11 @@
 package main;
 
+import Controladores.Director;
+import mapa.Celda;
+import terreno.Nieve;
+import terreno.Pasto;
+import terreno.Terreno;
+
 public class CONFIG {
 	// Profundidad de celdas
 	public static final int PROFUNDIDAD_CELDA = 5;
@@ -17,5 +23,24 @@ public class CONFIG {
 	// Dimensiones Mapa
 	public static final int CANT_CELDAS_Y = 6;
 	public static final int CANT_CELDAS_X = 16;
+
+	public static Terreno crearTerreno(Celda c) {
+		Terreno terreno;
+		switch (Director.getPartida().getNivel()) {
+			case 1:
+				terreno = new Nieve(c);
+				break;
+			case 2:
+				terreno = new Pasto(c);
+				break;
+
+			default:
+				terreno = new Nieve(c);
+				break;
+		}
+		terreno.crear();
+		return terreno;
+
+	}
 
 }
