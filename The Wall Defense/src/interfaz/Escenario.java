@@ -7,7 +7,6 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import Controladores.Director;
-import enemigo.Horda;
 import mapa.Mapa;
 
 /*
@@ -21,7 +20,6 @@ public class Escenario extends JPanel {
 	protected static final long serialVersionUID = 1L;
 	protected JLayeredPane layeredPane;
 	protected Mapa mapa;
-	protected Horda horda;
 	protected MenuCompra menucompra;
 	protected Dinero dinero;
 	protected Score score;
@@ -46,7 +44,6 @@ public class Escenario extends JPanel {
 		mapa.setEscenario(this);
 		mapa.inicializarCeldas();
 
-		horda = new Horda(this);
 	}
 
 	// Metodos locales.
@@ -97,10 +94,6 @@ public class Escenario extends JPanel {
 
 	public MenuObjetos getMenuObjetos() {
 		return menuObjetos;
-	}
-
-	public Horda getHorda() {
-		return horda;
 	}
 
 }
