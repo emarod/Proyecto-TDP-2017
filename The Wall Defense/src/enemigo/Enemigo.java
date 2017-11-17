@@ -90,6 +90,9 @@ public abstract class Enemigo extends Unidad {
 			GameObject objeto = siguiente.getObjects()[i];
 			if (objeto != null && !objeto.accept(getVisitor())) {
 				detener = true;
+				activeTask = null;
+				activar();
+
 			}
 		}
 		if (!detener && xCelda != 0) {
