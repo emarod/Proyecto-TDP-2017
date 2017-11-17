@@ -45,6 +45,6 @@ public class CONFIG {
 	}
 
 	public static Horda crearHorda() {
-		return new Horda(Director.getMapa().getEscenario());
+		return new Horda();
 	}
 }

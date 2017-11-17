@@ -296,7 +296,7 @@ public class Mapa implements Runnable {
 
 	public void agregarObstaculos() {
 		RandomGenerator r = Director.getRandom();
-		int x = r.poll(16);
+		int x = r.poll(14) + 1;
 		int y = r.poll(6);
 
 		if (celdas[x][y].getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] == null) {
@@ -311,7 +311,7 @@ public class Mapa implements Runnable {
 					break;
 				}
 				case 1: {
-					if (x < CONFIG.CANT_CELDAS_X - 2 && x > 0 && y < CONFIG.CANT_CELDAS_Y && y >= 0) {
+					if (x < CONFIG.CANT_CELDAS_X - 2 && x > 0 && y < CONFIG.CANT_CELDAS_Y - 1 && y >= 0) {
 						if (celdas[x + 1][y + 1].getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] == null) {
 							if (celdas[x][y + 1].getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] == null) {
 								if (celdas[x + 1][y].getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] == null) {
