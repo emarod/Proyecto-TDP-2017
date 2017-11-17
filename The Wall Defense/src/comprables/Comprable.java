@@ -19,10 +19,6 @@ public abstract class Comprable extends GameObject {
 		construir(c);
 	}
 
-	public Comprable() {
-		construir();
-	}
-
 	private void construir() {
 		profundidad = CONFIG.PROFUNDIDAD_COMPRABLE;
 	}
