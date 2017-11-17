@@ -49,15 +49,17 @@ public class MenuObjetos extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				if (Director.getPartida().getDinero() >= barricada.costo) {
-					Director.getPartida().quitarDinero(barricada.costo);
-					escenario.getAcumulados().acumularBarricada();
-				}
-				if (Director.getPartida().getDinero() < barricada.costo) {
-					barricada.setEnabled(false);
-				}
-				escenario.getDinero().actualizar();
+				if (barricada.isEnabled()) {
+					if (Director.getPartida().getDinero() >= barricada.costo) {
+						Director.getPartida().quitarDinero(barricada.costo);
+						escenario.getAcumulados().acumularBarricada();
+					}
+					if (Director.getPartida().getDinero() < barricada.costo) {
+						barricada.setEnabled(false);
+					}
+					escenario.getDinero().actualizar();
 
+				}
 			}
 
 		});
@@ -69,15 +71,17 @@ public class MenuObjetos extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				if (Director.getPartida().getDinero() >= trampa.costo) {
-					Director.getPartida().quitarDinero(trampa.costo);
-					escenario.getAcumulados().acumularTrampa();
-				}
-				if (Director.getPartida().getDinero() < barricada.costo) {
-					trampa.setEnabled(false);
-				}
-				escenario.getDinero().actualizar();
+				if (trampa.isEnabled()) {
+					if (Director.getPartida().getDinero() >= trampa.costo) {
+						Director.getPartida().quitarDinero(trampa.costo);
+						escenario.getAcumulados().acumularTrampa();
+					}
+					if (Director.getPartida().getDinero() < barricada.costo) {
+						trampa.setEnabled(false);
+					}
+					escenario.getDinero().actualizar();
 
+				}
 			}
 
 		});
@@ -100,6 +104,12 @@ public class MenuObjetos extends JPanel {
 		if (Director.getPartida().getDinero() < trampa.costo) {
 			trampa.deshabilitar();
 		}
+
+	}
+
+	public void deshabilitarCompra() {
+		trampa.deshabilitar();
+		barricada.deshabilitar();
 
 	}
 
