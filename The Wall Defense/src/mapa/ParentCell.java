@@ -3,6 +3,7 @@ package mapa;
 public class ParentCell extends Celda {
 
 	protected Celda child;
+	protected Celda tail;
 
 	public ParentCell(int posX, int posY) {
 		super(posX, posY);
@@ -11,12 +12,12 @@ public class ParentCell extends Celda {
 
 	@Override
 	public void addChild(Celda c) {
-		if (child != null) {
-			c.addChild(child);
-			child = c;
+		if (hijos == 0) {
+			child = tail = c;
 		}
 		else {
-			child = c;
+			tail.addChild(c);
+			tail = c;
 		}
 		hijos++;
 
@@ -24,9 +25,14 @@ public class ParentCell extends Celda {
 
 	@Override
 	public void removeChild() {
-		if (child != null) {
-			child = child.getChild();
-			hijos--;
+		if (hijos == 0) {
+			throw new UnsupportedOperationException("Operacion no soportada");
+		}
+		child = child.getChild();
+		hijos--;
+		if (hijos == 0) {
+			child = null;
+			tail = null;
 		}
 	}
 
@@ -39,4 +45,5 @@ public class ParentCell extends Celda {
 	public int size() {
 		return hijos;
 	}
+
 }

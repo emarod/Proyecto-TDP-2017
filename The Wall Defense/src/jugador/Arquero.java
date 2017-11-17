@@ -54,11 +54,6 @@ public class Arquero extends Shooter {
 	}
 
 	@Override
-	public void destruir() {
-		super.destruir();
-	}
-
-	@Override
 	public void atacar() {
 		if (disparo == null) {
 			disparo = new DisparoArquero(this);

@@ -23,9 +23,6 @@ public class Explosion extends BuffTemporal {
 		daño = d;
 		graph = 0;
 		grafico.setIcon(this.graficos[graph]);
-		grafico.setBounds(celda.getPosX() * 64, celda.getPosY() * 64, 64, 64);
-		celda.getObjects()[profundidad] = this;
-		Director.getMapa().getEscenario().agregar(grafico, profundidad);
 		Director.ejecutarUna(this, tiempo, TimeUnit.MILLISECONDS);
 	}
 
@@ -41,6 +38,8 @@ public class Explosion extends BuffTemporal {
 	@Override
 	public void destruir() {
 		super.destruir();
+		graficos = null;
+		System.out.println("explosion eliminada");
 	}
 
 	@Override

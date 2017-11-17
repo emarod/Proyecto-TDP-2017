@@ -15,7 +15,6 @@ import mapa.Celda;
 
 public class Bomba extends PremioTemporal {
 
-	protected int costo;
 	protected int daño;
 	protected Icon[] explosion;
 	protected Icon[] OEAR;
@@ -127,13 +126,13 @@ public class Bomba extends PremioTemporal {
 
 	private void nuevaExplosion(Celda c) {
 		if (c != null) {
-			new Explosion(c, explosion, daño);
+			new Explosion(c, explosion, daño).crear();
 		}
 	}
 
 	private void nuevaOnda(Celda c, Icon[] graficos) {
 		if (c != null) {
-			new Explosion(c, graficos, daño);
+			new Explosion(c, graficos, daño).crear();
 		}
 	}
 

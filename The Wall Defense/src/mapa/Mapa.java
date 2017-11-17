@@ -14,8 +14,6 @@ import enemigo.Enemigo;
 import enemigo.Horda;
 import interfaz.Escenario;
 import jugador.Jugador;
-import jugador.OyenteJugador;
-import jugador.OyenteMotionJugador;
 import main.CONFIG;
 import main.GameObject;
 import objetoMapa.ObjetoMapa;
@@ -54,8 +52,6 @@ public class Mapa implements Runnable {
 	protected Horda horda;
 	protected OyenteTerreno oyenteTerreno;
 	protected OyenteToken oyenteToken;
-	protected OyenteJugador oyenteJugador;
-	protected OyenteMotionJugador oyenteMotionJugador;
 
 	// Constructor.
 	public Mapa() {
@@ -63,8 +59,6 @@ public class Mapa implements Runnable {
 		banco = Director.getBancoRecursos();
 		oyenteTerreno = new OyenteTerreno();
 		oyenteToken = new OyenteToken();
-		oyenteJugador = new OyenteJugador();
-		oyenteMotionJugador = new OyenteMotionJugador();
 		horda = null;
 
 	}
@@ -143,8 +137,6 @@ public class Mapa implements Runnable {
 				JLabel icono = player.getGrafico();
 				icono.addMouseListener(new MouseAdapter() {
 
-					protected boolean mover = true;
-
 					@Override
 					public void mouseReleased(MouseEvent e) {
 						if (!hordaActiva()) {
@@ -152,8 +144,12 @@ public class Mapa implements Runnable {
 							int y_cel = Math.round(y_mouse / 64);
 							GameObject[] objetosCelda = celdas[x_cel][y_cel].getObjects();
 							objetosCelda[CONFIG.PROFUNDIDAD_JUGADOR] = player;
+							System.out.println(player + " que pacho player?");
+							System.out.println(player.getCelda() + "que pacho player celda ?");
 							player.getCelda().getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = null;
 							player.setCelda(celdas[x_cel][y_cel]);
+							System.out.println(objetosCelda[0] + " que pacho ojeto celda 0?");
+							System.out.println(objetosCelda[0].getGrafico() + " que pacho grafico?");
 							int x_terreno = objetosCelda[0].getGrafico().getX();
 							int y_terreno = objetosCelda[0].getGrafico().getY();
 							player.getGrafico().setBounds(x_terreno, y_terreno, 64, 64);

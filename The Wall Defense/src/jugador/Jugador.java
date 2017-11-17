@@ -16,7 +16,6 @@ import mapa.Celda;
 public abstract class Jugador extends Unidad {
 
 	// Atributos locales.
-	protected JLabel imagen;
 	protected Icon[] graficos;
 	protected int graph;
 	protected int costo;
@@ -40,6 +39,7 @@ public abstract class Jugador extends Unidad {
 	@Override
 	public void destruir() {
 		super.destruir();
+		V = null;
 	}
 
 	public void setV() {

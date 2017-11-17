@@ -66,11 +66,6 @@ public class Dragon extends Shooter {
 	}
 
 	@Override
-	public void destruir() {
-		super.destruir();
-	}
-
-	@Override
 	public void playSound() {
 		Director.getBancoRecursos().playBolaFuego();
 	}

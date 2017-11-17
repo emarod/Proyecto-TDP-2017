@@ -48,11 +48,6 @@ public class Lobo extends Jugador {
 	}
 
 	@Override
-	public void destruir() {
-		super.destruir();
-	}
-
-	@Override
 	public int getDaño() {
 		return daño;
 	}

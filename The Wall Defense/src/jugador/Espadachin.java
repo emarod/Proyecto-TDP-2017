@@ -55,11 +55,6 @@ public class Espadachin extends Jugador {
 	}
 
 	@Override
-	public void destruir() {
-		super.destruir();
-	}
-
-	@Override
 	public void guardarInicio() {
 		guardarEstado("ESPADACHIN");
 	}
