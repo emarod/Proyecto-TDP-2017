@@ -65,6 +65,7 @@ public class Mapa implements Runnable {
 		oyenteToken = new OyenteToken();
 		oyenteJugador = new OyenteJugador();
 		oyenteMotionJugador = new OyenteMotionJugador();
+		horda = null;
 
 	}
 
@@ -146,7 +147,7 @@ public class Mapa implements Runnable {
 
 					@Override
 					public void mouseReleased(MouseEvent e) {
-						if (hordaActiva()) {
+						if (!hordaActiva()) {
 							int x_cel = Math.round(x_mouse / 64);
 							int y_cel = Math.round(y_mouse / 64);
 							GameObject[] objetosCelda = celdas[x_cel][y_cel].getObjects();
@@ -163,7 +164,7 @@ public class Mapa implements Runnable {
 
 					@Override
 					public void mouseDragged(MouseEvent e) {
-						if (hordaActiva()) {
+						if (!hordaActiva()) {
 							player.getGrafico().setBounds(x_mouse, y_mouse, 64, 64);
 						}
 					}
@@ -176,7 +177,8 @@ public class Mapa implements Runnable {
 	protected boolean hordaActiva() {
 		boolean activa = false;
 		if (horda != null) {
-			activa = horda.getEnemigos() == 0;
+			System.out.println("enemigos acutales" + horda.getEnemigos());
+			activa = horda.getEnemigos() > 0;
 		}
 		return activa;
 	}
