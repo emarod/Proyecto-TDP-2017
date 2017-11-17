@@ -15,8 +15,6 @@ import mapa.Celda;
 
 public class Barricada extends ComprableVida {
 
-	protected int costo;
-
 	// Constructor.
 	public Barricada(Celda c) {
 		super(c);
