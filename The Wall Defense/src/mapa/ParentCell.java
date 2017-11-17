@@ -6,15 +6,13 @@ public class ParentCell extends Celda {
 
 	public ParentCell(int posX, int posY) {
 		super(posX, posY);
+		child = null;
 	}
 
 	@Override
 	public void addChild(Celda c) {
 		if (child != null) {
 			c.addChild(child);
-			if (hijos == 1) {
-				child = null;
-			}
 			child = c;
 		}
 		else {
