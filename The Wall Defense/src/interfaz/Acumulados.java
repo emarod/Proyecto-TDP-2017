@@ -15,6 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import interfaz.botones.BtnBarricada;
+import interfaz.botones.BtnBomba;
+
 /*
 * Clase ComprablesAcumulados.
 * Clase encargada de desplegar el menu de los objetos comprables acumulados.
@@ -26,8 +29,8 @@ public class Acumulados extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected Escenario escenario;
-	protected JButton barricada;
-	protected JButton bomba;
+	protected BtnBarricada barricada;
+	protected BtnBomba bomba;
 	protected int cantBomba, cantBarricada;
 	protected JLabel bombasLeft, barricadasLeft;
 	protected Icon iconoBomba, iconoBarricada;
@@ -37,14 +40,16 @@ public class Acumulados extends JPanel {
 		this.setLayout(new FlowLayout());
 		this.setPreferredSize(new Dimension(10, 50));
 		this.setBackground(Color.BLACK);
+		cantBomba = 0;
+		cantBarricada = 1;
 		armarBotonera();
 	}
 
 	// Metodos locales.
 	private void armarBotonera() {
 
-		barricada = new JButton();
-		bomba = new JButton();
+		barricada = new BtnBarricada(escenario);
+		bomba = new BtnBomba(escenario);
 
 		barricada.setBounds(150, 0, 64, 64);
 
@@ -52,8 +57,8 @@ public class Acumulados extends JPanel {
 		iconoBarricada = new ImageIcon(
 				this.getClass().getResource("/resources/static/botones/objetos/barricadaacumulada.png"));
 
-		bombasLeft = new JLabel("0");
-		barricadasLeft = new JLabel("0");
+		bombasLeft = new JLabel("" + cantBomba);
+		barricadasLeft = new JLabel("" + cantBarricada);
 
 		configurarLabel(barricadasLeft);
 		configurarLabel(bombasLeft);
@@ -65,6 +70,12 @@ public class Acumulados extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
+				if (cantBarricada > 0) {
+					barricada.crearObjeto();
+					cantBarricada--;
+					barricadasLeft.setText("" + cantBarricada);
+				}
+
 			}
 
 		});
@@ -73,7 +84,11 @@ public class Acumulados extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-
+				if (cantBomba > 0) {
+					bomba.crearObjeto();
+					cantBomba--;
+					bombasLeft.setText("" + cantBomba);
+				}
 			}
 
 		});

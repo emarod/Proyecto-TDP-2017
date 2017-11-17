@@ -1,10 +1,5 @@
 package interfaz.botones;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.ImageIcon;
-
 import interfaz.Escenario;
 import premios.Bomba;
 import premios.Premio;
@@ -23,8 +18,6 @@ public class BtnBomba extends BtnPremio {
 	public BtnBomba(Escenario e) {
 		super(e);
 		precioso = new Bomba();
-		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/bomba.png")));
-		info = new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/bombadescripcion.png"));
 		oyente();
 
 	}
@@ -54,21 +47,8 @@ public class BtnBomba extends BtnPremio {
 
 	@Override
 	public void oyente() {
-		this.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseEntered(MouseEvent evento) {
-				setIcon(info);
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent evento) {
-				setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/bomba.png")));
-
-			}
-
-		});
+		// TODO Auto-generated method stub
 
 	}
+
 }

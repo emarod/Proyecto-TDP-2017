@@ -41,6 +41,7 @@ public class MenuObjetos extends JPanel {
 	private void armarBotonera() {
 
 		barricada = new BtnBarricada(this.escenario);
+		barricada.oyente();
 
 		barricada.addMouseListener(new MouseAdapter() {
 

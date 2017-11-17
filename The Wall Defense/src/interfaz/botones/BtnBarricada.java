@@ -26,7 +26,6 @@ public class BtnBarricada extends BtnComprables {
 		comprable = new Barricada(c);
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/barricada.png")));
 		info = new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/barricadadescripcion.png"));
-		oyente();
 		costo = comprable.getCosto();
 
 	}
