@@ -33,6 +33,7 @@ public class GUI extends JFrame {
 	protected JPanel grafica;
 	protected JButton go;
 	protected ImageIcon imagen;
+	protected JButton sell;
 
 	// Constructor.
 	public GUI() {
@@ -47,7 +48,7 @@ public class GUI extends JFrame {
 		escenario = new Escenario();
 		getContentPane().add(escenario, BorderLayout.CENTER);
 
-		// Creo boton de inicio de horda.
+		// Creo boton de inicio de horda y mapa.
 		go = new JButton();
 		go.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/go.png")));
 		go.setSize(go.getIcon().getIconWidth(), go.getIcon().getIconHeight());
@@ -64,12 +65,49 @@ public class GUI extends JFrame {
 				escenario.getMapa().nuevaHorda().ejecutar();
 				escenario.getMapa().ejecutar();
 				go.setVisible(false);
+				panelInferior.add(sell, BorderLayout.EAST);
+				sell.setVisible(true);
 				escenario.getMenu().deshabilitarCompra();
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
 				go.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/gopressed.png")));
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent evento) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent evento) {
+
+			}
+
+		});
+
+		// Crea boton de vender personajes
+		sell = new JButton();
+		sell.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/sell.png")));
+		sell.setSize(sell.getIcon().getIconWidth(), sell.getIcon().getIconHeight());
+		sell.setBackground(Color.BLACK);
+		sell.setBorderPainted(false);
+		sell.setBorder(new LineBorder(Color.BLACK));
+		sell.setFocusPainted(false);
+		sell.setContentAreaFilled(false);
+		sell.setVisible(false);
+
+		sell.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				sell.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/sell.png")));
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				sell.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/sellpressed.png")));
 			}
 
 			@Override
