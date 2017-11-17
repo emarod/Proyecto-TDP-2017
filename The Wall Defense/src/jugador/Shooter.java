@@ -46,16 +46,4 @@ public abstract class Shooter extends Jugador {
 		disparo = null;
 	}
 
-	@Override
-	public void run() {
-		// if (disparo == null) {
-		// animarDisparo();
-		// }
-		// else {
-		// // activar();
-		// }
-		// atacar();
-
-	}
-
 }
