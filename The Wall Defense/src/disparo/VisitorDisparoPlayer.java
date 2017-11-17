@@ -8,7 +8,6 @@ import jugador.Jugador;
 import main.Visitor;
 import objetoMapa.ObjetoMapaTemporal;
 import objetoMapa.ObjetoMapaVida;
-import premios.PremioTemporal;
 import premios.PremioVida;
 
 /*
@@ -65,11 +64,6 @@ public class VisitorDisparoPlayer extends Visitor {
 		// El disparo mas fuerte sobrevive
 		disparo.colision(d);
 		return true;
-	}
-
-	@Override
-	public boolean visitPremio(PremioTemporal op) {
-		return false;
 	}
 
 	@Override

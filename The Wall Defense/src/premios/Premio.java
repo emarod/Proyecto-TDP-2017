@@ -4,6 +4,7 @@ import javax.swing.Icon;
 
 import main.CONFIG;
 import main.GameObject;
+import main.Visitor;
 import mapa.Celda;
 
 public abstract class Premio extends GameObject {
@@ -34,6 +35,11 @@ public abstract class Premio extends GameObject {
 	@Override
 	public void setCelda(Celda c) {
 		construir(c);
+	}
+
+	@Override
+	public boolean accept(Visitor V) {
+		return true;
 	}
 
 	public abstract Premio clone(Celda c);

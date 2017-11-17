@@ -5,7 +5,6 @@ import javax.swing.ImageIcon;
 
 import Controladores.Director;
 import efectos.Explosion;
-import main.Visitor;
 import mapa.Celda;
 
 /*
@@ -140,11 +139,6 @@ public class Bomba extends PremioTemporal {
 
 	public void setGrafico(int i) {
 		grafico.setIcon(graficos[i]);
-	}
-
-	@Override
-	public boolean accept(Visitor V) {
-		return V.visitPremio(this);
 	}
 
 	@Override
