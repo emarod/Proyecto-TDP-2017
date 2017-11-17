@@ -68,6 +68,7 @@ public class GUI extends JFrame {
 				panelInferior.add(sell, BorderLayout.EAST);
 				sell.setVisible(true);
 				escenario.getMenu().deshabilitarCompra();
+				escenario.getMenuObjetos().deshabilitarCompra();
 			}
 
 			@Override

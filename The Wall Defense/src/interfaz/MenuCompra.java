@@ -1,6 +1,5 @@
 package interfaz;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
@@ -43,8 +42,6 @@ public class MenuCompra extends JPanel {
 	protected BtnLobo lobo;
 	protected Director director;
 
-	protected JLabel iconoYgritte, iconoJon, iconoLannister, iconoDragon, iconoGigante, iconoLobo;
-
 	// Constructor.
 	public MenuCompra(Escenario escenario) {
 		this.escenario = escenario;
@@ -65,15 +62,17 @@ public class MenuCompra extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				if (Director.getPartida().getDinero() >= lobo.costo) {
-					Director.getPartida().quitarDinero(lobo.costo);
-					lobo.crearPersonaje();
-				}
-				if (Director.getPartida().getDinero() < lobo.costo) {
-					lobo.setEnabled(false);
-				}
-				escenario.getDinero().actualizar();
+				if (lobo.isEnabled()) {
+					if (Director.getPartida().getDinero() >= lobo.costo) {
+						Director.getPartida().quitarDinero(lobo.costo);
+						lobo.crearPersonaje();
+					}
+					if (Director.getPartida().getDinero() < lobo.costo) {
+						lobo.setEnabled(false);
+					}
+					escenario.getDinero().actualizar();
 
+				}
 			}
 
 		});
@@ -84,15 +83,17 @@ public class MenuCompra extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				if (Director.getPartida().getDinero() >= dragon.costo) {
-					Director.getPartida().quitarDinero(dragon.costo);
-					dragon.crearPersonaje();
-				}
-				if (Director.getPartida().getDinero() < dragon.costo) {
-					dragon.setEnabled(false);
-				}
-				escenario.getDinero().actualizar();
+				if (dragon.isEnabled()) {
+					if (Director.getPartida().getDinero() >= dragon.costo) {
+						Director.getPartida().quitarDinero(dragon.costo);
+						dragon.crearPersonaje();
+					}
+					if (Director.getPartida().getDinero() < dragon.costo) {
+						dragon.setEnabled(false);
+					}
+					escenario.getDinero().actualizar();
 
+				}
 			}
 
 		});
@@ -102,17 +103,18 @@ public class MenuCompra extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				if (Director.getPartida().getDinero() >= ygritte.costo) {
-					Director.getPartida().quitarDinero(ygritte.costo);
-					ygritte.crearPersonaje();
-				}
-				if (Director.getPartida().getDinero() < ygritte.costo) {
-					ygritte.setEnabled(false);
-				}
-				escenario.getDinero().actualizar();
+				if (ygritte.isEnabled()) {
+					if (Director.getPartida().getDinero() >= ygritte.costo) {
+						Director.getPartida().quitarDinero(ygritte.costo);
+						ygritte.crearPersonaje();
+					}
+					if (Director.getPartida().getDinero() < ygritte.costo) {
+						ygritte.setEnabled(false);
+					}
+					escenario.getDinero().actualizar();
 
+				}
 			}
-
 		});
 
 		lannister = new BtnCaballero(this.escenario);
@@ -120,15 +122,17 @@ public class MenuCompra extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				if (Director.getPartida().getDinero() >= lannister.costo) {
-					Director.getPartida().quitarDinero(lannister.costo);
-					lannister.crearPersonaje();
-				}
-				if (Director.getPartida().getDinero() < lannister.costo) {
-					lannister.setEnabled(false);
-				}
-				escenario.getDinero().actualizar();
+				if (lannister.isEnabled()) {
+					if (Director.getPartida().getDinero() >= lannister.costo) {
+						Director.getPartida().quitarDinero(lannister.costo);
+						lannister.crearPersonaje();
+					}
+					if (Director.getPartida().getDinero() < lannister.costo) {
+						lannister.setEnabled(false);
+					}
+					escenario.getDinero().actualizar();
 
+				}
 			}
 
 		});
@@ -138,14 +142,16 @@ public class MenuCompra extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				if (Director.getPartida().getDinero() >= JonSnow.costo) {
-					Director.getPartida().quitarDinero(JonSnow.costo);
-					JonSnow.crearPersonaje();
+				if (JonSnow.isEnabled()) {
+					if (Director.getPartida().getDinero() >= JonSnow.costo) {
+						Director.getPartida().quitarDinero(JonSnow.costo);
+						JonSnow.crearPersonaje();
+					}
+					if (Director.getPartida().getDinero() < JonSnow.costo) {
+						JonSnow.setEnabled(false);
+					}
+					escenario.getDinero().actualizar();
 				}
-				if (Director.getPartida().getDinero() < JonSnow.costo) {
-					JonSnow.setEnabled(false);
-				}
-				escenario.getDinero().actualizar();
 			}
 		});
 
@@ -192,42 +198,12 @@ public class MenuCompra extends JPanel {
 
 	public void deshabilitarCompra() {
 
-		this.setLayout(new BorderLayout());
-
-		ygritte.setVisible(false);
-		dragon.setVisible(false);
-		lannister.setVisible(false);
-		JonSnow.setVisible(false);
-		lobo.setVisible(false);
-		gigante.setVisible(false);
-
-		iconoYgritte = new JLabel(
-				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/ygritte2.png")));
-		iconoDragon = new JLabel(
-				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/dragon.png")));
-		iconoLannister = new JLabel(
-				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/lannister2.png")));
-		iconoJon = new JLabel(
-				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/jonsnow.png")));
-		iconoGigante = new JLabel(
-				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/gigante.png")));
-		iconoLobo = new JLabel(
-				new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/lobo.png")));
-
-		iconoYgritte.setBounds(12, 32, iconoYgritte.getIcon().getIconWidth(), iconoYgritte.getIcon().getIconHeight());
-		iconoDragon.setBounds(80, 32, iconoDragon.getIcon().getIconWidth(), iconoDragon.getIcon().getIconHeight());
-		iconoLannister.setBounds(9, 280, iconoLannister.getIcon().getIconWidth(),
-				iconoLannister.getIcon().getIconHeight());
-		iconoJon.setBounds(90, 168, iconoJon.getIcon().getIconWidth(), iconoJon.getIcon().getIconHeight());
-		iconoGigante.setBounds(12, 300, iconoGigante.getIcon().getIconWidth(), iconoGigante.getIcon().getIconHeight());
-		iconoLobo.setBounds(80, 300, iconoLobo.getIcon().getIconWidth(), iconoLobo.getIcon().getIconHeight());
-
-		this.add(iconoYgritte);
-		this.add(iconoDragon);
-		this.add(iconoGigante);
-		this.add(iconoLobo);
-		this.add(iconoJon);
-		this.add(iconoLannister, BorderLayout.WEST);
+		ygritte.deshabilitar();
+		dragon.deshabilitar();
+		JonSnow.deshabilitar();
+		gigante.deshabilitar();
+		lobo.deshabilitar();
+		lannister.deshabilitar();
 
 	}
 
