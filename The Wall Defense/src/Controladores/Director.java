@@ -107,6 +107,10 @@ public class Director {
 		taskPool.schedule(powerUp, delay, TimeUnit.SECONDS);
 	}
 
+	public static void ejecutarUna(BuffTemporal buff, int delay) {
+		taskPool.schedule(buff, delay, TimeUnit.SECONDS);
+	}
+
 	public static ScheduledFuture<?> ejecutarUna(Water water, int delay) {
 		return taskPool.schedule(water, delay, TimeUnit.SECONDS);
 

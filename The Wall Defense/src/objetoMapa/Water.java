@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Controladores.Director;
+import efectos.Relentizar;
 import enemigo.Enemigo;
 import main.Visitor;
 import mapa.Celda;
@@ -49,7 +50,8 @@ public class Water extends ObjetoMapaTemporal implements Runnable {
 
 	@Override
 	public void aplicarEfecto(Enemigo e) {
-		e.setVelocidad(penalizacion);
+		Relentizar r = new Relentizar(celda);
+		r.aplicar(e);
 	}
 
 	@Override

@@ -104,7 +104,7 @@ public abstract class Enemigo extends Unidad {
 			activar();
 		}
 
-		if (detener && xCelda != 0) {
+		if (detener && xCelda == 1) {
 			// getGrafico().setBounds(xGrafico - 64, yGrafico, 64, 64);
 			activeTask = null;
 			System.out.println("llego enemigo al muro");
