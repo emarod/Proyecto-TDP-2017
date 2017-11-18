@@ -21,8 +21,8 @@ public class Dragon extends Shooter {
 	public Dragon(Celda c) {
 		super(c);
 		velocidad = 20;
-		vida = 5;
-		daño = 3;
+		vida = 20;
+		daño = 10;
 		costo = 75;
 		velocidad_disparo = 75;
 		graficos = new Icon[8];

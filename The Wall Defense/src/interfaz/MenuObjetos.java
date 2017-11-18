@@ -113,4 +113,9 @@ public class MenuObjetos extends JPanel {
 
 	}
 
+	public void habilitarCompra() {
+		trampa.habilitar();
+		barricada.habilitar();
+	}
+
 }

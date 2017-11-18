@@ -17,7 +17,7 @@ public class Caballero extends Jugador {
 	// Constructor.
 	public Caballero(Celda c) {
 		super(c);
-		vida = 10;
+		vida = 15;
 		velocidad = 50;
 		daño = 4;
 		costo = 30;

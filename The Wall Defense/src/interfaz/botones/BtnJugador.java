@@ -39,6 +39,11 @@ public abstract class BtnJugador extends JButton {
 		return player;
 	}
 
+	public void habilitar() {
+		this.setEnabled(true);
+
+	}
+
 	// Metodos abstractos.
 	public abstract void create();
 
