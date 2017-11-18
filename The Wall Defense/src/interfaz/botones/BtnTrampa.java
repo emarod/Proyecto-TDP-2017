@@ -60,4 +60,5 @@ public class BtnTrampa extends BtnComprables {
 	public void deshabilitar() {
 		this.setEnabled(false);
 	}
+
 }

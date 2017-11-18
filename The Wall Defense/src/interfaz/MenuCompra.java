@@ -207,4 +207,15 @@ public class MenuCompra extends JPanel {
 
 	}
 
+	public void habilitarCompra() {
+
+		ygritte.habilitar();
+		dragon.habilitar();
+		JonSnow.habilitar();
+		gigante.habilitar();
+		lobo.habilitar();
+		lannister.habilitar();
+
+	}
+
 }

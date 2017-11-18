@@ -33,6 +33,10 @@ public abstract class BtnComprables extends JButton {
 
 	}
 
+	public void habilitar() {
+		this.setEnabled(true);
+	}
+
 	// Metodos abstractos.
 	public abstract void create();
 

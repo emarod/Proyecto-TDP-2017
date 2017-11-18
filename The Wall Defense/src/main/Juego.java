@@ -54,6 +54,7 @@ public class Juego {
 
 		// Carga de juego
 		director = Director.newDirector();
+		director.setGui(this);
 
 		// Creo menu de inicio
 		opciones = new MenuInicio(this);
@@ -71,7 +72,7 @@ public class Juego {
 		menu.dispose();
 		frame = new GUI();
 		frame.setVisible(true);
-		director.setGui(frame);
+
 	}
 
 }
