@@ -344,10 +344,6 @@ public class Mapa implements Runnable {
 		escenario.repaint();
 		agregarObstaculos();
 		agregarTokens();
-		agregarTokens();
-		agregarTokens();
-		agregarTokens();
-		agregarTokens();
 
 	}
 
