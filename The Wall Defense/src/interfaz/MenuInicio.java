@@ -261,7 +261,6 @@ public class MenuInicio extends JPanel {
 						opcion1.setIcon(new ImageIcon(
 								this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
 						onefects = false;
-						System.out.println("1-Efectos habilitados: " + onefects);
 						efectsOff.setVisible(true);
 						efectsOn.setVisible(false);
 					}
@@ -270,7 +269,6 @@ public class MenuInicio extends JPanel {
 						opcion1.setIcon(new ImageIcon(
 								this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
 						onefects = true;
-						System.out.println("1-Efectos habilitados: " + onefects);
 
 						efectsOff.setVisible(false);
 						efectsOn.setVisible(true);
@@ -297,7 +295,6 @@ public class MenuInicio extends JPanel {
 						opcion2.setIcon(new ImageIcon(
 								this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
 						onmusic = false;
-						System.out.println("2-Musica habilitada: " + onmusic);
 						musicOff.setVisible(true);
 						musicOn.setVisible(false);
 					}
@@ -307,7 +304,6 @@ public class MenuInicio extends JPanel {
 							opcion2.setIcon(new ImageIcon(
 									this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
 							onmusic = true;
-							System.out.println("2-Musica habilitada: " + onmusic);
 
 							musicOff.setVisible(false);
 							musicOn.setVisible(true);
@@ -338,8 +334,6 @@ public class MenuInicio extends JPanel {
 					buttons[0].setVisible(true);
 					buttons[1].setVisible(true);
 					buttons[2].setVisible(true);
-					System.out.println("3-Musica habilitada: " + onmusic);
-					System.out.println("3-Efector habilitados: " + onefects);
 				}
 
 			});

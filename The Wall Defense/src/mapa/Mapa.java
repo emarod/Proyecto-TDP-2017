@@ -10,7 +10,6 @@ import enemigo.Horda;
 import interfaz.Escenario;
 import jugador.Jugador;
 import main.CONFIG;
-import main.GameObject;
 import objetoMapa.ObjetoMapa;
 import objetoMapa.Rock;
 import objetoMapa.Water;
@@ -85,28 +84,6 @@ public class Mapa implements Runnable {
 		Director.ejecutar(this);
 	}
 
-	public GameObject[] ver() {
-		GameObject[] objetos = null;
-		if (celdaLabel != null) {
-			int x_cel = Math.round(celdaLabel.getX() / 64);
-			int y_cel = Math.round(celdaLabel.getY() / 64);
-			objetos = celdas[x_cel][y_cel].getObjects();
-			for (int i = 0; i < CONFIG.PROFUNDIDAD_CELDA; i++) {
-				if (objetos[i] != null) {
-					System.out.println(i + "." + objetos[i].getClass());
-				}
-				else {
-					System.out.println(i + "." + null);
-				}
-
-			}
-			System.out.println("end ver()");
-
-		}
-		return objetos;
-
-	}
-
 	public Celda getCelda(int x, int y) {
 		Celda celda = null;
 		if (x < CONFIG.CANT_CELDAS_X && x > 0) {
@@ -130,32 +107,6 @@ public class Mapa implements Runnable {
 				Jugador player = j.clone(c);
 				player.crear();
 				JLabel icono = player.getGrafico();
-				// icono.addMouseListener(new MouseAdapter() {
-				//
-				// @Override
-				// public void mouseReleased(MouseEvent e) {
-				// if (!hordaActiva()) {
-				// int x_cel = Math.round(x_mouse / 64);
-				// int y_cel = Math.round(y_mouse / 64);
-				// GameObject[] objetosCelda = celdas[x_cel][y_cel].getObjects();
-				// objetosCelda[CONFIG.PROFUNDIDAD_JUGADOR] = player;
-				// player.getCelda().getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = null;
-				// player.setCelda(celdas[x_cel][y_cel]);
-				// int x_terreno = objetosCelda[0].getGrafico().getX();
-				// int y_terreno = objetosCelda[0].getGrafico().getY();
-				// player.getGrafico().setBounds(x_terreno, y_terreno, 64, 64);
-				// }
-				// }
-				// });
-				// icono.addMouseMotionListener(new MouseMotionAdapter() {
-				//
-				// @Override
-				// public void mouseDragged(MouseEvent e) {
-				// if (!hordaActiva()) {
-				// player.getGrafico().setBounds(x_mouse, y_mouse, 64, 64);
-				// }
-				// }
-				// });
 				player.activar();
 			}
 		}
@@ -164,7 +115,6 @@ public class Mapa implements Runnable {
 	protected boolean hordaActiva() {
 		boolean activa = false;
 		if (horda != null) {
-			System.out.println("enemigos acutales" + horda.getEnemigos());
 			activa = horda.getEnemigos() > 0;
 		}
 		return activa;
@@ -181,48 +131,10 @@ public class Mapa implements Runnable {
 			player.crearMulticelda();
 			JLabel icono = player.getGrafico();
 			icono.setBounds(x_cel * 64, y_cel * 64, 128, 64);
-
-			// Codigo de soltado de mouse.
-			// icono.addMouseListener(new MouseAdapter() {
-			// @Override
-			// public void mouseReleased(MouseEvent e) {
-			// int x_celd = Math.round(x_mouse / 64);
-			// int y_celd = Math.round(y_mouse / 64);
-			// GameObject[] objetosCelda1 = celdas[x_celd][y_celd].getObjects();
-			// GameObject[] objetosCelda2 = celdas[x_celd + 1][y_celd].getObjects();
-			// objetosCelda1[CONFIG.PROFUNDIDAD_JUGADOR] = player;
-			// objetosCelda2[CONFIG.PROFUNDIDAD_JUGADOR] = player;
-			// player.getCelda().getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = null;
-			// player.getCelda().getChild().getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] = null;
-			// celdas[x_celd][y_celd].addChild(celdas[x_celd + 1][y_celd]);
-			// player.setCelda(celdas[x_celd][y_celd]);
-			// int x_terreno = objetosCelda1[0].getGrafico().getX();
-			// int y_terreno = objetosCelda1[0].getGrafico().getY();
-			// player.getGrafico().setBounds(x_terreno, y_terreno, 128, 64);
-			// }
-			// });
-			//
-			// // Codigo del arrastrado en mapa.
-			// icono.addMouseMotionListener(new MouseMotionAdapter() {
-			// @Override
-			// public void mouseDragged(MouseEvent e) {
-			// player.getGrafico().setBounds(x_mouse, y_mouse, 128, 64);
-			// }
-			// });
 			escenario.agregarLargo(icono, new Integer(CONFIG.PROFUNDIDAD_JUGADOR));
 			player.activar();
 		}
 	}
-
-	// public void crearEnemigo(Enemigo e, int x, int y) {
-	// System.out.println("Enemigo creado - x:" + x + " y:" + y);
-	// celdas[x][y].getObjects()[CONFIG.PROFUNDIDAD_ENEMIGO] = e;
-	// JLabel icono = e.getGrafico();
-	// icono.setBounds(x * 64, y * 64, 64, 64);
-	// escenario.agregar(icono, new Integer(CONFIG.PROFUNDIDAD_ENEMIGO));
-	// e.activar();
-	//
-	// }
 
 	private void actualizarPuntaje() {
 		Director.getPartida().añadirPuntaje(puntaje);
@@ -312,8 +224,8 @@ public class Mapa implements Runnable {
 						if (celdas[x + 1][y + 1].getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] == null) {
 							if (celdas[x][y + 1].getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] == null) {
 								if (celdas[x + 1][y].getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] == null) {
-									System.out.println("Celda habilitada");
-									// Cada hijo se agrega siguiente a la celda principal
+									// Cada hijo se agrega siguiente a la celda
+									// principal
 									// Esquina izquierda superior
 									celda = celdas[x][y];
 									// Esquina derecha inferior

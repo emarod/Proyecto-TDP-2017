@@ -53,8 +53,6 @@ public class Acumulados extends JPanel {
 		bomba = new BtnBomba(escenario);
 		trampa = new BtnTrampa(escenario);
 
-		// barricada.setBounds(150, 0, 64, 64);
-
 		iconoBomba = new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/bombaacumulada.png"));
 		iconoBarricada = new ImageIcon(
 				this.getClass().getResource("/resources/static/botones/objetos/barricadaacumulada.png"));

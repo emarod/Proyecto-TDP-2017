@@ -51,7 +51,6 @@ public abstract class Enemigo extends Unidad {
 	public void destruir() {
 		super.destruir();
 		Director.getMapa().agregarTokens();
-		System.out.println("" + Director.getMapa().getHorda().setMatados());
 		Director.getPartida().añadirPuntaje(puntaje);
 
 	}
@@ -107,7 +106,6 @@ public abstract class Enemigo extends Unidad {
 		if (detener && xCelda == 1) {
 			// getGrafico().setBounds(xGrafico - 64, yGrafico, 64, 64);
 			activeTask = null;
-			System.out.println("llego enemigo al muro");
 			Director.getMapa().getHorda().setLlego(true);
 		}
 	}

@@ -28,7 +28,6 @@ public class Water extends ObjetoMapaTemporal implements Runnable {
 		penalizacion = 100;
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/lago/lago.gif")));
 		Director.ejecutarUna(this, 7);
-		System.out.println("Water finalizada");
 	}
 
 	// Metodos locales.

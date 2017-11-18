@@ -36,7 +36,6 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public boolean visitPlayer(Jugador j) {
-		System.out.println("Enemigo visita jugador");
 		j.recibirDaño(enemigo.getDaño());
 		return false;
 	}
@@ -82,9 +81,6 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public boolean visitEfect(Efecto efecto) {
-		System.out.println("Inicio visitor enemigo");
-		// efecto.aplicar(enemigo);
-		// System.out.println("Fin visitor enemigo");
 		return true;
 	}
 }

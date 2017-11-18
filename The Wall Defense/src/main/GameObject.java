@@ -49,7 +49,6 @@ public abstract class GameObject {
 			ce = ce.getChild();
 			cant++;
 		}
-		// grafico.setBounds(celda.getPosX() * 64, celda.getPosY() * 64, ancho, alto);
 		Director.getMapa().getEscenario().agregar(grafico, profundidad);
 	}
 

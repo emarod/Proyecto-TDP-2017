@@ -64,7 +64,6 @@ public class Bomba extends PremioTemporal {
 		// ONDA abajo
 		for (int i = 0; i < OEAB.length; i++) {
 			if (i < 7) {
-				System.out.print("10" + i);
 				OEAB[i] = new ImageIcon(this.getClass().getResource("/resources/static/bomba/10" + i + ".png"));
 			}
 		}

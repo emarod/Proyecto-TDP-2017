@@ -48,7 +48,6 @@ public class Araña extends Enemigo {
 	@Override
 	public void destruir() {
 		super.destruir();
-		System.out.println("Destruir Araña.");
 	}
 
 	@Override

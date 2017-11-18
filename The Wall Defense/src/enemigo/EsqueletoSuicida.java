@@ -52,7 +52,6 @@ public class EsqueletoSuicida extends Enemigo {
 	@Override
 	public void destruir() {
 		super.destruir();
-		System.out.println("Destruir WhiteWalker");
 	}
 
 	@Override

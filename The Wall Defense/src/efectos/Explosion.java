@@ -22,7 +22,6 @@ public class Explosion extends BuffTemporal {
 		tiempo = 100;
 		daño = d;
 		graph = 0;
-		// grafico.setIcon(this.graficos[graph]);
 		Director.ejecutarUna(this, tiempo, TimeUnit.MILLISECONDS);
 	}
 

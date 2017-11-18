@@ -19,14 +19,12 @@ public class OyenteTerreno extends MouseAdapter {
 		if (celdaLabel == null) {
 			graficoTerreno.setBorder(new LineBorder(new Color(0, 0, 0)));
 			Director.getMapa().setCeldaLabel(graficoTerreno);
-			Director.getMapa().ver();
 
 		}
 		else {
 			celdaLabel.setBorder(null);
 			graficoTerreno.setBorder(new LineBorder(new Color(0, 0, 0)));
 			Director.getMapa().setCeldaLabel(graficoTerreno);
-			Director.getMapa().ver();
 
 		}
 	}

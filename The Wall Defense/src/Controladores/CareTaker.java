@@ -12,12 +12,10 @@ public class CareTaker {
 	}
 
 	public void saveMemento(MementoUnidad mementoUnidad, String save) {
-		System.out.println("memento-->" + save);
 		savepoint.put(save, mementoUnidad);
 	}
 
 	public MementoUnidad getMemento(String save) {
-		System.out.println("memento get daño-->" + savepoint.get(save).getDaño());
 		return savepoint.get(save);
 	}
 

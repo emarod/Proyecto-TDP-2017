@@ -18,7 +18,6 @@ public abstract class TokenPowerUp extends Token {
 
 	@Override
 	public void aplicar() {
-		System.out.println("aplicando");
 		JLabel celdaLabel = Director.getMapa().getCeldaLabel();
 		int x_jugador = Math.round(celdaLabel.getX() / 64);
 		int y_jugador = Math.round(celdaLabel.getY() / 64);

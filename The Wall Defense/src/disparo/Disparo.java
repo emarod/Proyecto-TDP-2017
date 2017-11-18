@@ -51,21 +51,9 @@ public abstract class Disparo extends GameObject implements Runnable {
 		return velocidad;
 	}
 
-	// public void activar() {
-	// if (activeTask == null || activeTask.isDone()) {
-	// activeTask = Director.ejecutarUna(this, velocidad);
-	// }
-	// else {
-	// System.out.println("ya está activado " + this.getClass());
-	// }
-	// }
-
 	public void activar() {
 		if (activeTask == null || activeTask.isDone()) {
 			activeTask = Director.ejecutar(this, velocidad);
-		}
-		else {
-			System.out.println("ya está activado " + this.getClass());
 		}
 	}
 

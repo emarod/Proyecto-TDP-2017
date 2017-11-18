@@ -50,7 +50,6 @@ public class Horda implements Runnable {
 	public void actualizarEnemigos() {
 		if (enemigos > 0) {
 			enemigos--;
-			System.out.println("Numero de enemigos en la horda: " + enemigos);
 		}
 	}
 
@@ -60,7 +59,6 @@ public class Horda implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("Inicio horda");
 		RandomGenerator rnd = Director.getRandom();
 		int r = rnd.poll(4);
 		int y;
@@ -101,12 +99,7 @@ public class Horda implements Runnable {
 		restantes--;
 		if (restantes == 0) {
 			activeTask.cancel(true);
-			// terminoHorda();
-			System.out.println("fin horda");
 
-		}
-		else {
-			System.out.println("quedan " + restantes + " enemigos");
 		}
 
 	}
@@ -119,7 +112,6 @@ public class Horda implements Runnable {
 		llego = c;
 		if (llego) {
 			Director.getPartida().perder();
-			// activeTask.cancel(true);
 		}
 	}
 
