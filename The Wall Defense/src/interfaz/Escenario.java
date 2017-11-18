@@ -184,7 +184,7 @@ public class Escenario extends JPanel {
 				if (jugador != null) {
 					jugador.destruir();
 				}
-				// Director.getPartida().añadirDinero();
+				Director.getPartida().añadirDinero(25);
 				getDinero().actualizar();
 
 			}
