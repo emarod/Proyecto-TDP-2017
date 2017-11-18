@@ -23,17 +23,20 @@ public class Horda implements Runnable {
 	protected Mapa mapa;
 	protected Escenario stage;
 	protected JLabel graf;
-	protected int enemigos = 10;
+	protected int enemigos;
+	protected int restantes;
 	protected final int x = 15;
 	protected ScheduledFuture<?> activeTask;
 	protected boolean llego = false;
 	public int matados;
 
 	// Constructor.
-	public Horda(Escenario s) {
+	public Horda() {
 		mapa = Director.getMapa();
 		stage = mapa.getEscenario();
-		matados = 10;
+		enemigos = Director.getPartida().getNivel() * 7;
+		restantes = enemigos;
+		matados = 0;
 
 	}
 
@@ -41,7 +44,7 @@ public class Horda implements Runnable {
 	public boolean terminoHorda() {
 		Director.getPartida().aumentarNivel();
 		stage.nextLevel();
-		return enemigos == 0;
+		return enemigos == matados;
 	}
 
 	public void actualizarEnemigos() {
@@ -95,7 +98,7 @@ public class Horda implements Runnable {
 		}
 		e.crear();
 		e.activar();
-		enemigos--;
+		restantes--;
 		if (enemigos == 0) {
 			activeTask.cancel(true);
 			terminoHorda();
@@ -103,7 +106,7 @@ public class Horda implements Runnable {
 
 		}
 		else {
-			System.out.println("quedan " + enemigos + " enemigos");
+			System.out.println("quedan " + restantes + " enemigos");
 		}
 
 	}
@@ -125,8 +128,8 @@ public class Horda implements Runnable {
 	}
 
 	public int setMatados() {
-		matados = matados - 1;
-		if (matados == 10) {
+		matados++;
+		if (matados == enemigos) {
 			terminoHorda();
 		}
 		return matados;
