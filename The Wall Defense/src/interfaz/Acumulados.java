@@ -41,8 +41,8 @@ public class Acumulados extends JPanel {
 		this.setLayout(new FlowLayout());
 		this.setPreferredSize(new Dimension(10, 50));
 		this.setBackground(Color.BLACK);
-		cantBomba = 20;
-		cantBarricada = 1;
+		cantBomba = 0;
+		cantBarricada = 0;
 		armarBotonera();
 	}
 
