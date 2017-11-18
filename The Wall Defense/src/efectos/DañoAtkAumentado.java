@@ -16,6 +16,8 @@ public class DañoAtkAumentado extends PowerUpTemporal {
 	public DañoAtkAumentado(Celda c) {
 		super(c);
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/daño_atk_aumentado.gif")));
+		tiempo = 10;
+
 	}
 
 	// Metodos heredados.
@@ -24,6 +26,8 @@ public class DañoAtkAumentado extends PowerUpTemporal {
 	public void aplicar(Unidad u) {
 		unidad = u;
 		unidad.setAtaque(unidad.getDaño() * 2);
+		crear();
+		ejecutar();
 	}
 
 	@Override

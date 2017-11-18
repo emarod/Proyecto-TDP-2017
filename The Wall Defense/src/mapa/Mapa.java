@@ -231,14 +231,13 @@ public class Mapa implements Runnable {
 
 	public void agregarTokens() {
 		RandomGenerator r = Director.getRandom();
-		int x = r.poll(16);
+		int x = r.poll(14) + 1;
 		int y = r.poll(6);
 
 		if (celdas[x][y].getObjects()[CONFIG.PROFUNDIDAD_TOKEN] == null) {
 			int c = r.poll(13);
 			Token tk = null;
 			JLabel grafico = null;
-			System.out.println("Holis " + c);
 			switch (c) {
 				case 5: {
 					tk = new MonedaOro(celdas[x][y]);
@@ -284,8 +283,6 @@ public class Mapa implements Runnable {
 			if (grafico != null) {
 				grafico.addMouseListener(oyenteToken);
 			}
-			System.out.println("Chauchis");
-
 		}
 	}
 

@@ -13,6 +13,7 @@ public class VelAtkAumentado extends PowerUpTemporal {
 	// Constructor.
 	public VelAtkAumentado(Celda c) {
 		super(c);
+		tiempo = 10;
 	}
 
 	// Metodos heredados.
@@ -21,6 +22,7 @@ public class VelAtkAumentado extends PowerUpTemporal {
 	public void aplicar(Unidad u) {
 		unidad = u;
 		unidad.setVelocidad(unidad.getVelocidad() * 2);
+		ejecutar();
 	}
 
 	@Override

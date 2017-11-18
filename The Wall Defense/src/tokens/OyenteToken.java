@@ -15,7 +15,7 @@ public class OyenteToken extends MouseAdapter {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		JLabel celdaLabel = Director.getMapa().getCeldaLabel();
+		// JLabel celdaLabel = Director.getMapa().getCeldaLabel();
 		int x_mouse = Director.getMapa().get_x_mouse();
 		int y_mouse = Director.getMapa().get_y_mouse();
 		int x_celd = Math.round(x_mouse / 64);
@@ -25,20 +25,20 @@ public class OyenteToken extends MouseAdapter {
 		if (token != null) {
 			token.aplicar();
 		}
-		JLabel graficoTerreno = celda.getObjects()[0].getGrafico();
-		if (celdaLabel == null) {
-			graficoTerreno.setBorder(new LineBorder(new Color(0, 0, 0)));
-			Director.getMapa().setCeldaLabel(graficoTerreno);
-			Director.getMapa().ver();
-
-		}
-		else {
-			celdaLabel.setBorder(null);
-			celdaLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
-			Director.getMapa().setCeldaLabel(graficoTerreno);
-			Director.getMapa().ver();
-
-		}
+		// JLabel graficoTerreno = celda.getObjects()[0].getGrafico();
+		// if (celdaLabel == null) {
+		// graficoTerreno.setBorder(new LineBorder(new Color(0, 0, 0)));
+		// Director.getMapa().setCeldaLabel(graficoTerreno);
+		// Director.getMapa().ver();
+		//
+		// }
+		// else {
+		// celdaLabel.setBorder(null);
+		// celdaLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		// Director.getMapa().setCeldaLabel(graficoTerreno);
+		// Director.getMapa().ver();
+		//
+		// }
 	}
 
 	@Override

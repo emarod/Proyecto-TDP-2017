@@ -16,6 +16,8 @@ public class Invulnerable extends PowerUpTemporal {
 	public Invulnerable(Celda c) {
 		super(c);
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/campo_fuerza.gif")));
+		tiempo = 10;
+
 	}
 
 	// Metodos heredados.
@@ -23,7 +25,10 @@ public class Invulnerable extends PowerUpTemporal {
 	@Override
 	public void aplicar(Unidad u) {
 		unidad = u;
-		unidad.setVida(9999);
+		unidad.setVida(999);
+		crear();
+		ejecutar();
+
 	}
 
 	@Override

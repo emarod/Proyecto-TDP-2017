@@ -10,7 +10,6 @@ public abstract class PowerUpTemporal extends PowerUp implements Runnable {
 
 	public PowerUpTemporal(Celda c) {
 		super(c);
-		Director.ejecutarUna(this, tiempo);
 	}
 
 	@Override
@@ -19,6 +18,10 @@ public abstract class PowerUpTemporal extends PowerUp implements Runnable {
 		unidad.regresarInicio();
 		unidad = null;
 		this.destruir();
+	}
+
+	public void ejecutar() {
+		Director.ejecutarUna(this, tiempo);
 	}
 
 }

@@ -103,9 +103,15 @@ public abstract class Unidad extends GameObject implements Runnable {
 
 	protected void reset(String save) {
 		MementoUnidad recuperar = careTaker.getMemento(save);
+		System.out.println("Vida actual=" + getVida());
+		System.out.println("Velociad actual=" + getVelocidad());
+		System.out.println("Daño actual=" + getDaño());
 		vida = recuperar.getVida();
 		daño = recuperar.getDaño();
 		velocidad = recuperar.getVelocidad();
+		System.out.println("Vida recuperada=" + getVida());
+		System.out.println("Velociad recuperada=" + getVelocidad());
+		System.out.println("Daño recuperada=" + getDaño());
 	}
 
 	public int getVelocidad() {
@@ -113,10 +119,14 @@ public abstract class Unidad extends GameObject implements Runnable {
 	}
 
 	public void setVelocidad(int speed) {
+		System.out.println("Velocidad actual=" + velocidad);
+		System.out.println("Velocidad nueva=" + speed);
 		velocidad = speed;
 	}
 
 	public void setVida(int i) {
+		System.out.println("Vida actual=" + vida);
+		System.out.println("Vida nueva=" + i);
 		vida = i;
 	}
 
@@ -129,6 +139,8 @@ public abstract class Unidad extends GameObject implements Runnable {
 	}
 
 	public void setAtaque(int a) {
+		System.out.println("daño actual=" + daño);
+		System.out.println("daño nueva=" + a);
 		daño = a;
 	}
 

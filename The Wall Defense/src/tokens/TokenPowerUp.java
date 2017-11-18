@@ -18,12 +18,15 @@ public abstract class TokenPowerUp extends Token {
 
 	@Override
 	public void aplicar() {
+		System.out.println("aplicando");
 		JLabel celdaLabel = Director.getMapa().getCeldaLabel();
 		int x_jugador = Math.round(celdaLabel.getX() / 64);
 		int y_jugador = Math.round(celdaLabel.getY() / 64);
 		GameObject jugador = Director.getCelda(x_jugador, y_jugador).getObjects()[CONFIG.PROFUNDIDAD_JUGADOR];
 		if (jugador != null) {
+			power.setCelda(jugador.getCelda());
 			jugador.accept(power.getVisitor());
+			power = null;
 			destruir();
 		}
 	}
