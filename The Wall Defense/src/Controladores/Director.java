@@ -62,6 +62,10 @@ public class Director {
 		return mapa;
 	}
 
+	public static void resetMapa() {
+		mapa = new Mapa();
+	}
+
 	public static Partida getPartida() {
 		return partida;
 	}
