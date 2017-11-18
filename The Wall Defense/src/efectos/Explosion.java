@@ -52,7 +52,6 @@ public class Explosion extends BuffTemporal {
 			if (afectar != null) {
 				afectar.accept(visitor);
 			}
-			System.out.println("graph->" + graph);
 			Director.ejecutarUna(this, tiempo, TimeUnit.MILLISECONDS);
 		}
 

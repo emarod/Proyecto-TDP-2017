@@ -99,9 +99,9 @@ public class Horda implements Runnable {
 		e.crear();
 		e.activar();
 		restantes--;
-		if (enemigos == 0) {
+		if (restantes == 0) {
 			activeTask.cancel(true);
-			terminoHorda();
+			// terminoHorda();
 			System.out.println("fin horda");
 
 		}
