@@ -105,5 +105,6 @@ public class Escenario extends JPanel {
 	public void nextLevel() {
 		layeredPane.removeAll();
 		mapa.inicializarCeldas();
+
 	}
 }
