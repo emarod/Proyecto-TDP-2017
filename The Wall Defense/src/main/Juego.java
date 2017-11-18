@@ -71,6 +71,7 @@ public class Juego {
 		menu.dispose();
 		frame = new GUI();
 		frame.setVisible(true);
+		director.setGui(frame);
 	}
 
 }

@@ -95,4 +95,8 @@ public class GUI extends JFrame {
 		return escenario;
 	}
 
+	public void resetEscenario() {
+		escenario = new Escenario();
+	}
+
 }

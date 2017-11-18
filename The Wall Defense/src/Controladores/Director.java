@@ -9,6 +9,7 @@ import disparo.Disparo;
 import efectos.BuffTemporal;
 import efectos.PowerUpTemporal;
 import enemigo.Horda;
+import interfaz.GUI;
 import main.Partida;
 import main.Unidad;
 import mapa.Celda;
@@ -31,6 +32,7 @@ public class Director {
 	protected static Mapa mapa;
 	protected static CareTaker careTaker;
 	protected static RandomGenerator random;
+	protected static GUI gui;
 
 	// Constructor.
 	private Director() {
@@ -64,6 +66,7 @@ public class Director {
 
 	public static void resetMapa() {
 		mapa = new Mapa();
+		gui.resetEscenario();
 	}
 
 	public static Partida getPartida() {
@@ -144,6 +147,11 @@ public class Director {
 
 	public static ScheduledFuture<?> ejecutarUna(PremioTemporal premio, int delay) {
 		return taskPool.schedule(premio, delay, TimeUnit.SECONDS);
+
+	}
+
+	public void setGui(GUI frame) {
+		gui = frame;
 
 	}
 
