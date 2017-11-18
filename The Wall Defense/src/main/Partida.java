@@ -20,7 +20,7 @@ public class Partida {
 	public Partida() {
 		nivel = 1;
 		puntaje = 0;
-		dinero = 200;
+		dinero = 300;
 		objetos = new ConcurrentHashMap<Premio, Integer>();
 	}
 
