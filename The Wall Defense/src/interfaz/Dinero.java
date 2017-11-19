@@ -29,14 +29,11 @@ public class Dinero extends JPanel {
 	protected MenuObjetos objects;
 
 	// Constructor.
-	public Dinero(Escenario esc) {
+	public Dinero() {
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(new Color(0, 0, 0)));
-		this.escenario = esc;
 		agregarLabel();
 		this.setBackground(Color.BLACK);
-		menu = esc.getMenu();
-		objects = esc.getMenuObjetos();
 	}
 
 	// Metodos locales.

@@ -138,7 +138,7 @@ public class Mapa implements Runnable {
 
 	private void actualizarPuntaje() {
 		Director.getPartida().añadirPuntaje(puntaje);
-		escenario.getScore().actualizar();
+		Director.getGui().getScore().actualizar();
 	}
 
 	public void agregarTokens() {

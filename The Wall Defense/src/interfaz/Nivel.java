@@ -22,9 +22,8 @@ public class Nivel extends JPanel {
 	protected Escenario escenario;
 
 	// Constructor.
-	public Nivel(Escenario esc) {
+	public Nivel() {
 		this.setBorder(new LineBorder(new Color(0, 0, 0)));
-		this.escenario = esc;
 		agregarLabel();
 		this.setBackground(Color.BLACK);
 	}

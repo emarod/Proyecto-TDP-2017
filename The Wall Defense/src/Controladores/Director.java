@@ -9,6 +9,7 @@ import disparo.Disparo;
 import efectos.BuffTemporal;
 import efectos.PowerUpTemporal;
 import enemigo.Horda;
+import interfaz.GUI;
 import main.Juego;
 import main.Partida;
 import main.Unidad;
@@ -33,6 +34,7 @@ public class Director {
 	protected static CareTaker careTaker;
 	protected static RandomGenerator random;
 	protected static Juego gui;
+	protected static GUI interfaz;
 
 	// Constructor.
 	private Director() {
@@ -62,6 +64,10 @@ public class Director {
 
 	public static Mapa getMapa() {
 		return mapa;
+	}
+
+	public static void setMapa(Mapa map) {
+		mapa = map;
 	}
 
 	public static Partida getPartida() {
@@ -148,6 +154,10 @@ public class Director {
 	public void setGui(Juego frame) {
 		gui = frame;
 
+	}
+
+	public static GUI getGui() {
+		return interfaz;
 	}
 
 }

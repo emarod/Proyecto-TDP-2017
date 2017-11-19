@@ -5,8 +5,8 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 
+import Controladores.Director;
 import comprables.Barricada;
-import interfaz.Escenario;
 import mapa.Celda;
 
 /*
@@ -20,8 +20,8 @@ public class BtnBarricada extends BtnComprables {
 	protected static final long serialVersionUID = 1L;
 
 	// Constructor.
-	public BtnBarricada(Escenario e) {
-		super(e);
+	public BtnBarricada() {
+		super();
 		Celda c = null;
 		comprable = new Barricada(c);
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/barricada.png")));
@@ -53,7 +53,7 @@ public class BtnBarricada extends BtnComprables {
 	// Metodos heredados.
 	@Override
 	public void create() {
-		stage.getMapa().crearComprable(comprable);
+		Director.getMapa().crearComprable(comprable);
 
 	}
 

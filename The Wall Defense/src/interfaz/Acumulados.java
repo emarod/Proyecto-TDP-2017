@@ -28,7 +28,6 @@ public class Acumulados extends JPanel {
 	 * Atributos Locales
 	 */
 	private static final long serialVersionUID = 1L;
-	protected Escenario escenario;
 	protected BtnBarricada barricada;
 	protected BtnBomba bomba;
 	protected BtnTrampa trampa;
@@ -36,8 +35,7 @@ public class Acumulados extends JPanel {
 	protected JLabel bombasLeft, barricadasLeft, trampasLeft;
 	protected Icon iconoBomba, iconoBarricada, iconoTrampa;
 
-	public Acumulados(Escenario esc) {
-		this.escenario = esc;
+	public Acumulados() {
 		this.setLayout(new FlowLayout());
 		this.setPreferredSize(new Dimension(10, 50));
 		this.setBackground(Color.BLACK);
@@ -49,9 +47,9 @@ public class Acumulados extends JPanel {
 	// Metodos locales.
 	private void armarBotonera() {
 
-		barricada = new BtnBarricada(escenario);
-		bomba = new BtnBomba(escenario);
-		trampa = new BtnTrampa(escenario);
+		barricada = new BtnBarricada();
+		bomba = new BtnBomba();
+		trampa = new BtnTrampa();
 
 		iconoBomba = new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/bombaacumulada.png"));
 		iconoBarricada = new ImageIcon(

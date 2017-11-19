@@ -5,8 +5,8 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 
+import Controladores.Director;
 import comprables.Trampa;
-import interfaz.Escenario;
 import mapa.Celda;
 
 public class BtnTrampa extends BtnComprables {
@@ -14,8 +14,8 @@ public class BtnTrampa extends BtnComprables {
 	protected static final long serialVersionUID = 1L;
 
 	// Constructor.
-	public BtnTrampa(Escenario e) {
-		super(e);
+	public BtnTrampa() {
+		super();
 		Celda c = null;
 		comprable = new Trampa(c);
 		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/trampa.png")));
@@ -45,7 +45,7 @@ public class BtnTrampa extends BtnComprables {
 	// Metodos heredados.
 	@Override
 	public void create() {
-		stage.getMapa().crearComprable(comprable);
+		Director.getMapa().crearComprable(comprable);
 
 	}
 

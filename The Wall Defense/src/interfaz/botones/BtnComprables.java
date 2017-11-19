@@ -6,7 +6,6 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 
 import comprables.Comprable;
-import interfaz.Escenario;
 
 /*
  * Clase abstracta BtnObstaculo.
@@ -17,14 +16,12 @@ public abstract class BtnComprables extends JButton {
 
 	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
-	protected Escenario stage;
 	protected Comprable comprable;
 	protected Icon info;
 	public int costo;
 
 	// Constructor.
-	public BtnComprables(Escenario e) {
-		stage = e;
+	public BtnComprables() {
 		this.setSize(32, 32);
 		this.setBorderPainted(true);
 		this.setContentAreaFilled(false);

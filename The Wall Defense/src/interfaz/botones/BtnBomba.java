@@ -1,6 +1,6 @@
 package interfaz.botones;
 
-import interfaz.Escenario;
+import Controladores.Director;
 import premios.Bomba;
 import premios.Premio;
 
@@ -15,8 +15,8 @@ public class BtnBomba extends BtnPremio {
 	protected static final long serialVersionUID = 1L;
 
 	// Constructor.
-	public BtnBomba(Escenario e) {
-		super(e);
+	public BtnBomba() {
+		super();
 		precioso = new Bomba();
 		oyente();
 
@@ -25,7 +25,7 @@ public class BtnBomba extends BtnPremio {
 	// Metodos heredados.
 	@Override
 	public void create() {
-		stage.getMapa().crearPremio(precioso);
+		Director.getMapa().crearPremio(precioso);
 
 	}
 

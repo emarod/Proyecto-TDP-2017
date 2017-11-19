@@ -25,7 +25,7 @@ public class Score extends JPanel {
 	protected Director director;
 
 	// Constructor.
-	public Score(Escenario stage) {
+	public Score() {
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.BLACK);
 		agregarLabel();

@@ -5,7 +5,6 @@ import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
-import interfaz.Escenario;
 import premios.Premio;
 
 /*
@@ -17,14 +16,12 @@ public abstract class BtnPremio extends JButton {
 
 	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
-	protected Escenario stage;
 	protected Premio precioso;
 	protected Icon info;
 	public int costo;
 
 	// Constructor.
-	public BtnPremio(Escenario e) {
-		stage = e;
+	public BtnPremio() {
 		this.setSize(32, 32);
 		this.setBorderPainted(true);
 		this.setContentAreaFilled(false);

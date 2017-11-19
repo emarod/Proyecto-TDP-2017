@@ -18,7 +18,7 @@ public class tkBomba extends TokenPrecioso {
 
 	@Override
 	public void activar() {
-		Director.getMapa().getEscenario().getAcumulados().acumularBomba();
+		Director.getGui().getAcumulados().acumularBomba();
 		destruir();
 	}
 

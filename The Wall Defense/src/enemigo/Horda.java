@@ -43,7 +43,7 @@ public class Horda implements Runnable {
 	// Metodos locales.
 	public boolean terminoHorda() {
 		Director.getPartida().aumentarNivel();
-		stage.nextLevel();
+		Director.getGui().nextLevel();
 		return enemigos == matados;
 	}
 

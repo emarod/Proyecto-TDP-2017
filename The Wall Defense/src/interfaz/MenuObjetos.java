@@ -31,8 +31,7 @@ public class MenuObjetos extends JPanel {
 	protected BtnTrampa trampa;
 
 	// Constructor.
-	public MenuObjetos(Escenario escenario) {
-		this.escenario = escenario;
+	public MenuObjetos() {
 		this.setLayout(new GridLayout(4, 1));
 		this.setBounds(76, 0, 300, 200);
 		this.setBackground(Color.BLACK);
@@ -42,7 +41,7 @@ public class MenuObjetos extends JPanel {
 	// Metodos locales.
 	private void armarBotonera() {
 
-		barricada = new BtnBarricada(this.escenario);
+		barricada = new BtnBarricada();
 		barricada.oyente();
 
 		barricada.addMouseListener(new MouseAdapter() {
@@ -52,19 +51,19 @@ public class MenuObjetos extends JPanel {
 				if (barricada.isEnabled()) {
 					if (Director.getPartida().getDinero() >= barricada.costo) {
 						Director.getPartida().quitarDinero(barricada.costo);
-						escenario.getAcumulados().acumularBarricada();
+						Director.getGui().getAcumulados().acumularBarricada();
 					}
 					if (Director.getPartida().getDinero() < barricada.costo) {
 						barricada.setEnabled(false);
 					}
-					escenario.getDinero().actualizar();
+					Director.getGui().getDinero().actualizar();
 
 				}
 			}
 
 		});
 
-		trampa = new BtnTrampa(this.escenario);
+		trampa = new BtnTrampa();
 		trampa.oyente();
 
 		trampa.addMouseListener(new MouseAdapter() {
@@ -74,12 +73,12 @@ public class MenuObjetos extends JPanel {
 				if (trampa.isEnabled()) {
 					if (Director.getPartida().getDinero() >= trampa.costo) {
 						Director.getPartida().quitarDinero(trampa.costo);
-						escenario.getAcumulados().acumularTrampa();
+						Director.getGui().getAcumulados().acumularTrampa();
 					}
 					if (Director.getPartida().getDinero() < barricada.costo) {
 						trampa.setEnabled(false);
 					}
-					escenario.getDinero().actualizar();
+					Director.getGui().getDinero().actualizar();
 
 				}
 			}

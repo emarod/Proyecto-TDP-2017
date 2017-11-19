@@ -43,8 +43,7 @@ public class MenuCompra extends JPanel {
 	protected Director director;
 
 	// Constructor.
-	public MenuCompra(Escenario escenario) {
-		this.escenario = escenario;
+	public MenuCompra() {
 		this.setLayout(new GridLayout(3, 2));
 		this.setBounds(76, 0, 381, 811);
 		this.setBackground(Color.BLACK);
@@ -70,7 +69,7 @@ public class MenuCompra extends JPanel {
 					if (Director.getPartida().getDinero() < lobo.costo) {
 						lobo.setEnabled(false);
 					}
-					escenario.getDinero().actualizar();
+					Director.getGui().getDinero().actualizar();
 
 				}
 			}
@@ -91,7 +90,7 @@ public class MenuCompra extends JPanel {
 					if (Director.getPartida().getDinero() < dragon.costo) {
 						dragon.setEnabled(false);
 					}
-					escenario.getDinero().actualizar();
+					Director.getGui().getDinero().actualizar();
 
 				}
 			}
@@ -111,7 +110,7 @@ public class MenuCompra extends JPanel {
 					if (Director.getPartida().getDinero() < ygritte.costo) {
 						ygritte.setEnabled(false);
 					}
-					escenario.getDinero().actualizar();
+					Director.getGui().getDinero().actualizar();
 
 				}
 			}
@@ -130,7 +129,7 @@ public class MenuCompra extends JPanel {
 					if (Director.getPartida().getDinero() < lannister.costo) {
 						lannister.setEnabled(false);
 					}
-					escenario.getDinero().actualizar();
+					Director.getGui().getDinero().actualizar();
 
 				}
 			}
@@ -150,7 +149,7 @@ public class MenuCompra extends JPanel {
 					if (Director.getPartida().getDinero() < JonSnow.costo) {
 						JonSnow.setEnabled(false);
 					}
-					escenario.getDinero().actualizar();
+					Director.getGui().getDinero().actualizar();
 				}
 			}
 		});
