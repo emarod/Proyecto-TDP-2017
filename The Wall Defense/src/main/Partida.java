@@ -32,7 +32,7 @@ public class Partida {
 
 	public void quitarDinero(int i) {
 		dinero -= i;
-		Director.getGui().getDinero().actualizar();
+		// Director.getGui().getDinero().actualizar();
 	}
 
 	public void añadirPuntaje(int i) {

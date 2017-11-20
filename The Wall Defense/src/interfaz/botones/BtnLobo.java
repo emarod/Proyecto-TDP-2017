@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 
-import interfaz.Escenario;
+import Controladores.Director;
 import jugador.Jugador;
 import jugador.Lobo;
 import mapa.Celda;
@@ -21,8 +21,8 @@ public class BtnLobo extends BtnJugador {
 	protected static final long serialVersionUID = 1L;
 
 	// Constructor.
-	public BtnLobo(Escenario e) {
-		super(e);
+	public BtnLobo() {
+		super();
 		Celda c = null;
 		player = new Lobo(c);
 		player.guardarInicio();
@@ -37,7 +37,7 @@ public class BtnLobo extends BtnJugador {
 	// Metodos heredados.
 	@Override
 	public void create() {
-		stage.getMapa().crearJugador(player);
+		Director.getMapa().crearJugador(player);
 
 	}
 

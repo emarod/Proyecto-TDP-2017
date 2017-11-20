@@ -54,9 +54,9 @@ public class MenuCompra extends JPanel {
 	// Metodos locales.
 	private void armarBotonera() {
 
-		gigante = new BtnGigante(this.escenario);
+		gigante = new BtnGigante();
 
-		lobo = new BtnLobo(this.escenario);
+		lobo = new BtnLobo();
 		lobo.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -69,14 +69,14 @@ public class MenuCompra extends JPanel {
 					if (Director.getPartida().getDinero() < lobo.costo) {
 						lobo.setEnabled(false);
 					}
-					Director.getGui().getDinero().actualizar();
+					Director.getGui().setDinero();
 
 				}
 			}
 
 		});
 
-		dragon = new BtnDragon(this.escenario);
+		dragon = new BtnDragon();
 
 		dragon.addMouseListener(new MouseAdapter() {
 
@@ -90,14 +90,14 @@ public class MenuCompra extends JPanel {
 					if (Director.getPartida().getDinero() < dragon.costo) {
 						dragon.setEnabled(false);
 					}
-					Director.getGui().getDinero().actualizar();
+					Director.getGui().setDinero();
 
 				}
 			}
 
 		});
 
-		ygritte = new BtnArquero(this.escenario);
+		ygritte = new BtnArquero();
 		ygritte.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -110,13 +110,13 @@ public class MenuCompra extends JPanel {
 					if (Director.getPartida().getDinero() < ygritte.costo) {
 						ygritte.setEnabled(false);
 					}
-					Director.getGui().getDinero().actualizar();
+					Director.getGui().setDinero();
 
 				}
 			}
 		});
 
-		lannister = new BtnCaballero(this.escenario);
+		lannister = new BtnCaballero();
 		lannister.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -129,14 +129,14 @@ public class MenuCompra extends JPanel {
 					if (Director.getPartida().getDinero() < lannister.costo) {
 						lannister.setEnabled(false);
 					}
-					Director.getGui().getDinero().actualizar();
+					Director.getGui().setDinero();
 
 				}
 			}
 
 		});
 
-		JonSnow = new BtnEspadachin(this.escenario);
+		JonSnow = new BtnEspadachin();
 		JonSnow.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -149,7 +149,7 @@ public class MenuCompra extends JPanel {
 					if (Director.getPartida().getDinero() < JonSnow.costo) {
 						JonSnow.setEnabled(false);
 					}
-					Director.getGui().getDinero().actualizar();
+					Director.getGui().setDinero();
 				}
 			}
 		});

@@ -5,7 +5,6 @@ import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
-import interfaz.Escenario;
 import jugador.Jugador;
 
 /*
@@ -17,15 +16,13 @@ public abstract class BtnJugador extends JButton {
 
 	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
-	protected Escenario stage;
 	protected Jugador player;
 	protected Icon imagen;
 	protected Icon info;
 	public int costo;
 
 	// Constructor.
-	public BtnJugador(Escenario e) {
-		stage = e;
+	public BtnJugador() {
 		this.setSize(80, 79);
 		this.setBorderPainted(true);
 		this.setContentAreaFilled(false);

@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 
-import interfaz.Escenario;
+import Controladores.Director;
 import jugador.Dragon;
 import mapa.Celda;
 
@@ -20,8 +20,8 @@ public class BtnDragon extends BtnJugador {
 	protected static final long serialVersionUID = 1L;
 
 	// Constructor.
-	public BtnDragon(Escenario e) {
-		super(e);
+	public BtnDragon() {
+		super();
 		Celda c = null;
 		player = new Dragon(c);
 		player.guardarInicio();
@@ -36,7 +36,7 @@ public class BtnDragon extends BtnJugador {
 	// Metodos heredados.
 	@Override
 	public void create() {
-		stage.getMapa().crearJugadorLargo(player);
+		Director.getMapa().crearJugadorLargo(player);
 
 	}
 

@@ -30,6 +30,8 @@ public class Dinero extends JPanel {
 
 	// Constructor.
 	public Dinero() {
+		System.out.println("se crea clase dinero");
+
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(new Color(0, 0, 0)));
 		agregarLabel();
@@ -38,7 +40,7 @@ public class Dinero extends JPanel {
 
 	// Metodos locales.
 	private void agregarLabel() {
-		monto = new JLabel("" + 500);
+		monto = new JLabel("" + Director.getPartida().getDinero());
 		monto.setSize(monto.getWidth(), this.getHeight());
 		// Recojo la fuente que se esta utilizando actualmente.
 		Font auxFont = new Font("ArcadeClassic", Font.CENTER_BASELINE, 50);
@@ -53,8 +55,8 @@ public class Dinero extends JPanel {
 
 	public void actualizar() {
 		monto.setText("" + Director.getPartida().getDinero());
-		menu.chequear();
-		objects.chequear();
+		Director.getGui().getMenu().chequear();
+		Director.getGui().getMenuObjetos().chequear();
 	}
 
 }

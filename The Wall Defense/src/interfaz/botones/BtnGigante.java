@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 
-import interfaz.Escenario;
+import Controladores.Director;
 import jugador.Jugador;
 import mapa.Celda;
 
@@ -20,8 +20,8 @@ public class BtnGigante extends BtnJugador {
 	protected static final long serialVersionUID = 1L;
 
 	// Constructor.
-	public BtnGigante(Escenario e) {
-		super(e);
+	public BtnGigante() {
+		super();
 		Celda c = null;
 		// player = new Arquero(c);
 		// player.guardarInicio();
@@ -37,7 +37,7 @@ public class BtnGigante extends BtnJugador {
 	// Metodos heredados.
 	@Override
 	public void create() {
-		stage.getMapa().crearJugador(player);
+		Director.getMapa().crearJugador(player);
 
 	}
 

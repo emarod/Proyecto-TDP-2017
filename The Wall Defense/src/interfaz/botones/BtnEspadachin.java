@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 
-import interfaz.Escenario;
+import Controladores.Director;
 import jugador.Espadachin;
 import mapa.Celda;
 
@@ -20,8 +20,8 @@ public class BtnEspadachin extends BtnJugador {
 	protected static final long serialVersionUID = 1L;
 
 	// Constructor
-	public BtnEspadachin(Escenario e) {
-		super(e);
+	public BtnEspadachin() {
+		super();
 		Celda c = null;
 		player = new Espadachin(c);
 		player.guardarInicio();
@@ -37,7 +37,7 @@ public class BtnEspadachin extends BtnJugador {
 	// Metodos heredados.
 	@Override
 	public void create() {
-		stage.getMapa().crearJugador(player);
+		Director.getMapa().crearJugador(player);
 	}
 
 	@Override

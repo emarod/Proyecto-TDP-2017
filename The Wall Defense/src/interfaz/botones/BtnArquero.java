@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 
-import interfaz.Escenario;
+import Controladores.Director;
 import jugador.Arquero;
 import jugador.Jugador;
 import mapa.Celda;
@@ -21,8 +21,8 @@ public class BtnArquero extends BtnJugador {
 	protected static final long serialVersionUID = 1L;
 
 	// Constructor.
-	public BtnArquero(Escenario e) {
-		super(e);
+	public BtnArquero() {
+		super();
 		Celda c = null;
 		player = new Arquero(c);
 		player.guardarInicio();
@@ -38,7 +38,7 @@ public class BtnArquero extends BtnJugador {
 	// Metodos heredados.
 	@Override
 	public void create() {
-		stage.getMapa().crearJugador(player);
+		Director.getMapa().crearJugador(player);
 
 	}
 

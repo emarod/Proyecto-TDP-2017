@@ -45,6 +45,7 @@ public class GUI extends JFrame {
 	protected Acumulados acumulados;
 	protected JButton go;
 	protected JButton sell;
+	protected int money;
 
 	// Constructor.
 	public GUI() {
@@ -54,6 +55,7 @@ public class GUI extends JFrame {
 		this.setResizable(false);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
+		Director.setGui(this);
 
 		// Escenario. Donde va el mapa.
 		escenario = new Escenario();
@@ -218,6 +220,8 @@ public class GUI extends JFrame {
 	}
 
 	public Dinero getDinero() {
+		System.out.println("entra aca?");
+
 		return dinero;
 	}
 
@@ -239,6 +243,13 @@ public class GUI extends JFrame {
 
 	public void setPuntaje(String p) {
 		score.actualizar();
+
+	}
+
+	public void setDinero() {
+		System.out.println("se actualiza dinero");
+
+		dinero.actualizar();
 
 	}
 
