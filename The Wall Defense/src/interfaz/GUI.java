@@ -220,7 +220,6 @@ public class GUI extends JFrame {
 	}
 
 	public Dinero getDinero() {
-		System.out.println("entra aca?");
 
 		return dinero;
 	}
@@ -247,8 +246,6 @@ public class GUI extends JFrame {
 	}
 
 	public void setDinero() {
-		System.out.println("se actualiza dinero");
-
 		dinero.actualizar();
 
 	}

@@ -30,7 +30,6 @@ public class Dinero extends JPanel {
 
 	// Constructor.
 	public Dinero() {
-		System.out.println("se crea clase dinero");
 
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(new Color(0, 0, 0)));

@@ -162,8 +162,6 @@ public class Director {
 	}
 
 	public static GUI getGui() {
-		System.out.println("se devuelve la gui");
-		System.out.println(gui);
 
 		return interfaz;
 	}
