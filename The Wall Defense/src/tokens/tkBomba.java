@@ -2,7 +2,6 @@ package tokens;
 
 import javax.swing.ImageIcon;
 
-import Controladores.Director;
 import mapa.Celda;
 import premios.Bomba;
 
@@ -14,12 +13,6 @@ public class tkBomba extends TokenPrecioso {
 		duracion = 7;
 		precioso = new Bomba();
 		activar();
-	}
-
-	@Override
-	public void activar() {
-		Director.getGui().getAcumulados().acumularBomba();
-		destruir();
 	}
 
 }
