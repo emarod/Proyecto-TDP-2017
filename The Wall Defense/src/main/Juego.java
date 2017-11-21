@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import Controladores.Director;
 import interfaz.GUI;
 import interfaz.MenuInicio;
+import interfaz.Resultado;
 
 /*
  * Clase Juego.
@@ -21,9 +22,10 @@ public class Juego {
 
 	// Atributos locales.
 	protected static GUI frame;
-	protected final JFrame menu = new JFrame("The Wall Defense");
+	protected JFrame menu = new JFrame("The Wall Defense");
 	protected MenuInicio opciones;
 	protected Director director;
+	protected Resultado resultado;
 
 	// main
 	public static void main(String[] args) {
@@ -70,8 +72,31 @@ public class Juego {
 		opciones = null;
 		menu.removeAll();
 		menu.dispose();
-		frame = new GUI();
+		frame = new GUI(this);
 		frame.setVisible(true);
+
+	}
+
+	public void terminarGUI(boolean result) {
+		frame.removeAll();
+		frame.dispose();
+
+		menu = new JFrame("The Wall Defense");
+		menu.setVisible(true);
+		menu.setResizable(false);
+		menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		menu.setBounds(100, 100, 525, 410);
+		menu.setLocationRelativeTo(null);
+		JLayeredPane contentPane = new JLayeredPane();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		menu.setContentPane(contentPane);
+		Icon background = new ImageIcon(this.getClass().getResource("/resources/static/background/background.png"));
+
+		resultado = new Resultado(this, result);
+
+		menu.setContentPane(new JLabel(background));
+		menu.pack();
+		menu.add(resultado, new Integer(2));
 
 	}
 

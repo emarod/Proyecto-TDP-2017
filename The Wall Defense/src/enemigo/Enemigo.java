@@ -22,6 +22,7 @@ public abstract class Enemigo extends Unidad {
 	protected Icon[] graficos;
 	protected int graph;
 	protected int matados;
+	protected Horda horda;
 
 	// Constructor.
 	public Enemigo(Celda c) {
@@ -52,7 +53,7 @@ public abstract class Enemigo extends Unidad {
 		super.destruir();
 		Director.getMapa().agregarTokens();
 		Director.getPartida().añadirPuntaje(puntaje);
-
+		horda.setMatados();
 	}
 
 	public int getPuntaje() {
@@ -97,17 +98,23 @@ public abstract class Enemigo extends Unidad {
 			}
 		}
 		if (!detener && xCelda != 0) {
+			System.out.println("x:" + xCelda);
 			getGrafico().setBounds(xGrafico - 64, yGrafico, 64, 64);
 			intercambiar_celdas(siguiente);
 			activeTask = null;
 			activar();
 		}
 
-		if (detener && xCelda == 1) {
+		if (!detener && xCelda == 2) {
 			// getGrafico().setBounds(xGrafico - 64, yGrafico, 64, 64);
 			activeTask = null;
+			System.out.println("LLego");
 			Director.getMapa().getHorda().setLlego(true);
 		}
+	}
+
+	public void setHorda(Horda h) {
+		horda = h;
 	}
 
 	public abstract void playSound();

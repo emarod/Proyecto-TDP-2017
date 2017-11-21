@@ -16,6 +16,7 @@ import javax.swing.border.LineBorder;
 import Controladores.Director;
 import main.CONFIG;
 import main.GameObject;
+import main.Juego;
 
 /*
  * Clase GUI.
@@ -46,10 +47,12 @@ public class GUI extends JFrame {
 	protected JButton go;
 	protected JButton sell;
 	protected int money;
+	protected Juego game;
 
 	// Constructor.
-	public GUI() {
+	public GUI(Juego g) {
 		super("The Wall Defense");
+		game = g;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(0, 0, 1245, 570);
 		this.setResizable(false);
@@ -257,4 +260,7 @@ public class GUI extends JFrame {
 
 	}
 
+	public Juego getGame() {
+		return game;
+	}
 }

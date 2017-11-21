@@ -34,17 +34,18 @@ public class Horda implements Runnable {
 	public Horda() {
 		mapa = Director.getMapa();
 		stage = mapa.getEscenario();
-		enemigos = Director.getPartida().getNivel() * 7;
+		// enemigos = Director.getPartida().getNivel() * 7;
+		enemigos = 1;
 		restantes = enemigos;
 		matados = 0;
 
 	}
 
 	// Metodos locales.
-	public boolean terminoHorda() {
+	public void terminoHorda() {
 		Director.getPartida().aumentarNivel();
 		Director.getGui().nextLevel();
-		return enemigos == matados;
+		Director.getGui().getGame().terminarGUI(true);
 	}
 
 	public void actualizarEnemigos() {
@@ -96,6 +97,7 @@ public class Horda implements Runnable {
 		}
 		e.crear();
 		e.activar();
+		e.setHorda(this);
 		restantes--;
 		if (restantes == 0) {
 			activeTask.cancel(true);
@@ -112,6 +114,7 @@ public class Horda implements Runnable {
 		llego = c;
 		if (llego) {
 			Director.getPartida().perder();
+			Director.getGui().getGame().terminarGUI(false);
 		}
 	}
 
@@ -119,12 +122,11 @@ public class Horda implements Runnable {
 		return llego;
 	}
 
-	public int setMatados() {
+	public void setMatados() {
 		matados++;
 		if (matados == enemigos) {
 			terminoHorda();
 		}
-		return matados;
 	}
 
 }
