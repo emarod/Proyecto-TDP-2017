@@ -34,8 +34,8 @@ public class VisitorDisparoPlayer extends Visitor {
 
 	@Override
 	public boolean visitEnemigo(Enemigo e) {
-		e.recibirDaño(disparo.getDaño());
 		disparo.destruir();
+		e.recibirDaño(disparo.getDaño());
 		return false;
 	}
 
@@ -68,12 +68,12 @@ public class VisitorDisparoPlayer extends Visitor {
 
 	@Override
 	public boolean visitComprable(ComprableVida comprable) {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean visitComprable(ComprableTemporal comprable) {
-		return false;
+		return true;
 	}
 
 	@Override

@@ -29,6 +29,7 @@ public class VisitorDisparoEnemigo extends Visitor {
 	@Override
 	public boolean visitObjetoMapa(ObjetoMapaVida o) {
 		o.recibirDaño(disparo.getDaño());
+		disparo.destruir();
 		return false;
 	}
 
@@ -51,6 +52,7 @@ public class VisitorDisparoEnemigo extends Visitor {
 
 	@Override
 	public boolean visitPremio(PremioVida op) {
+		disparo.destruir();
 		return false;
 	}
 
@@ -67,7 +69,7 @@ public class VisitorDisparoEnemigo extends Visitor {
 
 	@Override
 	public boolean visitComprable(ComprableVida comprable) {
-		// TODO Auto-generated method stub
+		disparo.destruir();
 		return false;
 	}
 
