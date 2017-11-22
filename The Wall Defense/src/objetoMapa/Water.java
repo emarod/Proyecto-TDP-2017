@@ -71,4 +71,5 @@ public class Water extends ObjetoMapaTemporal implements Runnable {
 	public void run() {
 		destruir();
 	}
+
 }

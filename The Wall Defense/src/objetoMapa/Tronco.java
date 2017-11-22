@@ -41,4 +41,5 @@ public class Tronco extends ObjetoMapaVida {
 	public boolean accept(Visitor V) {
 		return V.visitObjetoMapa(this);
 	}
+
 }

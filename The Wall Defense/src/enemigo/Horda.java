@@ -45,7 +45,6 @@ public class Horda implements Runnable {
 	public void terminoHorda() {
 		Director.getPartida().aumentarNivel();
 		Director.getGui().nextLevel();
-		Director.getGui().getGame().terminarGUI(true);
 	}
 
 	public void actualizarEnemigos() {
@@ -124,7 +123,7 @@ public class Horda implements Runnable {
 
 	public void setMatados() {
 		matados++;
-		if (matados == enemigos) {
+		if (matados == 1) {
 			terminoHorda();
 		}
 	}

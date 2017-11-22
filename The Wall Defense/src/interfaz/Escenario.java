@@ -24,17 +24,9 @@ public class Escenario extends JPanel {
 	// Constructor.
 	public Escenario() {
 
-		layeredPane = new JLayeredPane();
-		layeredPane.setPreferredSize(new Dimension(1026, 384));
-
-		this.add(layeredPane);
-		layeredPane.removeAll();
-
 		mapa = new Mapa();
-		Director.setMapa(mapa);
 		mapa.setEscenario(this);
-		mapa.inicializarCeldas();
-
+		Director.setMapa(mapa);
 	}
 
 	// Metodos locales.
@@ -60,6 +52,23 @@ public class Escenario extends JPanel {
 
 	public int getPosY() {
 		return this.getY();
+	}
+
+	public void eliminarPanel() {
+		layeredPane.removeAll();
+
+	}
+
+	public void iniciarCeldas() {
+		mapa.inicializarCeldas();
+
+	}
+
+	public void crearPanel() {
+		layeredPane = new JLayeredPane();
+		layeredPane.setPreferredSize(new Dimension(1026, 384));
+
+		this.add(layeredPane);
 	}
 
 }

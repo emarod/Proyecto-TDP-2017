@@ -35,7 +35,7 @@ public class Score extends JPanel {
 	// Metodos locales.
 
 	private void agregarLabel() {
-		puntaje = new JLabel("Score 0000");
+		puntaje = new JLabel("Score 0");
 
 		String fName = "/resources/font/ARCADECLASSIC.TTF";
 		InputStream is = this.getClass().getResourceAsStream(fName);

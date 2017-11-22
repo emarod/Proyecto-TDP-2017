@@ -17,6 +17,7 @@ import Controladores.Director;
 import main.CONFIG;
 import main.GameObject;
 import main.Juego;
+import mapa.Celda;
 
 /*
  * Clase GUI.
@@ -62,6 +63,8 @@ public class GUI extends JFrame {
 
 		// Escenario. Donde va el mapa.
 		escenario = new Escenario();
+		escenario.crearPanel();
+		escenario.getMapa().inicializarCeldas();
 		getContentPane().add(escenario, BorderLayout.CENTER);
 
 		// Imagen de frame
@@ -254,13 +257,38 @@ public class GUI extends JFrame {
 	}
 
 	public void nextLevel() {
-		go.setVisible(true);
-		getMenu().habilitarCompra();
-		getMenuObjetos().habilitarCompra();
+		if (Director.getPartida().getNivel() == 3) {
+			Director.getGui().getGame().terminarGUI(true);
+		}
+		else {
+			go.setVisible(true);
+			getMenu().habilitarCompra();
+			getMenuObjetos().habilitarCompra();
+			escenario.eliminarPanel();
+			// removeAll();
+			escenario = new Escenario();
+			escenario.crearPanel();
+			escenario.iniciarCeldas();
+		}
 
 	}
 
 	public Juego getGame() {
 		return game;
+	}
+
+	@Override
+	public void removeAll() {
+		Celda c = null;
+		for (int x = 0; x < 16; x++) {
+			for (int y = 0; y < 6; y++) {
+				c = Director.getMapa().getCelda(x, y);
+				if (c.getObjects() != null) {
+					for (int i = 0; i < c.getObjects().length; i++) {
+						c.getObjects()[i].destruir();
+					}
+				}
+			}
+		}
 	}
 }

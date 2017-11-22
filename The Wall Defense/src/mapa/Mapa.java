@@ -136,11 +136,6 @@ public class Mapa implements Runnable {
 		}
 	}
 
-	private void actualizarPuntaje() {
-		Director.getPartida().añadirPuntaje(puntaje);
-		Director.getGui().getScore().actualizar();
-	}
-
 	public void agregarTokens() {
 		RandomGenerator r = Director.getRandom();
 		int x = r.poll(14) + 1;

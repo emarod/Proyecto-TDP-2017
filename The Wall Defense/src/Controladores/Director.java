@@ -41,7 +41,6 @@ public class Director {
 		taskPool = Executors.newSingleThreadScheduledExecutor();
 		banco = BancoRecursos.newBancoRecursos();
 		partida = new Partida();
-		mapa = new Mapa();
 		careTaker = new CareTaker();
 		random = new RandomGenerator();
 		random.generar(100, 100);

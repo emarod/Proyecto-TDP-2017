@@ -45,7 +45,7 @@ public class Resultado extends JPanel {
 		}
 		menupanel = new JLabel();
 		menupanel.setIcon(menuback);
-		menupanel.setSize(243, 423);
+		menupanel.setSize(menuback.getIconWidth(), menuback.getIconHeight());
 		this.add(menupanel);
 
 	}
