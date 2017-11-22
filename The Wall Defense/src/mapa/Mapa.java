@@ -193,8 +193,8 @@ public class Mapa implements Runnable {
 		}
 	}
 
-	public Horda nuevaHorda() {
-		horda = CONFIG.crearHorda();
+	public Horda nuevaHorda(int d) {
+		horda = CONFIG.crearHorda(d);
 		return horda;
 	}
 

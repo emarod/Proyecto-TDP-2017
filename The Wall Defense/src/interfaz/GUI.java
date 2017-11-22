@@ -17,7 +17,7 @@ import Controladores.Director;
 import main.CONFIG;
 import main.GameObject;
 import main.Juego;
-import mapa.Celda;
+//import mapa.Celda;
 
 /*
  * Clase GUI.
@@ -49,10 +49,13 @@ public class GUI extends JFrame {
 	protected JButton sell;
 	protected int money;
 	protected Juego game;
+	protected int dificultad;
 
 	// Constructor.
 	public GUI(Juego g) {
 		super("The Wall Defense");
+		dificultad = 2; // La dificultad podria ser ingresada por botones por el
+						// ususario.
 		game = g;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(0, 0, 1245, 570);
@@ -146,7 +149,7 @@ public class GUI extends JFrame {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				go.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/go.png")));
-				Director.getMapa().nuevaHorda().ejecutar();
+				Director.getMapa().nuevaHorda(dificultad).ejecutar();
 				Director.getMapa().ejecutar();
 				go.setVisible(false);
 				sell.setVisible(true);
@@ -279,18 +282,11 @@ public class GUI extends JFrame {
 		return game;
 	}
 
-	@Override
-	public void removeAll() {
-		Celda c = null;
-		for (int x = 0; x < 16; x++) {
-			for (int y = 0; y < 6; y++) {
-				c = Director.getMapa().getCelda(x, y);
-				if (c.getObjects() != null) {
-					for (int i = 0; i < c.getObjects().length; i++) {
-						c.getObjects()[i].destruir();
-					}
-				}
-			}
-		}
-	}
+	/*
+	 * @Override public void removeAll() { Celda c = null; for (int x = 0; x <
+	 * 16; x++) { for (int y = 0; y < 6; y++) { c =
+	 * Director.getMapa().getCelda(x, y); if (c.getObjects() != null) { for (int
+	 * i = 0; i < c.getObjects().length; i++) { c.getObjects()[i].destruir(); }
+	 * } } } }
+	 */
 }

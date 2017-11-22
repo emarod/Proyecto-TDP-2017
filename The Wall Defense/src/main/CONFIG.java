@@ -44,7 +44,7 @@ public class CONFIG {
 
 	}
 
-	public static Horda crearHorda() {
-		return new Horda();
+	public static Horda crearHorda(int d) {
+		return new Horda(d);
 	}
 }
