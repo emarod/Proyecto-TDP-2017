@@ -34,8 +34,11 @@ public class Horda implements Runnable {
 	public Horda() {
 		mapa = Director.getMapa();
 		stage = mapa.getEscenario();
-		// enemigos = Director.getPartida().getNivel() * 7;
-		enemigos = 1;
+		enemigos = Director.getGui().getLevel().getNroNivel() * 1; // Aumentadndo
+																	// el numero
+																	// se
+																	// agranda
+																	// la horda.
 		restantes = enemigos;
 		matados = 0;
 
@@ -45,6 +48,11 @@ public class Horda implements Runnable {
 	public void terminoHorda() {
 		Director.getPartida().aumentarNivel();
 		Director.getGui().nextLevel();
+		System.out.println("actualiza level.");
+		if (Director.getGui().getLevel().ultimo()) {
+			System.out.println("llego a ultimo");
+			Director.getGui().getGame().terminarGUI(true);
+		}
 	}
 
 	public void actualizarEnemigos() {
@@ -123,7 +131,7 @@ public class Horda implements Runnable {
 
 	public void setMatados() {
 		matados++;
-		if (matados == 1) {
+		if (matados == enemigos) {
 			terminoHorda();
 		}
 	}

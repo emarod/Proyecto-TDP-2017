@@ -23,10 +23,15 @@ public class Escenario extends JPanel {
 
 	// Constructor.
 	public Escenario() {
+		layeredPane = new JLayeredPane();
+		layeredPane.setPreferredSize(new Dimension(1026, 384));
+		this.add(layeredPane);
 
 		mapa = new Mapa();
-		mapa.setEscenario(this);
 		Director.setMapa(mapa);
+		mapa.setEscenario(this);
+
+		mapa.inicializarCeldas();
 	}
 
 	// Metodos locales.

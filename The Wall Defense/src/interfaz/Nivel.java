@@ -12,17 +12,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import Controladores.Director;
-
 public class Nivel extends JPanel {
 
 	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
 	protected JLabel level;
 	protected Escenario escenario;
+	protected int nroNivel;
 
 	// Constructor.
 	public Nivel() {
+		nroNivel = 1;
 		this.setBorder(new LineBorder(new Color(0, 0, 0)));
 		agregarLabel();
 		this.setBackground(Color.BLACK);
@@ -30,7 +30,7 @@ public class Nivel extends JPanel {
 
 	// Metodos locales.
 	private void agregarLabel() {
-		level = new JLabel("Level 1");
+		level = new JLabel("Level " + nroNivel);
 		// level.setSize(level.getWidth(), this.getHeight());
 		// Recojo la fuente que se esta utilizando actualmente.
 		Font auxFont = new Font("ArcadeClassic", Font.CENTER_BASELINE, 50);
@@ -40,10 +40,17 @@ public class Nivel extends JPanel {
 		this.add(level, BorderLayout.CENTER);
 	}
 
-	public void actualizar(int i) {
+	public void actualizar() {
+		nroNivel++;
+		level.setText("Level " + nroNivel);
+	}
 
-		level.setText("Level " + Director.getPartida().getNivel());
+	public boolean ultimo() {
+		return nroNivel == 3;
+	}
 
+	public int getNroNivel() {
+		return nroNivel;
 	}
 
 }

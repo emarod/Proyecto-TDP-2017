@@ -63,8 +63,8 @@ public class GUI extends JFrame {
 
 		// Escenario. Donde va el mapa.
 		escenario = new Escenario();
-		escenario.crearPanel();
-		escenario.getMapa().inicializarCeldas();
+		// escenario.crearPanel();
+		// escenario.getMapa().inicializarCeldas();
 		getContentPane().add(escenario, BorderLayout.CENTER);
 
 		// Imagen de frame
@@ -257,18 +257,20 @@ public class GUI extends JFrame {
 	}
 
 	public void nextLevel() {
-		if (Director.getPartida().getNivel() == 3) {
+		if (level.ultimo()) {
 			Director.getGui().getGame().terminarGUI(true);
 		}
 		else {
 			go.setVisible(true);
 			getMenu().habilitarCompra();
 			getMenuObjetos().habilitarCompra();
-			escenario.eliminarPanel();
+			// escenario.eliminarPanel();
+			level.actualizar();
 			// removeAll();
-			escenario = new Escenario();
-			escenario.crearPanel();
-			escenario.iniciarCeldas();
+			/*
+			 * escenario = new Escenario(); escenario.crearPanel();
+			 * escenario.iniciarCeldas();
+			 */
 		}
 
 	}
