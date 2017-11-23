@@ -37,8 +37,8 @@ public class BtnArquero extends BtnJugador {
 
 	// Metodos heredados.
 	@Override
-	public void create() {
-		Director.getMapa().crearJugador(player);
+	public boolean create() {
+		return Director.getMapa().crearJugador(player);
 
 	}
 
@@ -78,11 +78,4 @@ public class BtnArquero extends BtnJugador {
 		// TODO Auto-generated method stub
 		return player;
 	}
-
-	@Override
-	public int getCosto() {
-		// TODO Auto-generated method stub
-		return costo;
-	}
-
 }

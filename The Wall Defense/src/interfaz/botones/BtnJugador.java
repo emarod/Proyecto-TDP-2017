@@ -19,7 +19,8 @@ public abstract class BtnJugador extends JButton {
 	protected Jugador player;
 	protected Icon imagen;
 	protected Icon info;
-	public int costo;
+	protected int costo;
+	protected boolean creo;
 
 	// Constructor.
 	public BtnJugador() {
@@ -42,10 +43,12 @@ public abstract class BtnJugador extends JButton {
 	}
 
 	// Metodos abstractos.
-	public abstract void create();
+	public abstract boolean create();
 
 	public abstract void oyente();
 
-	public abstract int getCosto();
+	public int getCosto() {
+		return costo;
+	}
 
 }

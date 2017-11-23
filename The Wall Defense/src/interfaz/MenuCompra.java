@@ -55,18 +55,42 @@ public class MenuCompra extends JPanel {
 	private void armarBotonera() {
 
 		gigante = new BtnGigante();
+		gigante.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseReleased(MouseEvent evento) {
+				boolean desplego;
+				if (gigante.isEnabled()) {
+					if (Director.getPartida().getDinero() >= gigante.getCosto()) {
+						desplego = gigante.crearPersonaje();
+						if (desplego) {
+							Director.getPartida().quitarDinero(gigante.getCosto());
+						}
+					}
+					if (Director.getPartida().getDinero() < gigante.getCosto()) {
+						gigante.setEnabled(false);
+					}
+					Director.getGui().setDinero();
+
+				}
+			}
+
+		});
 
 		lobo = new BtnLobo();
 		lobo.addMouseListener(new MouseAdapter() {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
+				boolean desplego;
 				if (lobo.isEnabled()) {
-					if (Director.getPartida().getDinero() >= lobo.costo) {
-						Director.getPartida().quitarDinero(lobo.costo);
-						lobo.crearPersonaje();
+					if (Director.getPartida().getDinero() >= lobo.getCosto()) {
+						desplego = lobo.crearPersonaje();
+						if (desplego) {
+							Director.getPartida().quitarDinero(lobo.getCosto());
+						}
 					}
-					if (Director.getPartida().getDinero() < lobo.costo) {
+					if (Director.getPartida().getDinero() < lobo.getCosto()) {
 						lobo.setEnabled(false);
 					}
 					Director.getGui().setDinero();
@@ -82,12 +106,15 @@ public class MenuCompra extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
+				boolean desplego;
 				if (dragon.isEnabled()) {
-					if (Director.getPartida().getDinero() >= dragon.costo) {
-						Director.getPartida().quitarDinero(dragon.costo);
-						dragon.crearPersonaje();
+					if (Director.getPartida().getDinero() >= dragon.getCosto()) {
+						desplego = dragon.crearPersonaje();
+						if (desplego) {
+							Director.getPartida().quitarDinero(dragon.getCosto());
+						}
 					}
-					if (Director.getPartida().getDinero() < dragon.costo) {
+					if (Director.getPartida().getDinero() < dragon.getCosto()) {
 						dragon.setEnabled(false);
 					}
 					Director.getGui().setDinero();
@@ -103,11 +130,11 @@ public class MenuCompra extends JPanel {
 			@Override
 			public void mouseReleased(MouseEvent evento) {
 				if (ygritte.isEnabled()) {
-					if (Director.getPartida().getDinero() >= ygritte.costo) {
-						Director.getPartida().quitarDinero(ygritte.costo);
+					if (Director.getPartida().getDinero() >= ygritte.getCosto()) {
+						Director.getPartida().quitarDinero(ygritte.getCosto());
 						ygritte.crearPersonaje();
 					}
-					if (Director.getPartida().getDinero() < ygritte.costo) {
+					if (Director.getPartida().getDinero() < ygritte.getCosto()) {
 						ygritte.setEnabled(false);
 					}
 					Director.getGui().setDinero();
@@ -122,11 +149,11 @@ public class MenuCompra extends JPanel {
 			@Override
 			public void mouseReleased(MouseEvent evento) {
 				if (lannister.isEnabled()) {
-					if (Director.getPartida().getDinero() >= lannister.costo) {
-						Director.getPartida().quitarDinero(lannister.costo);
+					if (Director.getPartida().getDinero() >= lannister.getCosto()) {
+						Director.getPartida().quitarDinero(lannister.getCosto());
 						lannister.crearPersonaje();
 					}
-					if (Director.getPartida().getDinero() < lannister.costo) {
+					if (Director.getPartida().getDinero() < lannister.getCosto()) {
 						lannister.setEnabled(false);
 					}
 					Director.getGui().setDinero();
@@ -142,11 +169,11 @@ public class MenuCompra extends JPanel {
 			@Override
 			public void mouseReleased(MouseEvent evento) {
 				if (JonSnow.isEnabled()) {
-					if (Director.getPartida().getDinero() >= JonSnow.costo) {
-						Director.getPartida().quitarDinero(JonSnow.costo);
+					if (Director.getPartida().getDinero() >= JonSnow.getCosto()) {
+						Director.getPartida().quitarDinero(JonSnow.getCosto());
 						JonSnow.crearPersonaje();
 					}
-					if (Director.getPartida().getDinero() < JonSnow.costo) {
+					if (Director.getPartida().getDinero() < JonSnow.getCosto()) {
 						JonSnow.setEnabled(false);
 					}
 					Director.getGui().setDinero();
@@ -169,27 +196,27 @@ public class MenuCompra extends JPanel {
 
 	public void chequear() {
 
-		if (Director.getPartida().getDinero() < dragon.costo) {
+		if (Director.getPartida().getDinero() < dragon.getCosto()) {
 			dragon.deshabilitar();
 		}
 
-		if (Director.getPartida().getDinero() < ygritte.costo) {
+		if (Director.getPartida().getDinero() < ygritte.getCosto()) {
 			ygritte.deshabilitar();
 		}
 
-		if (Director.getPartida().getDinero() < JonSnow.costo) {
+		if (Director.getPartida().getDinero() < JonSnow.getCosto()) {
 			JonSnow.deshabilitar();
 		}
 
-		if (Director.getPartida().getDinero() < lannister.costo) {
+		if (Director.getPartida().getDinero() < lannister.getCosto()) {
 			lannister.deshabilitar();
 		}
 
-		if (Director.getPartida().getDinero() < lobo.costo) {
+		if (Director.getPartida().getDinero() < lobo.getCosto()) {
 			lobo.deshabilitar();
 		}
 
-		if (Director.getPartida().getDinero() < gigante.costo) {
+		if (Director.getPartida().getDinero() < gigante.getCosto()) {
 			gigante.deshabilitar();
 		}
 

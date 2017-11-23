@@ -36,8 +36,8 @@ public class BtnLobo extends BtnJugador {
 
 	// Metodos heredados.
 	@Override
-	public void create() {
-		Director.getMapa().crearJugador(player);
+	public boolean create() {
+		return Director.getMapa().crearJugador(player);
 
 	}
 
@@ -61,12 +61,12 @@ public class BtnLobo extends BtnJugador {
 		});
 	}
 
-	public void crearPersonaje() {
+	public boolean crearPersonaje() {
 
 		if (this.isEnabled()) {
-			create();
+			creo = create();
 		}
-
+		return creo;
 	}
 
 	public void deshabilitar() {
@@ -76,12 +76,6 @@ public class BtnLobo extends BtnJugador {
 	public Jugador getPlayer() {
 		// TODO Auto-generated method stub
 		return player;
-	}
-
-	@Override
-	public int getCosto() {
-		// TODO Auto-generated method stub
-		return costo;
 	}
 
 }

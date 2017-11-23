@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 
 import Controladores.Director;
+import jugador.Gigante;
 import jugador.Jugador;
 import mapa.Celda;
 
@@ -23,21 +24,22 @@ public class BtnGigante extends BtnJugador {
 	public BtnGigante() {
 		super();
 		Celda c = null;
-		// player = new Arquero(c);
-		// player.guardarInicio();
+		player = new Gigante(c);
+		player.guardarInicio();
 		imagen = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/gigante.png"));
 		info = new ImageIcon(
 				this.getClass().getResource("/resources/static/botones/personajes/gigantedescripcion.png"));
 		this.setIcon(imagen);
-		// costo = player.getCosto();
+		costo = player.getCosto();
+
 		oyente();
 
 	}
 
 	// Metodos heredados.
 	@Override
-	public void create() {
-		Director.getMapa().crearJugador(player);
+	public boolean create() {
+		return Director.getMapa().crearJugadorGrande(player);
 
 	}
 
@@ -61,12 +63,12 @@ public class BtnGigante extends BtnJugador {
 		});
 	}
 
-	public void crearPersonaje() {
+	public boolean crearPersonaje() {
 
 		if (this.isEnabled()) {
-			create();
+			creo = create();
 		}
-
+		return creo;
 	}
 
 	public void deshabilitar() {
@@ -76,12 +78,6 @@ public class BtnGigante extends BtnJugador {
 	public Jugador getPlayer() {
 		// TODO Auto-generated method stub
 		return player;
-	}
-
-	@Override
-	public int getCosto() {
-		// TODO Auto-generated method stub
-		return costo;
 	}
 
 }

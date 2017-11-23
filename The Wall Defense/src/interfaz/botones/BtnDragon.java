@@ -35,9 +35,8 @@ public class BtnDragon extends BtnJugador {
 
 	// Metodos heredados.
 	@Override
-	public void create() {
-		Director.getMapa().crearJugadorLargo(player);
-
+	public boolean create() {
+		return Director.getMapa().crearJugadorLargo(player);
 	}
 
 	@Override
@@ -60,22 +59,15 @@ public class BtnDragon extends BtnJugador {
 		});
 	}
 
-	public void crearPersonaje() {
-
+	public boolean crearPersonaje() {
 		if (this.isEnabled()) {
-			create();
+			creo = create();
 		}
-
+		return creo;
 	}
 
 	public void deshabilitar() {
 		this.setEnabled(false);
-	}
-
-	@Override
-	public int getCosto() {
-		// TODO Auto-generated method stub
-		return costo;
 	}
 
 }

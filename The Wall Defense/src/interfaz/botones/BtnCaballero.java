@@ -37,8 +37,8 @@ public class BtnCaballero extends BtnJugador {
 
 	// Metodos heredados.
 	@Override
-	public void create() {
-		Director.getMapa().crearJugador(player);
+	public boolean create() {
+		return Director.getMapa().crearJugador(player);
 
 	}
 
@@ -73,11 +73,4 @@ public class BtnCaballero extends BtnJugador {
 	public void deshabilitar() {
 		this.setEnabled(false);
 	}
-
-	@Override
-	public int getCosto() {
-		// TODO Auto-generated method stub
-		return costo;
-	}
-
 }
