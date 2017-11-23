@@ -60,12 +60,12 @@ public class BtnEspadachin extends BtnJugador {
 		});
 	}
 
-	public void crearPersonaje() {
+	public boolean crearPersonaje() {
 
 		if (this.isEnabled()) {
-			create();
+			creo = create();
 		}
-
+		return creo;
 	}
 
 	public void deshabilitar() {
