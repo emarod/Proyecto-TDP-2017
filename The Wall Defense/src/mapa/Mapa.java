@@ -238,8 +238,10 @@ public class Mapa implements Runnable {
 			switch (c) {
 				case 0: {
 					celda = celdas[x][y];
-					obs = new Rock(celda);
-					obs.crear();
+					if (celda.estaOcupada() == null) {
+						obs = new Rock(celda);
+						obs.crear();
+					}
 					break;
 				}
 				case 1: {
@@ -257,10 +259,14 @@ public class Mapa implements Runnable {
 									celda.addChild(celdas[x][y + 1]);
 									// Esquina derecha superior
 									celda.addChild(celdas[x + 1][y]);
-									obs = new Water(celda);
-									obs.crearMulticelda();
-									JLabel icono = obs.getGrafico();
-									icono.setBounds(x * 64, y * 64, 128, 128);
+									if (celdas[x][y].estaOcupada() == null && celdas[x + 1][y].estaOcupada() == null
+											&& celdas[x][y + 1].estaOcupada() == null
+											&& celdas[x + 1][y + 1].estaOcupada() == null) {
+										obs = new Water(celda);
+										obs.crearMulticelda();
+										JLabel icono = obs.getGrafico();
+										icono.setBounds(x * 64, y * 64, 128, 128);
+									}
 
 								}
 							}

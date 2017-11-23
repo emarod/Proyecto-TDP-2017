@@ -26,5 +26,5 @@ public abstract class ObjetoMapa extends GameObject {
 		setGrafico(grafico);
 	}
 
-	public abstract ObjetoMapa clone(Celda c);// profundidad 3
+	public abstract ObjetoMapa clone(Celda c);// profundidad 2
 }

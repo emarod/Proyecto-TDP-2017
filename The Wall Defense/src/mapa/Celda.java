@@ -78,9 +78,12 @@ public abstract class Celda {
 	// Si la celda contiene un enemigo, aliado, o obstaculo lo retorna cc null
 	public GameObject estaOcupada() {
 		int i = 1;
-		while (!estaOcupada && i < 3) {
+		while (!estaOcupada && i < 4) {
 			if (listaObjetosLogicos[i] != null) {
 				estaOcupada = true;
+			}
+			else {
+				i++;
 			}
 		}
 		return listaObjetosLogicos[i];
