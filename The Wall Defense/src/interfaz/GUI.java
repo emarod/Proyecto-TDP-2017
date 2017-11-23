@@ -195,13 +195,15 @@ public class GUI extends JFrame {
 				JLabel celdaLabel = Director.getMapa().getCeldaLabel();
 				int x_jugador = Math.round(celdaLabel.getX() / 64);
 				int y_jugador = Math.round(celdaLabel.getY() / 64);
-				GameObject jugador = Director.getCelda(x_jugador, y_jugador).getObjects()[CONFIG.PROFUNDIDAD_JUGADOR];
-				if (jugador != null) {
-					jugador.destruir();
-					Director.getPartida().añadirDinero(25);
-					dinero.actualizar();
+				if (x_jugador > 1) {
+					GameObject jugador = Director.getCelda(x_jugador, y_jugador)
+							.getObjects()[CONFIG.PROFUNDIDAD_JUGADOR];
+					if (jugador != null) {
+						jugador.destruir();
+						Director.getPartida().añadirDinero(25);
+						dinero.actualizar();
+					}
 				}
-
 			}
 
 			@Override

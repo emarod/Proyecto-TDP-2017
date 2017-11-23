@@ -47,9 +47,13 @@ public class Explosion extends BuffTemporal {
 		else {
 			grafico.setIcon(graficos[graph]);
 			graph++;
-			GameObject afectar = celda.getObjects()[CONFIG.PROFUNDIDAD_ENEMIGO];
-			if (afectar != null) {
-				afectar.accept(visitor);
+			GameObject afectarEnemigo = celda.getObjects()[CONFIG.PROFUNDIDAD_ENEMIGO];
+			GameObject afectarJugador = celda.getObjects()[CONFIG.PROFUNDIDAD_JUGADOR];
+			if (afectarEnemigo != null) {
+				afectarEnemigo.accept(visitor);
+			}
+			if (afectarJugador != null) {
+				afectarJugador.accept(visitor);
 			}
 			Director.ejecutarUna(this, tiempo, TimeUnit.MILLISECONDS);
 		}
