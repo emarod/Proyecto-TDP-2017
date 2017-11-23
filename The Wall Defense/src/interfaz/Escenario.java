@@ -47,6 +47,12 @@ public class Escenario extends JPanel {
 		repaint();
 	}
 
+	public void agregarGrande(JLabel objeto, int entero) {
+		objeto.setSize(128, 128);
+		layeredPane.add(objeto, new Integer(entero));
+		repaint();
+	}
+
 	public Mapa getMapa() {
 		return mapa;
 	}

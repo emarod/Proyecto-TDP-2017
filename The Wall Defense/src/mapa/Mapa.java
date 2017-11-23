@@ -98,18 +98,20 @@ public class Mapa implements Runnable {
 		return escenario;
 	}
 
-	public void crearJugador(Jugador j) {
+	public boolean crearJugador(Jugador j) {
+		boolean desplego = false;
 		if (celdaLabel != null) {
 			int x_cel = Math.round(celdaLabel.getX() / 64);
 			int y_cel = Math.round(celdaLabel.getY() / 64);
 			if (celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null) {
+				desplego = true;
 				Celda c = celdas[x_cel][y_cel];
 				Jugador player = j.clone(c);
 				player.crear();
-				JLabel icono = player.getGrafico();
 				player.activar();
 			}
 		}
+		return desplego;
 	}
 
 	protected boolean hordaActiva() {
@@ -120,11 +122,13 @@ public class Mapa implements Runnable {
 		return activa;
 	}
 
-	public void crearJugadorLargo(Jugador j) {
+	public boolean crearJugadorLargo(Jugador j) {
+		boolean desplego = false;
 		int x_cel = Math.round(celdaLabel.getX() / 64);
 		int y_cel = Math.round(celdaLabel.getY() / 64);
-		if (celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
+		if (x_cel < 15 && celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
 				&& celdas[x_cel + 1][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null) {
+			desplego = true;
 			Celda c = celdas[x_cel][y_cel];
 			c.addChild(celdas[x_cel + 1][y_cel]);
 			Jugador player = j.clone(c);
@@ -134,6 +138,30 @@ public class Mapa implements Runnable {
 			escenario.agregarLargo(icono, new Integer(CONFIG.PROFUNDIDAD_JUGADOR));
 			player.activar();
 		}
+		return desplego;
+	}
+
+	public boolean crearJugadorGrande(Jugador j) {
+		boolean desplego = false;
+		int x_cel = Math.round(celdaLabel.getX() / 64);
+		int y_cel = Math.round(celdaLabel.getY() / 64);
+		if (x_cel < 15 && y_cel < 5 && celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
+				&& celdas[x_cel + 1][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
+				&& celdas[x_cel][y_cel + 1].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
+				&& celdas[x_cel + 1][y_cel + 1].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null) {
+			desplego = true;
+			Celda c = celdas[x_cel][y_cel];
+			c.addChild(celdas[x_cel + 1][y_cel]);
+			c.addChild(celdas[x_cel][y_cel + 1]);
+			c.addChild(celdas[x_cel + 1][y_cel + 1]);
+			Jugador player = j.clone(c);
+			player.crearMulticelda();
+			JLabel icono = player.getGrafico();
+			icono.setBounds(x_cel * 64, y_cel * 64, 128, 128);
+			escenario.agregarGrande(icono, new Integer(CONFIG.PROFUNDIDAD_JUGADOR));
+			player.activar();
+		}
+		return desplego;
 	}
 
 	public void agregarTokens() {
