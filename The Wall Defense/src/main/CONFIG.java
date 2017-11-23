@@ -9,16 +9,16 @@ import terreno.Terreno;
 
 public class CONFIG {
 	// Profundidad de celdas
-	public static final int PROFUNDIDAD_CELDA = 5;
+	public static final int PROFUNDIDAD_CELDA = 6;
 	public static final int PROFUNDIDAD_TERRENO = 0;
-	public static final int PROFUNDIDAD_ENEMIGO = 1;
+	public static final int PROFUNDIDAD_ENEMIGO = 2;
 	public static final int PROFUNDIDAD_JUGADOR = 1;
-	public static final int PROFUNDIDAD_OBSTACULO = 1;
-	public static final int PROFUNDIDAD_PRECIOSO = 2;
-	public static final int PROFUNDIDAD_EFECTO = 2;
-	public static final int PROFUNDIDAD_DISPARO = 3;
-	public static final int PROFUNDIDAD_PREMIO = 2;
-	public static final int PROFUNDIDAD_TOKEN = 4;
+	public static final int PROFUNDIDAD_OBSTACULO = 2;
+	public static final int PROFUNDIDAD_PRECIOSO = 3;
+	public static final int PROFUNDIDAD_EFECTO = 3;
+	public static final int PROFUNDIDAD_DISPARO = 4;
+	public static final int PROFUNDIDAD_PREMIO = 3;
+	public static final int PROFUNDIDAD_TOKEN = 5;
 	public static final int PROFUNDIDAD_COMPRABLE = 1;
 
 	// Dimensiones Mapa
