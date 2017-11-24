@@ -13,7 +13,7 @@ public class CONFIG {
 	public static final int PROFUNDIDAD_TERRENO = 0;
 	public static final int PROFUNDIDAD_ENEMIGO = 2;
 	public static final int PROFUNDIDAD_JUGADOR = 1;
-	public static final int PROFUNDIDAD_OBSTACULO = 2;
+	public static final int PROFUNDIDAD_OBSTACULO = 3;
 	public static final int PROFUNDIDAD_PRECIOSO = 3;
 	public static final int PROFUNDIDAD_EFECTO = 3;
 	public static final int PROFUNDIDAD_DISPARO = 4;
