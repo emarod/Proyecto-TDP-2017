@@ -15,8 +15,7 @@ public abstract class Terreno extends GameObject {
 	protected int sprite;
 
 	public Terreno(Celda c) {
-		super();
-		celda = c;
+		super(c);
 		profundidad = CONFIG.PROFUNDIDAD_TERRENO;
 
 	}

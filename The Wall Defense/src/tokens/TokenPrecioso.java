@@ -2,7 +2,7 @@ package tokens;
 
 import Controladores.Director;
 import mapa.Celda;
-import premios.Premio;
+import objetos.Premio;
 
 public abstract class TokenPrecioso extends Token {
 

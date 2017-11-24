@@ -2,20 +2,15 @@ package objetoMapa;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
-import Controladores.Director;
+import main.CONFIG;
 import main.Visitor;
 import mapa.Celda;
+import objetos.ObjetoVida;
+import objetos.Obstaculo;
 
-/*
- * Clase Rock
- * Clase que determina como esta compuesta y como se comporta una roca.
- */
+public class Rock extends ObjetoVida implements Obstaculo {
 
-public class Rock extends ObjetoMapaVida {
-
-	// Constructor.
 	public Rock(Celda c) {
 		super(c);
 		vida = 3;
@@ -24,47 +19,19 @@ public class Rock extends ObjetoMapaVida {
 		graficos[1] = new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca/roca_2.png"));
 		graficos[2] = new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca/roca_3.png"));
 		setGrafico(2);
-	}
-
-	// Metodos locales.
-	public int getResistencia() {
-		return vida;
+		profundidad = CONFIG.PROFUNDIDAD_OBSTACULO;
 	}
 
 	@Override
-	public void destruir() {
-		super.destruir();
-	}
-
-	// Metodos heredados.
-	public void run() {
-
-	}
-
-	public void setGrafico(int i) {
-		getGrafico().setIcon(graficos[i]);
-	}
-
-	@Override
-	public void setGrafico(JLabel grafico) {
-		ImageIcon imagen = new ImageIcon(this.getClass().getResource("/resources/static/terrenos/roca/roca_3.png"));
-		graph = 0;
-		grafico.setIcon(imagen);
-	}
-
-	public void playSound() {
-		Director.getBancoRecursos().playBarricada();
-	}
-
-	@Override
-	public ObjetoMapa clone(Celda c) {
-		ObjetoMapa clon = new Rock(c);
+	public Obstaculo clone(Celda c) {
+		Obstaculo clon = new Rock(c);
 		return clon;
 	}
 
 	@Override
 	public boolean accept(Visitor V) {
-		return V.visitObjetoMapa(this);
+		V.visitObjeto(this);
+		return false;
 	}
 
 }

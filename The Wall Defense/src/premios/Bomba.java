@@ -5,14 +5,19 @@ import javax.swing.ImageIcon;
 
 import Controladores.Director;
 import efectos.Explosion;
+import main.CONFIG;
+import main.Unidad;
+import main.Visitor;
 import mapa.Celda;
+import objetos.ObjetoTemporal;
+import objetos.Premio;
 
 /*
  * Clase Bomba.
  * Clase que especifica el comportamiento del poder bomba.
  */
 
-public class Bomba extends PremioTemporal {
+public class Bomba extends ObjetoTemporal implements Premio, Runnable {
 
 	protected int daño;
 	protected Icon[] explosion;
@@ -22,15 +27,16 @@ public class Bomba extends PremioTemporal {
 	protected Icon[] OEI;
 
 	// Constructor.
-	public Bomba() {
-		super();
-		construir();
-	}
-
 	public Bomba(Celda c) {
 		super(c);
-		construir();
+		profundidad = CONFIG.PROFUNDIDAD_PREMIO;
+		// construir();
+	}
 
+	@Override
+	public void crear() {
+		super.crear();
+		construir();
 	}
 
 	private void construir() {
@@ -136,6 +142,7 @@ public class Bomba extends PremioTemporal {
 
 	// Metodos heredados.
 
+	@Override
 	public void setGrafico(int i) {
 		grafico.setIcon(graficos[i]);
 	}
@@ -149,6 +156,29 @@ public class Bomba extends PremioTemporal {
 	@Override
 	public void run() {
 		explotar();
+	}
+
+	@Override
+	public void aplicarEfecto(Unidad u) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void terminar() {
+		explotar();
+	}
+
+	@Override
+	public boolean accept(Visitor V) {
+		V.visitObjeto(this);
+		return false;
+	}
+
+	@Override
+	public void guardar() {
+		Director.getPartida().aumentarObjeto(this);
+
 	}
 
 }

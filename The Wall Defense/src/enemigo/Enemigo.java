@@ -26,9 +26,8 @@ public abstract class Enemigo extends Unidad {
 
 	// Constructor.
 	public Enemigo(Celda c) {
-		super();
+		super(c);
 		V = new VisitorEnemigo(this);
-		celda = c;
 		profundidad = CONFIG.PROFUNDIDAD_ENEMIGO;
 		setGrafico();
 	}

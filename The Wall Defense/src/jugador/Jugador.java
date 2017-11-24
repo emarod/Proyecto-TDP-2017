@@ -22,12 +22,11 @@ public abstract class Jugador extends Unidad {
 
 	// Constructor.
 	public Jugador(Celda c) {
-		super();
+		super(c);
 		alto = 30;
 		ancho = 30;
 		profundidad = CONFIG.PROFUNDIDAD_JUGADOR;
 		V = new VisitorJugador(this);
-		celda = c;
 	}
 
 	// Metodos locales.
@@ -69,7 +68,7 @@ public abstract class Jugador extends Unidad {
 
 	@Override
 	public boolean accept(Visitor V) {
-		return V.visitPlayer(this);
+		return V.visitJugador(this);
 	}
 
 	public void vender() {

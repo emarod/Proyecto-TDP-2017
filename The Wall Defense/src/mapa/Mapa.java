@@ -5,15 +5,15 @@ import javax.swing.JLabel;
 import Controladores.BancoRecursos;
 import Controladores.Director;
 import Controladores.RandomGenerator;
-import comprables.Comprable;
 import enemigo.Horda;
 import interfaz.Escenario;
 import jugador.Jugador;
 import main.CONFIG;
-import objetoMapa.ObjetoMapa;
 import objetoMapa.Rock;
 import objetoMapa.Water;
-import premios.Premio;
+import objetos.Comprable;
+import objetos.Obstaculo;
+import objetos.Premio;
 import terreno.Muro;
 import terreno.OyenteTerreno;
 import terreno.Terreno;
@@ -233,7 +233,7 @@ public class Mapa implements Runnable {
 
 		if (celdas[x][y].getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] == null) {
 			int c = r.poll(2);
-			ObjetoMapa obs;
+			Obstaculo obs;
 			Celda celda;
 			switch (c) {
 				case 0: {

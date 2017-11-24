@@ -4,7 +4,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import Controladores.Director;
 import mapa.Celda;
-import premios.Premio;
+import objetos.Acumulable;
+import objetos.Premio;
 import tokens.Moneda;
 
 /*
@@ -14,14 +15,14 @@ import tokens.Moneda;
 public class Partida {
 	protected int puntaje;
 	protected int dinero;
-	protected ConcurrentHashMap<Premio, Integer> objetos;
+	protected ConcurrentHashMap<Acumulable, Integer> objetos;
 	protected int nivel;
 
 	public Partida() {
 		nivel = 1;
 		puntaje = 0;
 		dinero = 500;
-		objetos = new ConcurrentHashMap<Premio, Integer>();
+		objetos = new ConcurrentHashMap<Acumulable, Integer>();
 	}
 
 	public void añadirDinero(int i) {
@@ -55,12 +56,12 @@ public class Partida {
 	}
 
 	// Cada tipo de objeto precioso deberá ser cargado para ser utilizado
-	public void cargarObjeto(Premio precioso) {
+	public void cargarObjeto(Acumulable precioso) {
 		objetos.put(precioso, 0);
 	}
 
 	// Este metodo debe ser utilizado para aumentar en una unidad un objeto
-	public void aumentarObjeto(Premio precioso) {
+	public void aumentarObjeto(Acumulable precioso) {
 		objetos.computeIfPresent(precioso, (k, v) -> v + 1);
 	}
 

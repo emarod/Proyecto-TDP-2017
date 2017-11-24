@@ -1,8 +1,8 @@
 package interfaz.botones;
 
 import Controladores.Director;
+import objetos.Premio;
 import premios.Bomba;
-import premios.Premio;
 
 /*
  * Clase BtnBomba.
@@ -17,7 +17,7 @@ public class BtnBomba extends BtnPremio {
 	// Constructor.
 	public BtnBomba() {
 		super();
-		precioso = new Bomba();
+		precioso = new Bomba(null);
 		oyente();
 
 	}

@@ -16,7 +16,7 @@ import main.Unidad;
 import mapa.Celda;
 import mapa.Mapa;
 import objetoMapa.Water;
-import premios.PremioTemporal;
+import premios.Bomba;
 import tokens.Token;
 
 /*
@@ -146,7 +146,7 @@ public class Director {
 		return mapa.getCelda(x, y);
 	}
 
-	public static ScheduledFuture<?> ejecutarUna(PremioTemporal premio, int delay) {
+	public static ScheduledFuture<?> ejecutarUna(Bomba premio, int delay) {
 		return taskPool.schedule(premio, delay, TimeUnit.SECONDS);
 
 	}

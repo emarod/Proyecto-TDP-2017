@@ -1,16 +1,12 @@
 package jugador;
 
-import comprables.ComprableTemporal;
-import comprables.ComprableVida;
 import disparo.DisparoEnemigo;
 import disparo.DisparoJugador;
 import efectos.Efecto;
 import enemigo.Enemigo;
 import main.Visitor;
-import objetoMapa.ObjetoMapa;
-import objetoMapa.ObjetoMapaTemporal;
-import objetoMapa.ObjetoMapaVida;
-import premios.PremioVida;
+import objetos.Temporal;
+import objetos.Vida;
 
 /*
  * Clase VisitorJugador.
@@ -28,13 +24,8 @@ public class VisitorJugador extends Visitor {
 		jugador = j;
 	}
 
-	// Metodos locales.
-	public boolean visitObstaculo(ObjetoMapa o) {
-		return false;
-	}
-
 	@Override
-	public boolean visitPlayer(Jugador j) {
+	public boolean visitJugador(Jugador j) {
 		return false;
 	}
 
@@ -57,33 +48,20 @@ public class VisitorJugador extends Visitor {
 	}
 
 	@Override
-	public boolean visitComprable(ComprableVida comprable) {
-		return false;
-	}
-
-	@Override
-	public boolean visitComprable(ComprableTemporal comprable) {
-		return false;
-	}
-
-	@Override
-	public boolean visitPremio(PremioVida op) {
-		return false;
-	}
-
-	@Override
-	public boolean visitObjetoMapa(ObjetoMapaVida o) {
-		return false;
-	}
-
-	@Override
-	public boolean visitObjetoMapa(ObjetoMapaTemporal o) {
-		return false;
-	}
-
-	@Override
 	public boolean visitEfect(Efecto efecto) {
 		efecto.aplicar(jugador);
 		return true;
+	}
+
+	@Override
+	public boolean visitObjeto(Temporal t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean visitObjeto(Vida v) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

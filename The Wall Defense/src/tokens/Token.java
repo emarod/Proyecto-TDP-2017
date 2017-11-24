@@ -11,9 +11,8 @@ public abstract class Token extends GameObject implements Runnable {
 	protected int duracion;
 
 	public Token(Celda c) {
-		super();
+		super(c);
 		profundidad = CONFIG.PROFUNDIDAD_TOKEN;
-		celda = c;
 		celda.getObjects()[profundidad] = this;
 		grafico.setBounds(celda.getPosX() * 64, celda.getPosY() * 64, 64, 64);
 		Director.getMapa().getEscenario().agregar(grafico, new Integer(profundidad));

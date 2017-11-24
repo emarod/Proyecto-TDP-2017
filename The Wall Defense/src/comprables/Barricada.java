@@ -2,18 +2,22 @@ package comprables;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import Controladores.Director;
+import main.CONFIG;
 import main.Visitor;
 import mapa.Celda;
+import objetos.Comprable;
+import objetos.ObjetoVida;
 
 /*
  * Clase Rock
  * Clase que determina como esta compuesta y como se comporta una roca.
  */
 
-public class Barricada extends ComprableVida {
+public class Barricada extends ObjetoVida implements Comprable {
+
+	protected int costo;
 
 	// Constructor.
 	public Barricada(Celda c) {
@@ -28,31 +32,10 @@ public class Barricada extends ComprableVida {
 				this.getClass().getResource("/resources/static/terrenos/barricada/barricada_3.png"));
 		setGrafico(2);
 		costo = 10;
-	}
-
-	// Metodos locales.
-	public int getResistencia() {
-		return vida;
-	}
-
-	@Override
-	public void destruir() {
-		super.destruir();
+		profundidad = CONFIG.PROFUNDIDAD_COMPRABLE;
 	}
 
 	// Metodos heredados.
-
-	public void setGrafico(int i) {
-		grafico.setIcon(graficos[i]);
-	}
-
-	@Override
-	public void setGrafico(JLabel grafico) {
-		ImageIcon imagen = new ImageIcon(
-				this.getClass().getResource("/resources/static/terrenos/barricada/barricada_3.png"));
-		graph = 0;
-		grafico.setIcon(imagen);
-	}
 
 	public void playSound() {
 		Director.getBancoRecursos().playBarricada();
@@ -66,6 +49,23 @@ public class Barricada extends ComprableVida {
 
 	@Override
 	public boolean accept(Visitor V) {
-		return V.visitComprable(this);
+		return V.visitObjeto(this);
 	}
+
+	@Override
+	public void guardar() {
+		Director.getPartida().aumentarObjeto(this);
+
+	}
+
+	@Override
+	public int getCosto() {
+		return costo;
+	}
+
+	@Override
+	public void setCosto(int c) {
+		costo = c;
+	}
+
 }

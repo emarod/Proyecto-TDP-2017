@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
-import comprables.Comprable;
+import objetos.Comprable;
 
 /*
  * Clase abstracta BtnObstaculo.

@@ -12,8 +12,7 @@ public abstract class Efecto extends GameObject {
 	protected VisitorEfecto visitor;
 
 	public Efecto(Celda c) {
-		super();
-		celda = c;
+		super(c);
 		profundidad = CONFIG.PROFUNDIDAD_EFECTO;
 		visitor = new VisitorEfecto(this);
 	}

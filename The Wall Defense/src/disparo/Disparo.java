@@ -23,7 +23,7 @@ public abstract class Disparo extends GameObject implements Runnable {
 
 	// Constructor.
 	public Disparo() {
-		super();
+		super(null);
 		profundidad = CONFIG.PROFUNDIDAD_DISPARO;
 		ancho = 64;
 		alto = 64;

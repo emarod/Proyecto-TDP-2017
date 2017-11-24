@@ -1,15 +1,12 @@
 package efectos;
 
-import comprables.ComprableTemporal;
-import comprables.ComprableVida;
 import disparo.DisparoEnemigo;
 import disparo.DisparoJugador;
 import enemigo.Enemigo;
 import jugador.Jugador;
 import main.Visitor;
-import objetoMapa.ObjetoMapaTemporal;
-import objetoMapa.ObjetoMapaVida;
-import premios.PremioVida;
+import objetos.Temporal;
+import objetos.Vida;
 
 public class VisitorEfecto extends Visitor {
 
@@ -20,7 +17,7 @@ public class VisitorEfecto extends Visitor {
 	}
 
 	@Override
-	public boolean visitPlayer(Jugador j) {
+	public boolean visitJugador(Jugador j) {
 		efecto.aplicar(j);
 		return true;
 	}
@@ -42,27 +39,12 @@ public class VisitorEfecto extends Visitor {
 	}
 
 	@Override
-	public boolean visitPremio(PremioVida op) {
+	public boolean visitObjeto(Vida op) {
 		return true;
 	}
 
 	@Override
-	public boolean visitComprable(ComprableVida comprable) {
-		return true;
-	}
-
-	@Override
-	public boolean visitComprable(ComprableTemporal comprable) {
-		return true;
-	}
-
-	@Override
-	public boolean visitObjetoMapa(ObjetoMapaVida o) {
-		return true;
-	}
-
-	@Override
-	public boolean visitObjetoMapa(ObjetoMapaTemporal o) {
+	public boolean visitObjeto(Temporal t) {
 		return true;
 	}
 

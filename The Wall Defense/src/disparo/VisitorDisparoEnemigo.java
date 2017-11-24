@@ -1,14 +1,11 @@
 package disparo;
 
-import comprables.ComprableTemporal;
-import comprables.ComprableVida;
 import efectos.Efecto;
 import enemigo.Enemigo;
 import jugador.Jugador;
 import main.Visitor;
-import objetoMapa.ObjetoMapaTemporal;
-import objetoMapa.ObjetoMapaVida;
-import premios.PremioVida;
+import objetos.Temporal;
+import objetos.Vida;
 
 /*
  * Clase VisitorDisparoEnemigo.
@@ -27,14 +24,7 @@ public class VisitorDisparoEnemigo extends Visitor {
 
 	// Metodos heredados.
 	@Override
-	public boolean visitObjetoMapa(ObjetoMapaVida o) {
-		o.recibirDaño(disparo.getDaño());
-		disparo.destruir();
-		return false;
-	}
-
-	@Override
-	public boolean visitPlayer(Jugador j) {
+	public boolean visitJugador(Jugador j) {
 		j.recibirDaño(disparo.getDaño());
 		disparo.destruir();
 		return false;
@@ -43,17 +33,6 @@ public class VisitorDisparoEnemigo extends Visitor {
 	@Override
 	public boolean visitEnemigo(Enemigo e) {
 		return true;
-	}
-
-	@Override
-	public boolean visitObjetoMapa(ObjetoMapaTemporal o) {
-		return true;
-	}
-
-	@Override
-	public boolean visitPremio(PremioVida op) {
-		disparo.destruir();
-		return false;
 	}
 
 	@Override
@@ -68,13 +47,13 @@ public class VisitorDisparoEnemigo extends Visitor {
 	}
 
 	@Override
-	public boolean visitComprable(ComprableVida comprable) {
-		disparo.destruir();
+	public boolean visitObjeto(Vida v) {
+		v.recibirDaño(disparo.getDaño());
 		return false;
 	}
 
 	@Override
-	public boolean visitComprable(ComprableTemporal comprable) {
+	public boolean visitObjeto(Temporal t) {
 		return true;
 	}
 

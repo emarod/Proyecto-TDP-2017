@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 
 import interfaz.Escenario;
-import objetoMapa.ObjetoMapa;
+import objetos.Obstaculo;
 
 /*
  * Clase abstracta BtnObstaculo.
@@ -19,7 +19,7 @@ public abstract class BtnObstaculo extends JButton {
 	// Atributos locales.
 	protected static final long serialVersionUID = 1L;
 	protected Escenario stage;
-	protected ObjetoMapa obstaculo;
+	protected Obstaculo obstaculo;
 
 	// Constructor.
 	public BtnObstaculo(Escenario e) {

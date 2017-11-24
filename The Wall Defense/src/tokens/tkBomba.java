@@ -11,7 +11,7 @@ public class tkBomba extends TokenPrecioso {
 		super(c);
 		grafico.setIcon(new ImageIcon(this.getClass().getResource("/resources/dinamic/token_bomba.gif")));
 		duracion = 7;
-		precioso = new Bomba();
+		precioso = new Bomba(null);
 		activar();
 	}
 
