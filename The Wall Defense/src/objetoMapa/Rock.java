@@ -30,8 +30,7 @@ public class Rock extends ObjetoVida implements Obstaculo {
 
 	@Override
 	public boolean accept(Visitor V) {
-		V.visitObjeto(this);
-		return false;
+		return V.visitObjeto(this);
 	}
 
 }
