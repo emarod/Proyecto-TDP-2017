@@ -10,6 +10,7 @@ import javax.swing.border.LineBorder;
 import Controladores.Director;
 import main.CONFIG;
 import mapa.Celda;
+import terreno.OyenteTerreno;
 
 public class OyenteToken extends MouseAdapter {
 
@@ -24,6 +25,9 @@ public class OyenteToken extends MouseAdapter {
 		if (token != null) {
 			token.aplicar();
 		}
+		JLabel graficoTerreno = (JLabel) e.getSource();
+		OyenteTerreno oyenteTerreno = new OyenteTerreno();
+		graficoTerreno.addMouseListener(oyenteTerreno);
 
 	}
 

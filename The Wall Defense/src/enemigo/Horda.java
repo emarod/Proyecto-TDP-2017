@@ -10,6 +10,8 @@ import interfaz.Escenario;
 import main.CONFIG;
 import mapa.Celda;
 import mapa.Mapa;
+import tokens.Token;
+import tokens.tkInvulnerable;
 
 /*
  * Clase Horda.
@@ -61,7 +63,7 @@ public class Horda implements Runnable {
 	@Override
 	public void run() {
 		RandomGenerator rnd = Director.getRandom();
-		int r = rnd.poll(6);
+		int r = rnd.poll(12);
 		int y;
 		Enemigo e;
 		y = rnd.poll(6);
@@ -70,30 +72,82 @@ public class Horda implements Runnable {
 		}
 		Celda c = mapa.getCelda(x, y);
 		switch (r) {
+			// Los enemigos simples.
 			case 0: {
 				e = new WhiteWalker(c);
+				System.out.print("Se creo ww.");
 				break;
 			}
 			case 1: {
 				e = new NightKing(c);
+				System.out.print("Se creo nk.");
 				break;
 			}
 			case 2: {
 				e = new Araña(c);
+				System.out.print("Se creo araña.");
 				break;
 			}
 			case 3: {
 				e = new KnightWalker(c);
+				System.out.print("Se creo kw.");
 				break;
 			}
 			case 4: {
 				e = new EsqueletoSuicida(c);
+				System.out.print("Se creo es.");
 				break;
 			}
 			case 5: {
 				e = new LoboWalker(c);
+				System.out.print("Se creo lw.");
 				break;
 			}
+
+			// los enemigos invulnerables.
+			case 6: {
+				e = new WhiteWalker(c);
+				Token tk = new tkInvulnerable(c);
+				tk.aplicar();
+				System.out.print("Se creo ww i.");
+				break;
+			}
+			case 7: {
+				e = new NightKing(c);
+				Token tk = new tkInvulnerable(c);
+				tk.aplicar();
+				System.out.print("Se creo nk i.");
+				break;
+			}
+			case 8: {
+				e = new Araña(c);
+				Token tk = new tkInvulnerable(c);
+				tk.aplicar();
+				System.out.print("Se creo araña i.");
+				break;
+			}
+			case 9: {
+				e = new KnightWalker(c);
+				Token tk = new tkInvulnerable(c);
+				tk.aplicar();
+				System.out.print("Se creo kw i.");
+				break;
+			}
+			case 10: {
+				e = new EsqueletoSuicida(c);
+				Token tk = new tkInvulnerable(c);
+				tk.aplicar();
+				System.out.print("Se creo es i.");
+				break;
+			}
+			case 11: {
+				e = new LoboWalker(c);
+				Token tk = new tkInvulnerable(c);
+				tk.aplicar();
+				System.out.print("Se creo lw i.");
+				break;
+			}
+
 			default: {
 				e = new WhiteWalker(c);
 			}
