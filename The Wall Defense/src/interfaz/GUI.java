@@ -196,6 +196,7 @@ public class GUI extends JFrame {
 				int x_jugador = Math.round(celdaLabel.getX() / 64);
 				int y_jugador = Math.round(celdaLabel.getY() / 64);
 				if (x_jugador > 1) {
+					// si es un jugador
 					GameObject jugador = Director.getCelda(x_jugador, y_jugador)
 							.getObjects()[CONFIG.PROFUNDIDAD_JUGADOR];
 					if (jugador != null) {

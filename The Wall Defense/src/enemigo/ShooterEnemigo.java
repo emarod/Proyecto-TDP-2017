@@ -45,6 +45,7 @@ public abstract class ShooterEnemigo extends Enemigo {
 
 	public abstract void atacar();
 
+	@Override
 	public void setGrafico(int i) {
 		getGrafico().setIcon(graficos[i]);
 	}
@@ -56,10 +57,10 @@ public abstract class ShooterEnemigo extends Enemigo {
 	@Override
 	public void destruir() {
 		super.destruir();
-		if (disparo.getTask() != null) {
-			disparo.getTask().cancel(true);
-		}
-		disparo = null;
+		/*
+		 * if (disparo.getTask() != null) { disparo.getTask().cancel(true); }
+		 * disparo = null;
+		 */
 	}
 
 	public void removeDisparo() {

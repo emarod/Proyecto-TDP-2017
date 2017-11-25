@@ -49,9 +49,16 @@ public class DisparoEnemigo extends Disparo {
 		else {
 			siguiente = Director.getMapa().getCelda(xCelda, yCelda);
 		}
-		GameObject objeto = siguiente.getObjects()[CONFIG.PROFUNDIDAD_JUGADOR];
-		if (objeto != null && !objeto.accept(V)) {
+		GameObject jugador = siguiente.getObjects()[CONFIG.PROFUNDIDAD_JUGADOR];
+		if (jugador != null && !jugador.accept(V)) {
 			activeTask.cancel(true);
+			destruir();
+		}
+
+		GameObject obstaculo = siguiente.getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO];
+		if (obstaculo != null && !obstaculo.accept(V)) {
+			activeTask.cancel(true);
+			destruir();
 		}
 
 		if (xCelda == 1 || xGrafico <= 128) {
