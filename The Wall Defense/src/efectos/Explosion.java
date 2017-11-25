@@ -27,7 +27,7 @@ public class Explosion extends BuffTemporal {
 
 	@Override
 	public void aplicar(Unidad u) {
-		u.recibirDaño(daño);
+		u.destruir();
 	}
 
 	public void setIcon(Icon i) {

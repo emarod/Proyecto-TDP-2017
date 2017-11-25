@@ -4,7 +4,10 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Controladores.Director;
 import mapa.Celda;
+import objetos.Premio;
+import premios.Bomba;
 
 public class EsqueletoSuicida extends Enemigo {
 
@@ -13,7 +16,7 @@ public class EsqueletoSuicida extends Enemigo {
 		super(c);
 		puntaje = 100;
 		velocidad = 50;
-		vida = 1;
+		vida = 2;
 		daño = 1;
 		graficos = new Icon[1];
 		graficos[0] = new ImageIcon(this.getClass().getResource("/resources/dinamic/esqueleto_suicida.gif"));
@@ -51,6 +54,8 @@ public class EsqueletoSuicida extends Enemigo {
 
 	@Override
 	public void destruir() {
+		Premio precioso = new Bomba(null);
+		Director.getMapa().crearPremio(precioso, celda);
 		super.destruir();
 	}
 

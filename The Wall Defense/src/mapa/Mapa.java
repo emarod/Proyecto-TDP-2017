@@ -300,6 +300,18 @@ public class Mapa implements Runnable {
 		}
 	}
 
+	public void crearPremio(Premio precioso, Celda celda) {
+		if (celdaLabel != null) {
+			int x_cel = celda.getPosX();
+			int y_cel = celda.getPosY();
+			if (celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_PREMIO] == null) {
+				Celda c = celdas[x_cel][y_cel];
+				Premio objeto = precioso.clone(c);
+				objeto.crear();
+			}
+		}
+	}
+
 	public void setEscenario(Escenario e) {
 		escenario = e;
 	}
