@@ -61,7 +61,7 @@ public class Horda implements Runnable {
 	@Override
 	public void run() {
 		RandomGenerator rnd = Director.getRandom();
-		int r = rnd.poll(5);
+		int r = rnd.poll(6);
 		int y;
 		Enemigo e;
 		y = rnd.poll(6);
@@ -88,6 +88,10 @@ public class Horda implements Runnable {
 			}
 			case 4: {
 				e = new EsqueletoSuicida(c);
+				break;
+			}
+			case 5: {
+				e = new LoboWalker(c);
 				break;
 			}
 			default: {
