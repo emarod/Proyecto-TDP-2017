@@ -124,43 +124,47 @@ public class Mapa implements Runnable {
 
 	public boolean crearJugadorLargo(Jugador j) {
 		boolean desplego = false;
-		int x_cel = Math.round(celdaLabel.getX() / 64);
-		int y_cel = Math.round(celdaLabel.getY() / 64);
-		if (x_cel > 0 && x_cel < 14 && celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
-				&& celdas[x_cel + 1][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null) {
-			desplego = true;
-			Celda c = celdas[x_cel][y_cel];
-			c.addChild(celdas[x_cel + 1][y_cel]);
-			Jugador player = j.clone(c);
-			player.crearMulticelda();
-			JLabel icono = player.getGrafico();
-			icono.setBounds(x_cel * 64, y_cel * 64, 128, 64);
-			escenario.agregarLargo(icono, new Integer(CONFIG.PROFUNDIDAD_JUGADOR));
-			player.activar();
+		if (celdaLabel != null) {
+			int x_cel = Math.round(celdaLabel.getX() / 64);
+			int y_cel = Math.round(celdaLabel.getY() / 64);
+			if (x_cel > 0 && x_cel < 14 && celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
+					&& celdas[x_cel + 1][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null) {
+				desplego = true;
+				Celda c = celdas[x_cel][y_cel];
+				c.addChild(celdas[x_cel + 1][y_cel]);
+				Jugador player = j.clone(c);
+				player.crearMulticelda();
+				JLabel icono = player.getGrafico();
+				icono.setBounds(x_cel * 64, y_cel * 64, 128, 64);
+				escenario.agregarLargo(icono, new Integer(CONFIG.PROFUNDIDAD_JUGADOR));
+				player.activar();
+			}
 		}
 		return desplego;
 	}
 
 	public boolean crearJugadorGrande(Jugador j) {
 		boolean desplego = false;
-		int x_cel = Math.round(celdaLabel.getX() / 64);
-		int y_cel = Math.round(celdaLabel.getY() / 64);
-		if (x_cel > 0 && x_cel < 14 && y_cel < 5
-				&& celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
-				&& celdas[x_cel + 1][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
-				&& celdas[x_cel][y_cel + 1].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
-				&& celdas[x_cel + 1][y_cel + 1].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null) {
-			desplego = true;
-			Celda c = celdas[x_cel][y_cel];
-			c.addChild(celdas[x_cel + 1][y_cel]);
-			c.addChild(celdas[x_cel][y_cel + 1]);
-			c.addChild(celdas[x_cel + 1][y_cel + 1]);
-			Jugador player = j.clone(c);
-			player.crearMulticelda();
-			JLabel icono = player.getGrafico();
-			icono.setBounds(x_cel * 64, y_cel * 64, 128, 128);
-			escenario.agregarGrande(icono, new Integer(CONFIG.PROFUNDIDAD_JUGADOR));
-			player.activar();
+		if (celdaLabel != null) {
+			int x_cel = Math.round(celdaLabel.getX() / 64);
+			int y_cel = Math.round(celdaLabel.getY() / 64);
+			if (x_cel > 0 && x_cel < 14 && y_cel < 5
+					&& celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
+					&& celdas[x_cel + 1][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
+					&& celdas[x_cel][y_cel + 1].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
+					&& celdas[x_cel + 1][y_cel + 1].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null) {
+				desplego = true;
+				Celda c = celdas[x_cel][y_cel];
+				c.addChild(celdas[x_cel + 1][y_cel]);
+				c.addChild(celdas[x_cel][y_cel + 1]);
+				c.addChild(celdas[x_cel + 1][y_cel + 1]);
+				Jugador player = j.clone(c);
+				player.crearMulticelda();
+				JLabel icono = player.getGrafico();
+				icono.setBounds(x_cel * 64, y_cel * 64, 128, 128);
+				escenario.agregarGrande(icono, new Integer(CONFIG.PROFUNDIDAD_JUGADOR));
+				player.activar();
+			}
 		}
 		return desplego;
 	}
