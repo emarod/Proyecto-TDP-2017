@@ -4,6 +4,7 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 
 import main.CONFIG;
+import main.GameObject;
 import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
@@ -37,6 +38,10 @@ public abstract class Jugador extends Unidad {
 
 	@Override
 	public void destruir() {
+		GameObject efecto = celda.getObjects()[CONFIG.PROFUNDIDAD_EFECTO];
+		if (efecto != null) {
+			efecto.destruir();
+		}
 		super.destruir();
 		V = null;
 	}
