@@ -24,16 +24,17 @@ public class BtnBomba extends BtnPremio {
 
 	// Metodos heredados.
 	@Override
-	public void create() {
-		Director.getMapa().crearPremio(precioso);
+	public boolean create() {
+		return Director.getMapa().crearPremio(precioso);
 
 	}
 
-	public void crearObjeto() {
-
+	public boolean crearObjeto() {
+		boolean desplego = false;
 		if (this.isEnabled()) {
-			create();
+			desplego = create();
 		}
+		return desplego;
 
 	}
 

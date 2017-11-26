@@ -74,9 +74,12 @@ public class Acumulados extends JPanel {
 			@Override
 			public void mouseReleased(MouseEvent evento) {
 				if (cantBarricada > 0) {
-					barricada.crearObjeto();
-					cantBarricada--;
-					barricadasLeft.setText("" + cantBarricada);
+					boolean desplego = barricada.crearObjeto();
+					if (desplego) {
+						cantBarricada--;
+						barricadasLeft.setText("" + cantBarricada);
+					}
+
 				}
 
 			}
@@ -88,9 +91,12 @@ public class Acumulados extends JPanel {
 			@Override
 			public void mouseReleased(MouseEvent evento) {
 				if (cantBomba > 0) {
-					bomba.crearObjeto();
-					cantBomba--;
-					bombasLeft.setText("" + cantBomba);
+					boolean desplego = bomba.crearObjeto();
+					if (desplego) {
+						cantBomba--;
+						bombasLeft.setText("" + cantBomba);
+					}
+
 				}
 			}
 
@@ -101,9 +107,12 @@ public class Acumulados extends JPanel {
 			@Override
 			public void mouseReleased(MouseEvent evento) {
 				if (cantTrampa > 0) {
-					trampa.crearObjeto();
-					cantTrampa--;
-					trampasLeft.setText("" + cantTrampa);
+					boolean desplego = trampa.crearObjeto();
+					if (desplego) {
+						cantTrampa--;
+						trampasLeft.setText("" + cantTrampa);
+					}
+
 				}
 			}
 
