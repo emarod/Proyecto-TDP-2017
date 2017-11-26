@@ -50,6 +50,9 @@ public class GUI extends JFrame {
 	protected int money;
 	protected Juego game;
 	protected int dificultad;
+	protected JLabel panelInst;
+	protected JButton close;
+	protected JPanel panelCentro;
 
 	// Constructor.
 	public GUI(Juego g) {
@@ -68,19 +71,46 @@ public class GUI extends JFrame {
 		escenario = new Escenario();
 		// escenario.crearPanel();
 		// escenario.getMapa().inicializarCeldas();
-		getContentPane().add(escenario, BorderLayout.CENTER);
+		panelInst = new JLabel(
+				new ImageIcon(this.getClass().getResource("/resources/static/background/PanelAlpha.png")));
+		getContentPane().add(panelInst, BorderLayout.CENTER);
+		close = new JButton();
+		close.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/close.png")));
+		close.setBackground(Color.BLACK);
+		close.setBorderPainted(false);
+		close.setBorder(new LineBorder(Color.BLACK));
+		close.setFocusPainted(false);
+		close.setOpaque(false);
+		close.setContentAreaFilled(false);
+		close.setBounds(500, 310, close.getIcon().getIconWidth(), close.getIcon().getIconHeight());
+
+		close.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				panelCentro.setVisible(false);
+				getContentPane().remove(panelInst);
+				getContentPane().remove(close);
+				getContentPane().remove(panelCentro);
+				getContentPane().add(escenario, BorderLayout.CENTER);
+
+			}
+
+		});
+
+		// getContentPane().add(escenario, BorderLayout.CENTER);
 
 		// Imagen de frame
 		imagen = new ImageIcon(this.getClass().getResource("/resources/static/background/icon2.jpg"));
 		this.setIconImage(imagen.getImage());
 
-		// Armo resto de la interfaz
-		menucompra = new MenuCompra();
-		score = new Score();
-		menuObjetos = new MenuObjetos();
-		level = new Nivel();
-		dinero = new Dinero();
-		acumulados = new Acumulados();
+		// Panel centro
+		panelCentro = new JPanel();
+		panelCentro.setLayout(new BorderLayout());
+		panelCentro.setPreferredSize(new Dimension(1026, 390));
+		panelCentro.setBackground(Color.BLACK);
+		panelCentro.add(close);
+		panelCentro.add(panelInst, BorderLayout.CENTER);
+		getContentPane().add(panelCentro, BorderLayout.CENTER);
 
 		// Panel Inferior
 		panelInferior = new JPanel();
@@ -207,8 +237,8 @@ public class GUI extends JFrame {
 					// si posee un efecto.
 					/*
 					 * GameObject efecto = Director.getCelda(x_jugador,
-					 * y_jugador).getObjects()[CONFIG.PROFUNDIDAD_EFECTO]; if
-					 * (efecto != null) { efecto.destruir(); }
+					 * y_jugador).getObjects()[CONFIG.PROFUNDIDAD_EFECTO]; if (efecto != null) {
+					 * efecto.destruir(); }
 					 */
 				}
 			}
@@ -292,10 +322,9 @@ public class GUI extends JFrame {
 	}
 
 	/*
-	 * @Override public void removeAll() { Celda c = null; for (int x = 0; x <
-	 * 16; x++) { for (int y = 0; y < 6; y++) { c =
-	 * Director.getMapa().getCelda(x, y); if (c.getObjects() != null) { for (int
-	 * i = 0; i < c.getObjects().length; i++) { c.getObjects()[i].destruir(); }
-	 * } } } }
+	 * @Override public void removeAll() { Celda c = null; for (int x = 0; x < 16;
+	 * x++) { for (int y = 0; y < 6; y++) { c = Director.getMapa().getCelda(x, y);
+	 * if (c.getObjects() != null) { for (int i = 0; i < c.getObjects().length; i++)
+	 * { c.getObjects()[i].destruir(); } } } } }
 	 */
 }
