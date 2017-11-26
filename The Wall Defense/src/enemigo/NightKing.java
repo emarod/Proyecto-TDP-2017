@@ -23,8 +23,8 @@ public class NightKing extends ShooterEnemigo {
 		puntaje = 200;
 		velocidad = 60;
 		velocidad_disparo = 75;
-		daño = 3;
-		vida = 6;
+		daño = 6;
+		vida = 3;
 
 		graficos = new Icon[14];
 		graficos[0] = new ImageIcon(
@@ -66,6 +66,7 @@ public class NightKing extends ShooterEnemigo {
 
 	// Metodos heredados.
 
+	@Override
 	public void atacar() {
 		if (disparo == null) {
 			disparo = new DisparoNightKing(this);

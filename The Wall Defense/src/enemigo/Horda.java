@@ -10,8 +10,6 @@ import interfaz.Escenario;
 import main.CONFIG;
 import mapa.Celda;
 import mapa.Mapa;
-import tokens.Token;
-import tokens.tkInvulnerable;
 
 /*
  * Clase Horda.
@@ -107,43 +105,31 @@ public class Horda implements Runnable {
 			// los enemigos invulnerables.
 			case 6: {
 				e = new WhiteWalker(c);
-				Token tk = new tkInvulnerable(c);
-				tk.aplicar();
 				System.out.print("Se creo ww i.");
 				break;
 			}
 			case 7: {
 				e = new NightKing(c);
-				Token tk = new tkInvulnerable(c);
-				tk.aplicar();
 				System.out.print("Se creo nk i.");
 				break;
 			}
 			case 8: {
 				e = new Araña(c);
-				Token tk = new tkInvulnerable(c);
-				tk.aplicar();
 				System.out.print("Se creo araña i.");
 				break;
 			}
 			case 9: {
 				e = new KnightWalker(c);
-				Token tk = new tkInvulnerable(c);
-				tk.aplicar();
 				System.out.print("Se creo kw i.");
 				break;
 			}
 			case 10: {
 				e = new EsqueletoSuicida(c);
-				Token tk = new tkInvulnerable(c);
-				tk.aplicar();
 				System.out.print("Se creo es i.");
 				break;
 			}
 			case 11: {
 				e = new LoboWalker(c);
-				Token tk = new tkInvulnerable(c);
-				tk.aplicar();
 				System.out.print("Se creo lw i.");
 				break;
 			}

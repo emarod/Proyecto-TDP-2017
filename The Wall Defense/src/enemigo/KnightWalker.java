@@ -14,7 +14,7 @@ public class KnightWalker extends Enemigo {
 		puntaje = 100;
 		velocidad = 50;
 		vida = 8;
-		daño = 1;
+		daño = 2;
 		graficos = new Icon[1];
 		graficos[0] = new ImageIcon(
 				this.getClass().getResource("/resources/dinamic/whitewalker_caballero_estatico.gif"));

@@ -103,7 +103,7 @@ public class Mapa implements Runnable {
 		if (celdaLabel != null) {
 			int x_cel = Math.round(celdaLabel.getX() / 64);
 			int y_cel = Math.round(celdaLabel.getY() / 64);
-			if (celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null) {
+			if (x_cel > 0 && celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null) {
 				desplego = true;
 				Celda c = celdas[x_cel][y_cel];
 				Jugador player = j.clone(c);
@@ -126,7 +126,7 @@ public class Mapa implements Runnable {
 		boolean desplego = false;
 		int x_cel = Math.round(celdaLabel.getX() / 64);
 		int y_cel = Math.round(celdaLabel.getY() / 64);
-		if (x_cel < 15 && celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
+		if (x_cel > 0 && x_cel < 14 && celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
 				&& celdas[x_cel + 1][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null) {
 			desplego = true;
 			Celda c = celdas[x_cel][y_cel];
@@ -145,7 +145,8 @@ public class Mapa implements Runnable {
 		boolean desplego = false;
 		int x_cel = Math.round(celdaLabel.getX() / 64);
 		int y_cel = Math.round(celdaLabel.getY() / 64);
-		if (x_cel < 15 && y_cel < 5 && celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
+		if (x_cel > 0 && x_cel < 14 && y_cel < 5
+				&& celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
 				&& celdas[x_cel + 1][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
 				&& celdas[x_cel][y_cel + 1].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
 				&& celdas[x_cel + 1][y_cel + 1].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null) {

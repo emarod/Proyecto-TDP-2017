@@ -21,7 +21,7 @@ public class Partida {
 	public Partida() {
 		nivel = 1;
 		puntaje = 0;
-		dinero = 500;
+		dinero = 200;
 		objetos = new ConcurrentHashMap<Acumulable, Integer>();
 	}
 

@@ -20,8 +20,8 @@ public class WhiteWalker extends Enemigo {
 		super(c);
 		puntaje = 100;
 		velocidad = 50;
-		vida = 3;
-		daño = 1;
+		vida = 6;
+		daño = 4;
 		graficos = new Icon[11];
 		graficos[0] = new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando00.png"));
 		graficos[1] = new ImageIcon(this.getClass().getResource("/resources/static/ww_atacando/ww_atacando01.png"));
