@@ -58,19 +58,19 @@ public class Mapa implements Runnable {
 	}
 
 	// Metodos locales.
-	public void inicializarCeldas() {
+	public void inicializarCeldas(int n) {
 		int y = 0;
 		Terreno terreno;
 		while (y < CONFIG.CANT_CELDAS_Y) {
 			for (int x = 0; x < CONFIG.CANT_CELDAS_X; x++) {
 				celdas[x][y] = new ParentCell(x, y);
 				if (x == 0) {
-					terreno = new Muro(celdas[x][y]);
+					terreno = new Muro(celdas[x][y], n);
 					terreno.crear();
 
 				}
 				else {
-					terreno = CONFIG.crearTerreno(celdas[x][y]);
+					terreno = CONFIG.crearTerreno(celdas[x][y], n);
 
 				}
 				terreno.getGrafico().addMouseListener(oyenteTerreno);

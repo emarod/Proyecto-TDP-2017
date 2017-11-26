@@ -1,6 +1,5 @@
 package main;
 
-import Controladores.Director;
 import enemigo.Horda;
 import mapa.Celda;
 import terreno.Nieve;
@@ -25,9 +24,9 @@ public class CONFIG {
 	public static final int CANT_CELDAS_Y = 6;
 	public static final int CANT_CELDAS_X = 16;
 
-	public static Terreno crearTerreno(Celda c) {
+	public static Terreno crearTerreno(Celda c, int n) {
 		Terreno terreno;
-		switch (Director.getPartida().getNivel()) {
+		switch (n) {
 			case 1:
 				terreno = new Nieve(c);
 				break;

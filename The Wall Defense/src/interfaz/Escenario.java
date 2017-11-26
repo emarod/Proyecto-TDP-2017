@@ -7,6 +7,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import Controladores.Director;
+import Controladores.RandomGenerator;
 import mapa.Mapa;
 
 /*
@@ -20,6 +21,7 @@ public class Escenario extends JPanel {
 	protected static final long serialVersionUID = 1L;
 	protected JLayeredPane layeredPane;
 	protected Mapa mapa;
+	int fondoNivel;
 
 	// Constructor.
 	public Escenario() {
@@ -31,7 +33,10 @@ public class Escenario extends JPanel {
 		Director.setMapa(mapa);
 		mapa.setEscenario(this);
 
-		mapa.inicializarCeldas();
+		RandomGenerator r = Director.getRandom();
+		fondoNivel = r.poll(2) + 1;
+
+		mapa.inicializarCeldas(fondoNivel);
 	}
 
 	// Metodos locales.
@@ -71,7 +76,7 @@ public class Escenario extends JPanel {
 	}
 
 	public void iniciarCeldas() {
-		mapa.inicializarCeldas();
+		mapa.inicializarCeldas(fondoNivel);
 
 	}
 
