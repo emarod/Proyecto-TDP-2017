@@ -99,6 +99,14 @@ public class GUI extends JFrame {
 
 		// getContentPane().add(escenario, BorderLayout.CENTER);
 
+		// Armar resto de la interfaz
+		acumulados = new Acumulados();
+		menucompra = new MenuCompra();
+		menuObjetos = new MenuObjetos();
+		score = new Score();
+		level = new Nivel();
+		dinero = new Dinero();
+
 		// Imagen de frame
 		imagen = new ImageIcon(this.getClass().getResource("/resources/static/background/icon2.jpg"));
 		this.setIconImage(imagen.getImage());
@@ -308,6 +316,7 @@ public class GUI extends JFrame {
 		}
 		else {
 			go.setVisible(true);
+			sell.setVisible(false);
 			getMenu().habilitarCompra();
 			getMenuObjetos().habilitarCompra();
 			// escenario.eliminarPanel();
