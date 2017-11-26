@@ -231,26 +231,29 @@ public class GUI extends JFrame {
 			public void mouseReleased(MouseEvent e) {
 				sell.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/sell.png")));
 				JLabel celdaLabel = Director.getMapa().getCeldaLabel();
-				int x_jugador = Math.round(celdaLabel.getX() / 64);
-				int y_jugador = Math.round(celdaLabel.getY() / 64);
-				if (x_jugador > 0) {
-					// si es un jugador
-					GameObject jugador = Director.getCelda(x_jugador, y_jugador)
-							.getObjects()[CONFIG.PROFUNDIDAD_JUGADOR];
-					if (jugador != null) {
-						jugador.destruir();
-						Director.getPartida().añadirDinero(25);
-						dinero.actualizar();
-					}
-					// si posee un efecto.
-					/*
-					 * GameObject efecto = Director.getCelda(x_jugador,
-					 * y_jugador).getObjects()[CONFIG.PROFUNDIDAD_EFECTO]; if (efecto != null) {
-					 * efecto.destruir(); }
-					 */
-					GameObject efecto = Director.getCelda(x_jugador, y_jugador).getObjects()[CONFIG.PROFUNDIDAD_EFECTO];
-					if (efecto != null) {
-						efecto.destruir();
+				if (celdaLabel != null) {
+					int x_jugador = Math.round(celdaLabel.getX() / 64);
+					int y_jugador = Math.round(celdaLabel.getY() / 64);
+					if (x_jugador > 0) {
+						// si es un jugador
+						GameObject jugador = Director.getCelda(x_jugador, y_jugador)
+								.getObjects()[CONFIG.PROFUNDIDAD_JUGADOR];
+						if (jugador != null) {
+							jugador.destruir();
+							Director.getPartida().añadirDinero(25);
+							dinero.actualizar();
+						}
+						// si posee un efecto.
+						/*
+						 * GameObject efecto = Director.getCelda(x_jugador,
+						 * y_jugador).getObjects()[CONFIG.PROFUNDIDAD_EFECTO]; if (efecto != null) {
+						 * efecto.destruir(); }
+						 */
+						GameObject efecto = Director.getCelda(x_jugador, y_jugador)
+								.getObjects()[CONFIG.PROFUNDIDAD_EFECTO];
+						if (efecto != null) {
+							efecto.destruir();
+						}
 					}
 				}
 			}
