@@ -14,7 +14,7 @@ public class Araña extends Enemigo {
 		puntaje = 100;
 		velocidad = 50;
 		vida = 2;
-		daño = 1;
+		daño = 4;
 		graficos = new Icon[1];
 		graficos[0] = new ImageIcon(this.getClass().getResource("/resources/dinamic/personajes/araña_caminando.gif"));
 	}

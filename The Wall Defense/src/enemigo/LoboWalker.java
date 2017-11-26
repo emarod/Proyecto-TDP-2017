@@ -13,8 +13,8 @@ public class LoboWalker extends Enemigo {
 		super(c);
 		puntaje = 100;
 		velocidad = 50;
-		vida = 2;
-		daño = 1;
+		vida = 4;
+		daño = 2;
 		graficos = new Icon[1];
 		graficos[0] = new ImageIcon(
 				this.getClass().getResource("/resources/dinamic/personajes/whitewalker_lobo_atacando.gif"));

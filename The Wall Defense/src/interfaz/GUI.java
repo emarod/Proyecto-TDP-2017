@@ -205,11 +205,10 @@ public class GUI extends JFrame {
 						dinero.actualizar();
 					}
 					// si posee un efecto.
-					/*
-					 * GameObject efecto = Director.getCelda(x_jugador,
-					 * y_jugador).getObjects()[CONFIG.PROFUNDIDAD_EFECTO]; if
-					 * (efecto != null) { efecto.destruir(); }
-					 */
+					GameObject efecto = Director.getCelda(x_jugador, y_jugador).getObjects()[CONFIG.PROFUNDIDAD_EFECTO];
+					if (efecto != null) {
+						efecto.destruir();
+					}
 				}
 			}
 
