@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import Controladores.Director;
 import interfaz.botones.BtnBarricada;
+import interfaz.botones.BtnBarril;
 import interfaz.botones.BtnTrampa;
 import mapa.Mapa;
 
@@ -28,6 +29,7 @@ public class MenuObjetos extends JPanel {
 	protected static final long serialVersionUID = 1L;
 	protected JPanel botonera;
 	protected BtnBarricada barricada;
+	protected BtnBarril barril;
 	protected BtnTrampa trampa;
 	protected boolean activado;
 
@@ -64,6 +66,28 @@ public class MenuObjetos extends JPanel {
 
 		});
 
+		barril = new BtnBarril();
+		barril.oyente();
+
+		barril.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseReleased(MouseEvent evento) {
+				if (barril.isEnabled() && activado) {
+					if (Director.getPartida().getDinero() >= barril.costo) {
+						Director.getPartida().quitarDinero(barril.costo);
+						Director.getGui().getAcumulados().acumularBarril();
+					}
+					if (Director.getPartida().getDinero() < barril.costo) {
+						barril.setEnabled(false);
+					}
+					Director.getGui().getDinero().actualizar();
+
+				}
+			}
+
+		});
+
 		trampa = new BtnTrampa();
 		trampa.oyente();
 
@@ -87,6 +111,7 @@ public class MenuObjetos extends JPanel {
 		});
 
 		agregarBoton(barricada);
+		agregarBoton(barril);
 		agregarBoton(trampa);
 
 	}
@@ -101,6 +126,10 @@ public class MenuObjetos extends JPanel {
 			barricada.deshabilitar();
 		}
 
+		if (Director.getPartida().getDinero() < barril.costo) {
+			barril.deshabilitar();
+		}
+
 		if (Director.getPartida().getDinero() < trampa.costo) {
 			trampa.deshabilitar();
 		}
@@ -110,12 +139,13 @@ public class MenuObjetos extends JPanel {
 	public void deshabilitarCompra() {
 		trampa.deshabilitar();
 		barricada.deshabilitar();
-
+		barril.deshabilitar();
 	}
 
 	public void habilitarCompra() {
 		trampa.habilitar();
 		barricada.habilitar();
+		barril.deshabilitar();
 	}
 
 	public void setActivado(boolean a) {
