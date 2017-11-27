@@ -298,12 +298,15 @@ public class Mapa implements Runnable {
 		if (celdaLabel != null) {
 			int x_cel = Math.round(celdaLabel.getX() / 64);
 			int y_cel = Math.round(celdaLabel.getY() / 64);
-			if (celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_PREMIO] == null) {
-				Celda c = celdas[x_cel][y_cel];
-				Premio objeto = precioso.clone(c);
-				objeto.crear();
-				desplego = true;
+			if (x_cel > 0) {
+				if (celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_PREMIO] == null) {
+					Celda c = celdas[x_cel][y_cel];
+					Premio objeto = precioso.clone(c);
+					objeto.crear();
+					desplego = true;
+				}
 			}
+
 		}
 		return desplego;
 	}
@@ -357,11 +360,13 @@ public class Mapa implements Runnable {
 		if (celdaLabel != null) {
 			int x_cel = Math.round(celdaLabel.getX() / 64);
 			int y_cel = Math.round(celdaLabel.getY() / 64);
-			if (celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_COMPRABLE] == null) {
-				Celda c = celdas[x_cel][y_cel];
-				Comprable objeto = comprable.clone(c);
-				objeto.crear();
-				desplego = true;
+			if (x_cel > 0) {
+				if (celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_COMPRABLE] == null) {
+					Celda c = celdas[x_cel][y_cel];
+					Comprable objeto = comprable.clone(c);
+					objeto.crear();
+					desplego = true;
+				}
 			}
 		}
 		return desplego;
