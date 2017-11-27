@@ -1,23 +1,27 @@
 package comprables;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import Controladores.Director;
 import main.CONFIG;
+import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
 import objetos.Comprable;
-import objetos.ObjetoVida;
+import objetos.ObjetoTemporal;
 
 /*
  * Clase Rock
  * Clase que determina como esta compuesta y como se comporta una roca.
  */
 
-public class Trampa extends ObjetoVida implements Comprable {
+public class Trampa extends ObjetoTemporal implements Comprable {
 
-	protected int costo;
+	protected int costo, daño;
+	private Unidad unidad;
 
 	// Constructor.
 	public Trampa(Celda c) {
@@ -28,7 +32,8 @@ public class Trampa extends ObjetoVida implements Comprable {
 		graficos[2] = new ImageIcon(this.getClass().getResource("/resources/static/trampa/trampa3.png"));
 		setGrafico(2);
 		costo = 5;
-		vida = 1;
+		daño = 8;
+		tiempo = 1;
 		profundidad = CONFIG.PROFUNDIDAD_COMPRABLE;
 	}
 
@@ -48,7 +53,8 @@ public class Trampa extends ObjetoVida implements Comprable {
 
 	@Override
 	public boolean accept(Visitor V) {
-		return V.visitObjeto(this);
+		V.visitObjeto(this);
+		return true;
 	}
 
 	@Override
@@ -65,5 +71,34 @@ public class Trampa extends ObjetoVida implements Comprable {
 	@Override
 	public void setCosto(int c) {
 		costo = c;
+	}
+
+	@Override
+	public void aplicarEfecto(Unidad u) {
+		Director.ejecutarUna(this, 1);
+		unidad = u;
+
+	}
+
+	@Override
+	public void terminar() {
+		destruir();
+
+	}
+
+	@Override
+	public void run() {
+		Director.ejecutarUna(this, 300, TimeUnit.MILLISECONDS);
+		graph++;
+		if (graph == 2) {
+			setGrafico(graph);
+			unidad.recibirDaño(daño);
+			unidad = null;
+			terminar();
+		}
+		else {
+			setGrafico(graph);
+		}
+
 	}
 }

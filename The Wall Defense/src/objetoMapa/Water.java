@@ -1,7 +1,5 @@
 package objetoMapa;
 
-import java.util.concurrent.Callable;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -19,7 +17,7 @@ import objetos.Obstaculo;
  * Clase que determina como esta compuesta y como se comporta el agua.
  */
 
-public class Water extends ObjetoTemporal implements Obstaculo, Callable<Boolean> {
+public class Water extends ObjetoTemporal implements Obstaculo {
 
 	// Atributos locales.
 	protected JLabel[] labels;
@@ -75,8 +73,7 @@ public class Water extends ObjetoTemporal implements Obstaculo, Callable<Boolean
 	}
 
 	@Override
-	public Boolean call() throws Exception {
+	public void run() {
 		destruir();
-		return true;
 	}
 }

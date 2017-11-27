@@ -3,7 +3,7 @@ package objetos;
 import main.GameObject;
 import mapa.Celda;
 
-public abstract class ObjetoTemporal extends GameObject implements Temporal {
+public abstract class ObjetoTemporal extends GameObject implements Temporal, Runnable {
 
 	protected int tiempo;
 
@@ -20,5 +20,4 @@ public abstract class ObjetoTemporal extends GameObject implements Temporal {
 	public void setTiempo(int t) {
 		tiempo = t;
 	}
-
 }
