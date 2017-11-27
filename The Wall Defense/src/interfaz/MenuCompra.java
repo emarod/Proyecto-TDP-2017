@@ -41,6 +41,7 @@ public class MenuCompra extends JPanel {
 	protected BtnEspadachin JonSnow;
 	protected BtnLobo lobo;
 	protected Director director;
+	protected boolean enPartida = false;
 
 	// Constructor.
 	public MenuCompra() {
@@ -205,33 +206,52 @@ public class MenuCompra extends JPanel {
 
 	public void chequear() {
 
-		if (Director.getPartida().getDinero() < dragon.getCosto()) {
+		if (Director.getPartida().getDinero() >= dragon.getCosto() && !enPartida) {
+			dragon.habilitar();
+		}
+		else {
 			dragon.deshabilitar();
 		}
 
-		if (Director.getPartida().getDinero() < ygritte.getCosto()) {
+		if (Director.getPartida().getDinero() >= ygritte.getCosto() && !enPartida) {
+			ygritte.habilitar();
+		}
+		else {
 			ygritte.deshabilitar();
 		}
 
-		if (Director.getPartida().getDinero() < JonSnow.getCosto()) {
+		if (Director.getPartida().getDinero() >= JonSnow.getCosto() && !enPartida) {
+			JonSnow.habilitar();
+		}
+		else {
 			JonSnow.deshabilitar();
 		}
 
-		if (Director.getPartida().getDinero() < lannister.getCosto()) {
+		if (Director.getPartida().getDinero() >= lannister.getCosto() && !enPartida) {
+			lannister.habilitar();
+		}
+		else {
 			lannister.deshabilitar();
 		}
 
-		if (Director.getPartida().getDinero() < lobo.getCosto()) {
+		if (Director.getPartida().getDinero() >= lobo.getCosto() && !enPartida) {
+			lobo.habilitar();
+		}
+		else {
 			lobo.deshabilitar();
 		}
 
-		if (Director.getPartida().getDinero() < gigante.getCosto()) {
+		if (Director.getPartida().getDinero() >= gigante.getCosto() && !enPartida) {
+			gigante.habilitar();
+		}
+		else {
 			gigante.deshabilitar();
 		}
 
 	}
 
 	public void deshabilitarCompra() {
+		enPartida = true;
 
 		ygritte.deshabilitar();
 		dragon.deshabilitar();
@@ -243,6 +263,7 @@ public class MenuCompra extends JPanel {
 	}
 
 	public void habilitarCompra() {
+		enPartida = false;
 
 		ygritte.habilitar();
 		dragon.habilitar();
