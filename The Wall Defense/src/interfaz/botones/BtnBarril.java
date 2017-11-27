@@ -20,8 +20,8 @@ public class BtnBarril extends BtnComprables {
 		super();
 		Celda c = null;
 		comprable = new Barril(c);
-		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/barril/000.png")));
-		info = new ImageIcon(this.getClass().getResource("/resources/static/barril/000.png"));
+		this.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/barril.png")));
+		info = new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/barrildescripcion.png"));
 		costo = comprable.getCosto();
 
 	}
@@ -63,7 +63,7 @@ public class BtnBarril extends BtnComprables {
 
 			@Override
 			public void mouseExited(MouseEvent evento) {
-				setIcon(new ImageIcon(this.getClass().getResource("/resources/static/barril/000.png")));
+				setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/objetos/barril.png")));
 
 			}
 

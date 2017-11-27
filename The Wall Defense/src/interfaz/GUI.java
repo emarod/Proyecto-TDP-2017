@@ -56,10 +56,10 @@ public class GUI extends JFrame {
 	protected int cont = 0;
 
 	// Constructor.
-	public GUI(Juego g) {
+	public GUI(Juego g, int dificultad) {
 		super("The Wall Defense");
-		dificultad = 2; // La dificultad podria ser ingresada por botones por el
-						// ususario.
+		this.dificultad = dificultad * 5;
+		System.out.println(this.dificultad);
 		game = g;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(0, 0, 1245, 570);

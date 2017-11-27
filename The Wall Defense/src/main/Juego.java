@@ -67,12 +67,12 @@ public class Juego {
 
 	}
 
-	public void crearGUI() {
+	public void crearGUI(int d) {
 		opciones.removeAll();
 		opciones = null;
 		menu.removeAll();
 		menu.dispose();
-		frame = new GUI(this);
+		frame = new GUI(this, d);
 		frame.setVisible(true);
 
 	}

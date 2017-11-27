@@ -45,11 +45,13 @@ public class MenuInicio extends JPanel {
 	protected JButton info1, info2, info3;
 	protected boolean onefects;
 	protected boolean onmusic;
-	protected boolean oyentesSonido, oyentesDificultad;
+	protected boolean oyentesSonido;
 	protected JLabel musicOn, efectsOn;
 	protected JLabel musicOff, efectsOff;
 	protected JLabel info;
 	protected JLabel select;
+	protected int difficulty;
+	protected int ventanas;
 
 	// Constructor.
 	public MenuInicio(Juego game) {
@@ -71,7 +73,8 @@ public class MenuInicio extends JPanel {
 		onefects = true;
 		onmusic = true;
 		oyentesSonido = false;
-		oyentesDificultad = false;
+		difficulty = 2;
+		ventanas = 0;
 	}
 
 	// Metodos locales.
@@ -122,7 +125,7 @@ public class MenuInicio extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				game.crearGUI();
+				game.crearGUI(difficulty);
 			}
 		});
 
@@ -203,6 +206,8 @@ public class MenuInicio extends JPanel {
 				opcion2.setVisible(true);
 				close.setVisible(true);
 
+				ventanas = 1;
+
 				armarOpciones();
 				armarOyentesSonido();
 			}
@@ -258,6 +263,7 @@ public class MenuInicio extends JPanel {
 		close.setFocusPainted(false);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
+		close.setToolTipText("Volver a inicio");
 
 		opcionesDificultad();
 
@@ -350,10 +356,16 @@ public class MenuInicio extends JPanel {
 					buttons[1].setVisible(true);
 					buttons[2].setVisible(true);
 					dificultad.setVisible(false);
-					facil.setVisible(false);
-					moderado.setVisible(false);
-					dificil.setVisible(false);
-					select.setVisible(false);
+					if (ventanas == 2) {
+						facil.setVisible(false);
+						moderado.setVisible(false);
+						dificil.setVisible(false);
+						select.setVisible(false);
+						info1.setVisible(false);
+						info2.setVisible(false);
+						info3.setVisible(false);
+						ventanas = 0;
+					}
 
 				}
 
@@ -427,6 +439,7 @@ public class MenuInicio extends JPanel {
 				efectsOff.setVisible(false);
 				dificultad.setIcon(
 						new ImageIcon(this.getClass().getResource("/resources/static/botones/dificultad.png")));
+				ventanas = 2;
 				dificultades();
 
 			}
@@ -447,81 +460,221 @@ public class MenuInicio extends JPanel {
 		moderado = new JButton();
 		dificil = new JButton();
 		select = new JLabel();
+		info1 = new JButton();
+		info2 = new JButton();
+		info3 = new JButton();
+		close1 = new JButton();
+
+		info1.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/question2.png")));
+		info2.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/question2.png")));
+		info3.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/question2.png")));
 
 		facil.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/easy.png")));
 		moderado.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/medium.png")));
 		dificil.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/hard.png")));
 		select.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/check.png")));
+		close1.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/close.png")));
 
 		facil.setBounds(50, 100, dificultad.getIcon().getIconWidth(), dificultad.getIcon().getIconHeight());
 		moderado.setBounds(50, 200, dificultad.getIcon().getIconWidth(), dificultad.getIcon().getIconHeight());
 		dificil.setBounds(50, 300, dificultad.getIcon().getIconWidth(), dificultad.getIcon().getIconHeight());
+		close1.setBounds(110, 380, close1.getIcon().getIconWidth(), close1.getIcon().getIconHeight());
 
+		menupanel.add(info1);
+		menupanel.add(info2);
+		menupanel.add(info3);
+
+		info1.setBounds(200, 110, info1.getIcon().getIconWidth(), info1.getIcon().getIconHeight());
+		info1.setBackground(Color.BLACK);
+		info1.setBorderPainted(false);
+		info1.setBorder(new LineBorder(Color.BLACK));
+		info1.setFocusPainted(false);
+		info1.setOpaque(false);
+		info1.setContentAreaFilled(false);
+
+		info2.setBounds(200, 210, info2.getIcon().getIconWidth(), info2.getIcon().getIconHeight());
+		info2.setBackground(Color.BLACK);
+		info2.setBorderPainted(false);
+		info2.setBorder(new LineBorder(Color.BLACK));
+		info2.setFocusPainted(false);
+		info2.setOpaque(false);
+		info2.setContentAreaFilled(false);
+
+		info3.setBounds(200, 310, info3.getIcon().getIconWidth(), info3.getIcon().getIconHeight());
+		info3.setBackground(Color.BLACK);
+		info3.setBorderPainted(false);
+		info3.setBorder(new LineBorder(Color.BLACK));
+		info3.setFocusPainted(false);
+		info3.setOpaque(false);
+		info3.setContentAreaFilled(false);
+
+		close1.setBackground(Color.BLACK);
+		close1.setBorderPainted(false);
+		close1.setBorder(new LineBorder(Color.BLACK));
+		close1.setFocusPainted(false);
+		close1.setOpaque(false);
+		close1.setContentAreaFilled(false);
+		close1.setVisible(false);
+
+		menupanel.add(select);
 		menupanel.add(facil);
 		menupanel.add(moderado);
 		menupanel.add(dificil);
-		menupanel.add(select);
-
-		select.setVisible(false);
+		menupanel.add(close1);
 
 		dificultadesOyentes();
 
 	}
 
 	public void dificultadesOyentes() {
-		if (!oyentesDificultad) {
-			oyentesDificultad = true;
-			facil.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					facil.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/easy.png")));
-					select.setBounds(10, 105, select.getIcon().getIconWidth(), select.getIcon().getIconHeight());
-					select.setVisible(true);
-				}
 
-				@Override
-				public void mousePressed(MouseEvent e) {
-					facil.setIcon(
-							new ImageIcon(this.getClass().getResource("/resources/static/botones/easypressed.png")));
-				}
+		facil.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				facil.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/easy.png")));
+				select.setBounds(10, 105, select.getIcon().getIconWidth(), select.getIcon().getIconHeight());
+				select.setVisible(true);
+				difficulty = 2;
 
-			});
+			}
 
-			moderado.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					moderado.setIcon(
-							new ImageIcon(this.getClass().getResource("/resources/static/botones/medium.png")));
-					select.setBounds(10, 205, select.getIcon().getIconWidth(), select.getIcon().getIconHeight());
-					select.setVisible(true);
+			@Override
+			public void mousePressed(MouseEvent e) {
+				facil.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/easypressed.png")));
+			}
 
-				}
+		});
 
-				@Override
-				public void mousePressed(MouseEvent e) {
-					moderado.setIcon(
-							new ImageIcon(this.getClass().getResource("/resources/static/botones/mediumpressed.png")));
-				}
+		moderado.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				moderado.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/medium.png")));
+				select.setBounds(10, 205, select.getIcon().getIconWidth(), select.getIcon().getIconHeight());
+				select.setVisible(true);
+				difficulty = 3;
 
-			});
+			}
 
-			dificil.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					dificil.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/hard.png")));
-					select.setBounds(10, 305, select.getIcon().getIconWidth(), select.getIcon().getIconHeight());
-					select.setVisible(true);
+			@Override
+			public void mousePressed(MouseEvent e) {
+				moderado.setIcon(
+						new ImageIcon(this.getClass().getResource("/resources/static/botones/mediumpressed.png")));
+			}
 
-				}
+		});
 
-				@Override
-				public void mousePressed(MouseEvent e) {
-					dificil.setIcon(
-							new ImageIcon(this.getClass().getResource("/resources/static/botones/hardpressed.png")));
-				}
+		dificil.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				dificil.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/hard.png")));
+				select.setBounds(10, 305, select.getIcon().getIconWidth(), select.getIcon().getIconHeight());
+				select.setVisible(true);
+				difficulty = 4;
 
-			});
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				dificil.setIcon(
+						new ImageIcon(this.getClass().getResource("/resources/static/botones/hardpressed.png")));
+			}
+
+		});
+
+		info1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				menupanel.setIcon(
+						new ImageIcon(this.getClass().getResource("/resources/static/background/easyinfo.png")));
+				facil.setVisible(false);
+				dificil.setVisible(false);
+				moderado.setVisible(false);
+				select.setVisible(false);
+				info1.setVisible(false);
+				info2.setVisible(false);
+				info3.setVisible(false);
+				close1.setVisible(true);
+				close.setVisible(false);
+
+			}
+
+		});
+
+		info2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+
+				menupanel.setIcon(
+						new ImageIcon(this.getClass().getResource("/resources/static/background/mediuminfo.png")));
+				facil.setVisible(false);
+				dificil.setVisible(false);
+				moderado.setVisible(false);
+				select.setVisible(false);
+				info1.setVisible(false);
+				info2.setVisible(false);
+				info3.setVisible(false);
+				close1.setVisible(true);
+				close.setVisible(false);
+
+			}
+
+		});
+
+		info3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				menupanel.setIcon(
+						new ImageIcon(this.getClass().getResource("/resources/static/background/hardinfo.png")));
+				facil.setVisible(false);
+				dificil.setVisible(false);
+				moderado.setVisible(false);
+				select.setVisible(false);
+				info1.setVisible(false);
+				info2.setVisible(false);
+				info3.setVisible(false);
+				close1.setVisible(true);
+				close.setVisible(false);
+
+			}
+
+		});
+
+		close1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				menupanel.setIcon(menuback);
+				facil.setVisible(true);
+				dificil.setVisible(true);
+				moderado.setVisible(true);
+				select.setVisible(true);
+				info1.setVisible(true);
+				info2.setVisible(true);
+				info3.setVisible(true);
+				close1.setVisible(false);
+				close.setVisible(true);
+
+			}
+
+		});
+
+		if (difficulty == 2) {
+			select.setBounds(10, 105, select.getIcon().getIconWidth(), select.getIcon().getIconHeight());
+			select.setVisible(true);
+
 		}
+		if (difficulty == 3) {
+			select.setBounds(10, 205, select.getIcon().getIconWidth(), select.getIcon().getIconHeight());
+			select.setVisible(true);
+		}
+		if (difficulty == 4) {
+			select.setBounds(10, 305, select.getIcon().getIconWidth(), select.getIcon().getIconHeight());
+			select.setVisible(true);
+		}
+
+	}
+
+	public int getDificultad() {
+		return difficulty;
 	}
 
 }

@@ -60,7 +60,8 @@ public class Acumulados extends JPanel {
 				this.getClass().getResource("/resources/static/botones/objetos/barricadaacumulada.png"));
 		iconoTrampa = new ImageIcon(
 				this.getClass().getResource("/resources/static/botones/objetos/trampaacumulada.png"));
-		iconoBarril = new ImageIcon(this.getClass().getResource("/resources/static/barril/000.png"));
+		iconoBarril = new ImageIcon(
+				this.getClass().getResource("/resources/static/botones/objetos/barrilacumulada.png"));
 
 		bombasLeft = new JLabel("" + cantBomba);
 		barricadasLeft = new JLabel("" + cantBarricada);

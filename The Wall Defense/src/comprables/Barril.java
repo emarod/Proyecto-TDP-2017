@@ -21,7 +21,7 @@ public class Barril extends ObjetoTemporal implements Comprable, Runnable {
 	// Constructor.
 	public Barril(Celda c) {
 		super(c);
-		costo = 10;
+		costo = 15;
 		profundidad = CONFIG.PROFUNDIDAD_COMPRABLE;
 	}
 
