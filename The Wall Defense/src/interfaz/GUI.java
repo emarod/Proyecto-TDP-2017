@@ -50,7 +50,7 @@ public class GUI extends JFrame {
 	protected int money;
 	protected Juego game;
 	protected int dificultad;
-	protected JLabel inst1, inst2, inst3;
+	protected JLabel inst;
 	protected JButton close, next;
 	protected JPanel panelCentro;
 	protected int cont = 0;
@@ -71,11 +71,7 @@ public class GUI extends JFrame {
 		// Escenario. Donde va el mapa.
 		escenario = new Escenario();
 
-		inst1 = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/background/PanelAlpha.png")));
-
-		inst2 = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/background/PanelAlpha2.png")));
-
-		inst3 = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/background/PanelAlpha3.png")));
+		inst = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/background/PanelAlpha.png")));
 
 		// cerrar panel instrucciones
 		close = new JButton();
@@ -103,7 +99,7 @@ public class GUI extends JFrame {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				panelCentro.setVisible(false);
-				getContentPane().remove(inst1);
+				getContentPane().remove(inst);
 				getContentPane().remove(close);
 				getContentPane().remove(panelCentro);
 				getContentPane().add(escenario, BorderLayout.CENTER);
@@ -116,21 +112,20 @@ public class GUI extends JFrame {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				if (cont == 0) {
-					getContentPane().remove(panelCentro);
-					panelCentro.remove(inst1);
-					panelCentro.add(inst2, BorderLayout.CENTER);
-					panelCentro.add(close);
-					panelCentro.add(next);
+					// getContentPane().remove(panelCentro);
+					// panelCentro.remove(inst1);
+					inst.setIcon(
+							new ImageIcon(this.getClass().getResource("/resources/static/background/PanelAlpha2.png")));
 					cont = cont + 1;
-					panelCentro.setVisible(true);
-					getContentPane().add(panelCentro, BorderLayout.CENTER);
 
 				}
 
 				else {
 					if (cont == 1) {
-						panelCentro.add(inst3, BorderLayout.CENTER);
-						panelCentro.add(close);
+						inst.setIcon(new ImageIcon(
+								this.getClass().getResource("/resources/static/background/PanelAlpha3.png")));
+						next.setVisible(false);
+						close.setBounds(500, 305, close.getIcon().getIconWidth(), close.getIcon().getIconHeight());
 					}
 				}
 
@@ -157,7 +152,7 @@ public class GUI extends JFrame {
 		panelCentro.setBackground(Color.BLACK);
 		panelCentro.add(close);
 		panelCentro.add(next);
-		panelCentro.add(inst1, BorderLayout.CENTER);
+		panelCentro.add(inst, BorderLayout.CENTER);
 		getContentPane().add(panelCentro, BorderLayout.CENTER);
 
 		// Panel Inferior
