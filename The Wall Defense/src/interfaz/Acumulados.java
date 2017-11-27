@@ -34,6 +34,7 @@ public class Acumulados extends JPanel {
 	protected int cantBomba, cantBarricada, cantTrampa;
 	protected JLabel bombasLeft, barricadasLeft, trampasLeft;
 	protected Icon iconoBomba, iconoBarricada, iconoTrampa;
+	protected JLabel label;
 
 	public Acumulados() {
 		this.setLayout(new FlowLayout());
