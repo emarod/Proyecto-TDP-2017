@@ -118,6 +118,9 @@ public class GUI extends JFrame {
 				getContentPane().remove(close);
 				getContentPane().remove(panelCentro);
 				getContentPane().add(escenario, BorderLayout.CENTER);
+				panelInferior.add(armarGo(), BorderLayout.WEST);
+				panelInferior.add(armarSell(), BorderLayout.EAST);
+				menuObjetos.setActivado(true);
 
 			}
 
@@ -199,6 +202,8 @@ public class GUI extends JFrame {
 		level = new Nivel();
 		dinero = new Dinero();
 
+		menuObjetos.setActivado(false);
+
 		// Imagen de frame
 		imagen = new ImageIcon(this.getClass().getResource("/resources/static/background/icon2.jpg"));
 		this.setIconImage(imagen.getImage());
@@ -219,8 +224,6 @@ public class GUI extends JFrame {
 		panelInferior.setLayout(new BorderLayout());
 		panelInferior.setPreferredSize(new Dimension(10, 90));
 		panelInferior.setBackground(Color.BLACK);
-		panelInferior.add(armarGo(), BorderLayout.WEST);
-		panelInferior.add(armarSell(), BorderLayout.EAST);
 		panelInferior.add(acumulados, BorderLayout.CENTER);
 		getContentPane().add(panelInferior, BorderLayout.SOUTH);
 

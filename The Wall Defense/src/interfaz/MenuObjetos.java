@@ -29,6 +29,7 @@ public class MenuObjetos extends JPanel {
 	protected JPanel botonera;
 	protected BtnBarricada barricada;
 	protected BtnTrampa trampa;
+	protected boolean activado;
 
 	// Constructor.
 	public MenuObjetos() {
@@ -48,7 +49,7 @@ public class MenuObjetos extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				if (barricada.isEnabled()) {
+				if (barricada.isEnabled() && activado) {
 					if (Director.getPartida().getDinero() >= barricada.costo) {
 						Director.getPartida().quitarDinero(barricada.costo);
 						Director.getGui().getAcumulados().acumularBarricada();
@@ -70,7 +71,7 @@ public class MenuObjetos extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent evento) {
-				if (trampa.isEnabled()) {
+				if (trampa.isEnabled() && activado) {
 					if (Director.getPartida().getDinero() >= trampa.costo) {
 						Director.getPartida().quitarDinero(trampa.costo);
 						Director.getGui().getAcumulados().acumularTrampa();
@@ -115,6 +116,10 @@ public class MenuObjetos extends JPanel {
 	public void habilitarCompra() {
 		trampa.habilitar();
 		barricada.habilitar();
+	}
+
+	public void setActivado(boolean a) {
+		activado = a;
 	}
 
 }
