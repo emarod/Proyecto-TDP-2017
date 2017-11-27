@@ -37,12 +37,19 @@ public class MenuInicio extends JPanel {
 	protected BancoRecursos bancoRecursos;
 	protected JButton opcion1;
 	protected JButton opcion2;
-	protected JButton close;
+	protected JButton close, close1;
+	protected JButton dificultad;
+	protected JButton facil;
+	protected JButton moderado;
+	protected JButton dificil;
+	protected JButton info1, info2, info3;
 	protected boolean onefects;
 	protected boolean onmusic;
-	protected boolean oyentesCreados;
+	protected boolean oyentesSonido, oyentesDificultad;
 	protected JLabel musicOn, efectsOn;
 	protected JLabel musicOff, efectsOff;
+	protected JLabel info;
+	protected JLabel select;
 
 	// Constructor.
 	public MenuInicio(Juego game) {
@@ -63,7 +70,8 @@ public class MenuInicio extends JPanel {
 
 		onefects = true;
 		onmusic = true;
-		oyentesCreados = false;
+		oyentesSonido = false;
+		oyentesDificultad = false;
 	}
 
 	// Metodos locales.
@@ -95,7 +103,7 @@ public class MenuInicio extends JPanel {
 		buttons[1] = new JButton();
 		buttons[1].setIcon(options[2]);
 		buttons[1].setBounds(50, 200, buttons[1].getIcon().getIconWidth(), buttons[1].getIcon().getIconHeight());
-		buttons[1].setToolTipText("Opciones de sonido");
+		buttons[1].setToolTipText("Opciones de sonido y dificultad");
 
 		buttons[2] = new JButton();
 		buttons[2].setIcon(help[2]);
@@ -195,10 +203,8 @@ public class MenuInicio extends JPanel {
 				opcion2.setVisible(true);
 				close.setVisible(true);
 
-				armarOyentesSonido();
-
 				armarOpciones();
-
+				armarOyentesSonido();
 			}
 
 			@Override
@@ -225,22 +231,26 @@ public class MenuInicio extends JPanel {
 		opcion1 = new JButton();
 		opcion2 = new JButton();
 		close = new JButton();
+		dificultad = new JButton();
 
 		opcion1.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/efectbotonreleased.png")));
 		opcion2.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/musicbotonreleased.png")));
 		close.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/close.png")));
+		dificultad.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/dificultad.png")));
+
 		musicOn = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/botones/on.png")));
 		musicOff = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/botones/off.png")));
 		efectsOn = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/botones/on.png")));
 		efectsOff = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/botones/off.png")));
 
-		opcion1.setBounds(50, 150, opcion1.getIcon().getIconWidth(), opcion1.getIcon().getIconHeight());
-		opcion2.setBounds(50, 250, opcion2.getIcon().getIconWidth(), opcion2.getIcon().getIconHeight());
-		close.setBounds(110, 350, close.getIcon().getIconWidth(), close.getIcon().getIconHeight());
-		musicOn.setBounds(110, 220, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
-		musicOff.setBounds(110, 220, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
-		efectsOn.setBounds(110, 120, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
-		efectsOff.setBounds(110, 120, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
+		opcion1.setBounds(50, 200, opcion1.getIcon().getIconWidth(), opcion1.getIcon().getIconHeight());
+		opcion2.setBounds(50, 300, opcion2.getIcon().getIconWidth(), opcion2.getIcon().getIconHeight());
+		close.setBounds(110, 380, close.getIcon().getIconWidth(), close.getIcon().getIconHeight());
+		musicOn.setBounds(110, 270, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
+		musicOff.setBounds(110, 270, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
+		efectsOn.setBounds(110, 170, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
+		efectsOff.setBounds(110, 170, musicOn.getIcon().getIconWidth(), musicOn.getIcon().getIconHeight());
+		dificultad.setBounds(50, 100, dificultad.getIcon().getIconWidth(), dificultad.getIcon().getIconHeight());
 
 		close.setBackground(Color.BLACK);
 		close.setBorderPainted(false);
@@ -249,11 +259,13 @@ public class MenuInicio extends JPanel {
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
 
+		opcionesDificultad();
+
 	}
 
 	public void armarOyentesSonido() {
-		if (!oyentesCreados) {
-			oyentesCreados = true;
+		if (!oyentesSonido) {
+			oyentesSonido = true;
 			// oyente boton efectos
 			opcion1.addMouseListener(new MouseAdapter() {
 				@Override
@@ -337,6 +349,12 @@ public class MenuInicio extends JPanel {
 					buttons[0].setVisible(true);
 					buttons[1].setVisible(true);
 					buttons[2].setVisible(true);
+					dificultad.setVisible(false);
+					facil.setVisible(false);
+					moderado.setVisible(false);
+					dificil.setVisible(false);
+					select.setVisible(false);
+
 				}
 
 			});
@@ -344,6 +362,15 @@ public class MenuInicio extends JPanel {
 	}
 
 	public void armarOpciones() {
+
+		menupanel.add(musicOn);
+		menupanel.add(close);
+		menupanel.add(efectsOn);
+		menupanel.add(musicOff);
+		menupanel.add(efectsOff);
+		menupanel.add(opcion1);
+		menupanel.add(opcion2);
+		menupanel.add(dificultad);
 
 		if (onmusic) {
 			musicOn.setVisible(true);
@@ -359,13 +386,8 @@ public class MenuInicio extends JPanel {
 			efectsOff.setVisible(true);
 		}
 
-		menupanel.add(close);
-		menupanel.add(opcion1);
-		menupanel.add(opcion2);
-		menupanel.add(musicOn);
-		menupanel.add(efectsOn);
-		menupanel.add(musicOff);
-		menupanel.add(efectsOff);
+		dificultad.setVisible(true);
+
 	}
 
 	public void armarAyuda() {
@@ -388,6 +410,118 @@ public class MenuInicio extends JPanel {
 
 		});
 
+	}
+
+	public void opcionesDificultad() {
+
+		dificultad.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				dificultad.setVisible(false);
+				menupanel.setIcon(menuback);
+				opcion1.setVisible(false);
+				opcion2.setVisible(false);
+				musicOn.setVisible(false);
+				musicOff.setVisible(false);
+				efectsOn.setVisible(false);
+				efectsOff.setVisible(false);
+				dificultad.setIcon(
+						new ImageIcon(this.getClass().getResource("/resources/static/botones/dificultad.png")));
+				dificultades();
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				dificultad.setIcon(
+						new ImageIcon(this.getClass().getResource("/resources/static/botones/dificultadpressed.png")));
+			}
+
+		});
+
+	}
+
+	public void dificultades() {
+
+		facil = new JButton();
+		moderado = new JButton();
+		dificil = new JButton();
+		select = new JLabel();
+
+		facil.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/easy.png")));
+		moderado.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/medium.png")));
+		dificil.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/hard.png")));
+		select.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/check.png")));
+
+		facil.setBounds(50, 100, dificultad.getIcon().getIconWidth(), dificultad.getIcon().getIconHeight());
+		moderado.setBounds(50, 200, dificultad.getIcon().getIconWidth(), dificultad.getIcon().getIconHeight());
+		dificil.setBounds(50, 300, dificultad.getIcon().getIconWidth(), dificultad.getIcon().getIconHeight());
+
+		menupanel.add(facil);
+		menupanel.add(moderado);
+		menupanel.add(dificil);
+		menupanel.add(select);
+
+		select.setVisible(false);
+
+		dificultadesOyentes();
+
+	}
+
+	public void dificultadesOyentes() {
+		if (!oyentesDificultad) {
+			oyentesDificultad = true;
+			facil.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					facil.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/easy.png")));
+					select.setBounds(10, 105, select.getIcon().getIconWidth(), select.getIcon().getIconHeight());
+					select.setVisible(true);
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+					facil.setIcon(
+							new ImageIcon(this.getClass().getResource("/resources/static/botones/easypressed.png")));
+				}
+
+			});
+
+			moderado.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					moderado.setIcon(
+							new ImageIcon(this.getClass().getResource("/resources/static/botones/medium.png")));
+					select.setBounds(10, 205, select.getIcon().getIconWidth(), select.getIcon().getIconHeight());
+					select.setVisible(true);
+
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+					moderado.setIcon(
+							new ImageIcon(this.getClass().getResource("/resources/static/botones/mediumpressed.png")));
+				}
+
+			});
+
+			dificil.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					dificil.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/hard.png")));
+					select.setBounds(10, 305, select.getIcon().getIconWidth(), select.getIcon().getIconHeight());
+					select.setVisible(true);
+
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+					dificil.setIcon(
+							new ImageIcon(this.getClass().getResource("/resources/static/botones/hardpressed.png")));
+				}
+
+			});
+		}
 	}
 
 }
