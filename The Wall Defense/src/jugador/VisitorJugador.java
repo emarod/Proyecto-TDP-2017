@@ -31,6 +31,7 @@ public class VisitorJugador extends Visitor {
 
 	@Override
 	public boolean visitEnemigo(Enemigo e) {
+		System.out.println("jugador visita enemigo");
 		e.recibirDaño(jugador.getDaño());
 		return false;
 	}
