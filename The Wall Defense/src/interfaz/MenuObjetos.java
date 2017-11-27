@@ -32,6 +32,7 @@ public class MenuObjetos extends JPanel {
 	protected BtnBarril barril;
 	protected BtnTrampa trampa;
 	protected boolean activado;
+	protected boolean enPartida;
 
 	// Constructor.
 	public MenuObjetos() {
@@ -122,27 +123,38 @@ public class MenuObjetos extends JPanel {
 
 	public void chequear() {
 
-		if (Director.getPartida().getDinero() < barricada.costo) {
+		if (Director.getPartida().getDinero() >= barricada.costo && !enPartida) {
+			barricada.habilitar();
+		}
+		else {
 			barricada.deshabilitar();
 		}
 
-		if (Director.getPartida().getDinero() < barril.costo) {
+		if (Director.getPartida().getDinero() >= barril.costo && !enPartida) {
+			barril.habilitar();
+		}
+		else {
 			barril.deshabilitar();
 		}
 
-		if (Director.getPartida().getDinero() < trampa.costo) {
+		if (Director.getPartida().getDinero() >= trampa.costo && !enPartida) {
+			trampa.habilitar();
+		}
+		else {
 			trampa.deshabilitar();
 		}
 
 	}
 
 	public void deshabilitarCompra() {
+		enPartida = true;
 		trampa.deshabilitar();
 		barricada.deshabilitar();
 		barril.deshabilitar();
 	}
 
 	public void habilitarCompra() {
+		enPartida = false;
 		trampa.habilitar();
 		barricada.habilitar();
 		barril.deshabilitar();
