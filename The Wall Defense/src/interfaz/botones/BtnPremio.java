@@ -31,7 +31,7 @@ public abstract class BtnPremio extends JButton {
 	}
 
 	// Metodos abstractos.
-	public abstract void create();
+	public abstract boolean create();
 
 	public abstract void oyente();
 }

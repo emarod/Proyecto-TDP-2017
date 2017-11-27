@@ -15,7 +15,7 @@ import main.Partida;
 import main.Unidad;
 import mapa.Celda;
 import mapa.Mapa;
-import objetoMapa.Water;
+import objetos.ObjetoTemporal;
 import premios.Bomba;
 import tokens.Token;
 
@@ -115,12 +115,12 @@ public class Director {
 		taskPool.schedule(buff, delay, TimeUnit.SECONDS);
 	}
 
-	public static ScheduledFuture<?> ejecutarUna(Water water, int delay) {
-		return taskPool.schedule(water, delay, TimeUnit.SECONDS);
+	// public static ScheduledFuture<?> ejecutarUna(Water water, int delay) {
+	// return taskPool.schedule(water, delay, TimeUnit.SECONDS);
+	//
+	// }
 
-	}
-
-	public static void ejecutarUna(Token token, int duracion) {
+	public static void ejecutarUna(Token token, long duracion) {
 		taskPool.schedule(token, duracion, TimeUnit.SECONDS);
 
 	}
@@ -149,6 +149,14 @@ public class Director {
 	public static ScheduledFuture<?> ejecutarUna(Bomba premio, int delay) {
 		return taskPool.schedule(premio, delay, TimeUnit.SECONDS);
 
+	}
+
+	public static void ejecutarUna(ObjetoTemporal temporal, int delay) {
+		taskPool.schedule(temporal, delay, TimeUnit.SECONDS);
+	}
+
+	public static void ejecutarUna(ObjetoTemporal temporal, int delay, TimeUnit t) {
+		taskPool.schedule(temporal, delay, t);
 	}
 
 	public void setGui(Juego frame) {

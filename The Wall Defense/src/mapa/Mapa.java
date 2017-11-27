@@ -293,7 +293,8 @@ public class Mapa implements Runnable {
 
 	}
 
-	public void crearPremio(Premio precioso) {
+	public boolean crearPremio(Premio precioso) {
+		boolean desplego = false;
 		if (celdaLabel != null) {
 			int x_cel = Math.round(celdaLabel.getX() / 64);
 			int y_cel = Math.round(celdaLabel.getY() / 64);
@@ -301,8 +302,10 @@ public class Mapa implements Runnable {
 				Celda c = celdas[x_cel][y_cel];
 				Premio objeto = precioso.clone(c);
 				objeto.crear();
+				desplego = true;
 			}
 		}
+		return desplego;
 	}
 
 	public void crearPremio(Premio precioso, Celda celda) {
@@ -349,7 +352,8 @@ public class Mapa implements Runnable {
 		return horda;
 	}
 
-	public void crearComprable(Comprable comprable) {
+	public boolean crearComprable(Comprable comprable) {
+		boolean desplego = false;
 		if (celdaLabel != null) {
 			int x_cel = Math.round(celdaLabel.getX() / 64);
 			int y_cel = Math.round(celdaLabel.getY() / 64);
@@ -357,8 +361,10 @@ public class Mapa implements Runnable {
 				Celda c = celdas[x_cel][y_cel];
 				Comprable objeto = comprable.clone(c);
 				objeto.crear();
+				desplego = true;
 			}
 		}
+		return desplego;
 
 	}
 }

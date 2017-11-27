@@ -44,17 +44,18 @@ public class BtnTrampa extends BtnComprables {
 
 	// Metodos heredados.
 	@Override
-	public void create() {
-		Director.getMapa().crearComprable(comprable);
+	public boolean create() {
+		return Director.getMapa().crearComprable(comprable);
 
 	}
 
-	public void crearObjeto() {
-
+	public boolean crearObjeto() {
+		boolean desplego = false;
 		if (this.isEnabled()) {
-			create();
+			desplego = create();
 		}
 
+		return desplego;
 	}
 
 	public void deshabilitar() {
