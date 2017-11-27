@@ -100,6 +100,7 @@ public abstract class Enemigo extends Unidad {
 			System.out.println("x:" + xCelda);
 			getGrafico().setBounds(xGrafico - 64, yGrafico, 64, 64);
 			intercambiar_celdas(siguiente);
+			notificar();
 			activeTask = null;
 			activar();
 		}

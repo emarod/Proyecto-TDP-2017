@@ -26,6 +26,7 @@ public class Invulnerable extends PowerUpTemporal {
 	public void aplicar(Unidad u) {
 		unidad = u;
 		unidad.setVida(999);
+		unidad.observar(this);
 		crear();
 		ejecutar();
 

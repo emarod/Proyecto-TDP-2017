@@ -6,6 +6,9 @@ import javax.swing.JLabel;
 
 import Controladores.Director;
 import Controladores.RandomGenerator;
+import efectos.DañoAtkAumentado;
+import efectos.Invulnerable;
+import efectos.PowerUp;
 import interfaz.Escenario;
 import main.CONFIG;
 import mapa.Celda;
@@ -140,6 +143,7 @@ public class Horda implements Runnable {
 
 		}
 		e.crear();
+		randomPow(c, e);
 		e.activar();
 		e.setHorda(this);
 		restantes--;
@@ -170,6 +174,25 @@ public class Horda implements Runnable {
 		matados++;
 		if (matados == enemigos) {
 			terminoHorda();
+		}
+	}
+
+	public void randomPow(Celda c, Enemigo e) {
+		RandomGenerator r = Director.getRandom();
+		int n = r.poll(3);
+		PowerUp p = null;
+		switch (n) {
+			case 0:
+				p = new Invulnerable(c);
+				p.aplicar(e);
+				break;
+
+			case 1:
+				p = new DañoAtkAumentado(c);
+				p.aplicar(e);
+				break;
+			default:
+				break;
 		}
 	}
 

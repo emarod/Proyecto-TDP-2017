@@ -16,8 +16,10 @@ public abstract class PowerUpTemporal extends PowerUp implements Runnable {
 	public void run() {
 		unidad.getCelda().getObjects()[CONFIG.PROFUNDIDAD_EFECTO] = null;
 		unidad.regresarInicio();
+		unidad.dejarObservar(this);
 		unidad = null;
 		this.destruir();
+
 	}
 
 	public void ejecutar() {

@@ -1,5 +1,8 @@
 package main;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
@@ -7,7 +10,7 @@ import Controladores.Director;
 import mapa.Celda;
 import objetos.ObjetoCelda;
 
-public abstract class GameObject implements ObjetoCelda {
+public abstract class GameObject extends Observable implements ObjetoCelda {
 
 	protected int profundidad;
 	protected Celda celda;
@@ -100,6 +103,19 @@ public abstract class GameObject implements ObjetoCelda {
 		celda.getObjects()[profundidad] = null;
 		grafico = null;
 		celda = null;
+	}
+
+	public void observar(Observer o) {
+		this.addObserver(o);
+	}
+
+	public void dejarObservar(Observer o) {
+		this.deleteObserver(o);
+	}
+
+	public void notificar() {
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 }

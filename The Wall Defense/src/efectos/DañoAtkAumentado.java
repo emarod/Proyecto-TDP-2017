@@ -26,6 +26,7 @@ public class DañoAtkAumentado extends PowerUpTemporal {
 	public void aplicar(Unidad u) {
 		unidad = u;
 		unidad.setAtaque(unidad.getDaño() * 2);
+		unidad.observar(this);
 		crear();
 		ejecutar();
 	}
