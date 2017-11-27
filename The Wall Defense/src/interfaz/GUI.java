@@ -50,9 +50,10 @@ public class GUI extends JFrame {
 	protected int money;
 	protected Juego game;
 	protected int dificultad;
-	protected JLabel panelInst;
-	protected JButton close;
+	protected JLabel inst1, inst2, inst3;
+	protected JButton close, next;
 	protected JPanel panelCentro;
+	protected int cont = 0;
 
 	// Constructor.
 	public GUI(Juego g) {
@@ -69,11 +70,14 @@ public class GUI extends JFrame {
 
 		// Escenario. Donde va el mapa.
 		escenario = new Escenario();
-		// escenario.crearPanel();
-		// escenario.getMapa().inicializarCeldas();
-		panelInst = new JLabel(
-				new ImageIcon(this.getClass().getResource("/resources/static/background/PanelAlpha.png")));
-		getContentPane().add(panelInst, BorderLayout.CENTER);
+
+		inst1 = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/background/PanelAlpha.png")));
+
+		inst2 = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/background/PanelAlpha2.png")));
+
+		inst3 = new JLabel(new ImageIcon(this.getClass().getResource("/resources/static/background/PanelAlpha3.png")));
+
+		// cerrar panel instrucciones
 		close = new JButton();
 		close.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/close.png")));
 		close.setBackground(Color.BLACK);
@@ -82,13 +86,24 @@ public class GUI extends JFrame {
 		close.setFocusPainted(false);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
-		close.setBounds(500, 310, close.getIcon().getIconWidth(), close.getIcon().getIconHeight());
+		close.setBounds(480, 310, close.getIcon().getIconWidth(), close.getIcon().getIconHeight());
+
+		// boton de siguiente instruccciones
+		next = new JButton();
+		next.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/next1.png")));
+		next.setBackground(Color.BLACK);
+		next.setBorderPainted(false);
+		next.setBorder(new LineBorder(Color.BLACK));
+		next.setFocusPainted(false);
+		next.setOpaque(false);
+		next.setContentAreaFilled(false);
+		next.setBounds(520, 305, next.getIcon().getIconWidth(), next.getIcon().getIconHeight());
 
 		close.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				panelCentro.setVisible(false);
-				getContentPane().remove(panelInst);
+				getContentPane().remove(inst1);
 				getContentPane().remove(close);
 				getContentPane().remove(panelCentro);
 				getContentPane().add(escenario, BorderLayout.CENTER);
@@ -97,7 +112,31 @@ public class GUI extends JFrame {
 
 		});
 
-		// getContentPane().add(escenario, BorderLayout.CENTER);
+		next.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				if (cont == 0) {
+					getContentPane().remove(panelCentro);
+					panelCentro.remove(inst1);
+					panelCentro.add(inst2, BorderLayout.CENTER);
+					panelCentro.add(close);
+					panelCentro.add(next);
+					cont = cont + 1;
+					panelCentro.setVisible(true);
+					getContentPane().add(panelCentro, BorderLayout.CENTER);
+
+				}
+
+				else {
+					if (cont == 1) {
+						panelCentro.add(inst3, BorderLayout.CENTER);
+						panelCentro.add(close);
+					}
+				}
+
+			}
+
+		});
 
 		// Armar resto de la interfaz
 		acumulados = new Acumulados();
@@ -117,7 +156,8 @@ public class GUI extends JFrame {
 		panelCentro.setPreferredSize(new Dimension(1026, 390));
 		panelCentro.setBackground(Color.BLACK);
 		panelCentro.add(close);
-		panelCentro.add(panelInst, BorderLayout.CENTER);
+		panelCentro.add(next);
+		panelCentro.add(inst1, BorderLayout.CENTER);
 		getContentPane().add(panelCentro, BorderLayout.CENTER);
 
 		// Panel Inferior
