@@ -94,6 +94,7 @@ public abstract class GameObject extends Observable implements ObjetoCelda {
 
 	@Override
 	public void destruir() {
+		notificarDefuncion();
 		grafico.setIcon(null);
 		Director.getMapa().getEscenario().remove(grafico);
 		while (celda.size() > 0) {
@@ -116,6 +117,18 @@ public abstract class GameObject extends Observable implements ObjetoCelda {
 	public void notificar() {
 		this.setChanged();
 		this.notifyObservers();
+	}
+
+	public void notificar(String str) {
+		this.setChanged();
+		this.notifyObservers(str);
+	}
+
+	private void notificarDefuncion() {
+		setChanged();
+		notifyObservers("DEAD");
+		deleteObservers();
+
 	}
 
 }

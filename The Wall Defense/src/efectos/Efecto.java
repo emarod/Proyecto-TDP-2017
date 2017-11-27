@@ -31,16 +31,20 @@ public abstract class Efecto extends GameObject implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		System.out.println("Update");
-		if (unidad != null) {
-			System.out.println("Cambiando de celda");
-			int x = unidad.getCelda().getPosX();
-			int y = unidad.getCelda().getPosY();
-			grafico.setBounds(x * 64, y * 64, 64, 64);
-			intercambiar_celdas(unidad.getCelda());
+		if (arg1.equals("DEAD")) {
+			destruir();
 		}
-		else {
-			System.out.println("El efecto tiene una unidad nula");
+		if (arg1.equals("MOVE")) {
+			if (unidad != null) {
+				System.out.println("Cambiando de celda");
+				int x = unidad.getCelda().getPosX();
+				int y = unidad.getCelda().getPosY();
+				grafico.setBounds(x * 64, y * 64, 64, 64);
+				intercambiar_celdas(unidad.getCelda());
+			}
+			else {
+				System.out.println("El efecto tiene una unidad nula");
+			}
 		}
 
 	}
