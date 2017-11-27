@@ -64,7 +64,6 @@ public abstract class Enemigo extends Unidad {
 	@Override
 	public void regresarInicio() {
 		reset("ENEMIGO");
-		careTaker.clearSavepoint();
 	}
 
 	@Override

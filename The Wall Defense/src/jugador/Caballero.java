@@ -64,7 +64,6 @@ public class Caballero extends Jugador {
 	@Override
 	public void regresarInicio() {
 		reset("CABALLERO");
-		careTaker.clearSavepoint();
 
 	}
 }

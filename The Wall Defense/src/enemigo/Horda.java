@@ -64,7 +64,7 @@ public class Horda implements Runnable {
 	@Override
 	public void run() {
 		RandomGenerator rnd = Director.getRandom();
-		int r = rnd.poll(12);
+		int r = rnd.poll(6);
 		int y;
 		Enemigo e;
 		y = rnd.poll(6);
@@ -104,44 +104,12 @@ public class Horda implements Runnable {
 				System.out.print("Se creo lw.");
 				break;
 			}
-
-			// los enemigos invulnerables.
-			case 6: {
-				e = new WhiteWalker(c);
-				System.out.print("Se creo ww i.");
-				break;
-			}
-			case 7: {
-				e = new NightKing(c);
-				System.out.print("Se creo nk i.");
-				break;
-			}
-			case 8: {
-				e = new Araña(c);
-				System.out.print("Se creo araña i.");
-				break;
-			}
-			case 9: {
-				e = new KnightWalker(c);
-				System.out.print("Se creo kw i.");
-				break;
-			}
-			case 10: {
-				e = new EsqueletoSuicida(c);
-				System.out.print("Se creo es i.");
-				break;
-			}
-			case 11: {
-				e = new LoboWalker(c);
-				System.out.print("Se creo lw i.");
-				break;
-			}
-
 			default: {
 				e = new WhiteWalker(c);
 			}
 
 		}
+		e.guardarInicio();
 		e.crear();
 		randomPow(c, e);
 		e.activar();

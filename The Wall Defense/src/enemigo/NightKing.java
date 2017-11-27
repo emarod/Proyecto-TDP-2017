@@ -119,7 +119,6 @@ public class NightKing extends ShooterEnemigo {
 	@Override
 	public void regresarInicio() {
 		reset("NK");
-		careTaker.clearSavepoint();
 
 	}
 }

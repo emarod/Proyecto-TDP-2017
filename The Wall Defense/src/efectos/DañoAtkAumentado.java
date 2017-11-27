@@ -31,9 +31,4 @@ public class DañoAtkAumentado extends PowerUpTemporal {
 		ejecutar();
 	}
 
-	@Override
-	public void run() {
-		super.run();
-	}
-
 }

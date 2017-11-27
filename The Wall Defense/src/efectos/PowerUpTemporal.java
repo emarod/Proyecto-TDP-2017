@@ -19,6 +19,7 @@ public abstract class PowerUpTemporal extends PowerUp implements Runnable {
 		unidad.dejarObservar(this);
 		unidad = null;
 		this.destruir();
+		System.out.println("Efecto destruido");
 
 	}
 

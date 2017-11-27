@@ -80,7 +80,6 @@ public class WhiteWalker extends Enemigo {
 	@Override
 	public void regresarInicio() {
 		reset("WW");
-		careTaker.clearSavepoint();
 
 	}
 }

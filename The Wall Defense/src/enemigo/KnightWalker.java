@@ -59,7 +59,6 @@ public class KnightWalker extends Enemigo {
 	@Override
 	public void regresarInicio() {
 		reset("WW_CABALLERO");
-		careTaker.clearSavepoint();
 
 	}
 }

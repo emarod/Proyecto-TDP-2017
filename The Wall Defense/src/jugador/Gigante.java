@@ -59,7 +59,6 @@ public class Gigante extends Jugador {
 	@Override
 	public void regresarInicio() {
 		reset("GIGANTE");
-		careTaker.clearSavepoint();
 
 	}
 

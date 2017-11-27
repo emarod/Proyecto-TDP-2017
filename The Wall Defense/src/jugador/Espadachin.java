@@ -62,7 +62,6 @@ public class Espadachin extends Jugador {
 	@Override
 	public void regresarInicio() {
 		reset("ESPADACHIN");
-		careTaker.clearSavepoint();
 
 	}
 }

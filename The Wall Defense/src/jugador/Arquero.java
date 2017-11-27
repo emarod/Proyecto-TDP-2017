@@ -81,7 +81,6 @@ public class Arquero extends Shooter {
 	@Override
 	public void regresarInicio() {
 		reset("ARQUERO");
-		careTaker.clearSavepoint();
 
 	}
 }

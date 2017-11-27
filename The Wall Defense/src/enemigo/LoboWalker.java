@@ -59,7 +59,6 @@ public class LoboWalker extends Enemigo {
 	@Override
 	public void regresarInicio() {
 		reset("LOBOWALKER");
-		careTaker.clearSavepoint();
 
 	}
 

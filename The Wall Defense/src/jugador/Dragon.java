@@ -95,7 +95,6 @@ public class Dragon extends Shooter {
 	@Override
 	public void regresarInicio() {
 		reset("DRAGON");
-		careTaker.clearSavepoint();
 
 	}
 }

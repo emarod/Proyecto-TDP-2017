@@ -60,7 +60,6 @@ public class Lobo extends Jugador {
 	@Override
 	public void regresarInicio() {
 		reset("LOBO");
-		careTaker.clearSavepoint();
 
 	}
 

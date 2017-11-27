@@ -58,7 +58,6 @@ public class Araña extends Enemigo {
 	@Override
 	public void regresarInicio() {
 		reset("ARAÑA");
-		careTaker.clearSavepoint();
 
 	}
 

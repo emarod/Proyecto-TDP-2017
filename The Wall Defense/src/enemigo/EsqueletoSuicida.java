@@ -67,7 +67,6 @@ public class EsqueletoSuicida extends Enemigo {
 	@Override
 	public void regresarInicio() {
 		reset("ESQUELETO");
-		careTaker.clearSavepoint();
 
 	}
 

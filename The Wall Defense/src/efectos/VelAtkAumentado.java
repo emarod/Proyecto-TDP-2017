@@ -25,9 +25,4 @@ public class VelAtkAumentado extends PowerUpTemporal {
 		unidad.observar(this);
 		ejecutar();
 	}
-
-	@Override
-	public void run() {
-		super.run();
-	}
 }
