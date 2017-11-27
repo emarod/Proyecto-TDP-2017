@@ -75,6 +75,7 @@ public class GUI extends JFrame {
 
 		// cerrar panel instrucciones
 		close = new JButton();
+		close.setToolTipText("cerrar");
 		close.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/close.png")));
 		close.setBackground(Color.BLACK);
 		close.setBorderPainted(false);
@@ -86,6 +87,7 @@ public class GUI extends JFrame {
 
 		// boton de siguiente instruccciones
 		next = new JButton();
+		next.setToolTipText("siguiente");
 		next.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/next1.png")));
 		next.setBackground(Color.BLACK);
 		next.setBorderPainted(false);
@@ -97,6 +99,7 @@ public class GUI extends JFrame {
 
 		// boton de anterior instruccciones
 		back = new JButton();
+		back.setToolTipText("anterior");
 		back.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/back.png")));
 		back.setBackground(Color.BLACK);
 		back.setBorderPainted(false);

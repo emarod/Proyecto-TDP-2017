@@ -90,14 +90,17 @@ public class MenuInicio extends JPanel {
 		buttons[0] = new JButton();
 		buttons[0].setIcon(newGame[2]);
 		buttons[0].setBounds(50, 100, buttons[0].getIcon().getIconWidth(), buttons[0].getIcon().getIconHeight());
+		buttons[0].setToolTipText("Juego nuevo");
 
 		buttons[1] = new JButton();
 		buttons[1].setIcon(options[2]);
 		buttons[1].setBounds(50, 200, buttons[1].getIcon().getIconWidth(), buttons[1].getIcon().getIconHeight());
+		buttons[1].setToolTipText("Opciones de sonido");
 
 		buttons[2] = new JButton();
 		buttons[2].setIcon(help[2]);
 		buttons[2].setBounds(50, 300, buttons[2].getIcon().getIconWidth(), buttons[2].getIcon().getIconHeight());
+		buttons[2].setToolTipText("Objetivo del juego");
 
 		for (int i = 0; i < 3; i++) {
 			this.add(buttons[i]);
