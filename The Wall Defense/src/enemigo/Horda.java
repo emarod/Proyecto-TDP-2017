@@ -39,7 +39,7 @@ public class Horda implements Runnable {
 		dificultad = d;
 		mapa = Director.getMapa();
 		stage = mapa.getEscenario();
-		enemigos = Director.getGui().getLevel().getNroNivel() * dificultad;
+		enemigos = 5 + dificultad;
 		restantes = enemigos;
 		matados = 0;
 
