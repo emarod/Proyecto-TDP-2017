@@ -51,7 +51,7 @@ public class GUI extends JFrame {
 	protected Juego game;
 	protected int dificultad;
 	protected JLabel inst;
-	protected JButton close, next;
+	protected JButton close, next, back;
 	protected JPanel panelCentro;
 	protected int cont = 0;
 
@@ -82,7 +82,7 @@ public class GUI extends JFrame {
 		close.setFocusPainted(false);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
-		close.setBounds(480, 310, close.getIcon().getIconWidth(), close.getIcon().getIconHeight());
+		close.setBounds(495, 310, close.getIcon().getIconWidth(), close.getIcon().getIconHeight());
 
 		// boton de siguiente instruccciones
 		next = new JButton();
@@ -93,7 +93,19 @@ public class GUI extends JFrame {
 		next.setFocusPainted(false);
 		next.setOpaque(false);
 		next.setContentAreaFilled(false);
-		next.setBounds(520, 305, next.getIcon().getIconWidth(), next.getIcon().getIconHeight());
+		next.setBounds(553, 305, next.getIcon().getIconWidth(), next.getIcon().getIconHeight());
+
+		// boton de anterior instruccciones
+		back = new JButton();
+		back.setIcon(new ImageIcon(this.getClass().getResource("/resources/static/botones/back.png")));
+		back.setBackground(Color.BLACK);
+		back.setBorderPainted(false);
+		back.setBorder(new LineBorder(Color.BLACK));
+		back.setFocusPainted(false);
+		back.setOpaque(false);
+		back.setContentAreaFilled(false);
+		back.setBounds(435, 305, next.getIcon().getIconWidth(), next.getIcon().getIconHeight());
+		back.setVisible(false);
 
 		close.addMouseListener(new MouseAdapter() {
 			@Override
@@ -117,6 +129,9 @@ public class GUI extends JFrame {
 					inst.setIcon(
 							new ImageIcon(this.getClass().getResource("/resources/static/background/PanelAlpha2.png")));
 					cont = cont + 1;
+					back.setVisible(true);
+					next.setVisible(true);
+					System.out.println(cont);
 
 				}
 
@@ -124,8 +139,48 @@ public class GUI extends JFrame {
 					if (cont == 1) {
 						inst.setIcon(new ImageIcon(
 								this.getClass().getResource("/resources/static/background/PanelAlpha3.png")));
+						cont = cont + 1;
+						back.setVisible(true);
 						next.setVisible(false);
-						close.setBounds(500, 305, close.getIcon().getIconWidth(), close.getIcon().getIconHeight());
+						System.out.println(cont);
+					}
+
+					else {
+						if (cont == 2) {
+							next.setVisible(false);
+							System.out.println(cont);
+						}
+					}
+				}
+
+			}
+
+		});
+
+		back.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				if (cont == 1) {
+					// getContentPane().remove(panelCentro);
+					// panelCentro.remove(inst1);
+					inst.setIcon(
+							new ImageIcon(this.getClass().getResource("/resources/static/background/PanelAlpha.png")));
+					cont = cont - 1;
+					back.setVisible(false);
+					next.setVisible(true);
+					System.out.println(cont);
+
+				}
+
+				else {
+					if (cont == 2) {
+						inst.setIcon(new ImageIcon(
+								this.getClass().getResource("/resources/static/background/PanelAlpha2.png")));
+						cont = cont - 1;
+						back.setVisible(true);
+						next.setVisible(true);
+						System.out.println(cont);
+
 					}
 				}
 
@@ -152,6 +207,7 @@ public class GUI extends JFrame {
 		panelCentro.setBackground(Color.BLACK);
 		panelCentro.add(close);
 		panelCentro.add(next);
+		panelCentro.add(back);
 		panelCentro.add(inst, BorderLayout.CENTER);
 		getContentPane().add(panelCentro, BorderLayout.CENTER);
 
