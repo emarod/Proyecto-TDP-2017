@@ -243,7 +243,7 @@ public class Mapa implements Runnable {
 			switch (c) {
 				case 0: {
 					celda = celdas[x][y];
-					if (celda.estaOcupada() == null) {
+					if (celda.getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] == null && celda.estaOcupada() == null) {
 						obs = new Rock(celda);
 						obs.crear();
 					}
