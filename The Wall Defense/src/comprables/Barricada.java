@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 
 import Controladores.Director;
 import main.CONFIG;
+import main.Tienda;
 import main.Visitor;
 import mapa.Celda;
 import objetos.Comprable;
@@ -61,6 +62,11 @@ public class Barricada extends ObjetoVida implements Comprable {
 	@Override
 	public int getCosto() {
 		return costo;
+	}
+
+	@Override
+	public void accept(Tienda t) {
+		t.vender(this);
 	}
 
 	@Override

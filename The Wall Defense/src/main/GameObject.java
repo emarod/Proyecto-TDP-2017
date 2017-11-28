@@ -81,6 +81,9 @@ public abstract class GameObject extends Observable implements ObjetoCelda {
 	@Override
 	public abstract boolean accept(Visitor V);
 
+	public void accept(Tienda t) {
+	}
+
 	@Override
 	public void setProfundidad(int i) {
 		profundidad = i;

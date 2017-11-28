@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import Controladores.Director;
 import efectos.Explosion;
 import main.CONFIG;
+import main.Tienda;
 import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
@@ -93,6 +94,11 @@ public class Barril extends ObjetoTemporal implements Comprable, Runnable {
 	@Override
 	public void setGrafico(int i) {
 		grafico.setIcon(graficos[i]);
+	}
+
+	@Override
+	public void accept(Tienda t) {
+		t.vender(this);
 	}
 
 	@Override

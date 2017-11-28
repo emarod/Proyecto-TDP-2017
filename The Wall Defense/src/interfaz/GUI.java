@@ -336,9 +336,7 @@ public class GUI extends JFrame {
 						GameObject jugador = Director.getCelda(x_jugador, y_jugador)
 								.getObjects()[CONFIG.PROFUNDIDAD_JUGADOR];
 						if (jugador != null) {
-							jugador.destruir();
-							Director.getPartida().añadirDinero(25);
-							dinero.actualizar();
+							jugador.accept(Director.getPartida().getTienda());
 						}
 						// si posee un efecto.
 						/*

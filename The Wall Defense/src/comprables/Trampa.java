@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 
 import Controladores.Director;
 import main.CONFIG;
+import main.Tienda;
 import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
@@ -100,5 +101,10 @@ public class Trampa extends ObjetoTemporal implements Comprable {
 			setGrafico(graph);
 		}
 
+	}
+
+	@Override
+	public void accept(Tienda t) {
+		t.vender(this);
 	}
 }

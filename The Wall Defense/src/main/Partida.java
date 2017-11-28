@@ -17,12 +17,18 @@ public class Partida {
 	protected int dinero;
 	protected ConcurrentHashMap<Acumulable, Integer> objetos;
 	protected int nivel;
+	protected Tienda shop;
 
 	public Partida() {
 		nivel = 1;
 		puntaje = 0;
 		dinero = 200;
 		objetos = new ConcurrentHashMap<Acumulable, Integer>();
+		shop = new Tienda();
+	}
+
+	public Tienda getTienda() {
+		return shop;
 	}
 
 	public void añadirDinero(int i) {
