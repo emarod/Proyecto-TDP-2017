@@ -58,7 +58,7 @@ public class GUI extends JFrame {
 	// Constructor.
 	public GUI(Juego g, int dificultad) {
 		super("The Wall Defense");
-		this.dificultad = dificultad * 5;
+		this.dificultad = dificultad;
 		game = g;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(0, 0, 1245, 570);
@@ -220,8 +220,6 @@ public class GUI extends JFrame {
 		// Panel izquierdo
 		panelIzquierdo = new JPanel();
 		panelIzquierdo.setLayout(new BorderLayout());
-		// Icon bannerLeft=new
-		// ImageIcon(this.getClass().getResource("/resources/static/banner/Banner_4.jpg"));
 		panelIzquierdo.setPreferredSize(new Dimension(150, 300));
 		panelIzquierdo.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelIzquierdo.setBackground(Color.BLACK);
@@ -391,6 +389,10 @@ public class GUI extends JFrame {
 	public void setDinero() {
 		dinero.actualizar();
 
+	}
+
+	public void setDificultad(int d) {
+		dificultad = d;
 	}
 
 	public void nextLevel() {
