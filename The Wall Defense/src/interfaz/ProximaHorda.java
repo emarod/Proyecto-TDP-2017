@@ -29,7 +29,6 @@ public class ProximaHorda extends JPanel {
 		this.setBorder(new LineBorder(new Color(0, 0, 0)));
 		this.escenario = esc;
 		agregarLabel();
-		// agregarBoton();
 		this.setBackground(Color.BLACK);
 
 	}
@@ -42,7 +41,6 @@ public class ProximaHorda extends JPanel {
 		Font auxFont = new Font("Game of Thrones Regular", Font.CENTER_BASELINE, 50);
 		// Aplico la fuente actual, y al final le doy el tamaño del texto...
 		puntaje.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 50));
-		// puntaje.setSize(new Dimension(10,50));
 		this.add(puntaje, BorderLayout.CENTER);
 	}
 

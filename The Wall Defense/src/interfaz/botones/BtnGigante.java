@@ -76,7 +76,6 @@ public class BtnGigante extends BtnJugador {
 	}
 
 	public Jugador getPlayer() {
-		// TODO Auto-generated method stub
 		return player;
 	}
 

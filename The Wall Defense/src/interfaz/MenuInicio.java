@@ -124,7 +124,6 @@ public class MenuInicio extends JPanel {
 		buttons[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				game.crearGUI(difficulty);
 			}
 		});

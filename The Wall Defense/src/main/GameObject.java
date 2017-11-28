@@ -74,7 +74,6 @@ public abstract class GameObject extends Observable implements ObjetoCelda {
 			ce = ce.getChild();
 			cant++;
 		}
-		// grafico.setBounds(celda.getPosX() * 64, celda.getPosY() * 64, ancho, alto);
 		Director.getMapa().getEscenario().agregar(grafico, profundidad);
 	}
 

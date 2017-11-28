@@ -20,7 +20,6 @@ public abstract class Shooter extends Jugador {
 
 	public void animarDisparo() {
 		if (graph == 4) {
-			// setGrafico(0);
 			graph++;
 			atacar();
 
@@ -34,6 +33,7 @@ public abstract class Shooter extends Jugador {
 
 	}
 
+	@Override
 	public void setGrafico(int i) {
 		getGrafico().setIcon(graficos[i]);
 	}

@@ -28,7 +28,6 @@ public class Caballero extends Jugador {
 
 	@Override
 	public void atacar() {
-		System.out.println("atacando.");
 		Celda siguiente = Director.getCelda(celda.getPosX() + 1, celda.getPosY());
 		if (siguiente != null) {
 			siguiente.getObjects()[CONFIG.PROFUNDIDAD_ENEMIGO].accept(V);
