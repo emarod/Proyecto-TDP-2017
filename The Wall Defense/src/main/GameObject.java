@@ -97,7 +97,7 @@ public abstract class GameObject extends Observable implements ObjetoCelda {
 		notificarDefuncion();
 		grafico.setIcon(null);
 		Director.getMapa().getEscenario().remove(grafico);
-		while (celda.size() > 0) {
+		while (celda.getChild() != null) {
 			celda.getChild().getObjects()[profundidad] = null;
 			celda.removeChild();
 		}
