@@ -58,7 +58,7 @@ public class Horda implements Runnable {
 	}
 
 	public void ejecutar() {
-		activeTask = Director.ejecutar(this, 20);
+		activeTask = Director.ejecutar(this, 10);
 	}
 
 	@Override
