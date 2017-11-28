@@ -4,16 +4,18 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 
 import main.CONFIG;
+import main.Tienda;
 import main.Unidad;
 import main.Visitor;
 import mapa.Celda;
+import objetos.Comprable;
 
 /*
  * Clase Jugador.
  * Clase que generaliza la idea de un jugador y su comportamiento.
  */
 
-public abstract class Jugador extends Unidad {
+public abstract class Jugador extends Unidad implements Comprable {
 
 	// Atributos locales.
 	protected Icon[] graficos;
@@ -66,8 +68,19 @@ public abstract class Jugador extends Unidad {
 		atacar();
 	}
 
+	@Override
 	public int getCosto() {
 		return costo;
+	}
+
+	@Override
+	public void setCosto(int i) {
+		costo = i;
+	}
+
+	@Override
+	public void guardar() {
+		// Metodo sin implementar para deshabilitar la capacidad de acumulable
 	}
 
 	@Override
@@ -75,11 +88,13 @@ public abstract class Jugador extends Unidad {
 		return V.visitJugador(this);
 	}
 
-	public void vender() {
-
+	@Override
+	public void accept(Tienda t) {
+		t.vender(this);
 	}
 
 	// abstract methods
+	@Override
 	public abstract Jugador clone(Celda c);
 
 	public abstract void atacar();

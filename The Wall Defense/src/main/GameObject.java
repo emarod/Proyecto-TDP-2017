@@ -81,6 +81,9 @@ public abstract class GameObject extends Observable implements ObjetoCelda {
 	@Override
 	public abstract boolean accept(Visitor V);
 
+	public void accept(Tienda t) {
+	}
+
 	@Override
 	public void setProfundidad(int i) {
 		profundidad = i;
@@ -97,7 +100,7 @@ public abstract class GameObject extends Observable implements ObjetoCelda {
 		notificarDefuncion();
 		grafico.setIcon(null);
 		Director.getMapa().getEscenario().remove(grafico);
-		while (celda.size() > 0) {
+		while (celda.getChild() != null) {
 			celda.getChild().getObjects()[profundidad] = null;
 			celda.removeChild();
 		}
