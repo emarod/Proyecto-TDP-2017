@@ -1,5 +1,6 @@
 package interfaz;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -11,6 +12,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -37,11 +39,12 @@ public class Acumulados extends JPanel {
 	protected JLabel bombasLeft, barricadasLeft, trampasLeft, barrilLeft;
 	protected Icon iconoBomba, iconoBarricada, iconoTrampa, iconoBarril;
 	protected JLabel label;
+	protected JPanel barricadapanel;
 
 	public Acumulados() {
 		this.setLayout(new FlowLayout());
-		this.setPreferredSize(new Dimension(10, 50));
-		this.setBackground(Color.BLACK);
+		this.setPreferredSize(new Dimension(10, 75));
+		this.setBackground(Color.WHITE);
 		cantBomba = 2;
 		cantBarricada = 0;
 		armarBotonera();
@@ -144,13 +147,36 @@ public class Acumulados extends JPanel {
 
 		});
 
+		barricadapanel = new JPanel();
+		barricadapanel.setLayout(new BorderLayout());
+		barricadapanel.setBackground(Color.BLACK);
+		this.add(barricadapanel);
+
+		JLabel borde1 = new JLabel(
+				new ImageIcon(this.getClass().getResource("/resources/static/border/leftborder.png")));
+
+		JLabel borde2 = new JLabel(
+				new ImageIcon(this.getClass().getResource("/resources/static/border/northborder.png")));
+
+		JLabel borde3 = new JLabel(
+				new ImageIcon(this.getClass().getResource("/resources/static/border/southborder.png")));
+
+		JLabel borde4 = new JLabel(
+				new ImageIcon(this.getClass().getResource("/resources/static/border/rightborder.png")));
+
+		JLayeredPane c = new JLayeredPane();
+		c.setBackground(Color.BLACK);
+
 		configurarBoton(barricada);
 		configurarBoton(barril);
 		configurarBoton(bomba);
 		configurarBoton(trampa);
 
-		this.add(barricadasLeft);
-		this.add(barricada);
+		barricadapanel.setPreferredSize(new Dimension(155, 90));
+		barricadapanel.add(barricadasLeft, BorderLayout.CENTER);
+
+		barricadapanel.add(barricada, BorderLayout.EAST);
+
 		this.add(barrilLeft);
 		this.add(barril);
 		this.add(bombasLeft);
