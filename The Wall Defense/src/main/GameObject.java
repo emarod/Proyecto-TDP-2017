@@ -67,13 +67,11 @@ public abstract class GameObject extends Observable implements ObjetoCelda {
 
 	@Override
 	public void crearMulticelda() {
-		celda.getObjects()[profundidad] = this;
 		Celda ce = celda;
-		int cant = 0;
-		while (cant < celda.size()) {
-			ce.getChild().getObjects()[profundidad] = this;
+		while (ce != null) {
+			System.out.println(ce);
+			ce.getObjects()[profundidad] = this;
 			ce = ce.getChild();
-			cant++;
 		}
 		Director.getMapa().getEscenario().agregar(grafico, profundidad);
 	}
@@ -101,6 +99,7 @@ public abstract class GameObject extends Observable implements ObjetoCelda {
 		grafico.setIcon(null);
 		Director.getMapa().getEscenario().remove(grafico);
 		while (celda.getChild() != null) {
+			System.out.println("Destruir " + celda);
 			celda.getChild().getObjects()[profundidad] = null;
 			celda.removeChild();
 		}

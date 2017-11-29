@@ -20,11 +20,9 @@ public abstract class Celda {
 	protected boolean hayDisparo;
 	protected boolean estaOcupada;
 	protected LinkedList<GameObject> disparos;
-	protected int hijos;
 
 	// Constructor.
 	public Celda(int posX, int posY) {
-		hijos = 0;
 		hayDisparo = false;
 		this.posX = posX;
 		this.posY = posY;
@@ -95,7 +93,10 @@ public abstract class Celda {
 
 	public abstract Celda getChild();
 
-	public abstract int size();
-
 	public abstract void removeTail();
+
+	public abstract void setTail(Celda c);
+
+	public abstract void setChild(Celda c);
+
 }

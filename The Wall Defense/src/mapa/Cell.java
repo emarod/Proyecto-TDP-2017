@@ -22,13 +22,20 @@ public class Cell extends Celda {
 	}
 
 	@Override
-	public int size() {
+	public void removeTail() {
 		throw new UnsupportedOperationException("Operacion no soportada");
+
 	}
 
 	@Override
-	public void removeTail() {
-		throw new UnsupportedOperationException("Operacion no soportada");
+	public void setTail(Celda c) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setChild(Celda c) {
+		// TODO Auto-generated method stub
 
 	}
 

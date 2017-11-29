@@ -172,8 +172,8 @@ public class Mapa implements Runnable {
 				Celda celda3 = celdas[x_cel + 1][y_cel];
 				if (celda.estaOcupada() == null && celda1.estaOcupada() == null && celda2.estaOcupada() == null
 						&& celda3.estaOcupada() == null) {
-					celda.addChild(celda3);
 					celda.addChild(celda2);
+					celda.addChild(celda3);
 					celda.addChild(celda1);
 					desplego = true;
 					Jugador player = j.clone(celda);

@@ -16,27 +16,42 @@ public class ParentCell extends Celda {
 		if (tail == null) {
 			child = c;
 			tail = child;
-			hijos++;
 		}
 		else {
-			c.addChild(tail);
+			c.setChild(child);
 			child = c;
 		}
 
 	}
 
 	@Override
+	public void setChild(Celda c) {
+		child = c;
+	}
+
+	@Override
+	public void setTail(Celda c) {
+		tail = c;
+	}
+
+	@Override
 	public void removeChild() {
-		if (hijos == 0) {
+		if (child == null) {
 			throw new UnsupportedOperationException("Operacion no soportada");
 		}
-		child.removeTail();
-		child = child.getChild();
-		hijos--;
-		if (child == tail) {
 
+		if (child == tail) {
+			System.out.println("TAIL");
+			child.setChild(null);
+			child.setTail(null);
 			child = null;
 			tail = null;
+		}
+		else {
+			Celda c = child;
+			child = c.getChild();
+			c.setChild(null);
+			c.setTail(null);
 		}
 	}
 
@@ -48,11 +63,6 @@ public class ParentCell extends Celda {
 	@Override
 	public Celda getChild() {
 		return child;
-	}
-
-	@Override
-	public int size() {
-		return hijos;
 	}
 
 }
