@@ -10,6 +10,7 @@ import interfaz.Escenario;
 import jugador.Jugador;
 import main.CONFIG;
 import objetoMapa.Rock;
+import objetoMapa.Tronco;
 import objetoMapa.Water;
 import objetos.Comprable;
 import objetos.Obstaculo;
@@ -129,15 +130,20 @@ public class Mapa implements Runnable {
 			int y_cel = Math.round(celdaLabel.getY() / 64);
 			if (x_cel > 0 && x_cel < 14 && celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
 					&& celdas[x_cel + 1][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null) {
-				desplego = true;
+
 				Celda c = celdas[x_cel][y_cel];
-				c.addChild(celdas[x_cel + 1][y_cel]);
-				Jugador player = j.clone(c);
-				player.crearMulticelda();
-				JLabel icono = player.getGrafico();
-				icono.setBounds(x_cel * 64, y_cel * 64, 128, 64);
-				escenario.agregarLargo(icono, new Integer(CONFIG.PROFUNDIDAD_JUGADOR));
-				player.activar();
+				Celda c1 = celdas[x_cel + 1][y_cel];
+				if (c.estaOcupada() == null) {
+					desplego = true;
+					c.addChild(c1);
+					Jugador player = j.clone(c);
+					player.crearMulticelda();
+					JLabel icono = player.getGrafico();
+					icono.setBounds(x_cel * 64, y_cel * 64, 128, 64);
+					escenario.agregarLargo(icono, new Integer(CONFIG.PROFUNDIDAD_JUGADOR));
+					player.activar();
+				}
+
 			}
 		}
 		return desplego;
@@ -148,25 +154,40 @@ public class Mapa implements Runnable {
 		if (celdaLabel != null) {
 			int x_cel = Math.round(celdaLabel.getX() / 64);
 			int y_cel = Math.round(celdaLabel.getY() / 64);
-			if (x_cel > 0 && x_cel < 14 && y_cel < 5
+			if (x_cel > 0 && x_cel < CONFIG.CANT_CELDAS_X - 2 && y_cel < CONFIG.CANT_CELDAS_Y - 1 && y_cel >= 0
 					&& celdas[x_cel][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
 					&& celdas[x_cel + 1][y_cel].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
 					&& celdas[x_cel][y_cel + 1].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null
 					&& celdas[x_cel + 1][y_cel + 1].getObjects()[CONFIG.PROFUNDIDAD_JUGADOR] == null) {
-				desplego = true;
-				Celda c = celdas[x_cel][y_cel];
-				c.addChild(celdas[x_cel + 1][y_cel]);
-				c.addChild(celdas[x_cel][y_cel + 1]);
-				c.addChild(celdas[x_cel + 1][y_cel + 1]);
-				Jugador player = j.clone(c);
-				player.crearMulticelda();
-				JLabel icono = player.getGrafico();
-				icono.setBounds(x_cel * 64, y_cel * 64, 128, 128);
-				escenario.agregarGrande(icono, new Integer(CONFIG.PROFUNDIDAD_JUGADOR));
-				player.activar();
+
+				// Cada hijo se agrega siguiente a la celda
+				// principal
+				// Esquina izquierda superior
+				Celda celda = celdas[x_cel][y_cel];
+				// Esquina derecha inferior
+				Celda celda1 = celdas[x_cel + 1][y_cel + 1];
+				// Esquina izquierda inferior
+				Celda celda2 = celdas[x_cel][y_cel + 1];
+				// Esquina derecha superior
+				Celda celda3 = celdas[x_cel + 1][y_cel];
+				if (celda.estaOcupada() == null && celda1.estaOcupada() == null && celda2.estaOcupada() == null
+						&& celda3.estaOcupada() == null) {
+					celda.addChild(celda3);
+					celda.addChild(celda2);
+					celda.addChild(celda1);
+					desplego = true;
+					Jugador player = j.clone(celda);
+					player.crearMulticelda();
+					JLabel icono = player.getGrafico();
+					icono.setBounds(x_cel * 64, y_cel * 64, 128, 128);
+					escenario.agregarGrande(icono, new Integer(CONFIG.PROFUNDIDAD_JUGADOR));
+					player.activar();
+				}
 			}
 		}
+
 		return desplego;
+
 	}
 
 	public void agregarTokens() {
@@ -237,7 +258,7 @@ public class Mapa implements Runnable {
 		int y = r.poll(6);
 
 		if (celdas[x][y].getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] == null) {
-			int c = r.poll(2);
+			int c = r.poll(4);
 			Obstaculo obs;
 			Celda celda;
 			switch (c) {
@@ -259,14 +280,17 @@ public class Mapa implements Runnable {
 									// Esquina izquierda superior
 									celda = celdas[x][y];
 									// Esquina derecha inferior
-									celda.addChild(celdas[x + 1][y + 1]);
+									Celda celda1 = celdas[x + 1][y + 1];
 									// Esquina izquierda inferior
-									celda.addChild(celdas[x][y + 1]);
+									Celda celda2 = celdas[x][y + 1];
 									// Esquina derecha superior
-									celda.addChild(celdas[x + 1][y]);
-									if (celdas[x][y].estaOcupada() == null && celdas[x + 1][y].estaOcupada() == null
-											&& celdas[x][y + 1].estaOcupada() == null
-											&& celdas[x + 1][y + 1].estaOcupada() == null) {
+									Celda celda3 = celdas[x + 1][y];
+
+									if (celda.estaOcupada() == null && celda1.estaOcupada() == null
+											&& celda2.estaOcupada() == null && celda3.estaOcupada() == null) {
+										celda.addChild(celda3);
+										celda.addChild(celda2);
+										celda.addChild(celda1);
 										obs = new Water(celda);
 										obs.crearMulticelda();
 										JLabel icono = obs.getGrafico();
@@ -276,6 +300,14 @@ public class Mapa implements Runnable {
 								}
 							}
 						}
+					}
+					break;
+				}
+				case 2: {
+					celda = celdas[x][y];
+					if (celda.getObjects()[CONFIG.PROFUNDIDAD_OBSTACULO] == null && celda.estaOcupada() == null) {
+						obs = new Tronco(celda);
+						obs.crear();
 					}
 					break;
 				}
