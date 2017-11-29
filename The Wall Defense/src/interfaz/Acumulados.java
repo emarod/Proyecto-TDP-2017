@@ -145,6 +145,8 @@ public class Acumulados extends JPanel {
 
 		});
 
+		this.add(barricadasLeft);
+		this.add(barricada);
 		this.add(barrilLeft);
 		this.add(barril);
 		this.add(bombasLeft);
