@@ -25,7 +25,6 @@ public class BtnLobo extends BtnJugador {
 		super();
 		Celda c = null;
 		player = new Lobo(c);
-		player.guardarInicio();
 		imagen = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/lobo.png"));
 		info = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/lobodescripcion.png"));
 		this.setIcon(imagen);
@@ -74,7 +73,6 @@ public class BtnLobo extends BtnJugador {
 	}
 
 	public Jugador getPlayer() {
-		// TODO Auto-generated method stub
 		return player;
 	}
 

@@ -24,6 +24,7 @@ public class Invulnerable extends PowerUpTemporal {
 
 	@Override
 	public void aplicar(Unidad u) {
+		super.aplicar(u);
 		unidad = u;
 		unidad.setVida(999);
 		unidad.observar(this);

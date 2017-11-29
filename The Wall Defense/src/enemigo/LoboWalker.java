@@ -51,15 +51,4 @@ public class LoboWalker extends Enemigo {
 		super.destruir();
 	}
 
-	@Override
-	public void guardarInicio() {
-		guardarEstado("LOBOWALKER");
-	}
-
-	@Override
-	public void regresarInicio() {
-		reset("LOBOWALKER");
-
-	}
-
 }

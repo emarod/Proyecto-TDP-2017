@@ -25,7 +25,6 @@ public class BtnArquero extends BtnJugador {
 		super();
 		Celda c = null;
 		player = new Arquero(c);
-		player.guardarInicio();
 		imagen = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/ygritte2.png"));
 		info = new ImageIcon(
 				this.getClass().getResource("/resources/static/botones/personajes/ygrittedescripcion.png"));
@@ -75,7 +74,6 @@ public class BtnArquero extends BtnJugador {
 	}
 
 	public Jugador getPlayer() {
-		// TODO Auto-generated method stub
 		return player;
 	}
 }

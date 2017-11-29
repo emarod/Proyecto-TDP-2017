@@ -3,6 +3,7 @@ package efectos;
 import java.util.Observable;
 import java.util.Observer;
 
+import Controladores.Director;
 import main.CONFIG;
 import main.GameObject;
 import main.Unidad;
@@ -30,20 +31,22 @@ public abstract class Efecto extends GameObject implements Observer {
 	}
 
 	@Override
+	public void destruir() {
+		super.destruir();
+		Director.getCareTaker().clearSavepoint(this.hashCode());
+	}
+
+	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1.equals("DEAD")) {
 			destruir();
 		}
 		if (arg1.equals("MOVE")) {
 			if (unidad != null) {
-				System.out.println("Cambiando de celda");
 				int x = unidad.getCelda().getPosX();
 				int y = unidad.getCelda().getPosY();
 				grafico.setBounds(x * 64, y * 64, 64, 64);
 				intercambiar_celdas(unidad.getCelda());
-			}
-			else {
-				System.out.println("El efecto tiene una unidad nula");
 			}
 		}
 

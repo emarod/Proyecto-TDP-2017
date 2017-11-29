@@ -16,7 +16,7 @@ public abstract class BuffTemporal extends Buff implements Runnable {
 	@Override
 	public void run() {
 		unidad.getCelda().getObjects()[CONFIG.PROFUNDIDAD_EFECTO] = null;
-		unidad.regresarInicio();
+		unidad.regresarUltimo();
 		unidad = null;
 		this.destruir();
 	}

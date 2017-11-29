@@ -45,21 +45,17 @@ public class Score extends JPanel {
 			puntaje.setFont(font);
 		}
 		catch (FontFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		// puntaje.setSize(puntaje.getWidth(), this.getHeight());
 		// Recojo la fuente que se esta utilizando actualmente.
 		Font auxFont = new Font("ArcadeClassic", Font.CENTER_BASELINE, 50);
 		// Aplico la fuente actual, y al final le doy el tamaño del texto...
 		puntaje.setForeground(Color.WHITE);
 		puntaje.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 50));
-		// puntaje.setSize(new Dimension(10,50));
 		this.add(puntaje, BorderLayout.CENTER);
 	}
 

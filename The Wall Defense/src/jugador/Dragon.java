@@ -87,14 +87,4 @@ public class Dragon extends Shooter {
 		return daño;
 	}
 
-	@Override
-	public void guardarInicio() {
-		guardarEstado("DRAGON");
-	}
-
-	@Override
-	public void regresarInicio() {
-		reset("DRAGON");
-
-	}
 }

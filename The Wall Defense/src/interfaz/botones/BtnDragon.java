@@ -24,7 +24,6 @@ public class BtnDragon extends BtnJugador {
 		super();
 		Celda c = null;
 		player = new Dragon(c);
-		player.guardarInicio();
 		imagen = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/dragon.png"));
 		info = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/dragondescripcion.png"));
 		this.setIcon(imagen);

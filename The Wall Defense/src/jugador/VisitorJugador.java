@@ -31,7 +31,6 @@ public class VisitorJugador extends Visitor {
 
 	@Override
 	public boolean visitEnemigo(Enemigo e) {
-		System.out.println("jugador visita enemigo");
 		e.recibirDaño(jugador.getDaño());
 		return false;
 	}
@@ -56,13 +55,11 @@ public class VisitorJugador extends Visitor {
 
 	@Override
 	public boolean visitObjeto(Temporal t) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean visitObjeto(Vida v) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

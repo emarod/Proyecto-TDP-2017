@@ -1,6 +1,5 @@
 package interfaz;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -43,7 +42,7 @@ public class Acumulados extends JPanel {
 	public Acumulados() {
 		this.setLayout(new FlowLayout());
 		this.setPreferredSize(new Dimension(10, 100));
-		this.setBackground(Color.WHITE);
+		this.setBackground(Color.BLACK);
 		cantBomba = 2;
 		cantBarricada = 0;
 		armarBotonera();
@@ -145,43 +144,6 @@ public class Acumulados extends JPanel {
 			}
 
 		});
-
-		barricadapanel = new JPanel();
-		barricadapanel.setLayout(new BorderLayout());
-		barricadapanel.setBackground(Color.BLACK);
-		this.add(barricadapanel);
-
-		JLabel borde1 = new JLabel(
-				new ImageIcon(this.getClass().getResource("/resources/static/border/leftborder.png")));
-
-		JLabel borde2 = new JLabel(
-				new ImageIcon(this.getClass().getResource("/resources/static/border/northborder.png")));
-
-		JLabel borde3 = new JLabel(
-				new ImageIcon(this.getClass().getResource("/resources/static/border/southborder.png")));
-
-		JLabel borde4 = new JLabel(
-				new ImageIcon(this.getClass().getResource("/resources/static/border/stoneborder.png")));
-
-		JPanel c = new JPanel();
-		c.setBackground(Color.BLACK);
-		c.setSize(64, 64);
-		configurarBoton(barricada);
-		configurarBoton(barril);
-		configurarBoton(bomba);
-		configurarBoton(trampa);
-
-		barricadapanel.setPreferredSize(new Dimension(165, 86));
-		c.add(barricadasLeft);
-
-		barricadapanel.add(borde4, BorderLayout.CENTER);
-		barricadapanel.add(c);
-
-		// barricadapanel.add(barricada, BorderLayout.CENTER);
-		// barricadapanel.add(borde2, BorderLayout.NORTH);
-		// barricadapanel.add(borde3, BorderLayout.SOUTH);
-		// barricadapanel.add(borde4, BorderLayout.EAST);
-		// barricadapanel.add(borde1, BorderLayout.WEST);
 
 		this.add(barrilLeft);
 		this.add(barril);

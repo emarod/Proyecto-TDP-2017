@@ -120,8 +120,8 @@ public class Director {
 	//
 	// }
 
-	public static void ejecutarUna(Token token, long duracion) {
-		taskPool.schedule(token, duracion, TimeUnit.SECONDS);
+	public static ScheduledFuture<?> ejecutarUna(Token token, long duracion) {
+		return taskPool.schedule(token, duracion, TimeUnit.SECONDS);
 
 	}
 

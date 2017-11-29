@@ -72,14 +72,4 @@ public class WhiteWalker extends Enemigo {
 		super.destruir();
 	}
 
-	@Override
-	public void guardarInicio() {
-		guardarEstado("WW");
-	}
-
-	@Override
-	public void regresarInicio() {
-		reset("WW");
-
-	}
 }

@@ -72,15 +72,4 @@ public class Arquero extends Shooter {
 		graph = 0;
 		grafico.setIcon(imagen);
 	}
-
-	@Override
-	public void guardarInicio() {
-		guardarEstado("ARQUERO");
-	}
-
-	@Override
-	public void regresarInicio() {
-		reset("ARQUERO");
-
-	}
 }

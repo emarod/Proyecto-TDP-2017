@@ -53,15 +53,4 @@ public class Espadachin extends Jugador {
 	public void playSound() {
 
 	}
-
-	@Override
-	public void guardarInicio() {
-		guardarEstado("ESPADACHIN");
-	}
-
-	@Override
-	public void regresarInicio() {
-		reset("ESPADACHIN");
-
-	}
 }

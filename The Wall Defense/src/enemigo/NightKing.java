@@ -111,14 +111,4 @@ public class NightKing extends ShooterEnemigo {
 		Director.getBancoRecursos().playFlecha();
 	}
 
-	@Override
-	public void guardarInicio() {
-		guardarEstado("NK");
-	}
-
-	@Override
-	public void regresarInicio() {
-		reset("NK");
-
-	}
 }

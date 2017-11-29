@@ -8,42 +8,61 @@ public class ParentCell extends Celda {
 	public ParentCell(int posX, int posY) {
 		super(posX, posY);
 		child = null;
+		tail = null;
 	}
 
 	@Override
 	public void addChild(Celda c) {
-		if (hijos == 0) {
-			child = tail = c;
+		if (tail == null) {
+			child = c;
+			tail = child;
 		}
 		else {
-			tail.addChild(c);
-			tail = c;
+			c.setChild(child);
+			child = c;
 		}
-		hijos++;
 
 	}
 
 	@Override
+	public void setChild(Celda c) {
+		child = c;
+	}
+
+	@Override
+	public void setTail(Celda c) {
+		tail = c;
+	}
+
+	@Override
 	public void removeChild() {
-		if (hijos == 0) {
+		if (child == null) {
 			throw new UnsupportedOperationException("Operacion no soportada");
 		}
-		child = child.getChild();
-		hijos--;
-		if (hijos == 0) {
+
+		if (child == tail) {
+			System.out.println("TAIL");
+			child.setChild(null);
+			child.setTail(null);
 			child = null;
 			tail = null;
 		}
+		else {
+			Celda c = child;
+			child = c.getChild();
+			c.setChild(null);
+			c.setTail(null);
+		}
+	}
+
+	@Override
+	public void removeTail() {
+		tail = null;
 	}
 
 	@Override
 	public Celda getChild() {
 		return child;
-	}
-
-	@Override
-	public int size() {
-		return hijos;
 	}
 
 }

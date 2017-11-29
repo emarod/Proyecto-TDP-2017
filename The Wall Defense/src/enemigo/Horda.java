@@ -76,32 +76,26 @@ public class Horda implements Runnable {
 			// Los enemigos simples.
 			case 0: {
 				e = new WhiteWalker(c);
-				System.out.print("Se creo ww.");
 				break;
 			}
 			case 1: {
 				e = new NightKing(c);
-				System.out.print("Se creo nk.");
 				break;
 			}
 			case 2: {
 				e = new Araña(c);
-				System.out.print("Se creo araña.");
 				break;
 			}
 			case 3: {
 				e = new KnightWalker(c);
-				System.out.print("Se creo kw.");
 				break;
 			}
 			case 4: {
 				e = new EsqueletoSuicida(c);
-				System.out.print("Se creo es.");
 				break;
 			}
 			case 5: {
 				e = new LoboWalker(c);
-				System.out.print("Se creo lw.");
 				break;
 			}
 			default: {
@@ -109,7 +103,6 @@ public class Horda implements Runnable {
 			}
 
 		}
-		e.guardarInicio();
 		e.crear();
 		randomPow(c, e);
 		e.activar();

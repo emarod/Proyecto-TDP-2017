@@ -59,15 +59,4 @@ public class EsqueletoSuicida extends Enemigo {
 		super.destruir();
 	}
 
-	@Override
-	public void guardarInicio() {
-		guardarEstado("ESQUELETO");
-	}
-
-	@Override
-	public void regresarInicio() {
-		reset("ESQUELETO");
-
-	}
-
 }
