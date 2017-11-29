@@ -221,7 +221,7 @@ public class GUI extends JFrame {
 		// Panel Inferior
 		panelInferior = new JPanel();
 		panelInferior.setLayout(new BorderLayout());
-		panelInferior.setPreferredSize(new Dimension(10, 90));
+		panelInferior.setPreferredSize(new Dimension(10, 100));
 		panelInferior.setBackground(Color.BLACK);
 		panelInferior.add(acumulados, BorderLayout.CENTER);
 		getContentPane().add(panelInferior, BorderLayout.SOUTH);
