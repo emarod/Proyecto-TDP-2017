@@ -125,8 +125,7 @@ public class Barril extends ObjetoTemporal implements Comprable, Runnable {
 
 	@Override
 	public boolean accept(Visitor V) {
-		V.visitObjeto(this);
-		return false;
+		return V.visitObjeto(this);
 	}
 
 	@Override
