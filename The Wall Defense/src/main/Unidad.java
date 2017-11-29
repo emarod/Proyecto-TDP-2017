@@ -32,13 +32,6 @@ public abstract class Unidad extends GameObject implements Runnable {
 	}
 
 	// Metodos locales.
-	@Override
-	public void intercambiar_celdas(Celda C) {
-		C.getObjects()[profundidad] = this;
-		celda.getObjects()[profundidad] = null;
-		celda = C;
-
-	}
 
 	@Override
 	public void destruir() {
@@ -55,6 +48,18 @@ public abstract class Unidad extends GameObject implements Runnable {
 
 	}
 
+	@Override
+	public void crear() {
+		super.crear();
+		new BarraVida(this);
+	}
+
+	@Override
+	public void crearMulticelda() {
+		super.crearMulticelda();
+		new BarraVida(this);
+	}
+
 	public void recibirDaño(int golpe) {
 		boolean destruir = false;
 		if (vida <= golpe) {
@@ -62,6 +67,7 @@ public abstract class Unidad extends GameObject implements Runnable {
 		}
 		else {
 			vida = vida - golpe;
+			notificar("DAÑO");
 		}
 		if (destruir) {
 			destruir();
@@ -98,6 +104,7 @@ public abstract class Unidad extends GameObject implements Runnable {
 		vida = recuperar.getVida();
 		daño = recuperar.getDaño();
 		velocidad = recuperar.getVelocidad();
+		notificar("DAÑO");
 	}
 
 	public int getVelocidad() {
@@ -110,6 +117,8 @@ public abstract class Unidad extends GameObject implements Runnable {
 
 	public void setVida(int i) {
 		vida = i;
+		setChanged();
+		notifyObservers("DAÑO");
 	}
 
 	public int getVida() {

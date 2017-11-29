@@ -34,6 +34,7 @@ public abstract class GameObject extends Observable implements ObjetoCelda {
 		C.getObjects()[profundidad] = this;
 		celda.getObjects()[profundidad] = null;
 		celda = C;
+		notificar("MOVE");
 
 	}
 
