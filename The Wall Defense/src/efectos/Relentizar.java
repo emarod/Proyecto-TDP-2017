@@ -13,7 +13,7 @@ public class Relentizar extends BuffTemporal {
 	@Override
 	public void aplicar(Unidad u) {
 		unidad = u;
-		unidad.setVelocidad(Math.round(unidad.getVelocidad() / 2));
+		unidad.setVelocidad(Math.round(unidad.getVelocidad() * 2));
 		crear();
 		ejecutar();
 	}
