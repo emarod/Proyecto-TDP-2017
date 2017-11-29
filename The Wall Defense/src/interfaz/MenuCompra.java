@@ -6,7 +6,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -48,7 +47,6 @@ public class MenuCompra extends JPanel {
 		this.setLayout(new GridLayout(3, 2));
 		this.setBounds(76, 0, 381, 811);
 		this.setBackground(Color.BLACK);
-		background = new ImageIcon(this.getClass().getResource("/resources/static/tienda/fondo.png"));
 		armarBotonera();
 	}
 
