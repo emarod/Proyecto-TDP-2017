@@ -50,15 +50,4 @@ public class Araña extends Enemigo {
 		super.destruir();
 	}
 
-	@Override
-	public void guardarInicio() {
-		guardarEstado("ARAÑA");
-	}
-
-	@Override
-	public void regresarInicio() {
-		reset("ARAÑA");
-
-	}
-
 }

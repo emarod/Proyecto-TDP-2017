@@ -24,7 +24,6 @@ public class BtnCaballero extends BtnJugador {
 		super();
 		Celda c = null;
 		player = new Caballero(c);
-		player.guardarInicio();
 		imagen = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/lannister.png"));
 		info = new ImageIcon(
 				this.getClass().getResource("/resources/static/botones/personajes/caballerodescripcion.png"));

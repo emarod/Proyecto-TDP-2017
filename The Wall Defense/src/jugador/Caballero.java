@@ -55,15 +55,4 @@ public class Caballero extends Jugador {
 	public void playSound() {
 
 	}
-
-	@Override
-	public void guardarInicio() {
-		guardarEstado("CABALLERO");
-	}
-
-	@Override
-	public void regresarInicio() {
-		reset("CABALLERO");
-
-	}
 }

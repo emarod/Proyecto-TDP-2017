@@ -51,15 +51,4 @@ public class Gigante extends Jugador {
 
 	}
 
-	@Override
-	public void guardarInicio() {
-		guardarEstado("GIGANTE");
-	}
-
-	@Override
-	public void regresarInicio() {
-		reset("GIGANTE");
-
-	}
-
 }

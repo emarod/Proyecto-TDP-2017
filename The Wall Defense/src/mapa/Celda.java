@@ -97,4 +97,5 @@ public abstract class Celda {
 
 	public abstract int size();
 
+	public abstract void removeTail();
 }

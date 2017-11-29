@@ -20,6 +20,7 @@ public class VelAtkAumentado extends PowerUpTemporal {
 
 	@Override
 	public void aplicar(Unidad u) {
+		super.aplicar(u);
 		unidad = u;
 		unidad.setVelocidad(Math.round(unidad.getVelocidad() / 2));
 		unidad.observar(this);

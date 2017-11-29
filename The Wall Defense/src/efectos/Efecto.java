@@ -3,6 +3,7 @@ package efectos;
 import java.util.Observable;
 import java.util.Observer;
 
+import Controladores.Director;
 import main.CONFIG;
 import main.GameObject;
 import main.Unidad;
@@ -27,6 +28,12 @@ public abstract class Efecto extends GameObject implements Observer {
 
 	public Visitor getVisitor() {
 		return visitor;
+	}
+
+	@Override
+	public void destruir() {
+		super.destruir();
+		Director.getCareTaker().clearSavepoint(this.hashCode());
 	}
 
 	@Override

@@ -103,7 +103,6 @@ public class Horda implements Runnable {
 			}
 
 		}
-		e.guardarInicio();
 		e.crear();
 		randomPow(c, e);
 		e.activar();

@@ -60,12 +60,6 @@ public abstract class Enemigo extends Unidad {
 	}
 
 	// Metodos heredados.
-
-	@Override
-	public void regresarInicio() {
-		reset("ENEMIGO");
-	}
-
 	@Override
 	public void run() {
 		mover();

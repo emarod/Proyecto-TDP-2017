@@ -26,4 +26,10 @@ public class Cell extends Celda {
 		throw new UnsupportedOperationException("Operacion no soportada");
 	}
 
+	@Override
+	public void removeTail() {
+		throw new UnsupportedOperationException("Operacion no soportada");
+
+	}
+
 }

@@ -52,15 +52,4 @@ public class Lobo extends Jugador {
 		return daño;
 	}
 
-	@Override
-	public void guardarInicio() {
-		guardarEstado("LOBO");
-	}
-
-	@Override
-	public void regresarInicio() {
-		reset("LOBO");
-
-	}
-
 }

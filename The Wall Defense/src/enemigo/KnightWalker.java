@@ -51,14 +51,4 @@ public class KnightWalker extends Enemigo {
 		super.destruir();
 	}
 
-	@Override
-	public void guardarInicio() {
-		guardarEstado("WW_CABALLERO");
-	}
-
-	@Override
-	public void regresarInicio() {
-		reset("WW_CABALLERO");
-
-	}
 }

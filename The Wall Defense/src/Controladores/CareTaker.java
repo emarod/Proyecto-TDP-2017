@@ -5,22 +5,26 @@ import java.util.Map;
 
 public class CareTaker {
 
-	private Map<String, MementoUnidad> savepoint;
+	private Map<Integer, MementoUnidad> savepoint;
 
 	public CareTaker() {
-		savepoint = new HashMap<String, MementoUnidad>();
+		savepoint = new HashMap<Integer, MementoUnidad>();
 	}
 
-	public void saveMemento(MementoUnidad mementoUnidad, String save) {
+	public void saveMemento(MementoUnidad mementoUnidad, int save) {
 		savepoint.put(save, mementoUnidad);
 	}
 
-	public MementoUnidad getMemento(String save) {
+	public MementoUnidad getMemento(int save) {
 		return savepoint.get(save);
 	}
 
 	public void clearSavepoint() {
 		savepoint.clear();
+	}
+
+	public void clearSavepoint(int i) {
+		savepoint.remove(i);
 	}
 
 }

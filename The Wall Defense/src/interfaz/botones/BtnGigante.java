@@ -25,7 +25,6 @@ public class BtnGigante extends BtnJugador {
 		super();
 		Celda c = null;
 		player = new Gigante(c);
-		player.guardarInicio();
 		imagen = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/gigante.png"));
 		info = new ImageIcon(
 				this.getClass().getResource("/resources/static/botones/personajes/gigantedescripcion.png"));

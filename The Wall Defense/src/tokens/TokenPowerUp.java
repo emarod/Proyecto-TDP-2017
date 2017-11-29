@@ -25,6 +25,7 @@ public abstract class TokenPowerUp extends Token {
 		if (jugador != null) {
 			power.setCelda(jugador.getCelda());
 			jugador.accept(power.getVisitor());
+			activeTask.cancel(true);
 			power = null;
 			destruir();
 		}

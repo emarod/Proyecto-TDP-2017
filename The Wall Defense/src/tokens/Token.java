@@ -1,5 +1,7 @@
 package tokens;
 
+import java.util.concurrent.ScheduledFuture;
+
 import Controladores.Director;
 import main.CONFIG;
 import main.GameObject;
@@ -9,6 +11,7 @@ import mapa.Celda;
 public abstract class Token extends GameObject implements Runnable {
 
 	protected int duracion;
+	protected ScheduledFuture<?> activeTask;
 
 	public Token(Celda c) {
 		super(c);
@@ -20,7 +23,7 @@ public abstract class Token extends GameObject implements Runnable {
 	}
 
 	public void activar() {
-		Director.ejecutarUna(this, duracion);
+		activeTask = Director.ejecutarUna(this, duracion);
 	}
 
 	@Override

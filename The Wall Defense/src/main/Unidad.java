@@ -24,11 +24,15 @@ public abstract class Unidad extends GameObject implements Runnable {
 	protected int velocidad;
 	protected ScheduledFuture<?> activeTask;
 	protected CareTaker careTaker;
-	protected String backup;
+	protected int backup;
+	protected int inicio;
 
 	public Unidad(Celda c) {
 		super(c);
 		careTaker = Director.getCareTaker();
+		guardarInicio();
+		backup = 0;
+		inicio = 0;
 	}
 
 	// Metodos locales.
@@ -37,6 +41,7 @@ public abstract class Unidad extends GameObject implements Runnable {
 	public void destruir() {
 		super.destruir();
 		activeTask.cancel(true);
+		careTaker.clearSavepoint(this.hashCode());
 	}
 
 	public ScheduledFuture<?> getTask() {
@@ -86,20 +91,29 @@ public abstract class Unidad extends GameObject implements Runnable {
 		}
 	}
 
-	public void guardarEstado(String save) {
-		careTaker.saveMemento(new MementoUnidad(daño, vida, velocidad), save);
-		backup = save;
+	public void guardarEstado(int i) {
+		regresarUltimo();
+		careTaker.saveMemento(new MementoUnidad(daño, vida, velocidad), i);
+		backup = i;
 	}
 
 	public void regresarUltimo() {
-		reset(backup);
+		if (backup != 0) {
+			reset(backup);
+			backup = 0;
+		}
+
 	}
 
-	public abstract void guardarInicio();
+	public void guardarInicio() {
+		careTaker.getMemento(this.hashCode());
+	};
 
-	public abstract void regresarInicio();
+	public void regresarInicio() {
+		reset(this.hashCode());
+	}
 
-	protected void reset(String save) {
+	protected void reset(int save) {
 		MementoUnidad recuperar = careTaker.getMemento(save);
 		vida = recuperar.getVida();
 		daño = recuperar.getDaño();

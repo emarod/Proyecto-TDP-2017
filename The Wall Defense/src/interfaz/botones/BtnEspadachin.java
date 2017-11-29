@@ -24,7 +24,6 @@ public class BtnEspadachin extends BtnJugador {
 		super();
 		Celda c = null;
 		player = new Espadachin(c);
-		player.guardarInicio();
 		imagen = new ImageIcon(this.getClass().getResource("/resources/static/botones/personajes/jonsnow.png"));
 		info = new ImageIcon(
 				this.getClass().getResource("/resources/static/botones/personajes/espadachindescripcion.png"));
