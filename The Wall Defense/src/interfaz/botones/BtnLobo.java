@@ -74,7 +74,6 @@ public class BtnLobo extends BtnJugador {
 	}
 
 	public Jugador getPlayer() {
-		// TODO Auto-generated method stub
 		return player;
 	}
 

@@ -31,7 +31,6 @@ public class Nivel extends JPanel {
 	// Metodos locales.
 	private void agregarLabel() {
 		level = new JLabel("Level " + nroNivel);
-		// level.setSize(level.getWidth(), this.getHeight());
 		// Recojo la fuente que se esta utilizando actualmente.
 		Font auxFont = new Font("ArcadeClassic", Font.CENTER_BASELINE, 50);
 		// Aplico la fuente actual, y al final le doy el tamaño del texto...

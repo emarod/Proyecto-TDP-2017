@@ -30,7 +30,6 @@ public class Bomba extends ObjetoTemporal implements Premio, Runnable {
 	public Bomba(Celda c) {
 		super(c);
 		profundidad = CONFIG.PROFUNDIDAD_PREMIO;
-		// construir();
 	}
 
 	@Override
@@ -160,7 +159,6 @@ public class Bomba extends ObjetoTemporal implements Premio, Runnable {
 
 	@Override
 	public void aplicarEfecto(Unidad u) {
-		// TODO Auto-generated method stub
 
 	}
 

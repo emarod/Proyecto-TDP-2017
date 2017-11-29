@@ -39,10 +39,6 @@ public abstract class Jugador extends Unidad implements Comprable {
 
 	@Override
 	public void destruir() {
-		// GameObject efecto = celda.getObjects()[CONFIG.PROFUNDIDAD_EFECTO];
-		// if (efecto != null) {
-		// efecto.destruir();
-		// }
 		super.destruir();
 		V = null;
 	}
@@ -80,7 +76,7 @@ public abstract class Jugador extends Unidad implements Comprable {
 
 	@Override
 	public void guardar() {
-		// Metodo sin implementar para deshabilitar la capacidad de acumulable
+
 	}
 
 	@Override

@@ -96,7 +96,6 @@ public abstract class Enemigo extends Unidad {
 			}
 		}
 		if (!detener && xCelda != 0) {
-			System.out.println("x:" + xCelda);
 			getGrafico().setBounds(xGrafico - 64, yGrafico, 64, 64);
 			intercambiar_celdas(siguiente);
 			activeTask = null;
@@ -104,9 +103,7 @@ public abstract class Enemigo extends Unidad {
 		}
 
 		if (!detener && xCelda == 2) {
-			// getGrafico().setBounds(xGrafico - 64, yGrafico, 64, 64);
 			activeTask = null;
-			System.out.println("LLego");
 			Director.getMapa().getHorda().setLlego(true);
 		}
 	}

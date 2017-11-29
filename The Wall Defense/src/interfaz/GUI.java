@@ -58,8 +58,7 @@ public class GUI extends JFrame {
 	// Constructor.
 	public GUI(Juego g, int dificultad) {
 		super("The Wall Defense");
-		this.dificultad = dificultad * 5;
-		System.out.println(this.dificultad);
+		this.dificultad = dificultad;
 		game = g;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(0, 0, 1245, 570);
@@ -130,14 +129,11 @@ public class GUI extends JFrame {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				if (cont == 0) {
-					// getContentPane().remove(panelCentro);
-					// panelCentro.remove(inst1);
 					inst.setIcon(
 							new ImageIcon(this.getClass().getResource("/resources/static/background/PanelAlpha2.png")));
 					cont = cont + 1;
 					back.setVisible(true);
 					next.setVisible(true);
-					System.out.println(cont);
 
 				}
 
@@ -148,13 +144,11 @@ public class GUI extends JFrame {
 						cont = cont + 1;
 						back.setVisible(true);
 						next.setVisible(false);
-						System.out.println(cont);
 					}
 
 					else {
 						if (cont == 2) {
 							next.setVisible(false);
-							System.out.println(cont);
 						}
 					}
 				}
@@ -167,14 +161,11 @@ public class GUI extends JFrame {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				if (cont == 1) {
-					// getContentPane().remove(panelCentro);
-					// panelCentro.remove(inst1);
 					inst.setIcon(
 							new ImageIcon(this.getClass().getResource("/resources/static/background/PanelAlpha.png")));
 					cont = cont - 1;
 					back.setVisible(false);
 					next.setVisible(true);
-					System.out.println(cont);
 
 				}
 
@@ -185,7 +176,6 @@ public class GUI extends JFrame {
 						cont = cont - 1;
 						back.setVisible(true);
 						next.setVisible(true);
-						System.out.println(cont);
 
 					}
 				}
@@ -230,8 +220,6 @@ public class GUI extends JFrame {
 		// Panel izquierdo
 		panelIzquierdo = new JPanel();
 		panelIzquierdo.setLayout(new BorderLayout());
-		// Icon bannerLeft=new
-		// ImageIcon(this.getClass().getResource("/resources/static/banner/Banner_4.jpg"));
 		panelIzquierdo.setPreferredSize(new Dimension(150, 300));
 		panelIzquierdo.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelIzquierdo.setBackground(Color.BLACK);
@@ -339,11 +327,6 @@ public class GUI extends JFrame {
 							jugador.accept(Director.getPartida().getTienda());
 						}
 						// si posee un efecto.
-						/*
-						 * GameObject efecto = Director.getCelda(x_jugador,
-						 * y_jugador).getObjects()[CONFIG.PROFUNDIDAD_EFECTO]; if (efecto != null) {
-						 * efecto.destruir(); }
-						 */
 						GameObject efecto = Director.getCelda(x_jugador, y_jugador)
 								.getObjects()[CONFIG.PROFUNDIDAD_EFECTO];
 						if (efecto != null) {
@@ -408,6 +391,10 @@ public class GUI extends JFrame {
 
 	}
 
+	public void setDificultad(int d) {
+		dificultad = d;
+	}
+
 	public void nextLevel() {
 		if (level.ultimo()) {
 			Director.getGui().getGame().terminarGUI(true);
@@ -417,13 +404,7 @@ public class GUI extends JFrame {
 			sell.setVisible(false);
 			getMenu().habilitarCompra();
 			getMenuObjetos().habilitarCompra();
-			// escenario.eliminarPanel();
 			level.actualizar();
-			// removeAll();
-			/*
-			 * escenario = new Escenario(); escenario.crearPanel();
-			 * escenario.iniciarCeldas();
-			 */
 		}
 
 	}
@@ -431,11 +412,4 @@ public class GUI extends JFrame {
 	public Juego getGame() {
 		return game;
 	}
-
-	/*
-	 * @Override public void removeAll() { Celda c = null; for (int x = 0; x < 16;
-	 * x++) { for (int y = 0; y < 6; y++) { c = Director.getMapa().getCelda(x, y);
-	 * if (c.getObjects() != null) { for (int i = 0; i < c.getObjects().length; i++)
-	 * { c.getObjects()[i].destruir(); } } } } }
-	 */
 }
